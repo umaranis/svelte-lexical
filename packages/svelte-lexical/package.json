@@ -1,0 +1,43 @@
+{
+  "name": "svelte-lexical",
+  "description": "Rich Text editor for Svelte based on lexical",
+  "svelte": "src/index.js",
+  "module": "dist/index.mjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "rollup": "^2.0.0",
+    "rollup-plugin-svelte": "^7.0.0",
+    "svelte": "^3.5.0"
+  },
+  "keywords": [
+    "lexical",
+    "editor",
+    "rich-text",
+    "list",
+    "svelte"
+  ],
+  "files": [
+    "src",
+    "dist"
+  ],
+  "dependencies": {
+    "@lexical/code": "^0.2.2",
+    "@lexical/hashtag": "^0.2.2",
+    "@lexical/history": "^0.2.2",
+    "@lexical/link": "^0.2.2",
+    "@lexical/list": "^0.2.2",
+    "@lexical/overflow": "^0.2.2",
+    "@lexical/plain-text": "^0.2.2",
+    "@lexical/rich-text": "^0.2.2",
+    "@lexical/selection": "^0.2.2",
+    "@lexical/table": "^0.2.2",
+    "@lexical/utils": "^0.2.2",
+    "lexical": "^0.2.2"
+  }
+}

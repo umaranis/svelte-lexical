@@ -1,0 +1,1 @@
+export const COMMAND_PRIORITY_CRITICAL = 4;
