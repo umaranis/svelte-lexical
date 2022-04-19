@@ -1,6 +1,7 @@
 {
   "name": "svelte-lexical",
   "description": "Rich Text editor for Svelte based on lexical",
+  "version": "0.1.2-beta.0",
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
