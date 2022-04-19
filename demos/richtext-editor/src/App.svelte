@@ -1,12 +1,11 @@
 <script>
 	import {RichTextEditor, Toolbar} from 'svelte-lexical';
 	import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
-	export let name;
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>Svelte Lexical!</h1>
+	<p>This Rich Text Editor is build with <a href="https://github.com/umaranis/svelte-lexical/">svelte-lexical</a></p>	
 	<RichTextEditor theme={PlaygroundEditorTheme}>
 		<Toolbar slot="toolbar"/>
 	</RichTextEditor>
