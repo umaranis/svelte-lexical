@@ -48,8 +48,9 @@ export default {
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
 
+		// https://github.com/rollup/rollup/issues/487
 		replace({
-			'process.env.NODE_ENV': JSON.stringify( 'development' ) //TODO: Change it to production
+			'process.env.NODE_ENV': production? JSON.stringify('production') : JSON.stringify('development')
 		}),
 
 		// If you have external dependencies installed from
