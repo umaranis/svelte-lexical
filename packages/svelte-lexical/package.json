@@ -28,6 +28,7 @@
     "dist"
   ],
   "dependencies": {
+    "@lexical/clipboard": "0.2.2",
     "@lexical/code": "^0.2.2",
     "@lexical/hashtag": "^0.2.2",
     "@lexical/history": "^0.2.2",
