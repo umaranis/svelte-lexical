@@ -3,10 +3,10 @@
   "description": "Rich Text editor for Svelte based on lexical",
   "version": "0.1.2-beta.1",
   "repository": {
-		"type": "git",
-		"url": "https://github.com/umaranis/svelte-lexical",
-		"directory": "svelte-lexical"
-	},
+    "type": "git",
+    "url": "https://github.com/umaranis/svelte-lexical",
+    "directory": "svelte-lexical"
+  },
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
@@ -17,9 +17,12 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
+    "eslint-plugin-svelte3": "^3.4.1",
     "rollup": "^2.0.0",
     "rollup-plugin-svelte": "^7.0.0",
-    "svelte": "^3.5.0"
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
   },
   "keywords": [
     "lexical",
@@ -44,7 +47,8 @@
     "@lexical/rich-text": "^0.2.2",
     "@lexical/selection": "^0.2.2",
     "@lexical/table": "^0.2.2",
-    "@lexical/utils": "^0.2.2",
-    "lexical": "^0.2.2"
+    "@lexical/utils": "^0.2.2",    
+    "lexical": "^0.2.2",
+    "svelte": "^3.47.0"
   }
 }
