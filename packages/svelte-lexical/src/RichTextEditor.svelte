@@ -15,7 +15,6 @@
     insertList,
   } from "@lexical/list";
   import { onMount } from "svelte";
-  import { createEmptyHistoryState, registerHistory } from "@lexical/history";
   import { CodeHighlightNode, CodeNode } from "@lexical/code";
   import { HashtagNode } from "@lexical/hashtag";
   import {
@@ -26,8 +25,8 @@
   } from "@lexical/table";
   import { AutoLinkNode, LinkNode } from "@lexical/link";
   import { OverflowNode } from "@lexical/overflow";
-  import {registerListCommands} from './registerListCommands.js';
-  import {registerTableCommands} from './registerTableCommands.js';
+  import {registerListCommands} from './utils/registerListCommands.js';
+  import {registerTableCommands} from './utils/registerTableCommands.js';
   import { setContext } from 'svelte';
 
   let contentEditableElement;
@@ -61,13 +60,13 @@
     editor.setRootElement(contentEditableElement);
 
     registerRichText(editor);
-    registerHistory(editor, createEmptyHistoryState(), 1000);
   });
 
 </script>
 
 <div class="editor-shell">
   <slot name="toolbar"></slot>
+  <slot></slot>
   <div class="editor-container">
     <div
       contenteditable="true"
