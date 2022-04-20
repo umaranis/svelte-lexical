@@ -2,6 +2,11 @@
   "name": "svelte-lexical",
   "description": "Rich Text editor for Svelte based on lexical",
   "version": "0.1.2-beta.1",
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/umaranis/svelte-lexical",
+		"directory": "svelte-lexical"
+	},
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
