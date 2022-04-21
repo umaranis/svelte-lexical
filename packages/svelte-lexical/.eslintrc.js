@@ -19,6 +19,7 @@ module.exports = {
         'no-return-assign': 'off',
         'import/no-mutable-exports': 'off',
         'import/first': 'off',
+        'import/prefer-default-export': 'off',
       },
     },
   ],
