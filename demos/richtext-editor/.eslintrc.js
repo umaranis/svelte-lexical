@@ -15,9 +15,13 @@ module.exports = {
     {
       files: ['**/*.svelte'],
       processor: 'svelte3/svelte3',
+      rules: {
+        'no-return-assign': 'off',
+        'import/no-mutable-exports': 'off',
+        'import/first': 'off',
+      },
     },
   ],
   rules: {
-    'import/no-mutable-exports': 'off',
   },
 };

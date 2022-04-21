@@ -6,8 +6,7 @@
     $createTextNode as createTextNode,
     ElementNode,
     TextNode,
-  } from "lexical";
-  import { registerRichText } from "@lexical/rich-text";
+  } from "lexical";  
   import { HeadingNode, QuoteNode } from "@lexical/rich-text";
   import {
     ListItemNode,
@@ -24,8 +23,7 @@
     INSERT_TABLE_COMMAND,
   } from "@lexical/table";
   import { AutoLinkNode, LinkNode } from "@lexical/link";
-  import { OverflowNode } from "@lexical/overflow";
-  import {registerListCommands} from './utils/registerListCommands.js';
+  import { OverflowNode } from "@lexical/overflow";  
   import {registerTableCommands} from './utils/registerTableCommands.js';
   import { setContext } from 'svelte';
 
@@ -54,12 +52,9 @@
   const editor = createEditor(config);
   setContext('editor', editor);
 
-  registerListCommands(editor);
   registerTableCommands(editor);
   onMount(() => {
-    editor.setRootElement(contentEditableElement);
-
-    registerRichText(editor);
+    editor.setRootElement(contentEditableElement);    
   });
 
 </script>
@@ -91,7 +86,6 @@
     outline: 0;
     padding: 10px;
     overflow: auto;
-    resize: vertical;
-    text-align: left;
+    resize: vertical;    
   }
 </style>

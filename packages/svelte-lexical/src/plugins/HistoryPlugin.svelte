@@ -6,7 +6,6 @@
   export let externalHistoryState = createEmptyHistoryState();
   export let delay = 1000;
 
-  onMount(() => {
-    registerHistory(editor, externalHistoryState, delay);
-  });
+  // returns callback to unregister
+  onMount(() => registerHistory(editor, externalHistoryState, delay));
 </script>

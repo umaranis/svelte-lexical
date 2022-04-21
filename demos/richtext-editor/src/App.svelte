@@ -1,7 +1,9 @@
 <script>
-  import { RichTextEditor, Toolbar } from "svelte-lexical";
-  import HistoryPlugin from "svelte-lexical/src/plugins/HistoryPlugin.svelte";
-  import PlaygroundEditorTheme from "./themes/PlaygroundEditorTheme";
+  import { RichTextEditor, Toolbar } from 'svelte-lexical';
+  import HistoryPlugin from 'svelte-lexical/src/plugins/HistoryPlugin.svelte';
+  import ListPlugin from 'svelte-lexical/src/plugins/ListPlugin.svelte';
+  import RichTextPlugin from 'svelte-lexical/src/plugins/RichTextPlugin.svelte';
+  import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
 </script>
 
 <main>
@@ -11,9 +13,12 @@
       href="https://github.com/umaranis/svelte-lexical/">svelte-lexical</a
     >
   </p>
+
   <RichTextEditor theme={PlaygroundEditorTheme}>
     <Toolbar slot="toolbar" />
+    <RichTextPlugin />    
     <HistoryPlugin />
+    <ListPlugin />    
   </RichTextEditor>
 </main>
 

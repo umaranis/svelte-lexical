@@ -3,5 +3,6 @@
       "javascript",
       "javascriptreact",
       "svelte"
-    ]
+    ],
+    "files.eol": "\n",
   }

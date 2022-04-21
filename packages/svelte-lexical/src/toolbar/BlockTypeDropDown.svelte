@@ -1,6 +1,5 @@
 <script>
   import { afterUpdate, getContext, onMount, tick } from "svelte";
-
   import { blockType } from "./stores.js";
   import {
     $getSelection as getSelection,
@@ -51,7 +50,7 @@
     
     if (showBlockOptionsDropDown && button) {
       const handle = (event) => {   
-        if (!button.contains(event.target)) {
+        if (button && !button.contains(event.target)) {
           showBlockOptionsDropDown = false;
           button.removeEventListener("click", handle);
         }     
