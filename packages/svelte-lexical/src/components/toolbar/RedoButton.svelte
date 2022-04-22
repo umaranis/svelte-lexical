@@ -1,19 +1,23 @@
 <script>
   import { CAN_REDO_COMMAND, REDO_COMMAND } from 'lexical';
-  import { getContext } from 'svelte';
+  import { getContext, onMount } from 'svelte';
   import { COMMAND_PRIORITY_CRITICAL } from '../../utils/commandPriority';
 
   const editor = getContext('editor');
 
   let canRedo = false;
-  editor.registerCommand(
-    CAN_REDO_COMMAND,
-    (payload) => {
-      canRedo = payload;
-      return false;
-    },
-    COMMAND_PRIORITY_CRITICAL,
-  );
+
+  // unregisters onDestroy through returned callback
+  onMount(() => {
+    editor.registerCommand(
+      CAN_REDO_COMMAND,
+      (payload) => {
+        canRedo = payload;
+        return false;
+      },
+      COMMAND_PRIORITY_CRITICAL,
+    );
+  });
 </script>
 
 <button

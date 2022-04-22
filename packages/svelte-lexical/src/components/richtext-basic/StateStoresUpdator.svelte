@@ -3,14 +3,12 @@
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
   } from 'lexical';
-  import {
-    $isParentElementRTL as isParentElementRTL,
-  } from '@lexical/selection';
+  import { $isParentElementRTL as isParentElementRTL } from '@lexical/selection';
   import { $isHeadingNode as isHeadingNode } from '@lexical/rich-text';
   import { ListNode, $isListNode as isListNode } from '@lexical/list';
   import { $getNearestNodeOfType as getNearestNodeOfType } from '@lexical/utils';
-  import { getContext } from 'svelte';
-  
+  import { getContext, onMount } from 'svelte';
+
   import {
     isBold,
     isItalic,
@@ -21,10 +19,8 @@
     blockType,
     selectedElementKey,
   } from '../toolbar/stores';
-  
-  const editor = getContext('editor');
 
-  // TODO: explore mergeRegister to combine event registrations
+  const editor = getContext('editor');
 
   const updateToolbar = () => {
     const selection = getSelection();
@@ -81,9 +77,12 @@
     }
   };
 
-  editor.registerUpdateListener(({ editorState }) => {
-    editorState.read(() => {
-      updateToolbar();
+  // unregisters onDestory using returned callback
+  onMount(() => {
+    editor.registerUpdateListener(({ editorState }) => {
+      editorState.read(() => {
+        updateToolbar();
+      });
     });
   });
 </script>

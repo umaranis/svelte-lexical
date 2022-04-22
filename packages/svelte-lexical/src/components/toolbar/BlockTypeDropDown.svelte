@@ -1,5 +1,5 @@
 <script>
-  import { afterUpdate, getContext, onMount, tick } from 'svelte';
+  import { getContext } from 'svelte';
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
@@ -16,7 +16,7 @@
     INSERT_ORDERED_LIST_COMMAND,
     REMOVE_LIST_COMMAND,
   } from '@lexical/list';
-  import { blockType } from './stores.js';
+  import { blockType } from './stores';
 
   const supportedBlockTypes = new Set([
     'paragraph',
@@ -47,17 +47,17 @@
 
   async function showDropdown(event) {
     showBlockOptionsDropDown = !showBlockOptionsDropDown;
-    
+  
     if (showBlockOptionsDropDown && button) {
-      const handle = (event) => {   
+      const handle = (event) => {
         if (button && !button.contains(event.target)) {
           showBlockOptionsDropDown = false;
           button.removeEventListener('click', handle);
-        }     
+        }
       };
       document.addEventListener('click', handle);
     }
-  } 
+  }
 
   const formatParagraph = () => {
     if ($blockType !== 'paragraph') {
