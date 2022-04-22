@@ -5,4 +5,5 @@
       "svelte"
     ],
     "files.eol": "\n",
+    "prettier.singleQuote": true,
   }

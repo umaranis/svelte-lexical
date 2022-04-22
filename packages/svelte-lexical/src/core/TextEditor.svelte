@@ -1,7 +1,5 @@
 <script>
-  import {
-    createEditor,
-  } from 'lexical';
+  import { createEditor } from 'lexical';
   import { onMount, setContext } from 'svelte';
 
   export let config = {};
@@ -15,12 +13,19 @@
   });
 </script>
 
-<div
-  contenteditable="true"
-  bind:this={contentEditableElement}
-  class="ContentEditable__root"
-/>
-<slot></slot> <!-- for plugins -->
+<div class="editor-shell">
+  <slot name="toolbar" />
+  <div class="editor-container">
+    <div
+      contenteditable="true"
+      bind:this={contentEditableElement}
+      class="ContentEditable__root"
+    />
+    <!-- slot for plugins -->
+    <slot />    
+  </div>
+  
+</div>
 
 <style>
   .ContentEditable__root {

@@ -1,7 +1,7 @@
 <script>
   import { CAN_UNDO_COMMAND, UNDO_COMMAND } from "lexical";
   import { getContext } from "svelte";
-  import { COMMAND_PRIORITY_CRITICAL } from "../utils/commandPriority";
+  import { COMMAND_PRIORITY_CRITICAL } from "../../utils/commandPriority";
 
   const editor = getContext("editor");
 

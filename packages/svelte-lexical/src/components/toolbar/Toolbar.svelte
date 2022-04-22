@@ -1,10 +1,20 @@
 <script>
-	import BlockTypeDropDown from './BlockTypeDropDown.svelte';
-  import { isBold, isItalic, isUnderline, isStrikethrough, isCode, isRTL, isLink, blockType, selectedElementKey } from "./stores.js";
-  import BoldButton from "./BoldButton.svelte";
-  import Divider from "./Divider.svelte";
-  import RedoButton from "./RedoButton.svelte";
-  import UndoButton from "./UndoButton.svelte";
+  import BlockTypeDropDown from './BlockTypeDropDown.svelte';
+  import {
+    isBold,
+    isItalic,
+    isUnderline,
+    isStrikethrough,
+    isCode,
+    isRTL,
+    isLink,
+    blockType,
+    selectedElementKey,
+  } from './stores';
+  import BoldButton from './BoldButton.svelte';
+  import Divider from './Divider.svelte';
+  import RedoButton from './RedoButton.svelte';
+  import UndoButton from './UndoButton.svelte';
   import ItalicButton from './ItalicButton.svelte';
   import UnderlineButton from './UnderlineButton.svelte';
   import StrikethroughButton from './StrikethroughButton.svelte';
@@ -22,70 +32,69 @@
     $isRangeSelection as isRangeSelection,
     ElementNode,
     TextNode,
-  } from "lexical";
+  } from 'lexical';
   import {
     $createHeadingNode as createHeadingNode,
     $createQuoteNode as createQuoteNode,
     $isHeadingNode as isHeadingNode,
-  } from "@lexical/rich-text";
+  } from '@lexical/rich-text';
   import {
     $getSelectionStyleValueForProperty as getSelectionStyleValueForProperty,
     $isAtNodeEnd as isAtNodeEnd,
     $isParentElementRTL as isParentElementRTL,
     $patchStyleText as patchStyleText,
     $wrapLeafNodesInElements as wrapLeafNodesInElements,
-  } from "@lexical/selection";
+  } from '@lexical/selection';
   import {
     ListItemNode,
     ListNode,
     insertList,
     $isListNode as isListNode,
-  } from "@lexical/list";
+  } from '@lexical/list';
   import {
     TableCellNode,
     TableNode,
     TableRowNode,
     INSERT_TABLE_COMMAND,
-  } from "@lexical/table";
+  } from '@lexical/table';
   import {
     $isLinkNode as isLinkNode,
     TOGGLE_LINK_COMMAND,
-  } from "@lexical/link";
+  } from '@lexical/link';
   import {
     $createCodeNode as createCodeNode,
     $isCodeNode as isCodeNode,
     getCodeLanguages,
     getDefaultCodeLanguage,
-  } from "@lexical/code";
+  } from '@lexical/code';
   import {
     $getNearestNodeOfType as getNearestNodeOfType,
     mergeRegister,
-  } from "@lexical/utils";
-  import { COMMAND_PRIORITY_CRITICAL } from "../utils/commandPriority.js";
+  } from '@lexical/utils';
+  import { COMMAND_PRIORITY_CRITICAL } from '../../utils/commandPriority.js';
 
-  import { getContext, onMount } from "svelte";
+  import { getContext, onMount } from 'svelte';
 
-
-  const editor = getContext("editor");
+  const editor = getContext('editor');
 
   let popupLeft = 0;
-  let toolbar;  
+  let toolbar;
 
   function getSelectedNode(selection) {
-  const anchor = selection.anchor;
-  const focus = selection.focus;
-  const anchorNode = selection.anchor.getNode();
-  const focusNode = selection.focus.getNode();
-  if (anchorNode === focusNode) {
-    return anchorNode;
+    const anchor = selection.anchor;
+    const focus = selection.focus;
+    const anchorNode = selection.anchor.getNode();
+    const focusNode = selection.focus.getNode();
+    if (anchorNode === focusNode) {
+      return anchorNode;
+    }
+    const isBackward = selection.isBackward();
+    if (isBackward) {
+      return isAtNodeEnd(focus) ? anchorNode : focusNode;
+    } else {
+      return isAtNodeEnd(anchor) ? focusNode : anchorNode;
+    }
   }
-  const isBackward = selection.isBackward();
-  if (isBackward) {
-    return isAtNodeEnd(focus) ? anchorNode : focusNode;
-  } else {
-    return isAtNodeEnd(anchor) ? focusNode : anchorNode;
-  }
-}
 
   //TODO: explore mergeRegister to combine event registrations
 
@@ -94,18 +103,18 @@
     if (isRangeSelection(selection)) {
       const anchorNode = selection.anchor.getNode();
       const element =
-        anchorNode.getKey() === "root"
+        anchorNode.getKey() === 'root'
           ? anchorNode
           : anchorNode.getTopLevelElementOrThrow();
       const elementKey = element.getKey();
       const elementDOM = editor.getElementByKey(elementKey);
 
       // Update text format
-      $isBold = selection.hasFormat("bold");
-      $isItalic = selection.hasFormat("italic");
-      $isUnderline = selection.hasFormat("underline");
-      $isStrikethrough = selection.hasFormat("strikethrough");
-      $isCode = selection.hasFormat("code");
+      $isBold = selection.hasFormat('bold');
+      $isItalic = selection.hasFormat('italic');
+      $isUnderline = selection.hasFormat('underline');
+      $isStrikethrough = selection.hasFormat('strikethrough');
+      $isCode = selection.hasFormat('code');
       $isRTL = isParentElementRTL(selection);
 
       // Update links
@@ -149,7 +158,6 @@
       updateToolbar();
     });
   });
-  
 </script>
 
 <div class="toolbar">
@@ -158,9 +166,9 @@
   <Divider />
   <BlockTypeDropDown />
   <Divider />
-  <BoldButton /> 
-  <ItalicButton /> 
-  <UnderlineButton /> 
+  <BoldButton />
+  <ItalicButton />
+  <UnderlineButton />
   <StrikethroughButton />
   <FormatCodeButton />
   <Divider />
@@ -168,5 +176,4 @@
   <CenterAlignButton />
   <RightAlignButton />
   <JustifyAlignButton />
-  
 </div>

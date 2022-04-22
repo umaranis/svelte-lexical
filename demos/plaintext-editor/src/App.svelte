@@ -1,14 +1,13 @@
 <script>
-  import {
-    TextEditor,
-    PlainTextPlugin,
-    HistoryPlugin,
-  } from 'svelte-lexical';
+  import { TextEditor, PlainTextPlugin, HistoryPlugin } from 'svelte-lexical';
   import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
 
   const config = {
     theme: PlaygroundEditorTheme,
     nodes: [],
+    onError: (error) => {
+      throw error;
+    },
   };
 </script>
 
@@ -20,14 +19,10 @@
     >
   </p>
 
-  <div class="editor-shell">
-    <div class="editor-container">
-      <TextEditor {config}>        
-        <PlainTextPlugin />
-        <HistoryPlugin />              
-      </TextEditor>
-    </div>
-  </div>
+  <TextEditor {config}>
+    <PlainTextPlugin />
+    <HistoryPlugin />
+  </TextEditor>
 </main>
 
 <style>

@@ -6,9 +6,9 @@
  *
  */
 
-
 import './PlaygroundEditorTheme.css';
 
+// TODO: Trim the code below to remove irrelevant styles
 const theme = {
   characterLimit: 'PlaygroundEditorTheme__characterLimit',
   code: 'PlaygroundEditorTheme__code',

@@ -1,8 +1,5 @@
 <script>
-  import { RichTextEditor, Toolbar } from 'svelte-lexical';
-  import HistoryPlugin from 'svelte-lexical/src/plugins/HistoryPlugin.svelte';
-  import ListPlugin from 'svelte-lexical/src/plugins/ListPlugin.svelte';
-  import RichTextPlugin from 'svelte-lexical/src/plugins/RichTextPlugin.svelte';
+  import { RichTextComposer } from 'svelte-lexical';
   import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
 </script>
 
@@ -14,12 +11,7 @@
     >
   </p>
 
-  <RichTextEditor theme={PlaygroundEditorTheme}>
-    <Toolbar slot="toolbar" />
-    <RichTextPlugin />    
-    <HistoryPlugin />
-    <ListPlugin />    
-  </RichTextEditor>
+  <RichTextComposer theme={PlaygroundEditorTheme}/>    
 </main>
 
 <style>
