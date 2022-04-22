@@ -1,5 +1,5 @@
 <script>
-  import { RichTextSimpleComposer } from 'svelte-lexical';
+  import { RichTextBasicComposer } from 'svelte-lexical';
   import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
 </script>
 
@@ -11,7 +11,7 @@
     >
   </p>
 
-  <RichTextSimpleComposer theme={PlaygroundEditorTheme}/>    
+  <RichTextBasicComposer theme={PlaygroundEditorTheme}/>    
 </main>
 
 <style>

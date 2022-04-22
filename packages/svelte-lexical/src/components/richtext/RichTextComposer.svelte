@@ -1,5 +1,5 @@
 <script>
-  import Toolbar from '../toolbar/Toolbar.svelte';
+  import Toolbar from '../richtext-basic/ToolbarBasic.svelte';
   import RichTextEditor from './RichTextEditor.svelte';
 
   export let theme;
