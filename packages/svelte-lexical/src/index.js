@@ -7,4 +7,7 @@ export { default as ListPlugin } from './core/plugins/ListPlugin.svelte';
 export { default as RichTextEditor } from './components/richtext/RichTextEditor.svelte';
 export { default as RichTextComposer } from './components/richtext/RichTextComposer.svelte';
 
+export { default as RichTextSimpleEditor } from './components/richtext-simple/RichTextSimpleEditor.svelte';
+export { default as RichTextSimpleComposer } from './components/richtext-simple/RichTextSimpleComposer.svelte';
+
 export { default as Toolbar } from './components/toolbar/Toolbar.svelte';
