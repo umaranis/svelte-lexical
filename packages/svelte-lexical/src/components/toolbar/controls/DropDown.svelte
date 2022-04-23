@@ -29,7 +29,7 @@
   bind:this={button}
 >
   {#if buttonClassName}
-    <span class={buttonIconClassName} />
+    <span class={buttonIconClassName}/>
   {/if}
   {#if buttonLabel}
     <span class="text dropdown-button-text">{buttonLabel}</span>
@@ -38,7 +38,7 @@
 </button>
 
 {#if isDropDownOpen}
-  <div class="dropdown">
+  <div class="dropdown" style={`top: 45px;left:${button.offsetLeft}px`}>
     <slot />
   </div>
 {/if}

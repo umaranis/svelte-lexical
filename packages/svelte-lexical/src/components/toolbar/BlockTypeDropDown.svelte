@@ -169,7 +169,7 @@
   <i class="chevron-down" />
 </button>
 {#if showBlockOptionsDropDown}
-  <div class="dropdown" style={'top: 45px;left:45px'}>
+  <div class="dropdown" style="top: 45px;left:45px">
     <button class="item" on:click={formatParagraph}>
       <span class="icon paragraph" />
       <span class="text">Normal</span>
