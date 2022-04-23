@@ -10,6 +10,7 @@
   import FormatCodeButton from '../toolbar/FormatCodeButton.svelte';
   import StateStoreRichTextUpdator from './StateStoreRichTextUpdator.svelte';
   import DropDownAlign from '../toolbar/DropDownAlign.svelte';
+  import FontFamilySelect from '../toolbar/FontFamilySelect.svelte';
   import FontSizeSelect from '../toolbar/FontSizeSelect.svelte';
 </script>
 
@@ -19,6 +20,7 @@
   <Divider />
   <BlockTypeDropDown />
   <Divider />
+  <FontFamilySelect />
   <FontSizeSelect />
   <Divider />
   <BoldButton />

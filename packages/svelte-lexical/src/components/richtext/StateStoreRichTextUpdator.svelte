@@ -20,7 +20,7 @@
     blockType,
     selectedElementKey,
   } from '../editor-state/StateStoreBasic';
-  import { isRTL, fontSize } from '../editor-state/StateStoreRichText';
+  import { isRTL, fontSize, fontFamily } from '../editor-state/StateStoreRichText';
 
   const editor = getContext('editor');
 
@@ -70,9 +70,7 @@
       }
       // Hande buttons
       $fontSize = getSelectionStyleValueForProperty(selection, 'font-size', '15px');
-      // setFontFamily(
-      //   getSelectionStyleValueForProperty(selection, 'font-family', 'Arial')
-      // );
+      $fontFamily = getSelectionStyleValueForProperty(selection, 'font-family', 'Arial');
     }
   };
 
