@@ -16,7 +16,9 @@
     INSERT_ORDERED_LIST_COMMAND,
     REMOVE_LIST_COMMAND,
   } from '@lexical/list';
-  import { blockType } from './stores';
+  import { blockType } from '../editor-state/StateStoreBasic';
+
+  // TODO: convert this component to using DropDown.svelte
 
   const supportedBlockTypes = new Set([
     'paragraph',

@@ -3,7 +3,6 @@
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
   } from 'lexical';
-  import { $isParentElementRTL as isParentElementRTL } from '@lexical/selection';
   import { $isHeadingNode as isHeadingNode } from '@lexical/rich-text';
   import { ListNode, $isListNode as isListNode } from '@lexical/list';
   import { $getNearestNodeOfType as getNearestNodeOfType } from '@lexical/utils';
@@ -14,22 +13,19 @@
     isItalic,
     isUnderline,
     isStrikethrough,
-    isCode,
-    isRTL,
     blockType,
     selectedElementKey,
-  } from '../toolbar/stores';
+  } from '../editor-state/StateStoreBasic';
 
   const editor = getContext('editor');
 
-  const updateToolbar = () => {
+  const updateState = () => {
     const selection = getSelection();
     if (isRangeSelection(selection)) {
       const anchorNode = selection.anchor.getNode();
-      const element =
-        anchorNode.getKey() === 'root'
-          ? anchorNode
-          : anchorNode.getTopLevelElementOrThrow();
+      const element = anchorNode.getKey() === 'root'
+        ? anchorNode
+        : anchorNode.getTopLevelElementOrThrow();
       const elementKey = element.getKey();
       const elementDOM = editor.getElementByKey(elementKey);
 
@@ -38,17 +34,6 @@
       $isItalic = selection.hasFormat('italic');
       $isUnderline = selection.hasFormat('underline');
       $isStrikethrough = selection.hasFormat('strikethrough');
-      $isCode = selection.hasFormat('code');
-      $isRTL = isParentElementRTL(selection);
-
-      // Update links
-      // const node = getSelectedNode(selection);
-      // const parent = node.getParent();
-      // if (isLinkNode(parent) || isLinkNode(node)) {
-      //   $isLink = true;
-      // } else {
-      //   $isLink = false;
-      // }
 
       if (elementDOM !== null) {
         $selectedElementKey = elementKey;
@@ -61,19 +46,8 @@
             ? element.getTag()
             : element.getType();
           $blockType = type;
-          // if (isCodeNode(element)) {
-          //   setCodeLanguage(element.getLanguage() || getDefaultCodeLanguage());
-          //   return;
-          // }
         }
       }
-      // // Hande buttons
-      // setFontSize(
-      //   getSelectionStyleValueForProperty(selection, "font-size", "15px")
-      // );
-      // setFontFamily(
-      //   getSelectionStyleValueForProperty(selection, "font-family", "Arial")
-      // );
     }
   };
 
@@ -81,7 +55,7 @@
   onMount(() => {
     editor.registerUpdateListener(({ editorState }) => {
       editorState.read(() => {
-        updateToolbar();
+        updateState();
       });
     });
   });

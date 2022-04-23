@@ -8,11 +8,8 @@
   import UnderlineButton from '../toolbar/UnderlineButton.svelte';
   import StrikethroughButton from '../toolbar/StrikethroughButton.svelte';
   import FormatCodeButton from '../toolbar/FormatCodeButton.svelte';
-  import LeftAlignButton from '../toolbar/LeftAlignButton.svelte';
-  import CenterAlignButton from '../toolbar/CenterAlignButton.svelte';
-  import RightAlignButton from '../toolbar/RightAlignButton.svelte';
-  import JustifyAlignButton from '../toolbar/JustifyAlignButton.svelte';
-  import StateStoresBasicUpdator from './StateStoreBasicUpdator.svelte';
+  import StateStoreRichTextUpdator from './StateStoreRichTextUpdator.svelte';
+  import DropDownAlign from '../toolbar/DropDownAlign.svelte';
 </script>
 
 <div class="toolbar">
@@ -27,9 +24,6 @@
   <StrikethroughButton />
   <FormatCodeButton />
   <Divider />
-  <LeftAlignButton />
-  <CenterAlignButton />
-  <RightAlignButton />
-  <JustifyAlignButton />
+  <DropDownAlign />
 </div>
-<StateStoresBasicUpdator />
+<StateStoreRichTextUpdator />

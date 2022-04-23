@@ -1232,7 +1232,7 @@
    pointer-events: none;
  }
  
- .toolbar .divider {
+ .toolbar > .divider {
    width: 1px;
    background-color: #eee;
    margin: 0 4px;

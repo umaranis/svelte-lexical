@@ -1,5 +1,5 @@
 <script>
-  import { isUnderline } from "./stores.js";
+  import { isUnderline } from "../editor-state/StateStoreBasic.js";
   import { getContext } from "svelte";
   import { FORMAT_TEXT_COMMAND } from "lexical";
 

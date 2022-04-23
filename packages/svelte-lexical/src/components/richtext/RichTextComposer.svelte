@@ -1,5 +1,5 @@
 <script>
-  import Toolbar from '../richtext-basic/ToolbarBasic.svelte';
+  import ToolbarRichText from './ToolbarRichText.svelte';
   import RichTextEditor from './RichTextEditor.svelte';
 
   export let theme;
@@ -7,7 +7,7 @@
 
 <div class="editor-shell">
   <RichTextEditor {theme}>
-    <Toolbar slot="toolbar" />
+    <ToolbarRichText slot="toolbar" />
   </RichTextEditor>
   <div class="actions" />
 </div>
