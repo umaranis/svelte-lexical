@@ -5,7 +5,7 @@
     INDENT_CONTENT_COMMAND,
     OUTDENT_CONTENT_COMMAND,
   } from 'lexical';
-  import DropDown from './DropDown.svelte';
+  import DropDown from './controls/DropDown.svelte';
   import Divider from './Divider.svelte';
   import { isRTL } from '../editor-state/StateStoreRichText';
 

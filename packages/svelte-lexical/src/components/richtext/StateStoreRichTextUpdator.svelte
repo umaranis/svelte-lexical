@@ -3,7 +3,10 @@
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
   } from 'lexical';
-  import { $isParentElementRTL as isParentElementRTL } from '@lexical/selection';
+  import {
+    $isParentElementRTL as isParentElementRTL,
+    $getSelectionStyleValueForProperty as getSelectionStyleValueForProperty,
+  } from '@lexical/selection';
   import { $isHeadingNode as isHeadingNode } from '@lexical/rich-text';
   import { ListNode, $isListNode as isListNode } from '@lexical/list';
   import { $getNearestNodeOfType as getNearestNodeOfType } from '@lexical/utils';
@@ -17,8 +20,7 @@
     blockType,
     selectedElementKey,
   } from '../editor-state/StateStoreBasic';
-
-  import { isRTL } from '../editor-state/StateStoreRichText';
+  import { isRTL, fontSize } from '../editor-state/StateStoreRichText';
 
   const editor = getContext('editor');
 
@@ -66,12 +68,10 @@
           // }
         }
       }
-      // // Hande buttons
-      // setFontSize(
-      //   getSelectionStyleValueForProperty(selection, "font-size", "15px")
-      // );
+      // Hande buttons
+      $fontSize = getSelectionStyleValueForProperty(selection, 'font-size', '15px');
       // setFontFamily(
-      //   getSelectionStyleValueForProperty(selection, "font-family", "Arial")
+      //   getSelectionStyleValueForProperty(selection, 'font-family', 'Arial')
       // );
     }
   };
