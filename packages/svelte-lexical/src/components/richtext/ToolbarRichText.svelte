@@ -12,6 +12,7 @@
   import DropDownAlign from '../toolbar/DropDownAlign.svelte';
   import FontFamilySelect from '../toolbar/FontFamilySelect.svelte';
   import FontSizeSelect from '../toolbar/FontSizeSelect.svelte';
+  import InsertDropDown from '../toolbar/InsertDropDown.svelte';
 </script>
 
 <div class="toolbar">
@@ -28,6 +29,8 @@
   <UnderlineButton />
   <StrikethroughButton />
   <FormatCodeButton />
+  <Divider />
+  <InsertDropDown/>
   <Divider />
   <DropDownAlign />
 </div>
