@@ -15,8 +15,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm ci
-      - run: npm test
+      - run: pnpm i      
 
   publish-npm:
     needs: build
@@ -27,7 +26,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm pnpm i --frozen-lockfile
-      - run: npm -C packages/svelte-lexical publish
+      - run: pnpm i --frozen-lockfile
+      - run: pnpm -C packages/svelte-lexical publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
