@@ -1,4 +1,4 @@
-import { createCommand, DecoratorNode, LexicalNode } from 'lexical';
+import { createCommand, DecoratorNode } from 'lexical';
 
 /**
  * @constant { LexicalCommand }

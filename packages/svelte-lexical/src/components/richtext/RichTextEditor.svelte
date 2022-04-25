@@ -6,14 +6,23 @@
   import HistoryPlugin from '../../core/plugins/HistoryPlugin.svelte';
   import ListPlugin from '../../core/plugins/ListPlugin.svelte';
   import { HorizontalRuleNode } from '../../core/plugins/HorizontalRuleNode';
-  
+
   import HorizontalRulePlugin from '../../core/plugins/HorizontalRulePlugin.svelte';
+  import ImagePlugin from '../../core/plugins/ImagePlugin.svelte';
+  import { ImageNode } from '../../core/plugins/ImageNode';
 
   export let theme;
 
   const config = {
     theme,
-    nodes: [HeadingNode, ListNode, ListItemNode, QuoteNode, HorizontalRuleNode],
+    nodes: [
+      HeadingNode,
+      ListNode,
+      ListItemNode,
+      QuoteNode,
+      HorizontalRuleNode,
+      ImageNode,
+    ],
     onError: (error) => {
       throw error;
     },
@@ -25,5 +34,6 @@
   <RichTextPlugin />
   <HistoryPlugin />
   <ListPlugin />
-  <HorizontalRulePlugin/>
+  <HorizontalRulePlugin />
+  <ImagePlugin />
 </TextEditor>

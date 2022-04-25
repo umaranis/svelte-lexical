@@ -2,6 +2,8 @@
     import { getContext } from 'svelte';
     import DropDown from './controls/DropDown.svelte';
     import { INSERT_HORIZONTAL_RULE_COMMAND } from '../../core/plugins/HorizontalRuleNode';
+    import { INSERT_IMAGE_COMMAND } from '../../core/plugins/ImagePlugin.svelte';
+    import InsertImageDialog, { open, close } from './InsertImageDialog.svelte';
 
     const editor = getContext('editor');
 </script>
@@ -18,18 +20,18 @@
       class="item">
       <i class="icon horizontal-rule" />
       <span class="text">Horizontal Rule</span>
-  </button>
-  <!-- <button
-      onClick={() => {
-      showModal('Insert Image', (onClose) => (
-          <InsertImageDialog
-          activeEditor={activeEditor}
-          onClose={onClose}
-          />
-      ));
+  </button>  
+  <button
+      on:click={() => {
+        open();
       }}
-      className="item">
-      <i className="icon image" />
-      <span className="text">Image</span>
-  </button> -->
+      class="item">
+      <i class="icon image" />
+      <span class="text">Image</span>
+  </button>
 </DropDown>
+
+<InsertImageDialog on:confirm={(payload) => {
+  close();
+  editor.dispatchCommand(INSERT_IMAGE_COMMAND, payload);
+  }} />
