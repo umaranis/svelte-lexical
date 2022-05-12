@@ -12,17 +12,27 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rollup -c",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "jest src",
+    "test:watch": "npm run test -- --watch"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
     "@rollup/plugin-commonjs": "^21.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
-    "eslint-plugin-svelte3": "^3.4.1",
-    "rollup": "^2.0.0",
-    "rollup-plugin-svelte": "^7.0.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/svelte": "^3.1.1",
+    "babel-jest": "^28.1.0",
     "eslint": "^8.13.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-svelte3": "^3.4.1",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
+    "rollup": "^2.0.0",
+    "rollup-plugin-svelte": "^7.0.0",
+    "svelte-jester": "^2.3.2"
   },
   "keywords": [
     "lexical",
@@ -47,8 +57,21 @@
     "@lexical/rich-text": "^0.2.2",
     "@lexical/selection": "^0.2.2",
     "@lexical/table": "^0.2.2",
-    "@lexical/utils": "^0.2.2",    
+    "@lexical/utils": "^0.2.2",
     "lexical": "^0.2.2",
     "svelte": "^3.47.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.svelte$": "svelte-jester"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "svelte"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ]
   }
 }
