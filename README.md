@@ -13,3 +13,5 @@ Lexical is an extensible text editor framework developed by awesome developers a
 - for running a demo in development <code>pnpm -C demos\richtext-editor dev</code>
 - ESLint is setup for vscode
 - npm package is automatically published on creation of Github release using Github Actions
+- unit testing is set up for svelte-lexical package using Jest and Testing Library
+- e2e testing is set up for playground packege using playwright
