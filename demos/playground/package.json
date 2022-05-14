@@ -5,12 +5,20 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --no-clear"
+    "start": "sirv public --no-clear",
+    "test-e2e-ci:chromium": "cross-env E2E_PORT=4000 start-server-and-test prepare-ci 4000 test-e2e:chromium",
+    "test-e2e-ci:firefox": "cross-env E2E_PORT=4000 start-server-and-test prepare-ci 4000 test-e2e:firefox",
+    "test-e2e-ci:webkit": "cross-env E2E_PORT=4000 start-server-and-test prepare-ci 4000 test-e2e:webkit",
+    "prepare-ci": "npm run build && serve public -l 4000",
+    "test-e2e:chromium": "cross-env E2E_BROWSER=chromium playwright test --project=\"chromium\"",
+    "test-e2e:firefox": "cross-env E2E_BROWSER=firefox playwright test --project=\"firefox\"",
+    "test-e2e:webkit": "cross-env E2E_BROWSER=webkit playwright test --project=\"webkit\""
   },
   "devDependencies": {
     "@playwright/test": "^1.21.1",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.13.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
@@ -21,6 +29,8 @@
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.0.0",
     "rollup-plugin-terser": "^7.0.0",
+    "serve": "^13.0.2",
+    "start-server-and-test": "^1.14.0",
     "uuid": "^8.3.2"
   },
   "dependencies": {
