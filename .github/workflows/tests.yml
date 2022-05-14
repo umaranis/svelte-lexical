@@ -39,6 +39,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm i -g npm@8
+        working-directory: ./demos/playground
       # - uses: actions/cache@v3
       #   id: cache
       #   with:
@@ -49,9 +50,12 @@ jobs:
       # - name: Install dependencies
       #   if: steps.cache.outputs.cache-hit != 'true'
       - run: npm ci
+        working-directory: ./demos/playground
       - name: Download browsers
         run: npx playwright install
+        working-directory: ./demos/playground
       - run: npm run test-e2e-ci:${{ matrix.browser }}
+        working-directory: ./demos/playground
       - name: Upload Artifacts
         if: failure()
         uses: actions/upload-artifact@v3
