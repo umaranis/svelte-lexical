@@ -58,7 +58,7 @@ importers:
       sirv-cli: ^2.0.0
       start-server-and-test: ^1.14.0
       svelte: ^3.0.0
-      svelte-lexical: ^0.1.2-beta.1
+      svelte-lexical: ^0.1.2-beta.2
       uuid: ^8.3.2
     dependencies:
       '@rollup/plugin-replace': 4.0.0_rollup@2.70.2
