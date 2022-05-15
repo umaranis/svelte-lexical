@@ -15,10 +15,6 @@ on:
       - 'demos/richtext-editor/**'
       - 'demos/richtext-editor-basic/**'
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
-
 jobs:
   e2e-windows:
     runs-on: windows-latest
