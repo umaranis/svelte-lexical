@@ -17,7 +17,7 @@ on:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   e2e-windows:
@@ -38,8 +38,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm i -g npm@8
-        working-directory: ./demos/playground
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      # - run: npm i -g npm@8
+      #   working-directory: ./demos/playground
       # - uses: actions/cache@v3
       #   id: cache
       #   with:
@@ -49,12 +55,12 @@ jobs:
       #     key: ${{ runner.os }}-v${{ secrets.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
       # - name: Install dependencies
       #   if: steps.cache.outputs.cache-hit != 'true'
-      - run: npm i
+      - run: pnpm i
         working-directory: ./demos/playground
       - name: Download browsers
-        run: npx playwright install
+        run: pnpm playwright install
         working-directory: ./demos/playground
-      - run: npm run test-e2e-ci:${{ matrix.browser }}
+      - run: pnpm test-e2e-ci:${{ matrix.browser }}
         working-directory: ./demos/playground
       - name: Upload Artifacts
         if: failure()
