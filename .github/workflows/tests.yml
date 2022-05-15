@@ -19,6 +19,7 @@ jobs:
   e2e-windows:
     runs-on: windows-latest
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.8]
         browser: ['chromium', 'firefox']
