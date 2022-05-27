@@ -41,17 +41,17 @@ jobs:
         with:
           version: 7
           run_install: false
-      # - run: npm i -g npm@8
-      #   working-directory: ./demos/playground
-      # - uses: actions/cache@v3
-      #   id: cache
-      #   with:
-      #     path: |
-      #       node_modules
-      #       C:\Users\runneradmin\AppData\Local\ms-playwright
-      #     key: ${{ runner.os }}-v${{ secrets.CACHE_VERSION }}-${{ hashFiles('package-lock.json') }}
-      # - name: Install dependencies
-      #   if: steps.cache.outputs.cache-hit != 'true'
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
       - run: pnpm i
         working-directory: ./demos/playground
       - name: Download browsers
