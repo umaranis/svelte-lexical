@@ -9,7 +9,7 @@
     "test-e2e-ci:chromium": "cross-env E2E_PORT=4000 start-server-and-test prepare-ci 4000 test-e2e:chromium",
     "test-e2e-ci:firefox": "cross-env E2E_PORT=4000 start-server-and-test prepare-ci 4000 test-e2e:firefox",
     "test-e2e-ci:webkit": "cross-env E2E_PORT=4000 start-server-and-test prepare-ci 4000 test-e2e:webkit",
-    "prepare-ci": "npm run build && serve public -l 4000",
+    "prepare-ci": "pnpm build && serve public -l 4000",
     "test-e2e:chromium": "cross-env E2E_BROWSER=chromium playwright test --project=\"chromium\"",
     "test-e2e:firefox": "cross-env E2E_BROWSER=firefox playwright test --project=\"firefox\"",
     "test-e2e:webkit": "cross-env E2E_BROWSER=webkit playwright test --project=\"webkit\""
