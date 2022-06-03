@@ -1,5 +1,7 @@
 <script context="module">
-  import { createCommand } from 'lexical';
+  import pkg from 'lexical';
+  
+  const { createCommand } = pkg;
   /**
    * @type {LexicalCommand<{altText:string, src:string}>}
    */

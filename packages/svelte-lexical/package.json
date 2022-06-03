@@ -1,7 +1,7 @@
 {
   "name": "svelte-lexical",
   "description": "Rich Text editor for Svelte based on lexical",
-  "version": "0.1.2-beta.2",
+  "version": "0.1.2-beta.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/umaranis/svelte-lexical",
@@ -17,21 +17,21 @@
     "test:watch": "npm run test -- --watch"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.10",
-    "@babel/preset-env": "^7.17.10",
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
     "@rollup/plugin-commonjs": "^21.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/svelte": "^3.1.1",
+    "@testing-library/svelte": "^3.1.2",
     "babel-jest": "^28.1.0",
-    "eslint": "^8.13.0",
+    "eslint": "^8.16.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-svelte3": "^3.4.1",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
-    "rollup": "^2.0.0",
-    "rollup-plugin-svelte": "^7.0.0",
+    "rollup": "^2.75.4",
+    "rollup-plugin-svelte": "^7.1.0",
     "svelte-jester": "^2.3.2"
   },
   "keywords": [
@@ -46,20 +46,20 @@
     "dist"
   ],
   "dependencies": {
-    "@lexical/clipboard": "0.2.2",
-    "@lexical/code": "^0.2.2",
-    "@lexical/hashtag": "^0.2.2",
-    "@lexical/history": "^0.2.2",
-    "@lexical/link": "^0.2.2",
-    "@lexical/list": "^0.2.2",
-    "@lexical/overflow": "^0.2.2",
-    "@lexical/plain-text": "^0.2.2",
-    "@lexical/rich-text": "^0.2.2",
-    "@lexical/selection": "^0.2.2",
-    "@lexical/table": "^0.2.2",
-    "@lexical/utils": "^0.2.2",
-    "lexical": "^0.2.2",
-    "svelte": "^3.47.0"
+    "@lexical/clipboard": "^0.3.0",
+    "@lexical/code": "^0.3.0",
+    "@lexical/hashtag": "^0.3.0",
+    "@lexical/history": "^0.3.0",
+    "@lexical/link": "^0.3.0",
+    "@lexical/list": "^0.3.0",
+    "@lexical/overflow": "^0.3.0",
+    "@lexical/plain-text": "^0.3.0",
+    "@lexical/rich-text": "^0.3.0",
+    "@lexical/selection": "^0.3.0",
+    "@lexical/table": "^0.3.0",
+    "@lexical/utils": "^0.3.0",
+    "lexical": "^0.3.0",
+    "svelte": "^3.48.0"
   },
   "jest": {
     "transform": {

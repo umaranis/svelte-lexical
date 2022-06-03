@@ -1,5 +1,5 @@
 <script>
-  import { HeadingNode, QuoteNode } from '@lexical/rich-text';
+  import pkgLRT from '@lexical/rich-text';
   import { ListItemNode, ListNode } from '@lexical/list';
   import TextEditor from '../../core/TextEditor.svelte';
   import RichTextPlugin from '../../core/plugins/RichTextPlugin.svelte';
@@ -10,6 +10,8 @@
   import HorizontalRulePlugin from '../../core/plugins/HorizontalRulePlugin.svelte';
   import ImagePlugin from '../../core/plugins/ImagePlugin.svelte';
   import { ImageNode } from '../../core/plugins/ImageNode';
+
+  const { HeadingNode, QuoteNode } = pkgLRT;
 
   export let theme;
 

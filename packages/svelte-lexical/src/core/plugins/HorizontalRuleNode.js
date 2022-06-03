@@ -1,4 +1,6 @@
-import { createCommand, DecoratorNode } from 'lexical';
+import pkg from 'lexical';
+
+const { createCommand, DecoratorNode } = pkg;
 
 /**
  * @constant { LexicalCommand }
