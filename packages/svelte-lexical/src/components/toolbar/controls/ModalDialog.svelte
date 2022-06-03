@@ -4,16 +4,14 @@
   let onTop; // keeping track of which open modal is on top
   const modals = {}; // all modals get registered here for easy future access
 
-  // 	returns an object for the modal specified by `id`, which contains the API functions (`open` and `close` )
-  export function getModal(id = '') {
-    return modals[id];
-  }
+  // returns an object for the modal specified by `id`, which contains the API functions (`open` and `close`)
+  export const getModal = (id = '') => modals[id];
 
-  // TODO: cleanup this multi dialog dictionary mess, each dialog should work on it's own
-  </script>
+  // TODO: clean up this multi-dialog dictionary mess, each dialog should work on its own
+</script>
 
-  <script>
-  import { onDestroy } from 'svelte';
+<script>
+  import { onMount, onDestroy } from 'svelte';
 
   let topDiv;
   let visible = false;
@@ -22,42 +20,48 @@
 
   export let id = '';
 
-  function keyPress(ev) {
-    // only respond if the current modal is the top one
-    if (ev.key === 'Escape' && onTop === topDiv) close(); // ESC
-  }
+  let close;
+  let handleKeydown;
 
-  /**  API * */
-  function open(callback) {
-    closeCallback = callback;
-    if (visible) return;
-    prevOnTop = onTop;
-    onTop = topDiv;
-    window.addEventListener('keydown', keyPress);
+  onMount(() => {
+    handleKeydown = (ev) => {
+      // only respond if the current modal is the top one
+      if (ev.key === 'Escape' && onTop === topDiv) close(); // ESC
+    };
 
-    // this prevents scrolling of the main window on larger screens
-    document.body.style.overflow = 'hidden';
+    const open = (callback) => {
+      closeCallback = callback;
+      if (visible) return;
+      prevOnTop = onTop;
+      onTop = topDiv;
+      window.addEventListener('keydown', handleKeydown);
 
-    visible = true;
-    // Move the modal in the DOM to be the last child of <BODY> so that it can be on top of everything
-    document.body.appendChild(topDiv);
-  }
+      // this prevents scrolling of the main window on larger screens
+      document.body.style.overflow = 'hidden';
 
-  function close(retVal) {
-    if (!visible) return;
-    window.removeEventListener('keydown', keyPress);
-    onTop = prevOnTop;
-    if (onTop == null) document.body.style.overflow = '';
-    visible = false;
-    if (closeCallback) closeCallback(retVal);
-  }
+      visible = true;
+      // Move the modal in the DOM to be the last child of <body> so that it can be on top of everything
+      document.body.appendChild(topDiv);
+    };
 
-  // expose the API
-  modals[id] = { open, close };
+    close = (retVal) => {
+      if (!visible) return;
+      window.removeEventListener('keydown', handleKeydown);
+      onTop = prevOnTop;
+      if (onTop == null) document.body.style.overflow = '';
+      visible = false;
+      if (closeCallback) closeCallback(retVal);
+    };
+
+    // expose the API
+    modals[id] = { open, close };
+  });
 
   onDestroy(() => {
     delete modals[id];
-    window.removeEventListener('keydown', keyPress);
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('keydown', handleKeydown);
+    }
   });
 </script>
 
