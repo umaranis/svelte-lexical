@@ -23,3 +23,8 @@ Due to an PNPM bug, the GitHub action for creating packages uses NPM. This requi
 
 Use the following command to generate/update package-lock.json: <code>npm i --package-lock-only</code>
 
+## Clearing NPM caache
+
+This step is only required if you are getting the following error: `npm ERR! code EINTEGRITY`
+
+`npm cache clean --force`

@@ -15,11 +15,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - run: npm cache clean --force
+        working-directory: ./packages/svelte-lexical
       - run: npm install
         working-directory: ./packages/svelte-lexical
-      - run: npm ci
-        working-directory: ./packages/svelte-lexical
-
+        
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
@@ -30,8 +30,6 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: npm install
-        working-directory: ./packages/svelte-lexical
-      - run: npm ci
         working-directory: ./packages/svelte-lexical
       - run: npm publish
         working-directory: ./packages/svelte-lexical
