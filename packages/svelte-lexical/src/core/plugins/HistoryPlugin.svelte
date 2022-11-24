@@ -1,8 +1,6 @@
 <script>
   import { onMount, getContext } from 'svelte';
-  import pkgLH from '@lexical/history';
-
-  const { createEmptyHistoryState, registerHistory } = pkgLH;
+  import { createEmptyHistoryState, registerHistory } from '@lexical/history';
 
   const editor = getContext('editor');
   export let externalHistoryState = createEmptyHistoryState();

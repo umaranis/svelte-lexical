@@ -1,8 +1,6 @@
 <script>
-  import pkg from 'lexical';
+  import { createEditor } from 'lexical';
   import { onMount, setContext } from 'svelte';
-
-  const { createEditor } = pkg;
 
   export let config = {};
   let contentEditableElement;
