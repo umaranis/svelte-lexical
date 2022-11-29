@@ -18,23 +18,23 @@
     "test-e2e:chromium-debug": "cross-env E2E_BROWSER=chromium playwright test --project=\"chromium\" --debug"
   },
   "devDependencies": {
-    "@playwright/test": "^1.21.1",
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@playwright/test": "^1.28.1",
+    "@sveltejs/vite-plugin-svelte": "^1.1.0",
+    "@tsconfig/svelte": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.13.0",
-    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint": "^8.28.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-svelte3": "^3.4.1",
-    "prettier": "^2.6.2",
-    "rollup": "^2.3.4",
-    "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-livereload": "^2.0.0",
-    "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-terser": "^7.0.0",
-    "serve": "^13.0.2",
-    "start-server-and-test": "^1.14.0",
-    "uuid": "^8.3.2"
+    "eslint-plugin-svelte3": "^4.0.0",
+    "prettier": "^2.8.0",
+    "svelte": "^3.52.0",
+    "svelte-check": "^2.9.2",
+    "svelte-preprocess": "^4.10.7",
+    "tslib": "^2.4.0",
+    "typescript": "^4.9.3",
+    "uuid": "^9.0.0",
+    "vite": "^3.2.3"
   },
   "dependencies": {
     "svelte-lexical": "^0.1.2-beta.3"
