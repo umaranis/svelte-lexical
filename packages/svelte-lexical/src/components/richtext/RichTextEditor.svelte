@@ -38,4 +38,5 @@
   <ListPlugin />
   <HorizontalRulePlugin />
   <ImagePlugin />
+  <slot name="actions" slot="actions" />
 </TextEditor>

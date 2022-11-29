@@ -24,6 +24,7 @@
     <!-- slot for plugins -->
     <slot />    
   </div>
+  <slot name="actions" />
   
 </div>
 
