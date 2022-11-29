@@ -14,7 +14,7 @@ import {v4 as uuidv4} from 'uuid';
 
 import {selectAll} from '../keyboardShortcuts/index.mjs';
 
-export const E2E_PORT = process.env.E2E_PORT || 8080;
+export const E2E_PORT = process.env.E2E_PORT || 5173;
 export const E2E_BROWSER = process.env.E2E_BROWSER;
 export const IS_MAC = process.platform === 'darwin';
 export const IS_WINDOWS = process.platform === 'win32';
