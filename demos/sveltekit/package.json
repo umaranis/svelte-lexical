@@ -18,6 +18,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"svelte-lexical": "0.1.2-beta.3"
+		"svelte-lexical": "0.1.3"
 	}
 }
