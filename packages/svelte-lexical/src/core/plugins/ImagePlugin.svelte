@@ -1,22 +1,22 @@
-<script context="module">
+<script context="module" lang="ts">
   import pkg from 'lexical';
-  
-  const { createCommand } = pkg;
+
+  const {createCommand} = pkg;
   /**
    * @type {LexicalCommand<{altText:string, src:string}>}
    */
   export const INSERT_IMAGE_COMMAND = createCommand();
 </script>
-<script>
+<script lang="ts">
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
     $isRootNode as isRootNode,
     COMMAND_PRIORITY_EDITOR,
   } from 'lexical';
-  
-  import { onMount, getContext } from 'svelte';
-  import { $createImageNode as createImageNode, ImageNode } from './ImageNode';
+
+  import {onMount, getContext} from 'svelte';
+  import {$createImageNode as createImageNode, ImageNode} from './ImageNode';
 
   const editor = getContext('editor');
 
@@ -33,7 +33,7 @@
           if (isRootNode(selection.anchor.getNode())) {
             selection.insertParagraph();
           }
-          const imageNode = createImageNode(payload.detail.src, payload.detail.altText, 500);
+          const imageNode = createImageNode({src: payload.detail.src, altText: payload.detail.altText});
           selection.insertNodes([imageNode]);
         }
         return true;
