@@ -4,7 +4,9 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    'airbnb-base',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    "prettier" // Make sure to put it last, so it gets the chance to override other configs (https://github.com/prettier/eslint-config-prettier).
   ],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -25,7 +27,6 @@ module.exports = {
         'import/no-mutable-exports': 'off',
         'import/first': 'off',
         'import/prefer-default-export': 'off',
-        'object-curly-spacing': 'off',
         'quotes': 'off'
       },
     },

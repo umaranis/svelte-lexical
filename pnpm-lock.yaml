@@ -8,7 +8,6 @@ importers:
       '@rollup/plugin-node-resolve': ^11.0.0
       '@rollup/plugin-replace': ^4.0.0
       eslint: ^8.13.0
-      eslint-config-airbnb-base: ^15.0.0
       eslint-plugin-import: ^2.26.0
       eslint-plugin-svelte3: ^3.4.1
       rollup: ^2.3.4
@@ -28,7 +27,6 @@ importers:
       '@rollup/plugin-commonjs': 17.1.0_rollup@2.75.4
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.75.4
       eslint: 8.16.0
-      eslint-config-airbnb-base: 15.0.0_btspkuwbqkl4adpiufzbathtpi
       eslint-plugin-import: 2.26.0_eslint@8.16.0
       eslint-plugin-svelte3: 3.4.1_vypdqzeyqutkgs6qzc7qod4c64
       rollup: 2.75.4
@@ -84,7 +82,6 @@ importers:
       '@rollup/plugin-node-resolve': ^11.0.0
       '@rollup/plugin-replace': ^4.0.0
       eslint: ^8.13.0
-      eslint-config-airbnb-base: ^15.0.0
       eslint-plugin-import: ^2.26.0
       eslint-plugin-svelte3: ^3.4.1
       rollup: ^2.3.4
@@ -104,7 +101,6 @@ importers:
       '@rollup/plugin-commonjs': 17.1.0_rollup@2.75.4
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.75.4
       eslint: 8.16.0
-      eslint-config-airbnb-base: 15.0.0_btspkuwbqkl4adpiufzbathtpi
       eslint-plugin-import: 2.26.0_eslint@8.16.0
       eslint-plugin-svelte3: 3.4.1_vypdqzeyqutkgs6qzc7qod4c64
       rollup: 2.75.4
@@ -119,7 +115,6 @@ importers:
       '@rollup/plugin-node-resolve': ^11.0.0
       '@rollup/plugin-replace': ^4.0.0
       eslint: ^8.13.0
-      eslint-config-airbnb-base: ^15.0.0
       eslint-plugin-import: ^2.26.0
       eslint-plugin-svelte3: ^3.4.1
       rollup: ^2.3.4
@@ -139,7 +134,6 @@ importers:
       '@rollup/plugin-commonjs': 17.1.0_rollup@2.75.4
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.75.4
       eslint: 8.16.0
-      eslint-config-airbnb-base: 15.0.0_btspkuwbqkl4adpiufzbathtpi
       eslint-plugin-import: 2.26.0_eslint@8.16.0
       eslint-plugin-svelte3: 3.4.1_vypdqzeyqutkgs6qzc7qod4c64
       rollup: 2.75.4
@@ -193,12 +187,14 @@ importers:
       '@typescript-eslint/parser': ^5.45.0
       babel-jest: ^28.1.0
       eslint: ^8.16.0
-      eslint-config-airbnb-base: ^15.0.0
+      eslint-config-prettier: ^8.5.0
       eslint-plugin-import: ^2.26.0
       eslint-plugin-svelte3: ^3.4.1
       jest: ^28.1.0
       jest-environment-jsdom: ^28.1.0
       lexical: ^0.6.0
+      prettier: ^2.8.0
+      prettier-plugin-svelte: ^2.8.1
       rollup: ^2.75.4
       rollup-plugin-svelte: ^7.1.0
       svelte: ^3.48.0
@@ -234,11 +230,13 @@ importers:
       '@typescript-eslint/parser': 5.45.0_4txdm6mcvmn55u7dzz4mzggnrm
       babel-jest: 28.1.0_@babel+core@7.18.2
       eslint: 8.16.0
-      eslint-config-airbnb-base: 15.0.0_btspkuwbqkl4adpiufzbathtpi
+      eslint-config-prettier: 8.5.0_eslint@8.16.0
       eslint-plugin-import: 2.26.0_qvv3cni55quj3r7kvc3csmds6a
       eslint-plugin-svelte3: 3.4.1_vypdqzeyqutkgs6qzc7qod4c64
       jest: 28.1.0
       jest-environment-jsdom: 28.1.0
+      prettier: 2.8.0
+      prettier-plugin-svelte: 2.8.1_7hzprhjpgvyoy7nv3eirhbwgjm
       rollup: 2.75.4
       rollup-plugin-svelte: 7.1.0_owvrrs3mhypgghaq52tqmzrzmm
       svelte-check: 2.9.2_kykniseivvxn5ducwb36ouo6rq
@@ -3041,10 +3039,6 @@ packages:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
     dev: true
 
-  /confusing-browser-globals/1.0.11:
-    resolution: {integrity: sha512-JsPKdmh8ZkmnHxDk55FZ1TqVLvEQTvoByJZRN9jzI0UjxK/QgAmsphz7PGtqgPieQZ/CQcHWXCR7ATDNhGe+YA==}
-    dev: true
-
   /console-clear/1.1.1:
     resolution: {integrity: sha512-pMD+MVR538ipqkG5JXeOEbKWS5um1H4LUUccUQG68qpeqBYbzYy79Gh55jkd2TtPdRfUaLWdv6LPP//5Zt0aPQ==}
     engines: {node: '>=4'}
@@ -3556,19 +3550,13 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-airbnb-base/15.0.0_btspkuwbqkl4adpiufzbathtpi:
-    resolution: {integrity: sha512-xaX3z4ZZIcFLvh2oUNvcX5oEofXda7giYmuplVxoOg5A7EXJMrUyqRgR+mhDhPK8LZ4PttFOBvCYDbX3sUoUig==}
-    engines: {node: ^10.12.0 || >=12.0.0}
+  /eslint-config-prettier/8.5.0_eslint@8.16.0:
+    resolution: {integrity: sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==}
+    hasBin: true
     peerDependencies:
-      eslint: ^7.32.0 || ^8.2.0
-      eslint-plugin-import: ^2.25.2
+      eslint: '>=7.0.0'
     dependencies:
-      confusing-browser-globals: 1.0.11
       eslint: 8.16.0
-      eslint-plugin-import: 2.26.0_qvv3cni55quj3r7kvc3csmds6a
-      object.assign: 4.1.2
-      object.entries: 1.1.5
-      semver: 6.3.0
     dev: true
 
   /eslint-import-resolver-node/0.3.6:
@@ -5422,15 +5410,6 @@ packages:
       object-keys: 1.1.1
     dev: true
 
-  /object.entries/1.1.5:
-    resolution: {integrity: sha512-TyxmjUoZggd4OrrU1W66FMDG6CuqJxsFvymeyXI51+vQLN67zYfZseptRge703kKQdo4uccgAKebXFcRCzk4+g==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      call-bind: 1.0.2
-      define-properties: 1.1.4
-      es-abstract: 1.20.1
-    dev: true
-
   /object.values/1.1.5:
     resolution: {integrity: sha512-QUZRW0ilQ3PnPpbNtgdNV1PDbEqLIiSFB3l+EnGtBQ/8SUTLj1PZwtQHABZtLgwpJZTSZhuGLOGk57Drx2IvYg==}
     engines: {node: '>= 0.4'}
@@ -5626,6 +5605,16 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier-plugin-svelte/2.8.1_7hzprhjpgvyoy7nv3eirhbwgjm:
+    resolution: {integrity: sha512-KA3K1J3/wKDnCxW7ZDRA/QL2Q67N7Xs3gOERqJ5X1qFjq1DdnN3K1R29scSKwh+kA8FF67pXbYytUpvN/i3iQw==}
+    peerDependencies:
+      prettier: ^1.16.4 || ^2.0.0
+      svelte: ^3.2.0
+    dependencies:
+      prettier: 2.8.0
+      svelte: 3.48.0
     dev: true
 
   /prettier/2.8.0:
