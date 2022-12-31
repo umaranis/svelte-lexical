@@ -5,7 +5,7 @@
     $isRangeSelection as isRangeSelection,
     $createParagraphNode as createParagraphNode,
   } from 'lexical';
-  import { $wrapLeafNodesInElements as wrapLeafNodesInElements } from '@lexical/selection';
+  import { $wrapNodes as wrapNodes } from '@lexical/selection';
   import {
     $createHeadingNode as createHeadingNode,
     $createQuoteNode as createQuoteNode,
@@ -67,7 +67,7 @@
         const selection = getSelection();
 
         if (isRangeSelection(selection)) {
-          wrapLeafNodesInElements(selection, () => createParagraphNode());
+          wrapNodes(selection, () => createParagraphNode());
         }
       });
     }
@@ -79,7 +79,7 @@
         const selection = getSelection();
 
         if (isRangeSelection(selection)) {
-          wrapLeafNodesInElements(selection, () => createHeadingNode('h1'));
+          wrapNodes(selection, () => createHeadingNode('h1'));
         }
       });
     }
@@ -91,7 +91,7 @@
         const selection = getSelection();
 
         if (isRangeSelection(selection)) {
-          wrapLeafNodesInElements(selection, () => createHeadingNode('h2'));
+          wrapNodes(selection, () => createHeadingNode('h2'));
         }
       });
     }
@@ -103,7 +103,7 @@
         const selection = getSelection();
 
         if (isRangeSelection(selection)) {
-          wrapLeafNodesInElements(selection, () => createHeadingNode('h3'));
+          wrapNodes(selection, () => createHeadingNode('h3'));
         }
       });
     }
@@ -131,7 +131,7 @@
         const selection = getSelection();
 
         if (isRangeSelection(selection)) {
-          wrapLeafNodesInElements(selection, () => createQuoteNode());
+          wrapNodes(selection, () => createQuoteNode());
         }
       });
     }
@@ -144,7 +144,7 @@
 
         if (isRangeSelection(selection)) {
           if (selection.isCollapsed()) {
-            wrapLeafNodesInElements(selection, () => createCodeNode());
+            wrapNodes(selection, () => createCodeNode());
           } else {
             const textContent = selection.getTextContent();
             const codeNode = createCodeNode();
