@@ -1,6 +1,7 @@
 <script>
   import { createEditor } from 'lexical';
   import { onMount, setContext } from 'svelte';
+  import {initializeEditor} from "./initializeEditor.ts";
 
   export let config = {};
   let contentEditableElement;
@@ -10,6 +11,7 @@
 
   onMount(() => {
     editor.setRootElement(contentEditableElement);
+    initializeEditor(editor);
   });
 </script>
 
