@@ -8,7 +8,7 @@
   import {
     $createHorizontalRuleNode as createHorizontalRuleNode,
     INSERT_HORIZONTAL_RULE_COMMAND,
-  } from './HorizontalRuleNode';
+  } from './HorizontalRuleNode.ts';
 
   const editor = getContext('editor');
 

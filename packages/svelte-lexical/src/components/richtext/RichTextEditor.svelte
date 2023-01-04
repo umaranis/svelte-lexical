@@ -5,7 +5,7 @@
   import RichTextPlugin from '../../core/plugins/RichTextPlugin.svelte';
   import HistoryPlugin from '../../core/plugins/HistoryPlugin.svelte';
   import ListPlugin from '../../core/plugins/ListPlugin.svelte';
-  import { HorizontalRuleNode } from '../../core/plugins/HorizontalRuleNode';
+  import { HorizontalRuleNode } from '../../core/plugins/HorizontalRuleNode.ts';
 
   import HorizontalRulePlugin from '../../core/plugins/HorizontalRulePlugin.svelte';
   import ImagePlugin from '../../core/plugins/ImagePlugin.svelte';
