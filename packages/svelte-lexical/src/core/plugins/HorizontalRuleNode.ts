@@ -5,20 +5,17 @@ import type {
   SerializedLexicalNode,
   LexicalNode,
   DOMConversionOutput,
+  EditorConfig,
 } from "lexical";
-import pkg, { $applyNodeReplacement } from "lexical";
+import pkg, { $applyNodeReplacement, type LexicalEditor } from "lexical";
 import HorizontalRuleComponent from "./HorizontalRuleComponent.svelte";
 
 const { createCommand, DecoratorNode } = pkg;
 
-export type SerializedHorizontalRuleNode = SerializedLexicalNode & {
-  type: "horizontalrule";
-  version: 1;
-};
 export const INSERT_HORIZONTAL_RULE_COMMAND: LexicalCommand<void> =
   createCommand();
 
-export class HorizontalRuleNode extends DecoratorNode<any> {
+export class HorizontalRuleNode extends DecoratorNode<unknown> {
   static getType(): string {
     return "horizontalrule";
   }
@@ -27,9 +24,7 @@ export class HorizontalRuleNode extends DecoratorNode<any> {
     return new HorizontalRuleNode(node.__key);
   }
 
-  static importJSON(
-    serializedNode: SerializedHorizontalRuleNode
-  ): HorizontalRuleNode {
+  static importJSON(): HorizontalRuleNode {
     return $createHorizontalRuleNode();
   }
 
@@ -53,7 +48,7 @@ export class HorizontalRuleNode extends DecoratorNode<any> {
     return { element: document.createElement("hr") };
   }
 
-  createDOM(editorConfig, editor): HTMLElement {
+  createDOM(editorConfig: EditorConfig, editor: LexicalEditor): HTMLElement {
     const div = document.createElement("div");
     div.style.display = "contents";
 
@@ -61,8 +56,8 @@ export class HorizontalRuleNode extends DecoratorNode<any> {
       target: div,
       props: {
         nodeKey: this.__key,
-        editor
-      }
+        editor,
+      },
     });
 
     return div;
@@ -81,7 +76,7 @@ export class HorizontalRuleNode extends DecoratorNode<any> {
   }
 
   decorate() {
-    //return document.createElement("hr");
+    return null;
   }
 }
 
