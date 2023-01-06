@@ -7,6 +7,7 @@ import type {
   DOMConversionOutput,
 } from "lexical";
 import pkg, { $applyNodeReplacement } from "lexical";
+import HorizontalRuleComponent from "./HorizontalRuleComponent.svelte";
 
 const { createCommand, DecoratorNode } = pkg;
 
@@ -52,10 +53,18 @@ export class HorizontalRuleNode extends DecoratorNode<any> {
     return { element: document.createElement("hr") };
   }
 
-  createDOM(): HTMLElement {
+  createDOM(editorConfig, editor): HTMLElement {
     const div = document.createElement("div");
     div.style.display = "contents";
-    div.appendChild(this.decorate());
+
+    new HorizontalRuleComponent({
+      target: div,
+      props: {
+        nodeKey: this.__key,
+        editor
+      }
+    });
+
     return div;
   }
 
@@ -72,13 +81,10 @@ export class HorizontalRuleNode extends DecoratorNode<any> {
   }
 
   decorate() {
-    return document.createElement("hr");
+    //return document.createElement("hr");
   }
 }
 
-/**
- * @returns { DOMConversionOutput }
- */
 function convertHorizontalRuleElement(): DOMConversionOutput {
   return { node: $createHorizontalRuleNode() };
 }

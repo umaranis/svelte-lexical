@@ -1484,6 +1484,26 @@
    outline: 2px solid rgb(60, 132, 244);
    user-select: none;
  }
+
+ hr {
+   padding: 2px 2px;
+   border: none;
+   margin: 1em 0;
+   cursor: pointer;
+ }
+
+ hr:after {
+   content: '';
+   display: block;
+   height: 2px;
+   background-color: #ccc;
+   line-height: 2px;
+ }
+
+ hr.selected {
+   outline: 2px solid rgb(60, 132, 244);
+   user-select: none;
+ }
  
  /* START: dialog input fields (InsertImageDialog) */
  .Input__wrapper {
