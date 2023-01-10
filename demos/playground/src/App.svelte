@@ -1,5 +1,5 @@
 <script>
-  import { RichTextComposer } from 'svelte-lexical';
+  import {RichTextComposer} from 'svelte-lexical';
   import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
 </script>
 
@@ -7,11 +7,18 @@
   <h1>Svelte Lexical!</h1>
   <p>
     This Rich Text Editor is build with <a
-      href="https://github.com/umaranis/svelte-lexical/">svelte-lexical</a
-    >
+      href="https://github.com/umaranis/svelte-lexical/">
+      svelte-lexical
+    </a>
   </p>
 
-  <RichTextComposer theme={PlaygroundEditorTheme}/>    
+  <!-- `text-align: left` added to reset the center text alignement of the main div. 
+    Shouldn't there be a way in lexical to handle this?
+    Check if lexical is affected by this by enclosing editor in a center aligned div
+  -->
+  <div style="text-align: left;">
+    <RichTextComposer theme={PlaygroundEditorTheme} />
+  </div>
 </main>
 
 <style>

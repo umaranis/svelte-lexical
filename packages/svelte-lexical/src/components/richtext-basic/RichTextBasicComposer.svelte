@@ -1,13 +1,12 @@
 <script>
   import Toolbar from './ToolbarBasic.svelte';
   import RichTextBasicEditor from './RichTextBasicEditor.svelte';
+  import ActionBar from '../actionbar/ActionBar.svelte';
 
   export let theme;
 </script>
 
-<div class="editor-shell">
-  <RichTextBasicEditor {theme}>
-    <Toolbar slot="toolbar" />
-  </RichTextBasicEditor>
-  <div class="actions" />
-</div>
+<RichTextBasicEditor {theme}>
+  <Toolbar slot="toolbar" />
+  <ActionBar slot="actions" />
+</RichTextBasicEditor>
