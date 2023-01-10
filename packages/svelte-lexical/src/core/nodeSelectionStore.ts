@@ -24,6 +24,9 @@ export function isNodeSelected(editor: LexicalEditor, key: NodeKey): boolean {
   });
 }
 
+/**
+ * Clear editor selection
+ */
 export function clearSelection(editor: LexicalEditor) {
   editor.update(() => {
     const selection = $getSelection();
