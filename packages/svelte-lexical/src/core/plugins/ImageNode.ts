@@ -9,10 +9,10 @@ import type {
   SerializedEditor,
   SerializedLexicalNode,
   Spread,
-} from "lexical";
+} from 'lexical';
 
-import { $applyNodeReplacement, createEditor, DecoratorNode } from "lexical";
-import ImageNodeSvelte from "./ImageComponent.svelte";
+import {$applyNodeReplacement, createEditor, DecoratorNode} from 'lexical';
+import ImageComponent from './ImageComponent.svelte';
 /*import * as React from 'react';
 import {Suspense} from 'react';*/
 
@@ -35,9 +35,9 @@ export interface ImagePayload {
 
 function convertImageElement(domNode: Node): null | DOMConversionOutput {
   if (domNode instanceof HTMLImageElement) {
-    const { alt: altText, src } = domNode;
-    const node = $createImageNode({ altText, src });
-    return { node };
+    const {alt: altText, src} = domNode;
+    const node = $createImageNode({altText, src});
+    return {node};
   }
   return null;
 }
@@ -51,7 +51,7 @@ export type SerializedImageNode = Spread<
     showCaption: boolean;
     src: string;
     width?: number;
-    type: "image";
+    type: 'image';
     version: 1;
   },
   SerializedLexicalNode
@@ -60,8 +60,8 @@ export type SerializedImageNode = Spread<
 export class ImageNode extends DecoratorNode<any> {
   __src: string;
   __altText: string;
-  __width: "inherit" | number;
-  __height: "inherit" | number;
+  __width: 'inherit' | number;
+  __height: 'inherit' | number;
   __maxWidth: number;
   __showCaption: boolean;
   __caption: LexicalEditor;
@@ -69,7 +69,7 @@ export class ImageNode extends DecoratorNode<any> {
   __captionsEnabled: boolean;
 
   static getType(): string {
-    return "image";
+    return 'image';
   }
 
   static clone(node: ImageNode): ImageNode {
@@ -82,12 +82,12 @@ export class ImageNode extends DecoratorNode<any> {
       node.__showCaption,
       node.__caption,
       node.__captionsEnabled,
-      node.__key
+      node.__key,
     );
   }
 
   static importJSON(serializedNode: SerializedImageNode): ImageNode {
-    const { altText, height, width, maxWidth, caption, src, showCaption } =
+    const {altText, height, width, maxWidth, caption, src, showCaption} =
       serializedNode;
     const node = $createImageNode({
       altText,
@@ -106,10 +106,10 @@ export class ImageNode extends DecoratorNode<any> {
   }
 
   exportDOM(): DOMExportOutput {
-    const element = document.createElement("img");
-    element.setAttribute("src", this.__src);
-    element.setAttribute("alt", this.__altText);
-    return { element };
+    const element = document.createElement('img');
+    element.setAttribute('src', this.__src);
+    element.setAttribute('alt', this.__altText);
+    return {element};
   }
 
   static importDOM(): DOMConversionMap | null {
@@ -125,19 +125,19 @@ export class ImageNode extends DecoratorNode<any> {
     src: string,
     altText: string,
     maxWidth: number,
-    width?: "inherit" | number,
-    height?: "inherit" | number,
+    width?: 'inherit' | number,
+    height?: 'inherit' | number,
     showCaption?: boolean,
     caption?: LexicalEditor,
     captionsEnabled?: boolean,
-    key?: NodeKey
+    key?: NodeKey,
   ) {
     super(key);
     this.__src = src;
     this.__altText = altText;
     this.__maxWidth = maxWidth;
-    this.__width = width || "inherit";
-    this.__height = height || "inherit";
+    this.__width = width || 'inherit';
+    this.__height = height || 'inherit';
     this.__showCaption = showCaption || false;
     this.__caption = caption || createEditor();
     this.__captionsEnabled = captionsEnabled || captionsEnabled === undefined;
@@ -147,19 +147,19 @@ export class ImageNode extends DecoratorNode<any> {
     return {
       altText: this.getAltText(),
       caption: this.__caption.toJSON(),
-      height: this.__height === "inherit" ? 0 : this.__height,
+      height: this.__height === 'inherit' ? 0 : this.__height,
       maxWidth: this.__maxWidth,
       showCaption: this.__showCaption,
       src: this.getSrc(),
-      type: "image",
+      type: 'image',
       version: 1,
-      width: this.__width === "inherit" ? 0 : this.__width,
+      width: this.__width === 'inherit' ? 0 : this.__width,
     };
   }
 
   setWidthAndHeight(
-    width: "inherit" | number,
-    height: "inherit" | number
+    width: 'inherit' | number,
+    height: 'inherit' | number,
   ): void {
     const writable = this.getWritable();
     writable.__width = width;
@@ -173,19 +173,28 @@ export class ImageNode extends DecoratorNode<any> {
 
   // View
 
-  createDOM(config: EditorConfig): HTMLElement {
-    const span = document.createElement("span");
+  createDOM(config: EditorConfig, editor: LexicalEditor): HTMLElement {
+    const span = document.createElement('span');
     const theme = config.theme;
     const className = theme.image;
     if (className !== undefined) {
       span.className = className;
     }
 
-    const image = new ImageNodeSvelte({
+    new ImageComponent({
       target: span,
       props: {
         src: this.__src,
         altText: this.__altText,
+        width: this.__width,
+        height: this.__height,
+        maxWidth: this.__maxWidth,
+        nodeKey: this.__key,
+        showCaption: this.__showCaption,
+        caption: this.__caption,
+        captionsEnabled: this.__captionsEnabled,
+        resizable: true,
+        editor: editor,
       },
     });
 
@@ -221,6 +230,7 @@ export class ImageNode extends DecoratorNode<any> {
     />
     </Suspense>
   );*/
+    return null;
   }
 }
 
@@ -245,13 +255,13 @@ export function $createImageNode({
       showCaption,
       caption,
       captionsEnabled,
-      key
-    )
+      key,
+    ),
   );
 }
 
 export function $isImageNode(
-  node: LexicalNode | null | undefined
+  node: LexicalNode | null | undefined,
 ): node is ImageNode {
   return node instanceof ImageNode;
 }

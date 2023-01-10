@@ -79,7 +79,7 @@
 </div>
 
 <style>
-  /* TODO: reconcile below css with css from lexical playground in global.css */
+  /* TODO: reconcile below css with css from lexical playground in index.css */
   #topModal {
     visibility: hidden;
     z-index: 9999;
