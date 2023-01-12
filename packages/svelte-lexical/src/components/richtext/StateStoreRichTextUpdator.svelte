@@ -53,8 +53,8 @@
       if (elementDOM !== null) {
         $selectedElementKey = elementKey;
         if (isListNode(element)) {
-          const parentList = getNearestNodeOfType(anchorNode, ListNode);
-          const type = parentList ? parentList.getTag() : element.getTag();
+          const parentList = getNearestNodeOfType<ListNode>(anchorNode, ListNode);
+          const type = parentList ? parentList.getListType() : element.getListType();
           $blockType = type;
         } else {
           const type = isHeadingNode(element)

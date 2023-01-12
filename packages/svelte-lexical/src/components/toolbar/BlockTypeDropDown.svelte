@@ -1,55 +1,51 @@
-<script>
-  import { getContext } from 'svelte';
+<script lang="ts">
+  import {getContext} from 'svelte';
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
     $createParagraphNode as createParagraphNode,
+    DEPRECATED_$isGridSelection,
+    type LexicalEditor,
   } from 'lexical';
-  import { $wrapNodes as wrapNodes } from '@lexical/selection';
+  import {$setBlocksType_experimental as setBlocksType_experimental} from '@lexical/selection';
   import {
     $createHeadingNode as createHeadingNode,
     $createQuoteNode as createQuoteNode,
+    type HeadingTagType,
   } from '@lexical/rich-text';
-  import { $createCodeNode as createCodeNode } from '@lexical/code';
+  import {$createCodeNode as createCodeNode} from '@lexical/code';
   import {
-    INSERT_UNORDERED_LIST_COMMAND,
+    INSERT_CHECK_LIST_COMMAND,
     INSERT_ORDERED_LIST_COMMAND,
+    INSERT_UNORDERED_LIST_COMMAND,
     REMOVE_LIST_COMMAND,
   } from '@lexical/list';
-  import { blockType } from '../editor-state/StateStoreBasic';
+  import {blockType} from '../editor-state/StateStoreBasic';
 
   // TODO: convert this component to using DropDown.svelte
 
-  const supportedBlockTypes = new Set([
-    'paragraph',
-    'quote',
-    'code',
-    'h1',
-    'h2',
-    'ul',
-    'ol',
-  ]);
-
   const blockTypeToBlockName = {
+    bullet: 'Bulleted List',
+    check: 'Check List',
     code: 'Code Block',
-    h1: 'Large Heading',
-    h2: 'Small Heading',
-    h3: 'Heading',
-    h4: 'Heading',
-    h5: 'Heading',
-    ol: 'Numbered List',
+    h1: 'Heading 1',
+    h2: 'Heading 2',
+    h3: 'Heading 3',
+    h4: 'Heading 4',
+    h5: 'Heading 5',
+    h6: 'Heading 6',
+    number: 'Numbered List',
     paragraph: 'Normal',
     quote: 'Quote',
-    ul: 'Bulleted List',
   };
 
-  const editor = getContext('editor');
+  const editor: LexicalEditor = getContext('editor');
   let button;
   let showBlockOptionsDropDown = false;
 
   async function showDropdown(event) {
     showBlockOptionsDropDown = !showBlockOptionsDropDown;
-  
+
     if (showBlockOptionsDropDown && button) {
       const handle = (event) => {
         if (button && !button.contains(event.target)) {
@@ -65,63 +61,52 @@
     if ($blockType !== 'paragraph') {
       editor.update(() => {
         const selection = getSelection();
-
-        if (isRangeSelection(selection)) {
-          wrapNodes(selection, () => createParagraphNode());
-        }
+        if (
+          isRangeSelection(selection) ||
+          DEPRECATED_$isGridSelection(selection)
+        )
+          setBlocksType_experimental(selection, () => createParagraphNode());
       });
     }
   };
 
-  const formatLargeHeading = () => {
-    if ($blockType !== 'h1') {
+  const formatHeading = (headingSize: HeadingTagType) => {
+    if ($blockType !== headingSize) {
       editor.update(() => {
         const selection = getSelection();
-
-        if (isRangeSelection(selection)) {
-          wrapNodes(selection, () => createHeadingNode('h1'));
-        }
-      });
-    }
-  };
-
-  const formatSmallHeading = () => {
-    if ($blockType !== 'h2') {
-      editor.update(() => {
-        const selection = getSelection();
-
-        if (isRangeSelection(selection)) {
-          wrapNodes(selection, () => createHeadingNode('h2'));
-        }
-      });
-    }
-  };
-
-  const formatVerySmallHeading = () => {
-    if ($blockType !== 'h3') {
-      editor.update(() => {
-        const selection = getSelection();
-
-        if (isRangeSelection(selection)) {
-          wrapNodes(selection, () => createHeadingNode('h3'));
+        if (
+          isRangeSelection(selection) ||
+          DEPRECATED_$isGridSelection(selection)
+        ) {
+          setBlocksType_experimental(selection, () =>
+            createHeadingNode(headingSize),
+          );
         }
       });
     }
   };
 
   const formatBulletList = () => {
-    if ($blockType !== 'ul') {
-      editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND);
+    if ($blockType !== 'bullet') {
+      editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
     } else {
-      editor.dispatchCommand(REMOVE_LIST_COMMAND);
+      editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
+    }
+  };
+
+  const formatCheckList = () => {
+    if ($blockType !== 'check') {
+      editor.dispatchCommand(INSERT_CHECK_LIST_COMMAND, undefined);
+    } else {
+      editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
     }
   };
 
   const formatNumberedList = () => {
-    if ($blockType !== 'ol') {
-      editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND);
+    if ($blockType !== 'number') {
+      editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
     } else {
-      editor.dispatchCommand(REMOVE_LIST_COMMAND);
+      editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
     }
   };
 
@@ -129,9 +114,11 @@
     if ($blockType !== 'quote') {
       editor.update(() => {
         const selection = getSelection();
-
-        if (isRangeSelection(selection)) {
-          wrapNodes(selection, () => createQuoteNode());
+        if (
+          isRangeSelection(selection) ||
+          DEPRECATED_$isGridSelection(selection)
+        ) {
+          setBlocksType_experimental(selection, () => createQuoteNode());
         }
       });
     }
@@ -140,17 +127,21 @@
   const formatCode = () => {
     if ($blockType !== 'code') {
       editor.update(() => {
-        const selection = getSelection();
+        let selection = getSelection();
 
-        if (isRangeSelection(selection)) {
+        if (
+          isRangeSelection(selection) ||
+          DEPRECATED_$isGridSelection(selection)
+        ) {
           if (selection.isCollapsed()) {
-            wrapNodes(selection, () => createCodeNode());
+            setBlocksType_experimental(selection, () => createCodeNode());
           } else {
             const textContent = selection.getTextContent();
             const codeNode = createCodeNode();
-            selection.removeText();
             selection.insertNodes([codeNode]);
-            selection.insertRawText(textContent);
+            selection = getSelection();
+            if (isRangeSelection(selection))
+              selection.insertRawText(textContent);
           }
         }
       });
@@ -162,8 +153,7 @@
   class="toolbar-item block-controls"
   bind:this={button}
   on:click={showDropdown}
-  aria-label="Formatting Options"
->
+  aria-label="Formatting Options">
   <span class={'icon block-type ' + $blockType} />
   <span class="text">{blockTypeToBlockName[$blockType]}</span>
   <i class="chevron-down" />
@@ -177,34 +167,49 @@
         <span class="active" />
       {/if}
     </button>
-    <button class="item" on:click={formatLargeHeading}>
+    <button class="item" on:click={() => formatHeading('h1')}>
       <span class="icon h1" />
-      <span class="text">Large Heading</span>
+      <span class="text">Heading 1</span>
       {#if $blockType === 'h1'}
         <span class="active" />
       {/if}
     </button>
-    <button class="item" on:click={formatSmallHeading}>
+    <button class="item" on:click={() => formatHeading('h2')}>
       <span class="icon h2" />
-      <span class="text">Small Heading</span>
+      <span class="text">Heading 2</span>
       {#if $blockType === 'h2'}
         <span class="active" />
       {/if}
     </button>
+    <button class="item" on:click={() => formatHeading('h3')}>
+      <span class="icon h3" />
+      <span class="text">Heading 3</span>
+      {#if $blockType === 'h3'}
+        <span class="active" />
+      {/if}
+    </button>
+
     <button class="item" on:click={formatBulletList}>
       <span class="icon bullet-list" />
       <span class="text">Bullet List</span>
-      {#if $blockType === 'ul'}
+      {#if $blockType === 'bullet'}
         <span class="active" />
       {/if}
     </button>
     <button class="item" on:click={formatNumberedList}>
       <span class="icon numbered-list" />
       <span class="text">Numbered List</span>
-      {#if $blockType === 'ol'}
+      {#if $blockType === 'number'}
         <span class="active" />
       {/if}
     </button>
+    <!--<button class="item" on:click={formatCheckList}>
+      <span class="icon check-list" />
+      <span class="text">Check List</span>
+      {#if $blockType === 'check'}
+        <span class="active" />
+      {/if}
+    </button>-->
     <button class="item" on:click={formatQuote}>
       <span class="icon quote" />
       <span class="text">Quote</span>
