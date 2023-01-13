@@ -171,6 +171,7 @@ importers:
       '@babel/preset-env': ^7.20.2
       '@lexical/clipboard': ^0.7.6
       '@lexical/code': ^0.7.6
+      '@lexical/file': ^0.7.6
       '@lexical/hashtag': ^0.7.6
       '@lexical/history': ^0.7.6
       '@lexical/link': ^0.7.6
@@ -209,6 +210,7 @@ importers:
     dependencies:
       '@lexical/clipboard': 0.7.6_lexical@0.7.6
       '@lexical/code': 0.7.6_lexical@0.7.6
+      '@lexical/file': 0.7.6_lexical@0.7.6
       '@lexical/hashtag': 0.7.6_lexical@0.7.6
       '@lexical/history': 0.7.6_lexical@0.7.6
       '@lexical/link': 0.7.6_lexical@0.7.6
@@ -2013,6 +2015,14 @@ packages:
       '@lexical/utils': 0.7.6_lexical@0.7.6
       lexical: 0.7.6
       prismjs: 1.29.0
+    dev: false
+
+  /@lexical/file/0.7.6_lexical@0.7.6:
+    resolution: {integrity: sha512-MIFfCjoz2Z/fy/xIfh5vnYfudHE5CLk59kj786dOtU7VA4AuqDOSJADKMVrhAUtuLLgNItl5a6EYUGbbOWwdgA==}
+    peerDependencies:
+      lexical: 0.7.6
+    dependencies:
+      lexical: 0.7.6
     dev: false
 
   /@lexical/hashtag/0.7.6_lexical@0.7.6:

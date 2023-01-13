@@ -58,6 +58,7 @@
   "dependencies": {
     "@lexical/clipboard": "^0.7.6",
     "@lexical/code": "^0.7.6",
+    "@lexical/file": "^0.7.6",
     "@lexical/hashtag": "^0.7.6",
     "@lexical/history": "^0.7.6",
     "@lexical/link": "^0.7.6",
