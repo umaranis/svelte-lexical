@@ -1,7 +1,10 @@
 <script>
-  import { CAN_UNDO_COMMAND, UNDO_COMMAND } from 'lexical';
-  import { getContext, onMount } from 'svelte';
-  import { COMMAND_PRIORITY_CRITICAL } from '../../utils/commandPriority';
+  import {
+    CAN_UNDO_COMMAND,
+    UNDO_COMMAND,
+    COMMAND_PRIORITY_CRITICAL,
+  } from 'lexical';
+  import {getContext, onMount} from 'svelte';
 
   const editor = getContext('editor');
 
@@ -26,7 +29,6 @@
     editor.dispatchCommand(UNDO_COMMAND);
   }}
   class="toolbar-item spaced"
-  aria-label="Undo"
->
+  aria-label="Undo">
   <i class="format undo" />
 </button>

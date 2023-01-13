@@ -1,7 +1,10 @@
 <script>
-  import { CAN_REDO_COMMAND, REDO_COMMAND } from 'lexical';
-  import { getContext, onMount } from 'svelte';
-  import { COMMAND_PRIORITY_CRITICAL } from '../../utils/commandPriority';
+  import {
+    CAN_REDO_COMMAND,
+    REDO_COMMAND,
+    COMMAND_PRIORITY_CRITICAL,
+  } from 'lexical';
+  import {getContext, onMount} from 'svelte';
 
   const editor = getContext('editor');
 
@@ -26,7 +29,6 @@
     editor.dispatchCommand(REDO_COMMAND);
   }}
   class="toolbar-item spaced"
-  aria-label="Redo"
->
+  aria-label="Redo">
   <i class="format redo" />
 </button>
