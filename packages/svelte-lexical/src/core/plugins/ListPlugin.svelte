@@ -1,5 +1,5 @@
 <script>
-  import { onMount, getContext } from 'svelte';
+  import {onMount, getContext} from 'svelte';
   import {
     $handleListInsertParagraph as handleListInsertParagraph,
     indentList,
@@ -10,7 +10,7 @@
     REMOVE_LIST_COMMAND,
     removeList,
   } from '@lexical/list';
-  import { mergeRegister } from '@lexical/utils';
+  import {mergeRegister} from '@lexical/utils';
   import {
     COMMAND_PRIORITY_LOW,
     INDENT_CONTENT_COMMAND,
@@ -22,14 +22,11 @@
 
   onMount(() => {
     // returns callback to unregister
-    mergeRegister(
+    return mergeRegister(
       editor.registerCommand(
         INDENT_CONTENT_COMMAND,
         () => {
-          const hasHandledIndention = indentList();
-          if (hasHandledIndention) {
-            return true;
-          }
+          indentList();
           return false;
         },
         COMMAND_PRIORITY_LOW,
@@ -37,10 +34,7 @@
       editor.registerCommand(
         OUTDENT_CONTENT_COMMAND,
         () => {
-          const hasHandledIndention = outdentList();
-          if (hasHandledIndention) {
-            return true;
-          }
+          outdentList();
           return false;
         },
         COMMAND_PRIORITY_LOW,
@@ -48,7 +42,7 @@
       editor.registerCommand(
         INSERT_ORDERED_LIST_COMMAND,
         () => {
-          insertList(editor, 'ol');
+          insertList(editor, 'number');
           return true;
         },
         COMMAND_PRIORITY_LOW,
@@ -56,7 +50,7 @@
       editor.registerCommand(
         INSERT_UNORDERED_LIST_COMMAND,
         () => {
-          insertList(editor, 'ul');
+          insertList(editor, 'bullet');
           return true;
         },
         COMMAND_PRIORITY_LOW,
@@ -73,9 +67,11 @@
         INSERT_PARAGRAPH_COMMAND,
         () => {
           const hasHandledInsertParagraph = handleListInsertParagraph();
+
           if (hasHandledInsertParagraph) {
             return true;
           }
+
           return false;
         },
         COMMAND_PRIORITY_LOW,
