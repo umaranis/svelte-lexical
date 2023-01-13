@@ -18,6 +18,8 @@ module.exports = {
     'svelte3',
     '@typescript-eslint', // add the TypeScript plugin
   ],
+  // Stop ESLint from looking for a configuration file in parent folders
+  root: true,
   overrides: [
     {
       files: ['**/*.svelte'],
@@ -32,6 +34,11 @@ module.exports = {
     },
   ],
   rules: {
+    '@typescript-eslint/ban-ts-comment': [
+      'error',
+      {'ts-ignore': 'allow-with-description'},
+    ],
+    '@typescript-eslint/no-unused-vars': ['error', {args: 'none'}],
   },
   settings: {
     //'svelte3/typescript': () => require('typescript'), // pass the TypeScript package to the Svelte plugin

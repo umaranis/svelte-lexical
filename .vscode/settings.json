@@ -1,9 +1,6 @@
 {
-    "eslint.validate": [
-      "javascript",
-      "javascriptreact",
-      "svelte"
-    ],
-    "files.eol": "\n",
-    "prettier.singleQuote": true,
-  }
+  "eslint.validate": ["javascript", "javascriptreact", "svelte"],
+  "files.eol": "\n",
+  "prettier.singleQuote": true,
+  "editor.formatOnSave": true
+}
