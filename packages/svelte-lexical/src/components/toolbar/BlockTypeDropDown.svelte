@@ -203,13 +203,13 @@
         <span class="active" />
       {/if}
     </button>
-    <!--<button class="item" on:click={formatCheckList}>
+    <button class="item" on:click={formatCheckList}>
       <span class="icon check-list" />
       <span class="text">Check List</span>
       {#if $blockType === 'check'}
         <span class="active" />
       {/if}
-    </button>-->
+    </button>
     <button class="item" on:click={formatQuote}>
       <span class="icon quote" />
       <span class="text">Quote</span>
