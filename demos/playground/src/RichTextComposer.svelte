@@ -10,7 +10,7 @@
     CheckListPlugin,
     HorizontalRulePlugin,
     ImagePlugin,
-    //TreeViewPlugin,
+    TreeViewPlugin,
   } from 'svelte-lexical';
   import {
     HeadingNode,
@@ -56,6 +56,6 @@
 
       <ActionBar />
     </div>
-    <!--<TreeViewPlugin />-->
+    <TreeViewPlugin />
   </div>
 </Composer>

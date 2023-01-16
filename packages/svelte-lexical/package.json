@@ -65,6 +65,7 @@
     "@lexical/history": "^0.7.6",
     "@lexical/link": "^0.7.6",
     "@lexical/list": "^0.7.6",
+    "@lexical/mark": "^0.7.6",
     "@lexical/overflow": "^0.7.6",
     "@lexical/plain-text": "^0.7.6",
     "@lexical/rich-text": "^0.7.6",
