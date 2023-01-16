@@ -15,7 +15,9 @@
     "build": "rollup -c",
     "prepublishOnly": "npm run build",
     "test": "jest src",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "lint": "eslint .",
+    "svelte-check": "svelte-check"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

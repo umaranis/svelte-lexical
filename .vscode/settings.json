@@ -2,5 +2,8 @@
   "eslint.validate": ["javascript", "javascriptreact", "svelte"],
   "files.eol": "\n",
   "prettier.singleQuote": true,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "svelte.plugin.svelte.compilerWarnings": {
+    "a11y-no-noninteractive-tabindex": "ignore"
+  }
 }

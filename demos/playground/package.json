@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
+    "lint": "eslint .",
     "test-e2e-ci:chromium": "cross-env E2E_PORT=4000 start-server-and-test prepare-ci 4000 test-e2e:chromium",
     "test-e2e-ci:firefox": "cross-env E2E_PORT=4000 start-server-and-test prepare-ci 4000 test-e2e:firefox",
     "test-e2e-ci:webkit": "cross-env E2E_PORT=4000 start-server-and-test prepare-ci 4000 test-e2e:webkit",
