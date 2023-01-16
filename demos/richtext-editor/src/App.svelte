@@ -1,17 +1,17 @@
 <script>
-  import { RichTextComposer } from 'svelte-lexical';
-  import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
+  import RichTextComposer from './RichTextComposer.svelte';
 </script>
 
 <main>
   <h1>Svelte Lexical!</h1>
   <p>
     This Rich Text Editor is build with <a
-      href="https://github.com/umaranis/svelte-lexical/">svelte-lexical</a
-    >
+      href="https://github.com/umaranis/svelte-lexical/">
+      svelte-lexical
+    </a>
   </p>
 
-  <RichTextComposer theme={PlaygroundEditorTheme}/>    
+  <RichTextComposer />
 </main>
 
 <style>

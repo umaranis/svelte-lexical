@@ -7,13 +7,11 @@
  * @flow strict
  */
 
-import type {EditorThemeClasses} from 'lexical';
-
 import './StickyEditorTheme.css';
 
 import baseTheme from './PlaygroundEditorTheme';
 
-const theme: EditorThemeClasses = {
+const theme = {
   ...baseTheme,
   paragraph: 'StickyEditorTheme__paragraph',
 };

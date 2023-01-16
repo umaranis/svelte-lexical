@@ -1,28 +1,17 @@
 <script>
-  import { TextEditor, PlainTextPlugin, HistoryPlugin } from 'svelte-lexical';
-  import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
-
-  const config = {
-    theme: PlaygroundEditorTheme,
-    nodes: [],
-    onError: (error) => {
-      throw error;
-    },
-  };
+  import PlainTextComposer from './PlainTextComposer.svelte';
 </script>
 
 <main>
   <h1>Svelte Lexical!</h1>
   <p>
     This Plain Text Editor is build with <a
-      href="https://github.com/umaranis/svelte-lexical/">svelte-lexical</a
-    >
+      href="https://github.com/umaranis/svelte-lexical/">
+      svelte-lexical
+    </a>
   </p>
 
-  <TextEditor {config}>
-    <PlainTextPlugin />
-    <HistoryPlugin />
-  </TextEditor>
+  <PlainTextComposer />
 </main>
 
 <style>
