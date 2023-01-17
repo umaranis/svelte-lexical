@@ -22,6 +22,6 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "svelte-lexical": "0.1.4"
+    "svelte-lexical": "0.1.5"
   }
 }
