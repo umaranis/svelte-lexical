@@ -19,4 +19,6 @@ export {default as TreeViewPlugin} from './core/plugins/TreeViewPlugin.svelte';
 export {default as ContentEditable} from './core/ContentEditable.svelte';
 export {default as Composer} from './core/Composer.svelte';
 
+export {default as RichTextComposer} from './components/richtext/RichTextComposer.svelte';
+
 export {type EditorThemeClasses} from 'lexical';
