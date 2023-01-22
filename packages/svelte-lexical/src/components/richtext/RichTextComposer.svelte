@@ -38,7 +38,7 @@
 <Composer {config}>
   <div class="editor-shell">
     <ToolbarRichText />
-    <div class="editor-container">
+    <div class="editor-container tree-view">
       <div class="editor-scroller">
         <div class="editor">
           <ContentEditable />
