@@ -6,18 +6,18 @@ import type {
   LexicalNode,
   DOMConversionOutput,
   EditorConfig,
-} from "lexical";
-import pkg, { $applyNodeReplacement, type LexicalEditor } from "lexical";
-import HorizontalRuleComponent from "./HorizontalRuleComponent.svelte";
+} from 'lexical';
+import pkg, {$applyNodeReplacement, type LexicalEditor} from 'lexical';
+import HorizontalRuleComponent from './HorizontalRuleComponent.svelte';
 
-const { createCommand, DecoratorNode } = pkg;
+const {createCommand, DecoratorNode} = pkg;
 
 export const INSERT_HORIZONTAL_RULE_COMMAND: LexicalCommand<void> =
   createCommand();
 
 export class HorizontalRuleNode extends DecoratorNode<unknown> {
   static getType(): string {
-    return "horizontalrule";
+    return 'horizontalrule';
   }
 
   static clone(node: HorizontalRuleNode): HorizontalRuleNode {
@@ -39,18 +39,18 @@ export class HorizontalRuleNode extends DecoratorNode<unknown> {
 
   exportJSON(): SerializedLexicalNode {
     return {
-      type: "horizontalrule",
+      type: 'horizontalrule',
       version: 1,
     };
   }
 
   exportDOM(): DOMExportOutput {
-    return { element: document.createElement("hr") };
+    return {element: document.createElement('hr')};
   }
 
   createDOM(editorConfig: EditorConfig, editor: LexicalEditor): HTMLElement {
-    const div = document.createElement("div");
-    div.style.display = "contents";
+    const div = document.createElement('div');
+    div.style.display = 'contents';
 
     new HorizontalRuleComponent({
       target: div,
@@ -63,8 +63,8 @@ export class HorizontalRuleNode extends DecoratorNode<unknown> {
     return div;
   }
 
-  getTextContent(): "\n" {
-    return "\n";
+  getTextContent(): '\n' {
+    return '\n';
   }
 
   isInline(): false {
@@ -81,7 +81,7 @@ export class HorizontalRuleNode extends DecoratorNode<unknown> {
 }
 
 function convertHorizontalRuleElement(): DOMConversionOutput {
-  return { node: $createHorizontalRuleNode() };
+  return {node: $createHorizontalRuleNode()};
 }
 
 export function $createHorizontalRuleNode(): HorizontalRuleNode {
@@ -89,7 +89,7 @@ export function $createHorizontalRuleNode(): HorizontalRuleNode {
 }
 
 export function $isHorizontalRuleNode(
-  node: LexicalNode | null | undefined
+  node: LexicalNode | null | undefined,
 ): node is HorizontalRuleNode {
   return node instanceof HorizontalRuleNode;
 }
