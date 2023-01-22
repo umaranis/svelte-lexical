@@ -57,7 +57,7 @@ export type SerializedImageNode = Spread<
   SerializedLexicalNode
 >;
 
-export class ImageNode extends DecoratorNode<any> {
+export class ImageNode extends DecoratorNode<unknown> {
   __src: string;
   __altText: string;
   __width: 'inherit' | number;
@@ -133,6 +133,7 @@ export class ImageNode extends DecoratorNode<any> {
     key?: NodeKey,
   ) {
     super(key);
+
     this.__src = src;
     this.__altText = altText;
     this.__maxWidth = maxWidth;

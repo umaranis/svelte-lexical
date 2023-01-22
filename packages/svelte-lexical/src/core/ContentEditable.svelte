@@ -17,6 +17,7 @@
   export let autoComplete: boolean;
   export let autoCorrect: boolean;
   //export let className: string;  // I have hardcoded it. @lexical/image plugin seems to depend on the harded class name.
+  export let cssClass = 'ContentEditable__root';
   export let id: string;
   //export let readOnly: boolean; // it is defined in lexical code but not used
   export let role: 'textbox';
@@ -54,7 +55,7 @@
     : undefined}
   {autoComplete}
   autoCorrect={autoCorrect !== undefined ? String(autoCorrect) : undefined}
-  class="ContentEditable__root"
+  class={cssClass}
   contentEditable={isEditable}
   data-testid={testid}
   {id}
@@ -65,7 +66,7 @@
   tabindex={tabIndex} />
 
 <style>
-  .ContentEditable__root {
+  :global(.ContentEditable__root) {
     border: 0;
     font-size: 15px;
     display: block;

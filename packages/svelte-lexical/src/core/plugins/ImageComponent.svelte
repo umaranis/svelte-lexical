@@ -29,6 +29,10 @@
     clearSelection,
     createNodeSelectionStore,
   } from '../nodeSelectionStore';
+  import NestedComposer from '../NestedComposer.svelte';
+  import ContentEditable from '../ContentEditable.svelte';
+  import RichTextPlugin from './RichTextPlugin.svelte';
+  import {writable} from 'svelte/store';
 
   export let src: string;
   export let altText: string;
@@ -41,6 +45,10 @@
   export let caption: LexicalEditor;
   export let captionsEnabled: boolean;
   export let editor: LexicalEditor;
+
+  //TODO: the change to ImageNode doesn't automatically update the edtitor, probably because decorators are not used
+  //implement decorators and see if it eliminates the need to `showCaptionStore`
+  export let showCaptionStore = writable(showCaption);
 
   let selection: RangeSelection | NodeSelection | GridSelection | null = null;
 
@@ -88,7 +96,7 @@
       isNodeSelection(latestSelection) &&
       latestSelection.getNodes().length === 1
     ) {
-      if (showCaption) {
+      if ($showCaptionStore) {
         // Move focus into nested editor
         selection = null;
         event.preventDefault();
@@ -185,14 +193,15 @@
     );
   });
 
-  const setShowCaption = () => {
+  export function setShowCaption() {
     editor.update(() => {
       const node = getNodeByKey(nodeKey);
       if (isImageNode(node)) {
         node.setShowCaption(true);
+        $showCaptionStore = true;
       }
     });
-  };
+  }
 
   const onResizeEnd = (
     nextWidth: 'inherit' | number,
@@ -230,9 +239,17 @@
       draggable="false" />
   {/await}
 </div>
+{#if $showCaptionStore}
+  <div class="image-caption-container">
+    <NestedComposer initialEditor={caption} parentEditor={editor}>
+      <ContentEditable cssClass="ImageNode__contentEditable" />
+      <RichTextPlugin />
+    </NestedComposer>
+  </div>
+{/if}
 {#if resizable && isNodeSelection(selection) && isFocused}
   <ImageResizer
-    {showCaption}
+    showCaption={$showCaptionStore}
     {setShowCaption}
     {editor}
     {buttonRef}
@@ -244,7 +261,7 @@
 {/if}
 
 <style>
-  .ImageNode__contentEditable {
+  :global(.ImageNode__contentEditable) {
     min-height: 20px;
     border: 0px;
     resize: none;
