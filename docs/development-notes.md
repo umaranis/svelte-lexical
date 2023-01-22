@@ -41,6 +41,7 @@ It uses NPM to build and publish (PNPM is not used due to a bug).
 Please use following tags in your commit message:
 
 - feat (or feature)
+- minor
 - bug
 - test
 - build
