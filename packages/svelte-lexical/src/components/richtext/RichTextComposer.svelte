@@ -1,7 +1,7 @@
 <script lang="ts">
   import {ListItemNode, ListNode} from '@lexical/list';
   import {HeadingNode, QuoteNode} from '@lexical/rich-text';
-  import type {EditorThemeClasses} from 'lexical';
+  import type {EditorThemeClasses, LexicalEditor} from 'lexical';
 
   import Composer from '../../core/Composer.svelte';
   import ContentEditable from '../../core/ContentEditable.svelte';
@@ -16,8 +16,11 @@
   import TreeViewPlugin from '../../core/plugins/TreeViewPlugin.svelte';
   import ActionBar from '../actionbar/ActionBar.svelte';
   import ToolbarRichText from './ToolbarRichText.svelte';
+  import type {SvelteComponent} from 'svelte';
 
   export let theme: EditorThemeClasses;
+
+  let composer: SvelteComponent;
 
   const config = {
     theme,
@@ -33,9 +36,13 @@
       throw error;
     },
   };
+
+  export function getEditor(): LexicalEditor {
+    return composer.$$.context.get('editor');
+  }
 </script>
 
-<Composer {config}>
+<Composer {config} bind:this={composer}>
   <div class="editor-shell">
     <ToolbarRichText />
     <div class="editor-container tree-view">

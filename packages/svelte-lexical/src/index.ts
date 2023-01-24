@@ -21,4 +21,4 @@ export {default as Composer} from './core/Composer.svelte';
 
 export {default as RichTextComposer} from './components/richtext/RichTextComposer.svelte';
 
-export {type EditorThemeClasses} from 'lexical';
+export type {EditorThemeClasses, LexicalEditor} from 'lexical';
