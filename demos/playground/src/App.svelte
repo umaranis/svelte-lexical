@@ -1,6 +1,16 @@
 <script>
+  import {onMount} from 'svelte';
   import {RichTextComposer} from 'svelte-lexical';
   import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
+
+  let composerComponent;
+
+  onMount(() => {
+    const editor = composerComponent.getEditor();
+    editor.registerUpdateListener(({editorState}) => {
+      console.log(JSON.stringify(editorState));
+    });
+  });
 </script>
 
 <main>
@@ -17,7 +27,9 @@
     Check if lexical is affected by this by enclosing editor in a center aligned div
   -->
   <div style="text-align: left;">
-    <RichTextComposer theme={PlaygroundEditorTheme} />
+    <RichTextComposer
+      theme={PlaygroundEditorTheme}
+      bind:this={composerComponent} />
   </div>
 </main>
 
