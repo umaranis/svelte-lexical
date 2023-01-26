@@ -4,22 +4,24 @@
 </script>
 
 <main>
-  <h1>Svelte Lexical!</h1>
-  <p>
-    This Rich Text Editor is build with <a
-      href="https://github.com/umaranis/svelte-lexical/">
-      svelte-lexical
-    </a>
-  </p>
+  <div class="header">
+    <h1>Svelte Lexical!</h1>
+    <p>
+      This Rich Text Editor is build with <a
+        href="https://github.com/umaranis/svelte-lexical/">
+        svelte-lexical
+      </a>
+    </p>
+  </div>
 
   <RichTextComposer theme={PlaygroundEditorTheme} />
 </main>
 
 <style>
-  main {
+  .header {
     text-align: center;
     padding: 1em;
-    max-width: 240px;
+    max-width: 540px;
     margin: 0 auto;
   }
 
