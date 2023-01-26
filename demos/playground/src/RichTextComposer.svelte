@@ -18,6 +18,7 @@
     ListItemNode,
     HorizontalRuleNode,
     ImageNode,
+    TreeViewPlugin,
   } from 'svelte-lexical';
   import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
 
@@ -40,7 +41,7 @@
 <Composer {config}>
   <div class="editor-shell">
     <ToolbarRichText />
-    <div class="editor-container">
+    <div class="editor-container tree-view">
       <div class="editor-scroller">
         <div class="editor">
           <ContentEditable />
@@ -55,5 +56,6 @@
 
       <ActionBar />
     </div>
+    <TreeViewPlugin />
   </div>
 </Composer>

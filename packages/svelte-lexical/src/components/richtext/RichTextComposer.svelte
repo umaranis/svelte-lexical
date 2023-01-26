@@ -13,7 +13,6 @@
   import CheckListPlugin from '../../core/plugins/CheckListPlugin.svelte';
   import HorizontalRulePlugin from '../../core/plugins/HorizontalRulePlugin.svelte';
   import RichTextPlugin from '../../core/plugins/RichTextPlugin.svelte';
-  import TreeViewPlugin from '../../core/plugins/TreeViewPlugin.svelte';
   import ActionBar from '../actionbar/ActionBar.svelte';
   import ToolbarRichText from './ToolbarRichText.svelte';
   import type {SvelteComponent} from 'svelte';
@@ -45,7 +44,7 @@
 <Composer {config} bind:this={composer}>
   <div class="editor-shell">
     <ToolbarRichText />
-    <div class="editor-container tree-view">
+    <div class="editor-container">
       <div class="editor-scroller">
         <div class="editor">
           <ContentEditable />
@@ -60,6 +59,5 @@
 
       <ActionBar />
     </div>
-    <TreeViewPlugin />
   </div>
 </Composer>

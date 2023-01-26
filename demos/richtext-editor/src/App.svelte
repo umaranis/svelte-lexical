@@ -1,5 +1,6 @@
 <script>
-  import RichTextComposer from './RichTextComposer.svelte';
+  import {RichTextComposer} from 'svelte-lexical';
+  import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
 </script>
 
 <main>
@@ -11,7 +12,7 @@
     </a>
   </p>
 
-  <RichTextComposer />
+  <RichTextComposer theme={PlaygroundEditorTheme} />
 </main>
 
 <style>
