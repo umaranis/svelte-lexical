@@ -1,6 +1,7 @@
 <script>
-  import { onMount, getContext } from 'svelte';
-  import { registerRichText } from '@lexical/rich-text';
+  import {onMount, getContext} from 'svelte';
+  import {registerRichText} from '@lexical/rich-text';
+  import Decorator from '../Decorator.svelte';
 
   const editor = getContext('editor');
 
@@ -11,3 +12,5 @@
   // TODO: add support for placeholder text
   // TODO: take care of decorators - useDecorators(editor)
 </script>
+
+<!-- <Decorator /> -->

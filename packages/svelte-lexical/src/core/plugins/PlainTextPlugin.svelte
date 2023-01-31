@@ -1,6 +1,6 @@
 <script>
-  import { onMount, getContext } from 'svelte';
-  import { registerPlainText } from '@lexical/plain-text';
+  import {onMount, getContext} from 'svelte';
+  import {registerPlainText} from '@lexical/plain-text';
 
   const editor = getContext('editor');
 

@@ -96,7 +96,8 @@
       isNodeSelection(latestSelection) &&
       latestSelection.getNodes().length === 1
     ) {
-      if ($showCaptionStore) {
+      if (showCaption) {
+        //$showCaptionStore
         // Move focus into nested editor
         selection = null;
         event.preventDefault();
@@ -198,7 +199,7 @@
       const node = getNodeByKey(nodeKey);
       if (isImageNode(node)) {
         node.setShowCaption(true);
-        $showCaptionStore = true;
+        //$showCaptionStore = true;
       }
     });
   }
@@ -239,7 +240,7 @@
       draggable="false" />
   {/await}
 </div>
-{#if $showCaptionStore}
+{#if showCaption}<!--$showCaptionStore -->
   <div class="image-caption-container">
     <NestedComposer initialEditor={caption} parentEditor={editor}>
       <ContentEditable cssClass="ImageNode__contentEditable" />
@@ -248,8 +249,9 @@
   </div>
 {/if}
 {#if resizable && isNodeSelection(selection) && isFocused}
+  <!-- $showCaptionStore -->
   <ImageResizer
-    showCaption={$showCaptionStore}
+    {showCaption}
     {setShowCaption}
     {editor}
     {buttonRef}

@@ -1,17 +1,19 @@
-import type {
-  DOMConversionMap,
-  DOMConversionOutput,
-  DOMExportOutput,
-  EditorConfig,
-  LexicalEditor,
-  LexicalNode,
-  NodeKey,
-  SerializedEditor,
-  SerializedLexicalNode,
-  Spread,
+import {
+  $getNodeByKey,
+  type DOMConversionMap,
+  type DOMConversionOutput,
+  type DOMExportOutput,
+  type EditorConfig,
+  type LexicalEditor,
+  type LexicalNode,
+  type NodeKey,
+  type SerializedEditor,
+  type SerializedLexicalNode,
+  type Spread,
 } from 'lexical';
 
 import {$applyNodeReplacement, createEditor, DecoratorNode} from 'lexical';
+import type {ComponentProps, SvelteComponent} from 'svelte';
 import ImageComponent from './ImageComponent.svelte';
 /*import * as React from 'react';
 import {Suspense} from 'react';*/
@@ -57,7 +59,12 @@ export type SerializedImageNode = Spread<
   SerializedLexicalNode
 >;
 
-export class ImageNode extends DecoratorNode<unknown> {
+type DecoratorImageType = {
+  componentClass: typeof SvelteComponent;
+  props: ComponentProps<ImageComponent>;
+};
+
+export class ImageNode extends DecoratorNode<DecoratorImageType> {
   __src: string;
   __altText: string;
   __width: 'inherit' | number;
@@ -67,6 +74,8 @@ export class ImageNode extends DecoratorNode<unknown> {
   __caption: LexicalEditor;
   // Captions cannot yet be used within editor cells
   __captionsEnabled: boolean;
+
+  __com: ImageComponent | undefined;
 
   static getType(): string {
     return 'image';
@@ -83,6 +92,7 @@ export class ImageNode extends DecoratorNode<unknown> {
       node.__caption,
       node.__captionsEnabled,
       node.__key,
+      node.__com,
     );
   }
 
@@ -131,6 +141,7 @@ export class ImageNode extends DecoratorNode<unknown> {
     caption?: LexicalEditor,
     captionsEnabled?: boolean,
     key?: NodeKey,
+    com?: ImageComponent,
   ) {
     super(key);
 
@@ -142,6 +153,7 @@ export class ImageNode extends DecoratorNode<unknown> {
     this.__showCaption = showCaption || false;
     this.__caption = caption || createEditor();
     this.__captionsEnabled = captionsEnabled || captionsEnabled === undefined;
+    this.__com = com;
   }
 
   exportJSON(): SerializedImageNode {
@@ -182,23 +194,6 @@ export class ImageNode extends DecoratorNode<unknown> {
       span.className = className;
     }
 
-    new ImageComponent({
-      target: span,
-      props: {
-        src: this.__src,
-        altText: this.__altText,
-        width: this.__width,
-        height: this.__height,
-        maxWidth: this.__maxWidth,
-        nodeKey: this.__key,
-        showCaption: this.__showCaption,
-        caption: this.__caption,
-        captionsEnabled: this.__captionsEnabled,
-        resizable: true,
-        editor: editor,
-      },
-    });
-
     return span;
   }
 
@@ -214,24 +209,78 @@ export class ImageNode extends DecoratorNode<unknown> {
     return this.__altText;
   }
 
-  decorate() /*: JSX.Element*/ {
-    /*return (
-      <Suspense fallback={null}>
-      <ImageComponent
-        src={this.__src}
-    altText={this.__altText}
-    width={this.__width}
-    height={this.__height}
-    maxWidth={this.__maxWidth}
-    nodeKey={this.getKey()}
-    showCaption={this.__showCaption}
-    caption={this.__caption}
-    captionsEnabled={this.__captionsEnabled}
-    resizable={true}
-    />
-    </Suspense>
-  );*/
+  decorate(editor: LexicalEditor, config: EditorConfig): DecoratorImageType {
+    const key = this.__key;
+    setTimeout(() => {
+      const span = editor.getElementByKey(key);
+      editor.update(() => {
+        const node = $getNodeByKey(key) as ImageNode;
+
+        if (node) {
+          // if (!span?.innerHTML) {
+          //   new ImageComponent({
+          //     target: span,
+          //     props: {
+          //       src: this.__src,
+          //       altText: this.__altText,
+          //       width: this.__width,
+          //       height: this.__height,
+          //       maxWidth: this.__maxWidth,
+          //       nodeKey: this.__key,
+          //       showCaption: this.__showCaption,
+          //       caption: this.__caption,
+          //       captionsEnabled: this.__captionsEnabled,
+          //       resizable: true,
+          //       editor: editor,
+          //     },
+          //   });
+          // }
+
+          if (span?.innerHTML) {
+            if (node.__com) {
+              //this.getWritable().__height = 20;
+              node.__com.$set({showCaption: this.__showCaption});
+            }
+          } else {
+            this.getWritable().__com = new ImageComponent({
+              target: span,
+              props: {
+                src: this.__src,
+                altText: this.__altText,
+                width: this.__width,
+                height: this.__height,
+                maxWidth: this.__maxWidth,
+                nodeKey: this.__key,
+                showCaption: this.__showCaption,
+                caption: this.__caption,
+                captionsEnabled: this.__captionsEnabled,
+                resizable: true,
+                editor: editor,
+              },
+            });
+          }
+        }
+      });
+    });
+
     return null;
+
+    // return {
+    //   componentClass: ImageComponent,
+    //   props: {
+    //     src: this.__src,
+    //     altText: this.__altText,
+    //     width: this.__width,
+    //     height: this.__height,
+    //     maxWidth: this.__maxWidth,
+    //     nodeKey: this.__key,
+    //     showCaption: this.__showCaption,
+    //     caption: this.__caption,
+    //     captionsEnabled: this.__captionsEnabled,
+    //     resizable: true,
+    //     editor: editor,
+    //   },
+    // };
   }
 }
 
