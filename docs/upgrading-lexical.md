@@ -8,7 +8,7 @@
 - Update files in svelte-lexical project (plugins etc.)
 
 # Tips for porting from react to svelte
-- Change `onClick` to `on:click`
+- Change `onEvent` to `on:event`. For instance, `onClick` to `on:click`.
 - Change `className` to `class`
 - See [joshnuss/react-hooks-in-svelte: React hook examples ported to Svelte](https://github.com/joshnuss/react-hooks-in-svelte)
 - See [Compoment Party](https://component-party.dev)
