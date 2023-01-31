@@ -13,4 +13,4 @@
   // TODO: take care of decorators - useDecorators(editor)
 </script>
 
-<!-- <Decorator /> -->
+<Decorator />

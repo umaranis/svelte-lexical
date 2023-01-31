@@ -210,77 +210,77 @@ export class ImageNode extends DecoratorNode<DecoratorImageType> {
   }
 
   decorate(editor: LexicalEditor, config: EditorConfig): DecoratorImageType {
-    const key = this.__key;
-    setTimeout(() => {
-      const span = editor.getElementByKey(key);
-      editor.update(() => {
-        const node = $getNodeByKey(key) as ImageNode;
+    // const key = this.__key;
+    // setTimeout(() => {
+    //   const span = editor.getElementByKey(key);
+    //   editor.update(() => {
+    //     const node = $getNodeByKey(key) as ImageNode;
 
-        if (node) {
-          // if (!span?.innerHTML) {
-          //   new ImageComponent({
-          //     target: span,
-          //     props: {
-          //       src: this.__src,
-          //       altText: this.__altText,
-          //       width: this.__width,
-          //       height: this.__height,
-          //       maxWidth: this.__maxWidth,
-          //       nodeKey: this.__key,
-          //       showCaption: this.__showCaption,
-          //       caption: this.__caption,
-          //       captionsEnabled: this.__captionsEnabled,
-          //       resizable: true,
-          //       editor: editor,
-          //     },
-          //   });
-          // }
+    //     if (node) {
+    //       // if (!span?.innerHTML) {
+    //       //   new ImageComponent({
+    //       //     target: span,
+    //       //     props: {
+    //       //       src: this.__src,
+    //       //       altText: this.__altText,
+    //       //       width: this.__width,
+    //       //       height: this.__height,
+    //       //       maxWidth: this.__maxWidth,
+    //       //       nodeKey: this.__key,
+    //       //       showCaption: this.__showCaption,
+    //       //       caption: this.__caption,
+    //       //       captionsEnabled: this.__captionsEnabled,
+    //       //       resizable: true,
+    //       //       editor: editor,
+    //       //     },
+    //       //   });
+    //       // }
 
-          if (span?.innerHTML) {
-            if (node.__com) {
-              //this.getWritable().__height = 20;
-              node.__com.$set({showCaption: this.__showCaption});
-            }
-          } else {
-            this.getWritable().__com = new ImageComponent({
-              target: span,
-              props: {
-                src: this.__src,
-                altText: this.__altText,
-                width: this.__width,
-                height: this.__height,
-                maxWidth: this.__maxWidth,
-                nodeKey: this.__key,
-                showCaption: this.__showCaption,
-                caption: this.__caption,
-                captionsEnabled: this.__captionsEnabled,
-                resizable: true,
-                editor: editor,
-              },
-            });
-          }
-        }
-      });
-    });
+    //       if (span?.innerHTML) {
+    //         if (node.__com) {
+    //           //this.getWritable().__height = 20;
+    //           node.__com.$set({showCaption: this.__showCaption});
+    //         }
+    //       } else {
+    //         this.getWritable().__com = new ImageComponent({
+    //           target: span,
+    //           props: {
+    //             src: this.__src,
+    //             altText: this.__altText,
+    //             width: this.__width,
+    //             height: this.__height,
+    //             maxWidth: this.__maxWidth,
+    //             nodeKey: this.__key,
+    //             showCaption: this.__showCaption,
+    //             caption: this.__caption,
+    //             captionsEnabled: this.__captionsEnabled,
+    //             resizable: true,
+    //             editor: editor,
+    //           },
+    //         });
+    //       }
+    //     }
+    //   });
+    // });
 
-    return null;
+    // return null;
 
-    // return {
-    //   componentClass: ImageComponent,
-    //   props: {
-    //     src: this.__src,
-    //     altText: this.__altText,
-    //     width: this.__width,
-    //     height: this.__height,
-    //     maxWidth: this.__maxWidth,
-    //     nodeKey: this.__key,
-    //     showCaption: this.__showCaption,
-    //     caption: this.__caption,
-    //     captionsEnabled: this.__captionsEnabled,
-    //     resizable: true,
-    //     editor: editor,
-    //   },
-    // };
+    return {
+      componentClass: ImageComponent,
+      props: {
+        src: this.__src,
+        altText: this.__altText,
+        width: this.__width,
+        height: this.__height,
+        maxWidth: this.__maxWidth,
+        nodeKey: this.__key,
+        showCaption: this.__showCaption,
+        caption: this.__caption,
+        captionsEnabled: this.__captionsEnabled,
+        resizable: true,
+        editor: editor,
+      },
+    };
   }
 }
 

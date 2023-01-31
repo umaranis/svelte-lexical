@@ -5,30 +5,30 @@
 
   const editor: LexicalEditor = getContext('editor');
 
-  // onMount(() => {
-  //   return editor.registerDecoratorListener<{
-  //     componentClass: typeof SvelteComponent;
-  //     props: object;
-  //   }>((decorators) => {
-  //     // The editor's decorators object is passed in!
-  //     console.log(decorators);
+  onMount(() => {
+    return editor.registerDecoratorListener<{
+      componentClass: typeof SvelteComponent;
+      props: object;
+    }>((decorators) => {
+      // The editor's decorators object is passed in!
+      console.log(decorators);
 
-  //     const decoratorKeys = Object.keys(decorators);
+      const decoratorKeys = Object.keys(decorators);
 
-  //     for (let i = 0; i < decoratorKeys.length; i++) {
-  //       const nodeKey = decoratorKeys[i];
+      for (let i = 0; i < decoratorKeys.length; i++) {
+        const nodeKey = decoratorKeys[i];
 
-  //       const element = editor.getElementByKey(nodeKey);
+        const element = editor.getElementByKey(nodeKey);
 
-  //       if (!element?.innerHTML) {
-  //         if (element !== null) {
-  //           new decorators[nodeKey]['componentClass']({
-  //             target: element,
-  //             props: decorators[nodeKey]['props'],
-  //           });
-  //         }
-  //       }
-  //     }
-  //   });
-  // });
+        if (!element?.innerHTML) {
+          if (element !== null) {
+            new decorators[nodeKey]['componentClass']({
+              target: element,
+              props: decorators[nodeKey]['props'],
+            });
+          }
+        }
+      }
+    });
+  });
 </script>
