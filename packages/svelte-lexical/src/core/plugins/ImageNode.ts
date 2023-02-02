@@ -12,6 +12,7 @@ import type {
 } from 'lexical';
 
 import {$applyNodeReplacement, createEditor, DecoratorNode} from 'lexical';
+import type {ComponentProps, SvelteComponent} from 'svelte';
 import ImageComponent from './ImageComponent.svelte';
 /*import * as React from 'react';
 import {Suspense} from 'react';*/
@@ -57,7 +58,12 @@ export type SerializedImageNode = Spread<
   SerializedLexicalNode
 >;
 
-export class ImageNode extends DecoratorNode<any> {
+type DecoratorImageType = {
+  componentClass: typeof SvelteComponent;
+  props: ComponentProps<ImageComponent>;
+};
+
+export class ImageNode extends DecoratorNode<DecoratorImageType> {
   __src: string;
   __altText: string;
   __width: 'inherit' | number;
@@ -133,6 +139,7 @@ export class ImageNode extends DecoratorNode<any> {
     key?: NodeKey,
   ) {
     super(key);
+
     this.__src = src;
     this.__altText = altText;
     this.__maxWidth = maxWidth;
@@ -181,23 +188,6 @@ export class ImageNode extends DecoratorNode<any> {
       span.className = className;
     }
 
-    new ImageComponent({
-      target: span,
-      props: {
-        src: this.__src,
-        altText: this.__altText,
-        width: this.__width,
-        height: this.__height,
-        maxWidth: this.__maxWidth,
-        nodeKey: this.__key,
-        showCaption: this.__showCaption,
-        caption: this.__caption,
-        captionsEnabled: this.__captionsEnabled,
-        resizable: true,
-        editor: editor,
-      },
-    });
-
     return span;
   }
 
@@ -213,24 +203,23 @@ export class ImageNode extends DecoratorNode<any> {
     return this.__altText;
   }
 
-  decorate() /*: JSX.Element*/ {
-    /*return (
-      <Suspense fallback={null}>
-      <ImageComponent
-        src={this.__src}
-    altText={this.__altText}
-    width={this.__width}
-    height={this.__height}
-    maxWidth={this.__maxWidth}
-    nodeKey={this.getKey()}
-    showCaption={this.__showCaption}
-    caption={this.__caption}
-    captionsEnabled={this.__captionsEnabled}
-    resizable={true}
-    />
-    </Suspense>
-  );*/
-    return null;
+  decorate(editor: LexicalEditor, config: EditorConfig): DecoratorImageType {
+    return {
+      componentClass: ImageComponent,
+      props: {
+        src: this.__src,
+        altText: this.__altText,
+        width: this.__width,
+        height: this.__height,
+        maxWidth: this.__maxWidth,
+        nodeKey: this.__key,
+        showCaption: this.__showCaption,
+        caption: this.__caption,
+        captionsEnabled: this.__captionsEnabled,
+        resizable: true,
+        editor: editor,
+      },
+    };
   }
 }
 

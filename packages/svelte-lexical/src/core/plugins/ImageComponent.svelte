@@ -29,6 +29,9 @@
     clearSelection,
     createNodeSelectionStore,
   } from '../nodeSelectionStore';
+  import NestedComposer from '../NestedComposer.svelte';
+  import ContentEditable from '../ContentEditable.svelte';
+  import RichTextPlugin from './RichTextPlugin.svelte';
 
   export let src: string;
   export let altText: string;
@@ -230,6 +233,14 @@
       draggable="false" />
   {/await}
 </div>
+{#if showCaption}
+  <div class="image-caption-container">
+    <NestedComposer initialEditor={caption} parentEditor={editor}>
+      <RichTextPlugin />
+      <ContentEditable cssClass="ImageNode__contentEditable" />
+    </NestedComposer>
+  </div>
+{/if}
 {#if resizable && isNodeSelection(selection) && isFocused}
   <ImageResizer
     {showCaption}
@@ -244,7 +255,7 @@
 {/if}
 
 <style>
-  .ImageNode__contentEditable {
+  :global(.ImageNode__contentEditable) {
     min-height: 20px;
     border: 0px;
     resize: none;
