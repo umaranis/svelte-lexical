@@ -533,7 +533,7 @@
 <div class={viewClassName}>
   {#if !showLimited && isLimited}
     <div style="padding: 20px">
-      <span style="marginRight: 20">
+      <span style="margin-right: 20px">
         Detected large EditorState, this can impact debugging performance.
       </span>
       <button
