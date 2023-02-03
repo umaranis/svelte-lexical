@@ -4,7 +4,8 @@
     $isRangeSelection as isRangeSelection,
     COMMAND_PRIORITY_EDITOR,
   } from 'lexical';
-  import { onMount, getContext } from 'svelte';
+  import {$insertNodeToNearestRoot as insertNodeToNearestRoot} from '@lexical/utils';
+  import {onMount, getContext} from 'svelte';
   import {
     $createHorizontalRuleNode as createHorizontalRuleNode,
     INSERT_HORIZONTAL_RULE_COMMAND,
@@ -24,11 +25,7 @@
         const focusNode = selection.focus.getNode();
         if (focusNode !== null) {
           const horizontalRuleNode = createHorizontalRuleNode();
-          selection.insertParagraph();
-          selection.focus
-            .getNode()
-            .getTopLevelElementOrThrow()
-            .insertBefore(horizontalRuleNode);
+          insertNodeToNearestRoot(horizontalRuleNode);
         }
 
         return true;

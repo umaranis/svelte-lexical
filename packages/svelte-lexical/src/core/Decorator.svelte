@@ -1,19 +1,26 @@
 <script lang="ts">
   import {mergeRegister} from '@lexical/utils';
   import {DecoratorNode, type LexicalEditor} from 'lexical';
-  import {getContext, onMount, SvelteComponent} from 'svelte';
+  import {getAllContexts, getContext, onMount, SvelteComponent} from 'svelte';
+
+  const contexts = getAllContexts();
 
   const editor: LexicalEditor = getContext('editor');
+  // cache for svelte components
   const components: Record<string, SvelteComponent> = {};
+  // cache for dirty components identified by mutation listener (cache is cleared after decorator listener renders them)
   const dirtyComponents: Array<string> = [];
 
   onMount(() => {
-    // register Mutation Listener for all Decorator Node types
+    // register Mutation Listener for all Decorator Node types (except where skipDecorateRender = true)
     // 1- capture dirty nodes (`dirtyComponents`)
     // 2- remove SvelteComponent from cache (`components`) for destroyed nodes
     const unregisterCallBacks: Array<() => void> = [];
     editor._nodes.forEach((n) => {
-      if (n.klass.prototype instanceof DecoratorNode) {
+      if (
+        n.klass.prototype instanceof DecoratorNode &&
+        !n.klass.skipDecorateRender
+      ) {
         let unreg = editor.registerMutationListener(
           n.klass,
           (nodes, payload) => {
@@ -34,7 +41,7 @@
       ...unregisterCallBacks,
       // register Decorator listener to render nodes
       // use dirty nodes identified by the mutation listener
-      // 1- set `props` on existing components
+      // 1- set `props` on existing svelte components
       // 2- create new components and put them in cache
       editor.registerDecoratorListener<{
         componentClass: typeof SvelteComponent;
@@ -51,6 +58,7 @@
             components[nodeKey] = new decorator.componentClass({
               target: element,
               props: decorator.props,
+              context: contexts,
             });
           }
         });

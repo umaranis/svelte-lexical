@@ -6,14 +6,18 @@ import type {
   LexicalNode,
   DOMConversionOutput,
   EditorConfig,
+  LexicalEditor,
 } from 'lexical';
-import pkg, {$applyNodeReplacement, type LexicalEditor} from 'lexical';
+import {createCommand, DecoratorNode, $applyNodeReplacement} from 'lexical';
 import HorizontalRuleComponent from './HorizontalRuleComponent.svelte';
 
-const {createCommand, DecoratorNode} = pkg;
+export type SerializedHorizontalRuleNode = SerializedLexicalNode & {
+  type: 'horizontalrule';
+  version: 1;
+};
 
 export const INSERT_HORIZONTAL_RULE_COMMAND: LexicalCommand<void> =
-  createCommand();
+  createCommand('INSERT_HORIZONTAL_RULE_COMMAND');
 
 export class HorizontalRuleNode extends DecoratorNode<unknown> {
   static getType(): string {
@@ -24,7 +28,9 @@ export class HorizontalRuleNode extends DecoratorNode<unknown> {
     return new HorizontalRuleNode(node.__key);
   }
 
-  static importJSON(): HorizontalRuleNode {
+  static importJSON(
+    serializedNode: SerializedHorizontalRuleNode,
+  ): HorizontalRuleNode {
     return $createHorizontalRuleNode();
   }
 
@@ -36,6 +42,12 @@ export class HorizontalRuleNode extends DecoratorNode<unknown> {
       }),
     };
   }
+
+  /**
+   * It tells `Decorater.svelte` that this component doesn't need rendering during decorator listener call.
+   * `this.decorate` should also return null when skipDecorateRender is true
+   */
+  static skipDecorateRender = true;
 
   exportJSON(): SerializedLexicalNode {
     return {
@@ -49,18 +61,18 @@ export class HorizontalRuleNode extends DecoratorNode<unknown> {
   }
 
   createDOM(editorConfig: EditorConfig, editor: LexicalEditor): HTMLElement {
-    const div = document.createElement('div');
-    div.style.display = 'contents';
+    const hr = document.createElement('hr');
 
     new HorizontalRuleComponent({
-      target: div,
+      target: hr,
       props: {
         nodeKey: this.__key,
         editor,
+        self: hr,
       },
     });
 
-    return div;
+    return hr;
   }
 
   getTextContent(): '\n' {
@@ -75,6 +87,9 @@ export class HorizontalRuleNode extends DecoratorNode<unknown> {
     return false;
   }
 
+  /**
+   * @returns should return null if not participating in decorator rendering (skipDecorateRender should also be true)
+   */
   decorate() {
     return null;
   }

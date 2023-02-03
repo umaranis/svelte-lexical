@@ -39,6 +39,7 @@ module.exports = {
       {'ts-ignore': 'allow-with-description'},
     ],
     '@typescript-eslint/no-unused-vars': ['error', {args: 'none'}],
+    '@typescript-eslint/no-non-null-assertion': 'off'
   },
   settings: {
     //'svelte3/typescript': () => require('typescript'), // pass the TypeScript package to the Svelte plugin

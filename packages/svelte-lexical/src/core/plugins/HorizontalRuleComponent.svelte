@@ -19,8 +19,12 @@
 
   export let editor: LexicalEditor;
   export let nodeKey: string;
+  export let self: HTMLElement;
   let isSelected = createNodeSelectionStore(editor, nodeKey);
-  let self: EventTarget;
+
+  $: {
+    self.className = $isSelected ? 'selected' : '';
+  }
 
   function onDelete(event: KeyboardEvent) {
     if ($isSelected && isNodeSelection(getSelection())) {
@@ -63,5 +67,3 @@
     );
   });
 </script>
-
-<hr class:selected={$isSelected} bind:this={self} />
