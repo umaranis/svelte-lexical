@@ -1,11 +1,11 @@
 <script>
-  import {getContext} from 'svelte';
   import DropDown from './controls/DropDown.svelte';
   import {INSERT_HORIZONTAL_RULE_COMMAND} from '../../core/plugins/HorizontalRuleNode.ts';
   import {INSERT_IMAGE_COMMAND} from '../../core/plugins/ImagePlugin.svelte';
   import InsertImageDialog, {open, close} from './InsertImageDialog.svelte';
+  import {getEditor} from '../../core/svelteContext';
 
-  const editor = getContext('editor');
+  const editor = getEditor();
 </script>
 
 <DropDown

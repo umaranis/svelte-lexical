@@ -1,11 +1,12 @@
 <script lang="ts">
   import {mergeRegister} from '@lexical/utils';
   import {DecoratorNode, type LexicalEditor} from 'lexical';
-  import {getAllContexts, getContext, onMount, SvelteComponent} from 'svelte';
+  import {getAllContexts, onMount, SvelteComponent} from 'svelte';
+  import {getEditor} from './svelteContext';
 
   const contexts = getAllContexts();
 
-  const editor: LexicalEditor = getContext('editor');
+  const editor: LexicalEditor = getEditor();
   // cache for svelte components
   const components: Record<string, SvelteComponent> = {};
   // cache for dirty components identified by mutation listener (cache is cleared after decorator listener renders them)

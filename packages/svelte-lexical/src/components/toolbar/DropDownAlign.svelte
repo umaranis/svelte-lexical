@@ -1,5 +1,4 @@
 <script>
-  import { getContext } from 'svelte';
   import {
     FORMAT_ELEMENT_COMMAND,
     INDENT_CONTENT_COMMAND,
@@ -7,22 +6,21 @@
   } from 'lexical';
   import DropDown from './controls/DropDown.svelte';
   import Divider from './Divider.svelte';
-  import { isRTL } from '../editor-state/StateStoreRichText';
+  import {isRTL} from '../editor-state/StateStoreRichText';
+  import {getEditor} from '../../core/svelteContext';
 
-  const editor = getContext('editor');
+  const editor = getEditor();
 </script>
 
 <DropDown
   buttonLabel="Align"
   buttonIconClassName="icon left-align"
-  buttonClassName="toolbar-item spaced"
->
+  buttonClassName="toolbar-item spaced">
   <button
     on:click={() => {
       editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'left');
     }}
-    class="item"
-  >
+    class="item">
     <i class="icon left-align" />
     <span class="text">Left Align</span>
   </button>
@@ -30,8 +28,7 @@
     on:click={() => {
       editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'center');
     }}
-    class="item"
-  >
+    class="item">
     <i class="icon center-align" />
     <span class="text">Center Align</span>
   </button>
@@ -39,8 +36,7 @@
     on:click={() => {
       editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'right');
     }}
-    class="item"
-  >
+    class="item">
     <i class="icon right-align" />
     <span class="text">Right Align</span>
   </button>
@@ -48,8 +44,7 @@
     on:click={() => {
       editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'justify');
     }}
-    class="item"
-  >
+    class="item">
     <i class="icon justify-align" />
     <span class="text">Justify Align</span>
   </button>
@@ -58,8 +53,7 @@
     on:click={() => {
       editor.dispatchCommand(INDENT_CONTENT_COMMAND);
     }}
-    class="item"
-  >
+    class="item">
     <i class={'icon ' + ($isRTL ? 'outdent' : 'indent')} />
     <span class="text">Indent</span>
   </button>
@@ -67,8 +61,7 @@
     on:click={() => {
       editor.dispatchCommand(OUTDENT_CONTENT_COMMAND);
     }}
-    class="item"
-  >
+    class="item">
     <i class={'icon ' + ($isRTL ? 'indent' : 'outdent')} />
     <span class="text">Outdent</span>
   </button>

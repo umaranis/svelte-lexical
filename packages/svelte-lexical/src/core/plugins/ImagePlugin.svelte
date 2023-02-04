@@ -38,16 +38,17 @@
     mergeRegister,
   } from '@lexical/utils';
 
-  import {onMount, getContext} from 'svelte';
+  import {onMount} from 'svelte';
   import {
     $createImageNode as createImageNode,
     $isImageNode as isImageNode,
     ImageNode,
     type ImagePayload,
   } from './ImageNode';
+  import {getEditor} from '../svelteContext';
   import {CAN_USE_DOM} from '../../utils/canUseDOM';
 
-  const editor: LexicalEditor = getContext('editor');
+  const editor: LexicalEditor = getEditor();
 
   onMount(() => {
     if (!editor.hasNodes([ImageNode])) {

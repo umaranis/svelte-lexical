@@ -1,9 +1,15 @@
-<script>
-  import { onMount, getContext } from 'svelte';
-  import { createEmptyHistoryState, registerHistory } from '@lexical/history';
+<script lang="ts">
+  import {onMount} from 'svelte';
+  import {
+    createEmptyHistoryState,
+    registerHistory,
+    type HistoryState,
+  } from '@lexical/history';
+  import type {LexicalEditor} from 'lexical';
+  import {getEditor} from '../svelteContext';
 
-  const editor = getContext('editor');
-  export let externalHistoryState = createEmptyHistoryState();
+  const editor: LexicalEditor = getEditor();
+  export let externalHistoryState: HistoryState = createEmptyHistoryState();
   export let delay = 1000;
 
   // returns callback to unregister

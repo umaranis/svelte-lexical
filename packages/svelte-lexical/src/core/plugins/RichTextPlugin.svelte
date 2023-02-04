@@ -1,9 +1,10 @@
 <script>
-  import {onMount, getContext} from 'svelte';
+  import {onMount} from 'svelte';
   import {registerRichText} from '@lexical/rich-text';
   import Decorator from '../Decorator.svelte';
+  import {getEditor} from '../svelteContext';
 
-  const editor = getContext('editor');
+  const editor = getEditor();
 
   // returns callback to unregister
   onMount(() => registerRichText(editor));

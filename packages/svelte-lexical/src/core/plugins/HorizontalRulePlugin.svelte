@@ -5,13 +5,14 @@
     COMMAND_PRIORITY_EDITOR,
   } from 'lexical';
   import {$insertNodeToNearestRoot as insertNodeToNearestRoot} from '@lexical/utils';
-  import {onMount, getContext} from 'svelte';
+  import {onMount} from 'svelte';
   import {
     $createHorizontalRuleNode as createHorizontalRuleNode,
     INSERT_HORIZONTAL_RULE_COMMAND,
   } from './HorizontalRuleNode.ts';
+  import {getEditor} from '../svelteContext';
 
-  const editor = getContext('editor');
+  const editor = getEditor();
 
   onMount(() => {
     editor.registerCommand(

@@ -1,5 +1,5 @@
 <script>
-  import {onMount, getContext} from 'svelte';
+  import {onMount} from 'svelte';
   import {
     $handleListInsertParagraph as handleListInsertParagraph,
     indentList,
@@ -17,8 +17,9 @@
     INSERT_PARAGRAPH_COMMAND,
     OUTDENT_CONTENT_COMMAND,
   } from 'lexical';
+  import {getEditor} from '../svelteContext';
 
-  const editor = getContext('editor');
+  const editor = getEditor();
 
   onMount(() => {
     // returns callback to unregister

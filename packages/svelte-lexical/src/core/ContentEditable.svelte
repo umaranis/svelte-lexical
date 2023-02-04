@@ -1,7 +1,8 @@
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <script lang="ts">
   import type {LexicalEditor} from 'lexical';
-  import {getContext, onMount} from 'svelte';
+  import {onMount} from 'svelte';
+  import {getEditor} from "./svelteContext";
 
   export let ariaActiveDescendantID: string;
   export let ariaAutoComplete: 'list' | 'none' | 'inline' | 'both' | null;
@@ -27,7 +28,7 @@
   export let testid: string;
 
   let isEditable = false;
-  const editor: LexicalEditor = getContext('editor');
+  const editor: LexicalEditor = getEditor();
   let ref: null | HTMLElement;
 
   onMount(() => {

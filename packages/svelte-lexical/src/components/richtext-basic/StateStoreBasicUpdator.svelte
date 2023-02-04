@@ -3,10 +3,11 @@
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
   } from 'lexical';
-  import { $isHeadingNode as isHeadingNode } from '@lexical/rich-text';
-  import { ListNode, $isListNode as isListNode } from '@lexical/list';
-  import { $getNearestNodeOfType as getNearestNodeOfType } from '@lexical/utils';
-  import { getContext, onMount } from 'svelte';
+  import {$isHeadingNode as isHeadingNode} from '@lexical/rich-text';
+  import {ListNode, $isListNode as isListNode} from '@lexical/list';
+  import {$getNearestNodeOfType as getNearestNodeOfType} from '@lexical/utils';
+  import {onMount} from 'svelte';
+  import {getEditor} from '../../core/svelteContext';
 
   import {
     isBold,
@@ -17,15 +18,16 @@
     selectedElementKey,
   } from '../editor-state/StateStoreBasic';
 
-  const editor = getContext('editor');
+  const editor = getEditor();
 
   const updateState = () => {
     const selection = getSelection();
     if (isRangeSelection(selection)) {
       const anchorNode = selection.anchor.getNode();
-      const element = anchorNode.getKey() === 'root'
-        ? anchorNode
-        : anchorNode.getTopLevelElementOrThrow();
+      const element =
+        anchorNode.getKey() === 'root'
+          ? anchorNode
+          : anchorNode.getTopLevelElementOrThrow();
       const elementKey = element.getKey();
       const elementDOM = editor.getElementByKey(elementKey);
 
@@ -53,7 +55,7 @@
 
   // unregisters onDestory using returned callback
   onMount(() => {
-    editor.registerUpdateListener(({ editorState }) => {
+    editor.registerUpdateListener(({editorState}) => {
       editorState.read(() => {
         updateState();
       });

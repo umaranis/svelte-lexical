@@ -4,9 +4,10 @@
     UNDO_COMMAND,
     COMMAND_PRIORITY_CRITICAL,
   } from 'lexical';
-  import {getContext, onMount} from 'svelte';
+  import {onMount} from 'svelte';
+  import {getEditor} from '../../core/svelteContext';
 
-  const editor = getContext('editor');
+  const editor = getEditor();
 
   let canUndo = false;
 

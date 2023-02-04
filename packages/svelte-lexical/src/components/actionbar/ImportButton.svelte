@@ -1,9 +1,9 @@
 <script lang="ts">
   import type {LexicalEditor} from 'lexical';
-  import {getContext} from 'svelte';
   import {importFile} from '@lexical/file';
+  import {getEditor} from '../../core/svelteContext';
 
-  const editor: LexicalEditor = getContext('editor');
+  const editor: LexicalEditor = getEditor();
 </script>
 
 <button

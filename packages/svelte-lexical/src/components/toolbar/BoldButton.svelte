@@ -1,9 +1,9 @@
 <script>
-  import { getContext } from 'svelte';
-  import { FORMAT_TEXT_COMMAND } from 'lexical';
-  import { isBold } from '../editor-state/StateStoreBasic';
+  import {FORMAT_TEXT_COMMAND} from 'lexical';
+  import {isBold} from '../editor-state/StateStoreBasic';
+  import {getEditor} from '../../core/svelteContext';
 
-  const editor = getContext('editor');
+  const editor = getEditor();
 </script>
 
 <button
@@ -11,7 +11,6 @@
     editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold');
   }}
   class={'toolbar-item spaced ' + ($isBold ? 'active' : '')}
-  aria-label="Format Bold"
->
+  aria-label="Format Bold">
   <i class="format bold" />
 </button>

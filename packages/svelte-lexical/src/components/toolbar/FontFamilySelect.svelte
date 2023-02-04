@@ -1,14 +1,14 @@
 <script>
-  import { getContext } from 'svelte';
-  import { $patchStyleText as patchStyleText } from '@lexical/selection';
+  import {$patchStyleText as patchStyleText} from '@lexical/selection';
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
   } from 'lexical';
   import Select from './controls/Select.svelte';
-  import { fontFamily } from '../editor-state/StateStoreRichText';
+  import {fontFamily} from '../editor-state/StateStoreRichText';
+  import {getEditor} from '../../core/svelteContext';
 
-  const editor = getContext('editor');
+  const editor = getEditor();
 
   function applyStyleText(styles) {
     editor.update(() => {
@@ -22,7 +22,7 @@
 
 <Select
   class="toolbar-item font-family"
-  on:change={(e) => applyStyleText({ 'font-family': e.target.value })}
+  on:change={(e) => applyStyleText({'font-family': e.target.value})}
   options={[
     'Arial',
     'Courier New',
@@ -31,6 +31,5 @@
     'Trebuchet MS',
     'Verdana',
   ]}
-  bind:value={$fontFamily}
-/>
+  bind:value={$fontFamily} />
 <i class="chevron-down inside" />

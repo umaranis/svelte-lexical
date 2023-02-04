@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
@@ -7,10 +7,10 @@
     $isParentElementRTL as isParentElementRTL,
     $getSelectionStyleValueForProperty as getSelectionStyleValueForProperty,
   } from '@lexical/selection';
-  import { $isHeadingNode as isHeadingNode } from '@lexical/rich-text';
-  import { ListNode, $isListNode as isListNode } from '@lexical/list';
-  import { $getNearestNodeOfType as getNearestNodeOfType } from '@lexical/utils';
-  import { getContext, onMount } from 'svelte';
+  import {$isHeadingNode as isHeadingNode} from '@lexical/rich-text';
+  import {ListNode, $isListNode as isListNode} from '@lexical/list';
+  import {$getNearestNodeOfType as getNearestNodeOfType} from '@lexical/utils';
+  import {onMount} from 'svelte';
 
   import {
     isBold,
@@ -20,17 +20,23 @@
     blockType,
     selectedElementKey,
   } from '../editor-state/StateStoreBasic';
-  import { isRTL, fontSize, fontFamily } from '../editor-state/StateStoreRichText';
+  import {
+    isRTL,
+    fontSize,
+    fontFamily,
+  } from '../editor-state/StateStoreRichText';
+  import {getEditor} from '../../core/svelteContext';
 
-  const editor = getContext('editor');
+  const editor = getEditor();
 
   const updateState = () => {
     const selection = getSelection();
     if (isRangeSelection(selection)) {
       const anchorNode = selection.anchor.getNode();
-      const element = anchorNode.getKey() === 'root'
-        ? anchorNode
-        : anchorNode.getTopLevelElementOrThrow();
+      const element =
+        anchorNode.getKey() === 'root'
+          ? anchorNode
+          : anchorNode.getTopLevelElementOrThrow();
       const elementKey = element.getKey();
       const elementDOM = editor.getElementByKey(elementKey);
 
@@ -53,8 +59,13 @@
       if (elementDOM !== null) {
         $selectedElementKey = elementKey;
         if (isListNode(element)) {
-          const parentList = getNearestNodeOfType<ListNode>(anchorNode, ListNode);
-          const type = parentList ? parentList.getListType() : element.getListType();
+          const parentList = getNearestNodeOfType<ListNode>(
+            anchorNode,
+            ListNode,
+          );
+          const type = parentList
+            ? parentList.getListType()
+            : element.getListType();
           $blockType = type;
         } else {
           const type = isHeadingNode(element)
@@ -68,14 +79,22 @@
         }
       }
       // Hande buttons
-      $fontSize = getSelectionStyleValueForProperty(selection, 'font-size', '15px');
-      $fontFamily = getSelectionStyleValueForProperty(selection, 'font-family', 'Arial');
+      $fontSize = getSelectionStyleValueForProperty(
+        selection,
+        'font-size',
+        '15px',
+      );
+      $fontFamily = getSelectionStyleValueForProperty(
+        selection,
+        'font-family',
+        'Arial',
+      );
     }
   };
 
   // unregisters onDestory using returned callback
   onMount(() => {
-    editor.registerUpdateListener(({ editorState }) => {
+    editor.registerUpdateListener(({editorState}) => {
       editorState.read(() => {
         updateState();
       });

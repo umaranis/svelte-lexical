@@ -24,9 +24,10 @@
     KEY_ESCAPE_COMMAND,
     KEY_SPACE_COMMAND,
   } from 'lexical';
-  import {getContext, onMount} from 'svelte';
+  import {onMount} from 'svelte';
+  import {getEditor} from '../svelteContext';
 
-  const editor: LexicalEditor = getContext('editor');
+  const editor: LexicalEditor = getEditor();
 
   onMount(() => {
     return mergeRegister(

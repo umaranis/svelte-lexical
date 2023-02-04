@@ -21,7 +21,8 @@
     $isTextNode as isTextNode,
     DEPRECATED_$isGridSelection,
   } from 'lexical';
-  import {getContext, onMount} from 'svelte';
+  import {onMount} from 'svelte';
+  import {getEditor} from "../svelteContext";
 
   const NON_SINGLE_WIDTH_CHARS_REPLACEMENT: Readonly<Record<string, string>> =
     Object.freeze({
@@ -47,7 +48,7 @@
   export let timeTravelPanelSliderClassName: string;
   export let viewClassName: string;
 
-  const editor: LexicalEditor = getContext('editor');
+  const editor: LexicalEditor = getEditor();
 
   let timeStampedEditorStates: Array<[number, EditorState]> = [];
   let content = '';

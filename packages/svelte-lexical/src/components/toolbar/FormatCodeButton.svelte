@@ -1,10 +1,12 @@
 <script>
-  import { getContext } from 'svelte';
-  import { FORMAT_TEXT_COMMAND } from 'lexical';
+  import {FORMAT_TEXT_COMMAND} from 'lexical';
   //import { isCode } from '../editor-state/StateStoreBasic.js';
 
-  const editor = getContext('editor');
+  import {getEditor} from '../../core/svelteContext';
+
+  const editor = getEditor();
 </script>
+
 <!--
 <button
   on:click={() => {

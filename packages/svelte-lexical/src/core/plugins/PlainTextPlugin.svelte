@@ -1,8 +1,9 @@
 <script>
-  import { onMount, getContext } from 'svelte';
-  import { registerPlainText } from '@lexical/plain-text';
+  import {onMount} from 'svelte';
+  import {registerPlainText} from '@lexical/plain-text';
+  import {getEditor} from '../svelteContext';
 
-  const editor = getContext('editor');
+  const editor = getEditor();
 
   // returns callback to unregister
   onMount(() => registerPlainText(editor));

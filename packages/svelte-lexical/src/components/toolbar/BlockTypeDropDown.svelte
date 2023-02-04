@@ -1,5 +1,4 @@
 <script lang="ts">
-  import {getContext} from 'svelte';
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
@@ -21,6 +20,7 @@
     REMOVE_LIST_COMMAND,
   } from '@lexical/list';
   import {blockType} from '../editor-state/StateStoreBasic';
+  import {getEditor} from '../../core/svelteContext';
 
   // TODO: convert this component to using DropDown.svelte
 
@@ -39,7 +39,7 @@
     quote: 'Quote',
   };
 
-  const editor: LexicalEditor = getContext('editor');
+  const editor: LexicalEditor = getEditor();
   let button;
   let showBlockOptionsDropDown = false;
 

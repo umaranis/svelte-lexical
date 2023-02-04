@@ -1,14 +1,14 @@
 <script>
-  import { getContext } from 'svelte';
-  import { $patchStyleText as patchStyleText } from '@lexical/selection';
+  import {$patchStyleText as patchStyleText} from '@lexical/selection';
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
   } from 'lexical';
   import Select from './controls/Select.svelte';
-  import { fontSize } from '../editor-state/StateStoreRichText';
+  import {fontSize} from '../editor-state/StateStoreRichText';
+  import {getEditor} from '../../core/svelteContext';
 
-  const editor = getContext('editor');
+  const editor = getEditor();
 
   function applyStyleText(styles) {
     editor.update(() => {
@@ -22,7 +22,7 @@
 
 <Select
   class="toolbar-item font-size"
-  on:change={(e) => applyStyleText({ 'font-size': e.target.value })}
+  on:change={(e) => applyStyleText({'font-size': e.target.value})}
   options={[
     '10px',
     '11px',
@@ -36,6 +36,5 @@
     '19px',
     '20px',
   ]}
-  bind:value={$fontSize}
-/>
+  bind:value={$fontSize} />
 <i class="chevron-down inside" />
