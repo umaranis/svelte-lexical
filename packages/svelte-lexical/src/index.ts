@@ -1,6 +1,7 @@
 export {default as PlainTextPlugin} from './core/plugins/PlainTextPlugin.svelte';
 export {default as RichTextPlugin} from './core/plugins/RichTextPlugin.svelte';
 export {default as HistoryPlugin} from './core/plugins/HistoryPlugin.svelte';
+export {default as SharedHistoryPlugin} from './core/plugins/SharedHistoryPlugin.svelte';
 export {default as ListPlugin} from './core/plugins/ListPlugin.svelte';
 export {default as CheckListPlugin} from './core/plugins/CheckListPlugin.svelte';
 export {default as HorizontalRulePlugin} from './core/plugins/HorizontalRulePlugin.svelte';

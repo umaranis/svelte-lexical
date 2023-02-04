@@ -16,6 +16,7 @@
   import ActionBar from '../actionbar/ActionBar.svelte';
   import ToolbarRichText from './ToolbarRichText.svelte';
   import type {SvelteComponent} from 'svelte';
+  import {getHistoryState} from '../../core/svelteContext';
 
   export let theme: EditorThemeClasses;
 
@@ -51,7 +52,7 @@
         </div>
       </div>
       <RichTextPlugin />
-      <HistoryPlugin />
+      <HistoryPlugin externalHistoryState={getHistoryState()} />
       <ListPlugin />
       <CheckListPlugin />
       <HorizontalRulePlugin />

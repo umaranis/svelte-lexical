@@ -5,7 +5,7 @@
     ToolbarRichText,
     ActionBar,
     RichTextPlugin,
-    HistoryPlugin,
+    SharedHistoryPlugin,
     ListPlugin,
     CheckListPlugin,
     HorizontalRulePlugin,
@@ -48,7 +48,7 @@
         </div>
       </div>
       <RichTextPlugin />
-      <HistoryPlugin />
+      <SharedHistoryPlugin />
       <ListPlugin />
       <CheckListPlugin />
       <HorizontalRulePlugin />

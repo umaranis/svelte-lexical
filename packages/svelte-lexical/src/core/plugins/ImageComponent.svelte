@@ -32,6 +32,7 @@
   import NestedComposer from '../NestedComposer.svelte';
   import ContentEditable from '../ContentEditable.svelte';
   import RichTextPlugin from './RichTextPlugin.svelte';
+  import SharedHistoryPlugin from './SharedHistoryPlugin.svelte';
 
   export let src: string;
   export let altText: string;
@@ -236,6 +237,7 @@
 {#if showCaption}
   <div class="image-caption-container">
     <NestedComposer initialEditor={caption} parentEditor={editor}>
+      <SharedHistoryPlugin />
       <RichTextPlugin />
       <ContentEditable cssClass="ImageNode__contentEditable" />
     </NestedComposer>
