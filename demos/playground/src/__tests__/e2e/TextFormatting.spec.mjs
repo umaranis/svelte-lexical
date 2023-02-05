@@ -6,18 +6,27 @@
  *
  */
 
-import {moveToLineBeginning} from '../keyboardShortcuts/index.mjs';
+import {
+  moveLeft,
+  moveRight,
+  moveToLineBeginning,
+  moveToLineEnd,
+  selectCharacters,
+  toggleBold,
+  toggleItalic,
+  toggleUnderline,
+} from '../keyboardShortcuts/index.mjs';
 import {
   assertHTML,
   assertSelection,
   click,
+  evaluate,
+  expect,
   focusEditor,
   html,
   initialize,
-  keyDownCtrlOrMeta,
-  keyUpCtrlOrMeta,
-  repeat,
-  selectOption,
+  insertSampleImage,
+  SAMPLE_IMAGE_URL,
   test,
   waitForSelector,
 } from '../utils/index.mjs';
@@ -32,22 +41,18 @@ test.describe('TextFormatting', () => {
 
     await focusEditor(page);
     await page.keyboard.type('Hello');
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('b');
-    await keyUpCtrlOrMeta(page);
+    await toggleBold(page);
     await page.keyboard.type(' World');
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             World
           </strong>
         </p>
@@ -60,22 +65,18 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 1, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('b');
-    await keyUpCtrlOrMeta(page);
+    await toggleBold(page);
     await page.keyboard.type('!');
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             World
           </strong>
           <span data-lexical-text="true">!</span>
@@ -98,22 +99,18 @@ test.describe('TextFormatting', () => {
 
     await focusEditor(page);
     await page.keyboard.type('Hello');
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('i');
-    await keyUpCtrlOrMeta(page);
+    await toggleItalic(page);
     await page.keyboard.type(' World');
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <em
             class="PlaygroundEditorTheme__textItalic"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             World
           </em>
         </p>
@@ -126,22 +123,18 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 1, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('i');
-    await keyUpCtrlOrMeta(page);
+    await toggleItalic(page);
     await page.keyboard.type('!');
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <em
             class="PlaygroundEditorTheme__textItalic"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             World
           </em>
           <span data-lexical-text="true">!</span>
@@ -164,12 +157,8 @@ test.describe('TextFormatting', () => {
 
     await focusEditor(page);
     await page.keyboard.type('Hello world!');
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.down('Shift');
-    await repeat(5, async () => {
-      await page.keyboard.press('ArrowLeft');
-    });
-    await page.keyboard.up('Shift');
+    await moveLeft(page);
+    await selectCharacters(page, 'left', 5);
     await assertSelection(page, {
       anchorOffset: 11,
       anchorPath: [0, 0, 0],
@@ -177,21 +166,17 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 0, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('b');
-    await keyUpCtrlOrMeta(page);
+    await toggleBold(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             world
           </strong>
           <span data-lexical-text="true">!</span>
@@ -199,30 +184,27 @@ test.describe('TextFormatting', () => {
       `,
     );
     await assertSelection(page, {
-      anchorOffset: 0,
+      anchorOffset: 5,
       anchorPath: [0, 1, 0],
-      focusOffset: 5,
+      focusOffset: 0,
       focusPath: [0, 1, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('b');
-    await keyUpCtrlOrMeta(page);
+    await toggleBold(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello world!</span>
         </p>
       `,
     );
     await assertSelection(page, {
-      anchorOffset: 6,
+      anchorOffset: 11,
       anchorPath: [0, 0, 0],
-      focusOffset: 11,
+      focusOffset: 6,
       focusPath: [0, 0, 0],
     });
   });
@@ -251,27 +233,22 @@ test.describe('TextFormatting', () => {
       delay: 100,
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.type('b');
-    await keyUpCtrlOrMeta(page);
+    await toggleBold(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <strong
             class="PlaygroundEditorTheme__textBold"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             hello world
           </strong>
         </p>
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">hello world</span>
         </p>
       `,
@@ -286,12 +263,8 @@ test.describe('TextFormatting', () => {
 
     await focusEditor(page);
     await page.keyboard.type('Hello world!');
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.down('Shift');
-    await repeat(5, async () => {
-      await page.keyboard.press('ArrowLeft');
-    });
-    await page.keyboard.up('Shift');
+    await moveLeft(page);
+    await selectCharacters(page, 'left', 5);
     await assertSelection(page, {
       anchorOffset: 11,
       anchorPath: [0, 0, 0],
@@ -299,21 +272,17 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 0, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('i');
-    await keyUpCtrlOrMeta(page);
+    await toggleItalic(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <em
             class="PlaygroundEditorTheme__textItalic"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             world
           </em>
           <span data-lexical-text="true">!</span>
@@ -321,30 +290,27 @@ test.describe('TextFormatting', () => {
       `,
     );
     await assertSelection(page, {
-      anchorOffset: 0,
+      anchorOffset: 5,
       anchorPath: [0, 1, 0],
-      focusOffset: 5,
+      focusOffset: 0,
       focusPath: [0, 1, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('i');
-    await keyUpCtrlOrMeta(page);
+    await toggleItalic(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello world!</span>
         </p>
       `,
     );
     await assertSelection(page, {
-      anchorOffset: 6,
+      anchorOffset: 11,
       anchorPath: [0, 0, 0],
-      focusOffset: 11,
+      focusOffset: 6,
       focusPath: [0, 0, 0],
     });
   });
@@ -357,12 +323,8 @@ test.describe('TextFormatting', () => {
 
     await focusEditor(page);
     await page.keyboard.type('Hello world!');
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.down('Shift');
-    await repeat(5, async () => {
-      await page.keyboard.press('ArrowLeft');
-    });
-    await page.keyboard.up('Shift');
+    await moveLeft(page);
+    await selectCharacters(page, 'left', 5);
     await assertSelection(page, {
       anchorOffset: 11,
       anchorPath: [0, 0, 0],
@@ -370,21 +332,17 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 0, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('u');
-    await keyUpCtrlOrMeta(page);
+    await toggleUnderline(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <span
             class="PlaygroundEditorTheme__textUnderline"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             world
           </span>
           <span data-lexical-text="true">!</span>
@@ -392,36 +350,31 @@ test.describe('TextFormatting', () => {
       `,
     );
     await assertSelection(page, {
-      anchorOffset: 0,
+      anchorOffset: 5,
       anchorPath: [0, 1, 0],
-      focusOffset: 5,
+      focusOffset: 0,
       focusPath: [0, 1, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('u');
-    await keyUpCtrlOrMeta(page);
+    await toggleUnderline(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello world!</span>
         </p>
       `,
     );
     await assertSelection(page, {
-      anchorOffset: 6,
+      anchorOffset: 11,
       anchorPath: [0, 0, 0],
-      focusOffset: 11,
+      focusOffset: 6,
       focusPath: [0, 0, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('u');
-    await keyUpCtrlOrMeta(page);
+    await toggleUnderline(page);
 
     await click(page, '.strikethrough');
 
@@ -430,13 +383,11 @@ test.describe('TextFormatting', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <span
             class="PlaygroundEditorTheme__textUnderlineStrikethrough"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             world
           </span>
           <span data-lexical-text="true">!</span>
@@ -444,9 +395,9 @@ test.describe('TextFormatting', () => {
       `,
     );
     await assertSelection(page, {
-      anchorOffset: 0,
+      anchorOffset: 5,
       anchorPath: [0, 1, 0],
-      focusOffset: 5,
+      focusOffset: 0,
       focusPath: [0, 1, 0],
     });
 
@@ -457,13 +408,11 @@ test.describe('TextFormatting', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <span
             class="PlaygroundEditorTheme__textUnderline"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             world
           </span>
           <span data-lexical-text="true">!</span>
@@ -471,9 +420,9 @@ test.describe('TextFormatting', () => {
       `,
     );
     await assertSelection(page, {
-      anchorOffset: 0,
+      anchorOffset: 5,
       anchorPath: [0, 1, 0],
-      focusOffset: 5,
+      focusOffset: 0,
       focusPath: [0, 1, 0],
     });
   });
@@ -486,12 +435,8 @@ test.describe('TextFormatting', () => {
 
     await focusEditor(page);
     await page.keyboard.type('Hello world!');
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.down('Shift');
-    await repeat(5, async () => {
-      await page.keyboard.press('ArrowLeft');
-    });
-    await page.keyboard.up('Shift');
+    await moveLeft(page);
+    await selectCharacters(page, 'left', 5);
 
     await assertSelection(page, {
       anchorOffset: 11,
@@ -500,16 +445,15 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 0, 0],
     });
 
-    await waitForSelector(page, '.font-size');
-    await selectOption(page, '.font-size', {value: '10px'});
+    await click(page, '.font-size');
+    await click(page, 'button:has-text("10px")');
 
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <span style="font-size: 10px;" data-lexical-text="true">world</span>
           <span data-lexical-text="true">!</span>
@@ -533,12 +477,9 @@ test.describe('TextFormatting', () => {
 
     await focusEditor(page);
     await page.keyboard.type('Hello world!');
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.down('Shift');
-    await repeat(5, async () => {
-      await page.keyboard.press('ArrowLeft');
-    });
-    await page.keyboard.up('Shift');
+
+    await moveLeft(page);
+    await selectCharacters(page, 'left', 5);
 
     await assertSelection(page, {
       anchorOffset: 11,
@@ -547,16 +488,15 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 0, 0],
     });
 
-    await waitForSelector(page, '.font-size');
-    await selectOption(page, '.font-size', {value: '10px'});
+    await click(page, '.font-size');
+    await click(page, 'button:has-text("10px")');
 
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <span style="font-size: 10px;" data-lexical-text="true">world</span>
           <span data-lexical-text="true">!</span>
@@ -571,21 +511,19 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 1, 0],
     });
 
-    await waitForSelector(page, '.font-family');
-    await selectOption(page, '.font-family', {value: 'Georgia'});
+    await click(page, '.font-family');
+    await click(page, 'button:has-text("Georgia")');
 
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <span
             style="font-size: 10px; font-family: Georgia;"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             world
           </span>
           <span data-lexical-text="true">!</span>
@@ -600,21 +538,19 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 1, 0],
     });
 
-    await waitForSelector(page, '.font-size');
-    await selectOption(page, '.font-size', {value: '20px'});
+    await click(page, '.font-size');
+    await click(page, 'button:has-text("20px")');
 
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <span
             style="font-size: 20px; font-family: Georgia;"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             world
           </span>
           <span data-lexical-text="true">!</span>
@@ -639,12 +575,8 @@ test.describe('TextFormatting', () => {
 
     await focusEditor(page);
     await page.keyboard.type('Hello world!');
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.down('Shift');
-    await repeat(5, async () => {
-      await page.keyboard.press('ArrowLeft');
-    });
-    await page.keyboard.up('Shift');
+    await moveLeft(page);
+    await selectCharacters(page, 'left', 5);
     await assertSelection(page, {
       anchorOffset: 11,
       anchorPath: [0, 0, 0],
@@ -652,21 +584,17 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 0, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('b');
-    await keyUpCtrlOrMeta(page);
+    await toggleBold(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             world
           </strong>
           <span data-lexical-text="true">!</span>
@@ -674,18 +602,15 @@ test.describe('TextFormatting', () => {
       `,
     );
     await assertSelection(page, {
-      anchorOffset: 0,
+      anchorOffset: 5,
       anchorPath: [0, 1, 0],
-      focusOffset: 5,
+      focusOffset: 0,
       focusPath: [0, 1, 0],
     });
 
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.down('Shift');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.up('Shift');
+    await moveLeft(page);
+    await moveRight(page);
+    await selectCharacters(page, 'right', 2);
     await assertSelection(page, {
       anchorOffset: 1,
       anchorPath: [0, 1, 0],
@@ -693,33 +618,27 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 1, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('i');
-    await keyUpCtrlOrMeta(page);
+    await toggleItalic(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             w
           </strong>
           <strong
             class="PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textItalic"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             or
           </strong>
           <strong
             class="PlaygroundEditorTheme__textBold"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             ld
           </strong>
           <span data-lexical-text="true">!</span>
@@ -733,33 +652,27 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 2, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('b');
-    await keyUpCtrlOrMeta(page);
+    await toggleBold(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             w
           </strong>
           <em
             class="PlaygroundEditorTheme__textItalic"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             or
           </em>
           <strong
             class="PlaygroundEditorTheme__textBold"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             ld
           </strong>
           <span data-lexical-text="true">!</span>
@@ -773,13 +686,8 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 2, 0],
     });
 
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.down('Shift');
-    await repeat(5, async () => {
-      await page.keyboard.press('ArrowRight');
-    });
-    await page.keyboard.up('Shift');
+    await moveLeft(page, 2);
+    await selectCharacters(page, 'right', 5);
     await assertSelection(page, {
       anchorOffset: 0,
       anchorPath: [0, 1, 0],
@@ -787,21 +695,17 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 3, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('b');
-    await keyUpCtrlOrMeta(page);
+    await toggleBold(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello w</span>
           <em
             class="PlaygroundEditorTheme__textItalic"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             or
           </em>
           <span data-lexical-text="true">ld!</span>
@@ -815,21 +719,17 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 2, 0],
     });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('i');
-    await keyUpCtrlOrMeta(page);
+    await toggleItalic(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello</span>
           <em
             class="PlaygroundEditorTheme__textItalic"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             world
           </em>
           <span data-lexical-text="true">!</span>
@@ -837,32 +737,20 @@ test.describe('TextFormatting', () => {
       `,
     );
 
-    if (browserName === 'webkit') {
-      await assertSelection(page, {
-        anchorOffset: 0,
-        anchorPath: [0, 1, 0],
-        focusOffset: 5,
-        focusPath: [0, 1, 0],
-      });
-    } else {
-      await assertSelection(page, {
-        anchorOffset: 6,
-        anchorPath: [0, 0, 0],
-        focusOffset: 5,
-        focusPath: [0, 1, 0],
-      });
-    }
+    await assertSelection(page, {
+      anchorOffset: 0,
+      anchorPath: [0, 1, 0],
+      focusOffset: 5,
+      focusPath: [0, 1, 0],
+    });
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('i');
-    await keyUpCtrlOrMeta(page);
+    await toggleItalic(page);
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Hello world!</span>
         </p>
       `,
@@ -884,15 +772,11 @@ test.describe('TextFormatting', () => {
     await focusEditor(page);
     await page.keyboard.type('123');
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('b');
-    await keyUpCtrlOrMeta(page);
+    await toggleBold(page);
 
     await page.keyboard.type('456');
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('b');
-    await keyUpCtrlOrMeta(page);
+    await toggleBold(page);
 
     await page.keyboard.type('789');
 
@@ -902,15 +786,11 @@ test.describe('TextFormatting', () => {
 
     await page.keyboard.type('abc');
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('b');
-    await keyUpCtrlOrMeta(page);
+    await toggleBold(page);
 
     await page.keyboard.type('def');
 
-    await keyDownCtrlOrMeta(page);
-    await page.keyboard.press('b');
-    await keyUpCtrlOrMeta(page);
+    await toggleBold(page);
 
     await page.keyboard.type('ghi');
 
@@ -919,13 +799,11 @@ test.describe('TextFormatting', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">123</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             456
           </strong>
           <span data-lexical-text="true">789</span>
@@ -933,8 +811,7 @@ test.describe('TextFormatting', () => {
           <span data-lexical-text="true">abc</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             def
           </strong>
           <span data-lexical-text="true">ghi</span>
@@ -952,26 +829,29 @@ test.describe('TextFormatting', () => {
     await page.keyboard.press('ArrowUp');
     await moveToLineBeginning(page);
 
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
+    await moveRight(page, 2);
 
     await page.keyboard.down('Shift');
     await page.keyboard.press('ArrowDown');
-    await repeat(8, async () => {
-      await page.keyboard.press('ArrowRight');
-    });
+    await moveRight(page, 8);
     await page.keyboard.down('Shift');
 
-    await page.keyboard.type('c');
+    await assertSelection(page, {
+      anchorOffset: 2,
+      anchorPath: [0, 0, 0],
+      focusOffset: 3,
+      focusPath: [0, 6, 0],
+    });
+
+    await page.keyboard.type('z');
 
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
-          <span data-lexical-text="true">12c</span>
+          dir="ltr">
+          <span data-lexical-text="true">12z</span>
         </p>
       `,
     );
@@ -982,5 +862,191 @@ test.describe('TextFormatting', () => {
       focusOffset: 3,
       focusPath: [0, 0, 0],
     });
+  });
+
+  test(`Regression #2439: can format backwards when at first text node boundary`, async ({
+    page,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+    await page.keyboard.type('123456');
+
+    await moveLeft(page, 3);
+    await page.keyboard.down('Shift');
+    await moveLeft(page, 3);
+    await page.keyboard.up('Shift');
+    await toggleBold(page);
+
+    await moveToLineEnd(page);
+    await page.keyboard.down('Shift');
+    await moveLeft(page, 4);
+    await page.keyboard.up('Shift');
+    await toggleBold(page);
+
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph">
+          <strong
+            class="PlaygroundEditorTheme__textBold"
+            data-lexical-text="true">
+            12
+          </strong>
+          <span data-lexical-text="true">3456</span>
+        </p>
+      `,
+    );
+
+    // Toggle once more
+    await toggleBold(page);
+
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph">
+          <strong
+            class="PlaygroundEditorTheme__textBold"
+            data-lexical-text="true">
+            123456
+          </strong>
+        </p>
+      `,
+    );
+  });
+
+  test(`The active state of the button in the toolbar should to be displayed correctly`, async ({
+    page,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+    await page.keyboard.type('A');
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('B');
+    await selectCharacters(page, 'left', 3);
+    await toggleBold(page);
+    await toggleItalic(page);
+
+    const isButtonActiveStatusDisplayedCorrectly = await evaluate(page, () => {
+      const isFloatingToolbarBoldButtonActive = !!document.querySelector(
+        '.floating-text-format-popup .popup-item.active i.format.bold',
+      );
+      const isFloatingToolbarItalicButtonActive = !!document.querySelector(
+        '.floating-text-format-popup .popup-item.active i.format.italic',
+      );
+      const isToolbarBoldButtonActive = !!document.querySelector(
+        '.toolbar .toolbar-item.active i.format.bold',
+      );
+      const isToolbarItalicButtonActive = !!document.querySelector(
+        '.toolbar .toolbar-item.active i.format.italic',
+      );
+
+      return (
+        isFloatingToolbarBoldButtonActive &&
+        isFloatingToolbarItalicButtonActive &&
+        isToolbarBoldButtonActive &&
+        isToolbarItalicButtonActive
+      );
+    });
+
+    expect(isButtonActiveStatusDisplayedCorrectly).toBe(true);
+  });
+
+  test('Regression #2523: can toggle format when selecting a TextNode edge followed by a non TextNode; ', async ({
+    page,
+    isCollab,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+
+    await page.keyboard.type('A');
+    await insertSampleImage(page);
+    await page.keyboard.type('BC');
+
+    await moveLeft(page, 1);
+    await selectCharacters(page, 'left', 2);
+
+    if (!isCollab) {
+      await waitForSelector(page, '.editor-image img');
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">A</span>
+            <span
+              class="editor-image"
+              contenteditable="false"
+              data-lexical-decorator="true">
+              <div draggable="false">
+                <img
+                  alt="Yellow flower in tilt shift lens"
+                  class="focused"
+                  draggable="false"
+                  src="${SAMPLE_IMAGE_URL}"
+                  style="height: inherit; max-width: 500px; width: inherit" />
+              </div>
+            </span>
+            <span data-lexical-text="true">BC</span>
+          </p>
+        `,
+      );
+    }
+    await toggleBold(page);
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">A</span>
+          <span
+            class="editor-image"
+            contenteditable="false"
+            data-lexical-decorator="true">
+            <div draggable="false">
+              <img
+                alt="Yellow flower in tilt shift lens"
+                draggable="false"
+                src="${SAMPLE_IMAGE_URL}"
+                style="height: inherit; max-width: 500px; width: inherit" />
+            </div>
+          </span>
+          <strong
+            class="PlaygroundEditorTheme__textBold"
+            data-lexical-text="true">
+            B
+          </strong>
+          <span data-lexical-text="true">C</span>
+        </p>
+      `,
+    );
+    await toggleBold(page);
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">A</span>
+          <span
+            class="editor-image"
+            contenteditable="false"
+            data-lexical-decorator="true">
+            <div draggable="false">
+              <img
+                alt="Yellow flower in tilt shift lens"
+                draggable="false"
+                src="${SAMPLE_IMAGE_URL}"
+                style="height: inherit; max-width: 500px; width: inherit" />
+            </div>
+          </span>
+          <span data-lexical-text="true">BC</span>
+        </p>
+      `,
+    );
   });
 });

@@ -15,6 +15,7 @@ import {
   keyDownCtrlOrMeta,
   keyUpCtrlOrAlt,
   keyUpCtrlOrMeta,
+  sleep,
 } from '../utils/index.mjs';
 
 export async function moveToLineBeginning(page) {
@@ -63,10 +64,24 @@ export async function moveToEditorEnd(page) {
   }
 }
 
+export async function moveToPrevWord(page) {
+  await keyDownCtrlOrAlt(page);
+  await page.keyboard.press('ArrowLeft');
+  await keyUpCtrlOrAlt(page);
+}
+
 export async function moveToNextWord(page) {
   await keyDownCtrlOrAlt(page);
   await page.keyboard.press('ArrowRight');
   await keyUpCtrlOrAlt(page);
+}
+
+export async function extendToNextWord(page) {
+  await page.keyboard.down('Shift');
+  await keyDownCtrlOrAlt(page);
+  await page.keyboard.press('ArrowRight');
+  await keyUpCtrlOrAlt(page);
+  await page.keyboard.up('Shift');
 }
 
 export async function deleteNextWord(page) {
@@ -85,12 +100,6 @@ export async function deleteForward(page) {
   await page.keyboard.down('Control');
   await page.keyboard.press('d');
   await page.keyboard.up('Control');
-}
-
-export async function moveToPrevWord(page) {
-  await keyDownCtrlOrAlt(page);
-  await page.keyboard.press('ArrowLeft');
-  await keyUpCtrlOrAlt(page);
 }
 
 export async function moveToParagraphBeginning(page) {
@@ -152,15 +161,30 @@ export async function redo(page) {
   }
 }
 
-export async function moveLeft(page, numCharacters = 1) {
+export async function moveLeft(page, numCharacters = 1, delayMs) {
   for (let i = 0; i < numCharacters; i++) {
+    if (delayMs !== undefined) {
+      await sleep(delayMs);
+    }
     await page.keyboard.press('ArrowLeft');
   }
 }
 
-export async function moveRight(page, numCharacters = 1) {
+export async function moveRight(page, numCharacters = 1, delayMs) {
   for (let i = 0; i < numCharacters; i++) {
+    if (delayMs !== undefined) {
+      await sleep(delayMs);
+    }
     await page.keyboard.press('ArrowRight');
+  }
+}
+
+export async function pressBackspace(page, numCharacters = 1, delayMs) {
+  for (let i = 0; i < numCharacters; i++) {
+    if (delayMs !== undefined) {
+      await sleep(delayMs);
+    }
+    await page.keyboard.press('Backspace');
   }
 }
 
@@ -174,5 +198,53 @@ export async function selectCharacters(page, direction, numCharacters = 1) {
 export async function toggleBold(page) {
   await keyDownCtrlOrMeta(page);
   await page.keyboard.press('b');
+  await keyUpCtrlOrMeta(page);
+}
+
+export async function toggleUnderline(page) {
+  await keyDownCtrlOrMeta(page);
+  await page.keyboard.press('u');
+  await keyUpCtrlOrMeta(page);
+}
+
+export async function toggleItalic(page) {
+  await keyDownCtrlOrMeta(page);
+  await page.keyboard.press('i');
+  await keyUpCtrlOrMeta(page);
+}
+
+export async function pressShiftEnter(page) {
+  await page.keyboard.down('Shift');
+  await page.keyboard.press('Enter');
+  await page.keyboard.up('Shift');
+}
+
+export async function moveToStart(page) {
+  if (IS_MAC) {
+    await page.keyboard.down('Meta');
+    await page.keyboard.press('ArrowLeft');
+    await page.keyboard.up('Meta');
+  } else {
+    await page.keyboard.down('Control');
+    await page.keyboard.press('ArrowLeft');
+    await page.keyboard.up('Control');
+  }
+}
+
+export async function moveToEnd(page) {
+  if (IS_MAC) {
+    await page.keyboard.down('Meta');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.up('Meta');
+  } else {
+    await page.keyboard.down('Control');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.up('Control');
+  }
+}
+
+export async function paste(page) {
+  await keyDownCtrlOrMeta(page);
+  await page.keyboard.press('KeyV');
   await keyUpCtrlOrMeta(page);
 }

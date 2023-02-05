@@ -33,8 +33,7 @@ test.describe('Extensions', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">foo</span>
         </p>
       `,
@@ -85,8 +84,7 @@ test.describe('Extensions', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">foo</span>
         </p>
       `,
@@ -124,8 +122,7 @@ test.describe('Extensions', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">foobar</span>
         </p>
       `,
@@ -166,8 +163,7 @@ test.describe('Extensions', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">bar</span>
           </p>
         `,
@@ -184,8 +180,7 @@ test.describe('Extensions', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">foobar</span>
           </p>
         `,
@@ -197,5 +192,64 @@ test.describe('Extensions', () => {
         focusPath: [0, 0, 0],
       });
     }
+  });
+
+  test(`document.execCommand("insertText") with selection`, async ({
+    page,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+
+    await page.keyboard.type('hello world');
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('asd t');
+    await page.keyboard.press('ArrowUp');
+
+    // Selection is on the last paragraph
+    await evaluate(
+      page,
+      async () => {
+        const editor = document.querySelector('div[contenteditable="true"]');
+        const selection = window.getSelection();
+        const secondParagraphTextNode =
+          editor.firstChild.nextSibling.firstChild.firstChild;
+        selection.setBaseAndExtent(
+          secondParagraphTextNode,
+          0,
+          secondParagraphTextNode,
+          3,
+        );
+
+        await new Promise((resolve) => {
+          setTimeout(() => {
+            document.execCommand('insertText', false, 'and');
+            resolve();
+          }, 50);
+        });
+      },
+      [],
+    );
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">hello world</span>
+        </p>
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">and t</span>
+        </p>
+      `,
+    );
+    await assertSelection(page, {
+      anchorOffset: 3,
+      anchorPath: [1, 0, 0],
+      focusOffset: 3,
+      focusPath: [1, 0, 0],
+    });
   });
 });

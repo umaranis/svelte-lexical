@@ -4,12 +4,12 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict
  */
 
 import {
   moveToEditorBeginning,
   moveToLineBeginning,
+  pressBackspace,
 } from '../keyboardShortcuts/index.mjs';
 import {
   assertHTML,
@@ -79,10 +79,10 @@ function testSuite(charset) {
     });
   });
 
-  test('displays overflow on immutable nodes', async ({page, isCollab}) => {
+  test('displays overflow on token nodes', async ({page, isCollab}) => {
     // The smile emoji (S) is length 2, so for 1234S56:
     // - 1234 is non-overflow text
-    // - S takes characters 5 and 6, since it's immutable and can't be split we count the whole
+    // - S takes characters 5 and 6, since it's a token and can't be split we count the whole
     //   node as overflowed
     // - 56 is overflowed
     test.skip(isCollab);
@@ -96,8 +96,7 @@ function testSuite(charset) {
           <span data-lexical-text="true">1234</span>
           <span
             class="PlaygroundEditorTheme__characterLimit PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span class="emoji happysmile" data-lexical-text="true">
               <span class="emoji-inner">🙂</span>
             </span>
@@ -107,7 +106,7 @@ function testSuite(charset) {
       `,
     );
 
-    await repeat(3, async () => await page.keyboard.press('Backspace'));
+    await pressBackspace(page, 3);
     await assertHTML(
       page,
       html`
@@ -162,7 +161,7 @@ function testSuite(charset) {
       );
     }
 
-    await repeat(3, async () => await page.keyboard.press('Backspace'));
+    await pressBackspace(page, 3);
     await assertHTML(
       page,
       html`
@@ -245,12 +244,12 @@ function testSuite(charset) {
     }
   });
 
-  test('can delete text in front and overflow is recomputed (immutable nodes)', async ({
+  test('can delete text in front and overflow is recomputed (token nodes)', async ({
     page,
     isCollab,
   }) => {
     test.skip(isCollab);
-    // See 'displays overflow on immutable nodes'
+    // See 'displays overflow on token nodes'
     await page.focus('div[contenteditable="true"]');
 
     await page.keyboard.type('1234:)56');
@@ -263,8 +262,7 @@ function testSuite(charset) {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">234</span>
             <span class="emoji happysmile" data-lexical-text="true">
               <span class="emoji-inner">🙂</span>
@@ -281,13 +279,11 @@ function testSuite(charset) {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">234</span>
             <span
               class="PlaygroundEditorTheme__characterLimit PlaygroundEditorTheme__ltr"
-              dir="ltr"
-            >
+              dir="ltr">
               <span class="emoji happysmile" data-lexical-text="true">
                 <span class="emoji-inner">🙂</span>
               </span>
@@ -313,7 +309,7 @@ function testSuite(charset) {
       '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">1234</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">5</span><span class="PlaygroundEditorTheme__characterLimit"><span data-lexical-text="true">6</span></span></li><li value="3" class="PlaygroundEditorTheme__listItem"><span class="PlaygroundEditorTheme__characterLimit"><span data-lexical-text="true">7</span></span></li></ul>',
     );
 
-    await repeat(3, async () => await page.keyboard.press('Backspace'));
+    await pressBackspace(page, 3);
     await assertHTML(
       page,
       '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">1234</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">5</span></li></ul>',
@@ -372,13 +368,11 @@ function testSuite(charset) {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">ààààà</span>
             <span
               class="PlaygroundEditorTheme__characterLimit PlaygroundEditorTheme__ltr"
-              dir="ltr"
-            >
+              dir="ltr">
               <span data-lexical-text="true">à</span>
             </span>
           </p>
@@ -390,13 +384,11 @@ function testSuite(charset) {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">àà</span>
             <span
               class="PlaygroundEditorTheme__characterLimit PlaygroundEditorTheme__ltr"
-              dir="ltr"
-            >
+              dir="ltr">
               <span data-lexical-text="true">àààà</span>
             </span>
           </p>
@@ -416,12 +408,10 @@ function testSuite(charset) {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span
               class="PlaygroundEditorTheme__characterLimit PlaygroundEditorTheme__ltr"
-              dir="ltr"
-            >
+              dir="ltr">
               <span data-lexical-text="true">👨‍👩‍👦‍👦</span>
             </span>
           </p>
@@ -434,13 +424,11 @@ function testSuite(charset) {
           html`
             <p
               class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-              dir="ltr"
-            >
+              dir="ltr">
               <span data-lexical-text="true">👨‍👩</span>
               <span
                 class="PlaygroundEditorTheme__characterLimit PlaygroundEditorTheme__ltr"
-                dir="ltr"
-              >
+                dir="ltr">
                 <span data-lexical-text="true">‍👦‍👦</span>
               </span>
             </p>
@@ -452,13 +440,11 @@ function testSuite(charset) {
           html`
             <p
               class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-              dir="ltr"
-            >
+              dir="ltr">
               <span data-lexical-text="true">👨</span>
               <span
                 class="PlaygroundEditorTheme__characterLimit PlaygroundEditorTheme__ltr"
-                dir="ltr"
-              >
+                dir="ltr">
                 <span data-lexical-text="true">‍👩‍👦‍👦</span>
               </span>
             </p>

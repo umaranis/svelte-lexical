@@ -6,26 +6,28 @@
  *
  */
 
-import {selectAll} from '../keyboardShortcuts/index.mjs';
+import {
+  selectAll,
+  selectCharacters,
+  toggleBold,
+  toggleItalic,
+  toggleUnderline,
+} from '../keyboardShortcuts/index.mjs';
 import {
   assertHTML,
   click,
-  E2E_PORT,
   evaluate,
+  expect,
   focus,
   focusEditor,
   html,
   initialize,
   insertSampleImage,
+  SAMPLE_IMAGE_URL,
   selectFromAlignDropdown,
   selectFromInsertDropdown,
   test,
 } from '../utils/index.mjs';
-
-const IMAGE_URL =
-  E2E_PORT === 3000
-    ? '/src/images/yellow-flower.jpg'
-    : '/assets/yellow-flower.bf6d0400.jpg';
 
 test.describe('Toolbar', () => {
   test.beforeEach(({isCollab, page}) =>
@@ -47,7 +49,12 @@ test.describe('Toolbar', () => {
       html`
         <p>
           <span contenteditable="false" data-lexical-decorator="true">
-            <img alt="Yellow flower in tilt shift lens" src="${IMAGE_URL}" />
+            <div draggable="false">
+              <img
+                alt="Yellow flower in tilt shift lens"
+                draggable="false"
+                src="${SAMPLE_IMAGE_URL}" />
+            </div>
             <div>
               <div
                 contenteditable="true"
@@ -65,6 +72,7 @@ test.describe('Toolbar', () => {
           <br />
         </p>
       `,
+      undefined,
       {
         ignoreClasses: true,
         ignoreInlineStyles: true,
@@ -84,6 +92,7 @@ test.describe('Toolbar', () => {
       html`
         <p><br /></p>
       `,
+      undefined,
       {
         ignoreClasses: true,
         ignoreInlineStyles: true,
@@ -189,6 +198,7 @@ test.describe('Toolbar', () => {
         </table>
         <p><br /></p>
       `,
+      undefined,
       {
         ignoreClasses: true,
         ignoreInlineStyles: true,
@@ -196,8 +206,9 @@ test.describe('Toolbar', () => {
     );
   });
 
-  test('Center align image', async ({page, isPlainText}) => {
-    test.skip(isPlainText);
+  test('Center align image', async ({page, isPlainText, isCollab}) => {
+    // Image selection can't be synced in collab
+    test.skip(isPlainText || isCollab);
     await focusEditor(page);
 
     await insertSampleImage(page);
@@ -210,16 +221,25 @@ test.describe('Toolbar', () => {
             class="editor-image"
             contenteditable="false"
             data-lexical-decorator="true">
-            <img
-              alt="Yellow flower in tilt shift lens"
-              class="focused"
-              src="${IMAGE_URL}"
-              style="height: inherit; max-width: 500px; width: inherit" />
-            <button class="image-caption-button">Add Caption</button>
-            <div class="image-resizer-ne"></div>
-            <div class="image-resizer-se"></div>
-            <div class="image-resizer-sw"></div>
-            <div class="image-resizer-nw"></div>
+            <div draggable="true">
+              <img
+                alt="Yellow flower in tilt shift lens"
+                class="focused draggable"
+                draggable="false"
+                src="${SAMPLE_IMAGE_URL}"
+                style="height: inherit; max-width: 500px; width: inherit" />
+            </div>
+            <div>
+              <button class="image-caption-button">Add Caption</button>
+              <div class="image-resizer image-resizer-n"></div>
+              <div class="image-resizer image-resizer-ne"></div>
+              <div class="image-resizer image-resizer-e"></div>
+              <div class="image-resizer image-resizer-se"></div>
+              <div class="image-resizer image-resizer-s"></div>
+              <div class="image-resizer image-resizer-sw"></div>
+              <div class="image-resizer image-resizer-w"></div>
+              <div class="image-resizer image-resizer-nw"></div>
+            </div>
           </span>
           <br />
         </p>
@@ -237,20 +257,64 @@ test.describe('Toolbar', () => {
             class="editor-image"
             contenteditable="false"
             data-lexical-decorator="true">
-            <img
-              alt="Yellow flower in tilt shift lens"
-              class="focused"
-              src="${IMAGE_URL}"
-              style="height: inherit; max-width: 500px; width: inherit" />
-            <button class="image-caption-button">Add Caption</button>
-            <div class="image-resizer-ne"></div>
-            <div class="image-resizer-se"></div>
-            <div class="image-resizer-sw"></div>
-            <div class="image-resizer-nw"></div>
+            <div draggable="true">
+              <img
+                alt="Yellow flower in tilt shift lens"
+                class="focused draggable"
+                draggable="false"
+                src="${SAMPLE_IMAGE_URL}"
+                style="height: inherit; max-width: 500px; width: inherit" />
+            </div>
+            <div>
+              <button class="image-caption-button">Add Caption</button>
+              <div class="image-resizer image-resizer-n"></div>
+              <div class="image-resizer image-resizer-ne"></div>
+              <div class="image-resizer image-resizer-e"></div>
+              <div class="image-resizer image-resizer-se"></div>
+              <div class="image-resizer image-resizer-s"></div>
+              <div class="image-resizer image-resizer-sw"></div>
+              <div class="image-resizer image-resizer-w"></div>
+              <div class="image-resizer image-resizer-nw"></div>
+            </div>
           </span>
           <br />
         </p>
       `,
     );
+  });
+
+  test('When we select three textNodes with different formatting at the same time, the selection formatting should show no formatting at all', async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    test.skip(isPlainText || isCollab);
+    await focusEditor(page);
+
+    await toggleBold(page);
+    await page.keyboard.type('A ');
+    await toggleBold(page);
+    await toggleItalic(page);
+    await page.keyboard.type('B ');
+    await toggleItalic(page);
+    await toggleUnderline(page);
+    await page.keyboard.type('C');
+    await selectCharacters(page, 'left', 5);
+
+    const actives = await page.$$('div.toolbar button.toolbar-item.active');
+    expect(actives.length).toEqual(0);
+  });
+
+  test('Selecting empty paragraphs has empty selection format', async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    test.skip(isPlainText || isCollab);
+    await focusEditor(page);
+    await page.keyboard.press('Enter');
+    await selectAll(page);
+    const actives = await page.$$('div.toolbar button.toolbar-item.active');
+    expect(actives.length).toEqual(0);
   });
 });

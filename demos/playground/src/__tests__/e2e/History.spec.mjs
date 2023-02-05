@@ -6,14 +6,20 @@
  *
  */
 
-import {redo, toggleBold, undo} from '../keyboardShortcuts/index.mjs';
+import {
+  moveLeft,
+  pressBackspace,
+  redo,
+  toggleBold,
+  undo,
+} from '../keyboardShortcuts/index.mjs';
 import {
   assertHTML,
   assertSelection,
+  enableCompositionKeyEvents,
   focusEditor,
   html,
   initialize,
-  repeat,
   sleep,
   test,
 } from '../utils/index.mjs';
@@ -32,9 +38,7 @@ test.describe('History', () => {
     await page.keyboard.type(' world');
     await page.keyboard.press('Enter');
     await page.keyboard.type('hello world again');
-    await repeat(6, async () => {
-      await page.keyboard.press('ArrowLeft');
-    });
+    await moveLeft(page, 6);
     await page.keyboard.type(', again and');
 
     if (isRichText) {
@@ -43,14 +47,12 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world, again and again</span>
           </p>
         `,
@@ -67,8 +69,7 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
             <br />
             <span data-lexical-text="true">hello world, again and again</span>
@@ -91,14 +92,12 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world again</span>
           </p>
         `,
@@ -115,8 +114,7 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
             <br />
             <span data-lexical-text="true">hello world again</span>
@@ -139,14 +137,12 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <br />
           </p>
         `,
@@ -163,8 +159,7 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
             <br />
             <br />
@@ -186,8 +181,7 @@ test.describe('History', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">hello world</span>
         </p>
       `,
@@ -206,8 +200,7 @@ test.describe('History', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">hello</span>
         </p>
       `,
@@ -241,8 +234,7 @@ test.describe('History', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">hello</span>
         </p>
       `,
@@ -261,8 +253,7 @@ test.describe('History', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">hello world</span>
         </p>
       `,
@@ -282,8 +273,7 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
           </p>
           <p class="PlaygroundEditorTheme__paragraph"><br /></p>
@@ -301,8 +291,7 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
             <br />
             <br />
@@ -325,14 +314,12 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world again</span>
           </p>
         `,
@@ -349,8 +336,7 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
             <br />
             <span data-lexical-text="true">hello world again</span>
@@ -373,14 +359,12 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world, again and again</span>
           </p>
         `,
@@ -397,8 +381,7 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
             <br />
             <span data-lexical-text="true">hello world, again and again</span>
@@ -413,9 +396,7 @@ test.describe('History', () => {
       });
     }
 
-    await repeat(4, async () => {
-      await page.keyboard.press('Backspace');
-    });
+    await pressBackspace(page, 4);
 
     if (isRichText) {
       await assertHTML(
@@ -423,14 +404,12 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world, again again</span>
           </p>
         `,
@@ -447,8 +426,7 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
             <br />
             <span data-lexical-text="true">hello world, again again</span>
@@ -471,14 +449,12 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world, again and again</span>
           </p>
         `,
@@ -495,8 +471,7 @@ test.describe('History', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">hello world</span>
             <br />
             <span data-lexical-text="true">hello world, again and again</span>
@@ -530,19 +505,16 @@ test.describe('History', () => {
     const step1HTML = html`
       <p
         class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-        dir="ltr"
-      >
+        dir="ltr">
         <strong
           class="PlaygroundEditorTheme__textBold"
-          data-lexical-text="true"
-        >
+          data-lexical-text="true">
           foo
         </strong>
         <span data-lexical-text="true">bar</span>
         <strong
           class="PlaygroundEditorTheme__textBold"
-          data-lexical-text="true"
-        >
+          data-lexical-text="true">
           baz
         </strong>
       </p>
@@ -550,12 +522,10 @@ test.describe('History', () => {
     const step2HTML = html`
       <p
         class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-        dir="ltr"
-      >
+        dir="ltr">
         <strong
           class="PlaygroundEditorTheme__textBold"
-          data-lexical-text="true"
-        >
+          data-lexical-text="true">
           foo
         </strong>
         <span data-lexical-text="true">bar</span>
@@ -564,12 +534,10 @@ test.describe('History', () => {
     const step3HTML = html`
       <p
         class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-        dir="ltr"
-      >
+        dir="ltr">
         <strong
           class="PlaygroundEditorTheme__textBold"
-          data-lexical-text="true"
-        >
+          data-lexical-text="true">
           foo
         </strong>
       </p>
@@ -591,5 +559,178 @@ test.describe('History', () => {
     await assertHTML(page, step2HTML);
     await redo(page);
     await assertHTML(page, step1HTML);
+  });
+});
+
+test.describe('History - IME', () => {
+  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
+  test('Can undo composed Hirigana via IME after composition ends (#2479)', async ({
+    page,
+    browserName,
+    isCollab,
+    isPlainText,
+    legacyEvents,
+  }) => {
+    // We don't yet support FF.
+    test.skip(isCollab || isPlainText || browserName === 'firefox');
+
+    await focusEditor(page);
+    await enableCompositionKeyEvents(page);
+
+    await page.keyboard.imeSetComposition('ｓ', 1, 1);
+    await page.keyboard.imeSetComposition('す', 1, 1);
+    await page.keyboard.imeSetComposition('すｓ', 2, 2);
+    await page.keyboard.imeSetComposition('すｓｈ', 3, 3);
+    await page.keyboard.imeSetComposition('すし', 2, 2);
+    await page.keyboard.insertText('すし');
+
+    await sleep(1050); // default merge interval is 1000, add 50ms as overhead due to CI latency.
+
+    await page.keyboard.type(' ');
+
+    await sleep(1050);
+
+    await page.keyboard.imeSetComposition('m', 1, 1);
+    await page.keyboard.imeSetComposition('も', 1, 1);
+    await page.keyboard.imeSetComposition('もj', 2, 2);
+    await page.keyboard.imeSetComposition('もじ', 2, 2);
+    await page.keyboard.imeSetComposition('もじあ', 3, 3);
+    await page.keyboard.insertText('もじあ');
+
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">すし もじあ</span>
+        </p>
+      `,
+    );
+
+    await assertSelection(page, {
+      anchorOffset: 6,
+      anchorPath: [0, 0, 0],
+      focusOffset: 6,
+      focusPath: [0, 0, 0],
+    });
+
+    await undo(page);
+
+    const WHITESPACE_TOKEN = ' ';
+
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">すし${WHITESPACE_TOKEN}</span>
+        </p>
+      `,
+    );
+
+    await assertSelection(page, {
+      anchorOffset: 3,
+      anchorPath: [0, 0, 0],
+      focusOffset: 3,
+      focusPath: [0, 0, 0],
+    });
+
+    await undo(page);
+
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">すし</span>
+        </p>
+      `,
+    );
+
+    if (browserName === 'webkit' && !legacyEvents) {
+      await assertSelection(page, {
+        anchorOffset: 3,
+        anchorPath: [0, 0, 0],
+        focusOffset: 3,
+        focusPath: [0, 0, 0],
+      });
+    } else {
+      await assertSelection(page, {
+        anchorOffset: 2,
+        anchorPath: [0, 0, 0],
+        focusOffset: 2,
+        focusPath: [0, 0, 0],
+      });
+    }
+
+    await undo(page);
+
+    if (browserName === 'webkit' && !legacyEvents) {
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">すし</span>
+          </p>
+        `,
+      );
+    } else {
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
+    }
+
+    if (browserName === 'webkit' && !legacyEvents) {
+      await assertSelection(page, {
+        anchorOffset: 2,
+        anchorPath: [0, 0, 0],
+        focusOffset: 2,
+        focusPath: [0, 0, 0],
+      });
+    } else {
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [0],
+        focusOffset: 0,
+        focusPath: [0],
+      });
+    }
+
+    await redo(page);
+
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">すし</span>
+        </p>
+      `,
+    );
+
+    if (browserName === 'webkit' && !legacyEvents) {
+      await assertSelection(page, {
+        anchorOffset: 3,
+        anchorPath: [0, 0, 0],
+        focusOffset: 3,
+        focusPath: [0, 0, 0],
+      });
+    } else {
+      await assertSelection(page, {
+        anchorOffset: 2,
+        anchorPath: [0, 0, 0],
+        focusOffset: 2,
+        focusPath: [0, 0, 0],
+      });
+    }
   });
 });

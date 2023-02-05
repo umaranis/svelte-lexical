@@ -6,17 +6,23 @@
  *
  */
 
-import {moveToLineBeginning} from '../keyboardShortcuts/index.mjs';
+import {
+  moveLeft,
+  moveToLineBeginning,
+  pressBackspace,
+  selectCharacters,
+} from '../keyboardShortcuts/index.mjs';
 import {
   assertHTML,
   assertSelection,
   enableCompositionKeyEvents,
+  evaluate,
+  expect,
   focusEditor,
   html,
   initialize,
   keyDownCtrlOrMeta,
   keyUpCtrlOrMeta,
-  repeat,
   test,
   waitForSelector,
 } from '../utils/index.mjs';
@@ -34,8 +40,7 @@ test.describe('Composition', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">も</span>
         </p>
       `,
@@ -69,8 +74,7 @@ test.describe('Composition', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">もじ</span>
         </p>
       `,
@@ -92,8 +96,7 @@ test.describe('Composition', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__rtl"
-          dir="rtl"
-        >
+          dir="rtl">
           <span data-lexical-text="true">هَ</span>
         </p>
       `,
@@ -111,8 +114,7 @@ test.describe('Composition', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__rtl"
-          dir="rtl"
-        >
+          dir="rtl">
           <span data-lexical-text="true">ه</span>
         </p>
       `,
@@ -139,8 +141,7 @@ test.describe('Composition', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__rtl"
-          dir="rtl"
-        >
+          dir="rtl">
           <span data-lexical-text="true">هَ</span>
         </p>
       `,
@@ -166,8 +167,7 @@ test.describe('Composition', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__rtl"
-          dir="rtl"
-        >
+          dir="rtl">
           <span data-lexical-text="true">ه</span>
         </p>
       `,
@@ -207,8 +207,7 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">すし もじあ</span>
           </p>
         `,
@@ -260,8 +259,7 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <br />
             <span data-lexical-text="true">すし もじあ</span>
             <br />
@@ -306,13 +304,11 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">Hello</span>
             <strong
               class="PlaygroundEditorTheme__textBold"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               すし
             </strong>
           </p>
@@ -357,8 +353,7 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span class="emoji happysmile" data-lexical-text="true">
               <span class="emoji-inner">🙂</span>
             </span>
@@ -376,17 +371,13 @@ test.describe('Composition', () => {
         focusPath: [0, 1, 0],
       });
 
-      await repeat(6, async () => {
-        await page.keyboard.press('Backspace');
-      });
-
+      await pressBackspace(page, 6);
       await assertHTML(
         page,
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span class="emoji happysmile" data-lexical-text="true">
               <span class="emoji-inner">🙂</span>
             </span>
@@ -418,8 +409,7 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span class="emoji happysmile" data-lexical-text="true">
               <span class="emoji-inner">🙂</span>
             </span>
@@ -448,7 +438,7 @@ test.describe('Composition', () => {
       await enableCompositionKeyEvents(page);
 
       await page.keyboard.type('Luke');
-      await waitForSelector(page, '#mentions-typeahead ul li');
+      await waitForSelector(page, '#typeahead-menu ul li');
       await page.keyboard.press('Enter');
 
       await waitForSelector(page, '.mention');
@@ -472,13 +462,11 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
             <span data-lexical-text="true">すし もじあ</span>
@@ -504,14 +492,12 @@ test.describe('Composition', () => {
       await enableCompositionKeyEvents(page);
 
       await page.keyboard.type('Luke');
-      await waitForSelector(page, '#mentions-typeahead ul li');
+      await waitForSelector(page, '#typeahead-menu ul li');
       await page.keyboard.press('Enter');
 
       await waitForSelector(page, '.mention');
 
-      await repeat(9, async () => {
-        await page.keyboard.press('ArrowLeft');
-      });
+      await moveLeft(page, 9);
 
       await page.keyboard.imeSetComposition('ｓ', 1, 1);
       await page.keyboard.imeSetComposition('す', 1, 1);
@@ -527,21 +513,36 @@ test.describe('Composition', () => {
       await page.keyboard.imeSetComposition('もじあ', 3, 3);
       await page.keyboard.insertText('もじあ');
 
-      await assertHTML(
-        page,
-        html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
-            <span data-lexical-text="true">Luke すし もじあSkywalker</span>
-          </p>
-        `,
-      );
+      if (browserName === 'webkit')
+        await assertHTML(
+          page,
+          html`
+            <p
+              class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">
+                Luke &nbsp;すし もじあSkywalker
+              </span>
+            </p>
+          `,
+        );
+      /* eslint-disable no-irregular-whitespace */
+      if (browserName === 'chromium')
+        await assertHTML(
+          page,
+          html`
+            <p
+              class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">Luke ​すし もじあSkywalker</span>
+            </p>
+          `,
+        );
+
       await assertSelection(page, {
-        anchorOffset: 11,
+        anchorOffset: 12,
         anchorPath: [0, 0, 0],
-        focusOffset: 11,
+        focusOffset: 12,
         focusPath: [0, 0, 0],
       });
     });
@@ -549,6 +550,7 @@ test.describe('Composition', () => {
     test('Can type Hiragana via IME with hashtags', async ({
       page,
       browserName,
+      isCollab,
     }) => {
       // We don't yet support FF.
       test.skip(browserName === 'firefox');
@@ -578,12 +580,10 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span
               class="PlaygroundEditorTheme__hashtag"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               #すし
             </span>
             <span data-lexical-text="true">もじあ</span>
@@ -611,8 +611,7 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">すし#すし もじあ</span>
           </p>
         `,
@@ -685,6 +684,40 @@ test.describe('Composition', () => {
         focusOffset: 0,
         focusPath: [0, 0, 0],
       });
+    });
+
+    test('Floating toolbar should not be displayed when using IME', async ({
+      page,
+      browserName,
+      isPlainText,
+    }) => {
+      test.skip(isPlainText);
+      // We don't yet support FF.
+      test.skip(browserName === 'firefox');
+
+      await focusEditor(page);
+      await enableCompositionKeyEvents(page);
+
+      await page.keyboard.imeSetComposition('ｓ', 0, 1);
+      await page.keyboard.imeSetComposition('す', 0, 1);
+      await page.keyboard.imeSetComposition('すｓ', 0, 2);
+      await page.keyboard.imeSetComposition('すｓｈ', 0, 3);
+      await page.keyboard.imeSetComposition('すｓｈ', 0, 4);
+
+      const isFloatingToolbarDisplayedWhenUseIME = await evaluate(page, () => {
+        return !!document.querySelector('.floating-text-format-popup');
+      });
+
+      expect(isFloatingToolbarDisplayedWhenUseIME).toEqual(false);
+
+      await page.keyboard.insertText('すｓｈ');
+      await selectCharacters(page, 'left', 3);
+
+      const isFloatingToolbarDisplayed = await evaluate(page, () => {
+        return !!document.querySelector('.floating-text-format-popup');
+      });
+
+      expect(isFloatingToolbarDisplayed).toEqual(true);
     });
   });
 });

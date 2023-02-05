@@ -8,6 +8,7 @@
 
 import {
   deleteNextWord,
+  moveLeft,
   moveToEditorBeginning,
 } from '../keyboardShortcuts/index.mjs';
 import {
@@ -17,7 +18,6 @@ import {
   html,
   initialize,
   IS_WINDOWS,
-  repeat,
   test,
   waitForSelector,
 } from '../utils/index.mjs';
@@ -35,14 +35,13 @@ test.describe('Mentions', () => {
       focusPath: [0, 0, 0],
     });
 
-    await waitForSelector(page, '#mentions-typeahead ul li');
+    await waitForSelector(page, '#typeahead-menu ul li');
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Luke</span>
         </p>
       `,
@@ -56,8 +55,7 @@ test.describe('Mentions', () => {
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke Skywalker
           </span>
         </p>
@@ -109,14 +107,13 @@ test.describe('Mentions', () => {
       focusPath: [0, 0, 0],
     });
 
-    await waitForSelector(page, '#mentions-typeahead ul li');
+    await waitForSelector(page, '#typeahead-menu ul li');
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Luke</span>
         </p>
       `,
@@ -130,8 +127,7 @@ test.describe('Mentions', () => {
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke Skywalker
           </span>
         </p>
@@ -162,8 +158,7 @@ test.describe('Mentions', () => {
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke
           </span>
         </p>
@@ -203,14 +198,13 @@ test.describe('Mentions', () => {
       focusPath: [0, 0, 0],
     });
 
-    await waitForSelector(page, '#mentions-typeahead ul li');
+    await waitForSelector(page, '#typeahead-menu ul li');
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Luke</span>
         </p>
       `,
@@ -224,8 +218,7 @@ test.describe('Mentions', () => {
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke Skywalker
           </span>
         </p>
@@ -240,9 +233,7 @@ test.describe('Mentions', () => {
 
     await waitForSelector(page, '.mention');
 
-    await repeat(10, async () => {
-      await page.keyboard.press('ArrowLeft');
-    });
+    await moveLeft(page, 10);
 
     await assertSelection(page, {
       anchorOffset: 4,
@@ -259,8 +250,7 @@ test.describe('Mentions', () => {
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Skywalker
           </span>
         </p>
@@ -280,14 +270,13 @@ test.describe('Mentions', () => {
       focusPath: [0, 0, 0],
     });
 
-    await waitForSelector(page, '#mentions-typeahead ul li');
+    await waitForSelector(page, '#typeahead-menu ul li');
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Luke</span>
         </p>
       `,
@@ -301,8 +290,7 @@ test.describe('Mentions', () => {
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke Skywalker
           </span>
         </p>
@@ -317,9 +305,7 @@ test.describe('Mentions', () => {
 
     await waitForSelector(page, '.mention');
 
-    await repeat(10, async () => {
-      await page.keyboard.press('ArrowLeft');
-    });
+    await moveLeft(page, 10);
 
     await assertSelection(page, {
       anchorOffset: 4,
@@ -336,8 +322,7 @@ test.describe('Mentions', () => {
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke
           </span>
         </p>
@@ -357,14 +342,13 @@ test.describe('Mentions', () => {
       focusPath: [0, 0, 0],
     });
 
-    await waitForSelector(page, '#mentions-typeahead ul li');
+    await waitForSelector(page, '#typeahead-menu ul li');
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">Luke</span>
         </p>
       `,
@@ -378,8 +362,7 @@ test.describe('Mentions', () => {
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke Skywalker
           </span>
         </p>
@@ -402,8 +385,7 @@ test.describe('Mentions', () => {
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke
           </span>
         </p>
@@ -441,8 +423,7 @@ test.describe('Mentions', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">abc def</span>
         </p>
       `,
@@ -456,14 +437,13 @@ test.describe('Mentions', () => {
 
     await page.keyboard.type('Luke');
 
-    await waitForSelector(page, '#mentions-typeahead ul li');
+    await waitForSelector(page, '#typeahead-menu ul li');
     await assertHTML(
       page,
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">abc Luke def</span>
         </p>
       `,
@@ -475,14 +455,12 @@ test.describe('Mentions', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">abc</span>
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke Skywalker
           </span>
           <span data-lexical-text="true">def</span>
@@ -502,14 +480,12 @@ test.describe('Mentions', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">abc</span>
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke
           </span>
           <span data-lexical-text="true">def</span>
@@ -537,7 +513,7 @@ test.describe('Mentions', () => {
       focusPath: [0, 0, 0],
     });
 
-    await waitForSelector(page, '#mentions-typeahead ul li');
+    await waitForSelector(page, '#typeahead-menu ul li');
     await page.keyboard.press('Enter');
 
     await waitForSelector(page, '.mention');
@@ -546,7 +522,7 @@ test.describe('Mentions', () => {
 
     await page.keyboard.type('Luke');
 
-    await waitForSelector(page, '#mentions-typeahead ul li');
+    await waitForSelector(page, '#typeahead-menu ul li');
     await page.keyboard.press('Enter');
 
     await waitForSelector(page, '.mention:nth-child(1)');
@@ -555,7 +531,7 @@ test.describe('Mentions', () => {
 
     await page.keyboard.type('Luke');
 
-    await waitForSelector(page, '#mentions-typeahead ul li');
+    await waitForSelector(page, '#typeahead-menu ul li');
     await page.keyboard.press('Enter');
 
     await waitForSelector(page, '.mention:nth-child(3)');
@@ -564,7 +540,7 @@ test.describe('Mentions', () => {
 
     await page.keyboard.type('Luke');
 
-    await waitForSelector(page, '#mentions-typeahead ul li');
+    await waitForSelector(page, '#typeahead-menu ul li');
     await page.keyboard.press('Enter');
 
     await waitForSelector(page, '.mention:nth-child(5)');
@@ -576,32 +552,28 @@ test.describe('Mentions', () => {
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke Skywalker
           </span>
           <span data-lexical-text="true"></span>
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke Skywalker
           </span>
           <span data-lexical-text="true"></span>
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke Skywalker
           </span>
           <span data-lexical-text="true"></span>
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke Skywalker
           </span>
         </p>
@@ -631,30 +603,26 @@ test.describe('Mentions', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">Skywalker</span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
             <span data-lexical-text="true"></span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
             <span data-lexical-text="true"></span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
           </p>
@@ -666,30 +634,26 @@ test.describe('Mentions', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">Skywalker</span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
             <span data-lexical-text="true"></span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
             <span data-lexical-text="true"></span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
           </p>
@@ -712,24 +676,21 @@ test.describe('Mentions', () => {
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
             <span data-lexical-text="true"></span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
             <span data-lexical-text="true"></span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
           </p>
@@ -744,24 +705,21 @@ test.describe('Mentions', () => {
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
             <span data-lexical-text="true"></span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
             <span data-lexical-text="true"></span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
           </p>
@@ -782,22 +740,19 @@ test.describe('Mentions', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">Skywalker</span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
             <span data-lexical-text="true"></span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
           </p>
@@ -809,22 +764,19 @@ test.describe('Mentions', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr"
-          >
+            dir="ltr">
             <span data-lexical-text="true">Skywalker</span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
             <span data-lexical-text="true"></span>
             <span
               class="mention"
               style="background-color: rgba(24, 119, 232, 0.2);"
-              data-lexical-text="true"
-            >
+              data-lexical-text="true">
               Luke Skywalker
             </span>
           </p>
@@ -870,7 +822,7 @@ test.describe('Mentions', () => {
       focusPath: [0, 0, 0],
     });
 
-    await waitForSelector(page, '#mentions-typeahead ul li');
+    await waitForSelector(page, '#typeahead-menu ul li');
     await page.keyboard.press('Enter');
 
     await waitForSelector(page, '.mention');
@@ -882,13 +834,11 @@ test.describe('Mentions', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span
             class="mention"
             style="background-color: rgba(24, 119, 232, 0.2);"
-            data-lexical-text="true"
-          >
+            data-lexical-text="true">
             Luke Skywalker
           </span>
           <span data-lexical-text="true">foo bar</span>
@@ -902,9 +852,7 @@ test.describe('Mentions', () => {
       focusPath: [0, 1, 0],
     });
 
-    await repeat(4, async () => {
-      await page.keyboard.press('ArrowLeft');
-    });
+    await moveLeft(page, 4);
 
     await assertSelection(page, {
       anchorOffset: 4,
@@ -914,9 +862,7 @@ test.describe('Mentions', () => {
     });
 
     await page.keyboard.down('Shift');
-    await repeat(18, async () => {
-      await page.keyboard.press('ArrowLeft');
-    });
+    await moveLeft(page, 18);
     await page.keyboard.up('Shift');
 
     await assertSelection(page, {
@@ -933,8 +879,7 @@ test.describe('Mentions', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-        >
+          dir="ltr">
           <span data-lexical-text="true">bar</span>
         </p>
       `,
