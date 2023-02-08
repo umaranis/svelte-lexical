@@ -2,7 +2,7 @@
 <script lang="ts">
   import type {LexicalEditor} from 'lexical';
   import {onMount} from 'svelte';
-  import {getEditor} from "./svelteContext";
+  import {getEditor} from './svelteContext';
 
   export let ariaActiveDescendantID: string;
   export let ariaAutoComplete: 'list' | 'none' | 'inline' | 'both' | null;
@@ -17,8 +17,8 @@
   export let autoCapitalize: boolean;
   export let autoComplete: boolean;
   export let autoCorrect: boolean;
-  //export let className: string;  // I have hardcoded it. @lexical/image plugin seems to depend on the harded class name.
-  export let cssClass = 'ContentEditable__root';
+  //export let className: string;  // @lexical/image plugin seems to depend on the harded class name.
+  export let className = 'ContentEditable__root';
   export let id: string;
   //export let readOnly: boolean; // it is defined in lexical code but not used
   export let role: 'textbox';
@@ -56,7 +56,7 @@
     : undefined}
   {autoComplete}
   autoCorrect={autoCorrect !== undefined ? String(autoCorrect) : undefined}
-  class={cssClass}
+  class={className}
   contentEditable={isEditable}
   data-testid={testid}
   {id}

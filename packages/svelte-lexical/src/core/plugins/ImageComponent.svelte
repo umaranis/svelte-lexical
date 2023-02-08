@@ -239,7 +239,7 @@
     <NestedComposer initialEditor={caption} parentEditor={editor}>
       <SharedHistoryPlugin />
       <RichTextPlugin />
-      <ContentEditable cssClass="ImageNode__contentEditable" />
+      <ContentEditable className="ImageNode__contentEditable" />
     </NestedComposer>
   </div>
 {/if}
