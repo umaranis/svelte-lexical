@@ -33,6 +33,7 @@
   import ContentEditable from '../ContentEditable.svelte';
   import RichTextPlugin from './RichTextPlugin.svelte';
   import SharedHistoryPlugin from './SharedHistoryPlugin.svelte';
+  import PlaceHolder from './PlaceHolder.svelte';
 
   export let src: string;
   export let altText: string;
@@ -240,6 +241,9 @@
       <SharedHistoryPlugin />
       <RichTextPlugin />
       <ContentEditable className="ImageNode__contentEditable" />
+      <PlaceHolder className="ImageNode__placeholder">
+        Enter image caption...
+      </PlaceHolder>
     </NestedComposer>
   </div>
 {/if}
@@ -275,7 +279,7 @@
     word-break: break-word;
   }
 
-  .ImageNode__placeholder {
+  :global(.ImageNode__placeholder) {
     font-size: 12px;
     color: #888;
     overflow: hidden;
