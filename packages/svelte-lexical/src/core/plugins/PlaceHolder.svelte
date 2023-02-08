@@ -8,7 +8,7 @@
   export let className = 'Placeholder__root';
 
   const editor = getEditor();
-  let canShowPlaceHolder = false;
+  let canShowPlaceHolder = true;
 
   onMount(() => {
     return mergeRegister(
