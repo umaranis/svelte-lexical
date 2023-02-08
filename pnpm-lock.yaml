@@ -182,6 +182,7 @@ importers:
       '@lexical/rich-text': ^0.7.6
       '@lexical/selection': ^0.7.6
       '@lexical/table': ^0.7.6
+      '@lexical/text': 0.7.6
       '@lexical/utils': ^0.7.6
       '@rollup/plugin-commonjs': ^24.0.1
       '@rollup/plugin-node-resolve': ^15.0.1
@@ -222,6 +223,7 @@ importers:
       '@lexical/rich-text': 0.7.6_eioik75cyzoruwd4hvum3yfzge
       '@lexical/selection': 0.7.6_lexical@0.7.6
       '@lexical/table': 0.7.6_lexical@0.7.6
+      '@lexical/text': 0.7.6_lexical@0.7.6
       '@lexical/utils': 0.7.6_lexical@0.7.6
       lexical: 0.7.6
       svelte: 3.55.1
@@ -2328,6 +2330,14 @@ packages:
       lexical: 0.7.6
     dependencies:
       '@lexical/utils': 0.7.6_lexical@0.7.6
+      lexical: 0.7.6
+    dev: false
+
+  /@lexical/text/0.7.6_lexical@0.7.6:
+    resolution: {integrity: sha512-YBGz/YMCXcTjo6rH5BV/b4ISKnp+mAJdhz6SFb0h8Us/RaQ3FFiWv36OwQRug1gWpzjpe7/2xKWR4zEjbOnEtw==}
+    peerDependencies:
+      lexical: 0.7.6
+    dependencies:
       lexical: 0.7.6
     dev: false
 

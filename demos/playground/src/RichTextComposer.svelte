@@ -19,6 +19,7 @@
     HorizontalRuleNode,
     ImageNode,
     TreeViewPlugin,
+    PlaceHolder,
   } from 'svelte-lexical';
   import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
 
@@ -45,6 +46,7 @@
       <div class="editor-scroller">
         <div class="editor">
           <ContentEditable />
+          <PlaceHolder>Enter rich text...</PlaceHolder>
         </div>
       </div>
       <RichTextPlugin />

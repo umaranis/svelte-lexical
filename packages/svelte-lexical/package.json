@@ -71,6 +71,7 @@
     "@lexical/rich-text": "^0.7.6",
     "@lexical/selection": "^0.7.6",
     "@lexical/table": "^0.7.6",
+    "@lexical/text": "0.7.6",
     "@lexical/utils": "^0.7.6",
     "lexical": "^0.7.6",
     "svelte": "^3.55.1"

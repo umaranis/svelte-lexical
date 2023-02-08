@@ -5,7 +5,7 @@
 
   import Composer from '../../core/Composer.svelte';
   import ContentEditable from '../../core/ContentEditable.svelte';
-  import HistoryPlugin from '../../core/plugins/HistoryPlugin.svelte';
+  import SharedHistoryPlugin from '../../core/plugins/SharedHistoryPlugin.svelte';
   import {HorizontalRuleNode} from '../../core/plugins/HorizontalRuleNode';
   import {ImageNode} from '../../core/plugins/ImageNode';
   import ImagePlugin from '../../core/plugins/ImagePlugin.svelte';
@@ -16,7 +16,7 @@
   import ActionBar from '../actionbar/ActionBar.svelte';
   import ToolbarRichText from './ToolbarRichText.svelte';
   import type {SvelteComponent} from 'svelte';
-  import {getHistoryState} from '../../core/svelteContext';
+  import PlaceHolder from '../../core/plugins/PlaceHolder.svelte';
 
   export let theme: EditorThemeClasses;
 
@@ -49,10 +49,11 @@
       <div class="editor-scroller">
         <div class="editor">
           <ContentEditable />
+          <PlaceHolder>Enter rich text...</PlaceHolder>
         </div>
       </div>
       <RichTextPlugin />
-      <HistoryPlugin externalHistoryState={getHistoryState()} />
+      <SharedHistoryPlugin />
       <ListPlugin />
       <CheckListPlugin />
       <HorizontalRulePlugin />

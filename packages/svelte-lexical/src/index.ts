@@ -6,6 +6,7 @@ export {default as ListPlugin} from './core/plugins/ListPlugin.svelte';
 export {default as CheckListPlugin} from './core/plugins/CheckListPlugin.svelte';
 export {default as HorizontalRulePlugin} from './core/plugins/HorizontalRulePlugin.svelte';
 export {default as ImagePlugin} from './core/plugins/ImagePlugin.svelte';
+export {default as PlaceHolder} from './core/plugins/PlaceHolder.svelte';
 
 export {HeadingNode, QuoteNode} from '@lexical/rich-text';
 export {ListNode, ListItemNode} from '@lexical/list';
