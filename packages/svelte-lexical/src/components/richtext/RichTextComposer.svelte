@@ -17,6 +17,7 @@
   import ToolbarRichText from './ToolbarRichText.svelte';
   import type {SvelteComponent} from 'svelte';
   import PlaceHolder from '../../core/plugins/PlaceHolder.svelte';
+  import AutoFocusPlugin from '../../core/plugins/AutoFocusPlugin.svelte';
 
   export let theme: EditorThemeClasses;
 
@@ -52,6 +53,7 @@
           <PlaceHolder>Enter rich text...</PlaceHolder>
         </div>
       </div>
+      <AutoFocusPlugin />
       <RichTextPlugin />
       <SharedHistoryPlugin />
       <ListPlugin />

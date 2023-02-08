@@ -10,8 +10,7 @@
     CheckListPlugin,
     HorizontalRulePlugin,
     ImagePlugin,
-  } from 'svelte-lexical';
-  import {
+    AutoFocusPlugin,
     HeadingNode,
     QuoteNode,
     ListNode,
@@ -49,6 +48,7 @@
           <PlaceHolder>Enter rich text...</PlaceHolder>
         </div>
       </div>
+      <AutoFocusPlugin />
       <RichTextPlugin />
       <SharedHistoryPlugin />
       <ListPlugin />
