@@ -34,6 +34,7 @@
   import RichTextPlugin from './RichTextPlugin.svelte';
   import SharedHistoryPlugin from './SharedHistoryPlugin.svelte';
   import PlaceHolder from './PlaceHolder.svelte';
+  import AutoFocusPlugin from './AutoFocusPlugin.svelte';
 
   export let src: string;
   export let altText: string;
@@ -244,6 +245,7 @@
       <PlaceHolder className="ImageNode__placeholder">
         Enter image caption...
       </PlaceHolder>
+      <AutoFocusPlugin />
     </NestedComposer>
   </div>
 {/if}
