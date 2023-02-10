@@ -8,11 +8,13 @@ export {default as HorizontalRulePlugin} from './core/plugins/HorizontalRulePlug
 export {default as ImagePlugin} from './core/plugins/ImagePlugin.svelte';
 export {default as PlaceHolder} from './core/plugins/PlaceHolder.svelte';
 export {default as AutoFocusPlugin} from './core/plugins/AutoFocusPlugin.svelte';
+export {default as KeywordPlugin} from './core/plugins/KeywordPlugin.svelte';
 
 export {HeadingNode, QuoteNode} from '@lexical/rich-text';
 export {ListNode, ListItemNode} from '@lexical/list';
 export {HorizontalRuleNode} from './core/plugins/HorizontalRuleNode';
 export {ImageNode} from './core/plugins/ImageNode';
+export {KeywordNode} from './core/plugins/KeywordNode';
 
 export {default as ToolbarBasic} from './components/richtext-basic/ToolbarBasic.svelte';
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';
