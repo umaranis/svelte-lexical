@@ -10,24 +10,23 @@
   import {$isHeadingNode as isHeadingNode} from '@lexical/rich-text';
   import {ListNode, $isListNode as isListNode} from '@lexical/list';
   import {$getNearestNodeOfType as getNearestNodeOfType} from '@lexical/utils';
-  import {onMount} from 'svelte';
+  import {getContext, onMount} from 'svelte';
 
-  import {
-    isBold,
-    isItalic,
-    isUnderline,
-    isStrikethrough,
-    blockType,
-    selectedElementKey,
-  } from '../editor-state/StateStoreBasic';
-  import {
-    isRTL,
-    fontSize,
-    fontFamily,
-  } from '../editor-state/StateStoreRichText';
   import {getEditor} from '../../core/svelteContext';
+  import type {Writable} from 'svelte/store';
 
   const editor = getEditor();
+
+  const isBold: Writable<boolean> = getContext('isBold');
+  const isItalic: Writable<boolean> = getContext('isItalic');
+  const isUnderline: Writable<boolean> = getContext('isUnderline');
+  const isStrikethrough: Writable<boolean> = getContext('isStrikethrough');
+  const blockType: Writable<string> = getContext('blockType');
+  const selectedElementKey: Writable<string | null> =
+    getContext('selectedElementKey');
+  const isRTL: Writable<boolean> = getContext('isRTL');
+  const fontSize: Writable<string> = getContext('fontSize');
+  const fontFamily: Writable<string> = getContext('fontFamily');
 
   const updateState = () => {
     const selection = getSelection();

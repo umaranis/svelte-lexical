@@ -1,4 +1,6 @@
 <script>
+  import {writable} from 'svelte/store';
+
   import BlockTypeDropDown from '../toolbar/BlockTypeDropDown.svelte';
   import BoldButton from '../toolbar/BoldButton.svelte';
   import Divider from '../toolbar/Divider.svelte';
@@ -13,8 +15,23 @@
   import FontFamilySelect from '../toolbar/FontFamilySelect.svelte';
   import FontSizeSelect from '../toolbar/FontSizeSelect.svelte';
   import InsertDropDown from '../toolbar/InsertDropDown.svelte';
+  import {setContext} from 'svelte';
+
+  setContext('isBold', writable(false));
+  setContext('isItalic', writable(false));
+  setContext('isUnderline', writable(false));
+  setContext('isStrikethrough', writable(false));
+  setContext('blockType', writable('paragraph'));
+
+  setContext('selectedElementKey', writable(null)); // TODO: why is this in store?
+
+  setContext('fontSize', writable('15px'));
+  setContext('fontFamily', writable('Arial'));
+  setContext('isRTL', writable(false));
+  setContext('isLink', writable(false));
 </script>
 
+<StateStoreRichTextUpdator />
 <div class="toolbar">
   <UndoButton />
   <RedoButton />
@@ -30,8 +47,7 @@
   <StrikethroughButton />
   <FormatCodeButton />
   <Divider />
-  <InsertDropDown/>
+  <InsertDropDown />
   <Divider />
   <DropDownAlign />
 </div>
-<StateStoreRichTextUpdator />

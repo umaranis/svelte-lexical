@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
@@ -6,17 +6,17 @@
   import {$isHeadingNode as isHeadingNode} from '@lexical/rich-text';
   import {ListNode, $isListNode as isListNode} from '@lexical/list';
   import {$getNearestNodeOfType as getNearestNodeOfType} from '@lexical/utils';
-  import {onMount} from 'svelte';
+  import {getContext, onMount} from 'svelte';
   import {getEditor} from '../../core/svelteContext';
+  import type {Writable} from 'svelte/store';
 
-  import {
-    isBold,
-    isItalic,
-    isUnderline,
-    isStrikethrough,
-    blockType,
-    selectedElementKey,
-  } from '../editor-state/StateStoreBasic';
+  const isBold: Writable<boolean> = getContext('isBold');
+  const isItalic: Writable<boolean> = getContext('isItalic');
+  const isUnderline: Writable<boolean> = getContext('isUnderline');
+  const isStrikethrough: Writable<boolean> = getContext('isStrikethrough');
+  const blockType: Writable<string> = getContext('blockType');
+  const selectedElementKey: Writable<string | null> =
+    getContext('selectedElementKey');
 
   const editor = getEditor();
 

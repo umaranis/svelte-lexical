@@ -19,8 +19,11 @@
     INSERT_UNORDERED_LIST_COMMAND,
     REMOVE_LIST_COMMAND,
   } from '@lexical/list';
-  import {blockType} from '../editor-state/StateStoreBasic';
   import {getEditor} from '../../core/svelteContext';
+  import {getContext} from 'svelte';
+  import type {Writable} from 'svelte/store';
+
+  const blockType: Writable<string> = getContext('blockType');
 
   // TODO: convert this component to using DropDown.svelte
 

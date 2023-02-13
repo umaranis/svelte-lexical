@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {
     FORMAT_ELEMENT_COMMAND,
     INDENT_CONTENT_COMMAND,
@@ -6,10 +6,12 @@
   } from 'lexical';
   import DropDown from './controls/DropDown.svelte';
   import Divider from './Divider.svelte';
-  import {isRTL} from '../editor-state/StateStoreRichText';
   import {getEditor} from '../../core/svelteContext';
+  import {getContext} from 'svelte';
+  import type {Writable} from 'svelte/store';
 
   const editor = getEditor();
+  const isRTL: Writable<boolean> = getContext('isRTL');
 </script>
 
 <DropDown

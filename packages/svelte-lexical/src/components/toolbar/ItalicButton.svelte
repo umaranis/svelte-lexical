@@ -1,9 +1,11 @@
-<script>
+<script lang="ts">
   import {FORMAT_TEXT_COMMAND} from 'lexical';
-  import {isItalic} from '../editor-state/StateStoreBasic';
   import {getEditor} from '../../core/svelteContext';
+  import {getContext} from 'svelte';
+  import type {Writable} from 'svelte/store';
 
   const editor = getEditor();
+  const isItalic: Writable<boolean> = getContext('isItalic');
 </script>
 
 <button

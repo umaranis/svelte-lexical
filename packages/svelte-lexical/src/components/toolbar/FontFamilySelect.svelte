@@ -1,14 +1,16 @@
-<script>
+<script lang="ts">
   import {$patchStyleText as patchStyleText} from '@lexical/selection';
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
   } from 'lexical';
   import Select from './controls/Select.svelte';
-  import {fontFamily} from '../editor-state/StateStoreRichText';
   import {getEditor} from '../../core/svelteContext';
+  import {getContext} from 'svelte';
+  import type {Writable} from 'svelte/store';
 
   const editor = getEditor();
+  const fontFamily: Writable<string> = getContext('fontFamily');
 
   function applyStyleText(styles) {
     editor.update(() => {

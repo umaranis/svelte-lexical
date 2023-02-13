@@ -1,9 +1,10 @@
 <script>
   import {FORMAT_TEXT_COMMAND} from 'lexical';
-  import {isBold} from '../editor-state/StateStoreBasic';
   import {getEditor} from '../../core/svelteContext';
+  import {getContext} from 'svelte';
 
   const editor = getEditor();
+  const isBold = getContext('isBold');
 </script>
 
 <button

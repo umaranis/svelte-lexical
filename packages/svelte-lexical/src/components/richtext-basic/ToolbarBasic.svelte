@@ -15,6 +15,7 @@
   import StateStoresBasicUpdator from './StateStoreBasicUpdator.svelte';
 </script>
 
+<StateStoresBasicUpdator />
 <div class="toolbar">
   <UndoButton />
   <RedoButton />
@@ -32,4 +33,3 @@
   <RightAlignButton />
   <JustifyAlignButton />
 </div>
-<StateStoresBasicUpdator />

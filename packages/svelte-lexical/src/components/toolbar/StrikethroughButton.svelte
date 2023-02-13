@@ -1,9 +1,11 @@
-<script>
+<script lang="ts">
   import {FORMAT_TEXT_COMMAND} from 'lexical';
-  import {isStrikethrough} from '../editor-state/StateStoreBasic';
+  import {getContext} from 'svelte';
+  import type {Writable} from 'svelte/store';
   import {getEditor} from '../../core/svelteContext';
 
   const editor = getEditor();
+  const isStrikethrough: Writable<boolean> = getContext('isStrikethrough');
 </script>
 
 <button
