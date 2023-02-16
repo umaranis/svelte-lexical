@@ -1,5 +1,11 @@
 <script lang="ts">
+  import {setContext} from 'svelte';
   import RichTextComposer from './RichTextComposer.svelte';
+  import Settings from './settings/Settings.svelte';
+  import {createSettingsStore} from './settings/setttingsStore';
+
+  const settings = createSettingsStore();
+  setContext('settings', settings);
 </script>
 
 <main>
@@ -18,6 +24,7 @@
   <div style="text-align: left;">
     <RichTextComposer />
   </div>
+  <Settings />
 </main>
 
 <style>
