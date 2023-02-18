@@ -14,12 +14,12 @@ export function setEditor(editor: LexicalEditor): void {
 }
 
 const HISTORYSTATE_KEY = 'historyState';
-export function getHistoryState(): HistoryState {
+export function getHistoryStateContext(): HistoryState {
   return getContext(HISTORYSTATE_KEY);
 }
 /**
  * Save `historyState` in the svelte component context
  */
-export function setHistoryState(historyState: HistoryState) {
+export function setHistoryStateContext(historyState: HistoryState) {
   setContext(HISTORYSTATE_KEY, historyState);
 }

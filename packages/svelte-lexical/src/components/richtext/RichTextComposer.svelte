@@ -23,7 +23,8 @@
 
   let composer: SvelteComponent;
 
-  const config = {
+  const initialConfig = {
+    namespace: 'Playground',
     theme,
     nodes: [
       HeadingNode,
@@ -33,7 +34,7 @@
       HorizontalRuleNode,
       ImageNode,
     ],
-    onError: (error) => {
+    onError: (error: Error) => {
       throw error;
     },
   };
@@ -43,7 +44,7 @@
   }
 </script>
 
-<Composer {config} bind:this={composer}>
+<Composer {initialConfig} bind:this={composer}>
   <div class="editor-shell">
     <ToolbarRichText />
     <div class="editor-container">

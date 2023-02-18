@@ -9,6 +9,7 @@ export {default as ImagePlugin} from './core/plugins/ImagePlugin.svelte';
 export {default as PlaceHolder} from './core/plugins/PlaceHolder.svelte';
 export {default as AutoFocusPlugin} from './core/plugins/AutoFocusPlugin.svelte';
 export {default as KeywordPlugin} from './core/plugins/KeywordPlugin.svelte';
+export {default as CollaborationPlugin} from './core/plugins/collaboration/CollaborationPlugin.svelte';
 
 export {HeadingNode, QuoteNode} from '@lexical/rich-text';
 export {ListNode, ListItemNode} from '@lexical/list';
@@ -27,3 +28,7 @@ export {default as Composer} from './core/Composer.svelte';
 export {default as RichTextComposer} from './components/richtext/RichTextComposer.svelte';
 
 export type {EditorThemeClasses, LexicalEditor} from 'lexical';
+export {$createParagraphNode, $createTextNode, $getRoot} from 'lexical';
+export {$createHeadingNode, $createQuoteNode} from '@lexical/rich-text';
+export {$createLinkNode} from '@lexical/link';
+export {$createListItemNode, $createListNode} from '@lexical/list';

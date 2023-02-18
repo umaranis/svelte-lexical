@@ -73,8 +73,11 @@
     "@lexical/table": "^0.7.6",
     "@lexical/text": "0.7.6",
     "@lexical/utils": "^0.7.6",
+    "@lexical/yjs": "^0.7.6",
     "lexical": "^0.7.6",
-    "svelte": "^3.55.1"
+    "svelte": "^3.55.1",
+    "y-websocket": "1.4.5",
+    "yjs": "13.5.46"
   },
   "jest": {
     "transform": {

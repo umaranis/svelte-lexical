@@ -1,6 +1,6 @@
 <script>
-  import {getHistoryState} from '../svelteContext';
+  import {getHistoryStateContext} from '../svelteContext';
   import HistoryPlugin from './HistoryPlugin.svelte';
 </script>
 
-<HistoryPlugin externalHistoryState={getHistoryState()} />
+<HistoryPlugin externalHistoryState={getHistoryStateContext()} />
