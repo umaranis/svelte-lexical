@@ -8,6 +8,8 @@
   import {createBinding} from '@lexical/yjs';
   import {onMount} from 'svelte';
   import YjsCollaboration from './YjsCollaboration.svelte';
+  import YjsHistory from './YjsHistory.svelte';
+  import YjsFocusTracking from './YjsFocusTracking.svelte';
 
   export let id: string;
   export let providerFactory: (
@@ -59,5 +61,5 @@
   {cursorsContainerRef}
   {initialEditorState} />
 
-<useYjsHistory {editor} {binding} />
-<useYjsFocusTracking {editor} {provider} {name} {color} />
+<YjsHistory {editor} {binding} />
+<YjsFocusTracking {editor} {provider} {name} {color} />

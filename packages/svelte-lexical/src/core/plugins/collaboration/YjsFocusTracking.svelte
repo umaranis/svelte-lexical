@@ -7,7 +7,7 @@
     FOCUS_COMMAND,
     type LexicalEditor,
   } from 'lexical';
-  import {onMount} from 'svelte/types/runtime/internal/lifecycle';
+  import {onMount} from 'svelte';
   import type {WebsocketProvider} from 'y-websocket';
 
   export let editor: LexicalEditor;
