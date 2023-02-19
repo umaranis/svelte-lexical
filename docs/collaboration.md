@@ -37,15 +37,3 @@ Issue: **Yjs was already imported. This breaks constructor checks and will lead 
 
 See more details [here at lexical](https://github.com/facebook/lexical/issues/2153) and [here at svelte-lexical](https://github.com/umaranis/svelte-lexical/issues/20).
 
-### Replication steps
-
-It is easy to replicate.
-
-1. Create a svelte project using vite template `pnpm create vite`.
-2. Inlcude Yjs as a dependency in the project.
-3. Include any package that depends on Yjs (same version is above).
-4. Run using `pnpm dev`
-5. See the console log for this issue: *Yjs was already imported. This breaks constructor checks and will lead to issues!*
-
-
-
