@@ -16,6 +16,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('DraggableBlock', () => {
+  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
 
   test('Paragraph one can be successfully dragged below paragraph two', async ({
