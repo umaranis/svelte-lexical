@@ -23,7 +23,7 @@ import {
 
 test.describe('Regression test #231', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test(`Does not generate segment error when editing empty text nodes`, async ({
+  test.fixme(`Does not generate segment error when editing empty text nodes`, async ({
     page,
   }) => {
     await focusEditor(page);

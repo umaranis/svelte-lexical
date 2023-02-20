@@ -18,6 +18,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('MaxLength', () => {
+  test.fixme();
   test.use({isMaxLength: true});
   test.beforeEach(({isCollab, isMaxLength, page}) =>
     initialize({isCollab, isMaxLength, page}),

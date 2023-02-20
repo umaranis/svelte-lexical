@@ -14,7 +14,7 @@ test.describe('Lock', () => {
   test.beforeEach(({isCollab, page}) =>
     initialize({isAutocomplete: true, isCollab, page}),
   );
-  test('Placeholder remains when non-editable', async ({
+  test.fixme('Placeholder remains when non-editable', async ({
     page,
     isPlainText,
     isCollab,

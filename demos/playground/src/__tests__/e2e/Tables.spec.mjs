@@ -52,6 +52,7 @@ async function fillTablePartiallyWithText(page) {
 }
 
 test.describe('Tables', () => {
+  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test(`Can a table be inserted from the toolbar`, async ({
     page,

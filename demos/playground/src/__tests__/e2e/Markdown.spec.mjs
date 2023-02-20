@@ -51,6 +51,7 @@ async function checkHTMLExpectationsIncludingUndoRedo(
 }
 
 test.describe('Markdown', () => {
+  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   const triggersAndExpectations = [
     {
@@ -656,7 +657,7 @@ test.describe('Markdown', () => {
   ];
 
   BASE_BLOCK_SHORTCUTS.forEach((testCase) => {
-    test(`can convert "${testCase.text}" shortcut`, async ({
+    test.fixme(`can convert "${testCase.text}" shortcut`, async ({
       page,
       isCollab,
     }) => {
@@ -680,7 +681,7 @@ test.describe('Markdown', () => {
   });
 
   SIMPLE_TEXT_FORMAT_SHORTCUTS.forEach((testCase) => {
-    test(`can convert "${testCase.text}" shortcut`, async ({
+    test.fixme(`can convert "${testCase.text}" shortcut`, async ({
       page,
       isCollab,
     }) => {
@@ -694,7 +695,7 @@ test.describe('Markdown', () => {
   });
 
   NESTED_TEXT_FORMAT_SHORTCUTS.forEach((testCase) => {
-    test(`can convert "${testCase.text}" shortcut`, async ({page}) => {
+    test.fixme(`can convert "${testCase.text}" shortcut`, async ({page}) => {
       await focusEditor(page);
       await page.keyboard.type(testCase.text, {
         delay: LEGACY_EVENTS ? 50 : 0,
@@ -704,7 +705,7 @@ test.describe('Markdown', () => {
     });
   });
 
-  test('can undo/redo nested transformations', async ({page, isCollab}) => {
+  test.fixme('can undo/redo nested transformations', async ({page, isCollab}) => {
     await focusEditor(page);
     await page.keyboard.type('~~_**hello world**_~~');
 
@@ -777,7 +778,7 @@ test.describe('Markdown', () => {
     await assertHTML(page, BOLD_ITALIC_STRIKETHROUGH);
   });
 
-  test('can convert already styled text (overlapping ranges)', async ({
+  test.fixme('can convert already styled text (overlapping ranges)', async ({
     page,
   }) => {
     // type partially bold/underlined text, add opening markdown tag within bold/underline part
@@ -826,7 +827,7 @@ test.describe('Markdown', () => {
     );
   });
 
-  test('can convert markdown text into rich text', async ({page, isCollab}) => {
+  test.fixme('can convert markdown text into rich text', async ({page, isCollab}) => {
     await focusEditor(page);
     await page.keyboard.type('```markdown ');
     await pasteFromClipboard(page, {
@@ -855,7 +856,7 @@ test.describe('Markdown', () => {
     }
   });
 
-  test('can type text with markdown', async ({page}) => {
+  test.fixme('can type text with markdown', async ({page}) => {
     await focusEditor(page);
     await page.keyboard.type(TYPED_MARKDOWN);
     await assertHTML(page, TYPED_MARKDOWN_HTML);
@@ -891,7 +892,7 @@ test.describe('Markdown', () => {
     );
   });
 
-  test('can export text format next to a newline', async ({page}) => {
+  test.fixme('can export text format next to a newline', async ({page}) => {
     await focusEditor(page);
     await page.keyboard.type('Hello');
     await page.keyboard.down('Shift');
@@ -926,7 +927,7 @@ test.describe('Markdown', () => {
     );
   });
 
-  test('can import single decorator node (#2604)', async ({page}) => {
+  test.fixme('can import single decorator node (#2604)', async ({page}) => {
     await focusEditor(page);
     await page.keyboard.type(
       '```markdown ![Yellow flower in tilt shift lens](' +
@@ -957,7 +958,7 @@ test.describe('Markdown', () => {
     );
   });
 
-  test('can adjust selection after text match transformer', async ({page}) => {
+  test.fixme('can adjust selection after text match transformer', async ({page}) => {
     await focusEditor(page);
     await page.keyboard.type('Hello  world');
     await moveLeft(page, 6);

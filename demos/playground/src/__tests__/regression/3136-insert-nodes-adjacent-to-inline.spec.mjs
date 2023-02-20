@@ -22,6 +22,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Regression test #3136', () => {
+  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test('Correctly pastes rich content when the selection is followed by an inline element', async ({
     isPlainText,

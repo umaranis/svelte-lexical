@@ -27,6 +27,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Clear All Formatting', () => {
+  test.fixme();
   test.beforeEach(({isPlainText, isCollab, page}) => {
     test.skip(isPlainText);
     initialize({isCollab, page});

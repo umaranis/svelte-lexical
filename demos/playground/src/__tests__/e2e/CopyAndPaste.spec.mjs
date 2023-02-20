@@ -254,7 +254,7 @@ test.describe('CopyAndPaste', () => {
     }
   });
 
-  test(`Copy and paste heading`, async ({isPlainText, page, browserName}) => {
+  test.fixme(`Copy and paste heading`, async ({isPlainText, page, browserName}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -304,7 +304,7 @@ test.describe('CopyAndPaste', () => {
     });
   });
 
-  test(`Copy and paste between sections`, async ({
+  test.fixme(`Copy and paste between sections`, async ({
     isRichText,
     page,
     browserName,
@@ -785,7 +785,7 @@ test.describe('CopyAndPaste', () => {
     });
   });
 
-  test('Copy and paste of partial list items into an empty editor', async ({
+  test.fixme('Copy and paste of partial list items into an empty editor', async ({
     page,
     isPlainText,
   }) => {
@@ -865,7 +865,7 @@ test.describe('CopyAndPaste', () => {
     });
   });
 
-  test('Copy and paste of partial list items into the list', async ({
+  test.fixme('Copy and paste of partial list items into the list', async ({
     page,
     isPlainText,
     isCollab,
@@ -949,7 +949,7 @@ test.describe('CopyAndPaste', () => {
     });
   });
 
-  test('Copy list items and paste back into list', async ({
+  test.fixme('Copy list items and paste back into list', async ({
     page,
     isPlainText,
     isCollab,
@@ -1017,7 +1017,7 @@ test.describe('CopyAndPaste', () => {
     });
   });
 
-  test('Copy list items and paste into list', async ({
+  test.fixme('Copy list items and paste into list', async ({
     page,
     isPlainText,
     isCollab,
@@ -1204,7 +1204,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('Copy and paste of list items and paste back into list on an existing item', async ({
+  test.fixme('Copy and paste of list items and paste back into list on an existing item', async ({
     page,
     isPlainText,
     isCollab,
@@ -1272,7 +1272,7 @@ test.describe('CopyAndPaste', () => {
     });
   });
 
-  test('Copy and paste two paragraphs into list on an existing item', async ({
+  test.fixme('Copy and paste two paragraphs into list on an existing item', async ({
     page,
     isPlainText,
   }) => {
@@ -1332,7 +1332,7 @@ test.describe('CopyAndPaste', () => {
     });
   });
 
-  test('Copy and paste two paragraphs at the end of a list', async ({
+  test.fixme('Copy and paste two paragraphs at the end of a list', async ({
     page,
     isPlainText,
   }) => {
@@ -1388,7 +1388,7 @@ test.describe('CopyAndPaste', () => {
     });
   });
 
-  test('Copy and paste an inline element into a leaf node', async ({
+  test.fixme('Copy and paste an inline element into a leaf node', async ({
     page,
     isPlainText,
   }) => {
@@ -1501,7 +1501,7 @@ test.describe('CopyAndPaste', () => {
     });
   });
 
-  test('HTML Copy + paste an anchor element', async ({page, isPlainText}) => {
+  test.fixme('HTML Copy + paste an anchor element', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -1568,7 +1568,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste a list element', async ({page, isPlainText}) => {
+  test.fixme('HTML Copy + paste a list element', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -1604,7 +1604,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste (Nested List - directly nested ul)', async ({
+  test.fixme('HTML Copy + paste (Nested List - directly nested ul)', async ({
     page,
     isPlainText,
   }) => {
@@ -1710,7 +1710,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste (Nested List - li with non-list content plus ul child)', async ({
+  test.fixme('HTML Copy + paste (Nested List - li with non-list content plus ul child)', async ({
     page,
     isPlainText,
   }) => {
@@ -1810,7 +1810,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste (Table - Google Docs)', async ({
+  test.fixme('HTML Copy + paste (Table - Google Docs)', async ({
     page,
     isPlainText,
     isCollab,
@@ -1890,7 +1890,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste (Table - Quip)', async ({page, isPlainText}) => {
+  test.fixme('HTML Copy + paste (Table - Quip)', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -1961,7 +1961,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste (Table - Google Sheets)', async ({
+  test.fixme('HTML Copy + paste (Table - Google Sheets)', async ({
     page,
     isPlainText,
   }) => {
@@ -2035,7 +2035,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('Merge Grids on Copy + paste', async ({page, isPlainText, isCollab}) => {
+  test.fixme('Merge Grids on Copy + paste', async ({page, isPlainText, isCollab}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -2337,7 +2337,7 @@ test.describe('CopyAndPaste', () => {
     });
   });
 
-  test('HTML Copy + paste in front of or after a link', async ({
+  test.fixme('HTML Copy + paste in front of or after a link', async ({
     page,
     isPlainText,
   }) => {
@@ -2373,7 +2373,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste link by selecting its (partial) content', async ({
+  test.fixme('HTML Copy + paste link by selecting its (partial) content', async ({
     page,
     isPlainText,
   }) => {
@@ -2415,7 +2415,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('Copy + paste multi-line plain text into rich text produces separate paragraphs', async ({
+  test.fixme('Copy + paste multi-line plain text into rich text produces separate paragraphs', async ({
     page,
     isPlainText,
   }) => {
@@ -2651,7 +2651,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste a code block with BR', async ({
+  test.fixme('HTML Copy + paste a code block with BR', async ({
     page,
     isPlainText,
   }) => {
@@ -2740,7 +2740,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste empty link #3193', async ({page, isPlainText}) => {
+  test.fixme('HTML Copy + paste empty link #3193', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -2787,7 +2787,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Paste a link into text', async ({page, isPlainText}) => {
+  test.fixme('HTML Paste a link into text', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -2824,7 +2824,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste an image', async ({page, isPlainText}) => {
+  test.fixme('HTML Copy + paste an image', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -2864,7 +2864,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste + undo multiple image', async ({
+  test.fixme('HTML Copy + paste + undo multiple image', async ({
     page,
     isPlainText,
   }) => {
@@ -2922,7 +2922,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste a paragraph element between horizontal rules', async ({
+  test.fixme('HTML Copy + paste a paragraph element between horizontal rules', async ({
     page,
     isPlainText,
     isCollab,

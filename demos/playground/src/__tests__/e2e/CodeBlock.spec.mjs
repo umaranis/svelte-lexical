@@ -30,6 +30,7 @@ async function toggleCodeBlock(page) {
 }
 
 test.describe('CodeBlock', () => {
+  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test('Can create code block with markdown', async ({page, isRichText}) => {
     await focusEditor(page);

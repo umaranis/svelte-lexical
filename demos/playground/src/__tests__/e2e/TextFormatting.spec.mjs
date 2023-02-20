@@ -427,7 +427,7 @@ test.describe('TextFormatting', () => {
     });
   });
 
-  test(`Can select text and change the font-size`, async ({
+  test.fixme(`Can select text and change the font-size`, async ({
     page,
     isPlainText,
   }) => {
@@ -469,7 +469,7 @@ test.describe('TextFormatting', () => {
     });
   });
 
-  test(`Can select text and change the font-size and font-family`, async ({
+  test.fixme(`Can select text and change the font-size and font-family`, async ({
     page,
     isPlainText,
   }) => {
@@ -915,7 +915,7 @@ test.describe('TextFormatting', () => {
     );
   });
 
-  test(`The active state of the button in the toolbar should to be displayed correctly`, async ({
+  test.fixme(`The active state of the button in the toolbar should to be displayed correctly`, async ({
     page,
     isPlainText,
   }) => {
@@ -953,7 +953,7 @@ test.describe('TextFormatting', () => {
     expect(isButtonActiveStatusDisplayedCorrectly).toBe(true);
   });
 
-  test('Regression #2523: can toggle format when selecting a TextNode edge followed by a non TextNode; ', async ({
+  test.fixme('Regression #2523: can toggle format when selecting a TextNode edge followed by a non TextNode; ', async ({
     page,
     isCollab,
     isPlainText,

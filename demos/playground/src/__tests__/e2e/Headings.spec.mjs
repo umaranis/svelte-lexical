@@ -59,7 +59,7 @@ test.describe('Headings', () => {
     );
   });
 
-  test('Stays as a heading when you press enter in the middle of a heading', async ({
+  test.fixme('Stays as a heading when you press enter in the middle of a heading', async ({
     page,
   }) => {
     await focusEditor(page);

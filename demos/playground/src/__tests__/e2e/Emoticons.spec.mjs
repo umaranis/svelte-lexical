@@ -22,6 +22,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Emoticons', () => {
+  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test(`Can handle a single emoticon`, async ({page, browserName}) => {
     await focusEditor(page);

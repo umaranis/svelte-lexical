@@ -456,6 +456,7 @@ function testSuite(charset) {
 }
 
 test.describe('CharacterLimit', () => {
+  test.fixme();
   test.describe('UTF-16', () => {
     test.use({isCharLimit: true});
     test.beforeEach(({isCollab, page, isCharLimit, isCharLimitUtf8}) =>

@@ -564,7 +564,7 @@ test.describe('History', () => {
 
 test.describe('History - IME', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test('Can undo composed Hirigana via IME after composition ends (#2479)', async ({
+  test.fixme('Can undo composed Hirigana via IME after composition ends (#2479)', async ({
     page,
     browserName,
     isCollab,

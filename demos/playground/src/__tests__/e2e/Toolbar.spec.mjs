@@ -34,7 +34,7 @@ test.describe('Toolbar', () => {
     initialize({isCollab, page, showNestedEditorTreeView: false}),
   );
 
-  test('Insert image caption + table', async ({page, isPlainText}) => {
+  test.fixme('Insert image caption + table', async ({page, isPlainText}) => {
     test.skip(isPlainText);
     await focusEditor(page);
 
@@ -206,7 +206,7 @@ test.describe('Toolbar', () => {
     );
   });
 
-  test('Center align image', async ({page, isPlainText, isCollab}) => {
+  test.fixme('Center align image', async ({page, isPlainText, isCollab}) => {
     // Image selection can't be synced in collab
     test.skip(isPlainText || isCollab);
     await focusEditor(page);

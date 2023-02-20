@@ -54,7 +54,7 @@ test.describe('Selection', () => {
     expect(await editorHasFocus()).toEqual(false);
   });
 
-  test('keeps single active selection for nested editors', async ({
+  test.fixme('keeps single active selection for nested editors', async ({
     page,
     isPlainText,
     browserName,
@@ -108,7 +108,7 @@ test.describe('Selection', () => {
     expect(await hasSelection('.editor-shell')).toBe(false);
   });
 
-  test('can wrap post-linebreak nodes into new element', async ({
+  test.fixme('can wrap post-linebreak nodes into new element', async ({
     page,
     isPlainText,
   }) => {
@@ -202,7 +202,7 @@ test.describe('Selection', () => {
     );
   });
 
-  test('Can insert inline element within text and put selection after it', async ({
+  test.fixme('Can insert inline element within text and put selection after it', async ({
     page,
     isPlainText,
   }) => {

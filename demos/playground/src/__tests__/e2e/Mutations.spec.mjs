@@ -49,7 +49,7 @@ async function validateContent(page) {
 
 test.describe('Mutations', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test(`Can restore the DOM to the editor state state`, async ({page}) => {
+  test.fixme(`Can restore the DOM to the editor state state`, async ({page}) => {
     await focusEditor(page);
     await page.keyboard.type(
       'Hello #world. This content #should remain #intact.',

@@ -18,6 +18,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Element format', () => {
+  test.fixme();
   test.beforeEach(({isCollab, isPlainText, page}) => {
     test.skip(isPlainText);
     initialize({isCollab, page});

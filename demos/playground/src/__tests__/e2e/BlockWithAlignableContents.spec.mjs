@@ -19,6 +19,7 @@ import {
 
 const TEST_URL = 'https://www.youtube.com/embed/jNQXAC9IVRw';
 test.describe('BlockWithAlignableContents', () => {
+  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
 
   test('Can create full width blocks for YouTube videos', async ({

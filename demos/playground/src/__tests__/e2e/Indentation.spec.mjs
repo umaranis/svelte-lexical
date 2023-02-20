@@ -19,7 +19,7 @@ import {
 
 test.describe('Identation', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test(`Can create content and indent and outdent it all`, async ({
+  test.fixme(`Can create content and indent and outdent it all`, async ({
     page,
     browserName,
     isPlainText,

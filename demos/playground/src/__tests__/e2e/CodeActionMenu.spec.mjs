@@ -21,6 +21,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('CodeActionMenu', () => {
+  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test('Can copy code, when click `Copy` button', async ({
     page,

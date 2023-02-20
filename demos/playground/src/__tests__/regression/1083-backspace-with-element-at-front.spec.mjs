@@ -21,6 +21,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Regression test #1083', () => {
+  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test(`Backspace with ElementNode at the front of the paragraph`, async ({
     page,

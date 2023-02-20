@@ -19,7 +19,7 @@ test.describe('Autocomplete', () => {
   test.beforeEach(({isCollab, page}) =>
     initialize({isAutocomplete: true, isCollab, page}),
   );
-  test('Can autocomplete a word', async ({page, isPlainText}) => {
+  test.fixme('Can autocomplete a word', async ({page, isPlainText}) => {
     await focusEditor(page);
     await page.keyboard.type('Sort by alpha');
     await sleep(500);

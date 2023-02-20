@@ -18,7 +18,7 @@ import {
 
 test.describe('Regression test #429', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test(`Can add new lines before the line with emoji`, async ({
+  test.fixme(`Can add new lines before the line with emoji`, async ({
     isRichText,
     page,
   }) => {

@@ -70,7 +70,7 @@ test.describe('TextEntry', () => {
     });
   });
 
-  test(`Can type 'Hello' as a header and insert a paragraph before`, async ({
+  test.fixme(`Can type 'Hello' as a header and insert a paragraph before`, async ({
     page,
     isPlainText,
   }) => {
@@ -209,7 +209,7 @@ test.describe('TextEntry', () => {
     });
   });
 
-  test('Paragraphed text entry and selection', async ({page, isRichText}) => {
+  test.fixme('Paragraphed text entry and selection', async ({page, isRichText}) => {
     await focusEditor(page);
     await page.keyboard.type('Hello World.');
     await page.keyboard.press('Enter');

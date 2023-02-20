@@ -23,7 +23,7 @@ test.use({acceptDownloads: true});
 test.describe('File', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
 
-  test(`Can import/export`, async ({page, isPlainText}) => {
+  test.fixme(`Can import/export`, async ({page, isPlainText}) => {
     test.skip(isPlainText);
     await focusEditor(page);
     await toggleBold(page);

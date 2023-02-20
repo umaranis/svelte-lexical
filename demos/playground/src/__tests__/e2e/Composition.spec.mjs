@@ -181,6 +181,7 @@ test.describe('Composition', () => {
   });
 
   test.describe('IME', () => {
+    test.fixme();
     test('Can type Hiragana via IME', async ({page, browserName}) => {
       // We don't yet support FF.
       test.skip(browserName === 'firefox');

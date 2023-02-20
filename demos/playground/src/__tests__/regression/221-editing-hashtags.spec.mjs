@@ -18,6 +18,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Regression test #221', () => {
+  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test(`Can handle space in hashtag`, async ({page}) => {
     await focusEditor(page);

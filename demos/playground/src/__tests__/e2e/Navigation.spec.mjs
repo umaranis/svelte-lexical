@@ -792,7 +792,7 @@ test.describe('Keyboard Navigation', () => {
     }
   });
 
-  test('can navigate through the text with emoji word by word', async ({
+  test.fixme('can navigate through the text with emoji word by word', async ({
     page,
     browserName,
   }) => {

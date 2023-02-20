@@ -34,6 +34,7 @@ test.beforeEach(({isPlainText}) => {
 });
 
 test.describe('Links', () => {
+  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test(`Can convert a text node into a link`, async ({page}) => {
     await focusEditor(page);

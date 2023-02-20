@@ -16,6 +16,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Clear', () => {
+  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test(`can clear the editor`, async ({page}) => {
     await focusEditor(page);

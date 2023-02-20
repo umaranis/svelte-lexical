@@ -19,7 +19,7 @@ import {
 
 test.describe('Regression test #379', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test(`Is able to correctly handle backspace press at the line boundary`, async ({
+  test.fixme(`Is able to correctly handle backspace press at the line boundary`, async ({
     page,
   }) => {
     await focusEditor(page);

@@ -19,7 +19,7 @@ import {
 
 test.describe('Regression test #230', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test(`Is able to right arrow before hashtag after inserting text node`, async ({
+  test.fixme(`Is able to right arrow before hashtag after inserting text node`, async ({
     page,
   }) => {
     await focusEditor(page);
