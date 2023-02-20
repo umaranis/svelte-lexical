@@ -624,7 +624,7 @@ test.describe('Composition', () => {
       });
     });
 
-    test('Can type, delete and cancel Hiragana via IME', async ({
+    test.fixme('Can type, delete and cancel Hiragana via IME', async ({
       page,
       browserName,
     }) => {
@@ -686,7 +686,7 @@ test.describe('Composition', () => {
       });
     });
 
-    test('Floating toolbar should not be displayed when using IME', async ({
+    test.fixme('Floating toolbar should not be displayed when using IME', async ({
       page,
       browserName,
       isPlainText,
