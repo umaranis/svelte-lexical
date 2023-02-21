@@ -50,10 +50,17 @@
 
   const editor: LexicalEditor = getEditor();
 
+  const TRANSPARENT_IMAGE =
+    'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+  let img: HTMLImageElement;
+
   onMount(() => {
     if (!editor.hasNodes([ImageNode])) {
       throw new Error('ImagesPlugin: ImageNode not registered on editor');
     }
+
+    img = document.createElement('img');
+    img.src = TRANSPARENT_IMAGE;
 
     return mergeRegister(
       editor.registerCommand<InsertImagePayload>(
@@ -92,11 +99,6 @@
       ),
     );
   });
-
-  // const TRANSPARENT_IMAGE =
-  //   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-  // const img = document.createElement('img');
-  // img.src = TRANSPARENT_IMAGE;
 
   function onDragStart(event: DragEvent): boolean {
     const node = getImageNodeInSelection();
