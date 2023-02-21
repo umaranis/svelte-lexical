@@ -10,9 +10,12 @@ Unit testing is set up for svelte-lexical package using Jest and Testing Library
 
 E2E testing is set up for playground package using playwright
 
-Currently, 42 tests are passing.
+Currently, 64 tests are passing.
 
-### Running locally
+### Running in VSCode
+Run from VSCode `Testing` pane or click the play button in source code files.
+
+### Running locally from CLI
 
 - Start the playground demo
   - <code>pnpm -C demos/playground dev</code>
@@ -21,6 +24,18 @@ Currently, 42 tests are passing.
 - Run tests
   - All tests (chromium, firefox and safari): <code>pnpm playwright test</code>
   - Just chromium browser: <code>pnpm test-e2e:chromium</code>
+
+### Debugging tests
+
+Preferred way to debug tests is using `Playwright Inspector`.  
+
+Start debugging all Tests
+
+`npx playwright test --debug`
+
+Debugging specific tests
+
+`npx playwright test List --debug`
 
 ### Running in GitHub Actions
 
