@@ -1,5 +1,6 @@
-import type {LexicalEditor, EditorState} from "lexical";
-import {$createParagraphNode, $getRoot, $getSelection} from "lexical";
+import type {LexicalEditor, EditorState} from 'lexical';
+import {$createParagraphNode, $getRoot, $getSelection} from 'lexical';
+import {CAN_USE_DOM} from '../utils/canUseDOM';
 
 const HISTORY_MERGE_OPTIONS = {tag: 'history-merge'};
 
@@ -21,7 +22,7 @@ export function initializeEditor(
       if (root.isEmpty()) {
         const paragraph = $createParagraphNode();
         root.append(paragraph);
-        const activeElement = document.activeElement;
+        const activeElement = CAN_USE_DOM ? document.activeElement : null;
         if (
           $getSelection() !== null ||
           (activeElement !== null && activeElement === editor.getRootElement())

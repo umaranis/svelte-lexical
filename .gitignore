@@ -3,3 +3,4 @@ node_modules
 demos/*/dist/
 packages/*/dist/
 /.idea/
+**/playwright-report/index.html
