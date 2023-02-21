@@ -17,7 +17,7 @@ importers:
       rollup-plugin-terser: ^7.0.0
       sirv-cli: ^2.0.0
       svelte: ^3.0.0
-      svelte-lexical: 0.1.8
+      svelte-lexical: 0.2.0
     dependencies:
       '@rollup/plugin-replace': 4.0.0_rollup@2.79.1
       sirv-cli: 2.0.2
@@ -51,7 +51,7 @@ importers:
       start-server-and-test: ^1.15.3
       svelte: ^3.55.1
       svelte-check: ^3.0.3
-      svelte-lexical: 0.1.8
+      svelte-lexical: 0.2.0
       svelte-preprocess: ^5.0.1
       tslib: ^2.4.1
       typescript: ^4.9.4
@@ -93,7 +93,7 @@ importers:
       eslint-plugin-svelte3: ^3.4.1
       svelte: ^3.0.0
       svelte-check: ^2.10.0
-      svelte-lexical: 0.1.8
+      svelte-lexical: 0.2.0
       svelte-preprocess: ^4.10.7
       tslib: ^2.4.1
       typescript: ^4.9.3
@@ -128,7 +128,7 @@ importers:
       rollup-plugin-terser: ^7.0.0
       sirv-cli: ^2.0.0
       svelte: ^3.0.0
-      svelte-lexical: 0.1.8
+      svelte-lexical: 0.2.0
     dependencies:
       '@rollup/plugin-replace': 4.0.0_rollup@2.79.1
       sirv-cli: 2.0.2
@@ -153,7 +153,7 @@ importers:
       eslint: ^8.16.0
       eslint-plugin-svelte3: ^4.0.0
       svelte: ^3.44.0
-      svelte-lexical: 0.1.8
+      svelte-lexical: 0.2.0
       svelte-preprocess: ^4.10.7
       typescript: ^4.9.3
       vite: ^4.0.0

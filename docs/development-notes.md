@@ -47,14 +47,17 @@ Debugging specific tests
 
 ## GitHub action
 
-<code>.github/workflows/npm-publish.yaml</code> automatically publishes a new package on creation of release on GitHub.
+`.github/workflows/npm-publish.yaml` automatically publishes a new package on creation of release on GitHub.
 
 It uses NPM to build and publish (PNPM is not used due to a bug).
 
 ## Steps for creating a new release
 
 - bump up the version number
-  - for example, `pnpm version 0.1.3`
+  - for svelte-lexical package, `pnpm version 0.1.3`
+  - for demos project, update version number for `svelte-lexical` dependency in `package.json` (find and replace)
+  - run `pnpm i`
+  - build all projects
 - create a tag in GitHub
   - it will automatically trigger GitHub action for creating a package
 
