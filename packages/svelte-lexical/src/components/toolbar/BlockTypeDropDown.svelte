@@ -43,15 +43,15 @@
   };
 
   const editor: LexicalEditor = getEditor();
-  let button;
+  let button: HTMLButtonElement;
   let showBlockOptionsDropDown = false;
 
-  async function showDropdown(event) {
+  async function showDropdown(event: MouseEvent) {
     showBlockOptionsDropDown = !showBlockOptionsDropDown;
 
     if (showBlockOptionsDropDown && button) {
-      const handle = (event) => {
-        if (button && !button.contains(event.target)) {
+      const handle = (event: MouseEvent) => {
+        if (button && !button.contains(event.target as Node)) {
           showBlockOptionsDropDown = false;
           button.removeEventListener('click', handle);
         }

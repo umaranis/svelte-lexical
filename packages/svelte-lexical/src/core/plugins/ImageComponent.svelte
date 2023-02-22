@@ -295,7 +295,7 @@
     pointer-events: none;
   }
 
-  .image-control-wrapper--resizing {
+  :global(.image-control-wrapper--resizing) {
     touch-action: none;
   }
 </style>

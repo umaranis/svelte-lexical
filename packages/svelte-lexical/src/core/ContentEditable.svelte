@@ -4,28 +4,29 @@
   import {onMount} from 'svelte';
   import {getEditor} from './svelteContext';
 
-  export let ariaActiveDescendantID: string;
-  export let ariaAutoComplete: 'list' | 'none' | 'inline' | 'both' | null;
-  export let ariaControls: string;
-  export let ariaDescribedBy: string;
-  export let ariaExpanded: boolean;
-  export let ariaLabel: string;
-  export let ariaLabelledBy: string;
-  export let ariaMultiline: boolean;
-  export let ariaOwneeID: string;
-  export let ariaRequired: boolean;
-  export let autoCapitalize: boolean;
-  export let autoComplete: boolean;
-  export let autoCorrect: boolean;
+  export let ariaActiveDescendantID: string | undefined = undefined;
+  export let ariaAutoComplete: 'list' | 'none' | 'inline' | 'both' | null =
+    null;
+  export let ariaControls: string | undefined = undefined;
+  export let ariaDescribedBy: string | undefined = undefined;
+  export let ariaExpanded: boolean | undefined = undefined;
+  export let ariaLabel: string | undefined = undefined;
+  export let ariaLabelledBy: string | undefined = undefined;
+  export let ariaMultiline: boolean | undefined = undefined;
+  export let ariaOwneeID: string | undefined = undefined;
+  export let ariaRequired: boolean | undefined = undefined;
+  export let autoCapitalize: boolean | undefined = undefined;
+  export let autoComplete: boolean | undefined = undefined;
+  export let autoCorrect: boolean | undefined = undefined;
   //export let className: string;  // @lexical/image plugin seems to depend on the harded class name.
   export let className = 'ContentEditable__root';
-  export let id: string;
+  export let id: string | undefined = undefined;
   //export let readOnly: boolean; // it is defined in lexical code but not used
-  export let role: 'textbox';
+  export let role: 'textbox' | undefined = undefined;
   export let spellCheck = true;
-  export let style: string;
-  export let tabIndex: number;
-  export let testid: string;
+  export let style: string | undefined = undefined;
+  export let tabIndex: number | undefined = undefined;
+  export let testid: string | undefined = undefined;
 
   let isEditable = false;
   const editor: LexicalEditor = getEditor();
