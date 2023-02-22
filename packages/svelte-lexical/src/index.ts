@@ -17,7 +17,6 @@ export {HorizontalRuleNode} from './core/plugins/HorizontalRuleNode';
 export {ImageNode} from './core/plugins/ImageNode';
 export {KeywordNode} from './core/plugins/KeywordNode';
 
-export {default as ToolbarBasic} from './components/richtext-basic/ToolbarBasic.svelte';
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
 export {default as TreeViewPlugin} from './core/plugins/TreeViewPlugin.svelte';
