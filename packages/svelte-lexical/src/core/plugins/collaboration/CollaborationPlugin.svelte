@@ -32,10 +32,6 @@
   const doc = yjsDocMap.get(id);
   const binding = createBinding(editor, provider, id, doc, yjsDocMap);
   collabContext.clientID = binding.clientID;
-  console.log(
-    '🚀 ~ file: CollaborationPlugin.svelte:33 ~ clientID',
-    binding.clientID,
-  );
   collabContext.isCollabActive = true;
 
   onMount(() => {

@@ -84,10 +84,6 @@
       transaction: Transaction,
     ) => {
       if (transaction.origin !== binding) {
-        console.log(
-          '🚀 ~ file: YjsCollaboration.svelte:87 ~ initializeProviderAndConnect ~ onYjsTreeChanges',
-          binding,
-        );
         syncYjsChangesToLexical(binding, provider, events);
       }
     };
@@ -112,10 +108,6 @@
     awareness.on('update', onAwarenessUpdate);
     // This updates the local editor state when we recieve updates from other clients
     root.getSharedType().observeDeep(onYjsTreeChanges);
-    console.log(
-      '🚀 ~ file: YjsCollaboration.svelte:115 ~ initializeProviderAndConnect ~ observe onYjsTreeChanges',
-      binding,
-    );
     const removeListener = editor.registerUpdateListener(
       ({
         prevEditorState,
