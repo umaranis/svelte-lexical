@@ -66,3 +66,10 @@ decorate() {
 ```
 
 Svelte context is not available to such components. It is only available to components rendered through DecoratorNode mechanism.
+
+### Reactivity
+Svelte-lexical has two mechanisms for reactivity: svelte reactivity and lexical reconciler. In the context of decorator nodes, Lexical Reconciler calls node.decorate and decorator listeners when a node property changes.
+
+At times, a requirement can be achieved through any of the two mechanisms, but mostly they complement each other. An example of reactivity through lexical reconciler is ‘showCaption’ in image component.
+
+It is a must to implement lexical reconciler reactivity, we should not try to have all the reactivity in svelte because we have to respond to changes in lexical object model (for instance, changes introduced by undo/redo).
