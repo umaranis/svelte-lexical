@@ -1,8 +1,8 @@
 # DecoratorNode - Mechanism for plugging in UI framework in Lexical
 
-DecoratorNode provides a way for UI framworks to plug into lexical. DecoratorNode is the only base class available for extension.
+DecoratorNode provides a way for UI frameworks to plug into lexical. DecoratorNode is the only base class available for extension.
 
-Here is the order of execution when a decorator node created or changed:
+Here is the order of execution when a decorator node is created or changed:
 
 1. Reconciler starts
 2. DecoratorNode.createDOM
@@ -48,7 +48,7 @@ So now Decorator Nodes are implemented in a way that is in line with how it has 
 
 The mutation listener provides us with the type of mutation which can be `created`, `updated` or `destroyed`. 
 
-In case of created and updated mutation, the nodeKey is stored in the list of dirty components. These dirty components are created or updated during decorator listener. Mutation type is not a reliable way to determine rather we need to create or update a component because certain user actions like drag/drop may require re-creaton of the component even though mutation type is updated. This happens because the lexical reconciler may re-create the parent DOM node in certain cases of `updated` mutation. All new instances of Svelte Components instantiated during decorator listener are stored in a Map with nodeKey as the key.
+In case of created and updated mutation, the nodeKey is stored in the list of dirty components. These dirty components are created or updated during decorator listener. Mutation type is not a reliable way to determine rather we need to create or update a component because certain user actions like drag/drop may require re-creaton of the component even though the mutation type is updated. This happens because the lexical reconciler may re-create the parent DOM node in certain cases of `updated` mutation. All new instances of Svelte Components instantiated during decorator listener are stored in a Map with nodeKey as the key. This cache is used to find the Svelte Components when they need to be updated in decorator listener.
 
 In case of `destroyed` mutation type, the relevant Svelte Component is cleared from the cache.
 
