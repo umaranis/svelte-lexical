@@ -38,6 +38,20 @@ We can avoid decorator concept and implement the whole logic in createDOM or dec
 
 We get a null pointer exception on dragging and dropping an image with caption. There is a reconciliation process, part of lexical, that is triggered when any change happens in the editor. This reconciliation process calls createDOM and decorate methods on the lexical nodes as required. This reconciliation process should complete before reconciliation can start on any of the nested editors. This is because reconcilation process uses a global variable for storing the active editor being reconciled.  What happens in our case, if we do the whole rendering inside of createDOM or decorate method is that the reconciler starts and it does the reconciliation and runs createDOM and decorate methods. And if any of those methods is fully rendering the decorator nodes, then an image having a caption will create a nested editor triggering a reconciliation process from within a reconciliation process and overwriting the global active editor variable. The reconciliation process for the caption editor works fine, but when it ends, it sets the root, the global active editor as null, and then when it returns back to reconcile root editor data. This is where the whole thing breaks down and we get a null pointer exception.
 
+### svelte-lexical implementation of DecoratorNode
+
+Initially, I avoided DecoratorNode rendering mechanism and tried rendering the full component logic in `createDom` or `decorate` methods. But I run into problems with lexical reconciler trying to reconcile nested editors.
+
+So now Decorator Nodes are implemented in a way that is in line with how it has been designed by the lexical authors. DecoratorNode.decorate method returns the information required to render a component. The returned data for all the decorator nodes are available to the decorator listener when it is called. The  listener is registered through `registerDecoraterListener` and is called when any of the decorator nodes require rendering. This listener is where actual rendering of Svelte components takes place.
+
+`Decorator Listener` is called when any of the decorator node needs rendering. But it doesn't tell us which nodes have changed. Every time the listener is triggered, it contains the full list of decorator nodes data in the document. To track, which nodes have changed, svelte-lexical uses another listener called mutation listener. It is always called before the decorator listener and is only called for nodes which are changed.
+
+The mutation listener provides us with the type of mutation which can be `created`, `updated` or `destroyed`. 
+
+In case of created and updated mutation, the nodeKey is stored in the list of dirty components. These dirty components are created or updated during decorator listener. Mutation type is not a reliable way to determine rather we need to create or update a component because certain user actions like drag/drop may require re-creaton of the component even though mutation type is updated. This happens because the lexical reconciler may re-create the parent DOM node in certain cases of `updated` mutation. All new instances of Svelte Components instantiated during decorator listener are stored in a Map with nodeKey as the key.
+
+In case of `destroyed` mutation type, the relevant Svelte Component is cleared from the cache.
+
 ### Not all Svelte Components need to be implemented as a DecoratorNode
 
 The nodes that do not have any mutable properties can be rendered fully inside createDOM method without replying on decorator mechanism.
