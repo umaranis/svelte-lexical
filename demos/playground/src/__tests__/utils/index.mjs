@@ -1,10 +1,9 @@
 /**
- * Copyright (c) Meta Platforms, Inc. and affiliates.
+ * Copyright (c) Syed Umar Anis.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict
  */
 
 import {expect, test as base} from '@playwright/test';
@@ -650,6 +649,8 @@ export function prettifyHTML(string, {ignoreClasses, ignoreInlineStyles} = {}) {
 
   return prettier
     .format(output, {
+      "plugins": ["prettier-plugin-organize-attributes"],
+      "pluginSearchDirs": ["../../../../"],
       attributeGroups: ['$DEFAULT', '^data-'],
       attributeSort: 'ASC',
       bracketSameLine: true,
