@@ -8,7 +8,7 @@
   } from 'svelte-lexical';
   import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
 
-  const config = {
+  const initialConfig = {
     theme: PlaygroundEditorTheme,
     nodes: [],
     onError: (error) => {
@@ -17,7 +17,7 @@
   };
 </script>
 
-<Composer {config}>
+<Composer {initialConfig}>
   <div class="editor-shell">
     <div class="editor-container">
       <div class="editor-scroller">
