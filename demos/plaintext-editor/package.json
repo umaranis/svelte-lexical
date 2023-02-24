@@ -9,19 +9,19 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.0.2",
+    "@sveltejs/vite-plugin-svelte": "^2.0.3",
     "@tsconfig/svelte": "^3.0.0",
-    "eslint": "^8.13.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-svelte3": "^3.4.1",
-    "svelte-check": "^2.10.0",
-    "svelte-preprocess": "^4.10.7",
-    "tslib": "^2.4.1",
-    "typescript": "^4.9.3",
-    "vite": "^4.0.0",
-    "svelte": "^3.0.0"
+    "eslint": "^8.34.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-svelte3": "^4.0.0",
+    "svelte": "^3.55.1",
+    "svelte-check": "^3.0.4",
+    "svelte-preprocess": "^5.0.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.4"
   },
   "dependencies": {
-    "svelte-lexical": "0.2.0"
+    "svelte-lexical": "workspace:0.2.0"
   }
 }
