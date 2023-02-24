@@ -27,15 +27,25 @@ Run from VSCode `Testing` pane or click the play button in source code files.
 
 ### Debugging tests
 
-Preferred way to debug tests is using `Playwright Inspector`.  
+Following are the two options for debugging `testing code`. The `code under test` can be debugged using browser DevTools in both cases.
 
-Start debugging all Tests
+1. Playwright Inspector
 
-`npx playwright test --debug`
+    It is good for working with locators and visually representing clicks and stuff. It lets you step through the test code. But `step into` and `watches` are not supported.  
 
-Debugging specific tests
+    Start debugging all Tests
 
-`npx playwright test List --debug`
+    `npx playwright test --debug`
+
+    Debugging specific tests
+
+    `npx playwright test List --debug`
+
+2. VSCode debugger
+
+    It has full debugging support for test code.
+
+    Only safari debug profile is working in the current setup. Need to fix other profiles (they are working in lexical).
 
 ### Running in GitHub Actions
 
