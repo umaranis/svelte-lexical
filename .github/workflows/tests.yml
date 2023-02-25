@@ -1,4 +1,4 @@
-name: Svelte Lexical Tests
+name: E2E Tests
 
 on:
   push:
