@@ -40,6 +40,7 @@ jobs:
         working-directory: ./packages/svelte-lexical
       - run: pnpm lint
         working-directory: ./packages/svelte-lexical
+
       - run: pnpm i
         working-directory: ./demos/playground
       - run: pnpm build
@@ -48,3 +49,30 @@ jobs:
         working-directory: ./demos/playground
       - run: pnpm lint
         working-directory: ./demos/playground
+
+      - run: pnpm i
+        working-directory: ./demos/sveltekit
+      - run: pnpm build
+        working-directory: ./demos/sveltekit
+      - run: pnpm svelte-check
+        working-directory: ./demos/sveltekit
+      - run: pnpm lint
+        working-directory: ./demos/sveltekit
+
+      - run: pnpm i
+        working-directory: ./demos/richtext-editor
+      - run: pnpm build
+        working-directory: ./demos/richtext-editor
+      - run: pnpm svelte-check
+        working-directory: ./demos/richtext-editor
+      - run: pnpm lint
+        working-directory: ./demos/richtext-editor
+
+      - run: pnpm i
+        working-directory: ./demos/plaintext-editor
+      - run: pnpm build
+        working-directory: ./demos/plaintext-editor
+      - run: pnpm svelte-check
+        working-directory: ./demos/plaintext-editor
+      - run: pnpm lint
+        working-directory: ./demos/plaintext-editor
