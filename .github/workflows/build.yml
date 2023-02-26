@@ -1,6 +1,3 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
-
 name: Build
 
 on:
@@ -43,3 +40,11 @@ jobs:
         working-directory: ./packages/svelte-lexical
       - run: pnpm lint
         working-directory: ./packages/svelte-lexical
+      - run: pnpm i
+        working-directory: ./demos/playground
+      - run: pnpm build
+        working-directory: ./demos/playground
+      - run: pnpm svelte-check
+        working-directory: ./demos/playground
+      - run: pnpm lint
+        working-directory: ./demos/playground
