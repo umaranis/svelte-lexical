@@ -5,9 +5,16 @@
     COMMAND_PRIORITY_CRITICAL,
   } from 'lexical';
   import {onMount} from 'svelte';
-  import {getEditor} from '../../core/svelteContext';
+  import {
+    getEditor,
+    getIsEditable,
+    getActiveEditor,
+  } from '../../core/svelteContext';
+  import {IS_APPLE} from '../../environment/environment';
 
   const editor = getEditor();
+  const activeEditor = getActiveEditor();
+  const isEditable = getIsEditable();
 
   let canRedo = false;
 
@@ -25,11 +32,13 @@
 </script>
 
 <button
-  disabled={!canRedo}
+  disabled={!canRedo || !$isEditable}
   on:click={() => {
-    editor.dispatchCommand(REDO_COMMAND);
+    $activeEditor.dispatchCommand(REDO_COMMAND, undefined);
   }}
-  class="toolbar-item spaced"
+  title={IS_APPLE ? 'Redo (⌘Y)' : 'Redo (Ctrl+Y)'}
+  type="button"
+  class="toolbar-item"
   aria-label="Redo">
   <i class="format redo" />
 </button>

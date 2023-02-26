@@ -16,6 +16,15 @@
   import FontSizeSelect from '../toolbar/FontSizeSelect.svelte';
   import InsertDropDown from '../toolbar/InsertDropDown.svelte';
   import {setContext} from 'svelte';
+  import {getEditor} from '../../core/svelteContext';
+  import {onMount} from 'svelte';
+
+  const editor = getEditor();
+
+  const isEditable = writable(editor.isEditable());
+  setContext('isEditable', isEditable);
+
+  setContext('activeEditor', writable(editor));
 
   setContext('isBold', writable(false));
   setContext('isItalic', writable(false));
@@ -29,6 +38,12 @@
   setContext('fontFamily', writable('Arial'));
   setContext('isRTL', writable(false));
   setContext('isLink', writable(false));
+
+  onMount(() => {
+    return editor.registerEditableListener((editable) => {
+      $isEditable = editable;
+    });
+  });
 </script>
 
 <StateStoreRichTextUpdator />

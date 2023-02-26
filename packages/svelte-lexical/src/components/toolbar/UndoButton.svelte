@@ -5,9 +5,16 @@
     COMMAND_PRIORITY_CRITICAL,
   } from 'lexical';
   import {onMount} from 'svelte';
-  import {getEditor} from '../../core/svelteContext';
+  import {
+    getEditor,
+    getIsEditable,
+    getActiveEditor,
+  } from '../../core/svelteContext';
+  import {IS_APPLE} from '../../environment/environment';
 
   const editor = getEditor();
+  const activeEditor = getActiveEditor();
+  const isEditable = getIsEditable();
 
   let canUndo = false;
 
@@ -25,10 +32,12 @@
 </script>
 
 <button
-  disabled={!canUndo}
+  disabled={!canUndo || !$isEditable}
   on:click={() => {
-    editor.dispatchCommand(UNDO_COMMAND);
+    $activeEditor.dispatchCommand(UNDO_COMMAND);
   }}
+  title={IS_APPLE ? 'Undo (⌘Z)' : 'Undo (Ctrl+Z)'}
+  type="button"
   class="toolbar-item spaced"
   aria-label="Undo">
   <i class="format undo" />

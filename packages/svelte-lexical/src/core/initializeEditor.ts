@@ -1,6 +1,6 @@
 import type {LexicalEditor, EditorState} from 'lexical';
 import {$createParagraphNode, $getRoot, $getSelection} from 'lexical';
-import {CAN_USE_DOM} from '../utils/canUseDOM';
+import {CAN_USE_DOM} from '../environment/canUseDOM';
 
 const HISTORY_MERGE_OPTIONS = {tag: 'history-merge'};
 

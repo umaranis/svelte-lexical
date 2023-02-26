@@ -46,7 +46,7 @@
     type ImagePayload,
   } from './ImageNode';
   import {getEditor} from '../svelteContext';
-  import {CAN_USE_DOM} from '../../utils/canUseDOM';
+  import {CAN_USE_DOM} from '../../environment/canUseDOM';
 
   const editor: LexicalEditor = getEditor();
 

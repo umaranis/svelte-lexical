@@ -2,6 +2,8 @@
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
+    COMMAND_PRIORITY_CRITICAL,
+    SELECTION_CHANGE_COMMAND,
   } from 'lexical';
   import {
     $isParentElementRTL as isParentElementRTL,
@@ -9,13 +11,17 @@
   } from '@lexical/selection';
   import {$isHeadingNode as isHeadingNode} from '@lexical/rich-text';
   import {ListNode, $isListNode as isListNode} from '@lexical/list';
-  import {$getNearestNodeOfType as getNearestNodeOfType} from '@lexical/utils';
+  import {
+    $getNearestNodeOfType as getNearestNodeOfType,
+    mergeRegister,
+  } from '@lexical/utils';
   import {getContext, onMount} from 'svelte';
 
-  import {getEditor} from '../../core/svelteContext';
+  import {getActiveEditor, getEditor} from '../../core/svelteContext';
   import type {Writable} from 'svelte/store';
 
   const editor = getEditor();
+  const activeEditor = getActiveEditor();
 
   const isBold: Writable<boolean> = getContext('isBold');
   const isItalic: Writable<boolean> = getContext('isItalic');
@@ -28,7 +34,7 @@
   const fontSize: Writable<string> = getContext('fontSize');
   const fontFamily: Writable<string> = getContext('fontFamily');
 
-  const updateState = () => {
+  const updateToolbar = () => {
     const selection = getSelection();
     if (isRangeSelection(selection)) {
       const anchorNode = selection.anchor.getNode();
@@ -93,10 +99,21 @@
 
   // unregisters onDestory using returned callback
   onMount(() => {
-    editor.registerUpdateListener(({editorState}) => {
-      editorState.read(() => {
-        updateState();
-      });
-    });
+    mergeRegister(
+      editor.registerUpdateListener(({editorState}) => {
+        editorState.read(() => {
+          updateToolbar();
+        });
+      }),
+      editor.registerCommand(
+        SELECTION_CHANGE_COMMAND,
+        (_payload, newEditor) => {
+          updateToolbar();
+          $activeEditor = newEditor;
+          return false;
+        },
+        COMMAND_PRIORITY_CRITICAL,
+      ),
+    );
   });
 </script>

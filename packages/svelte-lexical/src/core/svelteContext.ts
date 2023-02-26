@@ -1,25 +1,32 @@
 import type {HistoryState} from '@lexical/history';
 import type {LexicalEditor} from 'lexical';
 import {getContext, setContext} from 'svelte';
+import type {Writable} from 'svelte/store';
 
-const EDITOR_KEY = 'editor';
 export function getEditor(): LexicalEditor {
-  return getContext(EDITOR_KEY);
+  return getContext('editor');
 }
 /**
  * Save `editor` in the svelte component context
  */
 export function setEditor(editor: LexicalEditor): void {
-  setContext(EDITOR_KEY, editor);
+  setContext('editor', editor);
 }
 
-const HISTORYSTATE_KEY = 'historyState';
+export function getIsEditable(): Writable<boolean> {
+  return getContext('isEditable');
+}
+
+export function getActiveEditor(): Writable<LexicalEditor> {
+  return getContext('activeEditor');
+}
+
 export function getHistoryStateContext(): HistoryState {
-  return getContext(HISTORYSTATE_KEY);
+  return getContext('historyState');
 }
 /**
  * Save `historyState` in the svelte component context
  */
 export function setHistoryStateContext(historyState: HistoryState) {
-  setContext(HISTORYSTATE_KEY, historyState);
+  setContext('historyState', historyState);
 }
