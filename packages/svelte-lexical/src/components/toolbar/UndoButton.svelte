@@ -34,7 +34,7 @@
 <button
   disabled={!canUndo || !$isEditable}
   on:click={() => {
-    $activeEditor.dispatchCommand(UNDO_COMMAND);
+    $activeEditor.dispatchCommand(UNDO_COMMAND, undefined);
   }}
   title={IS_APPLE ? 'Undo (⌘Z)' : 'Undo (Ctrl+Z)'}
   type="button"

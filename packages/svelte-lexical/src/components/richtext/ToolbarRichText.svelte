@@ -1,7 +1,7 @@
 <script>
   import {writable} from 'svelte/store';
 
-  import BlockTypeDropDown from '../toolbar/BlockTypeDropDown.svelte';
+  import BlockFormatDropDown from '../toolbar/BlockFormatDropDown.svelte';
   import BoldButton from '../toolbar/BoldButton.svelte';
   import Divider from '../toolbar/Divider.svelte';
   import RedoButton from '../toolbar/RedoButton.svelte';
@@ -51,7 +51,7 @@
   <UndoButton />
   <RedoButton />
   <Divider />
-  <BlockTypeDropDown />
+  <BlockFormatDropDown />
   <Divider />
   <FontFamilySelect />
   <FontSizeSelect />
