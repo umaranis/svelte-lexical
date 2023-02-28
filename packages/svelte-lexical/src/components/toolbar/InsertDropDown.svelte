@@ -1,37 +1,37 @@
-<script>
-  import DropDown from './controls/DropDown.svelte';
-  import {INSERT_HORIZONTAL_RULE_COMMAND} from '../../core/plugins/HorizontalRuleNode.ts';
+<script lang="ts">
   import {INSERT_IMAGE_COMMAND} from '../../core/plugins/ImagePlugin.svelte';
   import InsertImageDialog, {open, close} from './InsertImageDialog.svelte';
-  import {getEditor} from '../../core/svelteContext';
+  import {getActiveEditor} from '../../core/svelteContext';
+  import DropDown from '../generic/dropdown/DropDown.svelte';
+  import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
+  import {INSERT_HORIZONTAL_RULE_COMMAND} from '../../core/plugins/HorizontalRuleNode';
 
-  const editor = getEditor();
+  const activeEditor = getActiveEditor();
+  export let disabled: boolean;
 </script>
 
 <DropDown
+  {disabled}
+  buttonClassName="toolbar-item spaced"
   buttonLabel="Insert"
-  buttonIconClassName="icon plus"
-  buttonClassName="toolbar-item spaced">
-  <button
+  buttonAriaLabel="Insert specialized editor node"
+  buttonIconClassName="icon plus">
+  <DropDownItem
     on:click={() => {
-      editor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND);
+      $activeEditor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined);
     }}
-    class="item">
+    className="item">
     <i class="icon horizontal-rule" />
     <span class="text">Horizontal Rule</span>
-  </button>
-  <button
-    on:click={() => {
-      open();
-    }}
-    class="item">
+  </DropDownItem>
+  <DropDownItem on:click={open} className="item">
     <i class="icon image" />
     <span class="text">Image</span>
-  </button>
+  </DropDownItem>
 </DropDown>
 
 <InsertImageDialog
   on:confirm={(payload) => {
     close();
-    editor.dispatchCommand(INSERT_IMAGE_COMMAND, payload.detail);
+    $activeEditor.dispatchCommand(INSERT_IMAGE_COMMAND, payload.detail);
   }} />

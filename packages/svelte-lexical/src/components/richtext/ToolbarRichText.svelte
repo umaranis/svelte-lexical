@@ -51,7 +51,7 @@
   <UndoButton />
   <RedoButton />
   <Divider />
-  <BlockFormatDropDown />
+  <BlockFormatDropDown disabled={!$isEditable} />
   <Divider />
   <FontFamilySelect />
   <FontSizeSelect />

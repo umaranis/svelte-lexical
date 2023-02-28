@@ -43,7 +43,7 @@
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
     getContext('blockType');
   const editor: LexicalEditor = getEditor();
-  export let disabled = false;
+  export let disabled: boolean;
 
   const formatParagraph = () => {
     if ($blockType !== 'paragraph') {

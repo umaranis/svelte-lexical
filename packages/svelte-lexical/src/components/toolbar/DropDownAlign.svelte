@@ -4,67 +4,71 @@
     INDENT_CONTENT_COMMAND,
     OUTDENT_CONTENT_COMMAND,
   } from 'lexical';
-  import DropDown from './controls/DropDown.svelte';
+  import DropDown from '../generic/dropdown/DropDown.svelte';
+  import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
   import Divider from './Divider.svelte';
-  import {getEditor} from '../../core/svelteContext';
+  import {getActiveEditor} from '../../core/svelteContext';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
 
-  const editor = getEditor();
+  const activeEditor = getActiveEditor();
   const isRTL: Writable<boolean> = getContext('isRTL');
+  export let disabled: boolean;
 </script>
 
 <DropDown
+  {disabled}
   buttonLabel="Align"
   buttonIconClassName="icon left-align"
-  buttonClassName="toolbar-item spaced">
-  <button
+  buttonClassName="toolbar-item spaced alignment"
+  buttonAriaLabel="Formatting options for text alignment">
+  <DropDownItem
     on:click={() => {
-      editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'left');
+      $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'left');
     }}
-    class="item">
+    className="item">
     <i class="icon left-align" />
     <span class="text">Left Align</span>
-  </button>
-  <button
+  </DropDownItem>
+  <DropDownItem
     on:click={() => {
-      editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'center');
+      $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'center');
     }}
-    class="item">
+    className="item">
     <i class="icon center-align" />
     <span class="text">Center Align</span>
-  </button>
-  <button
+  </DropDownItem>
+  <DropDownItem
     on:click={() => {
-      editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'right');
+      $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'right');
     }}
-    class="item">
+    className="item">
     <i class="icon right-align" />
     <span class="text">Right Align</span>
-  </button>
-  <button
+  </DropDownItem>
+  <DropDownItem
     on:click={() => {
-      editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'justify');
+      $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'justify');
     }}
-    class="item">
+    className="item">
     <i class="icon justify-align" />
     <span class="text">Justify Align</span>
-  </button>
+  </DropDownItem>
   <Divider />
-  <button
+  <DropDownItem
     on:click={() => {
-      editor.dispatchCommand(INDENT_CONTENT_COMMAND);
+      $activeEditor.dispatchCommand(OUTDENT_CONTENT_COMMAND, undefined);
     }}
-    class="item">
-    <i class={'icon ' + ($isRTL ? 'outdent' : 'indent')} />
-    <span class="text">Indent</span>
-  </button>
-  <button
-    on:click={() => {
-      editor.dispatchCommand(OUTDENT_CONTENT_COMMAND);
-    }}
-    class="item">
-    <i class={'icon ' + ($isRTL ? 'indent' : 'outdent')} />
+    className="item">
+    <i class={'icon ' + (isRTL ? 'indent' : 'outdent')} />
     <span class="text">Outdent</span>
-  </button>
+  </DropDownItem>
+  <DropDownItem
+    on:click={() => {
+      $activeEditor.dispatchCommand(INDENT_CONTENT_COMMAND, undefined);
+    }}
+    className="item">
+    <i class={'icon ' + (isRTL ? 'outdent' : 'indent')} />
+    <span class="text">Indent</span>
+  </DropDownItem>
 </DropDown>
