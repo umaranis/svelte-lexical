@@ -26,7 +26,7 @@
     on:click={() => {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'left');
     }}
-    className="item">
+    class="item">
     <i class="icon left-align" />
     <span class="text">Left Align</span>
   </DropDownItem>
@@ -34,7 +34,7 @@
     on:click={() => {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'center');
     }}
-    className="item">
+    class="item">
     <i class="icon center-align" />
     <span class="text">Center Align</span>
   </DropDownItem>
@@ -42,7 +42,7 @@
     on:click={() => {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'right');
     }}
-    className="item">
+    class="item">
     <i class="icon right-align" />
     <span class="text">Right Align</span>
   </DropDownItem>
@@ -50,7 +50,7 @@
     on:click={() => {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'justify');
     }}
-    className="item">
+    class="item">
     <i class="icon justify-align" />
     <span class="text">Justify Align</span>
   </DropDownItem>
@@ -59,7 +59,7 @@
     on:click={() => {
       $activeEditor.dispatchCommand(OUTDENT_CONTENT_COMMAND, undefined);
     }}
-    className="item">
+    class="item">
     <i class={'icon ' + (isRTL ? 'indent' : 'outdent')} />
     <span class="text">Outdent</span>
   </DropDownItem>
@@ -67,7 +67,7 @@
     on:click={() => {
       $activeEditor.dispatchCommand(INDENT_CONTENT_COMMAND, undefined);
     }}
-    className="item">
+    class="item">
     <i class={'icon ' + (isRTL ? 'outdent' : 'indent')} />
     <span class="text">Indent</span>
   </DropDownItem>

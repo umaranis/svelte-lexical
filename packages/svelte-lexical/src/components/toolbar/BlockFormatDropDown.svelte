@@ -149,55 +149,55 @@
   buttonLabel={blockTypeToBlockName[$blockType]}
   buttonAriaLabel="Formatting options for text style">
   <DropDownItem
-    className={'item ' + dropDownActiveClass($blockType === 'paragraph')}
+    class={'item ' + dropDownActiveClass($blockType === 'paragraph')}
     on:click={formatParagraph}>
     <i class="icon paragraph" />
     <span class="text">Normal</span>
   </DropDownItem>
   <DropDownItem
-    className={'item ' + dropDownActiveClass($blockType === 'h1')}
+    class={'item ' + dropDownActiveClass($blockType === 'h1')}
     on:click={() => formatHeading('h1')}>
     <i class="icon h1" />
     <span class="text">Heading 1</span>
   </DropDownItem>
   <DropDownItem
-    className={'item ' + dropDownActiveClass($blockType === 'h2')}
+    class={'item ' + dropDownActiveClass($blockType === 'h2')}
     on:click={() => formatHeading('h2')}>
     <i class="icon h2" />
     <span class="text">Heading 2</span>
   </DropDownItem>
   <DropDownItem
-    className={'item ' + dropDownActiveClass($blockType === 'h3')}
+    class={'item ' + dropDownActiveClass($blockType === 'h3')}
     on:click={() => formatHeading('h3')}>
     <i class="icon h3" />
     <span class="text">Heading 3</span>
   </DropDownItem>
   <DropDownItem
-    className={'item ' + dropDownActiveClass($blockType === 'bullet')}
+    class={'item ' + dropDownActiveClass($blockType === 'bullet')}
     on:click={formatBulletList}>
     <i class="icon bullet-list" />
     <span class="text">Bullet List</span>
   </DropDownItem>
   <DropDownItem
-    className={'item ' + dropDownActiveClass($blockType === 'number')}
+    class={'item ' + dropDownActiveClass($blockType === 'number')}
     on:click={formatNumberedList}>
     <i class="icon numbered-list" />
     <span class="text">Numbered List</span>
   </DropDownItem>
   <DropDownItem
-    className={'item ' + dropDownActiveClass($blockType === 'check')}
+    class={'item ' + dropDownActiveClass($blockType === 'check')}
     on:click={formatCheckList}>
     <i class="icon check-list" />
     <span class="text">Check List</span>
   </DropDownItem>
   <DropDownItem
-    className={'item ' + dropDownActiveClass($blockType === 'quote')}
+    class={'item ' + dropDownActiveClass($blockType === 'quote')}
     on:click={formatQuote}>
     <i class="icon quote" />
     <span class="text">Quote</span>
   </DropDownItem>
   <!-- <DropDownItem
-    className={'item ' + dropDownActiveClass($blockType === 'code')}
+    class={'item ' + dropDownActiveClass($blockType === 'code')}
     on:click={formatCode}>
     <i class="icon code" />
     <span class="text">Code Block</span>

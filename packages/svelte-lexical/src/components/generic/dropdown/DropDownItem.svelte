@@ -2,7 +2,8 @@
   import {onMount} from 'svelte';
   import {getRegisterItemFunc} from './utils';
 
-  export let className: string;
+  let className: string;
+  export {className as class};
   export let title: string | undefined = undefined;
 
   let ref: HTMLButtonElement;

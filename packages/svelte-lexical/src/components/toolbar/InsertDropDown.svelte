@@ -20,11 +20,11 @@
     on:click={() => {
       $activeEditor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined);
     }}
-    className="item">
+    class="item">
     <i class="icon horizontal-rule" />
     <span class="text">Horizontal Rule</span>
   </DropDownItem>
-  <DropDownItem on:click={open} className="item">
+  <DropDownItem on:click={open} class="item">
     <i class="icon image" />
     <span class="text">Image</span>
   </DropDownItem>
