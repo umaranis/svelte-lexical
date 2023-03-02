@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {writable} from 'svelte/store';
 
   import BlockFormatDropDown from '../toolbar/BlockFormatDropDown.svelte';
@@ -62,7 +62,7 @@
   <StrikethroughButton />
   <FormatCodeButton />
   <Divider />
-  <InsertDropDown />
+  <InsertDropDown disabled={!$isEditable} />
   <Divider />
-  <DropDownAlign />
+  <DropDownAlign disabled={!$isEditable} />
 </div>

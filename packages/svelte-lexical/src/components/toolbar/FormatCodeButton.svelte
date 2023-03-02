@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {FORMAT_TEXT_COMMAND} from 'lexical';
   //import { isCode } from '../editor-state/StateStoreBasic.js';
 

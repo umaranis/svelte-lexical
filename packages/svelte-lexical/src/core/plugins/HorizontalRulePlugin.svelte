@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
@@ -9,7 +9,7 @@
   import {
     $createHorizontalRuleNode as createHorizontalRuleNode,
     INSERT_HORIZONTAL_RULE_COMMAND,
-  } from './HorizontalRuleNode.ts';
+  } from './HorizontalRuleNode';
   import {getEditor} from '../svelteContext';
 
   const editor = getEditor();

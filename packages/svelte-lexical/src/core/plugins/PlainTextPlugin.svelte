@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {onMount} from 'svelte';
   import {registerPlainText} from '@lexical/plain-text';
   import {getEditor} from '../svelteContext';

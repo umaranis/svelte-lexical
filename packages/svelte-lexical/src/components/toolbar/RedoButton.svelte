@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {
     CAN_REDO_COMMAND,
     REDO_COMMAND,

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {
     CAN_UNDO_COMMAND,
     UNDO_COMMAND,

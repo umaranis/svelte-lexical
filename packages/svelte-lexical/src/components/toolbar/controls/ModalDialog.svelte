@@ -1,8 +1,13 @@
-<script context="module">
+<script context="module" lang="ts">
   // source: https://svelte.dev/repl/514f1335749a4eae9d34ad74dc277f20?version=3.37.0
 
-  let onTop; // keeping track of which open modal is on top
-  const modals = {}; // all modals get registered here for easy future access
+  let onTop: HTMLDivElement; // keeping track of which open modal is on top
+  const modals: {
+    [key: string]: {
+      open: (callback: (retVal?: any) => void) => void;
+      close: (retVal?: any) => void;
+    };
+  } = {}; // all modals get registered here for easy future access
 
   // returns an object for the modal specified by `id`, which contains the API functions (`open` and `close`)
   export const getModal = (id = '') => modals[id];
@@ -10,18 +15,18 @@
   // TODO: clean up this multi-dialog dictionary mess, each dialog should work on its own
 </script>
 
-<script>
-  import { onMount, onDestroy } from 'svelte';
+<script lang="ts">
+  import {onMount, onDestroy} from 'svelte';
 
-  let topDiv;
+  let topDiv: HTMLDivElement;
   let visible = false;
-  let prevOnTop;
-  let closeCallback;
+  let prevOnTop: HTMLDivElement;
+  let closeCallback: (retVal?: any) => void;
 
   export let id = '';
 
-  let close;
-  let handleKeydown;
+  let close: (retVal?: any) => void;
+  let handleKeydown: (this: Window, ev: KeyboardEvent) => void;
 
   onMount(() => {
     handleKeydown = (ev) => {
@@ -29,7 +34,7 @@
       if (ev.key === 'Escape' && onTop === topDiv) close(); // ESC
     };
 
-    const open = (callback) => {
+    const open = (callback: typeof close) => {
       closeCallback = callback;
       if (visible) return;
       prevOnTop = onTop;
@@ -54,7 +59,7 @@
     };
 
     // expose the API
-    modals[id] = { open, close };
+    modals[id] = {open, close};
   });
 
   onDestroy(() => {
@@ -65,6 +70,7 @@
   });
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div id="topModal" class:visible bind:this={topDiv} on:click={() => close()}>
   <div id="modal" class="Modal__modal" on:click|stopPropagation={() => {}}>
     <svg id="close" on:click={() => close()} viewBox="0 0 12 12">

@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
   import {FORMAT_TEXT_COMMAND} from 'lexical';
   import {getEditor} from '../../core/svelteContext';
   import {getContext} from 'svelte';
+  import type {Writable} from 'svelte/store';
 
   const editor = getEditor();
-  const isBold = getContext('isBold');
+  const isBold: Writable<boolean> = getContext('isBold');
 </script>
 
 <button

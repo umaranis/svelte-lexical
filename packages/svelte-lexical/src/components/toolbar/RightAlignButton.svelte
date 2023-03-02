@@ -1,16 +1,15 @@
-<script>
-  import { getContext } from "svelte";
-  import { FORMAT_ELEMENT_COMMAND } from "lexical";
+<script lang="ts">
+  import {FORMAT_ELEMENT_COMMAND} from 'lexical';
+  import {getEditor} from '../../core/svelteContext';
 
-  const editor = getContext("editor");
+  const editor = getEditor();
 </script>
 
 <button
   on:click={() => {
-    editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "right");
+    editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'right');
   }}
-  class="toolbar-item spaced" 
-  aria-label="Right Align"
->
+  class="toolbar-item spaced"
+  aria-label="Right Align">
   <i class="format right-align" />
 </button>

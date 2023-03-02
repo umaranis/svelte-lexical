@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {FORMAT_ELEMENT_COMMAND} from 'lexical';
   import {getEditor} from '../../core/svelteContext';
 
