@@ -60,7 +60,7 @@
       $activeEditor.dispatchCommand(OUTDENT_CONTENT_COMMAND, undefined);
     }}
     class="item">
-    <i class={'icon ' + (isRTL ? 'indent' : 'outdent')} />
+    <i class={'icon ' + ($isRTL ? 'indent' : 'outdent')} />
     <span class="text">Outdent</span>
   </DropDownItem>
   <DropDownItem
@@ -68,7 +68,7 @@
       $activeEditor.dispatchCommand(INDENT_CONTENT_COMMAND, undefined);
     }}
     class="item">
-    <i class={'icon ' + (isRTL ? 'outdent' : 'indent')} />
+    <i class={'icon ' + ($isRTL ? 'outdent' : 'indent')} />
     <span class="text">Indent</span>
   </DropDownItem>
 </DropDown>
