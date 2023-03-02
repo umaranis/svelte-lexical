@@ -69,7 +69,7 @@ test.beforeEach(({isPlainText}) => {
 
 test.describe('Nested List', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test.fixme(`Can toggle an empty list on/off`, async ({page}) => {
+  test(`Can toggle an empty list on/off`, async ({page}) => {
     await focusEditor(page);
 
     await assertHTML(
@@ -204,7 +204,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme('Should outdent if indented when the backspace key is pressed', async ({
+  test('Should outdent if indented when the backspace key is pressed', async ({
     page,
   }) => {
     await focusEditor(page);
@@ -235,7 +235,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Can indent/outdent mutliple list nodes in a list with multiple levels of indentation`, async ({
+  test(`Can indent/outdent mutliple list nodes in a list with multiple levels of indentation`, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -314,7 +314,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Can indent a list with a list item in between nested lists`, async ({
+  test(`Can indent a list with a list item in between nested lists`, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -362,7 +362,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Can create a list and then toggle it back to original state.`, async ({
+  test(`Can create a list and then toggle it back to original state.`, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -605,7 +605,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Can create mutliple bullet lists and then toggle off the list.`, async ({
+  test(`Can create mutliple bullet lists and then toggle off the list.`, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -690,7 +690,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Can create an unordered list and convert it to an ordered list `, async ({
+  test(`Can create an unordered list and convert it to an ordered list `, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -719,7 +719,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Can create a single item unordered list with text and convert it to an ordered list `, async ({
+  test(`Can create a single item unordered list with text and convert it to an ordered list `, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -743,7 +743,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Can create a multi-line unordered list and convert it to an ordered list `, async ({
+  test(`Can create a multi-line unordered list and convert it to an ordered list `, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -780,7 +780,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Can create a multi-line unordered list and convert it to an ordered list when no nodes are in the selection`, async ({
+  test(`Can create a multi-line unordered list and convert it to an ordered list when no nodes are in the selection`, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -816,7 +816,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Can create an indented multi-line unordered list and convert it to an ordered list `, async ({
+  test(`Can create an indented multi-line unordered list and convert it to an ordered list `, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -859,7 +859,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Can create an indented multi-line unordered list and convert individual lists in the nested structure to a numbered list. `, async ({
+  test(`Can create an indented multi-line unordered list and convert individual lists in the nested structure to a numbered list. `, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -935,7 +935,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Should merge selected nodes into existing list siblings of the same type when formatting to a list`, async ({
+  test(`Should merge selected nodes into existing list siblings of the same type when formatting to a list`, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -1098,7 +1098,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Un-indents list empty list items when the user presses enter`, async ({
+  test(`Un-indents list empty list items when the user presses enter`, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -1124,7 +1124,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Converts a List with one ListItem to a Paragraph when Normal is selected in the format menu`, async ({
+  test(`Converts a List with one ListItem to a Paragraph when Normal is selected in the format menu`, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -1153,7 +1153,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Converts the last ListItem in a List with multiple ListItem to a Paragraph when Normal is selected in the format menu`, async ({
+  test(`Converts the last ListItem in a List with multiple ListItem to a Paragraph when Normal is selected in the format menu`, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -1192,7 +1192,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Converts the middle ListItem in a List with multiple ListItem to a Paragraph when Normal is selected in the format menu`, async ({
+  test(`Converts the middle ListItem in a List with multiple ListItem to a Paragraph when Normal is selected in the format menu`, async ({
     page,
   }) => {
     await focusEditor(page);
@@ -1242,7 +1242,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme('Can create check list, toggle it to bullet-list and back', async ({
+  test('Can create check list, toggle it to bullet-list and back', async ({
     page,
   }) => {
     await focusEditor(page);
@@ -1376,7 +1376,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme('can navigate and check/uncheck with keyboard', async ({
+  test('can navigate and check/uncheck with keyboard', async ({
     page,
     isCollab,
   }) => {
@@ -1469,7 +1469,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme('remove list breaks when selection in empty nested list item', async ({
+  test('remove list breaks when selection in empty nested list item', async ({
     page,
   }) => {
     await focusEditor(page);
@@ -1499,7 +1499,7 @@ test.describe('Nested List', () => {
     });
   });
 
-  test.fixme('remove list breaks when selection in empty nested list item 2', async ({
+  test('remove list breaks when selection in empty nested list item 2', async ({
     page,
   }) => {
     await focusEditor(page);
