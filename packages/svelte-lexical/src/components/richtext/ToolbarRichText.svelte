@@ -12,12 +12,12 @@
   import FormatCodeButton from '../toolbar/FormatCodeButton.svelte';
   import StateStoreRichTextUpdator from './StateStoreRichTextUpdator.svelte';
   import DropDownAlign from '../toolbar/DropDownAlign.svelte';
-  import FontFamilySelect from '../toolbar/FontFamilySelect.svelte';
-  import FontSizeSelect from '../toolbar/FontSizeSelect.svelte';
   import InsertDropDown from '../toolbar/InsertDropDown.svelte';
   import {setContext} from 'svelte';
   import {getEditor} from '../../core/svelteContext';
   import {onMount} from 'svelte';
+  import FontFamilyDropDown from '../toolbar/FontFamilyDropDown.svelte';
+  import FontSizeDropDown from '../toolbar/FontSizeDropDown.svelte';
 
   const editor = getEditor();
 
@@ -53,8 +53,8 @@
   <Divider />
   <BlockFormatDropDown disabled={!$isEditable} />
   <Divider />
-  <FontFamilySelect />
-  <FontSizeSelect />
+  <FontFamilyDropDown disabled={!$isEditable} />
+  <FontSizeDropDown disabled={!$isEditable} />
   <Divider />
   <BoldButton />
   <ItalicButton />
