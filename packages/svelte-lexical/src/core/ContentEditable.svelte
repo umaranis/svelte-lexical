@@ -1,5 +1,9 @@
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <script lang="ts">
+  // @ts-nocheck because of autoComplete error on div attribute
+  // no way to turn this error off for a single line: https://github.com/sveltejs/language-tools/issues/1026
+  // TODO: remove @ts-nocheck after making nay changes to enable type checking, then reapply to avoid autoComplete attribute error
+
   import type {LexicalEditor} from 'lexical';
   import {onMount} from 'svelte';
   import {getEditor} from './svelteContext';

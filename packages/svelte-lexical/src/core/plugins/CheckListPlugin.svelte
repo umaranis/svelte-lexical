@@ -219,6 +219,7 @@
   }
 
   function findEditor(target: Node) {
+    // eslint-disable-next-line no-undef
     let node: ParentNode | Node | null = target;
 
     while (node) {

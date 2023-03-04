@@ -1,10 +1,14 @@
 <script context="module" lang="ts">
   // source: https://svelte.dev/repl/514f1335749a4eae9d34ad74dc277f20?version=3.37.0
 
+  /* eslint-disable @typescript-eslint/no-empty-function */
+
   let onTop: HTMLDivElement; // keeping track of which open modal is on top
   const modals: {
     [key: string]: {
-      open: (callback: (retVal?: any) => void) => void;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      open: (callback?: (retVal?: any) => void) => void;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       close: (retVal?: any) => void;
     };
   } = {}; // all modals get registered here for easy future access
@@ -21,10 +25,12 @@
   let topDiv: HTMLDivElement;
   let visible = false;
   let prevOnTop: HTMLDivElement;
-  let closeCallback: (retVal?: any) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let closeCallback: ((retVal?: any) => void) | undefined;
 
   export let id = '';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let close: (retVal?: any) => void;
   let handleKeydown: (this: Window, ev: KeyboardEvent) => void;
 
@@ -34,7 +40,7 @@
       if (ev.key === 'Escape' && onTop === topDiv) close(); // ESC
     };
 
-    const open = (callback: typeof close) => {
+    const open = (callback?: typeof closeCallback) => {
       closeCallback = callback;
       if (visible) return;
       prevOnTop = onTop;

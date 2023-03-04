@@ -1,10 +1,9 @@
 <script lang="ts">
-  import {FORMAT_TEXT_COMMAND} from 'lexical';
-  //import { isCode } from '../editor-state/StateStoreBasic.js';
+  // import {FORMAT_TEXT_COMMAND} from 'lexical';
 
-  import {getEditor} from '../../core/svelteContext';
+  // import {getEditor} from '../../core/svelteContext';
 
-  const editor = getEditor();
+  // const editor = getEditor();
 </script>
 
 <!--
