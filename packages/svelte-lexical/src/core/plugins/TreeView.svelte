@@ -22,7 +22,7 @@
     DEPRECATED_$isGridSelection,
   } from 'lexical';
   import {onMount} from 'svelte';
-  import {getEditor} from "../svelteContext";
+  import {getEditor} from '../svelteContext';
 
   const NON_SINGLE_WIDTH_CHARS_REPLACEMENT: Readonly<Record<string, string>> =
     Object.freeze({
@@ -593,6 +593,7 @@
         class={timeTravelPanelSliderClassName}
         bind:this={inputRef}
         on:change={(event) => {
+          // @ts-ignore TS not supported in Svelte Html - https://github.com/sveltejs/svelte/issues/4701
           const editorStateIndex = Number(event.target.value);
           const timeStampedEditorState =
             timeStampedEditorStates[editorStateIndex];
