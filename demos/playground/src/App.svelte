@@ -23,8 +23,8 @@
   -->
   <div style="text-align: left;">
     <RichTextComposer />
+    <Settings />
   </div>
-  <Settings />
 </main>
 
 <style>

@@ -46,7 +46,7 @@
   on:click={() => (showSettings = !showSettings)} />
 {#if showSettings}
   <div class="switches">
-    <!--{#if isRichText && isDevPlayground}
+    {#if isRichText && isDevPlayground}
       <Switch
         on:click={() => {
           settings.setOption('isCollab', !isCollab);
@@ -54,7 +54,7 @@
         }}
         checked={isCollab}
         text="Collaboration" />
-    {/if}-->
+    {/if}
     {#if isDevPlayground}
       <Switch
         on:click={() => {
@@ -83,7 +83,7 @@
           !showNestedEditorTreeView,
         )}
       checked={showNestedEditorTreeView}
-      text="Nested Editors Debug View" />
+      text="Nested Editors Debug View" />-->
     <Switch
       on:click={() => {
         settings.setOption('isRichText', !isRichText);
@@ -91,7 +91,7 @@
       }}
       checked={isRichText}
       text="Rich Text" />
-    <Switch
+    <!--<Switch
       on:click={() => settings.setOption('isCharLimit', !isCharLimit)}
       checked={isCharLimit}
       text="Char Limit" />

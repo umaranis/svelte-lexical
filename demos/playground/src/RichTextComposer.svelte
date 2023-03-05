@@ -23,6 +23,7 @@
     KeywordPlugin,
     KeywordNode,
     CollaborationPlugin,
+    PlainTextPlugin,
   } from 'svelte-lexical';
   import {createWebsocketProvider} from './collaboration';
   import {prepopulatedRichText} from './prepopulatedRichText';
@@ -62,7 +63,9 @@
 
 <Composer {initialConfig}>
   <div class="editor-shell">
-    <ToolbarRichText />
+    {#if $settings.isRichText}
+      <ToolbarRichText />
+    {/if}
     <div class="editor-container tree-view">
       <div class="editor-scroller">
         <div class="editor">
@@ -70,21 +73,28 @@
           <PlaceHolder>Enter rich text...</PlaceHolder>
         </div>
       </div>
+
       <AutoFocusPlugin />
-      <RichTextPlugin />
-      {#if $settings.isCollab}
-        <CollaborationPlugin
-          id="main"
-          providerFactory={createWebsocketProvider}
-          shouldBootstrap={!skipCollaborationInit} />
+      <KeywordPlugin {keywordsRegex} />
+
+      {#if $settings.isRichText}
+        <RichTextPlugin />
+        {#if $settings.isCollab}
+          <CollaborationPlugin
+            id="main"
+            providerFactory={createWebsocketProvider}
+            shouldBootstrap={!skipCollaborationInit} />
+        {:else}
+          <SharedHistoryPlugin />
+        {/if}
+        <ListPlugin />
+        <CheckListPlugin />
+        <HorizontalRulePlugin />
+        <ImagePlugin />
       {:else}
+        <PlainTextPlugin />
         <SharedHistoryPlugin />
       {/if}
-      <ListPlugin />
-      <CheckListPlugin />
-      <HorizontalRulePlugin />
-      <ImagePlugin />
-      <KeywordPlugin {keywordsRegex} />
 
       <ActionBar />
     </div>
