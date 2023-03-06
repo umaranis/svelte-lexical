@@ -22,7 +22,6 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Keywords', () => {
-  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test(`Can create a decorator and move selection around it`, async ({
     page,
@@ -368,7 +367,7 @@ test.describe('Keywords', () => {
     }
   });
 
-  test('Can type "Everyone congrats!" where "Everyone " and "!" are bold', async ({
+  test.fixme('Can type "Everyone congrats!" where "Everyone " and "!" are bold', async ({
     page,
     isPlainText,
   }) => {
