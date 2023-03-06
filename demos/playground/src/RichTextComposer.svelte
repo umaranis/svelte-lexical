@@ -24,6 +24,8 @@
     KeywordNode,
     CollaborationPlugin,
     PlainTextPlugin,
+    AutoLinkPlugin,
+    AutoLinkNode,
   } from 'svelte-lexical';
   import {createWebsocketProvider} from './collaboration';
   import {prepopulatedRichText} from './prepopulatedRichText';
@@ -53,6 +55,7 @@
       HorizontalRuleNode,
       ImageNode,
       KeywordNode,
+      AutoLinkNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -76,6 +79,7 @@
 
       <AutoFocusPlugin />
       <KeywordPlugin {keywordsRegex} />
+      <AutoLinkPlugin />
 
       {#if $settings.isRichText}
         <RichTextPlugin />

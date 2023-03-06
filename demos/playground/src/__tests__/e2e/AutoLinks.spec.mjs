@@ -24,7 +24,6 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Auto Links', () => {
-  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
 
   test('Can convert url-like text into links', async ({page, isPlainText}) => {
@@ -157,7 +156,7 @@ test.describe('Auto Links', () => {
     );
   });
 
-  test('Does not create redundant auto-link', async ({page, isPlainText}) => {
+  test.fixme('Does not create redundant auto-link', async ({page, isPlainText}) => {
     test.skip(isPlainText);
     await focusEditor(page);
     await page.keyboard.type('hm');
