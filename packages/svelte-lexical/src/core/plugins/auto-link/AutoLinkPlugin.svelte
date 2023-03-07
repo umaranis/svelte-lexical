@@ -35,4 +35,4 @@
   ];
 </script>
 
-<AutoLinkPluginCore matchers={MATCHERS} />;
+<AutoLinkPluginCore matchers={MATCHERS} />
