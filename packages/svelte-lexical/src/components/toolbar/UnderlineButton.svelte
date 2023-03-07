@@ -2,17 +2,25 @@
   import {getContext} from 'svelte';
   import {FORMAT_TEXT_COMMAND} from 'lexical';
   import type {Writable} from 'svelte/store';
-  import {getEditor} from '../../core/svelteContext';
+  import {getActiveEditor, getIsEditable} from '../../core/svelteContext';
+  import {IS_APPLE} from '../../environment/environment';
 
-  const editor = getEditor();
+  const activeEditor = getActiveEditor();
+  const isEditable = getIsEditable();
+
   const isUnderline: Writable<boolean> = getContext('isUnderline');
 </script>
 
 <button
+  disabled={!isEditable}
   on:click={() => {
-    editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline');
+    $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline');
   }}
   class={'toolbar-item spaced ' + ($isUnderline ? 'active' : '')}
-  aria-label="Format Underline">
+  title={IS_APPLE ? 'Underline (⌘U)' : 'Underline (Ctrl+U)'}
+  type="button"
+  aria-label={`Format text to underlined. Shortcut: ${
+    IS_APPLE ? '⌘U' : 'Ctrl+U'
+  }`}>
   <i class="format underline" />
 </button>

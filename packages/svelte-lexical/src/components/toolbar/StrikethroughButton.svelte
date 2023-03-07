@@ -2,17 +2,22 @@
   import {FORMAT_TEXT_COMMAND} from 'lexical';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
-  import {getEditor} from '../../core/svelteContext';
+  import {getActiveEditor, getIsEditable} from '../../core/svelteContext';
 
-  const editor = getEditor();
+  const activeEditor = getActiveEditor();
+  const isEditable = getIsEditable();
+
   const isStrikethrough: Writable<boolean> = getContext('isStrikethrough');
 </script>
 
 <button
+  disabled={!isEditable}
   on:click={() => {
-    editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough');
+    $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough');
   }}
   class={'toolbar-item spaced ' + ($isStrikethrough ? 'active' : '')}
-  aria-label="Format Strikethrough">
+  title="Strikethrough"
+  type="button"
+  aria-label="Format text with a strikethrough">
   <i class="format strikethrough" />
 </button>

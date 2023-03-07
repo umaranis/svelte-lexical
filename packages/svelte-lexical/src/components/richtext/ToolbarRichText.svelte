@@ -24,7 +24,8 @@
   const isEditable = writable(editor.isEditable());
   setContext('isEditable', isEditable);
 
-  setContext('activeEditor', writable(editor));
+  const activeEditor = writable(editor);
+  setContext('activeEditor', activeEditor);
 
   setContext('isBold', writable(false));
   setContext('isItalic', writable(false));
@@ -51,8 +52,10 @@
   <UndoButton />
   <RedoButton />
   <Divider />
-  <BlockFormatDropDown disabled={!$isEditable} />
-  <Divider />
+  {#if $activeEditor === editor}
+    <BlockFormatDropDown disabled={!$isEditable} />
+    <Divider />
+  {/if}
   <FontFamilyDropDown disabled={!$isEditable} />
   <FontSizeDropDown disabled={!$isEditable} />
   <Divider />
