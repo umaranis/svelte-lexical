@@ -26,6 +26,9 @@
     PlainTextPlugin,
     AutoLinkPlugin,
     AutoLinkNode,
+    LinkPlugin,
+    LinkNode,
+    validateUrl,
   } from 'svelte-lexical';
   import {createWebsocketProvider} from './collaboration';
   import {prepopulatedRichText} from './prepopulatedRichText';
@@ -56,6 +59,7 @@
       ImageNode,
       KeywordNode,
       AutoLinkNode,
+      LinkNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -95,6 +99,7 @@
         <CheckListPlugin />
         <HorizontalRulePlugin />
         <ImagePlugin />
+        <LinkPlugin {validateUrl} />
       {:else}
         <PlainTextPlugin />
         <SharedHistoryPlugin />

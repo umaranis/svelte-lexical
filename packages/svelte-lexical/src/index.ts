@@ -12,13 +12,15 @@ export {default as KeywordPlugin} from './core/plugins/KeywordPlugin.svelte';
 export {default as CollaborationPlugin} from './core/plugins/collaboration/CollaborationPlugin.svelte';
 export {default as AutoLinkPluginCore} from './core/plugins/auto-link/AutoLinkPluginCore.svelte';
 export {default as AutoLinkPlugin} from './core/plugins/auto-link/AutoLinkPlugin.svelte';
+export {default as LinkPlugin} from './core/plugins/link/LinkPlugin.svelte';
+export * from './core/plugins/link/url';
 
 export {HeadingNode, QuoteNode} from '@lexical/rich-text';
 export {ListNode, ListItemNode} from '@lexical/list';
 export {HorizontalRuleNode} from './core/plugins/HorizontalRuleNode';
 export {ImageNode} from './core/plugins/ImageNode';
 export {KeywordNode} from './core/plugins/KeywordNode';
-export {AutoLinkNode} from '@lexical/link';
+export {AutoLinkNode, LinkNode} from '@lexical/link';
 
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
