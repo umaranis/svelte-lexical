@@ -77,7 +77,7 @@
       <div class="editor-scroller">
         <div class="editor">
           <ContentEditable />
-          <PlaceHolder>Enter rich text...</PlaceHolder>
+          <PlaceHolder>Enter some rich text...</PlaceHolder>
         </div>
       </div>
 

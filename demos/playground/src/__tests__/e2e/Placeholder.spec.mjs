@@ -19,7 +19,7 @@ import {
 
 test.describe('Placeholder', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test.fixme(`Displays a placeholder when no content is present`, async ({
+  test(`Displays a placeholder when no content is present`, async ({
     page,
     isRichText,
     isCollab,
