@@ -19,6 +19,8 @@
 
   import {getActiveEditor, getEditor} from '../../core/svelteContext';
   import type {Writable} from 'svelte/store';
+  import getSelectedNode from '../toolbar/getSelectionInfo';
+  import {$isLinkNode as isLinkNode} from '@lexical/link';
 
   const editor = getEditor();
   const activeEditor = getActiveEditor();
@@ -33,6 +35,7 @@
   const isRTL: Writable<boolean> = getContext('isRTL');
   const fontSize: Writable<string> = getContext('fontSize');
   const fontFamily: Writable<string> = getContext('fontFamily');
+  const isLink: Writable<boolean> = getContext('isLink');
 
   const updateToolbar = () => {
     const selection = getSelection();
@@ -53,13 +56,13 @@
       $isRTL = isParentElementRTL(selection);
 
       // Update links
-      // const node = getSelectedNode(selection);
-      // const parent = node.getParent();
-      // if (isLinkNode(parent) || isLinkNode(node)) {
-      //   $isLink = true;
-      // } else {
-      //   $isLink = false;
-      // }
+      const node = getSelectedNode(selection);
+      const parent = node.getParent();
+      if (isLinkNode(parent) || isLinkNode(node)) {
+        $isLink = true;
+      } else {
+        $isLink = false;
+      }
 
       if (elementDOM !== null) {
         $selectedElementKey = elementKey;

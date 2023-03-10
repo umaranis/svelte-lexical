@@ -18,6 +18,7 @@
   import {onMount} from 'svelte';
   import FontFamilyDropDown from '../toolbar/FontFamilyDropDown.svelte';
   import FontSizeDropDown from '../toolbar/FontSizeDropDown.svelte';
+  import InsertLink from '../toolbar/InsertLink.svelte';
 
   const editor = getEditor();
 
@@ -63,6 +64,7 @@
   <ItalicButton />
   <UnderlineButton />
   <StrikethroughButton />
+  <InsertLink />
   <FormatCodeButton />
   <Divider />
   <InsertDropDown disabled={!$isEditable} />
