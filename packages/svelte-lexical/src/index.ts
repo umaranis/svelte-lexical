@@ -14,6 +14,7 @@ export {default as AutoLinkPluginCore} from './core/plugins/auto-link/AutoLinkPl
 export {default as AutoLinkPlugin} from './core/plugins/auto-link/AutoLinkPlugin.svelte';
 export {default as LinkPlugin} from './core/plugins/link/LinkPlugin.svelte';
 export * from './core/plugins/link/url';
+export {default as FloatingLinkEditorPlugin} from './core/plugins/link/FloatingLinkEditorPlugin.svelte';
 
 export {HeadingNode, QuoteNode} from '@lexical/rich-text';
 export {ListNode, ListItemNode} from '@lexical/list';

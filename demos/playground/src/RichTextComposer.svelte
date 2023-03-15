@@ -29,6 +29,7 @@
     LinkPlugin,
     LinkNode,
     validateUrl,
+    FloatingLinkEditorPlugin,
   } from 'svelte-lexical';
   import {createWebsocketProvider} from './collaboration';
   import {prepopulatedRichText} from './prepopulatedRichText';
@@ -42,6 +43,8 @@
   const skipCollaborationInit =
     // @ts-ignore split view has right and let frames
     window.parent != null && window.parent.frames.right === window;
+
+  let editorDiv;
 
   const initialConfig = {
     editorState: $settings.isCollab
@@ -75,7 +78,7 @@
     {/if}
     <div class="editor-container tree-view">
       <div class="editor-scroller">
-        <div class="editor">
+        <div class="editor" bind:this={editorDiv}>
           <ContentEditable />
           <PlaceHolder>Enter some rich text...</PlaceHolder>
         </div>
@@ -100,6 +103,7 @@
         <HorizontalRulePlugin />
         <ImagePlugin />
         <LinkPlugin {validateUrl} />
+        <FloatingLinkEditorPlugin anchorElem={editorDiv} />
       {:else}
         <PlainTextPlugin />
         <SharedHistoryPlugin />
