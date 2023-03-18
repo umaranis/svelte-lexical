@@ -6,7 +6,7 @@
   } from 'lexical';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
-  import {getEditor} from '../../core/svelteContext';
+  import {getEditor, getIsEditable} from '../../core/svelteContext';
   import DropDown from '../generic/dropdown/DropDown.svelte';
   import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
 
@@ -22,7 +22,7 @@
   const editor = getEditor();
   const value: Writable<string> = getContext('fontFamily');
   const style = 'font-family';
-  export let disabled: boolean;
+  const isEditable = getIsEditable();
 
   const handleClick = (option: string) => {
     editor.update(() => {
@@ -39,7 +39,7 @@
 </script>
 
 <DropDown
-  {disabled}
+  disabled={$isEditable}
   buttonClassName={'toolbar-item ' + style}
   buttonLabel={$value}
   buttonIconClassName="icon block-type font-family"

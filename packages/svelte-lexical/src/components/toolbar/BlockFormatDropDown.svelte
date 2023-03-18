@@ -19,31 +19,17 @@
     INSERT_UNORDERED_LIST_COMMAND,
     REMOVE_LIST_COMMAND,
   } from '@lexical/list';
-  import {getEditor} from '../../core/svelteContext';
+  import {getEditor, getIsEditable} from '../../core/svelteContext';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
   import DropDown from '../generic/dropdown/DropDown.svelte';
   import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
-
-  const blockTypeToBlockName = {
-    bullet: 'Bulleted List',
-    check: 'Check List',
-    code: 'Code Block',
-    h1: 'Heading 1',
-    h2: 'Heading 2',
-    h3: 'Heading 3',
-    h4: 'Heading 4',
-    h5: 'Heading 5',
-    h6: 'Heading 6',
-    number: 'Numbered List',
-    paragraph: 'Normal',
-    quote: 'Quote',
-  };
+  import {blockTypeToBlockName} from './blockTypeToBlockName';
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
     getContext('blockType');
   const editor: LexicalEditor = getEditor();
-  export let disabled: boolean;
+  const isEditable = getIsEditable();
 
   const formatParagraph = () => {
     if ($blockType !== 'paragraph') {
@@ -143,7 +129,7 @@
 </script>
 
 <DropDown
-  {disabled}
+  disabled={$isEditable}
   buttonClassName="toolbar-item block-controls"
   buttonIconClassName={'icon block-type ' + $blockType}
   buttonLabel={blockTypeToBlockName[$blockType]}

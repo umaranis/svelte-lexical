@@ -7,17 +7,17 @@
   import DropDown from '../generic/dropdown/DropDown.svelte';
   import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
   import Divider from './Divider.svelte';
-  import {getActiveEditor} from '../../core/svelteContext';
+  import {getActiveEditor, getIsEditable} from '../../core/svelteContext';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
 
   const activeEditor = getActiveEditor();
   const isRTL: Writable<boolean> = getContext('isRTL');
-  export let disabled: boolean;
+  const isEditable = getIsEditable();
 </script>
 
 <DropDown
-  {disabled}
+  disabled={$isEditable}
   buttonLabel="Align"
   buttonIconClassName="icon left-align"
   buttonClassName="toolbar-item spaced alignment"

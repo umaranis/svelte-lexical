@@ -32,13 +32,20 @@
   setContext('isItalic', writable(false));
   setContext('isUnderline', writable(false));
   setContext('isStrikethrough', writable(false));
+  setContext('isSubscript', writable(false));
+  setContext('isSuperscript', writable(false));
+  setContext('isCode', writable(false));
+
   setContext('blockType', writable('paragraph'));
 
   setContext('selectedElementKey', writable(null)); // TODO: why is this in store?
 
   setContext('fontSize', writable('15px'));
   setContext('fontFamily', writable('Arial'));
+  setContext('fontColor', writable('#000'));
+  setContext('bgColor', writable('#fff'));
   setContext('isRTL', writable(false));
+  setContext('codeLanguage', writable(''));
   setContext('isLink', writable(false));
 
   onMount(() => {
@@ -54,11 +61,11 @@
   <RedoButton />
   <Divider />
   {#if $activeEditor === editor}
-    <BlockFormatDropDown disabled={!$isEditable} />
+    <BlockFormatDropDown />
     <Divider />
   {/if}
-  <FontFamilyDropDown disabled={!$isEditable} />
-  <FontSizeDropDown disabled={!$isEditable} />
+  <FontFamilyDropDown />
+  <FontSizeDropDown />
   <Divider />
   <BoldButton />
   <ItalicButton />
@@ -67,7 +74,7 @@
   <InsertLink />
   <FormatCodeButton />
   <Divider />
-  <InsertDropDown disabled={!$isEditable} />
+  <InsertDropDown />
   <Divider />
-  <DropDownAlign disabled={!$isEditable} />
+  <DropDownAlign />
 </div>

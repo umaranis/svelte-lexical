@@ -1,19 +1,22 @@
 <script lang="ts">
-  // import {FORMAT_TEXT_COMMAND} from 'lexical';
+  import {FORMAT_TEXT_COMMAND} from 'lexical';
+  import {getContext} from 'svelte';
+  import type {Writable} from 'svelte/store';
+  import {getActiveEditor, getIsEditable} from '../../core/svelteContext';
 
-  // import {getEditor} from '../../core/svelteContext';
-
-  // const editor = getEditor();
+  const isEditable = getIsEditable();
+  const activeEditor = getActiveEditor();
+  const isCode: Writable<boolean> = getContext('isCode');
 </script>
 
-<!--
 <button
+  disabled={!$isEditable}
   on:click={() => {
-    editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code');
+    $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code');
   }}
   class={'toolbar-item spaced ' + ($isCode ? 'active' : '')}
-  aria-label="Format Code"
->
+  title="Insert code block"
+  type="button"
+  aria-label="Insert code block">
   <i class="format code" />
 </button>
--->
