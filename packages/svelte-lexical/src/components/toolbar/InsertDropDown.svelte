@@ -11,7 +11,7 @@
 </script>
 
 <DropDown
-  disabled={$isEditable}
+  disabled={!$isEditable}
   buttonClassName="toolbar-item spaced"
   buttonLabel="Insert"
   buttonAriaLabel="Insert specialized editor node"

@@ -129,7 +129,7 @@
 </script>
 
 <DropDown
-  disabled={$isEditable}
+  disabled={!$isEditable}
   buttonClassName="toolbar-item block-controls"
   buttonIconClassName={'icon block-type ' + $blockType}
   buttonLabel={blockTypeToBlockName[$blockType]}

@@ -17,7 +17,7 @@
 </script>
 
 <DropDown
-  disabled={$isEditable}
+  disabled={!$isEditable}
   buttonLabel="Align"
   buttonIconClassName="icon left-align"
   buttonClassName="toolbar-item spaced alignment"
