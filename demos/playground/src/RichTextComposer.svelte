@@ -44,6 +44,12 @@
     // @ts-ignore split view has right and let frames
     window.parent != null && window.parent.frames.right === window;
 
+  $: placeholderText = $settings.isCollab
+    ? 'Enter some collaborative rich text...'
+    : $settings.isRichText
+    ? 'Enter some rich text...'
+    : 'Enter some plain text...';
+
   let editorDiv;
 
   const initialConfig = {
@@ -80,7 +86,7 @@
       <div class="editor-scroller">
         <div class="editor" bind:this={editorDiv}>
           <ContentEditable />
-          <PlaceHolder>Enter some rich text...</PlaceHolder>
+          <PlaceHolder>{placeholderText}</PlaceHolder>
         </div>
       </div>
 
