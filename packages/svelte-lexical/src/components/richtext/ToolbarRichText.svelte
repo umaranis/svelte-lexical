@@ -19,6 +19,8 @@
   import FontFamilyDropDown from '../toolbar/FontFamilyDropDown.svelte';
   import FontSizeDropDown from '../toolbar/FontSizeDropDown.svelte';
   import InsertLink from '../toolbar/InsertLink.svelte';
+  import type {NodeKey} from 'lexical';
+  import CodeLanguageDropDown from '../toolbar/CodeLanguageDropDown.svelte';
 
   const editor = getEditor();
 
@@ -36,9 +38,10 @@
   setContext('isSuperscript', writable(false));
   setContext('isCode', writable(false));
 
-  setContext('blockType', writable('paragraph'));
+  const blockType = writable('paragraph');
+  setContext('blockType', blockType);
 
-  setContext('selectedElementKey', writable(null)); // TODO: why is this in store?
+  setContext('selectedElementKey', writable<NodeKey | null>(null)); // TODO: why is this in store?
 
   setContext('fontSize', writable('15px'));
   setContext('fontFamily', writable('Arial'));
@@ -64,17 +67,21 @@
     <BlockFormatDropDown />
     <Divider />
   {/if}
-  <FontFamilyDropDown />
-  <FontSizeDropDown />
-  <Divider />
-  <BoldButton />
-  <ItalicButton />
-  <UnderlineButton />
-  <StrikethroughButton />
-  <InsertLink />
-  <FormatCodeButton />
-  <Divider />
-  <InsertDropDown />
-  <Divider />
+  {#if $blockType === 'code'}
+    <CodeLanguageDropDown />
+  {:else}
+    <FontFamilyDropDown />
+    <FontSizeDropDown />
+    <Divider />
+    <BoldButton />
+    <ItalicButton />
+    <UnderlineButton />
+    <StrikethroughButton />
+    <InsertLink />
+    <FormatCodeButton />
+    <Divider />
+    <InsertDropDown />
+    <Divider />
+  {/if}
   <DropDownAlign />
 </div>

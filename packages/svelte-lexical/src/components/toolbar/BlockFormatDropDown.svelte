@@ -25,6 +25,7 @@
   import DropDown from '../generic/dropdown/DropDown.svelte';
   import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
   import {blockTypeToBlockName} from './blockTypeToBlockName';
+  import {$createCodeNode as createCodeNode} from '@lexical/code';
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
     getContext('blockType');
@@ -98,29 +99,29 @@
     }
   };
 
-  // const formatCode = () => {
-  //   if ($blockType !== 'code') {
-  //     editor.update(() => {
-  //       let selection = getSelection();
+  const formatCode = () => {
+    if ($blockType !== 'code') {
+      editor.update(() => {
+        let selection = getSelection();
 
-  //       if (
-  //         isRangeSelection(selection) ||
-  //         DEPRECATED_$isGridSelection(selection)
-  //       ) {
-  //         if (selection.isCollapsed()) {
-  //           setBlocksType_experimental(selection, () => createCodeNode());
-  //         } else {
-  //           const textContent = selection.getTextContent();
-  //           const codeNode = createCodeNode();
-  //           selection.insertNodes([codeNode]);
-  //           selection = getSelection();
-  //           if (isRangeSelection(selection))
-  //             selection.insertRawText(textContent);
-  //         }
-  //       }
-  //     });
-  //   }
-  // };
+        if (
+          isRangeSelection(selection) ||
+          DEPRECATED_$isGridSelection(selection)
+        ) {
+          if (selection.isCollapsed()) {
+            setBlocksType_experimental(selection, () => createCodeNode());
+          } else {
+            const textContent = selection.getTextContent();
+            const codeNode = createCodeNode();
+            selection.insertNodes([codeNode]);
+            selection = getSelection();
+            if (isRangeSelection(selection))
+              selection.insertRawText(textContent);
+          }
+        }
+      });
+    }
+  };
 
   function dropDownActiveClass(active: boolean) {
     if (active) return 'active dropdown-item-active';
@@ -182,10 +183,10 @@
     <i class="icon quote" />
     <span class="text">Quote</span>
   </DropDownItem>
-  <!-- <DropDownItem
+  <DropDownItem
     class={'item ' + dropDownActiveClass($blockType === 'code')}
     on:click={formatCode}>
     <i class="icon code" />
     <span class="text">Code Block</span>
-  </DropDownItem> -->
+  </DropDownItem>
 </DropDown>

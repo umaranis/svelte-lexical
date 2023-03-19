@@ -30,6 +30,9 @@
     LinkNode,
     validateUrl,
     FloatingLinkEditorPlugin,
+    CodeNode,
+    CodeHighlightNode,
+    CodeHighlightPlugin,
   } from 'svelte-lexical';
   import {createWebsocketProvider} from './collaboration';
   import {prepopulatedRichText} from './prepopulatedRichText';
@@ -69,6 +72,8 @@
       KeywordNode,
       AutoLinkNode,
       LinkNode,
+      CodeNode,
+      CodeHighlightNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -110,6 +115,7 @@
         <ImagePlugin />
         <LinkPlugin {validateUrl} />
         <FloatingLinkEditorPlugin anchorElem={editorDiv} />
+        <CodeHighlightPlugin />
       {:else}
         <PlainTextPlugin />
         <SharedHistoryPlugin />

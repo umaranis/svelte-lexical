@@ -15,6 +15,7 @@ export {default as AutoLinkPlugin} from './core/plugins/auto-link/AutoLinkPlugin
 export {default as LinkPlugin} from './core/plugins/link/LinkPlugin.svelte';
 export * from './core/plugins/link/url';
 export {default as FloatingLinkEditorPlugin} from './core/plugins/link/FloatingLinkEditorPlugin.svelte';
+export {default as CodeHighlightPlugin} from './core/plugins/CodeHighlightPlugin.svelte';
 
 export {HeadingNode, QuoteNode} from '@lexical/rich-text';
 export {ListNode, ListItemNode} from '@lexical/list';
@@ -22,6 +23,7 @@ export {HorizontalRuleNode} from './core/plugins/HorizontalRuleNode';
 export {ImageNode} from './core/plugins/ImageNode';
 export {KeywordNode} from './core/plugins/KeywordNode';
 export {AutoLinkNode, LinkNode} from '@lexical/link';
+export {CodeNode, CodeHighlightNode} from '@lexical/code';
 
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
