@@ -30,9 +30,8 @@ async function toggleCodeBlock(page) {
 }
 
 test.describe('CodeBlock', () => {
-  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test('Can create code block with markdown', async ({page, isRichText}) => {
+  test.fixme('Can create code block with markdown', async ({page, isRichText}) => {
     await focusEditor(page);
     await page.keyboard.type('``` alert(1);');
     if (isRichText) {
@@ -107,7 +106,7 @@ test.describe('CodeBlock', () => {
     }
   });
 
-  test('Can create code block with markdown and wrap existing text', async ({
+  test.fixme('Can create code block with markdown and wrap existing text', async ({
     page,
     isRichText,
   }) => {
@@ -241,7 +240,7 @@ test.describe('CodeBlock', () => {
     );
   });
 
-  test('Can switch highlighting language in a toolbar', async ({
+  test.fixme('Can switch highlighting language in a toolbar', async ({
     page,
     isRichText,
   }) => {
@@ -313,7 +312,7 @@ test.describe('CodeBlock', () => {
     }
   });
 
-  test('Can maintain indent when creating new lines', async ({
+  test.fixme('Can maintain indent when creating new lines', async ({
     page,
     isRichText,
     isPlainText,
@@ -394,7 +393,7 @@ test.describe('CodeBlock', () => {
     );
   });
 
-  test('Can (un)indent multiple lines at once', async ({
+  test.fixme('Can (un)indent multiple lines at once', async ({
     page,
     isRichText,
     isPlainText,
@@ -682,7 +681,7 @@ test.describe('CodeBlock', () => {
     );
   });
 
-  test('Can move around lines with option+arrow keys', async ({
+  test.fixme('Can move around lines with option+arrow keys', async ({
     page,
     isPlainText,
   }) => {
@@ -1057,7 +1056,7 @@ test.describe('CodeBlock', () => {
     });
   });
 
-  test('When pressing CMD/Ctrl + Left, CMD/Ctrl + Right, the cursor should go to the start of the code', async ({
+  test.fixme('When pressing CMD/Ctrl + Left, CMD/Ctrl + Right, the cursor should go to the start of the code', async ({
     page,
     isPlainText,
   }) => {
