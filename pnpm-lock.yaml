@@ -162,6 +162,7 @@ importers:
       '@testing-library/jest-dom': ^5.16.5
       '@testing-library/svelte': ^3.2.2
       '@tsconfig/svelte': ^3.0.0
+      '@types/lodash-es': ^4.17.7
       '@typescript-eslint/eslint-plugin': ^5.49.0
       '@typescript-eslint/parser': ^5.49.0
       babel-jest: ^29.4.0
@@ -172,6 +173,7 @@ importers:
       jest: ^29.4.0
       jest-environment-jsdom: ^29.4.0
       lexical: ^0.7.6
+      lodash-es: ^4.17.21
       prettier: ^2.8.4
       prettier-plugin-organize-attributes: ^0.0.5
       prettier-plugin-svelte: ^2.9.0
@@ -202,6 +204,8 @@ importers:
       '@lexical/utils': 0.7.6_lexical@0.7.6
       '@lexical/yjs': 0.7.6_lexical@0.7.6+yjs@13.5.46
       lexical: 0.7.6
+      lodash-es: 4.17.21
+      prettier: 2.8.4
       svelte: 3.55.1
       y-websocket: 1.4.5_yjs@13.5.46
       yjs: 13.5.46
@@ -214,6 +218,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/svelte': 3.2.2_svelte@3.55.1
       '@tsconfig/svelte': 3.0.0
+      '@types/lodash-es': 4.17.7
       '@typescript-eslint/eslint-plugin': 5.49.0_iu322prlnwsygkcra5kbpy22si
       '@typescript-eslint/parser': 5.49.0_7uibuqfxkfaozanbtbziikiqje
       babel-jest: 29.4.0_@babel+core@7.20.12
@@ -223,7 +228,6 @@ importers:
       eslint-plugin-svelte3: 4.0.0_tmo5zkisvhu6htudosk5k7m6pu
       jest: 29.4.0
       jest-environment-jsdom: 29.4.0
-      prettier: 2.8.4
       prettier-plugin-organize-attributes: 0.0.5_prettier@2.8.4
       prettier-plugin-svelte: 2.9.0_jrsxveqmsx2uadbqiuq74wlc4u
       rollup: 3.11.0
@@ -2702,6 +2706,16 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: true
+
+  /@types/lodash-es/4.17.7:
+    resolution: {integrity: sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==}
+    dependencies:
+      '@types/lodash': 4.14.191
+    dev: true
+
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
     dev: true
 
   /@types/node/18.11.18:
@@ -6091,6 +6105,10 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
+
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
 
@@ -6613,7 +6631,6 @@ packages:
     resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: true
 
   /pretty-format/27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}

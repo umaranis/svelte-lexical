@@ -33,6 +33,7 @@
     CodeNode,
     CodeHighlightNode,
     CodeHighlightPlugin,
+    CodeActionMenuPlugin,
   } from 'svelte-lexical';
   import {createWebsocketProvider} from './collaboration';
   import {prepopulatedRichText} from './prepopulatedRichText';
@@ -116,6 +117,7 @@
         <LinkPlugin {validateUrl} />
         <FloatingLinkEditorPlugin anchorElem={editorDiv} />
         <CodeHighlightPlugin />
+        <CodeActionMenuPlugin anchorElem={editorDiv} />
       {:else}
         <PlainTextPlugin />
         <SharedHistoryPlugin />

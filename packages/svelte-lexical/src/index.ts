@@ -10,12 +10,13 @@ export {default as PlaceHolder} from './core/plugins/PlaceHolder.svelte';
 export {default as AutoFocusPlugin} from './core/plugins/AutoFocusPlugin.svelte';
 export {default as KeywordPlugin} from './core/plugins/KeywordPlugin.svelte';
 export {default as CollaborationPlugin} from './core/plugins/collaboration/CollaborationPlugin.svelte';
-export {default as AutoLinkPluginCore} from './core/plugins/auto-link/AutoLinkPluginCore.svelte';
-export {default as AutoLinkPlugin} from './core/plugins/auto-link/AutoLinkPlugin.svelte';
+export {default as AutoLinkPluginCore} from './core/plugins/AutoLink/AutoLinkPluginCore.svelte';
+export {default as AutoLinkPlugin} from './core/plugins/AutoLink/AutoLinkPlugin.svelte';
 export {default as LinkPlugin} from './core/plugins/link/LinkPlugin.svelte';
 export * from './core/plugins/link/url';
 export {default as FloatingLinkEditorPlugin} from './core/plugins/link/FloatingLinkEditorPlugin.svelte';
-export {default as CodeHighlightPlugin} from './core/plugins/CodeHighlightPlugin.svelte';
+export {default as CodeHighlightPlugin} from './core/plugins/CodeBlock/CodeHighlightPlugin.svelte';
+export {default as CodeActionMenuPlugin} from './core/plugins/CodeBlock/CodeActionMenuPlugin/CodeActionMenuPlugin.svelte';
 
 export {HeadingNode, QuoteNode} from '@lexical/rich-text';
 export {ListNode, ListItemNode} from '@lexical/list';
