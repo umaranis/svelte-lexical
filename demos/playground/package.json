@@ -12,7 +12,7 @@
     "lint": "eslint .",
     "collab": "cross-env HOST=localhost PORT=1234 npx y-websocket-server",
     "prepare-ci": "pnpm run build-dev",
-    "start-test-server": "pnpm preview -- --port 4000",
+    "start-test-server": "pnpm preview --port 4000",
     "test-e2e-chromium": "cross-env E2E_BROWSER=chromium playwright test --project=\"chromium\"",
     "test-e2e-firefox": "cross-env E2E_BROWSER=firefox playwright test --project=\"firefox\"",
     "test-e2e-webkit": "cross-env E2E_BROWSER=webkit playwright test --project=\"webkit\"",
