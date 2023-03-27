@@ -19,7 +19,7 @@ jobs:
   e2e-windows:
     runs-on: windows-latest
     strategy:
-      fail-fast: false
+      #fail-fast: false
       matrix:
         node-version: [18.11]
         browser: ['chromium', 'firefox']
@@ -48,9 +48,7 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-            ~/.cache/ms-playwright
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
@@ -72,7 +70,7 @@ jobs:
   e2e-linux:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
+      #fail-fast: false
       matrix:
         node-version: [18.11]
         browser: ['chromium', 'firefox']
@@ -92,6 +90,60 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install xvfb
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: |
+            ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - run: pnpm i
+        working-directory: ./demos/playground
+      - name: Download browsers
+        run: pnpm playwright install
+        working-directory: ./demos/playground
+      - run: pnpm test-e2e-ci-${{ matrix.browser }}
+        working-directory: ./demos/playground
+      - name: Upload Artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test Results
+          path: ./demos/playground/playwright-report
+          retention-days: 7
+
+  e2e-mac:
+    runs-on: macos-latest
+    strategy:
+      #fail-fast: false
+      matrix:
+        node-version: [18.11]
+        browser: ['chromium', 'firefox', 'webkit']
+        editor-mode: ['rich-text', 'plain-text']
+        events-mode: ['legacy-events', 'modern-events']
+    env:
+      CI: true
+      E2E_EDITOR_MODE: ${{ matrix.editor-mode }}
+      E2E_EVENTS_MODE: ${{ matrix.events-mode }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
       - uses: pnpm/action-setup@v2.0.1
         name: Install pnpm
         id: pnpm-install
