@@ -10,4 +10,12 @@ export default defineConfig({
       yjs: path.resolve('./node_modules/yjs/src/index.js'),
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: new URL('./index.html', import.meta.url).pathname,
+        split: new URL('./split/index.html', import.meta.url).pathname,
+      },
+    },
+  },
 });
