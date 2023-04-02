@@ -1,7 +1,7 @@
 <script lang="ts">
   import {registerCodeHighlighting} from '@lexical/code';
   import {onMount} from 'svelte';
-  import {getEditor} from '../../svelteContext';
+  import {getEditor} from '../../composerContext';
 
   const editor = getEditor();
 

@@ -5,7 +5,7 @@
     $createKeywordNode as createKeywordNode,
     KeywordNode,
   } from './KeywordNode';
-  import {getEditor} from '../svelteContext';
+  import {getEditor} from '../composerContext';
   import {mergeRegister} from '@lexical/utils';
   import {registerLexicalTextEntity} from '@lexical/text';
   import {onMount} from 'svelte';

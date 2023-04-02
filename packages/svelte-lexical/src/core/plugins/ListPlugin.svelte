@@ -17,7 +17,7 @@
     INSERT_PARAGRAPH_COMMAND,
     OUTDENT_CONTENT_COMMAND,
   } from 'lexical';
-  import {getEditor} from '../svelteContext';
+  import {getEditor} from '../composerContext';
 
   const editor = getEditor();
 

@@ -6,7 +6,7 @@
 
   import type {LexicalEditor} from 'lexical';
   import {onMount} from 'svelte';
-  import {getEditor} from './svelteContext';
+  import {getEditor} from './composerContext';
 
   export let ariaActiveDescendantID: string | undefined = undefined;
   export let ariaAutoComplete: 'list' | 'none' | 'inline' | 'both' | null =

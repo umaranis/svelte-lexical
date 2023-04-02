@@ -4,7 +4,7 @@
 
   import {useCollaborationContext} from './CollaborationContext';
   import type {InitialEditorStateType} from '../../initializeEditor';
-  import {getEditor} from '../../svelteContext';
+  import {getEditor} from '../../composerContext';
   import {createBinding} from '@lexical/yjs';
   import {onMount} from 'svelte';
   import YjsCollaboration from './YjsCollaboration.svelte';

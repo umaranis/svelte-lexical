@@ -16,7 +16,7 @@
   import {writable} from 'svelte/store';
   import {onMount} from 'svelte';
   import getSelectedNode from '../../../components/toolbar/getSelectionInfo';
-  import {getEditor} from '../../svelteContext';
+  import {getEditor} from '../../composerContext';
   import FloatingLinkEditor from './FloatingLinkEditor.svelte';
 
   const editor = getEditor();

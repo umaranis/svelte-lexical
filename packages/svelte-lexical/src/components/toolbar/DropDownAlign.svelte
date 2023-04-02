@@ -7,7 +7,7 @@
   import DropDown from '../generic/dropdown/DropDown.svelte';
   import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
   import Divider from './Divider.svelte';
-  import {getActiveEditor, getIsEditable} from '../../core/svelteContext';
+  import {getActiveEditor, getIsEditable} from '../../core/composerContext';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
 

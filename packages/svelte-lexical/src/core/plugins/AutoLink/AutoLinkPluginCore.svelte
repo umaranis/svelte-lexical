@@ -16,7 +16,7 @@
     $isTextNode as isTextNode,
     TextNode,
   } from 'lexical';
-  import {getEditor} from '../../svelteContext';
+  import {getEditor} from '../../composerContext';
   import {onMount} from 'svelte';
 
   type ChangeHandler = (url: string | null, prevUrl: string | null) => void;

@@ -20,11 +20,11 @@
   import {getContext, onMount} from 'svelte';
   import {$isCodeNode as isCodeNode, CODE_LANGUAGE_MAP} from '@lexical/code';
 
-  import {getActiveEditor, getEditor} from '../../core/svelteContext';
+  import {getActiveEditor, getEditor} from '../../core/composerContext';
   import type {Writable} from 'svelte/store';
-  import getSelectedNode from '../toolbar/getSelectionInfo';
+  import getSelectedNode from './getSelectionInfo';
   import {$isLinkNode as isLinkNode} from '@lexical/link';
-  import {blockTypeToBlockName} from '../toolbar/blockTypeToBlockName';
+  import {blockTypeToBlockName} from './BlockFormatDropDown/blockTypeToBlockName';
 
   const editor = getEditor();
   const activeEditor = getActiveEditor();

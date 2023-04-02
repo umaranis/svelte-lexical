@@ -6,7 +6,7 @@
     type HistoryState,
   } from '@lexical/history';
   import type {LexicalEditor} from 'lexical';
-  import {getEditor} from '../svelteContext';
+  import {getEditor} from '../composerContext';
 
   const editor: LexicalEditor = getEditor();
   export let externalHistoryState: HistoryState = createEmptyHistoryState();

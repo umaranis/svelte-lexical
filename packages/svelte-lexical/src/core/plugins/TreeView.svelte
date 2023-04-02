@@ -22,7 +22,7 @@
     DEPRECATED_$isGridSelection,
   } from 'lexical';
   import {onMount} from 'svelte';
-  import {getEditor} from '../svelteContext';
+  import {getEditor} from '../composerContext';
 
   const NON_SINGLE_WIDTH_CHARS_REPLACEMENT: Readonly<Record<string, string>> =
     Object.freeze({

@@ -2,7 +2,7 @@
   import {mergeRegister} from '@lexical/utils';
   import {DecoratorNode, type LexicalEditor} from 'lexical';
   import {getAllContexts, onMount, SvelteComponent} from 'svelte';
-  import {getEditor} from './svelteContext';
+  import {getEditor} from './composerContext';
 
   const contexts = getAllContexts();
 

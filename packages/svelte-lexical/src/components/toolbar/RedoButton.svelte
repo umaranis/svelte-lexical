@@ -9,7 +9,7 @@
     getEditor,
     getIsEditable,
     getActiveEditor,
-  } from '../../core/svelteContext';
+  } from '../../core/composerContext';
   import {IS_APPLE} from '../../environment/environment';
 
   const editor = getEditor();

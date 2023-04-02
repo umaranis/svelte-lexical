@@ -3,7 +3,7 @@
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
   import {sanitizeUrl} from '../../core/plugins/link/url';
-  import {getEditor, getIsEditable} from '../../core/svelteContext';
+  import {getEditor, getIsEditable} from '../../core/composerContext';
 
   const editor = getEditor();
   const isEditable = getIsEditable();

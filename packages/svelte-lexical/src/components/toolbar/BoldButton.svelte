@@ -1,6 +1,6 @@
 <script lang="ts">
   import {FORMAT_TEXT_COMMAND} from 'lexical';
-  import {getActiveEditor, getIsEditable} from '../../core/svelteContext';
+  import {getActiveEditor, getIsEditable} from '../../core/composerContext';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
   import {IS_APPLE} from '../../environment/environment';

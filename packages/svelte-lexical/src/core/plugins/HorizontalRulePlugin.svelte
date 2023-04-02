@@ -10,7 +10,7 @@
     $createHorizontalRuleNode as createHorizontalRuleNode,
     INSERT_HORIZONTAL_RULE_COMMAND,
   } from './HorizontalRuleNode';
-  import {getEditor} from '../svelteContext';
+  import {getEditor} from '../composerContext';
 
   const editor = getEditor();
 

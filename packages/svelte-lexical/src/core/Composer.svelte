@@ -37,7 +37,7 @@
   } from 'lexical';
   import {onMount} from 'svelte';
   import {initializeEditor} from './initializeEditor';
-  import {setEditor, setHistoryStateContext} from './svelteContext';
+  import {setEditor, setHistoryStateContext} from './composerContext';
 
   export let initialConfig: InitialConfigType;
 

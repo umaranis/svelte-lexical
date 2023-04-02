@@ -1,7 +1,5 @@
 <script lang="ts">
-  import {writable} from 'svelte/store';
-
-  import BlockFormatDropDown from '../toolbar/BlockFormatDropDown.svelte';
+  import BlockFormatDropDown from '../toolbar/BlockFormatDropDown/BlockFormatDropDown.svelte';
   import BoldButton from '../toolbar/BoldButton.svelte';
   import Divider from '../toolbar/Divider.svelte';
   import RedoButton from '../toolbar/RedoButton.svelte';
@@ -10,78 +8,46 @@
   import UnderlineButton from '../toolbar/UnderlineButton.svelte';
   import StrikethroughButton from '../toolbar/StrikethroughButton.svelte';
   import FormatCodeButton from '../toolbar/FormatCodeButton.svelte';
-  import StateStoreRichTextUpdator from './StateStoreRichTextUpdator.svelte';
   import DropDownAlign from '../toolbar/DropDownAlign.svelte';
   import InsertDropDown from '../toolbar/InsertDropDown.svelte';
-  import {setContext} from 'svelte';
-  import {getEditor} from '../../core/svelteContext';
-  import {onMount} from 'svelte';
   import FontFamilyDropDown from '../toolbar/FontFamilyDropDown.svelte';
   import FontSizeDropDown from '../toolbar/FontSizeDropDown.svelte';
-  import InsertLink from '../toolbar/InsertLink.svelte';
-  import type {NodeKey} from 'lexical';
-  import CodeLanguageDropDown from '../toolbar/CodeLanguageDropDown.svelte';
-
-  const editor = getEditor();
-
-  const isEditable = writable(editor.isEditable());
-  setContext('isEditable', isEditable);
-
-  const activeEditor = writable(editor);
-  setContext('activeEditor', activeEditor);
-
-  setContext('isBold', writable(false));
-  setContext('isItalic', writable(false));
-  setContext('isUnderline', writable(false));
-  setContext('isStrikethrough', writable(false));
-  setContext('isSubscript', writable(false));
-  setContext('isSuperscript', writable(false));
-  setContext('isCode', writable(false));
-
-  const blockType = writable('paragraph');
-  setContext('blockType', blockType);
-
-  setContext('selectedElementKey', writable<NodeKey | null>(null)); // TODO: why is this in store?
-
-  setContext('fontSize', writable('15px'));
-  setContext('fontFamily', writable('Arial'));
-  setContext('fontColor', writable('#000'));
-  setContext('bgColor', writable('#fff'));
-  setContext('isRTL', writable(false));
-  setContext('codeLanguage', writable(''));
-  setContext('isLink', writable(false));
-
-  onMount(() => {
-    return editor.registerEditableListener((editable) => {
-      $isEditable = editable;
-    });
-  });
+  import ParagraphDropDownItem from '../toolbar/BlockFormatDropDown/ParagraphDropDownItem.svelte';
+  import HeadingDropDownItem from '../toolbar/BlockFormatDropDown/HeadingDropDownItem.svelte';
+  import BulletDropDrownItem from '../toolbar/BlockFormatDropDown/BulletDropDrownItem.svelte';
+  import NumberDropDrownItem from '../toolbar/BlockFormatDropDown/NumberDropDrownItem.svelte';
+  import CheckDropDrownItem from '../toolbar/BlockFormatDropDown/CheckDropDrownItem.svelte';
+  import QuoteDropDrownItem from '../toolbar/BlockFormatDropDown/QuoteDropDrownItem.svelte';
+  import Toolbar from '../toolbar/Toolbar.svelte';
 </script>
 
-<StateStoreRichTextUpdator />
-<div class="toolbar">
+<Toolbar let:editor let:activeEditor let:blockType>
   <UndoButton />
   <RedoButton />
   <Divider />
-  {#if $activeEditor === editor}
-    <BlockFormatDropDown />
+  {#if activeEditor === editor}
+    <BlockFormatDropDown>
+      <ParagraphDropDownItem />
+      <HeadingDropDownItem headingSize="h1" />
+      <HeadingDropDownItem headingSize="h2" />
+      <HeadingDropDownItem headingSize="h3" />
+      <BulletDropDrownItem />
+      <NumberDropDrownItem />
+      <CheckDropDrownItem />
+      <QuoteDropDrownItem />
+    </BlockFormatDropDown>
     <Divider />
   {/if}
-  {#if $blockType === 'code'}
-    <CodeLanguageDropDown />
-  {:else}
-    <FontFamilyDropDown />
-    <FontSizeDropDown />
-    <Divider />
-    <BoldButton />
-    <ItalicButton />
-    <UnderlineButton />
-    <StrikethroughButton />
-    <InsertLink />
-    <FormatCodeButton />
-    <Divider />
-    <InsertDropDown />
-    <Divider />
-  {/if}
+  <FontFamilyDropDown />
+  <FontSizeDropDown />
+  <Divider />
+  <BoldButton />
+  <ItalicButton />
+  <UnderlineButton />
+  <StrikethroughButton />
+  <FormatCodeButton />
+  <Divider />
+  <InsertDropDown />
+  <Divider />
   <DropDownAlign />
-</div>
+</Toolbar>

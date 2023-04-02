@@ -7,7 +7,7 @@
   import {$getNodeByKey as getNodeByKey, type NodeKey} from 'lexical';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
-  import {getActiveEditor, getIsEditable} from '../../core/svelteContext';
+  import {getActiveEditor, getIsEditable} from '../../core/composerContext';
   import DropDown from '../generic/dropdown/DropDown.svelte';
   import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
 

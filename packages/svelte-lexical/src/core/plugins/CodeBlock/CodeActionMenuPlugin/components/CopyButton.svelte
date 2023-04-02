@@ -5,7 +5,7 @@
     $getSelection as getSelection,
     $setSelection as setSelection,
   } from 'lexical';
-  import {getEditor} from '../../../../svelteContext';
+  import {getEditor} from '../../../../composerContext';
 
   import {useDebounce} from '../utils';
 

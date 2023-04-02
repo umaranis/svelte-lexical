@@ -1,7 +1,7 @@
 <script lang="ts">
   import type {LexicalEditor} from 'lexical';
   import {exportFile} from '@lexical/file';
-  import {getEditor} from '../../core/svelteContext';
+  import {getEditor} from '../../core/composerContext';
 
   const editor: LexicalEditor = getEditor();
 </script>

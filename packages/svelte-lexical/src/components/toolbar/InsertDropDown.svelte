@@ -1,7 +1,7 @@
 <script lang="ts">
   import {INSERT_IMAGE_COMMAND} from '../../core/plugins/ImagePlugin.svelte';
   import InsertImageDialog, {open, close} from './InsertImageDialog.svelte';
-  import {getActiveEditor, getIsEditable} from '../../core/svelteContext';
+  import {getActiveEditor, getIsEditable} from '../../core/composerContext';
   import DropDown from '../generic/dropdown/DropDown.svelte';
   import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
   import {INSERT_HORIZONTAL_RULE_COMMAND} from '../../core/plugins/HorizontalRuleNode';

@@ -1,6 +1,6 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {getEditor} from '../svelteContext';
+  import {getEditor} from '../composerContext';
 
   const editor = getEditor();
   export let defaultSelection: 'rootStart' | 'rootEnd' | undefined = undefined;

@@ -7,7 +7,7 @@
   } from '@lexical/code';
   import {$getNearestNodeFromDOMNode as getNearestNodeFromDOMNode} from 'lexical';
   import {onMount} from 'svelte';
-  import {getEditor} from '../../../svelteContext';
+  import {getEditor} from '../../../composerContext';
   import CopyButton from './components/CopyButton.svelte';
 
   import PrettierButton from './components/PrettierButton.svelte';
@@ -21,7 +21,7 @@
     right: string;
   }
 
-  // this components is supposed to be appened to the `anchorElem` but positioning works without it
+  // this component is supposed to be appended to `anchorElem` as per lexical but positioning works without it
   export let anchorElem: HTMLElement = document.body;
 
   const editor = getEditor();

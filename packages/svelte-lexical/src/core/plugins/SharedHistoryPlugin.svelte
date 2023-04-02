@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {getHistoryStateContext} from '../svelteContext';
+  import {getHistoryStateContext} from '../composerContext';
   import HistoryPlugin from './HistoryPlugin.svelte';
 </script>
 

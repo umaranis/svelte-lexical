@@ -26,7 +26,33 @@ export {KeywordNode} from './core/plugins/KeywordNode';
 export {AutoLinkNode, LinkNode} from '@lexical/link';
 export {CodeNode, CodeHighlightNode} from '@lexical/code';
 
+// toolbar
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';
+export {default as Toolbar} from './components/toolbar/Toolbar.svelte';
+export {default as BlockFormatDropDown} from './components/toolbar/BlockFormatDropDown/BlockFormatDropDown.svelte';
+export {default as BoldButton} from './components/toolbar/BoldButton.svelte';
+export {default as Divider} from './components/toolbar/Divider.svelte';
+export {default as RedoButton} from './components/toolbar/RedoButton.svelte';
+export {default as UndoButton} from './components/toolbar/UndoButton.svelte';
+export {default as ItalicButton} from './components/toolbar/ItalicButton.svelte';
+export {default as UnderlineButton} from './components/toolbar/UnderlineButton.svelte';
+export {default as StrikethroughButton} from './components/toolbar/StrikethroughButton.svelte';
+export {default as FormatCodeButton} from './components/toolbar/FormatCodeButton.svelte';
+export {default as StateStoreRichTextUpdator} from './components/toolbar/StateStoreRichTextUpdator.svelte';
+export {default as DropDownAlign} from './components/toolbar/DropDownAlign.svelte';
+export {default as InsertDropDown} from './components/toolbar/InsertDropDown.svelte';
+export {default as FontFamilyDropDown} from './components/toolbar/FontFamilyDropDown.svelte';
+export {default as FontSizeDropDown} from './components/toolbar/FontSizeDropDown.svelte';
+export {default as InsertLink} from './components/toolbar/InsertLink.svelte';
+export {default as CodeLanguageDropDown} from './components/toolbar/CodeLanguageDropDown.svelte';
+export {default as ParagraphDropDownItem} from './components/toolbar/BlockFormatDropDown/ParagraphDropDownItem.svelte';
+export {default as HeadingDropDownItem} from './components/toolbar/BlockFormatDropDown/HeadingDropDownItem.svelte';
+export {default as BulletDropDrownItem} from './components/toolbar/BlockFormatDropDown/BulletDropDrownItem.svelte';
+export {default as NumberDropDrownItem} from './components/toolbar/BlockFormatDropDown/NumberDropDrownItem.svelte';
+export {default as CheckDropDrownItem} from './components/toolbar/BlockFormatDropDown/CheckDropDrownItem.svelte';
+export {default as QuoteDropDrownItem} from './components/toolbar/BlockFormatDropDown/QuoteDropDrownItem.svelte';
+export {default as CodeDropDrownItem} from './components/toolbar/BlockFormatDropDown/CodeDropDrownItem.svelte';
+
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
 export {default as TreeViewPlugin} from './core/plugins/TreeViewPlugin.svelte';
 
