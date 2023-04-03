@@ -1,4 +1,5 @@
 <script lang="ts">
+  import {CAN_USE_DOM} from '../../../environment/canUseDOM';
   import DropDownItems from './DropDownItems.svelte';
 
   export let disabled = false;
@@ -36,7 +37,7 @@
 
   $: if (showDropDown) {
     document.addEventListener('click', handle);
-  } else {
+  } else if (CAN_USE_DOM) {
     document.removeEventListener('click', handle);
   }
 </script>
