@@ -4,8 +4,11 @@
   import {$isCodeNode as isCodeNode} from '@lexical/code';
   import {$getNearestNodeFromDOMNode as getNearestNodeFromDOMNode} from 'lexical';
   import type {Options} from 'prettier';
-  import {format} from 'prettier/standalone';
-  import {PRETTIER_OPTIONS_BY_LANG} from './PrettierLangOptions';
+  import {
+    loadPrettierFormat,
+    loadPrettierParserByLang,
+    PRETTIER_OPTIONS_BY_LANG,
+  } from './PrettierLangOptions';
 
   export let lang: string;
   const editor = getEditor();
@@ -28,38 +31,42 @@
   async function handleClick(): Promise<void> {
     const codeDOMNode = getCodeDOMNode();
 
-    if (!codeDOMNode) {
-      return;
-    }
+    try {
+      const format = await loadPrettierFormat();
+      const options = getPrettierOptions(lang);
+      options.plugins = [await loadPrettierParserByLang(lang)];
 
-    editor.update(() => {
-      const codeNode = getNearestNodeFromDOMNode(codeDOMNode);
+      if (!codeDOMNode) {
+        return;
+      }
 
-      if (isCodeNode(codeNode)) {
-        const content = codeNode.getTextContent();
-        const options = getPrettierOptions(lang);
+      editor.update(() => {
+        const codeNode = getNearestNodeFromDOMNode(codeDOMNode);
 
-        let parsed = '';
+        if (isCodeNode(codeNode)) {
+          const content = codeNode.getTextContent();
 
-        try {
+          let parsed = '';
+
           parsed = format(content, options);
-        } catch (error: unknown) {
-          if (error instanceof Error) {
-            syntaxError = error.message;
-            tipsVisible = true;
-          } else {
-            // eslint-disable-next-line no-console
-            console.error('Unexpected error: ', error);
+
+          if (parsed !== '') {
+            const selection = codeNode.select(0);
+            selection.insertText(parsed);
+            syntaxError = '';
+            tipsVisible = false;
           }
         }
-        if (parsed !== '') {
-          const selection = codeNode.select(0);
-          selection.insertText(parsed);
-          syntaxError = '';
-          tipsVisible = false;
-        }
+      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        syntaxError = error.message;
+        tipsVisible = true;
+      } else {
+        // eslint-disable-next-line no-console
+        console.error('Unexpected error: ', error);
       }
-    });
+    }
   }
 
   function handleMouseEnter() {

@@ -4,6 +4,7 @@
   "include": ["src/**/*", "src/node_modules"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
   "compilerOptions": {
+    "module": "esnext",
     "strict": true,
     "declaration": true,
     "outDir": "dist"
