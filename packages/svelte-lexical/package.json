@@ -13,7 +13,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rollup -c",
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "npm run build",
     "test": "jest src",
     "test:watch": "pnpm run test -- --watch",
     "lint": "eslint .",
