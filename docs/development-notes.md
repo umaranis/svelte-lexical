@@ -13,6 +13,7 @@ E2E testing is set up for playground package using playwright
 Currently, 64 tests are passing.
 
 ### Running in VSCode
+
 Run from VSCode `Testing` pane or click the play button in source code files.
 
 ### Running locally from CLI
@@ -69,6 +70,7 @@ It uses NPM to build and publish (PNPM is not used due to a bug).
   - run `pnpm i`
   - build all projects
 - create a tag in GitHub
+  - add release notes
   - it will automatically trigger GitHub action for creating a package
 
 # Commit Messages
@@ -87,4 +89,6 @@ Please use following tags in your commit message:
 It is recommended to refer to the issue, for example, #12.
 If you want to close the issue, use `fix` or `close`, for example, fix #12.  
 
-Example: [feat] added functionality for task reminders, close #12
+### Sample commit message
+
+feat: added functionality for task reminders, close #12

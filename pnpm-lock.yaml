@@ -5,7 +5,7 @@ importers:
   demos/plaintext-editor:
     dependencies:
       svelte-lexical:
-        specifier: workspace:0.2.0
+        specifier: 0.3.0
         version: link:../../packages/svelte-lexical
     devDependencies:
       '@sveltejs/vite-plugin-svelte':
@@ -45,7 +45,7 @@ importers:
   demos/playground:
     dependencies:
       svelte-lexical:
-        specifier: 0.2.0
+        specifier: 0.3.0
         version: link:../../packages/svelte-lexical
       y-websocket:
         specifier: 1.4.5
@@ -121,7 +121,7 @@ importers:
   demos/richtext-editor:
     dependencies:
       svelte-lexical:
-        specifier: 0.2.0
+        specifier: 0.3.0
         version: link:../../packages/svelte-lexical
     devDependencies:
       '@sveltejs/vite-plugin-svelte':
@@ -161,7 +161,7 @@ importers:
   demos/sveltekit:
     dependencies:
       svelte-lexical:
-        specifier: ^0.2.0
+        specifier: ^0.3.0
         version: link:../../packages/svelte-lexical
       svelte-preprocess:
         specifier: ^4.10.7
