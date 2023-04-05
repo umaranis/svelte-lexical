@@ -15,12 +15,12 @@
     "eslint": "^8.13.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-svelte3": "^3.4.1",
-    "svelte-check": "^2.10.0",
+    "svelte": "^3.58.0",
+    "svelte-check": "^3.2.0",
     "svelte-preprocess": "^4.10.7",
     "tslib": "^2.4.1",
     "typescript": "^4.9.3",
-    "vite": "^4.0.0",
-    "svelte": "^3.0.0"
+    "vite": "^4.0.0"
   },
   "dependencies": {
     "svelte-lexical": "0.3.0"

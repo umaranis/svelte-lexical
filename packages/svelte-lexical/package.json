@@ -42,7 +42,7 @@
     "prettier-plugin-svelte": "^2.9.0",
     "rollup": "^3.11.0",
     "rollup-plugin-svelte": "^7.1.0",
-    "svelte-check": "^3.0.3",
+    "svelte-check": "^3.2.0",
     "svelte-jester": "^2.3.2",
     "svelte-preprocess": "^5.0.1",
     "typescript": "^4.9.4"
@@ -77,10 +77,10 @@
     "@lexical/yjs": "^0.7.6",
     "lexical": "^0.7.6",
     "lodash-es": "^4.17.21",
-    "svelte": "^3.55.1",
+    "prettier": "^2.8.4",
+    "svelte": "^3.58.0",
     "y-websocket": "1.4.5",
-    "yjs": "13.5.46",
-    "prettier": "^2.8.4"
+    "yjs": "13.5.46"
   },
   "jest": {
     "transform": {
