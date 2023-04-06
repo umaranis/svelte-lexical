@@ -35,6 +35,9 @@
   import SharedHistoryPlugin from './SharedHistoryPlugin.svelte';
   import PlaceHolder from './PlaceHolder.svelte';
   import AutoFocusPlugin from './AutoFocusPlugin.svelte';
+  import {useCollaborationContext} from './collaboration/CollaborationContext';
+  import CollaborationPlugin from './collaboration/CollaborationPlugin.svelte';
+  import {createWebsocketProvider} from './collaboration/collaboration';
 
   export let src: string;
   export let altText: string;
@@ -54,7 +57,7 @@
   let buttonRef: HTMLButtonElement | null;
   let isSelected = createNodeSelectionStore(editor, nodeKey);
   let isResizing = false;
-  //const isCollabActive = false; //TODO: const {isCollabActive} = useCollaborationContext();
+  const {isCollabActive} = useCollaborationContext();
   let activeEditorRef: LexicalEditor;
 
   $: draggable = $isSelected && isNodeSelection(selection) && !isResizing;
@@ -239,13 +242,20 @@
 {#if showCaption}
   <div class="image-caption-container">
     <NestedComposer initialEditor={caption} parentEditor={editor}>
-      <SharedHistoryPlugin />
+      <AutoFocusPlugin />
+      {#if isCollabActive}
+        <CollaborationPlugin
+          id={caption.getKey()}
+          providerFactory={createWebsocketProvider}
+          shouldBootstrap={true} />
+      {:else}
+        <SharedHistoryPlugin />
+      {/if}
       <RichTextPlugin />
       <ContentEditable className="ImageNode__contentEditable" />
       <PlaceHolder className="ImageNode__placeholder">
         Enter image caption...
       </PlaceHolder>
-      <AutoFocusPlugin />
     </NestedComposer>
   </div>
 {/if}

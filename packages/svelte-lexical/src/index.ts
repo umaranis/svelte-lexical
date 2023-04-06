@@ -10,6 +10,7 @@ export {default as PlaceHolder} from './core/plugins/PlaceHolder.svelte';
 export {default as AutoFocusPlugin} from './core/plugins/AutoFocusPlugin.svelte';
 export {default as KeywordPlugin} from './core/plugins/KeywordPlugin.svelte';
 export {default as CollaborationPlugin} from './core/plugins/collaboration/CollaborationPlugin.svelte';
+export {createWebsocketProvider} from './core/plugins/collaboration/collaboration';
 export {default as AutoLinkPluginCore} from './core/plugins/AutoLink/AutoLinkPluginCore.svelte';
 export {default as AutoLinkPlugin} from './core/plugins/AutoLink/AutoLinkPlugin.svelte';
 export {default as LinkPlugin} from './core/plugins/link/LinkPlugin.svelte';

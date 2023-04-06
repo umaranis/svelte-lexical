@@ -22,6 +22,7 @@
     KeywordPlugin,
     KeywordNode,
     CollaborationPlugin,
+    createWebsocketProvider,
     PlainTextPlugin,
     AutoLinkPlugin,
     AutoLinkNode,
@@ -34,7 +35,6 @@
     CodeHighlightPlugin,
     CodeActionMenuPlugin,
   } from 'svelte-lexical';
-  import {createWebsocketProvider} from './collaboration';
   import {prepopulatedRichText} from './prepopulatedRichText';
   import type {SettingsStore} from './settings/setttingsStore';
   import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';

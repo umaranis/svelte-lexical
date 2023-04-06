@@ -51,4 +51,5 @@
   });
 </script>
 
+<!-- TODO: [from lexical - not implemented - not sure if required] If collaboration is enabled, make sure we don't render the children until the collaboration subdocument is ready. -->
 <slot />

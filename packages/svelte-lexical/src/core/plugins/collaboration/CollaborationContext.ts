@@ -36,7 +36,7 @@ const entries = [
 ];
 
 const randomEntry = entries[Math.floor(Math.random() * entries.length)];
-export const CollaborationContext: CollaborationContextType = {
+const CollaborationContext: CollaborationContextType = {
   clientID: 0,
   color: randomEntry[1],
   isCollabActive: false,
@@ -48,6 +48,7 @@ export function useCollaborationContext(
   username?: string,
   color?: string,
 ): CollaborationContextType {
+  // TODO: should be stored in the svelte component context to avoid conflict with mutliple instances of the editor
   const collabContext = CollaborationContext;
 
   if (username != null) {

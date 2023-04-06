@@ -10,8 +10,6 @@
   onMount(() => registerRichText(editor));
 
   // TODO: add Dragon support - registerDragonSupport(editor)
-  // TODO: add support for placeholder text
-  // TODO: take care of decorators - useDecorators(editor)
 </script>
 
 <Decorator />
