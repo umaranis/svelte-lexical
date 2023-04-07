@@ -36,8 +36,8 @@ export interface ImagePayload {
 
 function convertImageElement(domNode: Node): null | DOMConversionOutput {
   if (domNode instanceof HTMLImageElement) {
-    const {alt: altText, src} = domNode;
-    const node = $createImageNode({altText, src});
+    const {alt: altText, src, width, height} = domNode;
+    const node = $createImageNode({altText, height, src, width});
     return {node};
   }
   return null;
@@ -115,6 +115,8 @@ export class ImageNode extends DecoratorNode<DecoratorImageType> {
     const element = document.createElement('img');
     element.setAttribute('src', this.__src);
     element.setAttribute('alt', this.__altText);
+    element.setAttribute('width', this.__width.toString());
+    element.setAttribute('height', this.__height.toString());
     return {element};
   }
 
@@ -139,7 +141,6 @@ export class ImageNode extends DecoratorNode<DecoratorImageType> {
     key?: NodeKey,
   ) {
     super(key);
-
     this.__src = src;
     this.__altText = altText;
     this.__maxWidth = maxWidth;
@@ -180,14 +181,13 @@ export class ImageNode extends DecoratorNode<DecoratorImageType> {
 
   // View
 
-  createDOM(config: EditorConfig, editor: LexicalEditor): HTMLElement {
+  createDOM(config: EditorConfig): HTMLElement {
     const span = document.createElement('span');
     const theme = config.theme;
     const className = theme.image;
     if (className !== undefined) {
       span.className = className;
     }
-
     return span;
   }
 

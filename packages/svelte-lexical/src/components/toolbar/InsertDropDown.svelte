@@ -1,6 +1,6 @@
 <script lang="ts">
   import {INSERT_IMAGE_COMMAND} from '../../core/plugins/ImagePlugin.svelte';
-  import InsertImageDialog, {open, close} from './InsertImageDialog.svelte';
+  import InsertImageDialog from './InsertImageDialog.svelte';
   import {getActiveEditor, getIsEditable} from '../../core/composerContext';
   import DropDown from '../generic/dropdown/DropDown.svelte';
   import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
@@ -8,6 +8,8 @@
 
   const activeEditor = getActiveEditor();
   const isEditable = getIsEditable();
+
+  let showImageModal: boolean;
 </script>
 
 <DropDown
@@ -24,14 +26,15 @@
     <i class="icon horizontal-rule" />
     <span class="text">Horizontal Rule</span>
   </DropDownItem>
-  <DropDownItem on:click={open} class="item">
+  <DropDownItem on:click={() => (showImageModal = true)} class="item">
     <i class="icon image" />
     <span class="text">Image</span>
   </DropDownItem>
 </DropDown>
 
 <InsertImageDialog
+  bind:showModal={showImageModal}
   on:confirm={(payload) => {
-    close();
+    showImageModal = false;
     $activeEditor.dispatchCommand(INSERT_IMAGE_COMMAND, payload.detail);
   }} />
