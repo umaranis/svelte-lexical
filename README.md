@@ -1,4 +1,4 @@
-*svelte-lexical is in early development and is not production-ready yet.*
+[![Build](https://github.com/umaranis/svelte-lexical/actions/workflows/build.yml/badge.svg)](https://github.com/umaranis/svelte-lexical/actions/workflows/build.yml)
 
 # svelte-lexical
 
