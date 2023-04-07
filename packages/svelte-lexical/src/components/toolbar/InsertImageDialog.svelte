@@ -1,11 +1,15 @@
 <script lang="ts">
+  import {getActiveEditor} from '../../core/composerContext';
+  import {INSERT_IMAGE_COMMAND} from '../../core/plugins/ImagePlugin.svelte';
   import CloseCircleButton from '../generic/button/CloseCircleButton.svelte';
   import ModalDialog from '../generic/dialog/ModalDialog.svelte';
-  import {createEventDispatcher} from 'svelte';
 
-  export let showModal: boolean;
+  const activeEditor = getActiveEditor();
 
-  const dispatch = createEventDispatcher();
+  export let showModal = false;
+  export function open() {
+    showModal = true;
+  }
 
   let src = '';
   let altText = '';
@@ -15,7 +19,7 @@
 <ModalDialog bind:showModal>
   <CloseCircleButton on:click={() => (showModal = false)} />
 
-  <div style="width:30em">
+  <div class="modal">
     <h2 class="Modal__title">Insert Image</h2>
     <div class="Modal__content">
       <div class="Input__wrapper">
@@ -44,10 +48,19 @@
         <button
           disabled={isDisabled}
           class="Button__root"
-          on:click={() => dispatch('confirm', {altText, src})}>
+          on:click={() => {
+            showModal = false;
+            $activeEditor.dispatchCommand(INSERT_IMAGE_COMMAND, {altText, src});
+          }}>
           Confirm
         </button>
       </div>
     </div>
   </div>
 </ModalDialog>
+
+<style>
+  .modal {
+    width: 30em;
+  }
+</style>

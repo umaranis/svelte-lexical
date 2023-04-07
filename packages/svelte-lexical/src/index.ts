@@ -31,6 +31,13 @@ export {CodeNode, CodeHighlightNode} from '@lexical/code';
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';
 export {default as Toolbar} from './components/toolbar/Toolbar.svelte';
 export {default as BlockFormatDropDown} from './components/toolbar/BlockFormatDropDown/BlockFormatDropDown.svelte';
+export {default as ParagraphDropDownItem} from './components/toolbar/BlockFormatDropDown/ParagraphDropDownItem.svelte';
+export {default as HeadingDropDownItem} from './components/toolbar/BlockFormatDropDown/HeadingDropDownItem.svelte';
+export {default as BulletDropDrownItem} from './components/toolbar/BlockFormatDropDown/BulletDropDrownItem.svelte';
+export {default as NumberDropDrownItem} from './components/toolbar/BlockFormatDropDown/NumberDropDrownItem.svelte';
+export {default as CheckDropDrownItem} from './components/toolbar/BlockFormatDropDown/CheckDropDrownItem.svelte';
+export {default as QuoteDropDrownItem} from './components/toolbar/BlockFormatDropDown/QuoteDropDrownItem.svelte';
+export {default as CodeDropDrownItem} from './components/toolbar/BlockFormatDropDown/CodeDropDrownItem.svelte';
 export {default as BoldButton} from './components/toolbar/BoldButton.svelte';
 export {default as Divider} from './components/toolbar/Divider.svelte';
 export {default as RedoButton} from './components/toolbar/RedoButton.svelte';
@@ -41,18 +48,14 @@ export {default as StrikethroughButton} from './components/toolbar/Strikethrough
 export {default as FormatCodeButton} from './components/toolbar/FormatCodeButton.svelte';
 export {default as StateStoreRichTextUpdator} from './components/toolbar/StateStoreRichTextUpdator.svelte';
 export {default as DropDownAlign} from './components/toolbar/DropDownAlign.svelte';
-export {default as InsertDropDown} from './components/toolbar/InsertDropDown.svelte';
+export {default as InsertDropDown} from './components/toolbar/InsertDropDown/InsertDropDown.svelte';
+export {default as InsertHRDropDownItem} from './components/toolbar/InsertDropDown/InsertHRDropDownItem.svelte';
+export {default as InsertImageDropDownItem} from './components/toolbar/InsertDropDown/InsertImageDropDownItem.svelte';
+export {default as InsertImageDialog} from './components/toolbar/InsertImageDialog.svelte';
 export {default as FontFamilyDropDown} from './components/toolbar/FontFamilyDropDown.svelte';
 export {default as FontSizeDropDown} from './components/toolbar/FontSizeDropDown.svelte';
 export {default as InsertLink} from './components/toolbar/InsertLink.svelte';
 export {default as CodeLanguageDropDown} from './components/toolbar/CodeLanguageDropDown.svelte';
-export {default as ParagraphDropDownItem} from './components/toolbar/BlockFormatDropDown/ParagraphDropDownItem.svelte';
-export {default as HeadingDropDownItem} from './components/toolbar/BlockFormatDropDown/HeadingDropDownItem.svelte';
-export {default as BulletDropDrownItem} from './components/toolbar/BlockFormatDropDown/BulletDropDrownItem.svelte';
-export {default as NumberDropDrownItem} from './components/toolbar/BlockFormatDropDown/NumberDropDrownItem.svelte';
-export {default as CheckDropDrownItem} from './components/toolbar/BlockFormatDropDown/CheckDropDrownItem.svelte';
-export {default as QuoteDropDrownItem} from './components/toolbar/BlockFormatDropDown/QuoteDropDrownItem.svelte';
-export {default as CodeDropDrownItem} from './components/toolbar/BlockFormatDropDown/CodeDropDrownItem.svelte';
 
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
 export {default as TreeViewPlugin} from './core/plugins/TreeViewPlugin.svelte';
@@ -67,3 +70,7 @@ export {$createParagraphNode, $createTextNode, $getRoot} from 'lexical';
 export {$createHeadingNode, $createQuoteNode} from '@lexical/rich-text';
 export {$createLinkNode} from '@lexical/link';
 export {$createListItemNode, $createListNode} from '@lexical/list';
+
+// ui components
+export {default as DropDown} from './components/generic/dropdown/DropDown.svelte';
+export {default as DropDownItem} from './components/generic/dropdown/DropDownItem.svelte';

@@ -23,7 +23,12 @@
     FormatCodeButton,
     InsertDropDown,
     DropDownAlign,
+    InsertHRDropDownItem,
+    InsertImageDropDownItem,
+    InsertImageDialog,
   } from 'svelte-lexical';
+
+  let imageDialog: InsertImageDialog;
 </script>
 
 <Toolbar let:editor let:activeEditor let:blockType>
@@ -57,8 +62,13 @@
     <InsertLink />
     <FormatCodeButton />
     <Divider />
-    <InsertDropDown />
+    <InsertDropDown>
+      <InsertHRDropDownItem />
+      <InsertImageDropDownItem on:click={() => imageDialog.open()} />
+    </InsertDropDown>
     <Divider />
   {/if}
   <DropDownAlign />
+  <!-- dialogs -->
+  <InsertImageDialog bind:this={imageDialog} />
 </Toolbar>

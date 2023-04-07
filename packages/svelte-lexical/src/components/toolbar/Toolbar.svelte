@@ -26,7 +26,7 @@
   const blockType = writable('paragraph');
   setContext('blockType', blockType);
 
-  setContext('selectedElementKey', writable<NodeKey | null>(null)); // TODO: why is this in store?
+  setContext('selectedElementKey', writable<NodeKey | null>(null));
 
   setContext('fontSize', writable('15px'));
   setContext('fontFamily', writable('Arial'));

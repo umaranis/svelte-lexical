@@ -9,7 +9,7 @@
   import StrikethroughButton from '../toolbar/StrikethroughButton.svelte';
   import FormatCodeButton from '../toolbar/FormatCodeButton.svelte';
   import DropDownAlign from '../toolbar/DropDownAlign.svelte';
-  import InsertDropDown from '../toolbar/InsertDropDown.svelte';
+  import InsertDropDown from '../toolbar/InsertDropDown/InsertDropDown.svelte';
   import FontFamilyDropDown from '../toolbar/FontFamilyDropDown.svelte';
   import FontSizeDropDown from '../toolbar/FontSizeDropDown.svelte';
   import ParagraphDropDownItem from '../toolbar/BlockFormatDropDown/ParagraphDropDownItem.svelte';
@@ -19,6 +19,11 @@
   import CheckDropDrownItem from '../toolbar/BlockFormatDropDown/CheckDropDrownItem.svelte';
   import QuoteDropDrownItem from '../toolbar/BlockFormatDropDown/QuoteDropDrownItem.svelte';
   import Toolbar from '../toolbar/Toolbar.svelte';
+  import InsertImageDialog from '../toolbar/InsertImageDialog.svelte';
+  import InsertHRDropDownItem from '../toolbar/InsertDropDown/InsertHRDropDownItem.svelte';
+  import InsertImageDropDownItem from '../toolbar/InsertDropDown/InsertImageDropDownItem.svelte';
+
+  let imageDialog: InsertImageDialog;
 </script>
 
 <Toolbar let:editor let:activeEditor let:blockType>
@@ -47,7 +52,12 @@
   <StrikethroughButton />
   <FormatCodeButton />
   <Divider />
-  <InsertDropDown />
+  <InsertDropDown>
+    <InsertHRDropDownItem />
+    <InsertImageDropDownItem on:click={() => imageDialog.open()} />
+  </InsertDropDown>
   <Divider />
   <DropDownAlign />
+  <!-- dialogs -->
+  <InsertImageDialog bind:this={imageDialog} />
 </Toolbar>
