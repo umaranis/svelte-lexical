@@ -5,7 +5,9 @@ export {default as SharedHistoryPlugin} from './core/plugins/SharedHistoryPlugin
 export {default as ListPlugin} from './core/plugins/ListPlugin.svelte';
 export {default as CheckListPlugin} from './core/plugins/CheckListPlugin.svelte';
 export {default as HorizontalRulePlugin} from './core/plugins/HorizontalRulePlugin.svelte';
-export {default as ImagePlugin} from './core/plugins/ImagePlugin.svelte';
+export {default as ImagePlugin} from './core/plugins/Image/ImagePlugin.svelte';
+export {default as CaptionEditorHistoryPlugin} from './core/plugins/Image/CaptionEditorHistoryPlugin.svelte';
+export {default as CaptionEditorCollaborationPlugin} from './core/plugins/Image/CaptionEditorCollaborationPlugin.svelte';
 export {default as PlaceHolder} from './core/plugins/PlaceHolder.svelte';
 export {default as AutoFocusPlugin} from './core/plugins/AutoFocusPlugin.svelte';
 export {default as KeywordPlugin} from './core/plugins/KeywordPlugin.svelte';
@@ -22,7 +24,7 @@ export {default as CodeActionMenuPlugin} from './core/plugins/CodeBlock/CodeActi
 export {HeadingNode, QuoteNode} from '@lexical/rich-text';
 export {ListNode, ListItemNode} from '@lexical/list';
 export {HorizontalRuleNode} from './core/plugins/HorizontalRuleNode';
-export {ImageNode} from './core/plugins/ImageNode';
+export {ImageNode} from './core/plugins/Image/ImageNode';
 export {KeywordNode} from './core/plugins/KeywordNode';
 export {AutoLinkNode, LinkNode} from '@lexical/link';
 export {CodeNode, CodeHighlightNode} from '@lexical/code';

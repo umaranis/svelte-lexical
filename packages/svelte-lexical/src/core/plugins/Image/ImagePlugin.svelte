@@ -45,8 +45,8 @@
     ImageNode,
     type ImagePayload,
   } from './ImageNode';
-  import {getEditor} from '../composerContext';
-  import {CAN_USE_DOM} from '../../environment/canUseDOM';
+  import {getEditor} from '../../composerContext';
+  import {CAN_USE_DOM} from '../../../environment/canUseDOM';
 
   const editor: LexicalEditor = getEditor();
 
@@ -221,3 +221,6 @@
     return range;
   }
 </script>
+
+<!--for ImageComponent history plugin -->
+<slot />

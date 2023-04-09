@@ -7,8 +7,8 @@
   import ContentEditable from '../../core/ContentEditable.svelte';
   import SharedHistoryPlugin from '../../core/plugins/SharedHistoryPlugin.svelte';
   import {HorizontalRuleNode} from '../../core/plugins/HorizontalRuleNode';
-  import {ImageNode} from '../../core/plugins/ImageNode';
-  import ImagePlugin from '../../core/plugins/ImagePlugin.svelte';
+  import {ImageNode} from '../../core/plugins/Image/ImageNode';
+  import ImagePlugin from '../../core/plugins/Image/ImagePlugin.svelte';
   import ListPlugin from '../../core/plugins/ListPlugin.svelte';
   import CheckListPlugin from '../../core/plugins/CheckListPlugin.svelte';
   import HorizontalRulePlugin from '../../core/plugins/HorizontalRulePlugin.svelte';
@@ -18,6 +18,7 @@
   import type {SvelteComponent} from 'svelte';
   import PlaceHolder from '../../core/plugins/PlaceHolder.svelte';
   import AutoFocusPlugin from '../../core/plugins/AutoFocusPlugin.svelte';
+  import CaptionEditorHistoryPlugin from '../../core/plugins/Image/CaptionEditorHistoryPlugin.svelte';
 
   export let theme: EditorThemeClasses;
 
@@ -60,7 +61,9 @@
       <ListPlugin />
       <CheckListPlugin />
       <HorizontalRulePlugin />
-      <ImagePlugin />
+      <ImagePlugin>
+        <CaptionEditorHistoryPlugin />
+      </ImagePlugin>
 
       <ActionBar />
     </div>

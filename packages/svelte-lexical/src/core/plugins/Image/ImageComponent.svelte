@@ -23,21 +23,18 @@
   } from 'lexical';
   import {onMount} from 'svelte';
   import {mergeRegister} from '@lexical/utils';
-  import ImageResizer from '../../components/ImageResizer.svelte';
+  import ImageResizer from '../../../components/ImageResizer.svelte';
   import {$isImageNode as isImageNode} from './ImageNode';
   import {
     clearSelection,
     createNodeSelectionStore,
-  } from '../nodeSelectionStore';
-  import NestedComposer from '../NestedComposer.svelte';
-  import ContentEditable from '../ContentEditable.svelte';
-  import RichTextPlugin from './RichTextPlugin.svelte';
-  import SharedHistoryPlugin from './SharedHistoryPlugin.svelte';
-  import PlaceHolder from './PlaceHolder.svelte';
-  import AutoFocusPlugin from './AutoFocusPlugin.svelte';
-  import {useCollaborationContext} from './collaboration/CollaborationContext';
-  import CollaborationPlugin from './collaboration/CollaborationPlugin.svelte';
-  import {createWebsocketProvider} from './collaboration/collaboration';
+  } from '../../nodeSelectionStore';
+  import NestedComposer from '../../NestedComposer.svelte';
+  import ContentEditable from '../../ContentEditable.svelte';
+  import RichTextPlugin from '../RichTextPlugin.svelte';
+  import PlaceHolder from '../PlaceHolder.svelte';
+  import AutoFocusPlugin from '../AutoFocusPlugin.svelte';
+  import {getImageHistoryPluginType} from '../../composerContext';
 
   export let src: string;
   export let altText: string;
@@ -57,7 +54,6 @@
   let buttonRef: HTMLButtonElement | null;
   let isSelected = createNodeSelectionStore(editor, nodeKey);
   let isResizing = false;
-  const {isCollabActive} = useCollaborationContext();
   let activeEditorRef: LexicalEditor;
 
   $: draggable = $isSelected && isNodeSelection(selection) && !isResizing;
@@ -223,6 +219,8 @@
   const onResizeStart = () => {
     isResizing = true;
   };
+
+  const historyPlugin = getImageHistoryPluginType();
 </script>
 
 <div {draggable}>
@@ -243,14 +241,19 @@
   <div class="image-caption-container">
     <NestedComposer initialEditor={caption} parentEditor={editor}>
       <AutoFocusPlugin />
-      {#if isCollabActive}
+
+      <!-- {#if isCollabActive}
         <CollaborationPlugin
           id={caption.getKey()}
           providerFactory={createWebsocketProvider}
           shouldBootstrap={true} />
       {:else}
         <SharedHistoryPlugin />
-      {/if}
+      {/if} -->
+      <svelte:component
+        this={historyPlugin.componentType}
+        {...historyPlugin.props} />
+
       <RichTextPlugin />
       <ContentEditable className="ImageNode__contentEditable" />
       <PlaceHolder className="ImageNode__placeholder">

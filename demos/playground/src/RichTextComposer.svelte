@@ -34,6 +34,8 @@
     CodeHighlightNode,
     CodeHighlightPlugin,
     CodeActionMenuPlugin,
+    CaptionEditorCollaborationPlugin,
+    CaptionEditorHistoryPlugin,
   } from 'svelte-lexical';
   import {prepopulatedRichText} from './prepopulatedRichText';
   import type {SettingsStore} from './settings/setttingsStore';
@@ -113,7 +115,13 @@
         <ListPlugin />
         <CheckListPlugin />
         <HorizontalRulePlugin />
-        <ImagePlugin />
+        <ImagePlugin>
+          {#if $settings.isCollab}
+            <CaptionEditorCollaborationPlugin />
+          {:else}
+            <CaptionEditorHistoryPlugin />
+          {/if}
+        </ImagePlugin>
         <LinkPlugin {validateUrl} />
         <FloatingLinkEditorPlugin anchorElem={editorDiv} />
         <CodeHighlightPlugin />

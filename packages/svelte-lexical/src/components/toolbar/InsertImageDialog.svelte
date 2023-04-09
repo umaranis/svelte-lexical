@@ -1,6 +1,6 @@
 <script lang="ts">
   import {getActiveEditor} from '../../core/composerContext';
-  import {INSERT_IMAGE_COMMAND} from '../../core/plugins/ImagePlugin.svelte';
+  import {INSERT_IMAGE_COMMAND} from '../../core/plugins/Image/ImagePlugin.svelte';
   import CloseCircleButton from '../generic/button/CloseCircleButton.svelte';
   import ModalDialog from '../generic/dialog/ModalDialog.svelte';
 

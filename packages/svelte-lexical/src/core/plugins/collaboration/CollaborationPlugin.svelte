@@ -11,7 +11,9 @@
   import YjsHistory from './YjsHistory.svelte';
   import YjsFocusTracking from './YjsFocusTracking.svelte';
 
-  export let id: string;
+  const editor = getEditor();
+
+  export let id: string = editor.getKey();
   export let providerFactory: (
     // eslint-disable-next-line no-shadow
     id: string,
@@ -27,7 +29,6 @@
 
   const {yjsDocMap, name, color} = collabContext;
 
-  const editor = getEditor();
   const provider = providerFactory(id, yjsDocMap);
   const doc = yjsDocMap.get(id);
   const binding = createBinding(editor, provider, id, doc, yjsDocMap);

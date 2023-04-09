@@ -37,7 +37,11 @@
   } from 'lexical';
   import {onMount} from 'svelte';
   import {initializeEditor} from './initializeEditor';
-  import {setEditor, setHistoryStateContext} from './composerContext';
+  import {
+    createSharedEditorContext,
+    setEditor,
+    setHistoryStateContext,
+  } from './composerContext';
 
   export let initialConfig: InitialConfigType;
 
@@ -60,6 +64,9 @@
   setEditor(editor);
 
   setHistoryStateContext(createEmptyHistoryState());
+
+  // allows sharing context between plugins and decorator nodes
+  createSharedEditorContext();
 
   onMount(() => {
     const isEditable = initialConfig.editable;
