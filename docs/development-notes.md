@@ -16,6 +16,8 @@ Currently, 64 tests are passing.
 
 Run from VSCode `Testing` pane or click the play button in source code files.
 
+The tests run in headless mode in the background.
+
 ### Running locally from CLI
 
 - Start the playground demo
@@ -25,6 +27,16 @@ Run from VSCode `Testing` pane or click the play button in source code files.
 - Run tests
   - All tests (chromium, firefox and safari): <code>pnpm playwright test</code>
   - Just chromium browser: <code>pnpm test-e2e:chromium</code>
+
+The tests run in headless mode in the background.
+
+### Running in Playwright UI
+
+This is new way of running tests. Following command launches the UI with VSCode like testing pane. We can choose which tests to run from there.
+
+`pn playwright test --ui`
+
+With this UI, Playwright captures screenshots (before and after view) for each of the steps which is the distinguishing feature. It also useful for working with locators.
 
 ### Debugging tests
 

@@ -62,7 +62,7 @@
     "debug-test-e2e-plain-legacy-webkit": "cross-env E2E_BROWSER=webkit E2E_EDITOR_MODE=plain-text E2E_EVENTS_MODE=legacy-events playwright test --debug --project=\"webkit\""
   },
   "devDependencies": {
-    "@playwright/test": "^1.30.0",
+    "@playwright/test": "^1.32.2",
     "@sveltejs/vite-plugin-svelte": "^2.0.2",
     "@tsconfig/svelte": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
