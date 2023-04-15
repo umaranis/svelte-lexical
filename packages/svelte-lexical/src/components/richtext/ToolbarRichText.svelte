@@ -19,7 +19,7 @@
   import CheckDropDrownItem from '../toolbar/BlockFormatDropDown/CheckDropDrownItem.svelte';
   import QuoteDropDrownItem from '../toolbar/BlockFormatDropDown/QuoteDropDrownItem.svelte';
   import Toolbar from '../toolbar/Toolbar.svelte';
-  import InsertImageDialog from '../toolbar/InsertImageDialog.svelte';
+  import InsertImageDialog from '../toolbar/dialogs/InsertImageDialog.svelte';
   import InsertHRDropDownItem from '../toolbar/InsertDropDown/InsertHRDropDownItem.svelte';
   import InsertImageDropDownItem from '../toolbar/InsertDropDown/InsertImageDropDownItem.svelte';
 

@@ -49,9 +49,9 @@ export function getSharedEditorContext(): Record<string, object> {
 }
 
 export function setImageHistoryPluginType(
-  componentType: SvelteComponentTypeRef,
+  componentTypeRef: SvelteComponentTypeRef,
 ) {
-  getSharedEditorContext().ImageHistoryComponentType = componentType;
+  getSharedEditorContext().ImageHistoryComponentType = componentTypeRef;
 }
 
 export function getImageHistoryPluginType() {

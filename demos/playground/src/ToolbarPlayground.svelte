@@ -25,8 +25,8 @@
     DropDownAlign,
     InsertHRDropDownItem,
     InsertImageDropDownItem,
-    InsertImageDialog,
   } from 'svelte-lexical';
+  import InsertImageDialog from './InsertImageDialog.svelte';
 
   let imageDialog: InsertImageDialog;
 </script>

@@ -53,11 +53,18 @@ export {default as DropDownAlign} from './components/toolbar/DropDownAlign.svelt
 export {default as InsertDropDown} from './components/toolbar/InsertDropDown/InsertDropDown.svelte';
 export {default as InsertHRDropDownItem} from './components/toolbar/InsertDropDown/InsertHRDropDownItem.svelte';
 export {default as InsertImageDropDownItem} from './components/toolbar/InsertDropDown/InsertImageDropDownItem.svelte';
-export {default as InsertImageDialog} from './components/toolbar/InsertImageDialog.svelte';
 export {default as FontFamilyDropDown} from './components/toolbar/FontFamilyDropDown.svelte';
 export {default as FontSizeDropDown} from './components/toolbar/FontSizeDropDown.svelte';
 export {default as InsertLink} from './components/toolbar/InsertLink.svelte';
 export {default as CodeLanguageDropDown} from './components/toolbar/CodeLanguageDropDown.svelte';
+// dialogs
+export {default as InsertImageDialog} from './components/toolbar/dialogs/InsertImageDialog.svelte';
+export {default as InsertImageUploadedDialogBody} from './components/toolbar/dialogs/InsertImageUploadedDialogBody.svelte';
+export {default as InsertImageUriDialogBody} from './components/toolbar/dialogs/InsertImageUriDialogBody.svelte';
+
+export {getCommands} from './core/commands';
+export type {ImagePayload} from './core/plugins/Image/ImageNode';
+export {getActiveEditor} from './core/composerContext';
 
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
 export {default as TreeViewPlugin} from './core/plugins/TreeViewPlugin.svelte';
@@ -76,3 +83,5 @@ export {$createListItemNode, $createListNode} from '@lexical/list';
 // ui components
 export {default as DropDown} from './components/generic/dropdown/DropDown.svelte';
 export {default as DropDownItem} from './components/generic/dropdown/DropDownItem.svelte';
+export {default as ModalDialog} from './components/generic/dialog/ModalDialog.svelte';
+export {default as CloseCircleButton} from './components/generic/button/CloseCircleButton.svelte';

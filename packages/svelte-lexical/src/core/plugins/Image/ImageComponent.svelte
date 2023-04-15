@@ -259,6 +259,7 @@
       <PlaceHolder className="ImageNode__placeholder">
         Enter image caption...
       </PlaceHolder>
+      <!-- TODO: {showNestedEditorTreeView === true ? <TreeViewPlugin /> : null} -->
     </NestedComposer>
   </div>
 {/if}
