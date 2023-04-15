@@ -324,6 +324,9 @@ importers:
       rollup:
         specifier: ^3.11.0
         version: 3.11.0
+      rollup-plugin-css-only:
+        specifier: ^4.3.0
+        version: 4.3.0(rollup@3.11.0)
       rollup-plugin-svelte:
         specifier: ^7.1.0
         version: 7.1.0(rollup@3.11.0)(svelte@3.58.0)
@@ -6910,6 +6913,16 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: true
+
+  /rollup-plugin-css-only@4.3.0(rollup@3.11.0):
+    resolution: {integrity: sha512-BsiCqJJQzZh2lQiHY5irejRoJ3I1EUFHEi5PjVqsr+EmOh54YrWVwd3YZEXnQJ2+fzlhif0YM/Kf0GuH90GAdQ==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      rollup: <4
+    dependencies:
+      '@rollup/pluginutils': 5.0.2(rollup@3.11.0)
+      rollup: 3.11.0
     dev: true
 
   /rollup-plugin-svelte@7.1.0(rollup@3.11.0)(svelte@3.58.0):

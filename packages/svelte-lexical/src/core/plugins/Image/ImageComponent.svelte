@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-  //import './ImageNode.css';
+  import './ImageNode.css';
   import {
     $getSelection as getSelection,
     $isNodeSelection as isNodeSelection,
@@ -275,41 +275,3 @@
     {onResizeEnd}
     {captionsEnabled} />
 {/if}
-
-<style>
-  :global(.ImageNode__contentEditable) {
-    min-height: 20px;
-    border: 0px;
-    resize: none;
-    cursor: text;
-    caret-color: rgb(5, 5, 5);
-    display: block;
-    position: relative;
-    tab-size: 1;
-    outline: 0px;
-    padding: 10px;
-    user-select: text;
-    font-size: 12px;
-    width: calc(100% - 20px);
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-
-  :global(.ImageNode__placeholder) {
-    font-size: 12px;
-    color: #888;
-    overflow: hidden;
-    position: absolute;
-    text-overflow: ellipsis;
-    top: 10px;
-    left: 10px;
-    user-select: none;
-    white-space: nowrap;
-    display: inline-block;
-    pointer-events: none;
-  }
-
-  :global(.image-control-wrapper--resizing) {
-    touch-action: none;
-  }
-</style>

@@ -3,6 +3,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import autoPreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
+import css from 'rollup-plugin-css-only';
+
 // import pkg from './package.json' assert { type: "json"};
 
 // const name = pkg.name
@@ -24,5 +26,6 @@ export default {
 		resolve(),
 		commonjs(),
 		typescript({ sourceMap: process.env.NODE_ENV !== 'production' }),
+		css({ output: 'bundle.css' }),
 	]
 };
