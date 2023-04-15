@@ -24,7 +24,7 @@
     <TextInput
       label="Alt Text"
       placeholder="Random unsplash image"
-      value={altText}
+      bind:value={altText}
       dataTestId="image-modal-alt-text-input"
       id="lexical-modal-image-alttext" />
     <div class="ToolbarPlugin__dialogActions">
