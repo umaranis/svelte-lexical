@@ -24,11 +24,11 @@ const IS_RICH_TEXT = process.env.E2E_EDITOR_MODE !== 'plain-text';
 const IS_PLAIN_TEXT = process.env.E2E_EDITOR_MODE === 'plain-text';
 export const LEGACY_EVENTS = process.env.E2E_EVENTS_MODE === 'legacy-events';
 export const SAMPLE_IMAGE_URL =
-  E2E_PORT === 3000
+  E2E_PORT === 5173
     ? '/src/images/yellow-flower.jpg'
     : '/assets/yellow-flower.a2a7c7a2.jpg';
 export const SAMPLE_LANDSCAPE_IMAGE_URL =
-  E2E_PORT === 3000
+  E2E_PORT === 5173
     ? '/src/images/landscape.jpg'
     : '/assets/landscape.21352c66.jpg';
 export const LEXICAL_IMAGE_BASE64 =
@@ -123,7 +123,10 @@ async function assertHTMLOnPageOrFrame(
   ignoreClasses,
   ignoreInlineStyles,
 ) {
-  const actualHtml = await pageOrFrame.innerHTML('div[contenteditable="true"]');
+  let actualHtml = await pageOrFrame.innerHTML('div[contenteditable="true"]');
+  actualHtml = actualHtml.replace(/<!--[\s\S]*?-->/g, ''); // remove comments introduced by svelte
+  actualHtml = actualHtml.replace(/class=""/g, ''); //remove blank class attribute
+
   const actual = prettifyHTML(actualHtml.replace(/\n/gm, ''), {
     ignoreClasses,
     ignoreInlineStyles,
