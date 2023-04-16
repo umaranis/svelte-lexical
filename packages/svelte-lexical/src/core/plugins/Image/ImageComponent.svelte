@@ -48,6 +48,9 @@
   export let captionsEnabled: boolean;
   export let editor: LexicalEditor;
 
+  $: heightCss = height === 'inherit' ? 'inherit' : height + 'px';
+  $: widthCss = width === 'inherit' ? 'inherit' : width + 'px';
+
   let selection: RangeSelection | NodeSelection | GridSelection | null = null;
 
   let imageRef: HTMLImageElement | null;
@@ -233,7 +236,7 @@
       {src}
       alt={altText}
       bind:this={imageRef}
-      style="height:{height}px;width:{width}px;max-width:{maxWidth}px;"
+      style="height:{heightCss};max-width:{maxWidth}px;width:{widthCss};"
       draggable="false" />
   {/await}
 </div>

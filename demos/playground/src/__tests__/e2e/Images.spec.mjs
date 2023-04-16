@@ -31,7 +31,6 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Images', () => {
-  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test(`Can create a decorator and move selection around it`, async ({
     page,
@@ -401,7 +400,7 @@ test.describe('Images', () => {
 
     await insertUploadImage(
       page,
-      'packages/lexical-playground/src/images/yellow-flower-small.jpg',
+      'src/images/yellow-flower-small.jpg',
       'a pretty yellow flower :)',
     );
 
