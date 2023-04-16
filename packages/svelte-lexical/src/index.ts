@@ -64,7 +64,7 @@ export {default as InsertImageUriDialogBody} from './components/toolbar/dialogs/
 
 export {getCommands} from './core/commands';
 export type {ImagePayload} from './core/plugins/Image/ImageNode';
-export {getActiveEditor} from './core/composerContext';
+export {getEditor, getActiveEditor} from './core/composerContext';
 
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
 export {default as TreeViewPlugin} from './core/plugins/TreeViewPlugin.svelte';

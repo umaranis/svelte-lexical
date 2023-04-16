@@ -8,6 +8,7 @@
     getCommands,
     InsertImageUriDialogBody,
     getActiveEditor,
+    getEditor,
   } from 'svelte-lexical';
 
   import landscapeImage from './images/landscape.jpg';
@@ -25,6 +26,7 @@
   let mode: null | 'url' | 'file' = null;
   let hasModifier = false;
 
+  const editor = getEditor();
   const activeEditor = getActiveEditor();
 
   onMount(() => {
@@ -38,10 +40,15 @@
     };
   });
 
-  const onClick = (payload: ImagePayload) => {
+  function insertAndClose(payload: ImagePayload) {
     getCommands().InsertImage.execute($activeEditor, payload);
+    closeDialog();
+  }
+
+  function closeDialog() {
     showModal = false;
-  };
+    getCommands().FocusEditor.execute(editor);
+  }
 </script>
 
 <ModalDialog bind:showModal>
@@ -56,7 +63,7 @@
             class="Button__root"
             data-test-id="image-modal-option-sample"
             on:click={() =>
-              onClick(
+              insertAndClose(
                 hasModifier
                   ? {
                       altText:
@@ -86,9 +93,9 @@
       </div>
     </div>
   {:else if mode === 'url'}
-    <InsertImageUriDialogBody on:confirm={() => (showModal = false)} />
+    <InsertImageUriDialogBody on:confirm={closeDialog} />
   {:else if mode === 'file'}
-    <InsertImageUploadedDialogBody on:confirm={() => (showModal = false)} />
+    <InsertImageUploadedDialogBody on:confirm={closeDialog} />
   {/if}
 </ModalDialog>
 
