@@ -404,6 +404,8 @@ test.describe('Images', () => {
       'a pretty yellow flower :)',
     );
 
+    await page.waitForTimeout(3000);
+    
     await assertHTML(
       page,
       html`
