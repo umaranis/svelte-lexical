@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Meta Platforms, Inc. and affiliates.
+ * Copyright (c) Syed Umar Anis.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -1143,7 +1143,24 @@ i.prettier-error {
  .actions i.connect {
    background-image: url(images/icons/plug-fill.svg);
  }
- 
+
+ table.disable-selection {
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+ }
+
+ table.disable-selection span::selection {
+   background-color: transparent;
+ }
+
+ table.disable-selection br::selection {
+   background-color: transparent;
+ }
+
  .table-cell-action-button-container {
    position: absolute;
   top: 0;

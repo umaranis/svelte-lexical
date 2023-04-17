@@ -1143,7 +1143,24 @@ i.prettier-error {
  .actions i.connect {
    background-image: url(images/icons/plug-fill.svg);
  }
- 
+
+ table.disable-selection {
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+ }
+
+ table.disable-selection span::selection {
+   background-color: transparent;
+ }
+
+ table.disable-selection br::selection {
+   background-color: transparent;
+ }
+
  .table-cell-action-button-container {
    position: absolute;
   top: 0;
@@ -1627,7 +1644,7 @@ button.item.dropdown-item-active i {
 }
 .Input__input {
   display: flex;
-  flex: 2;
+  flex: 3;
   border: 1px solid #999;
   padding-top: 7px;
   padding-bottom: 7px;
