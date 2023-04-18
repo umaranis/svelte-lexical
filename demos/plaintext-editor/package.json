@@ -23,6 +23,6 @@
     "vite": "^4.1.4"
   },
   "dependencies": {
-    "svelte-lexical": "0.3.0"
+    "svelte-lexical": "0.3.1"
   }
 }

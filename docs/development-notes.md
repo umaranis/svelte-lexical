@@ -81,6 +81,7 @@ It uses NPM to build and publish (PNPM is not used due to a bug).
   - for demos project, update version number for `svelte-lexical` dependency in `package.json` (find and replace)
   - run `pnpm i`
   - build all projects
+  - commit changes
 - create a tag in GitHub
   - add release notes
   - it will automatically trigger GitHub action for creating a package
