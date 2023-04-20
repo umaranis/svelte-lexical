@@ -706,7 +706,6 @@ test.describe('Links', () => {
     );
 
     await moveRight(page, 1);
-    await selectCharacters(page, 'right', 1);
     await page.keyboard.type('a');
 
     await assertHTML(
