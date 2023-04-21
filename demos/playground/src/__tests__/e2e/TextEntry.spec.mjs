@@ -48,8 +48,12 @@ test.describe('TextEntry', () => {
     });
   });
 
-  test(`Can insert text and replace it`, async ({isCollab, page, browserName}) => {
-    test.fixme(browserName === 'webkit')
+  test(`Can insert text and replace it`, async ({
+    isCollab,
+    page,
+    browserName,
+  }) => {
+    test.fixme(browserName === 'webkit');
 
     test.skip(isCollab);
     await page.locator('[data-lexical-editor]').fill('Front');
@@ -72,53 +76,53 @@ test.describe('TextEntry', () => {
     });
   });
 
-  test.fixme(`Can type 'Hello' as a header and insert a paragraph before`, async ({
-    page,
-    isPlainText,
-  }) => {
-    test.skip(isPlainText);
-    await focusEditor(page);
-    await page.keyboard.type('# Hello');
+  test.fixme(
+    `Can type 'Hello' as a header and insert a paragraph before`,
+    async ({page, isPlainText}) => {
+      test.skip(isPlainText);
+      await focusEditor(page);
+      await page.keyboard.type('# Hello');
 
-    await moveToLineBeginning(page);
+      await moveToLineBeginning(page);
 
-    await assertHTML(
-      page,
-      html`
-        <h1
-          class="PlaygroundEditorTheme__h1 PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Hello</span>
-        </h1>
-      `,
-    );
-    await assertSelection(page, {
-      anchorOffset: 0,
-      anchorPath: [0, 0, 0],
-      focusOffset: 0,
-      focusPath: [0, 0, 0],
-    });
+      await assertHTML(
+        page,
+        html`
+          <h1
+            class="PlaygroundEditorTheme__h1 PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Hello</span>
+          </h1>
+        `,
+      );
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [0, 0, 0],
+        focusOffset: 0,
+        focusPath: [0, 0, 0],
+      });
 
-    await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
 
-    await assertHTML(
-      page,
-      html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <h1
-          class="PlaygroundEditorTheme__h1 PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Hello</span>
-        </h1>
-      `,
-    );
-    await assertSelection(page, {
-      anchorOffset: 0,
-      anchorPath: [1, 0, 0],
-      focusOffset: 0,
-      focusPath: [1, 0, 0],
-    });
-  });
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <h1
+            class="PlaygroundEditorTheme__h1 PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Hello</span>
+          </h1>
+        `,
+      );
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [1, 0, 0],
+        focusOffset: 0,
+        focusPath: [1, 0, 0],
+      });
+    },
+  );
 
   test(`Can insert a paragraph between two text nodes`, async ({
     page,
@@ -211,82 +215,85 @@ test.describe('TextEntry', () => {
     });
   });
 
-  test.fixme('Paragraphed text entry and selection', async ({page, isRichText}) => {
-    await focusEditor(page);
-    await page.keyboard.type('Hello World.');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('This is another block.');
-    await page.keyboard.down('Shift');
-    await moveLeft(page, 6);
-    if (isRichText) {
-      await assertSelection(page, {
-        anchorOffset: 22,
-        anchorPath: [1, 0, 0],
-        focusOffset: 16,
-        focusPath: [1, 0, 0],
-      });
-    } else {
-      await assertSelection(page, {
-        anchorOffset: 22,
-        anchorPath: [0, 2, 0],
-        focusOffset: 16,
-        focusPath: [0, 2, 0],
-      });
-    }
+  test.fixme(
+    'Paragraphed text entry and selection',
+    async ({page, isRichText}) => {
+      await focusEditor(page);
+      await page.keyboard.type('Hello World.');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('This is another block.');
+      await page.keyboard.down('Shift');
+      await moveLeft(page, 6);
+      if (isRichText) {
+        await assertSelection(page, {
+          anchorOffset: 22,
+          anchorPath: [1, 0, 0],
+          focusOffset: 16,
+          focusPath: [1, 0, 0],
+        });
+      } else {
+        await assertSelection(page, {
+          anchorOffset: 22,
+          anchorPath: [0, 2, 0],
+          focusOffset: 16,
+          focusPath: [0, 2, 0],
+        });
+      }
 
-    await page.keyboard.up('Shift');
-    await page.keyboard.type('paragraph.');
-    await page.keyboard.type(' :)');
+      await page.keyboard.up('Shift');
+      await page.keyboard.type('paragraph.');
+      await page.keyboard.type(' :)');
 
-    if (isRichText) {
-      await assertHTML(
-        page,
-        html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">Hello World.</span>
-          </p>
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">This is another paragraph.</span>
-            <span class="emoji happysmile" data-lexical-text="true">
-              <span class="emoji-inner">🙂</span>
-            </span>
-          </p>
-        `,
-      );
-      await assertSelection(page, {
-        anchorOffset: 2,
-        anchorPath: [1, 1, 0, 0],
-        focusOffset: 2,
-        focusPath: [1, 1, 0, 0],
-      });
-    } else {
-      await assertHTML(
-        page,
-        html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">Hello World.</span>
-            <br />
-            <span data-lexical-text="true">This is another paragraph.</span>
-            <span class="emoji happysmile" data-lexical-text="true">
-              <span class="emoji-inner">🙂</span>
-            </span>
-          </p>
-        `,
-      );
-      await assertSelection(page, {
-        anchorOffset: 2,
-        anchorPath: [0, 3, 0, 0],
-        focusOffset: 2,
-        focusPath: [0, 3, 0, 0],
-      });
-    }
-  });
+      if (isRichText) {
+        await assertHTML(
+          page,
+          html`
+            <p
+              class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">Hello World.</span>
+            </p>
+            <p
+              class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">This is another paragraph.</span>
+              <span class="emoji happysmile" data-lexical-text="true">
+                <span class="emoji-inner">🙂</span>
+              </span>
+            </p>
+          `,
+        );
+        await assertSelection(page, {
+          anchorOffset: 2,
+          anchorPath: [1, 1, 0, 0],
+          focusOffset: 2,
+          focusPath: [1, 1, 0, 0],
+        });
+      } else {
+        await assertHTML(
+          page,
+          html`
+            <p
+              class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">Hello World.</span>
+              <br />
+              <span data-lexical-text="true">This is another paragraph.</span>
+              <span class="emoji happysmile" data-lexical-text="true">
+                <span class="emoji-inner">🙂</span>
+              </span>
+            </p>
+          `,
+        );
+        await assertSelection(page, {
+          anchorOffset: 2,
+          anchorPath: [0, 3, 0, 0],
+          focusOffset: 2,
+          focusPath: [0, 3, 0, 0],
+        });
+      }
+    },
+  );
 
   test(`Can delete characters after they're typed`, async ({
     page,
