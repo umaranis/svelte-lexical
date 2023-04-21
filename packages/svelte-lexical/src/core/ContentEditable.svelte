@@ -1,9 +1,5 @@
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <script lang="ts">
-  // @ts-nocheck because of autoComplete error on div attribute
-  // no way to turn this error off for a single line: https://github.com/sveltejs/language-tools/issues/1026
-  // TODO: remove @ts-nocheck after making nay changes to enable type checking, then reapply to avoid autoComplete attribute error
-
   import type {LexicalEditor} from 'lexical';
   import {onMount} from 'svelte';
   import {getEditor} from './composerContext';
@@ -17,16 +13,14 @@
   export let ariaLabel: string | undefined = undefined;
   export let ariaLabelledBy: string | undefined = undefined;
   export let ariaMultiline: boolean | undefined = undefined;
-  export let ariaOwneeID: string | undefined = undefined;
+  export let ariaOwns: string | undefined = undefined;
   export let ariaRequired: boolean | undefined = undefined;
-  export let autoCapitalize: boolean | undefined = undefined;
-  export let autoComplete: boolean | undefined = undefined;
-  export let autoCorrect: boolean | undefined = undefined;
+  export let autoCapitalize: string | undefined = undefined;
   //export let className: string;  // @lexical/image plugin seems to depend on the harded class name.
   export let className = 'ContentEditable__root';
   export let id: string | undefined = undefined;
   //export let readOnly: boolean; // it is defined in lexical code but not used
-  export let role: 'textbox' | undefined = undefined;
+  export let role: string | undefined = 'textbox';
   export let spellCheck = true;
   export let style: string | undefined = undefined;
   export let tabIndex: number | undefined = undefined;
@@ -46,21 +40,21 @@
 </script>
 
 <div
-  aria-activedescendant={!isEditable ? null : ariaActiveDescendantID}
-  aria-autocomplete={!isEditable ? null : ariaAutoComplete}
-  aria-controls={!isEditable ? null : ariaControls}
+  aria-activedescendant={!isEditable ? undefined : ariaActiveDescendantID}
+  aria-autocomplete={!isEditable ? 'none' : ariaAutoComplete}
+  aria-controls={!isEditable ? undefined : ariaControls}
   aria-describedby={ariaDescribedBy}
-  aria-expanded={ariaExpanded}
+  aria-expanded={!isEditable
+    ? undefined
+    : role === 'combobox'
+    ? !!ariaExpanded
+    : undefined}
   aria-label={ariaLabel}
   aria-labelledby={ariaLabelledBy}
   aria-multiline={ariaMultiline}
-  aria-owns={!isEditable ? null : ariaOwneeID}
+  aria-owns={!isEditable ? null : ariaOwns}
   aria-required={ariaRequired}
-  autoCapitalize={autoCapitalize !== undefined
-    ? String(autoCapitalize)
-    : undefined}
-  {autoComplete}
-  autoCorrect={autoCorrect !== undefined ? String(autoCorrect) : undefined}
+  autocapitalize={autoCapitalize}
   class={className}
   contentEditable={isEditable}
   data-testid={testid}
