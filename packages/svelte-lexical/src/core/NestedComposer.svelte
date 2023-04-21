@@ -46,6 +46,8 @@
 
   initialEditor._config.namespace = parentEditor._config.namespace;
 
+  initialEditor._editable = parentEditor._editable;
+
   onMount(() => {
     return parentEditor.registerEditableListener((editable) => {
       initialEditor.setEditable(editable);
