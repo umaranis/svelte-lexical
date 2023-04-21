@@ -214,6 +214,7 @@
   // Given the creation preconditions, these can only be simple text nodes.
   function handleBadNeighbors(
     textNode: TextNode,
+    matchers: Array<LinkMatcher>,
     onChange: ChangeHandler,
   ): void {
     const previousSibling = textNode.getPreviousSibling();
@@ -221,12 +222,14 @@
     const text = textNode.getTextContent();
 
     if (isAutoLinkNode(previousSibling) && !startsWithSeparator(text)) {
-      replaceWithChildren(previousSibling);
+      previousSibling.append(textNode);
+      handleLinkEdit(previousSibling, matchers, onChange);
       onChange(null, previousSibling.getURL());
     }
 
     if (isAutoLinkNode(nextSibling) && !endsWithSeparator(text)) {
       replaceWithChildren(nextSibling);
+      handleLinkEdit(nextSibling, matchers, onChange);
       onChange(null, nextSibling.getURL());
     }
   }
@@ -261,14 +264,19 @@
     return mergeRegister(
       editor.registerNodeTransform(TextNode, (textNode: TextNode) => {
         const parent = textNode.getParentOrThrow();
+        const previous = textNode.getPreviousSibling();
         if (isAutoLinkNode(parent)) {
           handleLinkEdit(parent, matchers, onChangeWrapped);
         } else if (!isLinkNode(parent)) {
-          if (textNode.isSimpleText()) {
+          if (
+            textNode.isSimpleText() &&
+            (startsWithSeparator(textNode.getTextContent()) ||
+              !isAutoLinkNode(previous))
+          ) {
             handleLinkCreation(textNode, matchers, onChangeWrapped);
           }
 
-          handleBadNeighbors(textNode, onChangeWrapped);
+          handleBadNeighbors(textNode, matchers, onChangeWrapped);
         }
       }),
     );
