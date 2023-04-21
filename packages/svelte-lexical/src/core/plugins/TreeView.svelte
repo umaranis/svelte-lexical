@@ -163,7 +163,9 @@
 
     const formatText = printFormatProperties(selection);
 
-    res += `: range ${formatText !== '' ? `{ ${formatText} }` : ''}`;
+    res += `: range ${formatText !== '' ? `{ ${formatText} }` : ''} ${
+      selection.style !== '' ? `{ style: ${selection.style} } ` : ''
+    }`;
 
     const anchor = selection.anchor;
     const focus = selection.focus;
