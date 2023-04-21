@@ -28,6 +28,7 @@
       initialEditor._nodes.set(type, {
         klass: entry.klass,
         replace: entry.replace,
+        replaceWithKlass: entry.replaceWithKlass,
         transforms: new Set(),
       });
     }
@@ -37,6 +38,7 @@
       initialEditor._nodes.set(type, {
         klass,
         replace: null,
+        replaceWithKlass: null,
         transforms: new Set(),
       });
     }
