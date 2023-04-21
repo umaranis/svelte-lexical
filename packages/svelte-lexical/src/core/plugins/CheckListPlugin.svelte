@@ -10,6 +10,7 @@
   } from '@lexical/list';
   import {
     $findMatchingParent as findMatchingParent,
+    isHTMLElement,
     mergeRegister,
   } from '@lexical/utils';
   import {
@@ -157,7 +158,7 @@
   function handleCheckItemEvent(event: PointerEvent, callback: () => void) {
     const target = event.target;
 
-    if (!(target instanceof HTMLElement)) {
+    if (target === null || !isHTMLElement(target)) {
       return;
     }
 
@@ -166,7 +167,7 @@
 
     if (
       firstChild != null &&
-      firstChild instanceof HTMLElement &&
+      isHTMLElement(firstChild) &&
       (firstChild.tagName === 'UL' || firstChild.tagName === 'OL')
     ) {
       return;
