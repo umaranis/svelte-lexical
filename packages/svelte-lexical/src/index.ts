@@ -67,7 +67,7 @@ export type {ImagePayload} from './core/plugins/Image/ImageNode';
 export {getEditor, getActiveEditor} from './core/composerContext';
 
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
-export {default as TreeViewPlugin} from './core/plugins/TreeViewPlugin.svelte';
+export {default as TreeViewPlugin} from './core/plugins/TreeView/TreeViewPlugin.svelte';
 
 export {default as ContentEditable} from './core/ContentEditable.svelte';
 export {default as Composer} from './core/Composer.svelte';

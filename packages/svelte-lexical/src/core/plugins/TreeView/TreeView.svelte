@@ -4,6 +4,7 @@
     EditorState,
     ElementNode,
     GridSelection,
+    LexicalCommand,
     LexicalEditor,
     LexicalNode,
     NodeSelection,
@@ -22,7 +23,8 @@
     DEPRECATED_$isGridSelection,
   } from 'lexical';
   import {onMount} from 'svelte';
-  import {getEditor} from '../composerContext';
+  import {getEditor} from '../../composerContext';
+  import CommandsLog from './CommandsLog.svelte';
 
   const NON_SINGLE_WIDTH_CHARS_REPLACEMENT: Readonly<Record<string, string>> =
     Object.freeze({
@@ -61,13 +63,17 @@
   let showLimited = false;
   let lastEditorStateRef: EditorState | null = null;
 
+  let commandsLog: ReadonlyArray<LexicalCommand<unknown> & {payload: unknown}>;
+
   function generateTree(editorState: EditorState) {
     const treeText = generateContent(
       editor.getEditorState(),
       editor._config,
+      commandsLog,
       editor._compositionKey,
       editor._editable,
     );
+
     content = treeText;
 
     if (!timeTravelEnabled) {
@@ -84,6 +90,7 @@
       content = generateContent(
         editorState,
         editor._config,
+        commandsLog,
         editor._compositionKey,
         editor._editable,
       );
@@ -150,6 +157,7 @@
         const treeText = generateContent(
           editor.getEditorState(),
           editor._config,
+          commandsLog,
           editor._compositionKey,
           editor._editable,
         );
@@ -182,7 +190,7 @@
     return res;
   }
 
-  function printObjectSelection(selection: NodeSelection): string {
+  function printNodeSelection(selection: NodeSelection): string {
     return `: node\n  └ [${Array.from(selection._nodes).join(', ')}]`;
   }
 
@@ -193,6 +201,7 @@
   function generateContent(
     editorState: EditorState,
     editorConfig: EditorConfig,
+    commandsLog: ReadonlyArray<LexicalCommand<unknown> & {payload: unknown}>,
     compositionKey: null | string,
     editable: boolean,
   ): string {
@@ -230,10 +239,22 @@
         ? printRangeSelection(selection)
         : DEPRECATED_$isGridSelection(selection)
         ? printGridSelection(selection)
-        : printObjectSelection(selection);
+        : printNodeSelection(selection);
     });
 
     res += '\n selection' + selectionString;
+
+    res += '\n\n commands:';
+
+    if (commandsLog.length) {
+      for (const {type, payload} of commandsLog) {
+        res += `\n  └ { type: ${type}, payload: ${
+          payload instanceof Event ? payload.constructor.name : payload
+        } }`;
+      }
+    } else {
+      res += '\n  └ None dispatched.';
+    }
 
     res += '\n\n editor:';
     res += `\n  └ namespace ${editorConfig.namespace}`;
@@ -533,6 +554,7 @@
   }
 </script>
 
+<CommandsLog bind:loggedCommands={commandsLog} />
 <div class={viewClassName}>
   {#if !showLimited && isLimited}
     <div style="padding: 20px">
