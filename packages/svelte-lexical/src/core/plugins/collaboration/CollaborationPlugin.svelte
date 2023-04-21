@@ -1,11 +1,10 @@
 <script lang="ts">
   import type {Doc} from 'yjs';
-  import type {WebsocketProvider} from 'y-websocket';
 
   import {useCollaborationContext} from './CollaborationContext';
   import type {InitialEditorStateType} from '../../initializeEditor';
   import {getEditor} from '../../composerContext';
-  import {createBinding} from '@lexical/yjs';
+  import {createBinding, type Provider} from '@lexical/yjs';
   import {onMount} from 'svelte';
   import YjsCollaboration from './YjsCollaboration.svelte';
   import YjsHistory from './YjsHistory.svelte';
@@ -18,7 +17,7 @@
     // eslint-disable-next-line no-shadow
     id: string,
     yjsDocMap: Map<string, Doc>,
-  ) => WebsocketProvider;
+  ) => Provider;
   export let shouldBootstrap: boolean;
   export let username: string | undefined = undefined;
   export let cursorColor: string | undefined = undefined;

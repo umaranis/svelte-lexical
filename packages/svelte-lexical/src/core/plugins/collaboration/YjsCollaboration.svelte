@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type {Binding} from '@lexical/yjs';
+  import type {Binding, Provider} from '@lexical/yjs';
   import type {LexicalEditor} from 'lexical';
 
   import {mergeRegister} from '@lexical/utils';
@@ -17,7 +17,6 @@
     $getSelection as getSelection,
     COMMAND_PRIORITY_EDITOR,
   } from 'lexical';
-  import type {WebsocketProvider} from 'y-websocket';
   import {UndoManager, type Doc, type Transaction, type YEvent} from 'yjs';
 
   import type {InitialEditorStateType} from '../../initializeEditor';
@@ -25,7 +24,7 @@
 
   export let editor: LexicalEditor;
   export let id: string;
-  export let provider: WebsocketProvider;
+  export let provider: Provider;
   export let binding: Binding;
   export let docMap: Map<string, Doc>;
   export let name: string;

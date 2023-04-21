@@ -1,11 +1,12 @@
 import {Doc} from 'yjs';
 import {WebsocketProvider} from 'y-websocket';
+import type {Provider} from '@lexical/yjs';
 
 // parent dom -> child doc
 export function createWebsocketProvider(
   id: string,
   yjsDocMap: Map<string, Doc>,
-): WebsocketProvider {
+): Provider {
   const url = new URL(window.location.href);
   const params = new URLSearchParams(url.search);
   const WEBSOCKET_ENDPOINT =
@@ -22,6 +23,7 @@ export function createWebsocketProvider(
     doc.load();
   }
 
+  // @ts-ignore from lexical
   return new WebsocketProvider(
     WEBSOCKET_ENDPOINT,
     WEBSOCKET_SLUG + '/' + WEBSOCKET_ID + '/' + id,

@@ -1,6 +1,6 @@
 <script lang="ts">
   import {mergeRegister} from '@lexical/utils';
-  import {setLocalStateFocus} from '@lexical/yjs';
+  import {setLocalStateFocus, type Provider} from '@lexical/yjs';
   import {
     BLUR_COMMAND,
     COMMAND_PRIORITY_EDITOR,
@@ -8,10 +8,9 @@
     type LexicalEditor,
   } from 'lexical';
   import {onMount} from 'svelte';
-  import type {WebsocketProvider} from 'y-websocket';
 
   export let editor: LexicalEditor;
-  export let provider: WebsocketProvider;
+  export let provider: Provider;
   export let name: string;
   export let color: string;
 
