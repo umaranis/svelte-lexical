@@ -405,7 +405,7 @@ test.describe('Images', () => {
     );
 
     await page.waitForTimeout(3000);
-    
+
     await assertHTML(
       page,
       html`
@@ -588,6 +588,11 @@ test.describe('Images', () => {
     isCollab,
   }) => {
     test.skip(isPlainText);
+
+    await page.setViewportSize({
+      height: 1000,
+      width: 2000,
+    });
 
     await focusEditor(page);
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {getContext} from 'svelte';
+  import {getContext, onMount} from 'svelte';
   import {
     Composer,
     ContentEditable,
@@ -36,6 +36,7 @@
     CodeActionMenuPlugin,
     CaptionEditorCollaborationPlugin,
     CaptionEditorHistoryPlugin,
+    CAN_USE_DOM,
   } from 'svelte-lexical';
   import {prepopulatedRichText} from './prepopulatedRichText';
   import type {SettingsStore} from './settings/setttingsStore';
@@ -55,6 +56,8 @@
     : $settings.isRichText
     ? 'Enter some rich text...'
     : 'Enter some plain text...';
+
+  let isSmallWidthViewport = false;
 
   let editorDiv;
 
@@ -83,6 +86,23 @@
     },
     theme: PlaygroundEditorTheme,
   };
+
+  onMount(() => {
+    function updateViewPortWidth() {
+      const isNextSmallWidthViewport =
+        CAN_USE_DOM && window.matchMedia('(max-width: 1025px)').matches;
+
+      if (isNextSmallWidthViewport !== isSmallWidthViewport) {
+        isSmallWidthViewport = isNextSmallWidthViewport;
+      }
+    }
+
+    window.addEventListener('resize', updateViewPortWidth);
+
+    return () => {
+      window.removeEventListener('resize', updateViewPortWidth);
+    };
+  });
 </script>
 
 <Composer {initialConfig}>
@@ -123,9 +143,11 @@
           {/if}
         </ImagePlugin>
         <LinkPlugin {validateUrl} />
-        <FloatingLinkEditorPlugin anchorElem={editorDiv} />
-        <CodeHighlightPlugin />
-        <CodeActionMenuPlugin anchorElem={editorDiv} />
+        {#if !isSmallWidthViewport}
+          <FloatingLinkEditorPlugin anchorElem={editorDiv} />
+          <CodeHighlightPlugin />
+          <CodeActionMenuPlugin anchorElem={editorDiv} />
+        {/if}
       {:else}
         <PlainTextPlugin />
         <SharedHistoryPlugin />

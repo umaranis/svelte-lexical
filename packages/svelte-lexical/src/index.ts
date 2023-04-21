@@ -85,3 +85,6 @@ export {default as DropDown} from './components/generic/dropdown/DropDown.svelte
 export {default as DropDownItem} from './components/generic/dropdown/DropDownItem.svelte';
 export {default as ModalDialog} from './components/generic/dialog/ModalDialog.svelte';
 export {default as CloseCircleButton} from './components/generic/button/CloseCircleButton.svelte';
+
+// util
+export {CAN_USE_DOM} from './environment/canUseDOM';

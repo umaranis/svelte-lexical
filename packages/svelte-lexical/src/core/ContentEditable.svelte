@@ -1,5 +1,6 @@
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <script lang="ts">
+  import './ContentEditable.css';
   import type {LexicalEditor} from 'lexical';
   import {onMount} from 'svelte';
   import {getEditor} from './composerContext';
@@ -64,16 +65,3 @@
   spellcheck={spellCheck}
   {style}
   tabindex={tabIndex} />
-
-<style>
-  :global(.ContentEditable__root) {
-    border: 0;
-    font-size: 15px;
-    display: block;
-    position: relative;
-    tab-size: 1;
-    outline: 0;
-    padding: 10px; /* when updated from lexical, left and right padding increases a lot which only makes sense when block rearrange handle is enabled (not implemented yet and won't be included in simple editors) */
-    min-height: 150px; /* when updated to latest from lexical, empty editor only receives focus when you click on the first line inside the editor. */
-  }
-</style>
