@@ -1,7 +1,6 @@
 <script lang="ts">
   import type {Binding} from '@lexical/yjs';
   import type {LexicalEditor} from 'lexical';
-  import type {Doc, Transaction, YEvent} from 'yjs';
 
   import {mergeRegister} from '@lexical/utils';
   import {
@@ -19,6 +18,7 @@
     COMMAND_PRIORITY_EDITOR,
   } from 'lexical';
   import type {WebsocketProvider} from 'y-websocket';
+  import {UndoManager, type Doc, type Transaction, type YEvent} from 'yjs';
 
   import type {InitialEditorStateType} from '../../initializeEditor';
   import {onMount} from 'svelte';
@@ -83,8 +83,10 @@
       events: Array<YEvent<any>>,
       transaction: Transaction,
     ) => {
-      if (transaction.origin !== binding) {
-        syncYjsChangesToLexical(binding, provider, events);
+      const origin = transaction.origin;
+      if (origin !== binding) {
+        const isFromUndoManger = origin instanceof UndoManager;
+        syncYjsChangesToLexical(binding, provider, events, isFromUndoManger);
       }
     };
 
