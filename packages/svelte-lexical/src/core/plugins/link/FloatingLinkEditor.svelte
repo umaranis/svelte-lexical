@@ -1,3 +1,4 @@
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <script lang="ts">
   import './FloatingLinkEditor.css';
   import {$isLinkNode as isLinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';
@@ -27,6 +28,7 @@
   let editorRef: HTMLDivElement | null;
   let inputRef: HTMLInputElement;
   let linkUrl = '';
+  let editedLinkUrl = '';
   let isEditMode = false;
   let lastSelection: RangeSelection | GridSelection | NodeSelection | null =
     null;
@@ -147,7 +149,30 @@
 
     return true;
   }
+
+  function monitorInputInteraction(
+    event: KeyboardEvent & {currentTarget: EventTarget & HTMLInputElement},
+  ) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleLinkSubmission();
+    } else if (event.key === 'Escape') {
+      event.preventDefault();
+      isEditMode = false;
+    }
+  }
+
+  function handleLinkSubmission() {
+    if (lastSelection !== null) {
+      if (linkUrl !== '') {
+        editor.dispatchCommand(TOGGLE_LINK_COMMAND, sanitizeUrl(editedLinkUrl));
+      }
+      isEditMode = false;
+    }
+  }
 </script>
+
+<!-- svelte-ignore a11y-interactive-supports-focus -->
 
 <div bind:this={editorRef} class="link-editor">
   {#if $isLink}
@@ -155,23 +180,28 @@
       <input
         bind:this={inputRef}
         class="link-input"
-        bind:value={linkUrl}
+        bind:value={editedLinkUrl}
         on:keydown={(event) => {
-          if (event.key === 'Enter' || event.key === 'Escape') {
-            event.preventDefault();
-            if (lastSelection !== null) {
-              if (linkUrl !== '') {
-                editor.dispatchCommand(
-                  TOGGLE_LINK_COMMAND,
-                  sanitizeUrl(linkUrl),
-                );
-              }
-              isEditMode = false;
-            }
-          }
+          monitorInputInteraction(event);
         }} />
+      <div>
+        <div
+          class="link-cancel"
+          role="button"
+          tabIndex={0}
+          on:mousedown={(event) => event.preventDefault()}
+          on:click={() => {
+            isEditMode = false;
+          }} />
+        <div
+          class="link-confirm"
+          role="button"
+          tabIndex={0}
+          on:mousedown={(event) => event.preventDefault()}
+          on:click={handleLinkSubmission} />
+      </div>
     {:else}
-      <div class="link-input">
+      <div class="link-view">
         <a href={linkUrl} target="_blank" rel="noopener noreferrer">
           {linkUrl}
         </a>
@@ -182,6 +212,7 @@
           tabIndex={0}
           on:mousedown={(event) => event.preventDefault()}
           on:click={() => {
+            editedLinkUrl = linkUrl;
             isEditMode = true;
           }} />
       </div>
