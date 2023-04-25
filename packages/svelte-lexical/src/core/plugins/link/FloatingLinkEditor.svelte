@@ -24,7 +24,7 @@
   export let isLink: Writable<boolean>;
   export let anchorElem: HTMLElement;
 
-  let editorRef: HTMLDivElement;
+  let editorRef: HTMLDivElement | null;
   let inputRef: HTMLInputElement;
   let linkUrl = '';
   let isEditMode = false;
@@ -40,19 +40,6 @@
   }
 
   onMount(() => {
-    function mouseMoveListener(e: MouseEvent) {
-      if (e.buttons === 1 || e.buttons === 3) {
-        editorRef.style.pointerEvents = 'none';
-      }
-    }
-    function mouseUpListener(e: MouseEvent) {
-      if (editorRef) {
-        editorRef.style.pointerEvents = 'auto';
-      }
-    }
-    document.addEventListener('mousemove', mouseMoveListener);
-    document.addEventListener('mouseup', mouseUpListener);
-
     const scrollerElem = anchorElem.parentElement;
 
     const update = () => {
@@ -68,11 +55,6 @@
     }
 
     return mergeRegister(
-      () => {
-        document.removeEventListener('mousemove', mouseMoveListener);
-        document.removeEventListener('mouseup', mouseUpListener);
-      },
-
       () => {
         window.removeEventListener('resize', update);
 
