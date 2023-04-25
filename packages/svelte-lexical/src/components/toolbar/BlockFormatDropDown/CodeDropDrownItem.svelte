@@ -4,7 +4,7 @@
   import {getEditor} from '../../../core/composerContext';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
   import type {blockTypeToBlockName} from './blockTypeToBlockName';
-  import {$setBlocksType_experimental as setBlocksType_experimental} from '@lexical/selection';
+  import {$setBlocksType as setBlocksType} from '@lexical/selection';
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
@@ -26,7 +26,7 @@
           DEPRECATED_$isGridSelection(selection)
         ) {
           if (selection.isCollapsed()) {
-            setBlocksType_experimental(selection, () => createCodeNode());
+            setBlocksType(selection, () => createCodeNode());
           } else {
             const textContent = selection.getTextContent();
             const codeNode = createCodeNode();

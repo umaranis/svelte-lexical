@@ -9,7 +9,7 @@
     $createHeadingNode as createHeadingNode,
     type HeadingTagType,
   } from '@lexical/rich-text';
-  import {$setBlocksType_experimental as setBlocksType_experimental} from '@lexical/selection';
+  import {$setBlocksType as setBlocksType} from '@lexical/selection';
   import type {Writable} from 'svelte/store';
   import type {blockTypeToBlockName} from './blockTypeToBlockName';
   import {getContext} from 'svelte';
@@ -29,9 +29,7 @@
           isRangeSelection(selection) ||
           DEPRECATED_$isGridSelection(selection)
         ) {
-          setBlocksType_experimental(selection, () =>
-            createHeadingNode(headingSize),
-          );
+          setBlocksType(selection, () => createHeadingNode(headingSize));
         }
       });
     }

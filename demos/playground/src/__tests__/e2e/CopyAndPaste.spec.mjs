@@ -889,7 +889,33 @@ test.describe('CopyAndPaste', () => {
 
       await assertHTML(
         page,
-        '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">one</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">two</span></li><li value="3" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">three</span></li></ul><p class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">Some text.</span></p>',
+        html`
+          <ul class="PlaygroundEditorTheme__ul">
+            <li
+              value="1"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">one</span>
+            </li>
+            <li
+              value="2"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">two</span>
+            </li>
+            <li
+              value="3"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">three</span>
+            </li>
+          </ul>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Some text.</span>
+          </p>
+        `,
       );
       await assertSelection(page, {
         anchorOffset: 10,
@@ -925,7 +951,36 @@ test.describe('CopyAndPaste', () => {
 
       await assertHTML(
         page,
-        '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">one</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><br></li><li value="3" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">two</span></li><li value="4" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">three</span></li></ul><p class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">Some text.</span></p>',
+        html`
+          <ul class="PlaygroundEditorTheme__ul">
+            <li
+              value="1"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">one</span>
+            </li>
+            <li value="2" class="PlaygroundEditorTheme__listItem">
+              <br />
+            </li>
+            <li
+              value="3"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">two</span>
+            </li>
+            <li
+              value="4"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">three</span>
+            </li>
+          </ul>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Some text.</span>
+          </p>
+        `,
       );
       await assertSelection(page, {
         anchorOffset: 0,
@@ -938,7 +993,46 @@ test.describe('CopyAndPaste', () => {
 
       await assertHTML(
         page,
-        '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">one</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">ee</span></li></ul><p class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">Some text.</span></p><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">three</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">two</span></li></ul><p class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">Some text.</span></p>',
+        html`
+          <ul class="PlaygroundEditorTheme__ul">
+            <li
+              value="1"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">one</span>
+            </li>
+            <li
+              value="2"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">ee</span>
+            </li>
+          </ul>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Some text.</span>
+          </p>
+          <ul class="PlaygroundEditorTheme__ul">
+            <li
+              value="1"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">three</span>
+            </li>
+            <li
+              value="2"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">two</span>
+            </li>
+          </ul>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Some text.</span>
+          </p>
+        `,
       );
       await assertSelection(page, {
         anchorOffset: 10,
@@ -2067,7 +2161,13 @@ test.describe('CopyAndPaste', () => {
         'text/html': `<meta charset='utf-8'><table class="PlaygroundEditorTheme__table"><colgroup><col><col><col><col><col></colgroup><tbody><tr><th class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader" style="border: 1px solid black; width: 140px; vertical-align: top; text-align: start; background-color: rgb(242, 243, 245);"><p class="PlaygroundEditorTheme__paragraph"><span>a</span></p></th><th class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader" style="border: 1px solid black; width: 140px; vertical-align: top; text-align: start; background-color: rgb(242, 243, 245);"><p class="PlaygroundEditorTheme__paragraph"><span>b</span></p></th></tr><tr><th class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader" style="border: 1px solid black; width: 140px; vertical-align: top; text-align: start; background-color: rgb(242, 243, 245);"><p class="PlaygroundEditorTheme__paragraph"><span>c</span></p></th><td class="PlaygroundEditorTheme__tableCell" style="border: 1px solid black; width: 140px; vertical-align: top; text-align: start;"><p class="PlaygroundEditorTheme__paragraph"><span>d</span></p></td></tr></tbody></table>`,
       };
 
-      await selectCellsFromTableCords(page, {x: 0, y: 0}, {x: 3, y: 3});
+      await selectCellsFromTableCords(
+        page,
+        {x: 0, y: 0},
+        {x: 3, y: 3},
+        true,
+        false,
+      );
 
       await pasteFromClipboard(page, clipboard);
 
@@ -3009,101 +3109,99 @@ test.describe('CopyAndPaste', () => {
     },
   );
 
-  test.fixme('Paste top level element in the middle of paragraph', async ({
-    page,
-    isPlainText,
-    isCollab,
-  }) => {
-    test.skip(isPlainText || isCollab);
-    await focusEditor(page);
-    await page.keyboard.type('Hello world');
-    await moveToPrevWord(page);
-    await pasteFromClipboard(page, {
-      'text/html': `<hr />`,
-    });
+  test.fixme(
+    'Paste top level element in the middle of paragraph',
+    async ({page, isPlainText, isCollab}) => {
+      test.skip(isPlainText || isCollab);
+      await focusEditor(page);
+      await page.keyboard.type('Hello world');
+      await moveToPrevWord(page);
+      await pasteFromClipboard(page, {
+        'text/html': `<hr />`,
+      });
 
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Hello</span>
-        </p>
-        <hr class="" contenteditable="false" data-lexical-decorator="true" />
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">world</span>
-        </p>
-      `,
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Hello</span>
+          </p>
+          <hr class="" contenteditable="false" data-lexical-decorator="true" />
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">world</span>
+          </p>
+        `,
+      );
+    },
+  );
 
-  test.fixme('Paste top level element in the middle of list', async ({
-    page,
-    isPlainText,
-    isCollab,
-  }) => {
-    test.skip(isPlainText || isCollab);
-    await focusEditor(page);
-    // Add three list items
-    await page.keyboard.type('- one');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('two');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('three');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('four');
+  test.fixme(
+    'Paste top level element in the middle of list',
+    async ({page, isPlainText, isCollab}) => {
+      test.skip(isPlainText || isCollab);
+      await focusEditor(page);
+      // Add three list items
+      await page.keyboard.type('- one');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('two');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('three');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('four');
 
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('ArrowUp');
-    await moveLeft(page, 4);
-    await page.keyboard.press('ArrowUp');
-    await page.keyboard.press('ArrowUp');
-    await pasteFromClipboard(page, {
-      'text/html': `<hr />`,
-    });
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowUp');
+      await moveLeft(page, 4);
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await pasteFromClipboard(page, {
+        'text/html': `<hr />`,
+      });
 
-    await assertHTML(
-      page,
-      html`
-        <ul class="PlaygroundEditorTheme__ul">
-          <li
-            value="1"
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">one</span>
-          </li>
-          <li
-            value="2"
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">two</span>
-          </li>
-        </ul>
-        <hr class="" contenteditable="false" data-lexical-decorator="true" />
-        <div
-          class="PlaygroundEditorTheme__blockCursor"
-          contenteditable="false"
-          data-lexical-cursor="true"></div>
-        <ul class="PlaygroundEditorTheme__ul">
-          <li
-            value="1"
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">three</span>
-          </li>
-          <li
-            value="2"
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">four</span>
-          </li>
-        </ul>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-      `,
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <ul class="PlaygroundEditorTheme__ul">
+            <li
+              value="1"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">one</span>
+            </li>
+            <li
+              value="2"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">two</span>
+            </li>
+          </ul>
+          <hr class="" contenteditable="false" data-lexical-decorator="true" />
+          <div
+            class="PlaygroundEditorTheme__blockCursor"
+            contenteditable="false"
+            data-lexical-cursor="true"></div>
+          <ul class="PlaygroundEditorTheme__ul">
+            <li
+              value="1"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">three</span>
+            </li>
+            <li
+              value="2"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">four</span>
+            </li>
+          </ul>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
+    },
+  );
 });

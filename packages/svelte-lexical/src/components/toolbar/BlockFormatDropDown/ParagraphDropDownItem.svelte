@@ -9,7 +9,7 @@
     $createParagraphNode as createParagraphNode,
     DEPRECATED_$isGridSelection,
   } from 'lexical';
-  import {$setBlocksType_experimental as setBlocksType_experimental} from '@lexical/selection';
+  import {$setBlocksType as setBlocksType} from '@lexical/selection';
   import {getEditor} from '../../../core/composerContext';
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
@@ -24,7 +24,7 @@
           isRangeSelection(selection) ||
           DEPRECATED_$isGridSelection(selection)
         )
-          setBlocksType_experimental(selection, () => createParagraphNode());
+          setBlocksType(selection, () => createParagraphNode());
       });
     }
   };

@@ -4,7 +4,7 @@
   import {getEditor} from '../../../core/composerContext';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
   import type {blockTypeToBlockName} from './blockTypeToBlockName';
-  import {$setBlocksType_experimental as setBlocksType_experimental} from '@lexical/selection';
+  import {$setBlocksType as setBlocksType} from '@lexical/selection';
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
@@ -24,7 +24,7 @@
           isRangeSelection(selection) ||
           DEPRECATED_$isGridSelection(selection)
         ) {
-          setBlocksType_experimental(selection, () => createQuoteNode());
+          setBlocksType(selection, () => createQuoteNode());
         }
       });
     }
