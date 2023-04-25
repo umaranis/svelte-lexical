@@ -12,7 +12,7 @@ export {default as PlaceHolder} from './core/plugins/PlaceHolder.svelte';
 export {default as AutoFocusPlugin} from './core/plugins/AutoFocusPlugin.svelte';
 export {default as KeywordPlugin} from './core/plugins/KeywordPlugin.svelte';
 export {default as CollaborationPlugin} from './core/plugins/collaboration/CollaborationPlugin.svelte';
-export {createWebsocketProvider} from './core/plugins/collaboration/collaboration';
+//export {createWebsocketProvider} from './core/plugins/collaboration/collaboration';
 export {default as AutoLinkPluginCore} from './core/plugins/AutoLink/AutoLinkPluginCore.svelte';
 export {default as AutoLinkPlugin} from './core/plugins/AutoLink/AutoLinkPlugin.svelte';
 export {default as LinkPlugin} from './core/plugins/link/LinkPlugin.svelte';
@@ -28,6 +28,7 @@ export {ImageNode} from './core/plugins/Image/ImageNode';
 export {KeywordNode} from './core/plugins/KeywordNode';
 export {AutoLinkNode, LinkNode} from '@lexical/link';
 export {CodeNode, CodeHighlightNode} from '@lexical/code';
+export type {Provider} from '@lexical/yjs';
 
 // toolbar
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';

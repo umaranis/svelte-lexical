@@ -1,12 +1,19 @@
 <script lang="ts">
   import CollaborationPlugin from '../collaboration/CollaborationPlugin.svelte';
   import {setImageHistoryPluginType} from '../../composerContext';
-  import {createWebsocketProvider} from '../collaboration/collaboration';
+  import type {Provider} from '@lexical/yjs';
+  import type {Doc} from 'yjs';
+
+  export let providerFactory: (
+    // eslint-disable-next-line no-shadow
+    id: string,
+    yjsDocMap: Map<string, Doc>,
+  ) => Provider;
 
   setImageHistoryPluginType({
     componentType: CollaborationPlugin,
     props: {
-      providerFactory: createWebsocketProvider,
+      providerFactory: providerFactory,
       shouldBootstrap: true,
     },
   });
