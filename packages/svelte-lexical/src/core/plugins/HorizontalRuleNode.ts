@@ -75,7 +75,7 @@ export class HorizontalRuleNode extends DecoratorNode<unknown> {
     return hr;
   }
 
-  getTextContent(): '\n' {
+  getTextContent(): string {
     return '\n';
   }
 
@@ -83,7 +83,7 @@ export class HorizontalRuleNode extends DecoratorNode<unknown> {
     return false;
   }
 
-  updateDOM(): false {
+  updateDOM(): boolean {
     return false;
   }
 
