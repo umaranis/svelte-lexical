@@ -63,7 +63,7 @@ test.describe('Tables', () => {
     test.skip(isPlainText);
     await focusEditor(page);
 
-    await insertTable(page);
+    await insertTable(page, 2, 2);
 
     await assertHTML(
       page,
@@ -77,80 +77,11 @@ test.describe('Tables', () => {
             <th>
               <p><br /></p>
             </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
           </tr>
           <tr>
             <th>
               <p><br /></p>
             </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
             <td>
               <p><br /></p>
             </td>
@@ -167,7 +98,7 @@ test.describe('Tables', () => {
     test.skip(isPlainText);
 
     await focusEditor(page);
-    await insertTable(page);
+    await insertTable(page, 2, 2);
 
     await page.keyboard.type('abc');
 
@@ -178,18 +109,7 @@ test.describe('Tables', () => {
         <table>
           <tr>
             <th>
-              <p dir="ltr">
-                <span data-lexical-text="true">abc</span>
-              </p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
+              <p dir="ltr"><span data-lexical-text="true">abc</span></p>
             </th>
             <th>
               <p><br /></p>
@@ -199,66 +119,6 @@ test.describe('Tables', () => {
             <th>
               <p><br /></p>
             </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
             <td>
               <p><br /></p>
             </td>
@@ -275,7 +135,7 @@ test.describe('Tables', () => {
     test.skip(isPlainText);
 
     await focusEditor(page);
-    await insertTable(page);
+    await insertTable(page, 2, 3);
 
     await fillTablePartiallyWithText(page);
 
@@ -286,99 +146,24 @@ test.describe('Tables', () => {
         <table>
           <tr>
             <th>
-              <p dir="ltr">
-                <span data-lexical-text="true">a</span>
-              </p>
+              <p dir="ltr"><span data-lexical-text="true">a</span></p>
             </th>
             <th>
-              <p dir="ltr">
-                <span data-lexical-text="true">bb</span>
-              </p>
+              <p dir="ltr"><span data-lexical-text="true">bb</span></p>
             </th>
             <th>
-              <p dir="ltr">
-                <span data-lexical-text="true">cc</span>
-              </p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
+              <p dir="ltr"><span data-lexical-text="true">cc</span></p>
             </th>
           </tr>
           <tr>
             <th>
-              <p dir="ltr">
-                <span data-lexical-text="true">d</span>
-              </p>
+              <p dir="ltr"><span data-lexical-text="true">d</span></p>
             </th>
             <td>
-              <p dir="ltr">
-                <span data-lexical-text="true">e</span>
-              </p>
+              <p dir="ltr"><span data-lexical-text="true">e</span></p>
             </td>
             <td>
-              <p dir="ltr">
-                <span data-lexical-text="true">f</span>
-              </p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
+              <p dir="ltr"><span data-lexical-text="true">f</span></p>
             </td>
           </tr>
         </table>
@@ -396,7 +181,7 @@ test.describe('Tables', () => {
     test.skip(isPlainText);
 
     await focusEditor(page);
-    await insertTable(page);
+    await insertTable(page, 2, 3);
 
     await fillTablePartiallyWithText(page);
     await selectCellsFromTableCords(
@@ -414,103 +199,28 @@ test.describe('Tables', () => {
         <table>
           <tr>
             <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <span data-lexical-text="true">a</span>
-              </p>
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p dir="ltr"><span data-lexical-text="true">a</span></p>
             </th>
             <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <span data-lexical-text="true">bb</span>
-              </p>
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p dir="ltr"><span data-lexical-text="true">bb</span></p>
             </th>
             <th>
-              <p dir="ltr">
-                <span data-lexical-text="true">cc</span>
-              </p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
+              <p dir="ltr"><span data-lexical-text="true">cc</span></p>
             </th>
           </tr>
           <tr>
             <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <span data-lexical-text="true">d</span>
-              </p>
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p dir="ltr"><span data-lexical-text="true">d</span></p>
             </th>
             <td
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <span data-lexical-text="true">e</span>
-              </p>
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p dir="ltr"><span data-lexical-text="true">e</span></p>
             </td>
             <td>
-              <p dir="ltr">
-                <span data-lexical-text="true">f</span>
-              </p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
+              <p dir="ltr"><span data-lexical-text="true">f</span></p>
             </td>
           </tr>
         </table>
@@ -529,12 +239,6 @@ test.describe('Tables', () => {
             <th>
               <p dir="ltr"><span data-lexical-text="true">cc</span></p>
             </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
           </tr>
           <tr>
             <th>
@@ -545,267 +249,6 @@ test.describe('Tables', () => {
             </td>
             <td>
               <p dir="ltr"><span data-lexical-text="true">f</span></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-        </table>
-        <p><br /></p>
-      `,
-      {ignoreClasses: true},
-    );
-
-    // Check that the highlight styles are applied.
-    await assertHTML(
-      page,
-      html`
-        <p><br /></p>
-        <table>
-          <tr>
-            <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <span data-lexical-text="true">a</span>
-              </p>
-            </th>
-            <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <span data-lexical-text="true">bb</span>
-              </p>
-            </th>
-            <th>
-              <p dir="ltr">
-                <span data-lexical-text="true">cc</span>
-              </p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-          </tr>
-          <tr>
-            <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <span data-lexical-text="true">d</span>
-              </p>
-            </th>
-            <td
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <span data-lexical-text="true">e</span>
-              </p>
-            </td>
-            <td>
-              <p dir="ltr">
-                <span data-lexical-text="true">f</span>
-              </p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-        </table>
-        <p><br /></p>
-      `,
-      html`
-        <p><br /></p>
-        <table>
-          <tr>
-            <th>
-              <p dir="ltr"><span data-lexical-text="true">a</span></p>
-            </th>
-            <th>
-              <p dir="ltr"><span data-lexical-text="true">bb</span></p>
-            </th>
-            <th>
-              <p dir="ltr"><span data-lexical-text="true">cc</span></p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-          </tr>
-          <tr>
-            <th>
-              <p dir="ltr"><span data-lexical-text="true">d</span></p>
-            </th>
-            <td>
-              <p dir="ltr"><span data-lexical-text="true">e</span></p>
-            </td>
-            <td>
-              <p dir="ltr"><span data-lexical-text="true">f</span></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
             </td>
           </tr>
         </table>
@@ -822,7 +265,7 @@ test.describe('Tables', () => {
     test.skip(isPlainText);
 
     await focusEditor(page);
-    await insertTable(page);
+    await insertTable(page, 3, 3);
 
     await fillTablePartiallyWithText(page);
 
@@ -852,98 +295,34 @@ test.describe('Tables', () => {
         <table>
           <tr>
             <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <span data-lexical-text="true">a</span>
-              </p>
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p dir="ltr"><span data-lexical-text="true">a</span></p>
             </th>
             <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <span data-lexical-text="true">bb</span>
-              </p>
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p dir="ltr"><span data-lexical-text="true">bb</span></p>
             </th>
             <th>
-              <p dir="ltr">
-                <span data-lexical-text="true">cc</span>
-              </p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
+              <p dir="ltr"><span data-lexical-text="true">cc</span></p>
             </th>
           </tr>
           <tr>
             <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <span data-lexical-text="true">d</span>
-              </p>
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p dir="ltr"><span data-lexical-text="true">d</span></p>
             </th>
             <td
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <span data-lexical-text="true">e</span>
-              </p>
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p dir="ltr"><span data-lexical-text="true">e</span></p>
             </td>
             <td>
-              <p dir="ltr">
-                <span data-lexical-text="true">f</span>
-              </p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
+              <p dir="ltr"><span data-lexical-text="true">f</span></p>
             </td>
           </tr>
           <tr>
             <th>
               <p><br /></p>
             </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
             <td>
               <p><br /></p>
             </td>
@@ -967,12 +346,6 @@ test.describe('Tables', () => {
             <th>
               <p dir="ltr"><span data-lexical-text="true">cc</span></p>
             </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
           </tr>
           <tr>
             <th>
@@ -984,57 +357,11 @@ test.describe('Tables', () => {
             <td>
               <p dir="ltr"><span data-lexical-text="true">f</span></p>
             </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
           </tr>
           <tr>
             <th>
               <p><br /></p>
             </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
             <td>
               <p><br /></p>
             </td>
@@ -1053,7 +380,7 @@ test.describe('Tables', () => {
     test.skip(isPlainText);
 
     await focusEditor(page);
-    await insertTable(page);
+    await insertTable(page, 2, 3);
 
     await fillTablePartiallyWithText(page);
     await selectCellsFromTableCords(
@@ -1076,103 +403,28 @@ test.describe('Tables', () => {
         <table>
           <tr>
             <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <strong data-lexical-text="true">a</strong>
-              </p>
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p dir="ltr"><strong data-lexical-text="true">a</strong></p>
             </th>
             <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <strong data-lexical-text="true">bb</strong>
-              </p>
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p dir="ltr"><strong data-lexical-text="true">bb</strong></p>
             </th>
             <th>
-              <p dir="ltr">
-                <span data-lexical-text="true">cc</span>
-              </p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
+              <p dir="ltr"><span data-lexical-text="true">cc</span></p>
             </th>
           </tr>
           <tr>
             <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <strong data-lexical-text="true">d</strong>
-              </p>
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p dir="ltr"><strong data-lexical-text="true">d</strong></p>
             </th>
             <td
-              style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-              <p dir="ltr">
-                <strong data-lexical-text="true">e</strong>
-              </p>
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p dir="ltr"><strong data-lexical-text="true">e</strong></p>
             </td>
             <td>
-              <p dir="ltr">
-                <span data-lexical-text="true">f</span>
-              </p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
+              <p dir="ltr"><span data-lexical-text="true">f</span></p>
             </td>
           </tr>
         </table>
@@ -1191,12 +443,6 @@ test.describe('Tables', () => {
             <th>
               <p dir="ltr"><span data-lexical-text="true">cc</span></p>
             </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
           </tr>
           <tr>
             <th>
@@ -1207,63 +453,6 @@ test.describe('Tables', () => {
             </td>
             <td>
               <p dir="ltr"><span data-lexical-text="true">f</span></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
             </td>
           </tr>
         </table>
@@ -1280,7 +469,7 @@ test.describe('Tables', () => {
     test.skip(isPlainText);
 
     await focusEditor(page);
-    await insertTable(page);
+    await insertTable(page, 2, 3);
 
     await fillTablePartiallyWithText(page);
     await selectCellsFromTableCords(
@@ -1304,164 +493,49 @@ test.describe('Tables', () => {
     await assertHTML(
       page,
       html`
-        <table class="PlaygroundEditorTheme__table">
+        <table>
           <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">a</span>
-              </p>
+            <th>
+              <p dir="ltr"><span data-lexical-text="true">a</span></p>
             </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">bb</span>
-              </p>
+            <th>
+              <p dir="ltr"><span data-lexical-text="true">bb</span></p>
             </th>
           </tr>
           <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">d</span>
-              </p>
+            <th>
+              <p dir="ltr"><span data-lexical-text="true">d</span></p>
             </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">e</span>
-              </p>
+            <td>
+              <p dir="ltr"><span data-lexical-text="true">e</span></p>
             </td>
           </tr>
         </table>
-        <table class="PlaygroundEditorTheme__table">
+        <table>
           <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">a</span>
-              </p>
+            <th>
+              <p dir="ltr"><span data-lexical-text="true">a</span></p>
             </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">bb</span>
-              </p>
+            <th>
+              <p dir="ltr"><span data-lexical-text="true">bb</span></p>
             </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">cc</span>
-              </p>
-            </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <th>
+              <p dir="ltr"><span data-lexical-text="true">cc</span></p>
             </th>
           </tr>
           <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">d</span>
-              </p>
+            <th>
+              <p dir="ltr"><span data-lexical-text="true">d</span></p>
             </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">e</span>
-              </p>
+            <td>
+              <p dir="ltr"><span data-lexical-text="true">e</span></p>
             </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">f</span>
-              </p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <td>
+              <p dir="ltr"><span data-lexical-text="true">f</span></p>
             </td>
           </tr>
         </table>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p><br /></p>
       `,
       undefined,
       {ignoreClasses: true},
@@ -1472,7 +546,7 @@ test.describe('Tables', () => {
     test.skip(isPlainText);
 
     await focusEditor(page);
-    await insertTable(page);
+    await insertTable(page, 2, 3);
 
     await fillTablePartiallyWithText(page);
     await selectCellsFromTableCords(
@@ -1499,15 +573,7 @@ test.describe('Tables', () => {
               <p><br /></p>
             </th>
             <th>
-              <p dir="ltr">
-                <span data-lexical-text="true">cc</span>
-              </p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
+              <p dir="ltr"><span data-lexical-text="true">cc</span></p>
             </th>
           </tr>
           <tr>
@@ -1518,66 +584,7 @@ test.describe('Tables', () => {
               <p><br /></p>
             </td>
             <td>
-              <p dir="ltr">
-                <span data-lexical-text="true">f</span>
-              </p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
+              <p dir="ltr"><span data-lexical-text="true">f</span></p>
             </td>
           </tr>
         </table>
@@ -1780,171 +787,83 @@ test.describe('Tables', () => {
     await focusEditor(page);
     await page.keyboard.type('Hello World');
 
-    await insertTable(page);
+    await insertTable(page, 2, 3);
 
     await selectAll(page);
 
-    // Selection of cells is not synced in collab, but we still want to
-    // ensure this doesn't break collab too.
-    if (!isCollab) {
-      await assertHTML(
-        page,
-        html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">Hello World</span>
-          </p>
-          <table class="PlaygroundEditorTheme__table disable-selection">
-            <tr>
-              <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </th>
-              <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </th>
-              <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </th>
-              <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </th>
-              <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </th>
-            </tr>
-            <tr>
-              <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </th>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-            </tr>
-            <tr>
-              <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </th>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-            </tr>
-            <tr>
-              <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </th>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-            </tr>
-            <tr>
-              <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </th>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent;">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-            </tr>
-          </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        `,
-        undefined,
-        {ignoreClasses: true},
-      );
-    }
+    await assertHTML(
+      page,
+      html`
+        <p dir="ltr"><span data-lexical-text="true">Hello World</span></p>
+        <table>
+          <tr>
+            <th
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p><br /></p>
+            </th>
+            <th
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p><br /></p>
+            </th>
+            <th
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p><br /></p>
+            </th>
+          </tr>
+          <tr>
+            <th
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p><br /></p>
+            </th>
+            <td
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p><br /></p>
+            </td>
+            <td
+              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <p><br /></p>
+            </td>
+          </tr>
+        </table>
+        <p><br /></p>
+      `,
+      html`
+        <p dir="ltr"><span data-lexical-text="true">Hello World</span></p>
+        <table>
+          <tr>
+            <th>
+              <p><br /></p>
+            </th>
+            <th>
+              <p><br /></p>
+            </th>
+            <th>
+              <p><br /></p>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <p><br /></p>
+            </th>
+            <td>
+              <p><br /></p>
+            </td>
+            <td>
+              <p><br /></p>
+            </td>
+          </tr>
+        </table>
+        <p><br /></p>
+      `,
+      {ignoreClasses: true},
+    );
   });
 
   test(`Horizontal rule inside cell`, async ({page, isPlainText}) => {
     test.skip(isPlainText);
     await focusEditor(page);
 
-    await insertTable(page);
+    await insertTable(page, 1, 2);
     await page.keyboard.type('123');
     await insertHorizontalRule(page);
 
@@ -1956,92 +875,12 @@ test.describe('Tables', () => {
           <tr>
             <th>
               <p><span data-lexical-text="true">123</span></p>
-              <hr
-                class=""
-                contenteditable="false"
-                data-lexical-decorator="true" />
+              <hr contenteditable="false" data-lexical-decorator="true" />
               <p><br /></p>
             </th>
             <th>
               <p><br /></p>
             </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-            <th>
-              <p><br /></p>
-            </th>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <p><br /></p>
-            </th>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
-            <td>
-              <p><br /></p>
-            </td>
           </tr>
         </table>
         <p><br /></p>
@@ -2059,7 +898,7 @@ test.describe('Tables', () => {
 
     await focusEditor(page);
 
-    await insertTable(page);
+    await insertTable(page, 2, 2);
 
     await click(page, '.PlaygroundEditorTheme__tableCell');
     await page.keyboard.type('Hello');
@@ -2093,18 +932,6 @@ test.describe('Tables', () => {
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
               <p class="PlaygroundEditorTheme__paragraph"><br /></p>
             </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
           </tr>
           <tr>
             <th
@@ -2130,69 +957,6 @@ test.describe('Tables', () => {
                 <span data-lexical-text="true">&lt;- it works!</span>
               </p>
             </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
           </tr>
         </table>
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
@@ -2208,7 +972,7 @@ test.describe('Tables', () => {
 
     await focusEditor(page);
 
-    await insertTable(page);
+    await insertTable(page, 1, 2);
 
     await click(page, '.PlaygroundEditorTheme__tableCell');
     await page.keyboard.type('cell one');
@@ -2244,90 +1008,6 @@ test.describe('Tables', () => {
                 <span data-lexical-text="true">second line</span>
               </p>
             </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
           </tr>
         </table>
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
@@ -2353,90 +1033,6 @@ test.describe('Tables', () => {
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
               <p class="PlaygroundEditorTheme__paragraph"><br /></p>
             </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
           </tr>
         </table>
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
