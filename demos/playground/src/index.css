@@ -88,6 +88,8 @@ header h1 {
 .editor {
   flex: auto;
   position: relative;
+  resize: vertical;
+  z-index: -1;
 }
 
 .test-recorder-output {
