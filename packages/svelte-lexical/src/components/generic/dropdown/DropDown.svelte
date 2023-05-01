@@ -21,8 +21,12 @@
   }
 
   $: if (showDropDown && buttonRef && dropDownRef) {
-    dropDownRef.style.top = `45px`;
-    dropDownRef.style.left = `${buttonRef.offsetLeft}px`;
+    const {top, left} = buttonRef.getBoundingClientRect();
+    dropDownRef.style.top = `${top + 42}px`;
+    dropDownRef.style.left = `${Math.min(
+      left,
+      window.innerWidth - dropDownRef.offsetWidth - 20,
+    )}px`;
   }
 
   const handle = (event: MouseEvent) => {
