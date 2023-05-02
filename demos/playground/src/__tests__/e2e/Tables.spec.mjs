@@ -917,6 +917,10 @@ test.describe('Tables', () => {
 
   test('Merge cells', async ({page, isPlainText}) => {
     test.skip(isPlainText);
+    if (IS_COLLAB) {
+      // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
+      page.setViewportSize({height: 1000, width: 3000});
+    }
 
     await focusEditor(page);
 
@@ -1117,6 +1121,10 @@ test.describe('Tables', () => {
     isPlainText,
   }) => {
     test.skip(isPlainText);
+    if (IS_COLLAB) {
+      // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
+      page.setViewportSize({height: 1000, width: 3000});
+    }
 
     await focusEditor(page);
 
@@ -1227,6 +1235,10 @@ test.describe('Tables', () => {
     isPlainText,
   }) => {
     test.skip(isPlainText);
+    if (IS_COLLAB) {
+      // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
+      page.setViewportSize({height: 1000, width: 3000});
+    }
 
     await focusEditor(page);
 
@@ -1283,6 +1295,10 @@ test.describe('Tables', () => {
     isPlainText,
   }) => {
     test.skip(isPlainText);
+    if (IS_COLLAB) {
+      // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
+      page.setViewportSize({height: 1000, width: 3000});
+    }
 
     await focusEditor(page);
 
