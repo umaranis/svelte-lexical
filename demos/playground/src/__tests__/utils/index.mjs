@@ -717,7 +717,7 @@ export async function selectFromAlignDropdown(page, selector) {
   await click(page, '.dropdown ' + selector);
 }
 
-export async function insertTable(page, rows = 2, columns = 2) {
+export async function insertTable(page, rows = 2, columns = 3) {
   let leftFrame = page;
   if (IS_COLLAB) {
     leftFrame = await page.frame('left');
@@ -777,9 +777,44 @@ export async function selectCellsFromTableCords(
   );
 }
 
+export async function insertTableRowAbove(page) {
+  await click(page, '.table-cell-action-button-container');
+  await click(page, '.item[data-test-id="table-insert-row-above"]');
+}
+
+export async function insertTableRowBelow(page) {
+  await click(page, '.table-cell-action-button-container');
+  await click(page, '.item[data-test-id="table-insert-row-below"]');
+}
+
+export async function insertTableColumnBefore(page) {
+  await click(page, '.table-cell-action-button-container');
+  await click(page, '.item[data-test-id="table-insert-column-before"]');
+}
+
+export async function insertTableColumnAfter(page) {
+  await click(page, '.table-cell-action-button-container');
+  await click(page, '.item[data-test-id="table-insert-column-after"]');
+}
+
 export async function mergeTableCells(page) {
   await click(page, '.table-cell-action-button-container');
-  await click(page, '.item:text("Merge cells")');
+  await click(page, '.item[data-test-id="table-merge-cells"]');
+}
+
+export async function deleteTableRows(page) {
+  await click(page, '.table-cell-action-button-container');
+  await click(page, '.item[data-test-id="table-delete-rows"]');
+}
+
+export async function deleteTableColumns(page) {
+  await click(page, '.table-cell-action-button-container');
+  await click(page, '.item[data-test-id="table-delete-columns"]');
+}
+
+export async function deleteTable(page) {
+  await click(page, '.table-cell-action-button-container');
+  await click(page, '.item[data-test-id="table-delete"]');
 }
 
 export async function enableCompositionKeyEvents(page) {
