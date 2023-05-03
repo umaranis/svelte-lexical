@@ -216,8 +216,6 @@
             isEditMode = true;
           }} />
       </div>
-      <!-- LinkPreview is not implemented because it is not working in lexical, see https://github.com/facebook/lexical/issues/4100 -->
-      <!-- <LinkPreview url={linkUrl} /> -->
     {/if}
   {/if}
 </div>
