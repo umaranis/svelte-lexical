@@ -47,6 +47,7 @@
 </script>
 
 <button
+  type="button"
   {disabled}
   aria-label={buttonAriaLabel || buttonLabel}
   class={buttonClassName}
