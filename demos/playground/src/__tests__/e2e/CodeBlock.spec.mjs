@@ -1021,14 +1021,14 @@ test.describe('CodeBlock', () => {
         <code
           class="PlaygroundEditorTheme__code"
           spellcheck="false"
-          data-gutter="12"
+          data-gutter="1"
           data-highlight-language="javascript">
           <span
             class="PlaygroundEditorTheme__tokenProperty"
             data-lexical-text="true">
             1
           </span>
-          <br />
+          <span data-lexical-text="true"></span>
           <span
             class="PlaygroundEditorTheme__tokenProperty"
             data-lexical-text="true">
