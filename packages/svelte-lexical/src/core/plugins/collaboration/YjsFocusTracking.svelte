@@ -15,11 +15,13 @@
   export let color: string;
 
   onMount(() => {
+    const {awareness} = provider;
+
     return mergeRegister(
       editor.registerCommand(
         FOCUS_COMMAND,
         () => {
-          setLocalStateFocus(provider, name, color, true);
+          setLocalStateFocus(provider, name, color, true, awareness);
           return false;
         },
         COMMAND_PRIORITY_EDITOR,
@@ -27,7 +29,7 @@
       editor.registerCommand(
         BLUR_COMMAND,
         () => {
-          setLocalStateFocus(provider, name, color, false);
+          setLocalStateFocus(provider, name, color, false, awareness);
           return false;
         },
         COMMAND_PRIORITY_EDITOR,
