@@ -94,6 +94,7 @@
       name,
       color,
       document.activeElement === editor.getRootElement(),
+      awareness,
     );
 
     const onProviderDocReload = (ydoc: Doc) => {
