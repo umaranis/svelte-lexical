@@ -72,6 +72,10 @@
     const isEditable = initialConfig.editable;
     editor.setEditable(isEditable !== undefined ? isEditable : true);
   });
+
+  export function getEditor() {
+    return editor;
+  }
 </script>
 
 <slot />

@@ -41,7 +41,7 @@
   };
 
   export function getEditor(): LexicalEditor {
-    return composer.$$.context.get('editor');
+    return composer.getEditor();
   }
 </script>
 
