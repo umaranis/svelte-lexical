@@ -85,7 +85,7 @@
     "vite": "^4.3.1"
   },
   "dependencies": {
-    "svelte-lexical": "0.3.2",
+    "svelte-lexical": "0.3.3",
     "y-websocket": "1.5.0",
     "yjs": "13.6.0"
   }
