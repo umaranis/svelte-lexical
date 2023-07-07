@@ -21,6 +21,8 @@
     PlaceHolder,
     KeywordPlugin,
     KeywordNode,
+    HashtagPlugin,
+    HashtagNode,
     CollaborationPlugin,
     PlainTextPlugin,
     AutoLinkPlugin,
@@ -76,6 +78,7 @@
       HorizontalRuleNode,
       ImageNode,
       KeywordNode,
+      HashtagNode,
       AutoLinkNode,
       LinkNode,
       CodeNode,
@@ -120,6 +123,7 @@
 
       <AutoFocusPlugin />
       <KeywordPlugin {keywordsRegex} />
+      <HashtagPlugin />
       <AutoLinkPlugin />
 
       {#if $settings.isRichText}
