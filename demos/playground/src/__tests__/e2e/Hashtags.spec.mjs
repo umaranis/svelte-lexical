@@ -23,9 +23,8 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Hashtags', () => {
-  test.fixme();
-  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test(`Can handle a single hashtag`, async ({page}) => {
+  test.beforeEach(({ isCollab, page }) => initialize({ isCollab, page }));
+  test(`Can handle a single hashtag`, async ({ page }) => {
     await focusEditor(page);
     await page.keyboard.type('#yolo');
 
@@ -91,7 +90,7 @@ test.describe('Hashtags', () => {
     });
   });
 
-  test(`Can handle adjacent hashtags`, async ({page, browserName}) => {
+  test(`Can handle adjacent hashtags`, async ({ page, browserName }) => {
     await focusEditor(page);
     await page.keyboard.type('#hello world');
 
