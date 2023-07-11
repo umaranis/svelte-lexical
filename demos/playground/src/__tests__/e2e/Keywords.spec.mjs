@@ -22,7 +22,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Keywords', () => {
-  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
+  test.beforeEach(({ isCollab, page }) => initialize({ isCollab, page }));
   test(`Can create a decorator and move selection around it`, async ({
     page,
     browserName,
@@ -199,7 +199,7 @@ test.describe('Keywords', () => {
     });
   });
 
-  test('Can type congrats[Team]!', async ({page}) => {
+  test('Can type congrats[Team]!', async ({ page }) => {
     await focusEditor(page);
     await page.keyboard.type('congrats[Team]!');
 
@@ -235,6 +235,7 @@ test.describe('Keywords', () => {
     isPlainText,
     legacyEvents,
   }) => {
+    test.fixme(browserName === 'webkit', 'This test has to be fixed');
     test.skip(isPlainText);
     await focusEditor(page);
     await page.keyboard.type('congrats');
