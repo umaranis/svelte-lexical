@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-  import './ImageNode.css';
+  import './ImageNodeStyles.css';
   import {
     $getSelection as getSelection,
     $isNodeSelection as isNodeSelection,
