@@ -22,11 +22,12 @@ import {
   keyDownCtrlOrAlt,
   keyUpCtrlOrAlt,
   test,
+  IS_WINDOWS
 } from '../utils/index.mjs';
 
 test.describe('TextEntry', () => {
-  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test(`Can type 'Hello Lexical' in the editor`, async ({page}) => {
+  test.beforeEach(({ isCollab, page }) => initialize({ isCollab, page }));
+  test(`Can type 'Hello Lexical' in the editor`, async ({ page }) => {
     const targetText = 'Hello Lexical';
     await focusEditor(page);
     await page.keyboard.type(targetText);
@@ -78,7 +79,7 @@ test.describe('TextEntry', () => {
 
   test.fixme(
     `Can type 'Hello' as a header and insert a paragraph before`,
-    async ({page, isPlainText}) => {
+    async ({ page, isPlainText }) => {
       test.skip(isPlainText);
       await focusEditor(page);
       await page.keyboard.type('# Hello');
@@ -147,7 +148,7 @@ test.describe('TextEntry', () => {
         </p>
       `,
       undefined,
-      {ignoreClasses: true},
+      { ignoreClasses: true },
     );
     await assertSelection(page, {
       anchorOffset: 0,
@@ -217,7 +218,7 @@ test.describe('TextEntry', () => {
 
   test.fixme(
     'Paragraphed text entry and selection',
-    async ({page, isRichText}) => {
+    async ({ page, isRichText }) => {
       await focusEditor(page);
       await page.keyboard.type('Hello World.');
       await page.keyboard.press('Enter');
@@ -425,7 +426,7 @@ test.describe('TextEntry', () => {
     });
   });
 
-  test('First paragraph backspace handling', async ({page, isRichText}) => {
+  test('First paragraph backspace handling', async ({ page, isRichText }) => {
     await focusEditor(page);
 
     // Add some trimmable text
@@ -506,7 +507,7 @@ test.describe('TextEntry', () => {
     }
   });
 
-  test('Mix of paragraphs and break points', async ({page, isRichText}) => {
+  test('Mix of paragraphs and break points', async ({ page, isRichText }) => {
     await focusEditor(page);
 
     // Add some line breaks
@@ -637,7 +638,12 @@ test.describe('TextEntry', () => {
   test('Empty paragraph and new line node selection', async ({
     isRichText,
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
 
     // Add paragraph

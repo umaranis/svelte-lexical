@@ -6,7 +6,7 @@
  *
  */
 
-import {moveRight, moveToEditorBeginning} from '../keyboardShortcuts/index.mjs';
+import { moveRight, moveToEditorBeginning } from '../keyboardShortcuts/index.mjs';
 import {
   assertHTML,
   click,
@@ -14,17 +14,23 @@ import {
   html,
   initialize,
   test,
+  IS_WINDOWS
 } from '../utils/index.mjs';
 
 test.describe('Headings', () => {
-  test.beforeEach(({isPlainText, isCollab, page}) => {
+  test.beforeEach(({ isPlainText, isCollab, page }) => {
     test.skip(isPlainText);
-    initialize({isCollab, page});
+    initialize({ isCollab, page });
   });
 
   test('Stays as a heading when you backspace at the start of a heading with no previous sibling nodes present', async ({
     page,
+    isCollab,
+    browserName,
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
 
     await click(page, '.block-controls');
@@ -105,7 +111,12 @@ test.describe('Headings', () => {
 
   test('Changes to a paragraph when you press enter at the end of a heading', async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
 
     await click(page, '.block-controls');

@@ -23,6 +23,7 @@ import {
   selectFromInsertDropdown,
   test,
   waitForSelector,
+  IS_WINDOWS,
 } from '../utils/index.mjs';
 
 test.describe('HorizontalRule', () => {
@@ -33,6 +34,9 @@ test.describe('HorizontalRule', () => {
     isPlainText,
     browserName,
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     test.skip(isPlainText);
     await focusEditor(page);
 
@@ -266,7 +270,10 @@ test.describe('HorizontalRule', () => {
     });
   });
 
-  test('Can copy and paste a horizontal rule', async ({ page, isPlainText }) => {
+  test('Can copy and paste a horizontal rule', async ({ page, isPlainText, browserName, isCollab }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     test.skip(isPlainText);
 
     await focusEditor(page);

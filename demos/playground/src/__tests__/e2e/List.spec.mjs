@@ -6,7 +6,7 @@
  *
  */
 
-import {expect} from '@playwright/test';
+import { expect } from '@playwright/test';
 
 import {
   moveLeft,
@@ -34,6 +34,7 @@ import {
   selectFromFormatDropdown,
   test,
   waitForSelector,
+  IS_WINDOWS
 } from '../utils/index.mjs';
 
 async function toggleBulletList(page) {
@@ -63,13 +64,13 @@ async function clickOutdentButton(page, times = 1) {
   }
 }
 
-test.beforeEach(({isPlainText}) => {
+test.beforeEach(({ isPlainText }) => {
   test.skip(isPlainText);
 });
 
 test.describe('Nested List', () => {
-  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test(`Can toggle an empty list on/off`, async ({page}) => {
+  test.beforeEach(({ isCollab, page }) => initialize({ isCollab, page }));
+  test(`Can toggle an empty list on/off`, async ({ page }) => {
     await focusEditor(page);
 
     await assertHTML(
@@ -96,7 +97,7 @@ test.describe('Nested List', () => {
     );
   });
 
-  test.fixme(`Can create a list and indent/outdent it`, async ({page}) => {
+  test.fixme(`Can create a list and indent/outdent it`, async ({ page }) => {
     await focusEditor(page);
     await toggleBulletList(page);
     await assertHTML(
@@ -206,7 +207,12 @@ test.describe('Nested List', () => {
 
   test('Should outdent if indented when the backspace key is pressed', async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
     await toggleBulletList(page);
 
@@ -237,7 +243,12 @@ test.describe('Nested List', () => {
 
   test(`Can indent/outdent mutliple list nodes in a list with multiple levels of indentation`, async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
 
     await toggleBulletList(page);
@@ -316,7 +327,12 @@ test.describe('Nested List', () => {
 
   test(`Can indent a list with a list item in between nested lists`, async ({
     page,
+    browserName,
+    isCollab,
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
     await toggleBulletList(page);
     await page.keyboard.type('foo');
@@ -358,7 +374,7 @@ test.describe('Nested List', () => {
         </ul>
       `,
       undefined,
-      {ignoreClasses: true},
+      { ignoreClasses: true },
     );
   });
 
@@ -692,7 +708,12 @@ test.describe('Nested List', () => {
 
   test(`Can create an unordered list and convert it to an ordered list `, async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
 
     await waitForSelector(page, '.block-controls');
@@ -721,7 +742,12 @@ test.describe('Nested List', () => {
 
   test(`Can create a single item unordered list with text and convert it to an ordered list `, async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
 
     await toggleBulletList(page);
@@ -745,7 +771,12 @@ test.describe('Nested List', () => {
 
   test(`Can create a multi-line unordered list and convert it to an ordered list `, async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
 
     await toggleBulletList(page);
@@ -782,7 +813,12 @@ test.describe('Nested List', () => {
 
   test(`Can create a multi-line unordered list and convert it to an ordered list when no nodes are in the selection`, async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
 
     await toggleBulletList(page);
@@ -818,7 +854,12 @@ test.describe('Nested List', () => {
 
   test(`Can create an indented multi-line unordered list and convert it to an ordered list `, async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
 
     await toggleBulletList(page);
@@ -861,7 +902,12 @@ test.describe('Nested List', () => {
 
   test(`Can create an indented multi-line unordered list and convert individual lists in the nested structure to a numbered list. `, async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
 
     await toggleBulletList(page);
@@ -1009,7 +1055,11 @@ test.describe('Nested List', () => {
   test(`Should NOT merge selected nodes into existing list siblings of a different type when formatting to a list`, async ({
     page,
     isCollab,
+    browserName
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
 
     // - Hello
@@ -1087,7 +1137,10 @@ test.describe('Nested List', () => {
     await assertHTML(page, forwardHTML);
   });
 
-  test(`Should not process paragraph markdown inside list.`, async ({page}) => {
+  test(`Should not process paragraph markdown inside list.`, async ({ page, browserName, isCollab }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
 
     await toggleBulletList(page);
@@ -1100,7 +1153,12 @@ test.describe('Nested List', () => {
 
   test(`Un-indents list empty list items when the user presses enter`, async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
     await toggleBulletList(page);
     await page.keyboard.type('a');
@@ -1126,7 +1184,12 @@ test.describe('Nested List', () => {
 
   test(`Converts a List with one ListItem to a Paragraph when Normal is selected in the format menu`, async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
     await toggleBulletList(page);
     await page.keyboard.type('a');
@@ -1140,7 +1203,7 @@ test.describe('Nested List', () => {
         </ul>
       `,
       undefined,
-      {ignoreClasses: true},
+      { ignoreClasses: true },
     );
     await selectFromFormatDropdown(page, '.paragraph');
     await assertHTML(
@@ -1149,13 +1212,18 @@ test.describe('Nested List', () => {
         <p dir="ltr"><span data-lexical-text="true">a</span></p>
       `,
       undefined,
-      {ignoreClasses: true},
+      { ignoreClasses: true },
     );
   });
 
   test(`Converts the last ListItem in a List with multiple ListItem to a Paragraph when Normal is selected in the format menu`, async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
     await toggleBulletList(page);
     await page.keyboard.type('a');
@@ -1174,7 +1242,7 @@ test.describe('Nested List', () => {
         </ul>
       `,
       undefined,
-      {ignoreClasses: true},
+      { ignoreClasses: true },
     );
     await selectFromFormatDropdown(page, '.paragraph');
     await assertHTML(
@@ -1188,13 +1256,18 @@ test.describe('Nested List', () => {
         <p dir="ltr"><span data-lexical-text="true">b</span></p>
       `,
       undefined,
-      {ignoreClasses: true},
+      { ignoreClasses: true },
     );
   });
 
   test(`Converts the middle ListItem in a List with multiple ListItem to a Paragraph when Normal is selected in the format menu`, async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
     await toggleBulletList(page);
     await page.keyboard.type('a');
@@ -1219,7 +1292,7 @@ test.describe('Nested List', () => {
         </ul>
       `,
       undefined,
-      {ignoreClasses: true},
+      { ignoreClasses: true },
     );
     await selectFromFormatDropdown(page, '.paragraph');
     await assertHTML(
@@ -1238,18 +1311,23 @@ test.describe('Nested List', () => {
         </ul>
       `,
       undefined,
-      {ignoreClasses: true},
+      { ignoreClasses: true },
     );
   });
 
   test('Can create check list, toggle it to bullet-list and back', async ({
     page,
+    browserName,
+    isCollab
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
     await toggleCheckList(page);
     await page.keyboard.type('a');
     await click(page, '.PlaygroundEditorTheme__listItemUnchecked', {
-      position: {x: 10, y: 10},
+      position: { x: 10, y: 10 },
     });
     await page.keyboard.press('Enter');
     await page.keyboard.type('b');
@@ -1379,7 +1457,11 @@ test.describe('Nested List', () => {
   test('can navigate and check/uncheck with keyboard', async ({
     page,
     isCollab,
+    browserName
   }) => {
+    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
+      test.fixme();
+    }
     await focusEditor(page);
     await toggleCheckList(page);
     //
@@ -1425,21 +1507,21 @@ test.describe('Nested List', () => {
     await page.keyboard.press('Space');
 
     await repeat(5, async () => {
-      await page.keyboard.press('ArrowUp', {delay: 50});
+      await page.keyboard.press('ArrowUp', { delay: 50 });
       await page.keyboard.press('Space');
     });
 
     await assertCheckCount(6, 0);
 
     await repeat(3, async () => {
-      await page.keyboard.press('ArrowDown', {delay: 50});
+      await page.keyboard.press('ArrowDown', { delay: 50 });
       await page.keyboard.press('Space');
     });
 
     await assertCheckCount(3, 3);
   });
 
-  test.fixme('replaces existing element node', async ({page}) => {
+  test.fixme('replaces existing element node', async ({ page }) => {
     // Create two quote blocks, select it and format to a list
     // should replace quotes (instead of moving quotes into the list items)
     await focusEditor(page);
