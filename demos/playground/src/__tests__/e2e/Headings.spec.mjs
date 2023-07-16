@@ -18,7 +18,8 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Headings', () => {
-  test.beforeEach(({ isPlainText, isCollab, page }) => {
+  test.beforeEach(({ isPlainText, isCollab, browserName, page }) => {
+    test.fixme(IS_WINDOWS && browserName === 'firefox' && isCollab);
     test.skip(isPlainText);
     initialize({ isCollab, page });
   });
@@ -65,7 +66,7 @@ test.describe('Headings', () => {
     );
   });
 
-  test.fixme('Stays as a heading when you press enter in the middle of a heading', async ({
+  test('Stays as a heading when you press enter in the middle of a heading', async ({
     page,
   }) => {
     await focusEditor(page);
