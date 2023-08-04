@@ -76,18 +76,20 @@ header h1 {
 .editor-scroller {
   min-height: 150px;
   border: 0;
-  resize: none;
   cursor: text;
-  display: block;
+  display: flex;
   position: relative;
   outline: 0;
+  z-index: 0;
   overflow: auto;
   resize: vertical;
 }
 
 .editor {
-  height: 100%;
+  flex: auto;
   position: relative;
+  resize: vertical;
+  z-index: -1;
 }
 
 .test-recorder-output {
@@ -103,7 +105,7 @@ pre {
   padding: 10px;
   font-size: 12px;
   overflow: auto;
-  max-height: 180px;
+  max-height: 400px;
 }
 
 .tree-view-output {
@@ -113,7 +115,6 @@ pre {
   padding: 0;
   font-size: 12px;
   margin: 1px auto 10px auto;
-  max-height: 250px;
   position: relative;
   overflow: hidden;
   border-bottom-left-radius: 10px;
@@ -221,16 +222,26 @@ pre::-webkit-scrollbar-thumb {
   bottom: 20px;
 }
 
+#docs-button {
+  position: fixed;
+  left: 170px;
+  bottom: 20px;
+}
+
 #options-button::after {
-  background-image: url(/images/icons/gear.svg);
+  background-image: url(images/icons/gear.svg);
 }
 
 #test-recorder-button::after {
-  background-image: url(/images/icons/journal-code.svg);
+  background-image: url(images/icons/journal-code.svg);
 }
 
 #paste-log-button::after {
-  background-image: url(/images/icons/clipboard.svg);
+  background-image: url(images/icons/clipboard.svg);
+}
+
+#docs-button::after {
+  background-image: url(images/icons/file-earmark-text.svg);
 }
 
 #test-recorder-button-snapshot {
@@ -238,15 +249,15 @@ pre::-webkit-scrollbar-thumb {
 }
 
 #test-recorder-button-snapshot::after {
-  background-image: url(/images/icons/camera.svg);
+  background-image: url(images/icons/camera.svg);
 }
 
 #test-recorder-button-copy::after {
-  background-image: url(/images/icons/clipboard.svg);
+  background-image: url(images/icons/clipboard.svg);
 }
 
 #test-recorder-button-download::after {
-  background-image: url(/images/icons/download.svg);
+  background-image: url(images/icons/download.svg);
 }
 
 .typeahead-popover {
@@ -358,188 +369,188 @@ pre::-webkit-scrollbar-thumb {
 }
 
 i.palette {
-  background-image: url(/images/icons/palette.svg);
+  background-image: url(images/icons/palette.svg);
 }
 
 i.bucket {
-  background-image: url(/images/icons/paint-bucket.svg);
+  background-image: url(images/icons/paint-bucket.svg);
 }
 
 i.bold {
-  background-image: url(/images/icons/type-bold.svg);
+  background-image: url(images/icons/type-bold.svg);
 }
 
 i.italic {
-  background-image: url(/images/icons/type-italic.svg);
+  background-image: url(images/icons/type-italic.svg);
 }
 
 i.clear {
-  background-image: url(/images/icons/trash.svg);
+  background-image: url(images/icons/trash.svg);
 }
 
 i.code {
-  background-image: url(/images/icons/code.svg);
+  background-image: url(images/icons/code.svg);
 }
 
 i.underline {
-  background-image: url(/images/icons/type-underline.svg);
+  background-image: url(images/icons/type-underline.svg);
 }
 
 i.strikethrough {
-  background-image: url(/images/icons/type-strikethrough.svg);
+  background-image: url(images/icons/type-strikethrough.svg);
 }
 
 i.subscript {
-  background-image: url(/images/icons/type-subscript.svg);
+  background-image: url(images/icons/type-subscript.svg);
 }
 
 i.superscript {
-  background-image: url(/images/icons/type-superscript.svg);
+  background-image: url(images/icons/type-superscript.svg);
 }
 
 i.link {
-  background-image: url(/images/icons/link.svg);
+  background-image: url(images/icons/link.svg);
 }
 
 i.horizontal-rule {
-  background-image: url(/images/icons/horizontal-rule.svg);
+  background-image: url(images/icons/horizontal-rule.svg);
 }
 
 .icon.plus {
-  background-image: url(/images/icons/plus.svg);
+  background-image: url(images/icons/plus.svg);
 }
 
 .icon.caret-right {
-  background-image: url(/images/icons/caret-right-fill.svg);
+  background-image: url(images/icons/caret-right-fill.svg);
 }
 
 .icon.dropdown-more {
-  background-image: url(/images/icons/dropdown-more.svg);
+  background-image: url(images/icons/dropdown-more.svg);
 }
 
 .icon.font-color {
-  background-image: url(/images/icons/font-color.svg);
+  background-image: url(images/icons/font-color.svg);
 }
 
 .icon.font-family {
-  background-image: url(/images/icons/font-family.svg);
+  background-image: url(images/icons/font-family.svg);
 }
 
 .icon.bg-color {
-  background-image: url(/images/icons/bg-color.svg);
+  background-image: url(images/icons/bg-color.svg);
 }
 
 i.image {
-  background-image: url(/images/icons/file-image.svg);
+  background-image: url(images/icons/file-image.svg);
 }
 
 i.table {
-  background-image: url(/images/icons/table.svg);
+  background-image: url(images/icons/table.svg);
 }
 
 i.close {
-  background-image: url(/images/icons/close.svg);
+  background-image: url(images/icons/close.svg);
 }
 
 i.figma {
-  background-image: url(/images/icons/figma.svg);
+  background-image: url(images/icons/figma.svg);
 }
 
 i.poll {
-  background-image: url(/images/icons/card-checklist.svg);
+  background-image: url(images/icons/card-checklist.svg);
 }
 
 i.tweet {
-  background-image: url(/images/icons/tweet.svg);
+  background-image: url(images/icons/tweet.svg);
 }
 
 i.youtube {
-  background-image: url(/images/icons/youtube.svg);
+  background-image: url(images/icons/youtube.svg);
 }
 
 .icon.left-align,
 i.left-align {
-  background-image: url(/images/icons/text-left.svg);
+  background-image: url(images/icons/text-left.svg);
 }
 
 i.center-align {
-  background-image: url(/images/icons/text-center.svg);
+  background-image: url(images/icons/text-center.svg);
 }
 
 i.right-align {
-  background-image: url(/images/icons/text-right.svg);
+  background-image: url(images/icons/text-right.svg);
 }
 
 i.justify-align {
-  background-image: url(/images/icons/justify.svg);
+  background-image: url(images/icons/justify.svg);
 }
 
 i.indent {
-  background-image: url(/images/icons/indent.svg);
+  background-image: url(images/icons/indent.svg);
 }
 
 i.markdown {
-  background-image: url(/images/icons/markdown.svg);
+  background-image: url(images/icons/markdown.svg);
 }
 
 i.outdent {
-  background-image: url(/images/icons/outdent.svg);
+  background-image: url(images/icons/outdent.svg);
 }
 
 i.undo {
-  background-image: url(/images/icons/arrow-counterclockwise.svg);
+  background-image: url(images/icons/arrow-counterclockwise.svg);
 }
 
 i.redo {
-  background-image: url(/images/icons/arrow-clockwise.svg);
+  background-image: url(images/icons/arrow-clockwise.svg);
 }
 
 i.sticky {
-  background-image: url(/images/icons/sticky.svg);
+  background-image: url(images/icons/sticky.svg);
 }
 
 i.mic {
-  background-image: url(/images/icons/mic.svg);
+  background-image: url(images/icons/mic.svg);
 }
 
 i.import {
-  background-image: url(/images/icons/upload.svg);
+  background-image: url(images/icons/upload.svg);
 }
 
 i.export {
-  background-image: url(/images/icons/download.svg);
+  background-image: url(images/icons/download.svg);
 }
 
 i.diagram-2 {
-  background-image: url(/images/icons/diagram-2.svg);
+  background-image: url(images/icons/diagram-2.svg);
 }
 
 i.user {
-  background-image: url(/images/icons/user.svg);
+  background-image: url(images/icons/user.svg);
 }
 
 i.equation {
-  background-image: url(/images/icons/plus-slash-minus.svg);
+  background-image: url(images/icons/plus-slash-minus.svg);
 }
 
 i.gif {
-  background-image: url(/images/icons/filetype-gif.svg);
+  background-image: url(images/icons/filetype-gif.svg);
 }
 
 i.copy {
-  background-image: url(/images/icons/copy.svg);
+  background-image: url(images/icons/copy.svg);
 }
 
 i.success {
-  background-image: url(/images/icons/success.svg);
+  background-image: url(images/icons/success.svg);
 }
 
 i.prettier {
-  background-image: url(/images/icons/prettier.svg);
+  background-image: url(images/icons/prettier.svg);
 }
 
 i.prettier-error {
-  background-image: url(/images/icons/prettier-error.svg);
+  background-image: url(images/icons/prettier-error.svg);
 }
 
 .link-editor .button.active,
@@ -549,9 +560,9 @@ i.prettier-error {
 
 .link-editor .link-input {
   display: block;
-  width: calc(100% - 24px);
+  width: calc(100% - 75px);
   box-sizing: border-box;
-  margin: 8px 12px;
+  margin: 12px 12px;
   padding: 8px 12px;
   border-radius: 15px;
   background-color: #eee;
@@ -563,13 +574,63 @@ i.prettier-error {
   font-family: inherit;
 }
 
+.link-editor .link-view {
+  display: block;
+  width: calc(100% - 24px);
+  margin: 8px 12px;
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 15px;
+  color: rgb(5, 5, 5);
+  border: 0;
+  outline: 0;
+  position: relative;
+  font-family: inherit;
+}
+
+.link-editor .link-view a {
+  display: block;
+  word-break: break-word;
+  width: calc(100% - 33px);
+}
+
 .link-editor div.link-edit {
-  background-image: url(/images/icons/pencil-fill.svg);
+  background-image: url(images/icons/pencil-fill.svg);
   background-size: 16px;
   background-position: center;
   background-repeat: no-repeat;
   width: 35px;
   vertical-align: -0.25em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.link-editor div.link-cancel {
+  background-image: url(images/icons/close.svg);
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 35px;
+  vertical-align: -0.25em;
+  margin-right: 28px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.link-editor div.link-confirm {
+  background-image: url(images/icons/success-alt.svg);
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 35px;
+  vertical-align: -0.25em;
+  margin-right: 2px;
   position: absolute;
   right: 0;
   top: 0;
@@ -591,11 +652,6 @@ i.prettier-error {
   text-decoration: underline;
 }
 
-select.font-size,
-select.font-family {
-  cursor: pointer;
-}
-
 .link-editor .font-size-wrapper,
 .link-editor .font-family-wrapper {
   display: flex;
@@ -607,6 +663,10 @@ select.font-family {
   border: none;
   background-color: rgba(0, 0, 0, 0.075);
   border-radius: 4px;
+}
+
+.ContentEditable__root .PlaygroundEditorTheme__link {
+  pointer-events: none;
 }
 
 .mention:focus {
@@ -657,31 +717,31 @@ select.font-family {
 }
 
 #block-controls span.block-type.paragraph {
-  background-image: url(/images/icons/text-paragraph.svg);
+  background-image: url(images/icons/text-paragraph.svg);
 }
 
 #block-controls span.block-type.h1 {
-  background-image: url(/images/icons/type-h1.svg);
+  background-image: url(images/icons/type-h1.svg);
 }
 
 #block-controls span.block-type.h2 {
-  background-image: url(/images/icons/type-h2.svg);
+  background-image: url(images/icons/type-h2.svg);
 }
 
 #block-controls span.block-type.quote {
-  background-image: url(/images/icons/chat-square-quote.svg);
+  background-image: url(images/icons/chat-square-quote.svg);
 }
 
 #block-controls span.block-type.ul {
-  background-image: url(/images/icons/list-ul.svg);
+  background-image: url(images/icons/list-ul.svg);
 }
 
 #block-controls span.block-type.ol {
-  background-image: url(/images/icons/list-ol.svg);
+  background-image: url(images/icons/list-ol.svg);
 }
 
 #block-controls span.block-type.code {
-  background-image: url(/images/icons/code.svg);
+  background-image: url(images/icons/code.svg);
 }
 
 .characters-limit {
@@ -699,13 +759,12 @@ select.font-family {
 }
 
 .dropdown {
-  z-index: 5;
+  z-index: 10;
   display: block;
-  position: absolute;
+  position: fixed;
   box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
     inset 0 0 0 1px rgba(255, 255, 255, 0.5);
   border-radius: 8px;
-  min-width: 100px;
   min-height: 40px;
   background-color: #fff;
 }
@@ -726,6 +785,12 @@ select.font-family {
   border-radius: 8px;
   border: 0;
   max-width: 250px;
+  min-width: 100px;
+}
+
+.dropdown .item.fontsize-item,
+.dropdown .item.fontsize-item .text {
+  min-width: unset;
 }
 
 .dropdown .item .active {
@@ -762,6 +827,8 @@ select.font-family {
   margin-right: 12px;
   line-height: 16px;
   background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .dropdown .divider {
@@ -775,57 +842,63 @@ select.font-family {
   .dropdown-button-text {
     display: none !important;
   }
+  .font-size .dropdown-button-text {
+    display: flex !important;
+  }
+  .code-language .dropdown-button-text {
+    display: flex !important;
+  }
 }
 
 .icon.paragraph {
-  background-image: url(/images/icons/text-paragraph.svg);
+  background-image: url(images/icons/text-paragraph.svg);
 }
 
 .icon.h1 {
-  background-image: url(/images/icons/type-h1.svg);
+  background-image: url(images/icons/type-h1.svg);
 }
 
 .icon.h2 {
-  background-image: url(/images/icons/type-h2.svg);
+  background-image: url(images/icons/type-h2.svg);
 }
 
 .icon.h3 {
-  background-image: url(/images/icons/type-h3.svg);
+  background-image: url(images/icons/type-h3.svg);
 }
 
 .icon.h4 {
-  background-image: url(/images/icons/type-h4.svg);
+  background-image: url(images/icons/type-h4.svg);
 }
 
 .icon.h5 {
-  background-image: url(/images/icons/type-h5.svg);
+  background-image: url(images/icons/type-h5.svg);
 }
 
 .icon.h6 {
-  background-image: url(/images/icons/type-h6.svg);
+  background-image: url(images/icons/type-h6.svg);
 }
 
 .icon.bullet-list,
 .icon.bullet {
-  background-image: url(/images/icons/list-ul.svg);
+  background-image: url(images/icons/list-ul.svg);
 }
 
 .icon.check-list,
 .icon.check {
-  background-image: url(/images/icons/square-check.svg);
+  background-image: url(images/icons/square-check.svg);
 }
 
 .icon.numbered-list,
 .icon.number {
-  background-image: url(/images/icons/list-ol.svg);
+  background-image: url(images/icons/list-ol.svg);
 }
 
 .icon.quote {
-  background-image: url(/images/icons/chat-square-quote.svg);
+  background-image: url(images/icons/chat-square-quote.svg);
 }
 
 .icon.code {
-  background-image: url(/images/icons/code.svg);
+  background-image: url(images/icons/code.svg);
 }
 
 .switches {
@@ -1062,19 +1135,19 @@ select.font-family {
 }
 
 .emoji.happysmile {
-  background-image: url(/images/emoji/1F642.png);
+  background-image: url(images/emoji/1F642.png);
 }
 
 .emoji.veryhappysmile {
-  background-image: url(/images/emoji/1F600.png);
+  background-image: url(images/emoji/1F600.png);
 }
 
 .emoji.unhappysmile {
-  background-image: url(/images/emoji/1F641.png);
+  background-image: url(images/emoji/1F641.png);
 }
 
 .emoji.heart {
-  background-image: url(/images/emoji/2764.png);
+  background-image: url(images/emoji/2764.png);
 }
 
 .keyword {
@@ -1097,51 +1170,51 @@ select.font-family {
 }
 
 .actions i.indent {
-  background-image: url(/images/icons/indent.svg);
+  background-image: url(images/icons/indent.svg);
 }
 
 .actions i.outdent {
-  background-image: url(/images/icons/outdent.svg);
+  background-image: url(images/icons/outdent.svg);
 }
 
 .actions i.lock {
-  background-image: url(/images/icons/lock-fill.svg);
+  background-image: url(images/icons/lock-fill.svg);
 }
 
 .actions i.image {
-  background-image: url(/images/icons/file-image.svg);
+  background-image: url(images/icons/file-image.svg);
 }
 
 .actions i.table {
-  background-image: url(/images/icons/table.svg);
+  background-image: url(images/icons/table.svg);
 }
 
 .actions i.unlock {
-  background-image: url(/images/icons/lock.svg);
+  background-image: url(images/icons/lock.svg);
 }
 
 .actions i.left-align {
-  background-image: url(/images/icons/text-left.svg);
+  background-image: url(images/icons/text-left.svg);
 }
 
 .actions i.center-align {
-  background-image: url(/images/icons/text-center.svg);
+  background-image: url(images/icons/text-center.svg);
 }
 
 .actions i.right-align {
-  background-image: url(/images/icons/text-right.svg);
+  background-image: url(images/icons/text-right.svg);
 }
 
 .actions i.justify-align {
-  background-image: url(/images/icons/justify.svg);
+  background-image: url(images/icons/justify.svg);
 }
 
 .actions i.disconnect {
-  background-image: url(/images/icons/plug.svg);
+  background-image: url(images/icons/plug.svg);
 }
 
 .actions i.connect {
-  background-image: url(/images/icons/plug-fill.svg);
+  background-image: url(images/icons/plug-fill.svg);
 }
 
 table.disable-selection {
@@ -1187,7 +1260,7 @@ i.chevron-down {
   display: inline-block;
   height: 8px;
   width: 8px;
-  background-image: url(/images/icons/chevron-down.svg);
+  background-image: url(images/icons/chevron-down.svg);
 }
 
 .action-button {
@@ -1299,6 +1372,10 @@ button.action-button:disabled {
   border-top-right-radius: 10px;
   vertical-align: middle;
   overflow: auto;
+  height: 36px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 .toolbar button.toolbar-item {
@@ -1310,6 +1387,8 @@ button.action-button:disabled {
   cursor: pointer;
   vertical-align: middle;
   flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .toolbar button.toolbar-item:disabled {
@@ -1325,13 +1404,15 @@ button.action-button:disabled {
   display: inline-block;
   height: 18px;
   width: 18px;
-  margin-top: 2px;
   vertical-align: -0.25em;
   display: flex;
   opacity: 0.6;
 }
 
-.toolbar button.toolbar-item:disabled i.format {
+.toolbar button.toolbar-item:disabled .icon,
+.toolbar button.toolbar-item:disabled .text,
+.toolbar button.toolbar-item:disabled i.format,
+.toolbar button.toolbar-item:disabled .chevron-down {
   opacity: 0.2;
 }
 
@@ -1347,24 +1428,13 @@ button.action-button:disabled {
   background-color: #eee;
 }
 
-.toolbar select.toolbar-item {
-  border: 0;
-  display: flex;
-  background: none;
-  border-radius: 10px;
-  padding: 8px;
-  vertical-align: middle;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 70px;
-  font-size: 14px;
-  color: #777;
-  text-overflow: ellipsis;
+.toolbar .toolbar-item.font-family .text {
+  display: block;
+  max-width: 40px;
 }
 
-.toolbar select.code-language {
-  text-transform: capitalize;
-  width: 130px;
+.toolbar .code-language {
+  width: 150px;
 }
 
 .toolbar .toolbar-item .text {
@@ -1408,7 +1478,7 @@ button.action-button:disabled {
   pointer-events: none;
 }
 
-.toolbar > .divider {
+.toolbar .divider {
   width: 1px;
   background-color: #eee;
   margin: 0 4px;
@@ -1556,6 +1626,15 @@ button.action-button:disabled {
 
 .spacer {
   letter-spacing: -2px;
+}
+
+.editor-equation {
+  cursor: default;
+  user-select: none;
+}
+
+.editor-equation.focused {
+  outline: 2px solid rgb(60, 132, 244);
 }
 
 button.item i {
