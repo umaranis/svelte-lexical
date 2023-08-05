@@ -49,6 +49,8 @@ jobs:
         working-directory: ./demos/playground
       - run: pnpm lint
         working-directory: ./demos/playground
+      - run: pnpm size
+        working-directory: ./demos/playground
 
       - run: pnpm i
         working-directory: ./demos/sveltekit
@@ -67,6 +69,8 @@ jobs:
         working-directory: ./demos/richtext-editor
       - run: pnpm lint
         working-directory: ./demos/richtext-editor
+      - run: pnpm size
+        working-directory: ./demos/richtext-editor
 
       - run: pnpm i
         working-directory: ./demos/plaintext-editor
@@ -75,4 +79,6 @@ jobs:
       - run: pnpm svelte-check
         working-directory: ./demos/plaintext-editor
       - run: pnpm lint
+        working-directory: ./demos/plaintext-editor
+      - run: pnpm size
         working-directory: ./demos/plaintext-editor

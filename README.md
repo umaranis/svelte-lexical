@@ -15,3 +15,4 @@ Lexical is an extensible text editor framework developed by awesome developers a
 - The npm package is automatically published on creation of a GitHub release using GitHub Actions.
 - Unit testing is set up for the svelte-lexical package using Jest and Testing Library.
 - E2E testing is set up for the playground package using Playwright.
+- [Size Limit](https://github.com/ai/size-limit) controls the library size.
