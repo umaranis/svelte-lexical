@@ -9,7 +9,7 @@
 </script>
 
 <main>
-  <h1>Svelte Lexical!</h1>
+  <img src="src/images/logo.svg" alt="Svelte Lexical!" />
   <p>
     This Rich Text Editor is build with <a
       href="https://github.com/umaranis/svelte-lexical/">
@@ -35,11 +35,9 @@
     margin: 0 auto;
   }
 
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+  img {
+    margin: 2em;
+    max-width: 800px;
   }
 
   @media (min-width: 640px) {
