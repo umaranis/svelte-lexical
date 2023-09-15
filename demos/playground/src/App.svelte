@@ -31,18 +31,12 @@
   main {
     text-align: center;
     padding: 1em;
-    max-width: 240px;
+    max-width: none;
     margin: 0 auto;
   }
 
   img {
     margin: 2em;
     max-width: 800px;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
   }
 </style>
