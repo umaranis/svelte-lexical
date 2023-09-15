@@ -1,5 +1,7 @@
 [![Build](https://github.com/umaranis/svelte-lexical/actions/workflows/build.yml/badge.svg)](https://github.com/umaranis/svelte-lexical/actions/workflows/build.yml)
 
+<img src="docs/logo/SVG/banner-slim.svg" alt="svelte-lexical banner" width="750px">
+
 # svelte-lexical
 
 A rich-text editor for Svelte based on [Lexical](https://lexical.dev/)
