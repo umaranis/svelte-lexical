@@ -208,6 +208,14 @@
             editedLinkUrl = linkUrl;
             isEditMode = true;
           }} />
+        <div
+          class="link-trash"
+          role="button"
+          tabIndex={0}
+          on:mousedown={(event) => event.preventDefault()}
+          on:click={() => {
+            editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
+          }} />
       </div>
     {/if}
   {/if}
