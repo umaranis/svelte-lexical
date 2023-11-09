@@ -33,8 +33,8 @@
             }
             return false;
           } else {
-            const {url, target, rel} = payload;
-            toggleLink(url, {rel, target});
+            const {url, target, rel, title} = payload;
+            toggleLink(url, {rel, target, title});
             return true;
           }
         },
