@@ -6,12 +6,12 @@
  *
  */
 
-import {expect, test as base} from '@playwright/test';
+import { expect, test as base } from '@playwright/test';
 import prettier from 'prettier';
-import {URLSearchParams} from 'url';
-import {v4 as uuidv4} from 'uuid';
+import { URLSearchParams } from 'url';
+import { v4 as uuidv4 } from 'uuid';
 
-import {selectAll} from '../keyboardShortcuts/index.mjs';
+import { selectAll } from '../keyboardShortcuts/index.mjs';
 
 export const E2E_PORT = process.env.E2E_PORT || 5173;
 export const E2E_BROWSER = process.env.E2E_BROWSER;
@@ -60,13 +60,12 @@ export async function initialize({
   appSettings.isMaxLength = !!isMaxLength;
 
   const urlParams = appSettingsToURLParams(appSettings);
-  const url = `http://localhost:${E2E_PORT}/${
-    isCollab ? 'split/' : ''
-  }?${urlParams.toString()}`;
+  const url = `http://localhost:${E2E_PORT}/${isCollab ? 'split/' : ''
+    }?${urlParams.toString()}`;
 
   // Having more horizontal space prevents redundant text wraps for tests
   // which affects CMD+ArrowRight/Left navigation
-  page.setViewportSize({height: 1000, width: isCollab ? 2000 : 1000});
+  page.setViewportSize({ height: 1000, width: isCollab ? 2000 : 1000 });
   await page.goto(url);
 
   await exposeLexicalEditor(page);
@@ -95,7 +94,7 @@ export const test = base.extend({
   legacyEvents: LEGACY_EVENTS,
 });
 
-export {expect} from '@playwright/test';
+export { expect } from '@playwright/test';
 
 function appSettingsToURLParams(appSettings) {
   const params = new URLSearchParams();
@@ -142,7 +141,7 @@ export async function assertHTML(
   page,
   expectedHtml,
   expectedHtmlFrameRight = expectedHtml,
-  {ignoreClasses = false, ignoreInlineStyles = false} = {},
+  { ignoreClasses = false, ignoreInlineStyles = false } = {},
 ) {
   if (IS_COLLAB) {
     const withRetry = async (fn) => await retryAsync(page, fn, 5);
@@ -216,7 +215,7 @@ async function assertSelectionOnPageOrFrame(page, expected) {
       return path.reverse();
     };
 
-    const {anchorNode, anchorOffset, focusNode, focusOffset} =
+    const { anchorNode, anchorOffset, focusNode, focusOffset } =
       window.getSelection();
 
     return {
@@ -344,7 +343,7 @@ async function pasteFromClipboardPageOrFrame(pageOrFrame, clipboardData) {
           const [base64, type] = clipboardValue;
           const res = await fetch(base64);
           const blob = await res.blob();
-          files.push(new File([blob], 'file', {type}));
+          files.push(new File([blob], 'file', { type }));
         }
       }
       let eventClipboardData;
@@ -391,7 +390,7 @@ async function pasteFromClipboardPageOrFrame(pageOrFrame, clipboardData) {
         }
       }
     },
-    {canUseBeforeInput, clipboardData},
+    { canUseBeforeInput, clipboardData },
   );
 }
 
@@ -583,7 +582,7 @@ export async function insertImageCaption(page, caption) {
 }
 
 export async function mouseMoveToSelector(page, selector) {
-  const {x, width, y, height} = await selectorBoundingBox(page, selector);
+  const { x, width, y, height } = await selectorBoundingBox(page, selector);
   await page.mouse.move(x + width / 2, y + height / 2);
 }
 
@@ -639,7 +638,7 @@ export async function dragImage(
   );
 }
 
-export function prettifyHTML(string, {ignoreClasses, ignoreInlineStyles} = {}) {
+export function prettifyHTML(string, { ignoreClasses, ignoreInlineStyles } = {}) {
   let output = string;
 
   if (ignoreClasses) {
@@ -753,13 +752,11 @@ export async function selectCellsFromTableCords(
   }
 
   const firstRowFirstColumnCell = await leftFrame.locator(
-    `table:first-of-type > tr:nth-child(${firstCords.y + 1}) > ${
-      isFirstHeader ? 'th' : 'td'
+    `table:first-of-type > tr:nth-child(${firstCords.y + 1}) > ${isFirstHeader ? 'th' : 'td'
     }:nth-child(${firstCords.x + 1})`,
   );
   const secondRowSecondCell = await leftFrame.locator(
-    `table:first-of-type > tr:nth-child(${secondCords.y + 1}) > ${
-      isSecondHeader ? 'th' : 'td'
+    `table:first-of-type > tr:nth-child(${secondCords.y + 1}) > ${isSecondHeader ? 'th' : 'td'
     }:nth-child(${secondCords.x + 1})`,
   );
 
@@ -767,7 +764,7 @@ export async function selectCellsFromTableCords(
   await firstRowFirstColumnCell.click(
     // This is a test runner quirk. Chrome seems to need two clicks to focus on the
     // content editable cell before dragging, but Firefox treats it as a double click event.
-    E2E_BROWSER === 'chromium' ? {clickCount: 2} : {},
+    E2E_BROWSER === 'chromium' ? { clickCount: 2 } : {},
   );
 
   await dragMouse(
@@ -800,6 +797,11 @@ export async function insertTableColumnAfter(page) {
 export async function mergeTableCells(page) {
   await click(page, '.table-cell-action-button-container');
   await click(page, '.item[data-test-id="table-merge-cells"]');
+}
+
+export async function unmergeTableCell(page) {
+  await click(page, '.table-cell-action-button-container');
+  await click(page, '.item[data-test-id="table-unmerge-cells"]');
 }
 
 export async function deleteTableRows(page) {
