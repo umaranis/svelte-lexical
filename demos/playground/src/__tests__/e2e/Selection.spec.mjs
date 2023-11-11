@@ -7,6 +7,7 @@
  */
 
 import {
+  moveLeft,
   moveToLineBeginning,
   moveToPrevWord,
   pressShiftEnter,
@@ -32,8 +33,8 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Selection', () => {
-  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test('does not focus the editor on load', async ({page}) => {
+  test.beforeEach(({ isCollab, page }) => initialize({ isCollab, page }));
+  test('does not focus the editor on load', async ({ page }) => {
     const editorHasFocus = async () =>
       await evaluate(page, () => {
         const editorElement = document.querySelector(
@@ -90,7 +91,7 @@ test.describe('Selection', () => {
       // In firefox .focus() on editor does not trigger selectionchange, while checking it
       // explicitly clicking on an editor (passing position that is on the right side to
       // prevent clicking on image and its nested editor)
-      await click(page, '.editor-shell', {position: {x: 600, y: 150}});
+      await click(page, '.editor-shell', { position: { x: 600, y: 150 } });
     } else {
       await focusEditor(page);
     }
@@ -220,5 +221,47 @@ test.describe('Selection', () => {
       focusOffset: 4,
       focusPath: [0, 1, 0, 0],
     });
+  });
+
+  test('Can delete at boundary #4221', async ({ page, isPlainText }) => {
+    test.skip(!isPlainText);
+    await focusEditor(page);
+    await page.keyboard.type('aaa');
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('b');
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('c');
+
+    await page.keyboard.down('Shift');
+    await moveLeft(page, 3);
+    await page.keyboard.up('Shift');
+    await page.keyboard.press('Delete');
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">aaa</span>
+          <br />
+          <br />
+        </p>
+      `,
+    );
+
+    await page.keyboard.down('Shift');
+    await moveLeft(page, 1);
+    await page.keyboard.up('Shift');
+    await page.keyboard.press('Delete');
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">aaa</span>
+        </p>
+      `,
+    );
   });
 });
