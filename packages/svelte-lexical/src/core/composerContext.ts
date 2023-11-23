@@ -32,7 +32,7 @@ export function setHistoryStateContext(historyState: HistoryState) {
 }
 
 export type SvelteComponentTypeRef = {
-  componentType: typeof SvelteComponent;
+  componentType: typeof SvelteComponent<any>;
   props?: Record<string, object | string | boolean>;
 };
 

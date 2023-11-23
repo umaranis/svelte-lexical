@@ -59,7 +59,7 @@ export type SerializedImageNode = Spread<
 >;
 
 type DecoratorImageType = {
-  componentClass: typeof SvelteComponent;
+  componentClass: typeof SvelteComponent<any>;
   props: ComponentProps<ImageComponent>;
 };
 

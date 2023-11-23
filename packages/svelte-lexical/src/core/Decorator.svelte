@@ -45,7 +45,7 @@
       // 1- set `props` on existing svelte components
       // 2- create new components and put them in cache
       editor.registerDecoratorListener<{
-        componentClass: typeof SvelteComponent;
+        componentClass: typeof SvelteComponent<any>;
         props: object;
       }>((decorators) => {
         dirtyComponents.forEach((nodeKey) => {
