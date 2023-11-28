@@ -51,10 +51,11 @@
     nodes,
     onError,
     editorState: initialEditorState,
+    editable,
   } = initialConfig;
 
   const editor = createEditor({
-    editable: false,
+    editable,
     namespace,
     nodes,
     onError: (error) => onError(error, editor),
