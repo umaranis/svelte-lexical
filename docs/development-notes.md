@@ -21,12 +21,12 @@ The tests run in headless mode in the background.
 ### Running locally from CLI
 
 - Start the playground demo
-  - <code>pnpm -C demos/playground dev</code>
+  - `pnpm -C demos/playground dev`
 - Move into the project directory
-  - <code>cd demos/playground</code>
+  - `cd demos/playground`
 - Run tests
-  - All tests (chromium, firefox and safari): <code>pnpm playwright test</code>
-  - Just chromium browser: <code>pnpm test-e2e:chromium</code>
+  - All tests (chromium, firefox and safari): `pnpm playwright test`
+  - Just chromium browser: `pnpm test-e2e:chromium`
 
 The tests run in headless mode in the background.
 
