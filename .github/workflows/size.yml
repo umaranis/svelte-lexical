@@ -7,7 +7,7 @@ on:
 permissions:
   pull-requests: write
 jobs:
-  size:
+  size-plaintext:
     runs-on: ubuntu-latest
     env:
       CI_JOB_NUMBER: 1
@@ -17,14 +17,23 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           directory: demos/playground
-          package_manager: pnpm
+  size-richtext:
+    runs-on: ubuntu-latest
+    env:
+      CI_JOB_NUMBER: 1
+    steps:
+      - uses: actions/checkout@v1
       - uses: andresz1/size-limit-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           directory: demos/richtext-editor
-          package_manager: pnpm
+  size-playground:
+    runs-on: ubuntu-latest
+    env:
+      CI_JOB_NUMBER: 1
+    steps:
+      - uses: actions/checkout@v1
       - uses: andresz1/size-limit-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          directory: demos/plaintext-editor
-          package_manager: pnpm
+          directory: demos/playground
