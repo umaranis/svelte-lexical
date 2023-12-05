@@ -47,8 +47,11 @@
           const content = codeNode.getTextContent();
 
           let parsed = '';
-
-          parsed = format(content, options);
+          try {
+            parsed = format(content, options);
+          } catch (error: unknown) {
+            setError(error);
+          }
 
           if (parsed !== '') {
             const selection = codeNode.select(0);
@@ -59,13 +62,17 @@
         }
       });
     } catch (error: unknown) {
-      if (error instanceof Error) {
-        syntaxError = error.message;
-        tipsVisible = true;
-      } else {
-        // eslint-disable-next-line no-console
-        console.error('Unexpected error: ', error);
-      }
+      setError(error);
+    }
+  }
+
+  function setError(error: unknown) {
+    if (error instanceof Error) {
+      syntaxError = error.message;
+      tipsVisible = true;
+    } else {
+      // eslint-disable-next-line no-console
+      console.error('Unexpected error: ', error);
     }
   }
 
