@@ -28,11 +28,11 @@ import {
 
 test.describe('Clear All Formatting', () => {
   test.fixme();
-  test.beforeEach(({isPlainText, isCollab, page}) => {
+  test.beforeEach(({ isPlainText, isCollab, page }) => {
     test.skip(isPlainText);
-    initialize({isCollab, page});
+    initialize({ isCollab, page });
   });
-  test(`Can clear BIU formatting`, async ({page}) => {
+  test(`Can clear BIU formatting`, async ({ page }) => {
     await focusEditor(page);
 
     await page.keyboard.type('Hello');
@@ -41,6 +41,7 @@ test.describe('Clear All Formatting', () => {
     await toggleItalic(page);
     await toggleUnderline(page);
     await page.keyboard.type(' Test');
+    await selectAll(page);
     await selectFromAdditionalStylesDropdown(page, '.clear');
     await assertHTML(
       page,
