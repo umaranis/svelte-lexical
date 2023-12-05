@@ -4,7 +4,11 @@
   import {useCollaborationContext} from './CollaborationContext';
   import type {InitialEditorStateType} from '../../initializeEditor';
   import {getEditor} from '../../composerContext';
-  import {createBinding, type Provider} from '@lexical/yjs';
+  import {
+    createBinding,
+    type ExcludedProperties,
+    type Provider,
+  } from '@lexical/yjs';
   import {onMount} from 'svelte';
   import YjsCollaboration from './YjsCollaboration.svelte';
   import YjsHistory from './YjsHistory.svelte';
@@ -23,6 +27,7 @@
   export let cursorColor: string | undefined = undefined;
   export let cursorsContainerRef: HTMLElement | null = null;
   export let initialEditorState: InitialEditorStateType | null = null;
+  export let excludedProperties: ExcludedProperties | undefined = undefined;
 
   const collabContext = useCollaborationContext(username, cursorColor);
 
@@ -30,7 +35,14 @@
 
   const provider = providerFactory(id, yjsDocMap);
   const doc = yjsDocMap.get(id);
-  const binding = createBinding(editor, provider, id, doc, yjsDocMap);
+  const binding = createBinding(
+    editor,
+    provider,
+    id,
+    doc,
+    yjsDocMap,
+    excludedProperties,
+  );
   collabContext.clientID = binding.clientID;
   collabContext.isCollabActive = true;
 
