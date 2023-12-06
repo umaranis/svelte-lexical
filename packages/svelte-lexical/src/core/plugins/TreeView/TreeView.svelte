@@ -1,6 +1,5 @@
 <script lang="ts">
   import type {
-    EditorConfig,
     EditorState,
     ElementNode,
     GridSelection,
@@ -11,6 +10,7 @@
     RangeSelection,
   } from 'lexical';
 
+  import {$generateHtmlFromNodes as generateHtmlFromNodes} from '@lexical/html';
   import {$isLinkNode as isLinkNode, LinkNode} from '@lexical/link';
   import {$isMarkNode as isMarkNode} from '@lexical/mark';
   import {mergeRegister} from '@lexical/utils';
@@ -44,6 +44,7 @@
     selectedLine: '>',
   });
 
+  export let treeTypeButtonClassName: string;
   export let timeTravelButtonClassName: string;
   export let timeTravelPanelButtonClassName: string;
   export let timeTravelPanelClassName: string;
@@ -55,6 +56,7 @@
   let timeStampedEditorStates: Array<[number, EditorState]> = [];
   let content = '';
   let timeTravelEnabled = false;
+  let showExportDOM = false;
   let playingIndexRef = 0;
   let treeElementRef: HTMLElement | null = null;
   let inputRef: HTMLInputElement | null = null;
@@ -66,13 +68,7 @@
   let commandsLog: ReadonlyArray<LexicalCommand<unknown> & {payload: unknown}>;
 
   function generateTree(editorState: EditorState) {
-    const treeText = generateContent(
-      editor.getEditorState(),
-      editor._config,
-      commandsLog,
-      editor._compositionKey,
-      editor._editable,
-    );
+    const treeText = generateContent(editor, commandsLog, showExportDOM);
 
     content = treeText;
 
@@ -86,14 +82,8 @@
 
   $: {
     const editorState = editor.getEditorState();
-    if (!showLimited && editorState._nodeMap.size > 1000) {
-      content = generateContent(
-        editorState,
-        editor._config,
-        commandsLog,
-        editor._compositionKey,
-        editor._editable,
-      );
+    if (!showLimited && editorState._nodeMap.size > 1) {
+      content = generateContent(editor, commandsLog, showExportDOM);
     }
   }
 
@@ -154,13 +144,7 @@
         generateTree(editorState);
       }),
       editor.registerEditableListener(() => {
-        const treeText = generateContent(
-          editor.getEditorState(),
-          editor._config,
-          commandsLog,
-          editor._compositionKey,
-          editor._editable,
-        );
+        const treeText = generateContent(editor, commandsLog, showExportDOM);
         content = treeText;
       }),
     );
@@ -199,12 +183,23 @@
   }
 
   function generateContent(
-    editorState: EditorState,
-    editorConfig: EditorConfig,
+    editor: LexicalEditor,
     commandsLog: ReadonlyArray<LexicalCommand<unknown> & {payload: unknown}>,
-    compositionKey: null | string,
-    editable: boolean,
+    exportDOM: boolean,
   ): string {
+    const editorState = editor.getEditorState();
+    const editorConfig = editor._config;
+    const compositionKey = editor._compositionKey;
+    const editable = editor._editable;
+
+    if (exportDOM) {
+      let htmlString = '';
+      editorState.read(() => {
+        htmlString = printPrettyHTML(generateHtmlFromNodes(editor));
+      });
+      return htmlString;
+    }
+
     let res = ' root\n';
 
     const selectionString = editorState.read(() => {
@@ -510,6 +505,30 @@
     );
   }
 
+  function printPrettyHTML(str: string) {
+    const div = document.createElement('div');
+    div.innerHTML = str.trim();
+    return prettifyHTML(div, 0).innerHTML;
+  }
+
+  function prettifyHTML(node: Element, level: number) {
+    const indentBefore = new Array(level++ + 1).join('  ');
+    const indentAfter = new Array(level - 1).join('  ');
+    let textNode;
+
+    for (let i = 0; i < node.children.length; i++) {
+      textNode = document.createTextNode('\n' + indentBefore);
+      node.insertBefore(textNode, node.children[i]);
+      prettifyHTML(node.children[i], level);
+      if (node.lastElementChild === node.children[i]) {
+        textNode = document.createTextNode('\n' + indentAfter);
+        node.appendChild(textNode);
+      }
+    }
+
+    return node;
+  }
+
   function getSelectionStartEnd(
     node: LexicalNode,
     selection: RangeSelection | GridSelection,
@@ -593,6 +612,14 @@
         Show full tree
       </button>
     </div>
+  {/if}
+  {#if !showLimited}
+    <button
+      on:click={() => (showExportDOM = !showExportDOM)}
+      class={treeTypeButtonClassName}
+      type="button">
+      {showExportDOM ? 'Tree' : 'Export DOM'}
+    </button>
   {/if}
   {#if !timeTravelEnabled && (showLimited || !isLimited) && totalEditorStates > 2}
     <button
