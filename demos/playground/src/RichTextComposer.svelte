@@ -99,7 +99,7 @@
         isSmallWidthViewport = isNextSmallWidthViewport;
       }
     }
-
+    updateViewPortWidth();
     window.addEventListener('resize', updateViewPortWidth);
 
     return () => {
