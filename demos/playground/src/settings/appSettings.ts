@@ -19,7 +19,8 @@ export type SettingName =
   | 'showNestedEditorTreeView'
   | 'emptyEditor'
   | 'showTableOfContents'
-  | 'tableCellMerge';
+  | 'tableCellMerge'
+  | 'tableCellBackgroundColor';
 
 export type Settings = Record<SettingName, boolean>;
 
@@ -43,4 +44,5 @@ export const DEFAULT_SETTINGS: Settings = {
   showTableOfContents: false,
   showTreeView: true,
   tableCellMerge: true,
+  tableCellBackgroundColor: true,
 };
