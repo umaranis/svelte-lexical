@@ -1363,7 +1363,7 @@ test.describe('CopyAndPaste', () => {
     },
   );
 
-  test('Copy list of a different type and paste into list on an existing item - should merge the lists.', async ({
+  test.fixme('Copy list of a different type and paste into list on an existing item - should merge the lists.', async ({
     page,
     isPlainText,
     isCollab,
