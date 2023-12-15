@@ -107,6 +107,9 @@
         linkUrl = '';
       }
     }
+    if (isEditMode) {
+      editedLinkUrl = linkUrl;
+    }
     const editorElem = editorRef;
     const nativeSelection = window.getSelection();
     const activeElement = document.activeElement;
