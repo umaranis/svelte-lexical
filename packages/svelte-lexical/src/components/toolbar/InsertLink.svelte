@@ -13,9 +13,12 @@
 
   function insertLink() {
     if (!$isLink) {
-      editor.dispatchCommand(TOGGLE_LINK_COMMAND, sanitizeUrl('https://'));
+      return editor.dispatchCommand(
+        TOGGLE_LINK_COMMAND,
+        sanitizeUrl('https://'),
+      );
     } else {
-      editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
+      return editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
     }
   }
 
@@ -28,10 +31,7 @@
 
         if (code === 'KeyK' && (ctrlKey || metaKey)) {
           event.preventDefault();
-          return editor.dispatchCommand(
-            TOGGLE_LINK_COMMAND,
-            sanitizeUrl('https://'),
-          );
+          return insertLink();
         }
         return false;
       },
