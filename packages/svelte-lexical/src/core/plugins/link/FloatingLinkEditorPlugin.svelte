@@ -1,5 +1,6 @@
 <script lang="ts">
   import {
+    TOGGLE_LINK_COMMAND,
     $isAutoLinkNode as isAutoLinkNode,
     $isLinkNode as isLinkNode,
   } from '@lexical/link';
@@ -24,6 +25,7 @@
 
   let activeEditor = editor;
   const isLink = writable(false);
+  let isEditMode = writable(false);
 
   function updateToolbar() {
     const selection = getSelection();
@@ -57,8 +59,18 @@
         },
         COMMAND_PRIORITY_CRITICAL,
       ),
+      editor.registerCommand(
+        TOGGLE_LINK_COMMAND,
+        (payload) => {
+          if (payload === 'https://') {
+            $isEditMode = true;
+          }
+          return false;
+        },
+        COMMAND_PRIORITY_CRITICAL,
+      ),
     );
   });
 </script>
 
-<FloatingLinkEditor editor={activeEditor} {isLink} {anchorElem} />
+<FloatingLinkEditor editor={activeEditor} {isLink} {anchorElem} {isEditMode} />

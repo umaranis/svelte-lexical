@@ -29,11 +29,11 @@
   let inputRef: HTMLInputElement;
   let linkUrl = '';
   let editedLinkUrl = '';
-  let isEditMode = false;
+  export let isEditMode: Writable<boolean>;
   let lastSelection: RangeSelection | GridSelection | NodeSelection | null =
     null;
 
-  $: if (isEditMode && inputRef) {
+  $: if ($isEditMode && inputRef) {
     inputRef.focus();
   }
 
@@ -107,7 +107,7 @@
         linkUrl = '';
       }
     }
-    if (isEditMode) {
+    if ($isEditMode) {
       editedLinkUrl = linkUrl;
     }
     const editorElem = editorRef;
@@ -139,7 +139,7 @@
         setFloatingElemPositionForLinkEditor(null, editorElem, anchorElem);
       }
       lastSelection = null;
-      isEditMode = false;
+      $isEditMode = false;
       linkUrl = '';
     }
 
@@ -154,7 +154,7 @@
       handleLinkSubmission();
     } else if (event.key === 'Escape') {
       event.preventDefault();
-      isEditMode = false;
+      $isEditMode = false;
     }
   }
 
@@ -163,7 +163,7 @@
       if (linkUrl !== '') {
         editor.dispatchCommand(TOGGLE_LINK_COMMAND, sanitizeUrl(editedLinkUrl));
       }
-      isEditMode = false;
+      $isEditMode = false;
     }
   }
 </script>
@@ -172,7 +172,7 @@
 
 <div bind:this={editorRef} class="link-editor">
   {#if $isLink}
-    {#if isEditMode}
+    {#if $isEditMode}
       <input
         bind:this={inputRef}
         class="link-input"
@@ -187,7 +187,7 @@
           tabIndex={0}
           on:mousedown={(event) => event.preventDefault()}
           on:click={() => {
-            isEditMode = false;
+            $isEditMode = false;
           }} />
         <div
           class="link-confirm"
@@ -209,7 +209,7 @@
           on:mousedown={(event) => event.preventDefault()}
           on:click={() => {
             editedLinkUrl = linkUrl;
-            isEditMode = true;
+            $isEditMode = true;
           }} />
         <div
           class="link-trash"
