@@ -1800,7 +1800,7 @@ test.describe('CopyAndPaste', () => {
     );
 
     await click(page, '.link');
-    await click(page, '.link-edit');
+    //await click(page, '.link-edit'); // link editor opens in edit mode by default so we don't need to click edit button
     await focus(page, '.link-input');
     await page.keyboard.type('facebook.com');
     await page.keyboard.press('Enter');
