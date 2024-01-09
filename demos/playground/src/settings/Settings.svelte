@@ -20,16 +20,24 @@
     showTableOfContents: boolean;
 
   $: {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     measureTypingPerf = $settings.measureTypingPerf;
     isCollab = $settings.isCollab;
     isRichText = $settings.isRichText;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     isMaxLength = $settings.isMaxLength;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     isCharLimit = $settings.isCharLimit;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     isCharLimitUtf8 = $settings.isCharLimit;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     isAutocomplete = $settings.isAutocomplete;
     showTreeView = $settings.showTreeView;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     showNestedEditorTreeView = $settings.showNestedEditorTreeView;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     disableBeforeInput = $settings.disableBeforeInput;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     showTableOfContents = $settings.showTableOfContents;
   }
 
