@@ -32,7 +32,8 @@ export function setHistoryStateContext(historyState: HistoryState) {
 }
 
 export type SvelteComponentTypeRef = {
-  componentType: typeof SvelteComponent;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  componentType: typeof SvelteComponent<any>;
   props?: Record<string, object | string | boolean>;
 };
 

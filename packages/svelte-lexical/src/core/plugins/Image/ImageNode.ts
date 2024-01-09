@@ -57,7 +57,8 @@ export type SerializedImageNode = Spread<
 >;
 
 type DecoratorImageType = {
-  componentClass: typeof SvelteComponent;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  componentClass: typeof SvelteComponent<any>;
   props: ComponentProps<ImageComponent>;
 };
 
