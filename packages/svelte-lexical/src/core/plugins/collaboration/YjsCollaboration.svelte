@@ -34,6 +34,7 @@
   export let initialEditorState: InitialEditorStateType | null = null;
 
   let isReloadingDoc = false;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let doc = docMap.get(id);
 
   //const binding = createBinding(editor, provider, id, doc, docMap);

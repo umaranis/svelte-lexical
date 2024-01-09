@@ -1,4 +1,3 @@
-<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <script lang="ts">
   import './ContentEditable.css';
   import type {LexicalEditor} from 'lexical';
@@ -40,6 +39,7 @@
   });
 </script>
 
+<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div
   aria-activedescendant={!isEditable ? undefined : ariaActiveDescendantID}
   aria-autocomplete={!isEditable ? 'none' : ariaAutoComplete}

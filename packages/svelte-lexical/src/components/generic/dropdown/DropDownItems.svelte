@@ -53,6 +53,7 @@
   }
 </script>
 
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="dropdown" bind:this={dropDownRef} on:keydown={handleKeyDown}>
   <slot />
 </div>

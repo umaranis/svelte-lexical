@@ -1,4 +1,3 @@
-<!-- svelte-ignore a11y-click-events-have-key-events -->
 <script lang="ts">
   import './FloatingLinkEditor.css';
   import {$isLinkNode as isLinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';
@@ -181,6 +180,7 @@
           monitorInputInteraction(event);
         }} />
       <div>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
           class="link-cancel"
           role="button"
@@ -189,6 +189,7 @@
           on:click={() => {
             $isEditMode = false;
           }} />
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
           class="link-confirm"
           role="button"
@@ -211,6 +212,7 @@
             editedLinkUrl = linkUrl;
             $isEditMode = true;
           }} />
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
           class="link-trash"
           role="button"

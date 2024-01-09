@@ -1,4 +1,5 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <svg id="close" on:click viewBox="0 0 12 12">
   <circle cx="6" cy="6" r="6" />
   <line x1="3" y1="3" x2="9" y2="9" />
