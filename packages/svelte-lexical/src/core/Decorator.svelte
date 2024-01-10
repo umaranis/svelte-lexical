@@ -1,6 +1,9 @@
 <script lang="ts">
-  import {mergeRegister} from '@lexical/utils';
-  import {DecoratorNode, type LexicalEditor} from 'lexical';
+  import pkg from '@lexical/utils';
+  const {mergeRegister} = pkg;
+  import {type LexicalEditor} from 'lexical';
+  import pkg1 from 'lexical';
+  const {DecoratorNode} = pkg1;
   import {getAllContexts, onMount, SvelteComponent} from 'svelte';
   import {getEditor} from './composerContext';
 

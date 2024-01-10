@@ -1,13 +1,14 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {
-    $handleListInsertParagraph as handleListInsertParagraph,
+  import pkg from '@lexical/list';
+  const {
+    $handleListInsertParagraph: handleListInsertParagraph,
     INSERT_ORDERED_LIST_COMMAND,
     INSERT_UNORDERED_LIST_COMMAND,
     insertList,
     REMOVE_LIST_COMMAND,
     removeList,
-  } from '@lexical/list';
+  } = pkg;
   import {mergeRegister} from '@lexical/utils';
   import {COMMAND_PRIORITY_LOW, INSERT_PARAGRAPH_COMMAND} from 'lexical';
   import {getEditor} from '../composerContext';

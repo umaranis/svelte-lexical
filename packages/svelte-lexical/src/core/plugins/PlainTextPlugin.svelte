@@ -1,6 +1,7 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {registerPlainText} from '@lexical/plain-text';
+  import pkg from '@lexical/plain-text';
+  const {registerPlainText} = pkg;
   import {getEditor} from '../composerContext';
 
   const editor = getEditor();

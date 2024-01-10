@@ -1,6 +1,7 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {registerRichText} from '@lexical/rich-text';
+  import pkg from '@lexical/rich-text';
+  const {registerRichText} = pkg;
   import Decorator from '../Decorator.svelte';
   import {getEditor} from '../composerContext';
 

@@ -1,10 +1,8 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {
-    createEmptyHistoryState,
-    registerHistory,
-    type HistoryState,
-  } from '@lexical/history';
+  import {type HistoryState} from '@lexical/history';
+  import pkg from '@lexical/history';
+  const {createEmptyHistoryState, registerHistory} = pkg;
   import type {LexicalEditor} from 'lexical';
   import {getEditor} from '../composerContext';
 
