@@ -1,0 +1,15 @@
+Convert to CJS unanmed import:
+------------------------------
+
+Step-1 - ignore type import manually
+import\s+(\{[^}]+\})\s+from\s+'lexical';\n?
+import pkgLx from 'lexical';\nconst $1 = pkgLx;
+
+Step-2 - ignore type import manually
+import\s+(\{[^}]+\})\s+from\s+'@lexical\/((\w+)-?\w*)';\n?
+import pkg$3 from '@lexical/$2';\n  const $1 = pkg$3;
+
+Step-3 - have to keep refreshing and running it till all instances are covered
+const\s+\{(\s*.*?(?:\$\w+:\s+\w+,\s+)*)(\$\w+)\s+as(\s+\w+),?([\s\S]*?)\}\n?
+  const { $1 $2:$3, $4 }
+
