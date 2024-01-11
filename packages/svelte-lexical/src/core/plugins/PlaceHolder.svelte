@@ -1,9 +1,11 @@
 <script lang="ts">
   import type {LexicalEditor} from 'lexical';
-  import {$canShowPlaceholderCurry as canShowPlaceholderCurry} from '@lexical/text';
+  import pkgText from '@lexical/text';
+  const {$canShowPlaceholderCurry: canShowPlaceholderCurry} = pkgText;
   import {getEditor} from '../composerContext';
   import {onMount} from 'svelte';
-  import {mergeRegister} from '@lexical/utils';
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
 
   export let className = 'Placeholder__root';
 

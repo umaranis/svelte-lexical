@@ -2,20 +2,24 @@
   import type {LinkAttributes} from '@lexical/link';
   import type {ElementNode, LexicalNode} from 'lexical';
 
-  import {
-    $createAutoLinkNode as createAutoLinkNode,
-    $isAutoLinkNode as isAutoLinkNode,
-    $isLinkNode as isLinkNode,
+  import pkgLink from '@lexical/link';
+  const {
+    $createAutoLinkNode: createAutoLinkNode,
+    $isAutoLinkNode: isAutoLinkNode,
+    $isLinkNode: isLinkNode,
     AutoLinkNode,
-  } from '@lexical/link';
-  import {mergeRegister} from '@lexical/utils';
-  import {
-    $createTextNode as createTextNode,
-    $isElementNode as isElementNode,
-    $isLineBreakNode as isLineBreakNode,
-    $isTextNode as isTextNode,
+  } = pkgLink;
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
+  import pkgLx from 'lexical';
+  const {
+    $createTextNode: createTextNode,
+    $isElementNode: isElementNode,
+    $isLineBreakNode: isLineBreakNode,
+    $isTextNode: isTextNode,
+    // eslint-disable-next-line no-import-assign
     TextNode,
-  } from 'lexical';
+  } = pkgLx;
   import {getEditor} from '../../composerContext';
   import {onMount} from 'svelte';
 
@@ -89,7 +93,7 @@
     matchStart: number,
     matchEnd: number,
     text: string,
-    node: TextNode,
+    node: pkgLx.TextNode,
   ): boolean {
     const contentBeforeIsValid =
       matchStart > 0
@@ -107,7 +111,7 @@
   }
 
   function handleLinkCreation(
-    node: TextNode,
+    node: pkgLx.TextNode,
     matchers: Array<LinkMatcher>,
     onChange: ChangeHandler,
   ): void {
@@ -157,7 +161,7 @@
   }
 
   function handleLinkEdit(
-    linkNode: AutoLinkNode,
+    linkNode: pkgLink.AutoLinkNode,
     matchers: Array<LinkMatcher>,
     onChange: ChangeHandler,
   ): void {
@@ -213,7 +217,7 @@
   // Bad neighbours are edits in neighbor nodes that make AutoLinks incompatible.
   // Given the creation preconditions, these can only be simple text nodes.
   function handleBadNeighbors(
-    textNode: TextNode,
+    textNode: pkgLx.TextNode,
     matchers: Array<LinkMatcher>,
     onChange: ChangeHandler,
   ): void {
@@ -262,7 +266,7 @@
     };
 
     return mergeRegister(
-      editor.registerNodeTransform(TextNode, (textNode: TextNode) => {
+      editor.registerNodeTransform(TextNode, (textNode: pkgLx.TextNode) => {
         const parent = textNode.getParentOrThrow();
         const previous = textNode.getPreviousSibling();
         if (isAutoLinkNode(parent)) {

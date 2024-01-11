@@ -1,8 +1,10 @@
 <script lang="ts">
   import {getEditor} from '../../../../composerContext';
 
-  import {$isCodeNode as isCodeNode} from '@lexical/code';
-  import {$getNearestNodeFromDOMNode as getNearestNodeFromDOMNode} from 'lexical';
+  import pkgCode from '@lexical/code';
+  const {$isCodeNode: isCodeNode} = pkgCode;
+  import pkgLx from 'lexical';
+  const {$getNearestNodeFromDOMNode: getNearestNodeFromDOMNode} = pkgLx;
   import type {Options} from 'prettier';
   import {
     loadPrettierFormat,

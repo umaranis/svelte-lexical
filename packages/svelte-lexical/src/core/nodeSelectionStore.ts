@@ -2,13 +2,14 @@
  * Ported from lexical/packages/lexical-react/src/useLexicalNodeSelection.ts
  */
 
-import {
+import pkgLx from 'lexical';
+const {
   $createNodeSelection,
   $getNodeByKey,
   $getSelection,
   $isNodeSelection,
   $setSelection,
-} from 'lexical';
+} = pkgLx;
 import type {LexicalEditor, NodeKey} from 'lexical';
 import {writable} from 'svelte/store';
 

@@ -1,10 +1,12 @@
 <script lang="ts">
-  import {$isCodeNode as isCodeNode} from '@lexical/code';
-  import {
-    $getNearestNodeFromDOMNode as getNearestNodeFromDOMNode,
-    $getSelection as getSelection,
-    $setSelection as setSelection,
-  } from 'lexical';
+  import pkgCode from '@lexical/code';
+  const {$isCodeNode: isCodeNode} = pkgCode;
+  import pkgLx from 'lexical';
+  const {
+    $getNearestNodeFromDOMNode: getNearestNodeFromDOMNode,
+    $getSelection: getSelection,
+    $setSelection: setSelection,
+  } = pkgLx;
   import {getEditor} from '../../../../composerContext';
 
   import {useDebounce} from '../utils';

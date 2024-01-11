@@ -4,11 +4,9 @@
   import {useCollaborationContext} from './CollaborationContext';
   import type {InitialEditorStateType} from '../../initializeEditor';
   import {getEditor} from '../../composerContext';
-  import {
-    createBinding,
-    type ExcludedProperties,
-    type Provider,
-  } from '@lexical/yjs';
+  import {type ExcludedProperties, type Provider} from '@lexical/yjs';
+  import pkgYjs from '@lexical/yjs';
+  const {createBinding} = pkgYjs;
   import {onMount} from 'svelte';
   import YjsCollaboration from './YjsCollaboration.svelte';
   import YjsHistory from './YjsHistory.svelte';

@@ -6,6 +6,8 @@
     }
   }
 
+  import pkgLx from 'lexical';
+  const {createCommand} = pkgLx;
   export const INSERT_IMAGE_COMMAND: LexicalCommand<InsertImagePayload> =
     createCommand();
   export type InsertImagePayload = Readonly<ImagePayload>;
@@ -15,28 +17,25 @@
 </script>
 
 <script lang="ts">
-  import {
-    $createParagraphNode as createParagraphNode,
-    $createRangeSelection as createRangeSelection,
-    $getSelection as getSelection,
-    $insertNodes as insertNodes,
-    $isNodeSelection as isNodeSelection,
-    $isRootOrShadowRoot as isRootOrShadowRoot,
-    $setSelection as setSelection,
+  import pkgLx1 from 'lexical';
+  const {
+    $createParagraphNode: createParagraphNode,
+    $createRangeSelection: createRangeSelection,
+    $getSelection: getSelection,
+    $insertNodes: insertNodes,
+    $isNodeSelection: isNodeSelection,
+    $isRootOrShadowRoot: isRootOrShadowRoot,
+    $setSelection: setSelection,
     COMMAND_PRIORITY_EDITOR,
     COMMAND_PRIORITY_HIGH,
     COMMAND_PRIORITY_LOW,
-    createCommand,
     DRAGOVER_COMMAND,
     DRAGSTART_COMMAND,
     DROP_COMMAND,
-    type LexicalCommand,
-    type LexicalEditor,
-  } from 'lexical';
-  import {
-    $wrapNodeInElement as wrapNodeInElement,
-    mergeRegister,
-  } from '@lexical/utils';
+  } = pkgLx1;
+  import {type LexicalCommand, type LexicalEditor} from 'lexical';
+  import pkgUtils from '@lexical/utils';
+  const {$wrapNodeInElement: wrapNodeInElement, mergeRegister} = pkgUtils;
 
   import {onMount} from 'svelte';
   import {

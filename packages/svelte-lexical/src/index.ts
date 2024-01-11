@@ -22,14 +22,22 @@ export {default as FloatingLinkEditorPlugin} from './core/plugins/link/FloatingL
 export {default as CodeHighlightPlugin} from './core/plugins/CodeBlock/CodeHighlightPlugin.svelte';
 export {default as CodeActionMenuPlugin} from './core/plugins/CodeBlock/CodeActionMenuPlugin/CodeActionMenuPlugin.svelte';
 
-export {HeadingNode, QuoteNode} from '@lexical/rich-text';
-export {ListNode, ListItemNode} from '@lexical/list';
+import pkgRichtext from '@lexical/rich-text';
+const {HeadingNode, QuoteNode} = pkgRichtext;
+export {HeadingNode, QuoteNode};
+import pkgList from '@lexical/list';
+const {ListNode, ListItemNode} = pkgList;
+export {ListNode, ListItemNode};
 export {HorizontalRuleNode} from './core/plugins/HorizontalRuleNode';
 export {ImageNode} from './core/plugins/Image/ImageNode';
 export {KeywordNode} from './core/plugins/KeywordNode';
 export {HashtagNode} from './core/plugins/HashtagNode';
-export {AutoLinkNode, LinkNode} from '@lexical/link';
-export {CodeNode, CodeHighlightNode} from '@lexical/code';
+import pkgLink from '@lexical/link';
+const {AutoLinkNode, LinkNode} = pkgLink;
+export {AutoLinkNode, LinkNode};
+import pkgCode from '@lexical/code';
+const {CodeNode, CodeHighlightNode} = pkgCode;
+export {CodeNode, CodeHighlightNode};
 export type {Provider} from '@lexical/yjs';
 
 // toolbar
@@ -78,10 +86,18 @@ export {default as Composer} from './core/Composer.svelte';
 export {default as RichTextComposer} from './components/richtext/RichTextComposer.svelte';
 
 export type {EditorThemeClasses, LexicalEditor} from 'lexical';
-export {$createParagraphNode, $createTextNode, $getRoot} from 'lexical';
-export {$createHeadingNode, $createQuoteNode} from '@lexical/rich-text';
-export {$createLinkNode} from '@lexical/link';
-export {$createListItemNode, $createListNode} from '@lexical/list';
+import pkgLx from 'lexical';
+const {$createParagraphNode, $createTextNode, $getRoot} = pkgLx;
+export {$createParagraphNode, $createTextNode, $getRoot};
+import pkgRichText from '@lexical/rich-text';
+const {$createHeadingNode, $createQuoteNode} = pkgRichText;
+export {$createHeadingNode, $createQuoteNode};
+import pkgLink1 from '@lexical/link';
+const {$createLinkNode} = pkgLink1;
+export {$createLinkNode};
+import pkgList1 from '@lexical/list';
+const {$createListItemNode, $createListNode} = pkgList1;
+export {$createListItemNode, $createListNode};
 
 // ui components
 export {default as DropDown} from './components/generic/dropdown/DropDown.svelte';

@@ -11,7 +11,8 @@ import type {
   Spread,
 } from 'lexical';
 
-import {$applyNodeReplacement, createEditor, DecoratorNode} from 'lexical';
+import pkgLx from 'lexical';
+const {$applyNodeReplacement, createEditor, DecoratorNode} = pkgLx;
 import type {ComponentProps, SvelteComponent} from 'svelte';
 import ImageComponent from './ImageComponent.svelte';
 /*import * as React from 'react';

@@ -1,13 +1,16 @@
 <script lang="ts">
-  import {LinkNode, TOGGLE_LINK_COMMAND, toggleLink} from '@lexical/link';
-  import {mergeRegister} from '@lexical/utils';
-  import {
-    $getSelection as getSelection,
-    $isElementNode as isElementNode,
-    $isRangeSelection as isRangeSelection,
+  import pkg from '@lexical/link';
+  const {LinkNode, TOGGLE_LINK_COMMAND, toggleLink} = pkg;
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
+  import pkgLx from 'lexical';
+  const {
+    $getSelection: getSelection,
+    $isElementNode: isElementNode,
+    $isRangeSelection: isRangeSelection,
     COMMAND_PRIORITY_LOW,
     PASTE_COMMAND,
-  } from 'lexical';
+  } = pkgLx;
   import {onMount} from 'svelte';
   import {getEditor} from '../../composerContext';
 

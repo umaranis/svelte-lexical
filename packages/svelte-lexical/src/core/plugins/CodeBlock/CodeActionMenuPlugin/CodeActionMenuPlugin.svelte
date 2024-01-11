@@ -1,11 +1,13 @@
 <script lang="ts">
-  import {
-    $isCodeNode as isCodeNode,
+  import pkgCode from '@lexical/code';
+  const {
+    $isCodeNode: isCodeNode,
     CodeNode,
     getLanguageFriendlyName,
     normalizeCodeLang,
-  } from '@lexical/code';
-  import {$getNearestNodeFromDOMNode as getNearestNodeFromDOMNode} from 'lexical';
+  } = pkgCode;
+  import pkgLx from 'lexical';
+  const {$getNearestNodeFromDOMNode: getNearestNodeFromDOMNode} = pkgLx;
   import {onMount} from 'svelte';
   import {getEditor} from '../../../composerContext';
   import CopyButton from './components/CopyButton.svelte';
@@ -54,7 +56,7 @@
 
       codeDOMNodeRef = codeDOMNode;
 
-      let codeNode: CodeNode | null = null;
+      let codeNode: pkgCode.CodeNode | null = null;
       let _lang = '';
 
       editor.update(() => {

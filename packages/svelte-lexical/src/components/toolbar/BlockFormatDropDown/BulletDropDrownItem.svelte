@@ -1,8 +1,6 @@
 <script lang="ts">
-  import {
-    INSERT_UNORDERED_LIST_COMMAND,
-    REMOVE_LIST_COMMAND,
-  } from '@lexical/list';
+  import pkglist from '@lexical/list';
+  const {INSERT_UNORDERED_LIST_COMMAND, REMOVE_LIST_COMMAND} = pkglist;
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
   import {getEditor} from '../../../core/composerContext';

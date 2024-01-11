@@ -1,15 +1,16 @@
 <script lang="ts">
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
-  import {
-    $getSelection as getSelection,
-    $isRangeSelection as isRangeSelection,
+  import pkgLx from 'lexical';
+  const {
+    $getSelection: getSelection,
+    $isRangeSelection: isRangeSelection,
     DEPRECATED_$isGridSelection,
-  } from 'lexical';
-  import {
-    $createHeadingNode as createHeadingNode,
-    type HeadingTagType,
-  } from '@lexical/rich-text';
-  import {$setBlocksType as setBlocksType} from '@lexical/selection';
+  } = pkgLx;
+  import {type HeadingTagType} from '@lexical/rich-text';
+  import pkgrich from '@lexical/rich-text';
+  const {$createHeadingNode: createHeadingNode} = pkgrich;
+  import pkgSelection from '@lexical/selection';
+  const {$setBlocksType: setBlocksType} = pkgSelection;
   import type {Writable} from 'svelte/store';
   import type {blockTypeToBlockName} from './blockTypeToBlockName';
   import {getContext} from 'svelte';

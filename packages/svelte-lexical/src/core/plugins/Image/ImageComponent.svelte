@@ -4,14 +4,11 @@
 
 <script lang="ts">
   import './ImageNodeStyles.css';
-  import {
-    $getSelection as getSelection,
-    $isNodeSelection as isNodeSelection,
-    type GridSelection,
-    type LexicalEditor,
-    type NodeSelection,
-    type RangeSelection,
-    $getNodeByKey as getNodeByKey,
+  import pkgLx from 'lexical';
+  const {
+    $getSelection: getSelection,
+    $isNodeSelection: isNodeSelection,
+    $getNodeByKey: getNodeByKey,
     SELECTION_CHANGE_COMMAND,
     COMMAND_PRIORITY_LOW,
     CLICK_COMMAND,
@@ -20,9 +17,16 @@
     KEY_BACKSPACE_COMMAND,
     KEY_ESCAPE_COMMAND,
     KEY_ENTER_COMMAND,
+  } = pkgLx;
+  import {
+    type GridSelection,
+    type LexicalEditor,
+    type NodeSelection,
+    type RangeSelection,
   } from 'lexical';
   import {onMount} from 'svelte';
-  import {mergeRegister} from '@lexical/utils';
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
   import ImageResizer from '../../../components/ImageResizer.svelte';
   import {$isImageNode as isImageNode} from './ImageNode';
   import {

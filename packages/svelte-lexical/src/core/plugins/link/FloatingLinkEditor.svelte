@@ -1,19 +1,24 @@
 <script lang="ts">
   import './FloatingLinkEditor.css';
-  import {$isLinkNode as isLinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';
-  import {mergeRegister} from '@lexical/utils';
+  import pkgLink from '@lexical/link';
+  const {$isLinkNode: isLinkNode, TOGGLE_LINK_COMMAND} = pkgLink;
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
   import {
-    $getSelection as getSelection,
-    $isRangeSelection as isRangeSelection,
-    COMMAND_PRIORITY_HIGH,
-    COMMAND_PRIORITY_LOW,
-    KEY_ESCAPE_COMMAND,
-    SELECTION_CHANGE_COMMAND,
     type GridSelection,
     type LexicalEditor,
     type NodeSelection,
     type RangeSelection,
   } from 'lexical';
+  import pkgLx from 'lexical';
+  const {
+    $getSelection: getSelection,
+    $isRangeSelection: isRangeSelection,
+    COMMAND_PRIORITY_HIGH,
+    COMMAND_PRIORITY_LOW,
+    KEY_ESCAPE_COMMAND,
+    SELECTION_CHANGE_COMMAND,
+  } = pkgLx;
   import {onMount} from 'svelte';
   import type {Writable} from 'svelte/store';
   import getSelectedNode from '../../../components/toolbar/getSelectionInfo';

@@ -1,6 +1,8 @@
 <script lang="ts">
-  import {ListItemNode, ListNode} from '@lexical/list';
-  import {HeadingNode, QuoteNode} from '@lexical/rich-text';
+  import pkglist from '@lexical/list';
+  const {ListItemNode, ListNode} = pkglist;
+  import pkgrich from '@lexical/rich-text';
+  const {HeadingNode, QuoteNode} = pkgrich;
   import type {EditorThemeClasses, LexicalEditor} from 'lexical';
 
   import Composer from '../../core/Composer.svelte';

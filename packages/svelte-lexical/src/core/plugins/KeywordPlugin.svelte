@@ -6,8 +6,10 @@
     KeywordNode,
   } from './KeywordNode';
   import {getEditor} from '../composerContext';
-  import {mergeRegister} from '@lexical/utils';
-  import {registerLexicalTextEntity} from '@lexical/text';
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
+  import pkg from '@lexical/text';
+  const {registerLexicalTextEntity} = pkg;
   import {onMount} from 'svelte';
 
   export let keywordsRegex: RegExp;

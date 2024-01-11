@@ -1,10 +1,12 @@
 <script lang="ts">
-  import {
-    $getSelection as getSelection,
-    $isRangeSelection as isRangeSelection,
+  import pkgLx from 'lexical';
+  const {
+    $getSelection: getSelection,
+    $isRangeSelection: isRangeSelection,
     COMMAND_PRIORITY_EDITOR,
-  } from 'lexical';
-  import {$insertNodeToNearestRoot as insertNodeToNearestRoot} from '@lexical/utils';
+  } = pkgLx;
+  import pkgUtils from '@lexical/utils';
+  const {$insertNodeToNearestRoot: insertNodeToNearestRoot} = pkgUtils;
   import {onMount} from 'svelte';
   import {
     $createHorizontalRuleNode as createHorizontalRuleNode,

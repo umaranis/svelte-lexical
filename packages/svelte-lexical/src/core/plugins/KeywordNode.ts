@@ -8,7 +8,8 @@
 
 import type {EditorConfig, LexicalNode, SerializedTextNode} from 'lexical';
 
-import {TextNode} from 'lexical';
+import pkg from 'lexical';
+const {TextNode} = pkg;
 
 export type SerializedKeywordNode = SerializedTextNode;
 

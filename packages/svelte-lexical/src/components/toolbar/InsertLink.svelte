@@ -1,10 +1,12 @@
 <script lang="ts">
-  import {TOGGLE_LINK_COMMAND} from '@lexical/link';
+  import pkglink from '@lexical/link';
+  const {TOGGLE_LINK_COMMAND} = pkglink;
   import {getContext, onMount} from 'svelte';
   import type {Writable} from 'svelte/store';
   import {sanitizeUrl} from '../../core/plugins/link/url';
   import {getEditor, getIsEditable} from '../../core/composerContext';
-  import {COMMAND_PRIORITY_NORMAL, KEY_MODIFIER_COMMAND} from 'lexical';
+  import pkgLx from 'lexical';
+  const {COMMAND_PRIORITY_NORMAL, KEY_MODIFIER_COMMAND} = pkgLx;
   import {IS_APPLE} from '../../environment/environment';
 
   const editor = getEditor();

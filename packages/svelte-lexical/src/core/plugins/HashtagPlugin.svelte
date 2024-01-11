@@ -4,9 +4,11 @@
     $createHashtagNode as createHashtagNode,
     HashtagNode,
   } from './HashtagNode';
-  import {registerLexicalTextEntity} from '@lexical/text';
+  import pkg from '@lexical/text';
+  const {registerLexicalTextEntity} = pkg;
   import {onMount} from 'svelte';
-  import {mergeRegister} from '@lexical/utils';
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
   import {getEditor} from '../composerContext';
 
   function getHashtagRegexStringChars(): Readonly<{

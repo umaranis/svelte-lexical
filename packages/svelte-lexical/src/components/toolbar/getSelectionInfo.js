@@ -1,6 +1,5 @@
-import {
-  $isAtNodeEnd as isAtNodeEnd,
-} from '@lexical/selection';
+import pkgSelection from '@lexical/selection';
+const { $isAtNodeEnd: isAtNodeEnd } = pkgSelection;
 
 export default function getSelectedNode(selection) {
   const anchor = selection.anchor;

@@ -26,15 +26,17 @@
 </script>
 
 <script lang="ts">
-  import {createEmptyHistoryState} from '@lexical/history';
+  import pkghistory from '@lexical/history';
+  const {createEmptyHistoryState} = pkghistory;
   import {
-    createEditor,
     type EditorState,
     type EditorThemeClasses,
     type Klass,
     type LexicalEditor,
     type LexicalNode,
   } from 'lexical';
+  import pkgLx from 'lexical';
+  const {createEditor} = pkgLx;
   import {onMount} from 'svelte';
   import {initializeEditor} from './initializeEditor';
   import {

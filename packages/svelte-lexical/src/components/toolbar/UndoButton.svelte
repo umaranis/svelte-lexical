@@ -1,9 +1,6 @@
 <script lang="ts">
-  import {
-    CAN_UNDO_COMMAND,
-    UNDO_COMMAND,
-    COMMAND_PRIORITY_CRITICAL,
-  } from 'lexical';
+  import pkgLx from 'lexical';
+  const {CAN_UNDO_COMMAND, UNDO_COMMAND, COMMAND_PRIORITY_CRITICAL} = pkgLx;
   import {onMount} from 'svelte';
   import {
     getEditor,

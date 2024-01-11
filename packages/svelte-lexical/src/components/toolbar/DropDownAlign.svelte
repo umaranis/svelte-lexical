@@ -1,9 +1,10 @@
 <script lang="ts">
-  import {
+  import pkgLx from 'lexical';
+  const {
     FORMAT_ELEMENT_COMMAND,
     INDENT_CONTENT_COMMAND,
     OUTDENT_CONTENT_COMMAND,
-  } from 'lexical';
+  } = pkgLx;
   import DropDown from '../generic/dropdown/DropDown.svelte';
   import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
   import Divider from './Divider.svelte';

@@ -1,19 +1,19 @@
 <script lang="ts">
-  import {
+  import pkgLink from '@lexical/link';
+  const {
     TOGGLE_LINK_COMMAND,
-    $isAutoLinkNode as isAutoLinkNode,
-    $isLinkNode as isLinkNode,
-  } from '@lexical/link';
-  import {
-    $findMatchingParent as findMatchingParent,
-    mergeRegister,
-  } from '@lexical/utils';
-  import {
-    $getSelection as getSelection,
-    $isRangeSelection as isRangeSelection,
+    $isAutoLinkNode: isAutoLinkNode,
+    $isLinkNode: isLinkNode,
+  } = pkgLink;
+  import pkgUtils from '@lexical/utils';
+  const {$findMatchingParent: findMatchingParent, mergeRegister} = pkgUtils;
+  import pkgLx from 'lexical';
+  const {
+    $getSelection: getSelection,
+    $isRangeSelection: isRangeSelection,
     COMMAND_PRIORITY_CRITICAL,
     SELECTION_CHANGE_COMMAND,
-  } from 'lexical';
+  } = pkgLx;
   import {writable} from 'svelte/store';
   import {onMount} from 'svelte';
   import getSelectedNode from '../../../components/toolbar/getSelectionInfo';

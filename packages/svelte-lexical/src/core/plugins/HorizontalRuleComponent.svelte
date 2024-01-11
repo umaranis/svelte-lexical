@@ -1,15 +1,17 @@
 <script lang="ts">
-  import {mergeRegister} from '@lexical/utils';
-  import {
-    $getNodeByKey as getNodeByKey,
-    $getSelection as getSelection,
-    $isNodeSelection as isNodeSelection,
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
+  import {type LexicalEditor} from 'lexical';
+  import pkgLx from 'lexical';
+  const {
+    $getNodeByKey: getNodeByKey,
+    $getSelection: getSelection,
+    $isNodeSelection: isNodeSelection,
     CLICK_COMMAND,
     COMMAND_PRIORITY_LOW,
     KEY_BACKSPACE_COMMAND,
     KEY_DELETE_COMMAND,
-    type LexicalEditor,
-  } from 'lexical';
+  } = pkgLx;
   import {onMount} from 'svelte';
   import {
     clearSelection,

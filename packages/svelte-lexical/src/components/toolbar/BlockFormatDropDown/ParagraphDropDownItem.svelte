@@ -3,13 +3,15 @@
   import type {Writable} from 'svelte/store';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
   import type {blockTypeToBlockName} from './blockTypeToBlockName';
-  import {
-    $getSelection as getSelection,
-    $isRangeSelection as isRangeSelection,
-    $createParagraphNode as createParagraphNode,
+  import pkgLx from 'lexical';
+  const {
+    $getSelection: getSelection,
+    $isRangeSelection: isRangeSelection,
+    $createParagraphNode: createParagraphNode,
     DEPRECATED_$isGridSelection,
-  } from 'lexical';
-  import {$setBlocksType as setBlocksType} from '@lexical/selection';
+  } = pkgLx;
+  import pkgSelection from '@lexical/selection';
+  const {$setBlocksType: setBlocksType} = pkgSelection;
   import {getEditor} from '../../../core/composerContext';
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =

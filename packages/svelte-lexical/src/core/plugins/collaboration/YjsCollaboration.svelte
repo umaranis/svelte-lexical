@@ -2,21 +2,24 @@
   import type {Binding, Provider} from '@lexical/yjs';
   import type {LexicalEditor} from 'lexical';
 
-  import {mergeRegister} from '@lexical/utils';
-  import {
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
+  import pkgYjs from '@lexical/yjs';
+  const {
     CONNECTED_COMMAND,
     initLocalState,
     syncCursorPositions,
     syncLexicalUpdateToYjs,
     syncYjsChangesToLexical,
     TOGGLE_CONNECT_COMMAND,
-  } from '@lexical/yjs';
-  import {
-    $createParagraphNode as createParagraphNode,
-    $getRoot as getRoot,
-    $getSelection as getSelection,
+  } = pkgYjs;
+  import pkgLx from 'lexical';
+  const {
+    $createParagraphNode: createParagraphNode,
+    $getRoot: getRoot,
+    $getSelection: getSelection,
     COMMAND_PRIORITY_EDITOR,
-  } from 'lexical';
+  } = pkgLx;
   import {UndoManager, type Doc, type Transaction, type YEvent} from 'yjs';
 
   import type {InitialEditorStateType} from '../../initializeEditor';

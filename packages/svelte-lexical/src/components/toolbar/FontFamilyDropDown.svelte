@@ -1,9 +1,9 @@
 <script lang="ts">
-  import {$patchStyleText as patchStyleText} from '@lexical/selection';
-  import {
-    $getSelection as getSelection,
-    $isRangeSelection as isRangeSelection,
-  } from 'lexical';
+  import pkgSelection from '@lexical/selection';
+  const {$patchStyleText: patchStyleText} = pkgSelection;
+  import pkgLx from 'lexical';
+  const {$getSelection: getSelection, $isRangeSelection: isRangeSelection} =
+    pkgLx;
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
   import {getEditor, getIsEditable} from '../../core/composerContext';

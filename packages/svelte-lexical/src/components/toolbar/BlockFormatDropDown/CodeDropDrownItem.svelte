@@ -4,13 +4,16 @@
   import {getEditor} from '../../../core/composerContext';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
   import type {blockTypeToBlockName} from './blockTypeToBlockName';
-  import {$setBlocksType as setBlocksType} from '@lexical/selection';
-  import {
-    $getSelection as getSelection,
-    $isRangeSelection as isRangeSelection,
+  import pkgSelection from '@lexical/selection';
+  const {$setBlocksType: setBlocksType} = pkgSelection;
+  import pkgLx from 'lexical';
+  const {
+    $getSelection: getSelection,
+    $isRangeSelection: isRangeSelection,
     DEPRECATED_$isGridSelection,
-  } from 'lexical';
-  import {$createCodeNode as createCodeNode} from '@lexical/code';
+  } = pkgLx;
+  import pkgcode from '@lexical/code';
+  const {$createCodeNode: createCodeNode} = pkgcode;
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
     getContext('blockType');

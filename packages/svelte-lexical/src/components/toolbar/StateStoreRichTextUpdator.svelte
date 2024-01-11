@@ -1,29 +1,36 @@
 <script lang="ts">
-  import {
-    $getSelection as getSelection,
-    $isRangeSelection as isRangeSelection,
-    $isRootOrShadowRoot as isRootOrShadowRoot,
+  import pkgLx from 'lexical';
+  const {
+    $getSelection: getSelection,
+    $isRangeSelection: isRangeSelection,
+    $isRootOrShadowRoot: isRootOrShadowRoot,
     COMMAND_PRIORITY_CRITICAL,
     SELECTION_CHANGE_COMMAND,
-  } from 'lexical';
-  import {
-    $isParentElementRTL as isParentElementRTL,
-    $getSelectionStyleValueForProperty as getSelectionStyleValueForProperty,
-  } from '@lexical/selection';
-  import {$isHeadingNode as isHeadingNode} from '@lexical/rich-text';
-  import {ListNode, $isListNode as isListNode} from '@lexical/list';
-  import {
-    $findMatchingParent as findMatchingParent,
-    $getNearestNodeOfType as getNearestNodeOfType,
+  } = pkgLx;
+  import pkgselection from '@lexical/selection';
+  const {
+    $isParentElementRTL: isParentElementRTL,
+    $getSelectionStyleValueForProperty: getSelectionStyleValueForProperty,
+  } = pkgselection;
+  import pkgrich from '@lexical/rich-text';
+  const {$isHeadingNode: isHeadingNode} = pkgrich;
+  import pkglist from '@lexical/list';
+  const {ListNode, $isListNode: isListNode} = pkglist;
+  import pkgutils from '@lexical/utils';
+  const {
+    $findMatchingParent: findMatchingParent,
+    $getNearestNodeOfType: getNearestNodeOfType,
     mergeRegister,
-  } from '@lexical/utils';
+  } = pkgutils;
   import {getContext, onMount} from 'svelte';
-  import {$isCodeNode as isCodeNode, CODE_LANGUAGE_MAP} from '@lexical/code';
+  import pkgcode from '@lexical/code';
+  const {$isCodeNode: isCodeNode, CODE_LANGUAGE_MAP} = pkgcode;
 
   import {getActiveEditor, getEditor} from '../../core/composerContext';
   import type {Writable} from 'svelte/store';
   import getSelectedNode from './getSelectionInfo';
-  import {$isLinkNode as isLinkNode} from '@lexical/link';
+  import pkglink from '@lexical/link';
+  const {$isLinkNode: isLinkNode} = pkglink;
   import {blockTypeToBlockName} from './BlockFormatDropDown/blockTypeToBlockName';
 
   const editor = getEditor();

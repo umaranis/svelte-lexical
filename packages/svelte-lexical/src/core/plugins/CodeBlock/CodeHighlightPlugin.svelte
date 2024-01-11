@@ -1,5 +1,6 @@
 <script lang="ts">
-  import {registerCodeHighlighting} from '@lexical/code';
+  import pkgCode from '@lexical/code';
+  const {registerCodeHighlighting} = pkgCode;
   import {onMount} from 'svelte';
   import {getEditor} from '../../composerContext';
 

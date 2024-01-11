@@ -1,12 +1,12 @@
 <script lang="ts">
-  import {mergeRegister} from '@lexical/utils';
-  import {setLocalStateFocus, type Provider} from '@lexical/yjs';
-  import {
-    BLUR_COMMAND,
-    COMMAND_PRIORITY_EDITOR,
-    FOCUS_COMMAND,
-    type LexicalEditor,
-  } from 'lexical';
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
+  import {type Provider} from '@lexical/yjs';
+  import pkgYjs from '@lexical/yjs';
+  const {setLocalStateFocus} = pkgYjs;
+  import {type LexicalEditor} from 'lexical';
+  import pkgLx from 'lexical';
+  const {BLUR_COMMAND, COMMAND_PRIORITY_EDITOR, FOCUS_COMMAND} = pkgLx;
   import {onMount} from 'svelte';
 
   export let editor: LexicalEditor;

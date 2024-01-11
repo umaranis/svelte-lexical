@@ -1,6 +1,7 @@
 <script lang="ts">
   import type {LexicalEditor} from 'lexical';
-  import {exportFile} from '@lexical/file';
+  import pkgfile from '@lexical/file';
+  const {exportFile} = pkgfile;
   import {getEditor} from '../../core/composerContext';
 
   const editor: LexicalEditor = getEditor();

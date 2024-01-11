@@ -2,29 +2,32 @@
   import type {ListItemNode} from '@lexical/list';
   import type {LexicalEditor} from 'lexical';
 
-  import {
-    $isListItemNode as isListItemNode,
-    $isListNode as isListNode,
+  import pkgList from '@lexical/list';
+  const {
+    $isListItemNode: isListItemNode,
+    $isListNode: isListNode,
     INSERT_CHECK_LIST_COMMAND,
     insertList,
-  } from '@lexical/list';
-  import {
-    $findMatchingParent as findMatchingParent,
+  } = pkgList;
+  import pkgUtils from '@lexical/utils';
+  const {
+    $findMatchingParent: findMatchingParent,
     isHTMLElement,
     mergeRegister,
-  } from '@lexical/utils';
-  import {
-    $getNearestNodeFromDOMNode as getNearestNodeFromDOMNode,
-    $getSelection as getSelection,
-    $isElementNode as isElementNode,
-    $isRangeSelection as isRangeSelection,
+  } = pkgUtils;
+  import pkgLex from 'lexical';
+  const {
+    $getNearestNodeFromDOMNode: getNearestNodeFromDOMNode,
+    $getSelection: getSelection,
+    $isElementNode: isElementNode,
+    $isRangeSelection: isRangeSelection,
     COMMAND_PRIORITY_LOW,
     KEY_ARROW_DOWN_COMMAND,
     KEY_ARROW_LEFT_COMMAND,
     KEY_ARROW_UP_COMMAND,
     KEY_ESCAPE_COMMAND,
     KEY_SPACE_COMMAND,
-  } from 'lexical';
+  } = pkgLex;
   import {onMount} from 'svelte';
   import {getEditor} from '../composerContext';
 

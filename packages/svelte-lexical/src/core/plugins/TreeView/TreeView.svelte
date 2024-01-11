@@ -10,18 +10,23 @@
     RangeSelection,
   } from 'lexical';
 
-  import {$generateHtmlFromNodes as generateHtmlFromNodes} from '@lexical/html';
-  import {$isLinkNode as isLinkNode, LinkNode} from '@lexical/link';
-  import {$isMarkNode as isMarkNode} from '@lexical/mark';
-  import {mergeRegister} from '@lexical/utils';
-  import {
-    $getRoot as getRoot,
-    $getSelection as getSelection,
-    $isElementNode as isElementNode,
-    $isRangeSelection as isRangeSelection,
-    $isTextNode as isTextNode,
+  import pkghtml from '@lexical/html';
+  const {$generateHtmlFromNodes: generateHtmlFromNodes} = pkghtml;
+  import pkglink from '@lexical/link';
+  const {$isLinkNode: isLinkNode, LinkNode} = pkglink;
+  import pkgmark from '@lexical/mark';
+  const {$isMarkNode: isMarkNode} = pkgmark;
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
+  import pkgLx from 'lexical';
+  const {
+    $getRoot: getRoot,
+    $getSelection: getSelection,
+    $isElementNode: isElementNode,
+    $isRangeSelection: isRangeSelection,
+    $isTextNode: isTextNode,
     DEPRECATED_$isGridSelection,
-  } from 'lexical';
+  } = pkgLx;
   import {onMount} from 'svelte';
   import {getEditor} from '../../composerContext';
   import CommandsLog from './CommandsLog.svelte';

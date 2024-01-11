@@ -8,7 +8,8 @@ import type {
   EditorConfig,
   LexicalEditor,
 } from 'lexical';
-import {createCommand, DecoratorNode, $applyNodeReplacement} from 'lexical';
+import pkgLx from 'lexical';
+const {createCommand, DecoratorNode, $applyNodeReplacement} = pkgLx;
 import HorizontalRuleComponent from './HorizontalRuleComponent.svelte';
 
 export type SerializedHorizontalRuleNode = SerializedLexicalNode;

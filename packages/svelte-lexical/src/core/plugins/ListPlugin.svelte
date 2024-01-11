@@ -9,8 +9,10 @@
     REMOVE_LIST_COMMAND,
     removeList,
   } = pkg;
-  import {mergeRegister} from '@lexical/utils';
-  import {COMMAND_PRIORITY_LOW, INSERT_PARAGRAPH_COMMAND} from 'lexical';
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
+  import pkgLx from 'lexical';
+  const {COMMAND_PRIORITY_LOW, INSERT_PARAGRAPH_COMMAND} = pkgLx;
   import {getEditor} from '../composerContext';
 
   const editor = getEditor();

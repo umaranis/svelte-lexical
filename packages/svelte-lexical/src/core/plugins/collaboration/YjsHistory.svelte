@@ -1,12 +1,12 @@
 <script lang="ts">
-  import {mergeRegister} from '@lexical/utils';
-  import {createUndoManager, type Binding} from '@lexical/yjs';
-  import {
-    COMMAND_PRIORITY_EDITOR,
-    REDO_COMMAND,
-    UNDO_COMMAND,
-    type LexicalEditor,
-  } from 'lexical';
+  import pkgUtil from '@lexical/utils';
+  const {mergeRegister} = pkgUtil;
+  import {type Binding} from '@lexical/yjs';
+  import pkgYjs from '@lexical/yjs';
+  const {createUndoManager} = pkgYjs;
+  import {type LexicalEditor} from 'lexical';
+  import pkgLx from 'lexical';
+  const {COMMAND_PRIORITY_EDITOR, REDO_COMMAND, UNDO_COMMAND} = pkgLx;
   import {onMount} from 'svelte';
 
   export let editor: LexicalEditor;

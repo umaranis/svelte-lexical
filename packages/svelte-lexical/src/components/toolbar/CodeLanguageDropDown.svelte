@@ -1,10 +1,13 @@
 <script lang="ts">
-  import {
-    $isCodeNode as isCodeNode,
+  import pkgcode from '@lexical/code';
+  const {
+    $isCodeNode: isCodeNode,
     CODE_LANGUAGE_FRIENDLY_NAME_MAP,
     getLanguageFriendlyName,
-  } from '@lexical/code';
-  import {$getNodeByKey as getNodeByKey, type NodeKey} from 'lexical';
+  } = pkgcode;
+  import {type NodeKey} from 'lexical';
+  import pkgLx from 'lexical';
+  const {$getNodeByKey: getNodeByKey} = pkgLx;
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
   import {getActiveEditor, getIsEditable} from '../../core/composerContext';

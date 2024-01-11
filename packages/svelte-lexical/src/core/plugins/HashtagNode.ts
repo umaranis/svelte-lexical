@@ -13,7 +13,8 @@ import type {
   Spread,
 } from 'lexical';
 
-import {TextNode} from 'lexical';
+import pkg from 'lexical';
+const {TextNode} = pkg;
 
 export type SerializedHashtagNode = Spread<
   {
