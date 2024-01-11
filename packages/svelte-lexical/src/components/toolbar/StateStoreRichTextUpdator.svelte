@@ -95,7 +95,7 @@
       if (elementDOM !== null) {
         $selectedElementKey = elementKey;
         if (isListNode(element)) {
-          const parentList = getNearestNodeOfType<ListNode>(
+          const parentList = getNearestNodeOfType<pkglist.ListNode>(
             anchorNode,
             ListNode,
           );

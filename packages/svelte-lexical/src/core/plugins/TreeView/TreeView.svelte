@@ -13,7 +13,8 @@
   import pkghtml from '@lexical/html';
   const {$generateHtmlFromNodes: generateHtmlFromNodes} = pkghtml;
   import pkglink from '@lexical/link';
-  const {$isLinkNode: isLinkNode, LinkNode} = pkglink;
+  const {$isLinkNode: isLinkNode} = pkglink;
+  import type {LinkNode} from '@lexical/link';
   import pkgmark from '@lexical/mark';
   const {$isMarkNode: isMarkNode} = pkgmark;
   import pkgUtil from '@lexical/utils';
