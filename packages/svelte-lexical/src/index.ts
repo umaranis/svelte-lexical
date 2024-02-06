@@ -91,3 +91,8 @@ export {default as CloseCircleButton} from './components/generic/button/CloseCir
 
 // util
 export {CAN_USE_DOM} from './environment/canUseDOM';
+export {
+  isNodeSelected,
+  clearSelection,
+  createNodeSelectionStore,
+} from './core/nodeSelectionStore';
