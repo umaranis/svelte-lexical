@@ -199,7 +199,7 @@
       </div>
     {:else}
       <div class="link-view">
-        <a href={linkUrl} target="_blank" rel="noopener noreferrer">
+        <a href={sanitizeUrl(linkUrl)} target="_blank" rel="noopener noreferrer">
           {linkUrl}
         </a>
         <!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
