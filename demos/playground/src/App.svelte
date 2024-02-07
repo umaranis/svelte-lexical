@@ -17,7 +17,7 @@
     </a>
   </p>
 
-  <!-- `text-align: left` added to reset the center text alignement of the main div. 
+  <!-- `text-align: left` added to reset the center text alignment of the main div.
     Shouldn't there be a way in lexical to handle this?
     Check if lexical is affected by this by enclosing editor in a center aligned div
   -->
