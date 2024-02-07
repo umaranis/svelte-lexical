@@ -16,8 +16,6 @@
   export let awarenessData: object | undefined = undefined;
 
   onMount(() => {
-    const {awareness} = provider;
-
     return mergeRegister(
       editor.registerCommand(
         FOCUS_COMMAND,
