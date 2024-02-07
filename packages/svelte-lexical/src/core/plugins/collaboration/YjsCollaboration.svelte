@@ -32,6 +32,7 @@
   export let shouldBootstrap: boolean;
   export let cursorsContainerRef: HTMLElement | null = null;
   export let initialEditorState: InitialEditorStateType | null = null;
+  export let awarenessData: object | undefined = undefined;
 
   let isReloadingDoc = false;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -95,7 +96,7 @@
       name,
       color,
       document.activeElement === editor.getRootElement(),
-      awareness,
+      awarenessData || {},
     );
 
     const onProviderDocReload = (ydoc: Doc) => {

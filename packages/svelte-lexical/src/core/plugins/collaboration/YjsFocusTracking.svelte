@@ -13,6 +13,7 @@
   export let provider: Provider;
   export let name: string;
   export let color: string;
+  export let awarenessData: object | undefined = undefined;
 
   onMount(() => {
     const {awareness} = provider;
@@ -21,7 +22,7 @@
       editor.registerCommand(
         FOCUS_COMMAND,
         () => {
-          setLocalStateFocus(provider, name, color, true, awareness);
+          setLocalStateFocus(provider, name, color, true, awarenessData || {});
           return false;
         },
         COMMAND_PRIORITY_EDITOR,
@@ -29,7 +30,7 @@
       editor.registerCommand(
         BLUR_COMMAND,
         () => {
-          setLocalStateFocus(provider, name, color, false, awareness);
+          setLocalStateFocus(provider, name, color, false, awarenessData || {});
           return false;
         },
         COMMAND_PRIORITY_EDITOR,

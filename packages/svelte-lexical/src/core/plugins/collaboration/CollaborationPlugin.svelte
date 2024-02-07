@@ -28,6 +28,7 @@
   export let cursorsContainerRef: HTMLElement | null = null;
   export let initialEditorState: InitialEditorStateType | null = null;
   export let excludedProperties: ExcludedProperties | undefined = undefined;
+  export let awarenessData: object | undefined = undefined;
 
   const collabContext = useCollaborationContext(username, cursorColor);
 
@@ -67,7 +68,8 @@
   {color}
   {shouldBootstrap}
   {cursorsContainerRef}
-  {initialEditorState} />
+  {initialEditorState}
+  {awarenessData} />
 
 <YjsHistory {editor} {binding} />
-<YjsFocusTracking {editor} {provider} {name} {color} />
+<YjsFocusTracking {editor} {provider} {name} {color} {awarenessData}/>
