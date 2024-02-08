@@ -53,4 +53,10 @@
     display: inline-block;
     pointer-events: none;
   }
+
+  @media (max-width: 1025px) {
+    .Placeholder__root {
+      left: 8px;
+    }
+  }
 </style>

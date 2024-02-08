@@ -6,7 +6,7 @@
   tab-size: 1;
   outline: 0;
   padding: 10px; /* when updated from lexical, left and right padding increases a lot which only makes sense when block rearrange handle is enabled (not implemented yet and won't be included in simple editors) */
-  min-height: 150px; /* when updated to latest from lexical, empty editor only receives focus when you click on the first line inside the editor. */
+  min-height: 150px;
 }
 
 @media (max-width: 1025px) {

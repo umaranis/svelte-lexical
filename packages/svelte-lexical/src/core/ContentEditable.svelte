@@ -54,6 +54,7 @@
   aria-labelledby={ariaLabelledBy}
   aria-multiline={ariaMultiline}
   aria-owns={!isEditable ? null : ariaOwns}
+  aria-readonly={!isEditable ? true : undefined}
   aria-required={ariaRequired}
   autocapitalize={autoCapitalize}
   class={className}
@@ -61,7 +62,7 @@
   data-testid={testid}
   {id}
   bind:this={ref}
-  role={!isEditable ? undefined : role}
+  {role}
   spellcheck={spellCheck}
   {style}
   tabindex={tabIndex} />
