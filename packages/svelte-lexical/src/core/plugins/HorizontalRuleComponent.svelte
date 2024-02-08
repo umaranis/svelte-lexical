@@ -33,7 +33,6 @@
       if (isHorizontalRuleNode(node)) {
         node.remove();
       }
-      $isSelected = false;
     }
     return false;
   }

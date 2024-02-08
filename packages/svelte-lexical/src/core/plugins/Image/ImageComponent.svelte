@@ -83,7 +83,6 @@
       if (isImageNode(node)) {
         node.remove();
       }
-      $isSelected = false;
     }
     return false;
   };
