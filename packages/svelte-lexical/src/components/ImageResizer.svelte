@@ -128,6 +128,8 @@
     const controlWrapper = controlWrapperRef;
 
     if (image !== null && controlWrapper !== null) {
+      event.preventDefault();
+
       const {width, height} = image.getBoundingClientRect();
       const positioning = positioningRef;
       positioning.startWidth = width;
