@@ -8,6 +8,7 @@
     type LexicalEditor,
   } from 'lexical';
   import {onMount} from 'svelte';
+  import {CAN_REDO_COMMAND, CAN_UNDO_COMMAND} from 'lexical';
 
   export let editor: LexicalEditor;
   export let binding: Binding;
@@ -22,6 +23,21 @@
     const redo = () => {
       undoManager.redo();
     };
+
+    // Exposing undo and redo states
+    const updateUndoRedoStates = () => {
+      editor.dispatchCommand(
+        CAN_UNDO_COMMAND,
+        undoManager.undoStack.length > 0,
+      );
+      editor.dispatchCommand(
+        CAN_REDO_COMMAND,
+        undoManager.redoStack.length > 0,
+      );
+    };
+    undoManager.on('stack-item-added', updateUndoRedoStates);
+    undoManager.on('stack-item-popped', updateUndoRedoStates);
+    undoManager.on('stack-cleared', updateUndoRedoStates);
 
     return mergeRegister(
       editor.registerCommand(
@@ -40,6 +56,11 @@
         },
         COMMAND_PRIORITY_EDITOR,
       ),
+      () => {
+        undoManager.off('stack-item-added', updateUndoRedoStates);
+        undoManager.off('stack-item-popped', updateUndoRedoStates);
+        undoManager.off('stack-cleared', updateUndoRedoStates);
+      },
     );
   });
 
