@@ -5,3 +5,4 @@ packages/*/dist/
 /.idea/
 **/playwright-report/index.html
 /demos/playground/playwright-report/
+/demos/playground/test-results/

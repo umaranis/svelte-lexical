@@ -13,8 +13,7 @@
     $isRangeSelection as isRangeSelection,
     CLICK_COMMAND,
     COMMAND_PRIORITY_CRITICAL,
-    type LexicalNode,
-    type RangeSelection,
+    COMMAND_PRIORITY_LOW,
     SELECTION_CHANGE_COMMAND,
   } from 'lexical';
   import {writable} from 'svelte/store';
@@ -30,40 +29,18 @@
   const isLink = writable(false);
   let isEditMode = writable(false);
 
-  function getLinkElements(
-    selection: RangeSelection,
-  ): Array<LexicalNode | null> {
-    const node = getSelectedNode(selection);
-    const linkParent = findMatchingParent(node, isLinkNode);
-    const autoLinkParent = findMatchingParent(node, isAutoLinkNode);
-
-    return [linkParent, autoLinkParent];
-  }
-
   function updateToolbar() {
     const selection = getSelection();
     if (isRangeSelection(selection)) {
-      const [linkParent, autoLinkParent] = getLinkElements(selection);
+      const node = getSelectedNode(selection);
+      const linkParent = findMatchingParent(node, isLinkNode);
+      const autoLinkParent = findMatchingParent(node, isAutoLinkNode);
 
       // We don't want this menu to open for auto links.
-      if (linkParent != null && autoLinkParent == null) {
+      if (linkParent !== null && autoLinkParent === null) {
         $isLink = true;
       } else {
         $isLink = false;
-      }
-    }
-  }
-
-  function openLinkInNewTab(_payload: MouseEvent) {
-    const selection = getSelection();
-    if (isRangeSelection(selection)) {
-      const [linkParent, autoLinkParent] = getLinkElements(selection);
-      const url = linkParent?.__url || autoLinkParent?.__url;
-      if (
-        (linkParent != null || autoLinkParent != null) &&
-        (_payload?.metaKey || _payload?.ctrlKey)
-      ) {
-        window.open(url, '_blank');
       }
     }
   }
@@ -86,11 +63,19 @@
       ),
       editor.registerCommand(
         CLICK_COMMAND,
-        (_payload, newEditor) => {
-          openLinkInNewTab(_payload);
+        (payload) => {
+          const selection = getSelection();
+          if (isRangeSelection(selection)) {
+            const node = getSelectedNode(selection);
+            const linkNode = findMatchingParent(node, isLinkNode);
+            if (isLinkNode(linkNode) && (payload.metaKey || payload.ctrlKey)) {
+              window.open(linkNode.getURL(), '_blank');
+              return true;
+            }
+          }
           return false;
         },
-        COMMAND_PRIORITY_CRITICAL,
+        COMMAND_PRIORITY_LOW,
       ),
       editor.registerCommand(
         TOGGLE_LINK_COMMAND,
