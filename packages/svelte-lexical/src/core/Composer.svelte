@@ -8,16 +8,7 @@
   export type InitialConfigType = Readonly<{
     editor__DEPRECATED?: LexicalEditor | null;
     namespace: string;
-    nodes?: ReadonlyArray<
-      | Klass<LexicalNode>
-      | {
-          replace: Klass<LexicalNode>;
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          with: <T extends {new (...args: any): any}>(
-            node: InstanceType<T>,
-          ) => LexicalNode;
-        }
-    >;
+    nodes?: ReadonlyArray<Klass<LexicalNode> | LexicalNodeReplacement>;
     onError: (error: Error, editor: LexicalEditor) => void;
     editable?: boolean;
     theme?: EditorThemeClasses;
@@ -34,6 +25,7 @@
     type Klass,
     type LexicalEditor,
     type LexicalNode,
+    type LexicalNodeReplacement,
   } from 'lexical';
   import {onMount} from 'svelte';
   import {initializeEditor} from './initializeEditor';
