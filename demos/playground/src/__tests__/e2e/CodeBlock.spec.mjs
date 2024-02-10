@@ -30,8 +30,8 @@ async function toggleCodeBlock(page) {
 }
 
 test.describe('CodeBlock', () => {
-  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test.fixme('Can create code block with markdown', async ({page, isRichText}) => {
+  test.beforeEach(({ isCollab, page }) => initialize({ isCollab, page }));
+  test.fixme('Can create code block with markdown', async ({ page, isRichText }) => {
     await focusEditor(page);
     await page.keyboard.type('``` alert(1);');
     if (isRichText) {
@@ -1008,7 +1008,7 @@ test.describe('CodeBlock', () => {
     {
       expectedHTML: html`
         <p class="PlaygroundEditorTheme__paragraph">
-          <code data-lexical-text="true">
+          <code spellcheck="false" data-lexical-text="true">
             <span class="PlaygroundEditorTheme__textCode">12</span>
           </code>
         </p>
