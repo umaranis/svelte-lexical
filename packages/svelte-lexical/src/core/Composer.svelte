@@ -13,6 +13,7 @@
     editable?: boolean;
     theme?: EditorThemeClasses;
     editorState?: InitialEditorStateType;
+    html?: HTMLConfig;
   }>;
 </script>
 
@@ -26,6 +27,7 @@
     type LexicalEditor,
     type LexicalNode,
     type LexicalNodeReplacement,
+    type HTMLConfig,
   } from 'lexical';
   import {onMount} from 'svelte';
   import {initializeEditor} from './initializeEditor';
@@ -44,10 +46,12 @@
     onError,
     editorState: initialEditorState,
     editable,
+    html,
   } = initialConfig;
 
   const editor = createEditor({
     editable,
+    html,
     namespace,
     nodes,
     onError: (error) => onError(error, editor),
