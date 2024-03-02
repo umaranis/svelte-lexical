@@ -10,6 +10,11 @@
     "directory": "svelte-lexical"
   },
   "svelte": "src/index.ts",
+  "exports": {
+    ".": {
+      "svelte": "./dist/index.js"
+    }
+  },
   "module": "dist/index.mjs",
   "main": "dist/index.js",
   "scripts": {
