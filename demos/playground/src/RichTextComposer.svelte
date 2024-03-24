@@ -50,7 +50,7 @@
 
   const settings: SettingsStore = getContext('settings');
   const skipCollaborationInit =
-    // @ts-ignore split view has right and let frames
+    // @ts-expect-error split view has right and let frames
     window.parent != null && window.parent.frames.right === window;
 
   $: placeholderText = $settings.isCollab
