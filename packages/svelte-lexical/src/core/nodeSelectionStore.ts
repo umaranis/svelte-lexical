@@ -61,11 +61,12 @@ export function createNodeSelectionStore(
           selection = $createNodeSelection();
           $setSelection(selection);
         }
-
-        if (selected) {
-          selection.add(nodeKey);
-        } else {
-          selection.delete(nodeKey);
+        if ($isNodeSelection(selection)) {
+          if (selected) {
+            selection.add(nodeKey);
+          } else {
+            selection.delete(nodeKey);
+          }
         }
       });
     },

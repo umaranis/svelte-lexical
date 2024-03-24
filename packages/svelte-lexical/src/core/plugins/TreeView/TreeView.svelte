@@ -1,12 +1,12 @@
 <script lang="ts">
   import type {
+    BaseSelection,
     EditorState,
     ElementNode,
     GridSelection,
     LexicalCommand,
     LexicalEditor,
     LexicalNode,
-    NodeSelection,
     RangeSelection,
   } from 'lexical';
 
@@ -20,6 +20,7 @@
     $isElementNode as isElementNode,
     $isRangeSelection as isRangeSelection,
     $isTextNode as isTextNode,
+    $isNodeSelection as isNodeSelection,
     DEPRECATED_$isGridSelection,
   } from 'lexical';
   import {onMount} from 'svelte';
@@ -174,7 +175,8 @@
     return res;
   }
 
-  function printNodeSelection(selection: NodeSelection): string {
+  function printNodeSelection(selection: BaseSelection): string {
+    if (!isNodeSelection(selection)) return '';
     return `: node\n  └ [${Array.from(selection._nodes).join(', ')}]`;
   }
 
@@ -448,7 +450,7 @@
     isSelected: boolean;
     node: LexicalNode;
     nodeKeyDisplay: string;
-    selection: GridSelection | NodeSelection | RangeSelection | null;
+    selection: BaseSelection | null;
     typeDisplay: string;
   }) {
     // No selection or node is not selected.

@@ -10,10 +10,7 @@
   import {
     $getSelection as getSelection,
     $isNodeSelection as isNodeSelection,
-    type GridSelection,
     type LexicalEditor,
-    type NodeSelection,
-    type RangeSelection,
     type LexicalCommand,
     $getNodeByKey as getNodeByKey,
     $isRangeSelection as isRangeSelection,
@@ -26,6 +23,7 @@
     KEY_BACKSPACE_COMMAND,
     KEY_ESCAPE_COMMAND,
     KEY_ENTER_COMMAND,
+    type BaseSelection,
   } from 'lexical';
   import {onMount} from 'svelte';
   import {mergeRegister} from '@lexical/utils';
@@ -57,7 +55,7 @@
   $: heightCss = height === 'inherit' ? 'inherit' : height + 'px';
   $: widthCss = width === 'inherit' ? 'inherit' : width + 'px';
 
-  let selection: RangeSelection | NodeSelection | GridSelection | null = null;
+  let selection: BaseSelection | null = null;
 
   let imageRef: HTMLImageElement | null;
   let buttonRef: HTMLButtonElement | null;

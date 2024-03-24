@@ -12,10 +12,8 @@
     COMMAND_PRIORITY_LOW,
     KEY_ESCAPE_COMMAND,
     SELECTION_CHANGE_COMMAND,
-    type GridSelection,
     type LexicalEditor,
-    type NodeSelection,
-    type RangeSelection,
+    type BaseSelection,
   } from 'lexical';
   import {onMount} from 'svelte';
   import type {Writable} from 'svelte/store';
@@ -32,8 +30,7 @@
   let linkUrl = '';
   let editedLinkUrl = '';
   export let isEditMode: Writable<boolean>;
-  let lastSelection: RangeSelection | GridSelection | NodeSelection | null =
-    null;
+  let lastSelection: BaseSelection | null = null;
 
   $: if ($isEditMode && inputRef) {
     inputRef.focus();
