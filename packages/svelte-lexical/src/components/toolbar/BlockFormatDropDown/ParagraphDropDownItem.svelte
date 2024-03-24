@@ -5,7 +5,6 @@
   import type {blockTypeToBlockName} from './blockTypeToBlockName';
   import {
     $getSelection as getSelection,
-    $isRangeSelection as isRangeSelection,
     $createParagraphNode as createParagraphNode,
     $INTERNAL_isPointSelection as INTERNAL_PointSelection,
   } from 'lexical';
