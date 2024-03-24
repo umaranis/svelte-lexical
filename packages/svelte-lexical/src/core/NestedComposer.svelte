@@ -26,6 +26,7 @@
     const parentNodes = (initialEditor._nodes = new Map(parentEditor._nodes));
     for (const [type, entry] of parentNodes) {
       initialEditor._nodes.set(type, {
+        exportDOM: entry.exportDOM,
         klass: entry.klass,
         replace: entry.replace,
         replaceWithKlass: entry.replaceWithKlass,
@@ -35,7 +36,9 @@
   } else {
     for (const klass of initialNodes) {
       const type = klass.getType();
+      const registeredKlass = initialEditor._nodes.get(klass.getType());
       initialEditor._nodes.set(type, {
+        exportDOM: registeredKlass ? registeredKlass.exportDOM : undefined,
         klass,
         replace: null,
         replaceWithKlass: null,
