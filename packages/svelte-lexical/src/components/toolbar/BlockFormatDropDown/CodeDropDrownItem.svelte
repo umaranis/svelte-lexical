@@ -8,7 +8,7 @@
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
-    DEPRECATED_$isGridSelection,
+    $INTERNAL_isPointSelection as INTERNAL_PointSelection,
   } from 'lexical';
   import {$createCodeNode as createCodeNode} from '@lexical/code';
 
@@ -21,10 +21,7 @@
       editor.update(() => {
         let selection = getSelection();
 
-        if (
-          isRangeSelection(selection) ||
-          DEPRECATED_$isGridSelection(selection)
-        ) {
+        if (INTERNAL_PointSelection(selection)) {
           if (selection.isCollapsed()) {
             setBlocksType(selection, () => createCodeNode());
           } else {

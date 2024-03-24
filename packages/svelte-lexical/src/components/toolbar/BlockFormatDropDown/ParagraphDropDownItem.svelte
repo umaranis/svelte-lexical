@@ -7,7 +7,7 @@
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
     $createParagraphNode as createParagraphNode,
-    DEPRECATED_$isGridSelection,
+    $INTERNAL_isPointSelection as INTERNAL_PointSelection,
   } from 'lexical';
   import {$setBlocksType as setBlocksType} from '@lexical/selection';
   import {getEditor} from '../../../core/composerContext';
@@ -20,10 +20,7 @@
     if ($blockType !== 'paragraph') {
       editor.update(() => {
         const selection = getSelection();
-        if (
-          isRangeSelection(selection) ||
-          DEPRECATED_$isGridSelection(selection)
-        )
+        if (INTERNAL_PointSelection(selection))
           setBlocksType(selection, () => createParagraphNode());
       });
     }

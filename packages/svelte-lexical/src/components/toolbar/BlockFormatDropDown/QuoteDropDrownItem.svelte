@@ -7,8 +7,7 @@
   import {$setBlocksType as setBlocksType} from '@lexical/selection';
   import {
     $getSelection as getSelection,
-    $isRangeSelection as isRangeSelection,
-    DEPRECATED_$isGridSelection,
+    $INTERNAL_isPointSelection as INTERNAL_PointSelection,
   } from 'lexical';
   import {$createQuoteNode as createQuoteNode} from '@lexical/rich-text';
 
@@ -20,10 +19,7 @@
     if ($blockType !== 'quote') {
       editor.update(() => {
         const selection = getSelection();
-        if (
-          isRangeSelection(selection) ||
-          DEPRECATED_$isGridSelection(selection)
-        ) {
+        if (INTERNAL_PointSelection(selection)) {
           setBlocksType(selection, () => createQuoteNode());
         }
       });

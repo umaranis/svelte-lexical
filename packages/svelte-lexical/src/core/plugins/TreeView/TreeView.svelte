@@ -8,6 +8,7 @@
     LexicalEditor,
     LexicalNode,
     RangeSelection,
+    INTERNAL_PointSelection,
   } from 'lexical';
 
   import {$generateHtmlFromNodes as generateHtmlFromNodes} from '@lexical/html';
@@ -533,7 +534,7 @@
 
   function getSelectionStartEnd(
     node: LexicalNode,
-    selection: RangeSelection | GridSelection,
+    selection: INTERNAL_PointSelection,
   ): [number, number] {
     const anchor = selection.anchor;
     const focus = selection.focus;
