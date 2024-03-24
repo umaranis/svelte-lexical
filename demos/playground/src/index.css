@@ -262,7 +262,7 @@ pre::-webkit-scrollbar-thumb {
   background: #fff;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
-  margin-top: 25px;
+  position: fixed;
 }
 
 .typeahead-popover ul {
@@ -1445,7 +1445,8 @@ button.action-button:disabled {
   pointer-events: none;
 }
 
-.toolbar > .divider { /* need '>' to avoid conflict with `.dropdown .divider` in svelte-lexical  */
+.toolbar > .divider {
+  /* need '>' to avoid conflict with `.dropdown .divider` in svelte-lexical  */
   width: 1px;
   background-color: #eee;
   margin: 0 4px;
