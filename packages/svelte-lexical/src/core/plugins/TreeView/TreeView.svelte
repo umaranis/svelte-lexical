@@ -3,7 +3,6 @@
     BaseSelection,
     EditorState,
     ElementNode,
-    GridSelection,
     LexicalCommand,
     LexicalEditor,
     LexicalNode,
@@ -23,8 +22,11 @@
     $isRangeSelection as isRangeSelection,
     $isTextNode as isTextNode,
     $isNodeSelection as isNodeSelection,
-    DEPRECATED_$isGridSelection,
   } from 'lexical';
+  import {
+    $isGridSelection as isGridSelection,
+    type GridSelection,
+  } from '@lexical/table';
   import {onMount} from 'svelte';
   import {getEditor} from '../../composerContext';
   import CommandsLog from './CommandsLog.svelte';
@@ -236,7 +238,7 @@
         ? ': null'
         : isRangeSelection(selection)
         ? printRangeSelection(selection)
-        : DEPRECATED_$isGridSelection(selection)
+        : isGridSelection(selection)
         ? printGridSelection(selection)
         : printNodeSelection(selection);
     });
