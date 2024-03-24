@@ -1,7 +1,10 @@
 <script lang="ts">
   import './FloatingLinkEditor.css';
   import {$isLinkNode as isLinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';
-  import {mergeRegister} from '@lexical/utils';
+  import {
+    mergeRegister,
+    $findMatchingParent as findMatchingParent,
+  } from '@lexical/utils';
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
@@ -97,9 +100,9 @@
     const selection = getSelection();
     if (isRangeSelection(selection)) {
       const node = getSelectedNode(selection);
-      const parent = node.getParent();
-      if (isLinkNode(parent)) {
-        linkUrl = parent.getURL();
+      const linkParent = findMatchingParent(node, isLinkNode);
+      if (isLinkNode(linkParent)) {
+        linkUrl = linkParent.getURL();
       } else if (isLinkNode(node)) {
         linkUrl = node.getURL();
       } else {
@@ -199,7 +202,10 @@
       </div>
     {:else}
       <div class="link-view">
-        <a href={sanitizeUrl(linkUrl)} target="_blank" rel="noopener noreferrer">
+        <a
+          href={sanitizeUrl(linkUrl)}
+          target="_blank"
+          rel="noopener noreferrer">
           {linkUrl}
         </a>
         <!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
