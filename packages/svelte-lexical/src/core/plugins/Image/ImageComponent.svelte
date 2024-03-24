@@ -1,5 +1,8 @@
 <script context="module" lang="ts">
   const imageCache = new Set();
+
+  export const RIGHT_CLICK_IMAGE_COMMAND: LexicalCommand<MouseEvent> =
+    createCommand('RIGHT_CLICK_IMAGE_COMMAND');
 </script>
 
 <script lang="ts">
@@ -11,7 +14,10 @@
     type LexicalEditor,
     type NodeSelection,
     type RangeSelection,
+    type LexicalCommand,
     $getNodeByKey as getNodeByKey,
+    $isRangeSelection as isRangeSelection,
+    createCommand,
     SELECTION_CHANGE_COMMAND,
     COMMAND_PRIORITY_LOW,
     CLICK_COMMAND,
@@ -125,10 +131,47 @@
     return false;
   };
 
+  const onClick = (payload: MouseEvent) => {
+    const event = payload;
+
+    if (isResizing) {
+      return true;
+    }
+    if (event.target === imageRef) {
+      if (event.shiftKey) {
+        $isSelected = !$isSelected;
+      } else {
+        clearSelection(editor);
+        $isSelected = true;
+      }
+      return true;
+    }
+
+    return false;
+  };
+
+  const onRightClick = (event: MouseEvent): void => {
+    editor.getEditorState().read(() => {
+      const latestSelection = getSelection();
+      const domElement = event.target as HTMLElement;
+      if (
+        domElement.tagName === 'IMG' &&
+        isRangeSelection(latestSelection) &&
+        latestSelection.getNodes().length === 1
+      ) {
+        editor.dispatchCommand(RIGHT_CLICK_IMAGE_COMMAND, event as MouseEvent);
+      }
+    });
+  };
+
   onMount(() => {
-    return mergeRegister(
+    let isMounted = true;
+    const rootElement = editor.getRootElement();
+    const unregister = mergeRegister(
       editor.registerUpdateListener(({editorState}) => {
-        selection = editorState.read(() => getSelection());
+        if (isMounted) {
+          selection = editorState.read(() => getSelection());
+        }
       }),
       editor.registerCommand(
         SELECTION_CHANGE_COMMAND,
@@ -140,24 +183,12 @@
       ),
       editor.registerCommand<MouseEvent>(
         CLICK_COMMAND,
-        (payload) => {
-          const event = payload;
-
-          if (isResizing) {
-            return true;
-          }
-          if (event.target === imageRef) {
-            if (event.shiftKey) {
-              $isSelected = !$isSelected;
-            } else {
-              clearSelection(editor);
-              $isSelected = true;
-            }
-            return true;
-          }
-
-          return false;
-        },
+        onClick,
+        COMMAND_PRIORITY_LOW,
+      ),
+      editor.registerCommand<MouseEvent>(
+        RIGHT_CLICK_IMAGE_COMMAND,
+        onClick,
         COMMAND_PRIORITY_LOW,
       ),
       editor.registerCommand(
@@ -190,6 +221,14 @@
         COMMAND_PRIORITY_LOW,
       ),
     );
+
+    rootElement?.addEventListener('contextmenu', onRightClick);
+
+    return () => {
+      isMounted = false;
+      unregister();
+      rootElement?.removeEventListener('contextmenu', onRightClick);
+    };
   });
 
   const setShowCaption = () => {
