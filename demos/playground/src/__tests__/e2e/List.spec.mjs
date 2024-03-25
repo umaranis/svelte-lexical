@@ -1338,7 +1338,7 @@ test.describe('Nested List', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
           <li
             aria-checked="true"
             role="checkbox"
@@ -1360,7 +1360,7 @@ test.describe('Nested List', () => {
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked PlaygroundEditorTheme__nestedListItem"
             value="3">
-            <ul class="PlaygroundEditorTheme__ul">
+            <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
               <li
                 aria-checked="false"
                 role="checkbox"
@@ -1396,7 +1396,7 @@ test.describe('Nested List', () => {
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
             value="3">
-            <ul class="PlaygroundEditorTheme__ul">
+            <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
               <li
                 aria-checked="false"
                 role="checkbox"
@@ -1415,7 +1415,7 @@ test.describe('Nested List', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
           <li
             aria-checked="false"
             role="checkbox"
@@ -1437,7 +1437,7 @@ test.describe('Nested List', () => {
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked PlaygroundEditorTheme__nestedListItem"
             value="3">
-            <ul class="PlaygroundEditorTheme__ul">
+            <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
               <li
                 aria-checked="false"
                 role="checkbox"

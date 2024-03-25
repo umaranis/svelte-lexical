@@ -2816,7 +2816,7 @@ test.describe('CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
           <li
             role="checkbox"
             tabindex="-1"
@@ -2852,7 +2852,7 @@ test.describe('CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
           <li
             role="checkbox"
             tabindex="-1"
