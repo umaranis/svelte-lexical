@@ -7,12 +7,14 @@
   ) {
     return (text: string) => {
       const match = regExp.exec(text);
-      if (match === null) return null;
+      if (match === null) {
+        return null;
+      }
       return {
         index: match.index,
         length: match[0].length,
         text: match[0],
-        url: urlTransformer(text),
+        url: urlTransformer(match[0]),
       };
     };
   }
