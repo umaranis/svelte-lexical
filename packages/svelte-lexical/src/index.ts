@@ -58,6 +58,7 @@ export {default as InsertHRDropDownItem} from './components/toolbar/InsertDropDo
 export {default as InsertImageDropDownItem} from './components/toolbar/InsertDropDown/InsertImageDropDownItem.svelte';
 export {default as FontFamilyDropDown} from './components/toolbar/FontFamilyDropDown.svelte';
 export {default as FontSizeDropDown} from './components/toolbar/FontSizeDropDown.svelte';
+export {default as FontSizeEntry} from './components/toolbar/FontSizeEntry.svelte';
 export {default as InsertLink} from './components/toolbar/InsertLink.svelte';
 export {default as CodeLanguageDropDown} from './components/toolbar/CodeLanguageDropDown.svelte';
 // dialogs

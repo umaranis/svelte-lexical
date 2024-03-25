@@ -15,6 +15,7 @@
     CodeLanguageDropDown,
     FontFamilyDropDown,
     FontSizeDropDown,
+    FontSizeEntry,
     BoldButton,
     ItalicButton,
     UnderlineButton,
@@ -54,6 +55,7 @@
   {:else}
     <FontFamilyDropDown />
     <FontSizeDropDown />
+    <FontSizeEntry />
     <Divider />
     <BoldButton />
     <ItalicButton />

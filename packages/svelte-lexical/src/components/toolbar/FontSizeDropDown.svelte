@@ -5,7 +5,7 @@
     $isRangeSelection as isRangeSelection,
   } from 'lexical';
   import {getContext} from 'svelte';
-  import type {Writable} from 'svelte/store';
+  import type {Readable} from 'svelte/store';
   import {getEditor, getIsEditable} from '../../core/composerContext';
   import DropDown from '../generic/dropdown/DropDown.svelte';
   import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
@@ -25,7 +25,7 @@
   ];
 
   const editor = getEditor();
-  const value: Writable<string> = getContext('fontSize');
+  const value: Readable<string> = getContext('fontSize');
   const style = 'font-size';
   const isEditable = getIsEditable();
 
