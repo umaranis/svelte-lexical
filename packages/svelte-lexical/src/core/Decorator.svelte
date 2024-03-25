@@ -1,8 +1,17 @@
 <script lang="ts">
   import {mergeRegister} from '@lexical/utils';
-  import {DecoratorNode, type LexicalEditor} from 'lexical';
+  import {
+    DecoratorNode,
+    type KlassConstructor,
+    type LexicalEditor,
+    type LexicalNode,
+  } from 'lexical';
   import {getAllContexts, onMount, SvelteComponent} from 'svelte';
   import {getEditor} from './composerContext';
+
+  type MyKlassConstructor = KlassConstructor<typeof LexicalNode> & {
+    skipDecorateRender: boolean;
+  };
 
   const contexts = getAllContexts();
 
@@ -20,7 +29,7 @@
     editor._nodes.forEach((n) => {
       if (
         n.klass.prototype instanceof DecoratorNode &&
-        !n.klass.skipDecorateRender
+        !(n.klass as MyKlassConstructor).skipDecorateRender
       ) {
         let unreg = editor.registerMutationListener(
           n.klass,
