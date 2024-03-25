@@ -5,10 +5,7 @@
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
   import type {blockTypeToBlockName} from './blockTypeToBlockName';
   import {$setBlocksType as setBlocksType} from '@lexical/selection';
-  import {
-    $getSelection as getSelection,
-    $INTERNAL_isPointSelection as INTERNAL_PointSelection,
-  } from 'lexical';
+  import {$getSelection as getSelection} from 'lexical';
   import {$createQuoteNode as createQuoteNode} from '@lexical/rich-text';
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
@@ -19,9 +16,7 @@
     if ($blockType !== 'quote') {
       editor.update(() => {
         const selection = getSelection();
-        if (INTERNAL_PointSelection(selection)) {
-          setBlocksType(selection, () => createQuoteNode());
-        }
+        setBlocksType(selection, () => createQuoteNode());
       });
     }
   };

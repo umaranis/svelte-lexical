@@ -1,9 +1,6 @@
 <script lang="ts">
   import {$patchStyleText as patchStyleText} from '@lexical/selection';
-  import {
-    $getSelection as getSelection,
-    $isRangeSelection as isRangeSelection,
-  } from 'lexical';
+  import {$getSelection as getSelection} from 'lexical';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
   import {getEditor, getIsEditable} from '../../core/composerContext';
@@ -27,7 +24,7 @@
   const handleClick = (option: string) => {
     editor.update(() => {
       const selection = getSelection();
-      if (isRangeSelection(selection)) {
+      if (selection !== null) {
         patchStyleText(selection, {
           [style]: option,
         });

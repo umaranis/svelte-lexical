@@ -1,9 +1,6 @@
 <script lang="ts">
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
-  import {
-    $getSelection as getSelection,
-    $INTERNAL_isPointSelection as INTERNAL_PointSelection,
-  } from 'lexical';
+  import {$getSelection as getSelection} from 'lexical';
   import {
     $createHeadingNode as createHeadingNode,
     type HeadingTagType,
@@ -24,9 +21,7 @@
     if ($blockType !== headingSize) {
       editor.update(() => {
         const selection = getSelection();
-        if (INTERNAL_PointSelection(selection)) {
-          setBlocksType(selection, () => createHeadingNode(headingSize));
-        }
+        setBlocksType(selection, () => createHeadingNode(headingSize));
       });
     }
   };

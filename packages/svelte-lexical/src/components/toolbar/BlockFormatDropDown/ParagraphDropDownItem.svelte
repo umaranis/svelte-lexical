@@ -6,7 +6,6 @@
   import {
     $getSelection as getSelection,
     $createParagraphNode as createParagraphNode,
-    $INTERNAL_isPointSelection as INTERNAL_PointSelection,
   } from 'lexical';
   import {$setBlocksType as setBlocksType} from '@lexical/selection';
   import {getEditor} from '../../../core/composerContext';
@@ -19,8 +18,7 @@
     if ($blockType !== 'paragraph') {
       editor.update(() => {
         const selection = getSelection();
-        if (INTERNAL_PointSelection(selection))
-          setBlocksType(selection, () => createParagraphNode());
+        setBlocksType(selection, () => createParagraphNode());
       });
     }
   };
