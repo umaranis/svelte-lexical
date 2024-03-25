@@ -23,8 +23,8 @@
     $isNodeSelection as isNodeSelection,
   } from 'lexical';
   import {
-    $isGridSelection as isGridSelection,
-    type GridSelection,
+    $isTableSelection as isTableSelection,
+    type TableSelection,
   } from '@lexical/table';
   import {onMount} from 'svelte';
   import {getEditor} from '../../composerContext';
@@ -183,8 +183,8 @@
     return `: node\n  └ [${Array.from(selection._nodes).join(', ')}]`;
   }
 
-  function printGridSelection(selection: GridSelection): string {
-    return `: grid\n  └ { grid: ${selection.gridKey}, anchorCell: ${selection.anchor.key}, focusCell: ${selection.focus.key} }`;
+  function printTableSelection(selection: TableSelection): string {
+    return `: table\n  └ { table: ${selection.tableKey}, anchorCell: ${selection.anchor.key}, focusCell: ${selection.focus.key} }`;
   }
 
   function generateContent(
@@ -237,8 +237,8 @@
         ? ': null'
         : isRangeSelection(selection)
         ? printRangeSelection(selection)
-        : isGridSelection(selection)
-        ? printGridSelection(selection)
+        : isTableSelection(selection)
+        ? printTableSelection(selection)
         : printNodeSelection(selection);
     });
 
