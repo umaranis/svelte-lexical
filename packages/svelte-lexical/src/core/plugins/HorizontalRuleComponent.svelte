@@ -32,6 +32,7 @@
       const node = getNodeByKey(nodeKey);
       if (isHorizontalRuleNode(node)) {
         node.remove();
+        return true;
       }
     }
     return false;
