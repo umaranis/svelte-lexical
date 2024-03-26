@@ -1,6 +1,11 @@
 <script lang="ts">
   import './FloatingLinkEditor.css';
-  import {$isLinkNode as isLinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';
+  import {
+    $isLinkNode as isLinkNode,
+    $isAutoLinkNode as isAutoLinkNode,
+    TOGGLE_LINK_COMMAND,
+    $createLinkNode as createLinkNode,
+  } from '@lexical/link';
   import {
     mergeRegister,
     $findMatchingParent as findMatchingParent,
@@ -161,6 +166,20 @@
     if (lastSelection !== null) {
       if (linkUrl !== '') {
         editor.dispatchCommand(TOGGLE_LINK_COMMAND, sanitizeUrl(editedLinkUrl));
+        editor.update(() => {
+          const selection = getSelection();
+          if (isRangeSelection(selection)) {
+            const parent = getSelectedNode(selection).getParent();
+            if (isAutoLinkNode(parent)) {
+              const linkNode = createLinkNode(parent.getURL(), {
+                rel: parent.__rel,
+                target: parent.__target,
+                title: parent.__title,
+              });
+              parent.replace(linkNode, true);
+            }
+          }
+        });
       }
       $isEditMode = false;
     }
