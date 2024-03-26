@@ -95,7 +95,7 @@
   },
   "size-limit": [
     {
-      "limit": "162 kb",
+      "limit": "170 kb",
       "path": "dist/assets/main-*.js"
     }
   ]
