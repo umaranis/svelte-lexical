@@ -222,7 +222,7 @@
 
     const hashtagAlpha = '[' + alpha + ']';
     const hashtagAlphanumeric = '[' + alphanumeric + ']';
-    const hashtagBoundary = '^|$|[^&/' + alphanumeric + hashChars + ']';
+    const hashtagBoundary = '^|$|[^&/' + alphanumeric + ']';
     const hashCharList = '[' + hashChars + ']';
 
     // A hashtag contains characters, numbers and underscores,
