@@ -11,3 +11,6 @@ packages/**/vite.prod.config.js
 flow-typed
 .github/CODEOWNERS
 .prettierignore
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
