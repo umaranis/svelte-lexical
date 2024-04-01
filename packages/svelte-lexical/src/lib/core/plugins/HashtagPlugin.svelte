@@ -4,7 +4,7 @@
     $createHashtagNode as createHashtagNode,
     HashtagNode,
   } from './HashtagNode';
-  import {registerLexicalTextEntity} from '@lexical/text';
+  import {registerLexicalTextEntity} from '../LexicalText';
   import {onMount} from 'svelte';
   import {mergeRegister} from '@lexical/utils';
   import {getEditor} from '../composerContext';

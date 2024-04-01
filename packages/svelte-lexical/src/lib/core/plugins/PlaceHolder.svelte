@@ -1,6 +1,6 @@
 <script lang="ts">
   import type {LexicalEditor} from 'lexical';
-  import {$canShowPlaceholderCurry as canShowPlaceholderCurry} from '@lexical/text';
+  import {$canShowPlaceholderCurry as canShowPlaceholderCurry} from '../LexicalText';
   import {getEditor} from '../composerContext';
   import {onMount} from 'svelte';
   import {mergeRegister} from '@lexical/utils';
