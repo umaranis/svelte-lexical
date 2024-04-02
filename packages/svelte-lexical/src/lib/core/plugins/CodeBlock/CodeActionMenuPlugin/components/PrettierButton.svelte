@@ -8,7 +8,7 @@
     loadPrettierFormat,
     loadPrettierParserByLang,
     PRETTIER_OPTIONS_BY_LANG,
-  } from './PrettierLangOptions';
+  } from './PrettierLangOptions.js';
 
   export let lang: string;
   const editor = getEditor();
@@ -40,7 +40,7 @@
         return;
       }
 
-      editor.update(() => {
+      editor.update(async () => {
         const codeNode = getNearestNodeFromDOMNode(codeDOMNode);
 
         if (isCodeNode(codeNode)) {
@@ -48,7 +48,7 @@
 
           let parsed = '';
           try {
-            parsed = format(content, options);
+            parsed = await format(content, options);
           } catch (error: unknown) {
             setError(error);
           }
