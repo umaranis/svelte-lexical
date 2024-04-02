@@ -9,7 +9,7 @@
     PASTE_COMMAND,
   } from 'lexical';
   import {onMount} from 'svelte';
-  import {getEditor} from '../../composerContext';
+  import {getEditor} from '../../composerContext.js';
 
   export let validateUrl: undefined | ((url: string) => boolean) = undefined;
 

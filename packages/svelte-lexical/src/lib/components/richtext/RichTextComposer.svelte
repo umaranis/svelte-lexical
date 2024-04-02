@@ -3,22 +3,22 @@
   import {HeadingNode, QuoteNode} from '@lexical/rich-text';
   import type {EditorThemeClasses, LexicalEditor} from 'lexical';
 
-  import Composer from '../../core/Composer.svelte';
-  import ContentEditable from '../../core/ContentEditable.svelte';
-  import SharedHistoryPlugin from '../../core/plugins/SharedHistoryPlugin.svelte';
-  import {HorizontalRuleNode} from '../../core/plugins/HorizontalRuleNode';
-  import {ImageNode} from '../../core/plugins/Image/ImageNode';
-  import ImagePlugin from '../../core/plugins/Image/ImagePlugin.svelte';
-  import ListPlugin from '../../core/plugins/ListPlugin.svelte';
-  import CheckListPlugin from '../../core/plugins/CheckListPlugin.svelte';
-  import HorizontalRulePlugin from '../../core/plugins/HorizontalRulePlugin.svelte';
-  import RichTextPlugin from '../../core/plugins/RichTextPlugin.svelte';
+  import Composer from '$lib/core/Composer.svelte';
+  import ContentEditable from '$lib/core/ContentEditable.svelte';
+  import SharedHistoryPlugin from '$lib/core/plugins/SharedHistoryPlugin.svelte';
+  import {HorizontalRuleNode} from '$lib/core/plugins/HorizontalRuleNode.js';
+  import {ImageNode} from '$lib/core/plugins/Image/ImageNode.js';
+  import ImagePlugin from '$lib/core/plugins/Image/ImagePlugin.svelte';
+  import ListPlugin from '$lib/core/plugins/ListPlugin.svelte';
+  import CheckListPlugin from '$lib/core/plugins/CheckListPlugin.svelte';
+  import HorizontalRulePlugin from '$lib/core/plugins/HorizontalRulePlugin.svelte';
+  import RichTextPlugin from '$lib/core/plugins/RichTextPlugin.svelte';
   import ActionBar from '../actionbar/ActionBar.svelte';
   import ToolbarRichText from './ToolbarRichText.svelte';
   import type {SvelteComponent} from 'svelte';
-  import PlaceHolder from '../../core/plugins/PlaceHolder.svelte';
-  import AutoFocusPlugin from '../../core/plugins/AutoFocusPlugin.svelte';
-  import CaptionEditorHistoryPlugin from '../../core/plugins/Image/CaptionEditorHistoryPlugin.svelte';
+  import PlaceHolder from '$lib/core/plugins/PlaceHolder.svelte';
+  import AutoFocusPlugin from '$lib/core/plugins/AutoFocusPlugin.svelte';
+  import CaptionEditorHistoryPlugin from '$lib/core/plugins/Image/CaptionEditorHistoryPlugin.svelte';
 
   export let theme: EditorThemeClasses;
 

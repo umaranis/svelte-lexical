@@ -9,8 +9,8 @@
   import {
     $createHorizontalRuleNode as createHorizontalRuleNode,
     INSERT_HORIZONTAL_RULE_COMMAND,
-  } from './HorizontalRuleNode';
-  import {getEditor} from '../composerContext';
+  } from './HorizontalRuleNode.js';
+  import {getEditor} from '../composerContext.js';
 
   const editor = getEditor();
 

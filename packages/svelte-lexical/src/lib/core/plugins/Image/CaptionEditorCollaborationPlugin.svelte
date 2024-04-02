@@ -1,6 +1,6 @@
 <script lang="ts">
   import CollaborationPlugin from '../collaboration/CollaborationPlugin.svelte';
-  import {setImageHistoryPluginType} from '../../composerContext';
+  import {setImageHistoryPluginType} from '../../composerContext.js';
   import type {Provider} from '@lexical/yjs';
   import type {Doc} from 'yjs';
 

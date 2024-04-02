@@ -6,7 +6,7 @@
   } from 'lexical';
   import {getContext} from 'svelte';
   import type {Readable} from 'svelte/store';
-  import {getEditor, getIsEditable} from '../../core/composerContext';
+  import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
   import DropDown from '../generic/dropdown/DropDown.svelte';
   import DropDownItem from '../generic/dropdown/DropDownItem.svelte';
 

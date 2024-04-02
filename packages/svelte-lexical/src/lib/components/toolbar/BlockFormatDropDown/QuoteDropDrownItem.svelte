@@ -1,9 +1,9 @@
 <script lang="ts">
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
-  import {getEditor} from '../../../core/composerContext';
+  import {getEditor} from '$lib/core/composerContext.js';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
-  import type {blockTypeToBlockName} from './blockTypeToBlockName';
+  import type {blockTypeToBlockName} from './blockTypeToBlockName.js';
   import {$setBlocksType as setBlocksType} from '@lexical/selection';
   import {$getSelection as getSelection} from 'lexical';
   import {$createQuoteNode as createQuoteNode} from '@lexical/rich-text';

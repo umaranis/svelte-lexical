@@ -14,8 +14,8 @@
   import {
     clearSelection,
     createNodeSelectionStore,
-  } from '../nodeSelectionStore';
-  import {$isHorizontalRuleNode as isHorizontalRuleNode} from './HorizontalRuleNode';
+  } from '../nodeSelectionStore.js';
+  import {$isHorizontalRuleNode as isHorizontalRuleNode} from './HorizontalRuleNode.js';
 
   export let editor: LexicalEditor;
   export let nodeKey: string;

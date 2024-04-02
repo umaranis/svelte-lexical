@@ -1,6 +1,6 @@
 <script lang="ts">
-  import {getActiveEditor} from '../../../core/composerContext';
-  import {INSERT_HORIZONTAL_RULE_COMMAND} from '../../../core/plugins/HorizontalRuleNode';
+  import {getActiveEditor} from '$lib/core/composerContext.js';
+  import {INSERT_HORIZONTAL_RULE_COMMAND} from '$lib/core/plugins/HorizontalRuleNode.js';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
 
   const activeEditor = getActiveEditor();

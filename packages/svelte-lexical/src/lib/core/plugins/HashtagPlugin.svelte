@@ -3,11 +3,11 @@
   import {
     $createHashtagNode as createHashtagNode,
     HashtagNode,
-  } from './HashtagNode';
-  import {registerLexicalTextEntity} from '../LexicalText';
+  } from './HashtagNode.js';
+  import {registerLexicalTextEntity} from '../LexicalText.js';
   import {onMount} from 'svelte';
   import {mergeRegister} from '@lexical/utils';
-  import {getEditor} from '../composerContext';
+  import {getEditor} from '../composerContext.js';
 
   function getHashtagRegexStringChars(): Readonly<{
     alpha: string;

@@ -19,7 +19,7 @@
     $getSelection as getSelection,
     TextNode,
   } from 'lexical';
-  import {getEditor} from '../../composerContext';
+  import {getEditor} from '../../composerContext.js';
   import {onMount} from 'svelte';
 
   type ChangeHandler = (url: string | null, prevUrl: string | null) => void;

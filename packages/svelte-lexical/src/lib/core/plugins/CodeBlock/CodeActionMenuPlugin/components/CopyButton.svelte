@@ -5,9 +5,9 @@
     $getSelection as getSelection,
     $setSelection as setSelection,
   } from 'lexical';
-  import {getEditor} from '../../../../composerContext';
+  import {getEditor} from '../../../../composerContext.js';
 
-  import {useDebounce} from '../utils';
+  import {useDebounce} from '../utils.js';
 
   const editor = getEditor();
   export let getCodeDOMNode: () => HTMLElement | null;

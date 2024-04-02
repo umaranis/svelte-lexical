@@ -1,6 +1,6 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {getRegisterItemFunc} from './utils';
+  import {getRegisterItemFunc} from './utils.js';
 
   let className: string;
   export {className as class};

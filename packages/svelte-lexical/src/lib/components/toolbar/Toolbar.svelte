@@ -3,7 +3,7 @@
 
   import StateStoreRichTextUpdator from './StateStoreRichTextUpdator.svelte';
   import {setContext} from 'svelte';
-  import {getEditor} from '../../core/composerContext';
+  import {getEditor} from '$lib/core/composerContext.js';
   import {onMount} from 'svelte';
   import type {NodeKey} from 'lexical';
 

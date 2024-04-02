@@ -6,7 +6,7 @@
     type HistoryState,
   } from '@lexical/history';
   import type {LexicalEditor} from 'lexical';
-  import {getEditor} from '../composerContext';
+  import {getEditor} from '../composerContext.js';
 
   const editor: LexicalEditor = getEditor();
   export let externalHistoryState: HistoryState = createEmptyHistoryState();

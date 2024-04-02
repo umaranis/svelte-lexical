@@ -22,9 +22,9 @@
   } from 'lexical';
   import {onMount} from 'svelte';
   import type {Writable} from 'svelte/store';
-  import getSelectedNode from '../../../components/toolbar/getSelectionInfo';
-  import {setFloatingElemPositionForLinkEditor} from './setFloatingElemPositionForLinkEditor';
-  import {sanitizeUrl} from './url';
+  import getSelectedNode from '../../../components/toolbar/getSelectionInfo.js';
+  import {setFloatingElemPositionForLinkEditor} from './setFloatingElemPositionForLinkEditor.js';
+  import {sanitizeUrl} from './url.js';
 
   export let editor: LexicalEditor;
   export let isLink: Writable<boolean>;

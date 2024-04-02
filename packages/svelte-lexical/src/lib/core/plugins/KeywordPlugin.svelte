@@ -4,10 +4,10 @@
   import {
     $createKeywordNode as createKeywordNode,
     KeywordNode,
-  } from './KeywordNode';
-  import {getEditor} from '../composerContext';
+  } from './KeywordNode.js';
+  import {getEditor} from '../composerContext.js';
   import {mergeRegister} from '@lexical/utils';
-  import {registerLexicalTextEntity} from '../LexicalText';
+  import {registerLexicalTextEntity} from '../LexicalText.js';
   import {onMount} from 'svelte';
 
   export let keywordsRegex: RegExp;

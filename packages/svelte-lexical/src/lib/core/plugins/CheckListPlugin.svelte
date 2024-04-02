@@ -26,7 +26,7 @@
     KEY_SPACE_COMMAND,
   } from 'lexical';
   import {onMount} from 'svelte';
-  import {getEditor} from '../composerContext';
+  import {getEditor} from '../composerContext.js';
 
   const editor: LexicalEditor = getEditor();
 

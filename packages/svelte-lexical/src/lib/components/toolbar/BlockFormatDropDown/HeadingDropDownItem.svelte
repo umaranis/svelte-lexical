@@ -7,9 +7,9 @@
   } from '@lexical/rich-text';
   import {$setBlocksType as setBlocksType} from '@lexical/selection';
   import type {Writable} from 'svelte/store';
-  import type {blockTypeToBlockName} from './blockTypeToBlockName';
+  import type {blockTypeToBlockName} from './blockTypeToBlockName.js';
   import {getContext} from 'svelte';
-  import {getEditor} from '../../../core/composerContext';
+  import {getEditor} from '$lib/core/composerContext.js';
 
   export let headingSize: HeadingTagType;
 

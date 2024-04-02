@@ -17,17 +17,17 @@ export {default as CollaborationPlugin} from './core/plugins/collaboration/Colla
 export {default as AutoLinkPluginCore} from './core/plugins/AutoLink/AutoLinkPluginCore.svelte';
 export {default as AutoLinkPlugin} from './core/plugins/AutoLink/AutoLinkPlugin.svelte';
 export {default as LinkPlugin} from './core/plugins/link/LinkPlugin.svelte';
-export * from './core/plugins/link/url';
+export * from '$lib/core/plugins/link/url.js';
 export {default as FloatingLinkEditorPlugin} from './core/plugins/link/FloatingLinkEditorPlugin.svelte';
 export {default as CodeHighlightPlugin} from './core/plugins/CodeBlock/CodeHighlightPlugin.svelte';
 export {default as CodeActionMenuPlugin} from './core/plugins/CodeBlock/CodeActionMenuPlugin/CodeActionMenuPlugin.svelte';
 
 export {HeadingNode, QuoteNode} from '@lexical/rich-text';
 export {ListNode, ListItemNode} from '@lexical/list';
-export {HorizontalRuleNode} from './core/plugins/HorizontalRuleNode';
-export {ImageNode} from './core/plugins/Image/ImageNode';
-export {KeywordNode} from './core/plugins/KeywordNode';
-export {HashtagNode} from './core/plugins/HashtagNode';
+export {HorizontalRuleNode} from './core/plugins/HorizontalRuleNode.js';
+export {ImageNode} from './core/plugins/Image/ImageNode.js';
+export {KeywordNode} from './core/plugins/KeywordNode.js';
+export {HashtagNode} from './core/plugins/HashtagNode.js';
 export {AutoLinkNode, LinkNode} from '@lexical/link';
 export {CodeNode, CodeHighlightNode} from '@lexical/code';
 export type {Provider} from '@lexical/yjs';
@@ -66,9 +66,9 @@ export {default as InsertImageDialog} from './components/toolbar/dialogs/InsertI
 export {default as InsertImageUploadedDialogBody} from './components/toolbar/dialogs/InsertImageUploadedDialogBody.svelte';
 export {default as InsertImageUriDialogBody} from './components/toolbar/dialogs/InsertImageUriDialogBody.svelte';
 
-export {getCommands} from './core/commands';
-export type {ImagePayload} from './core/plugins/Image/ImageNode';
-export {getEditor, getActiveEditor} from './core/composerContext';
+export {getCommands} from './core/commands.js';
+export type {ImagePayload} from './core/plugins/Image/ImageNode.js';
+export {getEditor, getActiveEditor} from './core/composerContext.js';
 
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
 export {default as TreeViewPlugin} from './core/plugins/TreeView/TreeViewPlugin.svelte';
@@ -91,9 +91,9 @@ export {default as ModalDialog} from './components/generic/dialog/ModalDialog.sv
 export {default as CloseCircleButton} from './components/generic/button/CloseCircleButton.svelte';
 
 // util
-export {CAN_USE_DOM} from './environment/canUseDOM';
+export {CAN_USE_DOM} from './environment/canUseDOM.js';
 export {
   isNodeSelected,
   clearSelection,
   createNodeSelectionStore,
-} from './core/nodeSelectionStore';
+} from './core/nodeSelectionStore.js';

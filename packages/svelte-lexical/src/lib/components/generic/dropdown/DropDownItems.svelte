@@ -1,6 +1,6 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {setRegisterItemFunc} from './utils';
+  import {setRegisterItemFunc} from './utils.js';
 
   export let onClose: () => void;
   export let dropDownRef: HTMLDivElement;

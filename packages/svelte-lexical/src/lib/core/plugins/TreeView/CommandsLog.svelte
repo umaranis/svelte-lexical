@@ -1,6 +1,6 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {getEditor} from '../../composerContext';
+  import {getEditor} from '../../composerContext.js';
   import {COMMAND_PRIORITY_HIGH, type LexicalCommand} from 'lexical';
 
   const editor = getEditor();

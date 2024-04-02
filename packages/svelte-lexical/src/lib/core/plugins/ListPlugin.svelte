@@ -10,7 +10,7 @@
   } from '@lexical/list';
   import {mergeRegister} from '@lexical/utils';
   import {COMMAND_PRIORITY_LOW, INSERT_PARAGRAPH_COMMAND} from 'lexical';
-  import {getEditor} from '../composerContext';
+  import {getEditor} from '../composerContext.js';
 
   const editor = getEditor();
 

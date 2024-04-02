@@ -19,7 +19,7 @@
   } from 'lexical';
   import {UndoManager, type Doc, type Transaction, type YEvent} from 'yjs';
 
-  import type {InitialEditorStateType} from '../../initializeEditor';
+  import type {InitialEditorStateType} from '../../initializeEditor.js';
   import {onMount} from 'svelte';
 
   export let editor: LexicalEditor;

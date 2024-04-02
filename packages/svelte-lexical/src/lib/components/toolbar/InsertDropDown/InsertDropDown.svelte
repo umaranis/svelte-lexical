@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {getIsEditable} from '../../../core/composerContext';
+  import {getIsEditable} from '$lib/core/composerContext.js';
   import DropDown from '../../generic/dropdown/DropDown.svelte';
 
   const isEditable = getIsEditable();

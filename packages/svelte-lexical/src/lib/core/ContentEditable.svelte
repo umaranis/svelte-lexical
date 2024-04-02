@@ -2,7 +2,7 @@
   import './ContentEditable.css';
   import type {LexicalEditor} from 'lexical';
   import {onMount} from 'svelte';
-  import {getEditor} from './composerContext';
+  import {getEditor} from './composerContext.js';
 
   export let ariaActiveDescendantID: string | undefined = undefined;
   export let ariaAutoComplete: 'list' | 'none' | 'inline' | 'both' | null =

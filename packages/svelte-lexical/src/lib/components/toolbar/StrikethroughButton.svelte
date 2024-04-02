@@ -2,7 +2,7 @@
   import {FORMAT_TEXT_COMMAND} from 'lexical';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
-  import {getActiveEditor, getIsEditable} from '../../core/composerContext';
+  import {getActiveEditor, getIsEditable} from '$lib/core/composerContext.js';
 
   const activeEditor = getActiveEditor();
   const isEditable = getIsEditable();

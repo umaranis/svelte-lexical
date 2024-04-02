@@ -27,7 +27,7 @@
     type TableSelection,
   } from '@lexical/table';
   import {onMount} from 'svelte';
-  import {getEditor} from '../../composerContext';
+  import {getEditor} from '../../composerContext.js';
   import CommandsLog from './CommandsLog.svelte';
 
   const NON_SINGLE_WIDTH_CHARS_REPLACEMENT: Readonly<Record<string, string>> =

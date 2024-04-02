@@ -1,4 +1,4 @@
-import type {ImagePayload} from './plugins/Image/ImageNode';
+import type {ImagePayload} from './plugins/Image/ImageNode.js';
 import {INSERT_IMAGE_COMMAND} from './plugins/Image/ImagePlugin.svelte';
 import type {LexicalEditor} from 'lexical';
 

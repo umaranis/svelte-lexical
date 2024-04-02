@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {CAN_USE_DOM} from '../../../environment/canUseDOM';
+  import {CAN_USE_DOM} from '../../../environment/canUseDOM.js';
   import DropDownItems from './DropDownItems.svelte';
 
   export let disabled = false;

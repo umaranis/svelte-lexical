@@ -2,7 +2,7 @@
   import {onMount} from 'svelte';
   import {registerRichText} from '@lexical/rich-text';
   import Decorator from '../Decorator.svelte';
-  import {getEditor} from '../composerContext';
+  import {getEditor} from '../composerContext.js';
 
   const editor = getEditor();
 

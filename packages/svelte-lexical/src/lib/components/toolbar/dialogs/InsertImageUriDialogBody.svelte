@@ -1,7 +1,7 @@
 <script lang="ts">
   import {createEventDispatcher} from 'svelte';
-  import {getActiveEditor} from '../../../core/composerContext';
-  import {INSERT_IMAGE_COMMAND} from '../../../core/plugins/Image/ImagePlugin.svelte';
+  import {getActiveEditor} from '$lib/core/composerContext.js';
+  import {INSERT_IMAGE_COMMAND} from '$lib/core/plugins/Image/ImagePlugin.svelte';
   import TextInput from '../../generic/input/TextInput.svelte';
 
   const activeEditor = getActiveEditor();

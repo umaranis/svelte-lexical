@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {getEditor} from '../../../../composerContext';
+  import {getEditor} from '../../../../composerContext.js';
 
   import {$isCodeNode as isCodeNode} from '@lexical/code';
   import {$getNearestNodeFromDOMNode as getNearestNodeFromDOMNode} from 'lexical';

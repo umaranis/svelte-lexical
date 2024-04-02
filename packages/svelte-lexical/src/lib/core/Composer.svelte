@@ -30,12 +30,12 @@
     type HTMLConfig,
   } from 'lexical';
   import {onMount} from 'svelte';
-  import {initializeEditor} from './initializeEditor';
+  import {initializeEditor} from './initializeEditor.js';
   import {
     createSharedEditorContext,
     setEditor,
     setHistoryStateContext,
-  } from './composerContext';
+  } from './composerContext.js';
 
   export let initialConfig: InitialConfigType;
 

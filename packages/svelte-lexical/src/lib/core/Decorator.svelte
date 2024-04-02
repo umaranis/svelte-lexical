@@ -7,7 +7,7 @@
     type LexicalNode,
   } from 'lexical';
   import {getAllContexts, onMount, SvelteComponent} from 'svelte';
-  import {getEditor} from './composerContext';
+  import {getEditor} from './composerContext.js';
 
   type MyKlassConstructor = KlassConstructor<typeof LexicalNode> & {
     skipDecorateRender: boolean;

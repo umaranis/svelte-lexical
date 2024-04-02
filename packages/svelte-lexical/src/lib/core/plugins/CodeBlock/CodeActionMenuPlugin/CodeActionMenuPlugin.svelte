@@ -7,12 +7,12 @@
   } from '@lexical/code';
   import {$getNearestNodeFromDOMNode as getNearestNodeFromDOMNode} from 'lexical';
   import {onMount} from 'svelte';
-  import {getEditor} from '../../../composerContext';
+  import {getEditor} from '../../../composerContext.js';
   import CopyButton from './components/CopyButton.svelte';
 
   import PrettierButton from './components/PrettierButton.svelte';
-  import {canBePrettier} from './components/PrettierLangOptions';
-  import {useDebounce} from './utils';
+  import {canBePrettier} from './components/PrettierLangOptions.js';
+  import {useDebounce} from './utils.js';
 
   const CODE_PADDING = 8;
 

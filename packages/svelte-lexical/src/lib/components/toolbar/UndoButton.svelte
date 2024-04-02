@@ -9,8 +9,8 @@
     getEditor,
     getIsEditable,
     getActiveEditor,
-  } from '../../core/composerContext';
-  import {IS_APPLE} from '../../environment/environment';
+  } from '$lib/core/composerContext.js';
+  import {IS_APPLE} from '../../environment/environment.js';
 
   const editor = getEditor();
   const activeEditor = getActiveEditor();

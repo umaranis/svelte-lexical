@@ -1,9 +1,9 @@
 <script lang="ts">
   import type {Doc} from 'yjs';
 
-  import {useCollaborationContext} from './CollaborationContext';
-  import type {InitialEditorStateType} from '../../initializeEditor';
-  import {getEditor} from '../../composerContext';
+  import {useCollaborationContext} from './CollaborationContext.js';
+  import type {InitialEditorStateType} from '../../initializeEditor.js';
+  import {getEditor} from '../../composerContext.js';
   import {
     createBinding,
     type ExcludedProperties,
@@ -72,4 +72,4 @@
   {awarenessData} />
 
 <YjsHistory {editor} {binding} />
-<YjsFocusTracking {editor} {provider} {name} {color} {awarenessData}/>
+<YjsFocusTracking {editor} {provider} {name} {color} {awarenessData} />

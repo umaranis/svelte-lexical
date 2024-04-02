@@ -1,7 +1,7 @@
 <script lang="ts">
   import {$patchStyleText as patchStyleText} from '@lexical/selection';
   import {$getSelection as getSelection} from 'lexical';
-  import {getEditor, getIsEditable} from '../../core/composerContext';
+  import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {getContext} from 'svelte';
   import type {Readable} from 'svelte/store';
 

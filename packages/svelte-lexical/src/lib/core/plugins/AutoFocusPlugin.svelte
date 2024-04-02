@@ -1,7 +1,7 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {getEditor} from '../composerContext';
-  import {getCommands} from '../commands';
+  import {getEditor} from '../composerContext.js';
+  import {getCommands} from '../commands.js';
 
   const editor = getEditor();
 

@@ -2,10 +2,10 @@
   import {TOGGLE_LINK_COMMAND} from '@lexical/link';
   import {getContext, onMount} from 'svelte';
   import type {Writable} from 'svelte/store';
-  import {sanitizeUrl} from '../../core/plugins/link/url';
-  import {getEditor, getIsEditable} from '../../core/composerContext';
+  import {sanitizeUrl} from '$lib/core/plugins/link/url.js';
+  import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {COMMAND_PRIORITY_NORMAL, KEY_MODIFIER_COMMAND} from 'lexical';
-  import {IS_APPLE} from '../../environment/environment';
+  import {IS_APPLE} from '../../environment/environment.js';
 
   const editor = getEditor();
   const isEditable = getIsEditable();

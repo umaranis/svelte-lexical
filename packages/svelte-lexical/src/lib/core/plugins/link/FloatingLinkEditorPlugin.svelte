@@ -19,8 +19,8 @@
   } from 'lexical';
   import {writable} from 'svelte/store';
   import {onMount} from 'svelte';
-  import getSelectedNode from '../../../components/toolbar/getSelectionInfo';
-  import {getEditor} from '../../composerContext';
+  import getSelectedNode from '../../../components/toolbar/getSelectionInfo.js';
+  import {getEditor} from '../../composerContext.js';
   import FloatingLinkEditor from './FloatingLinkEditor.svelte';
 
   const editor = getEditor();

@@ -44,9 +44,9 @@
     $isImageNode as isImageNode,
     ImageNode,
     type ImagePayload,
-  } from './ImageNode';
-  import {getEditor} from '../../composerContext';
-  import {CAN_USE_DOM} from '../../../environment/canUseDOM';
+  } from './ImageNode.js';
+  import {getEditor} from '../../composerContext.js';
+  import {CAN_USE_DOM} from '../../../environment/canUseDOM.js';
 
   const editor: LexicalEditor = getEditor();
 

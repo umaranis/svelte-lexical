@@ -28,17 +28,17 @@
   import {onMount} from 'svelte';
   import {mergeRegister} from '@lexical/utils';
   import ImageResizer from '../../../components/ImageResizer.svelte';
-  import {$isImageNode as isImageNode} from './ImageNode';
+  import {$isImageNode as isImageNode} from './ImageNode.js';
   import {
     clearSelection,
     createNodeSelectionStore,
-  } from '../../nodeSelectionStore';
+  } from '../../nodeSelectionStore.js';
   import NestedComposer from '../../NestedComposer.svelte';
   import ContentEditable from '../../ContentEditable.svelte';
   import RichTextPlugin from '../RichTextPlugin.svelte';
   import PlaceHolder from '../PlaceHolder.svelte';
   import AutoFocusPlugin from '../AutoFocusPlugin.svelte';
-  import {getImageHistoryPluginType} from '../../composerContext';
+  import {getImageHistoryPluginType} from '../../composerContext.js';
 
   export let src: string;
   export let altText: string;

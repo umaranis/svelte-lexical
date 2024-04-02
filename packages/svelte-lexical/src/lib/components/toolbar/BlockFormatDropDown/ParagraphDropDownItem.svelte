@@ -2,13 +2,13 @@
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
-  import type {blockTypeToBlockName} from './blockTypeToBlockName';
+  import type {blockTypeToBlockName} from './blockTypeToBlockName.js';
   import {
     $getSelection as getSelection,
     $createParagraphNode as createParagraphNode,
   } from 'lexical';
   import {$setBlocksType as setBlocksType} from '@lexical/selection';
-  import {getEditor} from '../../../core/composerContext';
+  import {getEditor} from '$lib/core/composerContext.js';
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
     getContext('blockType');
