@@ -17,7 +17,7 @@ export {default as CollaborationPlugin} from './core/plugins/collaboration/Colla
 export {default as AutoLinkPluginCore} from './core/plugins/AutoLink/AutoLinkPluginCore.svelte';
 export {default as AutoLinkPlugin} from './core/plugins/AutoLink/AutoLinkPlugin.svelte';
 export {default as LinkPlugin} from './core/plugins/link/LinkPlugin.svelte';
-export * from '$lib/core/plugins/link/url.js';
+export {sanitizeUrl, validateUrl} from './core/plugins/link/url.ts';
 export {default as FloatingLinkEditorPlugin} from './core/plugins/link/FloatingLinkEditorPlugin.svelte';
 export {default as CodeHighlightPlugin} from './core/plugins/CodeBlock/CodeHighlightPlugin.svelte';
 export {default as CodeActionMenuPlugin} from './core/plugins/CodeBlock/CodeActionMenuPlugin/CodeActionMenuPlugin.svelte';
