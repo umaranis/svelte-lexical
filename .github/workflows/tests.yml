@@ -54,6 +54,8 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - run: pnpm i
         working-directory: ./demos/playground
+      - run: pnpm build
+        working-directory: ./packages/svelte-lexical
       - name: Download browsers
         run: pnpm playwright install
         working-directory: ./demos/playground
@@ -112,6 +114,8 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - run: pnpm i
         working-directory: ./demos/playground
+      - run: pnpm build
+        working-directory: ./packages/svelte-lexical
       - name: Download browsers
         run: pnpm playwright install
         working-directory: ./demos/playground
@@ -166,6 +170,8 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - run: pnpm i
         working-directory: ./demos/playground
+      - run: pnpm build
+        working-directory: ./packages/svelte-lexical
       - name: Download browsers
         run: pnpm playwright install
         working-directory: ./demos/playground
@@ -213,6 +219,8 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - run: pnpm i
         working-directory: ./demos/playground
+      - run: pnpm build
+        working-directory: ./packages/svelte-lexical
       - name: Download browsers
         run: pnpm playwright install
         working-directory: ./demos/playground
@@ -267,6 +275,8 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - run: pnpm i
         working-directory: ./demos/playground
+      - run: pnpm build
+        working-directory: ./packages/svelte-lexical
       - name: Download browsers
         run: pnpm playwright install
         working-directory: ./demos/playground
@@ -317,6 +327,8 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - run: pnpm i
         working-directory: ./demos/playground
+      - run: pnpm build
+        working-directory: ./packages/svelte-lexical
       - name: Download browsers
         run: pnpm playwright install
         working-directory: ./demos/playground
