@@ -625,100 +625,102 @@ test.describe('Composition', () => {
       });
     });
 
-    test.fixme('Can type, delete and cancel Hiragana via IME', async ({
-      page,
-      browserName,
-    }) => {
-      // We don't yet support FF.
-      test.skip(browserName === 'firefox');
+    test.fixme(
+      'Can type, delete and cancel Hiragana via IME',
+      async ({page, browserName}) => {
+        // We don't yet support FF.
+        test.skip(browserName === 'firefox');
 
-      await focusEditor(page);
-      await enableCompositionKeyEvents(page);
+        await focusEditor(page);
+        await enableCompositionKeyEvents(page);
 
-      await page.keyboard.imeSetComposition('ｓ', 1, 1);
-      await page.keyboard.imeSetComposition('す', 1, 1);
-      await page.keyboard.imeSetComposition('すｓ', 2, 2);
-      await page.keyboard.imeSetComposition('すｓｈ', 3, 3);
-      await page.keyboard.imeSetComposition('すし', 2, 2);
-      await page.keyboard.imeSetComposition('す', 1, 1);
-      await page.keyboard.imeSetComposition('', 0, 0);
-      // Escape would fire here
-      await page.keyboard.insertText('');
+        await page.keyboard.imeSetComposition('ｓ', 1, 1);
+        await page.keyboard.imeSetComposition('す', 1, 1);
+        await page.keyboard.imeSetComposition('すｓ', 2, 2);
+        await page.keyboard.imeSetComposition('すｓｈ', 3, 3);
+        await page.keyboard.imeSetComposition('すし', 2, 2);
+        await page.keyboard.imeSetComposition('す', 1, 1);
+        await page.keyboard.imeSetComposition('', 0, 0);
+        // Escape would fire here
+        await page.keyboard.insertText('');
 
-      await assertHTML(
-        page,
-        html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        `,
-      );
-      await assertSelection(page, {
-        anchorOffset: 0,
-        anchorPath: [0],
-        focusOffset: 0,
-        focusPath: [0],
-      });
+        await assertHTML(
+          page,
+          html`
+            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          `,
+        );
+        await assertSelection(page, {
+          anchorOffset: 0,
+          anchorPath: [0],
+          focusOffset: 0,
+          focusPath: [0],
+        });
 
-      await page.keyboard.type(' ');
-      await page.keyboard.press('ArrowLeft');
+        await page.keyboard.type(' ');
+        await page.keyboard.press('ArrowLeft');
 
-      await page.keyboard.imeSetComposition('ｓ', 1, 1);
-      await page.keyboard.imeSetComposition('す', 1, 1);
-      await page.keyboard.imeSetComposition('すｓ', 2, 2);
-      await page.keyboard.imeSetComposition('すｓｈ', 3, 3);
-      await page.keyboard.imeSetComposition('すし', 2, 2);
-      await page.keyboard.imeSetComposition('す', 1, 1);
-      await page.keyboard.imeSetComposition('', 0, 0);
-      // Escape would fire here
-      await page.keyboard.insertText('');
+        await page.keyboard.imeSetComposition('ｓ', 1, 1);
+        await page.keyboard.imeSetComposition('す', 1, 1);
+        await page.keyboard.imeSetComposition('すｓ', 2, 2);
+        await page.keyboard.imeSetComposition('すｓｈ', 3, 3);
+        await page.keyboard.imeSetComposition('すし', 2, 2);
+        await page.keyboard.imeSetComposition('す', 1, 1);
+        await page.keyboard.imeSetComposition('', 0, 0);
+        // Escape would fire here
+        await page.keyboard.insertText('');
 
-      await assertHTML(
-        page,
-        html`
-          <p class="PlaygroundEditorTheme__paragraph">
-            <span data-lexical-text="true"></span>
-          </p>
-        `,
-      );
-      await assertSelection(page, {
-        anchorOffset: 0,
-        anchorPath: [0, 0, 0],
-        focusOffset: 0,
-        focusPath: [0, 0, 0],
-      });
-    });
+        await assertHTML(
+          page,
+          html`
+            <p class="PlaygroundEditorTheme__paragraph">
+              <span data-lexical-text="true"></span>
+            </p>
+          `,
+        );
+        await assertSelection(page, {
+          anchorOffset: 0,
+          anchorPath: [0, 0, 0],
+          focusOffset: 0,
+          focusPath: [0, 0, 0],
+        });
+      },
+    );
 
-    test.fixme('Floating toolbar should not be displayed when using IME', async ({
-      page,
-      browserName,
-      isPlainText,
-    }) => {
-      test.skip(isPlainText);
-      // We don't yet support FF.
-      test.skip(browserName === 'firefox');
+    test.fixme(
+      'Floating toolbar should not be displayed when using IME',
+      async ({page, browserName, isPlainText}) => {
+        test.skip(isPlainText);
+        // We don't yet support FF.
+        test.skip(browserName === 'firefox');
 
-      await focusEditor(page);
-      await enableCompositionKeyEvents(page);
+        await focusEditor(page);
+        await enableCompositionKeyEvents(page);
 
-      await page.keyboard.imeSetComposition('ｓ', 0, 1);
-      await page.keyboard.imeSetComposition('す', 0, 1);
-      await page.keyboard.imeSetComposition('すｓ', 0, 2);
-      await page.keyboard.imeSetComposition('すｓｈ', 0, 3);
-      await page.keyboard.imeSetComposition('すｓｈ', 0, 4);
+        await page.keyboard.imeSetComposition('ｓ', 0, 1);
+        await page.keyboard.imeSetComposition('す', 0, 1);
+        await page.keyboard.imeSetComposition('すｓ', 0, 2);
+        await page.keyboard.imeSetComposition('すｓｈ', 0, 3);
+        await page.keyboard.imeSetComposition('すｓｈ', 0, 4);
 
-      const isFloatingToolbarDisplayedWhenUseIME = await evaluate(page, () => {
-        return !!document.querySelector('.floating-text-format-popup');
-      });
+        const isFloatingToolbarDisplayedWhenUseIME = await evaluate(
+          page,
+          () => {
+            return !!document.querySelector('.floating-text-format-popup');
+          },
+        );
 
-      expect(isFloatingToolbarDisplayedWhenUseIME).toEqual(false);
+        expect(isFloatingToolbarDisplayedWhenUseIME).toEqual(false);
 
-      await page.keyboard.insertText('すｓｈ');
-      await selectCharacters(page, 'left', 3);
+        await page.keyboard.insertText('すｓｈ');
+        await selectCharacters(page, 'left', 3);
 
-      const isFloatingToolbarDisplayed = await evaluate(page, () => {
-        return !!document.querySelector('.floating-text-format-popup');
-      });
+        const isFloatingToolbarDisplayed = await evaluate(page, () => {
+          return !!document.querySelector('.floating-text-format-popup');
+        });
 
-      expect(isFloatingToolbarDisplayed).toEqual(true);
-    });
+        expect(isFloatingToolbarDisplayed).toEqual(true);
+      },
+    );
   });
 });

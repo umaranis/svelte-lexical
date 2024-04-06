@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { expect } from '@playwright/test';
+import {expect} from '@playwright/test';
 
 import {
   extendToNextWord,
@@ -42,8 +42,8 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('CopyAndPaste', () => {
-  test.beforeEach(({ isCollab, page }) => initialize({ isCollab, page }));
-  test('Basic copy + paste', async ({ isRichText, page, browserName }) => {
+  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
+  test('Basic copy + paste', async ({isRichText, page, browserName}) => {
     await focusEditor(page);
 
     // Add paragraph
@@ -256,7 +256,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     `Copy and paste heading`,
-    async ({ isPlainText, page, browserName }) => {
+    async ({isPlainText, page, browserName}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -309,7 +309,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     `Copy and paste between sections`,
-    async ({ isRichText, page, browserName }) => {
+    async ({isRichText, page, browserName}) => {
       await focusEditor(page);
       await page.keyboard.type('Hello world #foobar test #foobar2 when #not');
 
@@ -789,7 +789,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'Copy and paste of partial list items into an empty editor',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
       await focusEditor(page);
 
@@ -869,7 +869,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'Copy and paste of partial list items into the list',
-    async ({ page, isPlainText, isCollab, browserName }) => {
+    async ({page, isPlainText, isCollab, browserName}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -1045,7 +1045,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'Copy list items and paste back into list',
-    async ({ page, isPlainText, isCollab }) => {
+    async ({page, isPlainText, isCollab}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -1112,7 +1112,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'Copy list items and paste into list',
-    async ({ page, isPlainText, isCollab }) => {
+    async ({page, isPlainText, isCollab}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -1298,7 +1298,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'Copy and paste of list items and paste back into list on an existing item',
-    async ({ page, isPlainText, isCollab }) => {
+    async ({page, isPlainText, isCollab}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -1363,171 +1363,170 @@ test.describe('CopyAndPaste', () => {
     },
   );
 
-  test.fixme('Copy list of a different type and paste into list on an existing item - should merge the lists.', async ({
-    page,
-    isPlainText,
-    isCollab,
-  }) => {
-    test.skip(isPlainText);
+  test.fixme(
+    'Copy list of a different type and paste into list on an existing item - should merge the lists.',
+    async ({page, isPlainText, isCollab}) => {
+      test.skip(isPlainText);
 
-    await focusEditor(page);
+      await focusEditor(page);
 
-    await page.keyboard.type('- one');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('two');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('a');
+      await page.keyboard.type('- one');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('two');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('a');
 
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
 
-    await page.keyboard.type('1. four');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('five');
-    await page.keyboard.press('Tab');
+      await page.keyboard.type('1. four');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('five');
+      await page.keyboard.press('Tab');
 
-    await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
 
-    await moveToLineBeginning(page);
-    await page.keyboard.down('Shift');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.up('Shift');
+      await moveToLineBeginning(page);
+      await page.keyboard.down('Shift');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.up('Shift');
 
-    await assertHTML(
-      page,
-      html`
-        <ul class="PlaygroundEditorTheme__ul">
-          <li
-            value="1"
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">one</span>
-          </li>
-          <li
-            value="2"
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem">
-            <ul class="PlaygroundEditorTheme__ul">
-              <li
-                value="1"
-                class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">two</span>
-              </li>
-              <li
-                value="2"
-                class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">a</span>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <ol class="PlaygroundEditorTheme__ol1">
-          <li
-            value="1"
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">four</span>
-          </li>
-          <li
-            value="2"
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem">
-            <ol class="PlaygroundEditorTheme__ol2">
-              <li
-                value="1"
-                class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">five</span>
-              </li>
-            </ol>
-          </li>
-        </ol>
-      `,
-    );
+      await assertHTML(
+        page,
+        html`
+          <ul class="PlaygroundEditorTheme__ul">
+            <li
+              value="1"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">one</span>
+            </li>
+            <li
+              value="2"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem">
+              <ul class="PlaygroundEditorTheme__ul">
+                <li
+                  value="1"
+                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">two</span>
+                </li>
+                <li
+                  value="2"
+                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">a</span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <ol class="PlaygroundEditorTheme__ol1">
+            <li
+              value="1"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">four</span>
+            </li>
+            <li
+              value="2"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem">
+              <ol class="PlaygroundEditorTheme__ol2">
+                <li
+                  value="1"
+                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">five</span>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        `,
+      );
 
-    const clipboard = await copyToClipboard(page);
+      const clipboard = await copyToClipboard(page);
 
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.press('ArrowLeft');
-    await page.keyboard.press('Backspace');
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('ArrowLeft');
+      await page.keyboard.press('Backspace');
 
-    await pasteFromClipboard(page, clipboard);
+      await pasteFromClipboard(page, clipboard);
 
-    await assertHTML(
-      page,
-      html`
-        <ul class="PlaygroundEditorTheme__ul">
-          <li
-            value="1"
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">one</span>
-          </li>
-          <li
-            value="2"
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem">
-            <ul class="PlaygroundEditorTheme__ul">
-              <li
-                value="1"
-                class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">two</span>
-              </li>
-              <li
-                value="2"
-                class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">four</span>
-              </li>
-              <li
-                value="3"
-                class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem">
-                <ol class="PlaygroundEditorTheme__ol3">
-                  <li
-                    value="1"
-                    class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-                    dir="ltr">
-                    <span data-lexical-text="true">five</span>
-                  </li>
-                </ol>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <ol class="PlaygroundEditorTheme__ol1">
-          <li
-            value="1"
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">four</span>
-          </li>
-          <li
-            value="2"
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem">
-            <ol class="PlaygroundEditorTheme__ol2">
-              <li
-                value="1"
-                class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">five</span>
-              </li>
-            </ol>
-          </li>
-        </ol>
-      `,
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <ul class="PlaygroundEditorTheme__ul">
+            <li
+              value="1"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">one</span>
+            </li>
+            <li
+              value="2"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem">
+              <ul class="PlaygroundEditorTheme__ul">
+                <li
+                  value="1"
+                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">two</span>
+                </li>
+                <li
+                  value="2"
+                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">four</span>
+                </li>
+                <li
+                  value="3"
+                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem">
+                  <ol class="PlaygroundEditorTheme__ol3">
+                    <li
+                      value="1"
+                      class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+                      dir="ltr">
+                      <span data-lexical-text="true">five</span>
+                    </li>
+                  </ol>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <ol class="PlaygroundEditorTheme__ol1">
+            <li
+              value="1"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">four</span>
+            </li>
+            <li
+              value="2"
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem">
+              <ol class="PlaygroundEditorTheme__ol2">
+                <li
+                  value="1"
+                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">five</span>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        `,
+      );
+    },
+  );
 
   test.fixme(
     'Copy and paste two paragraphs into list on an existing item',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
       await focusEditor(page);
 
@@ -1587,7 +1586,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'Copy and paste two paragraphs at the end of a list',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -1643,7 +1642,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'Copy and paste an inline element into a leaf node',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
       await focusEditor(page);
 
@@ -1703,7 +1702,7 @@ test.describe('CopyAndPaste', () => {
 
     await focusEditor(page);
 
-    const clipboard = { 'text/html': 'Hello!' };
+    const clipboard = {'text/html': 'Hello!'};
 
     await pasteFromClipboard(page, clipboard);
 
@@ -1725,12 +1724,12 @@ test.describe('CopyAndPaste', () => {
     });
   });
 
-  test('HTML Copy + paste a paragraph element', async ({ page, isPlainText }) => {
+  test('HTML Copy + paste a paragraph element', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
 
-    const clipboard = { 'text/html': '<p>Hello!<p>' };
+    const clipboard = {'text/html': '<p>Hello!<p>'};
 
     await pasteFromClipboard(page, clipboard);
 
@@ -1754,7 +1753,7 @@ test.describe('CopyAndPaste', () => {
     });
   });
 
-  test('HTML Copy + paste an anchor element', async ({ page, isPlainText }) => {
+  test('HTML Copy + paste an anchor element', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -1821,12 +1820,12 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste a list element', async ({ page, isPlainText }) => {
+  test('HTML Copy + paste a list element', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
 
-    const clipboard = { 'text/html': '<ul><li>Hello</li><li>world!</li></ul>' };
+    const clipboard = {'text/html': '<ul><li>Hello</li><li>world!</li></ul>'};
 
     await pasteFromClipboard(page, clipboard);
 
@@ -1880,7 +1879,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'HTML Copy + paste (Nested List - directly nested ul)',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -1986,7 +1985,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'HTML Copy + paste (Nested List - li with non-list content plus ul child)',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -2086,7 +2085,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'HTML Copy + paste (Table - Google Docs)',
-    async ({ page, isPlainText, isCollab }) => {
+    async ({page, isPlainText, isCollab}) => {
       test.skip(isPlainText);
 
       test.fixme(
@@ -2165,7 +2164,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'HTML Copy + paste (Table - Quip)',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -2239,7 +2238,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'HTML Copy + paste (Table - Google Sheets)',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -2313,7 +2312,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'Merge Grids on Copy + paste',
-    async ({ page, isPlainText, isCollab }) => {
+    async ({page, isPlainText, isCollab}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -2325,8 +2324,8 @@ test.describe('CopyAndPaste', () => {
 
       await selectCellsFromTableCords(
         page,
-        { x: 0, y: 0 },
-        { x: 3, y: 3 },
+        {x: 0, y: 0},
+        {x: 3, y: 3},
         true,
         false,
       );
@@ -2552,8 +2551,8 @@ test.describe('CopyAndPaste', () => {
 
     // Explicitly checking inner text, since regular assertHTML will prettify it and strip all
     // extra newlines, which makes this test less acurate
-    await expect(paragraphs.nth(0)).toHaveText('Hello', { useInnerText: true });
-    await expect(paragraphs.nth(1)).toHaveText('World', { useInnerText: true });
+    await expect(paragraphs.nth(0)).toHaveText('Hello', {useInnerText: true});
+    await expect(paragraphs.nth(1)).toHaveText('World', {useInnerText: true});
     await expect(paragraphs.nth(2)).toHaveText('Hello   World   !', {
       useInnerText: true,
     });
@@ -2564,7 +2563,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'HTML Copy + paste in front of or after a link',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
       await focusEditor(page);
       await pasteFromClipboard(page, {
@@ -2600,7 +2599,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'HTML Copy + paste link by selecting its (partial) content',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
       await focusEditor(page);
       await pasteFromClipboard(page, {
@@ -2642,7 +2641,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'Copy + paste multi-line plain text into rich text produces separate paragraphs',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
       await focusEditor(page);
       await page.keyboard.type('# Hello ');
@@ -2784,9 +2783,8 @@ test.describe('CopyAndPaste', () => {
     await focusEditor(page);
 
     // These can sometimes be put onto the clipboard wrapped in a paragraph element
-    clipboard[
-      'text/html'
-    ] = `<meta charset='utf-8'><meta charset="utf-8"><b style="font-weight:normal;" id="docs-internal-guid-wjatever"><p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:3pt;"><span style="font-size:26pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">My document</span></p></b>`;
+    clipboard['text/html'] =
+      `<meta charset='utf-8'><meta charset="utf-8"><b style="font-weight:normal;" id="docs-internal-guid-wjatever"><p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:3pt;"><span style="font-size:26pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">My document</span></p></b>`;
 
     await pasteFromClipboard(page, clipboard);
 
@@ -2802,7 +2800,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test('HTML Copy + paste a checklist', async ({ page, isPlainText }) => {
+  test('HTML Copy + paste a checklist', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -2843,9 +2841,8 @@ test.describe('CopyAndPaste', () => {
     await focusEditor(page);
 
     // Ensure we preserve checked status.
-    clipboard[
-      'text/html'
-    ] = `<meta charset='utf-8'><ul __lexicallisttype="check"><li role="checkbox" tabindex="-1" aria-checked="true" value="1" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemChecked"><span>Hello</span></li><li role="checkbox" tabindex="-1" aria-checked="false" value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"><span>world</span></li></ul>`;
+    clipboard['text/html'] =
+      `<meta charset='utf-8'><ul __lexicallisttype="check"><li role="checkbox" tabindex="-1" aria-checked="true" value="1" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemChecked"><span>Hello</span></li><li role="checkbox" tabindex="-1" aria-checked="false" value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"><span>world</span></li></ul>`;
 
     await pasteFromClipboard(page, clipboard);
 
@@ -2878,7 +2875,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'HTML Copy + paste a code block with BR',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -2967,7 +2964,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'HTML Copy + paste empty link #3193',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -3015,7 +3012,7 @@ test.describe('CopyAndPaste', () => {
     },
   );
 
-  test.fixme('HTML Paste a link into text', async ({ page, isPlainText }) => {
+  test.fixme('HTML Paste a link into text', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -3052,7 +3049,7 @@ test.describe('CopyAndPaste', () => {
     );
   });
 
-  test.fixme('HTML Copy + paste an image', async ({ page, isPlainText }) => {
+  test.fixme('HTML Copy + paste an image', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -3094,7 +3091,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'HTML Copy + paste + undo multiple image',
-    async ({ page, isPlainText }) => {
+    async ({page, isPlainText}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
@@ -3152,12 +3149,12 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'HTML Copy + paste a paragraph element between horizontal rules',
-    async ({ page, isPlainText, isCollab }) => {
+    async ({page, isPlainText, isCollab}) => {
       test.skip(isPlainText);
 
       await focusEditor(page);
 
-      let clipboard = { 'text/html': '<hr/><hr/>' };
+      let clipboard = {'text/html': '<hr/><hr/>'};
 
       await pasteFromClipboard(page, clipboard);
       // Collab doesn't process the cursor correctly
@@ -3186,7 +3183,7 @@ test.describe('CopyAndPaste', () => {
       // sets focus between HRs
       await page.keyboard.press('ArrowRight');
 
-      clipboard = { 'text/html': '<p>Text between HRs</p>' };
+      clipboard = {'text/html': '<p>Text between HRs</p>'};
 
       await pasteFromClipboard(page, clipboard);
       await assertHTML(
@@ -3213,7 +3210,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'Paste top level element in the middle of paragraph',
-    async ({ page, isPlainText, isCollab }) => {
+    async ({page, isPlainText, isCollab}) => {
       test.skip(isPlainText || isCollab);
       await focusEditor(page);
       await page.keyboard.type('Hello world');
@@ -3243,7 +3240,7 @@ test.describe('CopyAndPaste', () => {
 
   test.fixme(
     'Paste top level element in the middle of list',
-    async ({ page, isPlainText, isCollab }) => {
+    async ({page, isPlainText, isCollab}) => {
       test.skip(isPlainText || isCollab);
       await focusEditor(page);
       // Add three list items

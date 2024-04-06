@@ -27,7 +27,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('HorizontalRule', () => {
-  test.beforeEach(({ isCollab, page }) => initialize({ isCollab, page }));
+  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test('Can create a horizontal rule and move selection around it', async ({
     page,
     isCollab,
@@ -149,7 +149,6 @@ test.describe('HorizontalRule', () => {
       focusOffset: 0,
       focusPath: [],
     });
-
   });
 
   test('Will add a horizontal rule at the end of a current TextNode and move selection to the new ParagraphNode.', async ({
@@ -270,7 +269,12 @@ test.describe('HorizontalRule', () => {
     });
   });
 
-  test('Can copy and paste a horizontal rule', async ({ page, isPlainText, browserName, isCollab }) => {
+  test('Can copy and paste a horizontal rule', async ({
+    page,
+    isPlainText,
+    browserName,
+    isCollab,
+  }) => {
     if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
       test.fixme();
     }

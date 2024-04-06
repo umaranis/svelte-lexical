@@ -6,7 +6,7 @@
  *
  */
 
-import { selectAll } from '../keyboardShortcuts/index.mjs';
+import {selectAll} from '../keyboardShortcuts/index.mjs';
 import {
   assertHTML,
   focusEditor,
@@ -20,7 +20,7 @@ import {
 const TEST_URL = 'https://www.youtube-nocookie.com/embed/jNQXAC9IVRw';
 test.describe('BlockWithAlignableContents', () => {
   test.fixme();
-  test.beforeEach(({ isCollab, page }) => initialize({ isCollab, page }));
+  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
 
   test('Can create full width blocks for YouTube videos', async ({
     page,
@@ -126,7 +126,7 @@ test.describe('BlockWithAlignableContents', () => {
         </p>
       `,
       undefined,
-      { ignoreClasses: true },
+      {ignoreClasses: true},
     );
   });
 });

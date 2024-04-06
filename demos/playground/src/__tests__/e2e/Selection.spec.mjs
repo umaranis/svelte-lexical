@@ -40,8 +40,8 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Selection', () => {
-  test.beforeEach(({ isCollab, page }) => initialize({ isCollab, page }));
-  test('does not focus the editor on load', async ({ page }) => {
+  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
+  test('does not focus the editor on load', async ({page}) => {
     const editorHasFocus = async () =>
       await evaluate(page, () => {
         const editorElement = document.querySelector(
@@ -62,92 +62,91 @@ test.describe('Selection', () => {
     expect(await editorHasFocus()).toEqual(false);
   });
 
-  test.fixme('keeps single active selection for nested editors', async ({
-    page,
-    isPlainText,
-    browserName,
-  }) => {
-    test.skip(isPlainText);
-    const hasSelection = async (parentSelector) =>
-      await evaluate(
-        page,
-        (_parentSelector) => {
-          return (
-            document
-              .querySelector(`${_parentSelector} > .tree-view-output pre`)
-              .__lexicalEditor.getEditorState()._selection !== null
-          );
-        },
-        parentSelector,
-      );
+  test.fixme(
+    'keeps single active selection for nested editors',
+    async ({page, isPlainText, browserName}) => {
+      test.skip(isPlainText);
+      const hasSelection = async (parentSelector) =>
+        await evaluate(
+          page,
+          (_parentSelector) => {
+            return (
+              document
+                .querySelector(`${_parentSelector} > .tree-view-output pre`)
+                .__lexicalEditor.getEditorState()._selection !== null
+            );
+          },
+          parentSelector,
+        );
 
-    await focusEditor(page);
-    await insertSampleImage(page);
-    await insertImageCaption(page, 'Hello world');
-    expect(await hasSelection('.image-caption-container')).toBe(true);
-    expect(await hasSelection('.editor-shell')).toBe(false);
-
-    // Click outside of the editor and check that selection remains the same
-    await click(page, 'header img');
-    expect(await hasSelection('.image-caption-container')).toBe(true);
-    expect(await hasSelection('.editor-shell')).toBe(false);
-
-    // Back to root editor
-    if (browserName === 'firefox') {
-      // TODO:
-      // In firefox .focus() on editor does not trigger selectionchange, while checking it
-      // explicitly clicking on an editor (passing position that is on the right side to
-      // prevent clicking on image and its nested editor)
-      await click(page, '.editor-shell', { position: { x: 600, y: 150 } });
-    } else {
       await focusEditor(page);
-    }
-    expect(await hasSelection('.image-caption-container')).toBe(false);
-    expect(await hasSelection('.editor-shell')).toBe(true);
+      await insertSampleImage(page);
+      await insertImageCaption(page, 'Hello world');
+      expect(await hasSelection('.image-caption-container')).toBe(true);
+      expect(await hasSelection('.editor-shell')).toBe(false);
 
-    // Click outside of the editor and check that selection remains the same
-    await click(page, 'header img');
-    expect(await hasSelection('.image-caption-container')).toBe(false);
-    expect(await hasSelection('.editor-shell')).toBe(true);
+      // Click outside of the editor and check that selection remains the same
+      await click(page, 'header img');
+      expect(await hasSelection('.image-caption-container')).toBe(true);
+      expect(await hasSelection('.editor-shell')).toBe(false);
 
-    // Back to nested editor editor
-    await focusEditor(page, '.image-caption-container');
-    expect(await hasSelection('.image-caption-container')).toBe(true);
-    expect(await hasSelection('.editor-shell')).toBe(false);
-  });
+      // Back to root editor
+      if (browserName === 'firefox') {
+        // TODO:
+        // In firefox .focus() on editor does not trigger selectionchange, while checking it
+        // explicitly clicking on an editor (passing position that is on the right side to
+        // prevent clicking on image and its nested editor)
+        await click(page, '.editor-shell', {position: {x: 600, y: 150}});
+      } else {
+        await focusEditor(page);
+      }
+      expect(await hasSelection('.image-caption-container')).toBe(false);
+      expect(await hasSelection('.editor-shell')).toBe(true);
 
-  test.fixme('can wrap post-linebreak nodes into new element', async ({
-    page,
-    isPlainText,
-  }) => {
-    test.skip(isPlainText);
-    await focusEditor(page);
-    await page.keyboard.type('Line1');
-    await pressShiftEnter(page);
-    await page.keyboard.type('Line2');
-    await page.keyboard.down('Shift');
-    await moveToLineBeginning(page);
-    await page.keyboard.up('Shift');
-    await selectFromFormatDropdown(page, '.code');
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Line1</span>
-        </p>
-        <code
-          class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-          spellcheck="false"
-          dir="ltr"
-          data-highlight-language="javascript"
-          data-gutter="1">
-          <span data-lexical-text="true">Line2</span>
-        </code>
-      `,
-    );
-  });
+      // Click outside of the editor and check that selection remains the same
+      await click(page, 'header img');
+      expect(await hasSelection('.image-caption-container')).toBe(false);
+      expect(await hasSelection('.editor-shell')).toBe(true);
+
+      // Back to nested editor editor
+      await focusEditor(page, '.image-caption-container');
+      expect(await hasSelection('.image-caption-container')).toBe(true);
+      expect(await hasSelection('.editor-shell')).toBe(false);
+    },
+  );
+
+  test.fixme(
+    'can wrap post-linebreak nodes into new element',
+    async ({page, isPlainText}) => {
+      test.skip(isPlainText);
+      await focusEditor(page);
+      await page.keyboard.type('Line1');
+      await pressShiftEnter(page);
+      await page.keyboard.type('Line2');
+      await page.keyboard.down('Shift');
+      await moveToLineBeginning(page);
+      await page.keyboard.up('Shift');
+      await selectFromFormatDropdown(page, '.code');
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Line1</span>
+          </p>
+          <code
+            class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
+            spellcheck="false"
+            dir="ltr"
+            data-highlight-language="javascript"
+            data-gutter="1">
+            <span data-lexical-text="true">Line2</span>
+          </code>
+        `,
+      );
+    },
+  );
 
   test('can delete text by line with CMD+delete', async ({
     page,
@@ -210,27 +209,27 @@ test.describe('Selection', () => {
     );
   });
 
-  test.fixme('Can insert inline element within text and put selection after it', async ({
-    page,
-    isPlainText,
-  }) => {
-    test.skip(isPlainText);
-    await focusEditor(page);
-    await page.keyboard.type('Hello world');
-    await moveToPrevWord(page);
-    await pasteFromClipboard(page, {
-      'text/html': `<a href="https://test.com">link</a>`,
-    });
-    await sleep(3000);
-    await assertSelection(page, {
-      anchorOffset: 4,
-      anchorPath: [0, 1, 0, 0],
-      focusOffset: 4,
-      focusPath: [0, 1, 0, 0],
-    });
-  });
+  test.fixme(
+    'Can insert inline element within text and put selection after it',
+    async ({page, isPlainText}) => {
+      test.skip(isPlainText);
+      await focusEditor(page);
+      await page.keyboard.type('Hello world');
+      await moveToPrevWord(page);
+      await pasteFromClipboard(page, {
+        'text/html': `<a href="https://test.com">link</a>`,
+      });
+      await sleep(3000);
+      await assertSelection(page, {
+        anchorOffset: 4,
+        anchorPath: [0, 1, 0, 0],
+        focusOffset: 4,
+        focusPath: [0, 1, 0, 0],
+      });
+    },
+  );
 
-  test('Can delete at boundary #4221', async ({ page, isPlainText }) => {
+  test('Can delete at boundary #4221', async ({page, isPlainText}) => {
     test.skip(!isPlainText);
     await focusEditor(page);
     await page.keyboard.type('aaa');
@@ -272,7 +271,7 @@ test.describe('Selection', () => {
     );
   });
 
-  test('Can select all with node selection', async ({ page, isPlainText }) => {
+  test('Can select all with node selection', async ({page, isPlainText}) => {
     test.skip(isPlainText);
     await focusEditor(page);
     await page.keyboard.type('# Text before');
@@ -288,36 +287,39 @@ test.describe('Selection', () => {
     );
   });
 
-  test.fixme('Can delete forward a Collapsible', async ({ page, isPlainText }) => {
-    test.skip(isPlainText);
-    if (!IS_MAC) {
-      // Do Windows/Linux have equivalent shortcuts?
-      return;
-    }
-    await focusEditor(page);
-    await page.keyboard.type('abc');
-    await insertCollapsible(page);
-    await moveToEditorBeginning(page);
-    await moveRight(page, 3);
-    await deleteForward(page);
+  test.fixme(
+    'Can delete forward a Collapsible',
+    async ({page, isPlainText}) => {
+      test.skip(isPlainText);
+      if (!IS_MAC) {
+        // Do Windows/Linux have equivalent shortcuts?
+        return;
+      }
+      await focusEditor(page);
+      await page.keyboard.type('abc');
+      await insertCollapsible(page);
+      await moveToEditorBeginning(page);
+      await moveRight(page, 3);
+      await deleteForward(page);
 
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">abc</span>
-        </p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-      `,
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">abc</span>
+          </p>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
+    },
+  );
 
   // TODO I don't think this test is correct but at least this test will prevent it from regressing
   // even further
-  test.fixme('Can delete forward a Table', async ({ page, isPlainText }) => {
+  test.fixme('Can delete forward a Table', async ({page, isPlainText}) => {
     test.skip(isPlainText);
     if (!IS_MAC) {
       // Do Windows/Linux have equivalent shortcuts?

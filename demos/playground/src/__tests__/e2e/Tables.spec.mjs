@@ -69,7 +69,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
     await focusEditor(page);
 
@@ -100,7 +100,7 @@ test.describe('Tables', () => {
         <p><br /></p>
       `,
       undefined,
-      { ignoreClasses: true },
+      {ignoreClasses: true},
     );
   });
 
@@ -109,7 +109,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -142,7 +142,7 @@ test.describe('Tables', () => {
         <p><br /></p>
       `,
       undefined,
-      { ignoreClasses: true },
+      {ignoreClasses: true},
     );
   });
 
@@ -151,7 +151,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -190,7 +190,7 @@ test.describe('Tables', () => {
         <p><br /></p>
       `,
       undefined,
-      { ignoreClasses: true },
+      {ignoreClasses: true},
     );
   });
 
@@ -199,7 +199,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -208,8 +208,8 @@ test.describe('Tables', () => {
     await fillTablePartiallyWithText(page);
     await selectCellsFromTableCords(
       page,
-      { x: 0, y: 0 },
-      { x: 1, y: 1 },
+      {x: 0, y: 0},
+      {x: 1, y: 1},
       true,
       false,
     );
@@ -276,7 +276,7 @@ test.describe('Tables', () => {
         </table>
         <p><br /></p>
       `,
-      { ignoreClasses: true },
+      {ignoreClasses: true},
     );
   });
 
@@ -285,7 +285,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -396,7 +396,7 @@ test.describe('Tables', () => {
         </table>
         <p><br /></p>
       `,
-      { ignoreClasses: true },
+      {ignoreClasses: true},
     );
   });
 
@@ -405,7 +405,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -414,8 +414,8 @@ test.describe('Tables', () => {
     await fillTablePartiallyWithText(page);
     await selectCellsFromTableCords(
       page,
-      { x: 0, y: 0 },
-      { x: 1, y: 1 },
+      {x: 0, y: 0},
+      {x: 1, y: 1},
       true,
       false,
     );
@@ -487,7 +487,7 @@ test.describe('Tables', () => {
         </table>
         <p><br /></p>
       `,
-      { ignoreClasses: true },
+      {ignoreClasses: true},
     );
   });
 
@@ -496,7 +496,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -505,8 +505,8 @@ test.describe('Tables', () => {
     await fillTablePartiallyWithText(page);
     await selectCellsFromTableCords(
       page,
-      { x: 0, y: 0 },
-      { x: 1, y: 1 },
+      {x: 0, y: 0},
+      {x: 1, y: 1},
       true,
       false,
     );
@@ -569,7 +569,7 @@ test.describe('Tables', () => {
         <p><br /></p>
       `,
       undefined,
-      { ignoreClasses: true },
+      {ignoreClasses: true},
     );
   });
 
@@ -578,7 +578,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -587,8 +587,8 @@ test.describe('Tables', () => {
     await fillTablePartiallyWithText(page);
     await selectCellsFromTableCords(
       page,
-      { x: 0, y: 0 },
-      { x: 1, y: 1 },
+      {x: 0, y: 0},
+      {x: 1, y: 1},
       true,
       false,
     );
@@ -627,7 +627,7 @@ test.describe('Tables', () => {
         <p><br /></p>
       `,
       undefined,
-      { ignoreClasses: true },
+      {ignoreClasses: true},
     );
   });
 
@@ -636,7 +636,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -679,7 +679,7 @@ test.describe('Tables', () => {
         </table>
         <p><br /></p>
       `,
-      { ignoreClasses: true },
+      {ignoreClasses: true},
     );
   });
 
@@ -688,7 +688,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -762,12 +762,12 @@ test.describe('Tables', () => {
         </table>
         <p><br /></p>
       `,
-      { ignoreClasses: true },
+      {ignoreClasses: true},
     );
   });
 
-  test(`Horizontal rule inside cell`, async ({ page, isPlainText, isCollab }) => {
-    await initialize({ isCollab, page });
+  test(`Horizontal rule inside cell`, async ({page, isPlainText, isCollab}) => {
+    await initialize({isCollab, page});
     test.skip(isPlainText);
     await focusEditor(page);
 
@@ -794,7 +794,7 @@ test.describe('Tables', () => {
         <p><br /></p>
       `,
       undefined,
-      { ignoreClasses: true },
+      {ignoreClasses: true},
     );
   });
 
@@ -803,7 +803,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -879,7 +879,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -952,12 +952,12 @@ test.describe('Tables', () => {
     );
   });
 
-  test('Merge/unmerge cells (1)', async ({ page, isPlainText, isCollab }) => {
-    await initialize({ isCollab, page });
+  test('Merge/unmerge cells (1)', async ({page, isPlainText, isCollab}) => {
+    await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
       // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({ height: 1000, width: 3000 });
+      page.setViewportSize({height: 1000, width: 3000});
     }
 
     await focusEditor(page);
@@ -971,8 +971,8 @@ test.describe('Tables', () => {
     await page.keyboard.type('second');
     await selectCellsFromTableCords(
       page,
-      { x: 1, y: 0 },
-      { x: 2, y: 0 },
+      {x: 1, y: 0},
+      {x: 2, y: 0},
       true,
       true,
     );
@@ -1039,12 +1039,12 @@ test.describe('Tables', () => {
     );
   });
 
-  test('Merge/unmerge cells (2)', async ({ page, isPlainText, isCollab }) => {
-    await initialize({ isCollab, page });
+  test('Merge/unmerge cells (2)', async ({page, isPlainText, isCollab}) => {
+    await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
       // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({ height: 1000, width: 3000 });
+      page.setViewportSize({height: 1000, width: 3000});
     }
 
     await focusEditor(page);
@@ -1058,8 +1058,8 @@ test.describe('Tables', () => {
     await page.keyboard.type('second');
     await selectCellsFromTableCords(
       page,
-      { x: 1, y: 1 },
-      { x: 2, y: 2 },
+      {x: 1, y: 1},
+      {x: 2, y: 2},
       false,
       false,
     );
@@ -1166,12 +1166,12 @@ test.describe('Tables', () => {
     );
   });
 
-  test('Merge with content', async ({ page, isPlainText, isCollab }) => {
-    await initialize({ isCollab, page });
+  test('Merge with content', async ({page, isPlainText, isCollab}) => {
+    await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
       // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({ height: 1000, width: 3000 });
+      page.setViewportSize({height: 1000, width: 3000});
     }
 
     await focusEditor(page);
@@ -1189,8 +1189,8 @@ test.describe('Tables', () => {
 
     await selectCellsFromTableCords(
       page,
-      { x: 1, y: 1 },
-      { x: 2, y: 2 },
+      {x: 1, y: 1},
+      {x: 2, y: 2},
       false,
       false,
     );
@@ -1262,7 +1262,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -1273,8 +1273,8 @@ test.describe('Tables', () => {
     await moveDown(page, 1);
     await selectCellsFromTableCords(
       page,
-      { x: 0, y: 0 },
-      { x: 0, y: 1 },
+      {x: 0, y: 0},
+      {x: 0, y: 1},
       true,
       true,
     );
@@ -1283,8 +1283,8 @@ test.describe('Tables', () => {
     await moveRight(page, 1);
     await selectCellsFromTableCords(
       page,
-      { x: 1, y: 0 },
-      { x: 2, y: 0 },
+      {x: 1, y: 0},
+      {x: 2, y: 0},
       true,
       true,
     );
@@ -1292,8 +1292,8 @@ test.describe('Tables', () => {
 
     await selectCellsFromTableCords(
       page,
-      { x: 0, y: 0 },
-      { x: 1, y: 0 },
+      {x: 0, y: 0},
+      {x: 1, y: 0},
       true,
       true,
     );
@@ -1390,11 +1390,11 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
       // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({ height: 1000, width: 3000 });
+      page.setViewportSize({height: 1000, width: 3000});
     }
 
     await focusEditor(page);
@@ -1404,8 +1404,8 @@ test.describe('Tables', () => {
     await click(page, '.PlaygroundEditorTheme__tableCell');
     await selectCellsFromTableCords(
       page,
-      { x: 1, y: 0 },
-      { x: 1, y: 1 },
+      {x: 1, y: 0},
+      {x: 1, y: 1},
       true,
       false,
     );
@@ -1450,11 +1450,11 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
       // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({ height: 1000, width: 3000 });
+      page.setViewportSize({height: 1000, width: 3000});
     }
 
     await focusEditor(page);
@@ -1464,8 +1464,8 @@ test.describe('Tables', () => {
     await click(page, '.PlaygroundEditorTheme__tableCell');
     await selectCellsFromTableCords(
       page,
-      { x: 0, y: 0 },
-      { x: 1, y: 0 },
+      {x: 0, y: 0},
+      {x: 1, y: 0},
       true,
       true,
     );
@@ -1510,11 +1510,11 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
       // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({ height: 1000, width: 3000 });
+      page.setViewportSize({height: 1000, width: 3000});
     }
 
     await focusEditor(page);
@@ -1524,8 +1524,8 @@ test.describe('Tables', () => {
     await click(page, '.PlaygroundEditorTheme__tableCell');
     await selectCellsFromTableCords(
       page,
-      { x: 0, y: 0 },
-      { x: 0, y: 1 },
+      {x: 0, y: 0},
+      {x: 0, y: 1},
       true,
       true,
     );
@@ -1563,11 +1563,11 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
       // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({ height: 1000, width: 3000 });
+      page.setViewportSize({height: 1000, width: 3000});
     }
 
     await focusEditor(page);
@@ -1576,8 +1576,8 @@ test.describe('Tables', () => {
 
     await selectCellsFromTableCords(
       page,
-      { x: 1, y: 1 },
-      { x: 1, y: 3 },
+      {x: 1, y: 1},
+      {x: 1, y: 3},
       false,
       false,
     );
@@ -1585,8 +1585,8 @@ test.describe('Tables', () => {
 
     await selectCellsFromTableCords(
       page,
-      { x: 0, y: 0 },
-      { x: 0, y: 1 },
+      {x: 0, y: 0},
+      {x: 0, y: 1},
       true,
       true,
     );
@@ -1624,11 +1624,11 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
       // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({ height: 1000, width: 3000 });
+      page.setViewportSize({height: 1000, width: 3000});
     }
 
     await focusEditor(page);
@@ -1637,8 +1637,8 @@ test.describe('Tables', () => {
 
     await selectCellsFromTableCords(
       page,
-      { x: 1, y: 1 },
-      { x: 3, y: 1 },
+      {x: 1, y: 1},
+      {x: 3, y: 1},
       false,
       false,
     );
@@ -1646,8 +1646,8 @@ test.describe('Tables', () => {
 
     await selectCellsFromTableCords(
       page,
-      { x: 0, y: 0 },
-      { x: 1, y: 0 },
+      {x: 0, y: 0},
+      {x: 1, y: 0},
       true,
       true,
     );
@@ -1685,11 +1685,11 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page });
+    await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
       // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({ height: 1000, width: 3000 });
+      page.setViewportSize({height: 1000, width: 3000});
     }
 
     await focusEditor(page);
@@ -1708,12 +1708,12 @@ test.describe('Tables', () => {
     });
   });
 
-  test('Background color to cell', async ({ page, isPlainText, isCollab }) => {
-    await initialize({ isCollab, page });
+  test('Background color to cell', async ({page, isPlainText, isCollab}) => {
+    await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
       // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({ height: 1000, width: 3000 });
+      page.setViewportSize({height: 1000, width: 3000});
     }
 
     await focusEditor(page);
@@ -1741,8 +1741,8 @@ test.describe('Tables', () => {
     );
   });
 
-  test('Cell merge feature disabled', async ({ page, isPlainText, isCollab }) => {
-    await initialize({ isCollab, page, tableCellMerge: false });
+  test('Cell merge feature disabled', async ({page, isPlainText, isCollab}) => {
+    await initialize({isCollab, page, tableCellMerge: false});
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -1846,7 +1846,7 @@ test.describe('Tables', () => {
     isPlainText,
     isCollab,
   }) => {
-    await initialize({ isCollab, page, tableCellBackgroundColor: false });
+    await initialize({isCollab, page, tableCellBackgroundColor: false});
     test.skip(isPlainText);
 
     await focusEditor(page);

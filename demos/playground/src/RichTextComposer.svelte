@@ -56,8 +56,8 @@
   $: placeholderText = $settings.isCollab
     ? 'Enter some collaborative rich text...'
     : $settings.isRichText
-    ? 'Enter some rich text...'
-    : 'Enter some plain text...';
+      ? 'Enter some rich text...'
+      : 'Enter some plain text...';
 
   let isSmallWidthViewport = false;
 
@@ -67,8 +67,8 @@
     editorState: $settings.isCollab
       ? null
       : $settings.emptyEditor
-      ? undefined
-      : prepopulatedRichText,
+        ? undefined
+        : prepopulatedRichText,
     namespace: 'Playground',
     nodes: [
       HeadingNode,

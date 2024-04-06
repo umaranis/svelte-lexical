@@ -657,41 +657,45 @@ test.describe('Markdown', () => {
   ];
 
   BASE_BLOCK_SHORTCUTS.forEach((testCase) => {
-    test.fixme(`can convert "${testCase.text}" shortcut`, async ({
-      page,
-      isCollab,
-    }) => {
-      await focusEditor(page);
-      await page.keyboard.type(testCase.text);
-      await assertHTML(page, testCase.html, undefined, {ignoreClasses: true});
-
-      if (!isCollab) {
-        const escapedText = testCase.text.replace('>', '&gt;');
-        await undo(page);
-        await assertHTML(
-          page,
-          `<p><span data-lexical-text="true">${escapedText}</span></p>`,
-          undefined,
-          {ignoreClasses: true},
-        );
-        await redo(page);
+    test.fixme(
+      `can convert "${testCase.text}" shortcut`,
+      async ({page, isCollab}) => {
+        await focusEditor(page);
+        await page.keyboard.type(testCase.text);
         await assertHTML(page, testCase.html, undefined, {ignoreClasses: true});
-      }
-    });
+
+        if (!isCollab) {
+          const escapedText = testCase.text.replace('>', '&gt;');
+          await undo(page);
+          await assertHTML(
+            page,
+            `<p><span data-lexical-text="true">${escapedText}</span></p>`,
+            undefined,
+            {ignoreClasses: true},
+          );
+          await redo(page);
+          await assertHTML(page, testCase.html, undefined, {
+            ignoreClasses: true,
+          });
+        }
+      },
+    );
   });
 
   SIMPLE_TEXT_FORMAT_SHORTCUTS.forEach((testCase) => {
-    test.fixme(`can convert "${testCase.text}" shortcut`, async ({
-      page,
-      isCollab,
-    }) => {
-      await focusEditor(page);
-      await page.keyboard.type(testCase.text, {
-        delay: LEGACY_EVENTS ? 50 : 0,
-      });
-      await assertHTML(page, testCase.html, undefined, {ignoreClasses: false});
-      await assertMarkdownImportExport(page, testCase.text, testCase.html);
-    });
+    test.fixme(
+      `can convert "${testCase.text}" shortcut`,
+      async ({page, isCollab}) => {
+        await focusEditor(page);
+        await page.keyboard.type(testCase.text, {
+          delay: LEGACY_EVENTS ? 50 : 0,
+        });
+        await assertHTML(page, testCase.html, undefined, {
+          ignoreClasses: false,
+        });
+        await assertMarkdownImportExport(page, testCase.text, testCase.html);
+      },
+    );
   });
 
   NESTED_TEXT_FORMAT_SHORTCUTS.forEach((testCase) => {
@@ -705,156 +709,163 @@ test.describe('Markdown', () => {
     });
   });
 
-  test.fixme('can undo/redo nested transformations', async ({page, isCollab}) => {
-    await focusEditor(page);
-    await page.keyboard.type('~~_**hello world**_~~');
+  test.fixme(
+    'can undo/redo nested transformations',
+    async ({page, isCollab}) => {
+      await focusEditor(page);
+      await page.keyboard.type('~~_**hello world**_~~');
 
-    const BOLD_ITALIC_STRIKETHROUGH = html`
-      <p
-        class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-        dir="ltr">
-        <strong
-          class="PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textItalic PlaygroundEditorTheme__textStrikethrough"
-          data-lexical-text="true">
-          hello world
-        </strong>
-      </p>
-    `;
-    const BOLD_ITALIC = html`
-      <p
-        class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-        dir="ltr">
-        <span data-lexical-text="true">~~</span>
-        <strong
-          class="PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textItalic"
-          data-lexical-text="true">
-          hello world
-        </strong>
-        <span data-lexical-text="true">~~</span>
-      </p>
-    `;
-    const BOLD = html`
-      <p
-        class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-        dir="ltr">
-        <span data-lexical-text="true">~~_</span>
-        <strong
-          class="PlaygroundEditorTheme__textBold"
-          data-lexical-text="true">
-          hello world
-        </strong>
-        <span data-lexical-text="true">_</span>
-      </p>
-    `;
-    const PLAIN = html`
-      <p
-        class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-        dir="ltr">
-        <span data-lexical-text="true">~~_**hello world**</span>
-      </p>
-    `;
-
-    await assertHTML(page, BOLD_ITALIC_STRIKETHROUGH);
-
-    if (isCollab) {
-      return;
-    }
-
-    await undo(page); // Undo last transformation
-    await assertHTML(page, BOLD_ITALIC);
-    await undo(page); // Undo transformation & its text typing
-    await undo(page);
-    await assertHTML(page, BOLD);
-    await undo(page); // Undo transformation & its text typing
-    await undo(page);
-    await assertHTML(page, PLAIN);
-    await redo(page); // Redo transformation & its text typing
-    await redo(page);
-    await assertHTML(page, BOLD);
-    await redo(page); // Redo transformation & its text typing
-    await redo(page);
-    await assertHTML(page, BOLD_ITALIC);
-    await redo(page); // Redo transformation
-    await assertHTML(page, BOLD_ITALIC_STRIKETHROUGH);
-  });
-
-  test.fixme('can convert already styled text (overlapping ranges)', async ({
-    page,
-  }) => {
-    // type partially bold/underlined text, add opening markdown tag within bold/underline part
-    // and add closing within plain text
-    await focusEditor(page);
-    await pressToggleBold(page);
-    await pressToggleUnderline(page);
-    await page.keyboard.type('h*e~~llo');
-    await pressToggleBold(page);
-    await pressToggleUnderline(page);
-    await page.keyboard.type(' wo~~r*ld');
-    await assertHTML(
-      page,
-      html`
+      const BOLD_ITALIC_STRIKETHROUGH = html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
           dir="ltr">
           <strong
-            class="PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textUnderline"
+            class="PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textItalic PlaygroundEditorTheme__textStrikethrough"
             data-lexical-text="true">
-            h
+            hello world
           </strong>
-          <strong
-            class="PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textItalic PlaygroundEditorTheme__textUnderline"
-            data-lexical-text="true">
-            e
-          </strong>
-          <strong
-            class="PlaygroundEditorTheme__textUnderlineStrikethrough PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textItalic"
-            data-lexical-text="true">
-            llo
-          </strong>
-          <em
-            class="PlaygroundEditorTheme__textItalic PlaygroundEditorTheme__textStrikethrough"
-            data-lexical-text="true">
-            wo
-          </em>
-          <em
-            class="PlaygroundEditorTheme__textItalic"
-            data-lexical-text="true">
-            r
-          </em>
-          <span data-lexical-text="true">ld</span>
         </p>
-      `,
-    );
-  });
+      `;
+      const BOLD_ITALIC = html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">~~</span>
+          <strong
+            class="PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textItalic"
+            data-lexical-text="true">
+            hello world
+          </strong>
+          <span data-lexical-text="true">~~</span>
+        </p>
+      `;
+      const BOLD = html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">~~_</span>
+          <strong
+            class="PlaygroundEditorTheme__textBold"
+            data-lexical-text="true">
+            hello world
+          </strong>
+          <span data-lexical-text="true">_</span>
+        </p>
+      `;
+      const PLAIN = html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">~~_**hello world**</span>
+        </p>
+      `;
 
-  test.fixme('can convert markdown text into rich text', async ({page, isCollab}) => {
-    await focusEditor(page);
-    await page.keyboard.type('```markdown ');
-    await pasteFromClipboard(page, {
-      'text/plain': IMPORTED_MARKDOWN,
-    });
+      await assertHTML(page, BOLD_ITALIC_STRIKETHROUGH);
 
-    const originalHTML = await getHTML(page);
+      if (isCollab) {
+        return;
+      }
 
-    // Import from current markdown codeblock content
-    await click(page, '.action-button .markdown');
-    await assertHTML(page, IMPORTED_MARKDOWN_HTML);
-
-    if (!isCollab) {
+      await undo(page); // Undo last transformation
+      await assertHTML(page, BOLD_ITALIC);
+      await undo(page); // Undo transformation & its text typing
       await undo(page);
-      await assertHTML(page, originalHTML);
+      await assertHTML(page, BOLD);
+      await undo(page); // Undo transformation & its text typing
+      await undo(page);
+      await assertHTML(page, PLAIN);
+      await redo(page); // Redo transformation & its text typing
       await redo(page);
+      await assertHTML(page, BOLD);
+      await redo(page); // Redo transformation & its text typing
+      await redo(page);
+      await assertHTML(page, BOLD_ITALIC);
+      await redo(page); // Redo transformation
+      await assertHTML(page, BOLD_ITALIC_STRIKETHROUGH);
+    },
+  );
+
+  test.fixme(
+    'can convert already styled text (overlapping ranges)',
+    async ({page}) => {
+      // type partially bold/underlined text, add opening markdown tag within bold/underline part
+      // and add closing within plain text
+      await focusEditor(page);
+      await pressToggleBold(page);
+      await pressToggleUnderline(page);
+      await page.keyboard.type('h*e~~llo');
+      await pressToggleBold(page);
+      await pressToggleUnderline(page);
+      await page.keyboard.type(' wo~~r*ld');
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <strong
+              class="PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textUnderline"
+              data-lexical-text="true">
+              h
+            </strong>
+            <strong
+              class="PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textItalic PlaygroundEditorTheme__textUnderline"
+              data-lexical-text="true">
+              e
+            </strong>
+            <strong
+              class="PlaygroundEditorTheme__textUnderlineStrikethrough PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textItalic"
+              data-lexical-text="true">
+              llo
+            </strong>
+            <em
+              class="PlaygroundEditorTheme__textItalic PlaygroundEditorTheme__textStrikethrough"
+              data-lexical-text="true">
+              wo
+            </em>
+            <em
+              class="PlaygroundEditorTheme__textItalic"
+              data-lexical-text="true">
+              r
+            </em>
+            <span data-lexical-text="true">ld</span>
+          </p>
+        `,
+      );
+    },
+  );
+
+  test.fixme(
+    'can convert markdown text into rich text',
+    async ({page, isCollab}) => {
+      await focusEditor(page);
+      await page.keyboard.type('```markdown ');
+      await pasteFromClipboard(page, {
+        'text/plain': IMPORTED_MARKDOWN,
+      });
+
+      const originalHTML = await getHTML(page);
+
+      // Import from current markdown codeblock content
+      await click(page, '.action-button .markdown');
       await assertHTML(page, IMPORTED_MARKDOWN_HTML);
 
-      // Click again to run export/import cycle twice to make sure
-      // no extra nodes (e.g. newlines) are created
-      await click(page, '.action-button .markdown');
-      await click(page, '.action-button .markdown');
-      await click(page, '.action-button .markdown');
-      await click(page, '.action-button .markdown');
-      await assertHTML(page, IMPORTED_MARKDOWN_HTML);
-    }
-  });
+      if (!isCollab) {
+        await undo(page);
+        await assertHTML(page, originalHTML);
+        await redo(page);
+        await assertHTML(page, IMPORTED_MARKDOWN_HTML);
+
+        // Click again to run export/import cycle twice to make sure
+        // no extra nodes (e.g. newlines) are created
+        await click(page, '.action-button .markdown');
+        await click(page, '.action-button .markdown');
+        await click(page, '.action-button .markdown');
+        await click(page, '.action-button .markdown');
+        await assertHTML(page, IMPORTED_MARKDOWN_HTML);
+      }
+    },
+  );
 
   test.fixme('can type text with markdown', async ({page}) => {
     await focusEditor(page);
@@ -958,50 +969,53 @@ test.describe('Markdown', () => {
     );
   });
 
-  test.fixme('can adjust selection after text match transformer', async ({page}) => {
-    await focusEditor(page);
-    await page.keyboard.type('Hello  world');
-    await moveLeft(page, 6);
-    await page.keyboard.type('[link](https://lexical.dev)');
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Hello</span>
-          <a
-            href="https://lexical.dev"
-            class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
+  test.fixme(
+    'can adjust selection after text match transformer',
+    async ({page}) => {
+      await focusEditor(page);
+      await page.keyboard.type('Hello  world');
+      await moveLeft(page, 6);
+      await page.keyboard.type('[link](https://lexical.dev)');
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
             dir="ltr">
-            <span data-lexical-text="true">link</span>
-          </a>
-          <span data-lexical-text="true">world</span>
-        </p>
-      `,
-    );
-    // Selection starts after newly created link element
+            <span data-lexical-text="true">Hello</span>
+            <a
+              href="https://lexical.dev"
+              class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
+              dir="ltr">
+              <span data-lexical-text="true">link</span>
+            </a>
+            <span data-lexical-text="true">world</span>
+          </p>
+        `,
+      );
+      // Selection starts after newly created link element
 
-    if (E2E_BROWSER === 'webkit') {
-      // TODO: safari keeps dom selection on newly inserted link although Lexical's selection
-      // is correctly adjusted to start on [ world] text node. #updateDomSelection calls
-      // selection.setBaseAndExtent correctly, but safari does not seem to sync dom selection
-      // to newly passed values of anchor/focus/offset
-      await assertSelection(page, {
-        anchorOffset: 4,
-        anchorPath: [0, 1, 0, 0],
-        focusOffset: 4,
-        focusPath: [0, 1, 0, 0],
-      });
-    } else {
-      await assertSelection(page, {
-        anchorOffset: 0,
-        anchorPath: [0, 2, 0],
-        focusOffset: 0,
-        focusPath: [0, 2, 0],
-      });
-    }
-  });
+      if (E2E_BROWSER === 'webkit') {
+        // TODO: safari keeps dom selection on newly inserted link although Lexical's selection
+        // is correctly adjusted to start on [ world] text node. #updateDomSelection calls
+        // selection.setBaseAndExtent correctly, but safari does not seem to sync dom selection
+        // to newly passed values of anchor/focus/offset
+        await assertSelection(page, {
+          anchorOffset: 4,
+          anchorPath: [0, 1, 0, 0],
+          focusOffset: 4,
+          focusPath: [0, 1, 0, 0],
+        });
+      } else {
+        await assertSelection(page, {
+          anchorOffset: 0,
+          anchorPath: [0, 2, 0],
+          focusOffset: 0,
+          focusPath: [0, 2, 0],
+        });
+      }
+    },
+  );
 });
 
 const TYPED_MARKDOWN = `# Markdown Shortcuts

@@ -792,283 +792,248 @@ test.describe('Keyboard Navigation', () => {
     }
   });
 
-  test.fixme('can navigate through the text with emoji word by word', async ({
-    page,
-    browserName,
-  }) => {
-    await focusEditor(page);
-    // type sample text
-    await page.keyboard.type('123:)456 abc:):)de fg');
-    await assertSelection(page, {
-      anchorOffset: 5,
-      anchorPath: [0, 5, 0],
-      focusOffset: 5,
-      focusPath: [0, 5, 0],
-    });
-    // navigate through the text
-    // 1 left
-    await moveToPrevWord(page);
-    await assertSelection(page, {
-      anchorOffset: 3,
-      anchorPath: [0, 5, 0],
-      focusOffset: 3,
-      focusPath: [0, 5, 0],
-    });
-    // 2 left
-    await moveToPrevWord(page);
-    if (browserName === 'firefox') {
+  test.fixme(
+    'can navigate through the text with emoji word by word',
+    async ({page, browserName}) => {
+      await focusEditor(page);
+      // type sample text
+      await page.keyboard.type('123:)456 abc:):)de fg');
       await assertSelection(page, {
-        anchorOffset: 4,
-        anchorPath: [0, 2, 0],
-        focusOffset: 4,
-        focusPath: [0, 2, 0],
+        anchorOffset: 5,
+        anchorPath: [0, 5, 0],
+        focusOffset: 5,
+        focusPath: [0, 5, 0],
       });
-    } else if (browserName === 'webkit') {
-      await assertSelection(page, {
-        anchorOffset: 2,
-        anchorPath: [0, 4, 0, 0],
-        focusOffset: 2,
-        focusPath: [0, 4, 0, 0],
-      });
-    } else {
-      await assertSelection(page, {
-        anchorOffset: 2,
-        anchorPath: [0, 4, 0, 0],
-        focusOffset: 2,
-        focusPath: [0, 4, 0, 0],
-      });
-    }
-    // 3 left
-    await moveToPrevWord(page);
-    if (browserName === 'webkit') {
-      await assertSelection(page, {
-        anchorOffset: 4,
-        anchorPath: [0, 2, 0],
-        focusOffset: 4,
-        focusPath: [0, 2, 0],
-      });
-    } else if (browserName === 'firefox') {
-      await assertSelection(page, {
-        anchorOffset: 0,
-        anchorPath: [0, 0, 0],
-        focusOffset: 0,
-        focusPath: [0, 0, 0],
-      });
-    } else {
-      await assertSelection(page, {
-        anchorOffset: 7,
-        anchorPath: [0, 2, 0],
-        focusOffset: 7,
-        focusPath: [0, 2, 0],
-      });
-    }
-    // Non-Firefox requires more arrow presses
-    if (browserName !== 'firefox') {
-      // 4 left
+      // navigate through the text
+      // 1 left
       await moveToPrevWord(page);
-      if (browserName === 'webkit') {
-        await assertSelection(page, {
-          anchorOffset: 2,
-          anchorPath: [0, 1, 0, 0],
-          focusOffset: 2,
-          focusPath: [0, 1, 0, 0],
-        });
-      } else {
+      await assertSelection(page, {
+        anchorOffset: 3,
+        anchorPath: [0, 5, 0],
+        focusOffset: 3,
+        focusPath: [0, 5, 0],
+      });
+      // 2 left
+      await moveToPrevWord(page);
+      if (browserName === 'firefox') {
         await assertSelection(page, {
           anchorOffset: 4,
           anchorPath: [0, 2, 0],
           focusOffset: 4,
           focusPath: [0, 2, 0],
-        });
-      }
-      // 5 left
-      await moveToPrevWord(page);
-      if (browserName === 'webkit') {
-        await assertSelection(page, {
-          anchorOffset: 0,
-          anchorPath: [0, 0, 0],
-          focusOffset: 0,
-          focusPath: [0, 0, 0],
-        });
-      } else {
-        await assertSelection(page, {
-          anchorOffset: 2,
-          anchorPath: [0, 1, 0, 0],
-          focusOffset: 2,
-          focusPath: [0, 1, 0, 0],
-        });
-      }
-      // 6 left
-      await moveToPrevWord(page);
-      if (browserName === 'chromium') {
-        await assertSelection(page, {
-          anchorOffset: 3,
-          anchorPath: [0, 0, 0],
-          focusOffset: 3,
-          focusPath: [0, 0, 0],
         });
       } else if (browserName === 'webkit') {
         await assertSelection(page, {
-          anchorOffset: 0,
-          anchorPath: [0, 0, 0],
-          focusOffset: 0,
-          focusPath: [0, 0, 0],
+          anchorOffset: 2,
+          anchorPath: [0, 4, 0, 0],
+          focusOffset: 2,
+          focusPath: [0, 4, 0, 0],
         });
       } else {
         await assertSelection(page, {
-          anchorOffset: 0,
-          anchorPath: [0, 2, 0],
-          focusOffset: 0,
-          focusPath: [0, 2, 0],
+          anchorOffset: 2,
+          anchorPath: [0, 4, 0, 0],
+          focusOffset: 2,
+          focusPath: [0, 4, 0, 0],
         });
       }
-
-      // 7 left
+      // 3 left
       await moveToPrevWord(page);
-      if (browserName === 'chromium') {
-        await assertSelection(page, {
-          anchorOffset: 0,
-          anchorPath: [0, 0, 0],
-          focusOffset: 0,
-          focusPath: [0, 0, 0],
-        });
-      } else {
-        await assertSelection(page, {
-          anchorOffset: 0,
-          anchorPath: [0, 0, 0],
-          focusOffset: 0,
-          focusPath: [0, 0, 0],
-        });
-      }
-
-      // 8 left
-      await moveToPrevWord(page);
-      await assertSelection(page, {
-        anchorOffset: 0,
-        anchorPath: [0, 0, 0],
-        focusOffset: 0,
-        focusPath: [0, 0, 0],
-      });
-    }
-    // 1 right
-    await moveToNextWord(page);
-    if (browserName === 'webkit') {
-      await assertSelection(page, {
-        anchorOffset: 3,
-        anchorPath: [0, 0, 0],
-        focusOffset: 3,
-        focusPath: [0, 0, 0],
-      });
-    } else if (browserName === 'firefox') {
-      if (IS_WINDOWS) {
+      if (browserName === 'webkit') {
         await assertSelection(page, {
           anchorOffset: 4,
           anchorPath: [0, 2, 0],
           focusOffset: 4,
           focusPath: [0, 2, 0],
         });
+      } else if (browserName === 'firefox') {
+        await assertSelection(page, {
+          anchorOffset: 0,
+          anchorPath: [0, 0, 0],
+          focusOffset: 0,
+          focusPath: [0, 0, 0],
+        });
       } else {
+        await assertSelection(page, {
+          anchorOffset: 7,
+          anchorPath: [0, 2, 0],
+          focusOffset: 7,
+          focusPath: [0, 2, 0],
+        });
+      }
+      // Non-Firefox requires more arrow presses
+      if (browserName !== 'firefox') {
+        // 4 left
+        await moveToPrevWord(page);
+        if (browserName === 'webkit') {
+          await assertSelection(page, {
+            anchorOffset: 2,
+            anchorPath: [0, 1, 0, 0],
+            focusOffset: 2,
+            focusPath: [0, 1, 0, 0],
+          });
+        } else {
+          await assertSelection(page, {
+            anchorOffset: 4,
+            anchorPath: [0, 2, 0],
+            focusOffset: 4,
+            focusPath: [0, 2, 0],
+          });
+        }
+        // 5 left
+        await moveToPrevWord(page);
+        if (browserName === 'webkit') {
+          await assertSelection(page, {
+            anchorOffset: 0,
+            anchorPath: [0, 0, 0],
+            focusOffset: 0,
+            focusPath: [0, 0, 0],
+          });
+        } else {
+          await assertSelection(page, {
+            anchorOffset: 2,
+            anchorPath: [0, 1, 0, 0],
+            focusOffset: 2,
+            focusPath: [0, 1, 0, 0],
+          });
+        }
+        // 6 left
+        await moveToPrevWord(page);
+        if (browserName === 'chromium') {
+          await assertSelection(page, {
+            anchorOffset: 3,
+            anchorPath: [0, 0, 0],
+            focusOffset: 3,
+            focusPath: [0, 0, 0],
+          });
+        } else if (browserName === 'webkit') {
+          await assertSelection(page, {
+            anchorOffset: 0,
+            anchorPath: [0, 0, 0],
+            focusOffset: 0,
+            focusPath: [0, 0, 0],
+          });
+        } else {
+          await assertSelection(page, {
+            anchorOffset: 0,
+            anchorPath: [0, 2, 0],
+            focusOffset: 0,
+            focusPath: [0, 2, 0],
+          });
+        }
+
+        // 7 left
+        await moveToPrevWord(page);
+        if (browserName === 'chromium') {
+          await assertSelection(page, {
+            anchorOffset: 0,
+            anchorPath: [0, 0, 0],
+            focusOffset: 0,
+            focusPath: [0, 0, 0],
+          });
+        } else {
+          await assertSelection(page, {
+            anchorOffset: 0,
+            anchorPath: [0, 0, 0],
+            focusOffset: 0,
+            focusPath: [0, 0, 0],
+          });
+        }
+
+        // 8 left
+        await moveToPrevWord(page);
+        await assertSelection(page, {
+          anchorOffset: 0,
+          anchorPath: [0, 0, 0],
+          focusOffset: 0,
+          focusPath: [0, 0, 0],
+        });
+      }
+      // 1 right
+      await moveToNextWord(page);
+      if (browserName === 'webkit') {
+        await assertSelection(page, {
+          anchorOffset: 3,
+          anchorPath: [0, 0, 0],
+          focusOffset: 3,
+          focusPath: [0, 0, 0],
+        });
+      } else if (browserName === 'firefox') {
+        if (IS_WINDOWS) {
+          await assertSelection(page, {
+            anchorOffset: 4,
+            anchorPath: [0, 2, 0],
+            focusOffset: 4,
+            focusPath: [0, 2, 0],
+          });
+        } else {
+          await assertSelection(page, {
+            anchorOffset: 3,
+            anchorPath: [0, 2, 0],
+            focusOffset: 3,
+            focusPath: [0, 2, 0],
+          });
+        }
+      } else {
+        await assertSelection(page, {
+          anchorOffset: 3,
+          anchorPath: [0, 0, 0],
+          focusOffset: 3,
+          focusPath: [0, 0, 0],
+        });
+      }
+      // 2 right
+      await moveToNextWord(page);
+      if (browserName === 'webkit') {
         await assertSelection(page, {
           anchorOffset: 3,
           anchorPath: [0, 2, 0],
           focusOffset: 3,
           focusPath: [0, 2, 0],
         });
-      }
-    } else {
-      await assertSelection(page, {
-        anchorOffset: 3,
-        anchorPath: [0, 0, 0],
-        focusOffset: 3,
-        focusPath: [0, 0, 0],
-      });
-    }
-    // 2 right
-    await moveToNextWord(page);
-    if (browserName === 'webkit') {
-      await assertSelection(page, {
-        anchorOffset: 3,
-        anchorPath: [0, 2, 0],
-        focusOffset: 3,
-        focusPath: [0, 2, 0],
-      });
-    } else if (browserName === 'firefox') {
-      if (IS_WINDOWS) {
-        await assertSelection(page, {
-          anchorOffset: 3,
-          anchorPath: [0, 5, 0],
-          focusOffset: 3,
-          focusPath: [0, 5, 0],
-        });
+      } else if (browserName === 'firefox') {
+        if (IS_WINDOWS) {
+          await assertSelection(page, {
+            anchorOffset: 3,
+            anchorPath: [0, 5, 0],
+            focusOffset: 3,
+            focusPath: [0, 5, 0],
+          });
+        } else {
+          await assertSelection(page, {
+            anchorOffset: 2,
+            anchorPath: [0, 5, 0],
+            focusOffset: 2,
+            focusPath: [0, 5, 0],
+          });
+        }
       } else {
-        await assertSelection(page, {
-          anchorOffset: 2,
-          anchorPath: [0, 5, 0],
-          focusOffset: 2,
-          focusPath: [0, 5, 0],
-        });
+        if (IS_WINDOWS) {
+          await assertSelection(page, {
+            anchorOffset: 2,
+            anchorPath: [0, 1, 0, 0],
+            focusOffset: 2,
+            focusPath: [0, 1, 0, 0],
+          });
+        } else {
+          await assertSelection(page, {
+            anchorOffset: 2,
+            anchorPath: [0, 1, 0, 0],
+            focusOffset: 2,
+            focusPath: [0, 1, 0, 0],
+          });
+        }
       }
-    } else {
-      if (IS_WINDOWS) {
-        await assertSelection(page, {
-          anchorOffset: 2,
-          anchorPath: [0, 1, 0, 0],
-          focusOffset: 2,
-          focusPath: [0, 1, 0, 0],
-        });
-      } else {
-        await assertSelection(page, {
-          anchorOffset: 2,
-          anchorPath: [0, 1, 0, 0],
-          focusOffset: 2,
-          focusPath: [0, 1, 0, 0],
-        });
-      }
-    }
-    // 3 right
-    await moveToNextWord(page);
-    if (browserName === 'webkit') {
-      await assertSelection(page, {
-        anchorOffset: 7,
-        anchorPath: [0, 2, 0],
-        focusOffset: 7,
-        focusPath: [0, 2, 0],
-      });
-    } else if (browserName === 'firefox') {
-      await assertSelection(page, {
-        anchorOffset: 5,
-        anchorPath: [0, 5, 0],
-        focusOffset: 5,
-        focusPath: [0, 5, 0],
-      });
-    } else if (IS_WINDOWS) {
-      await assertSelection(page, {
-        anchorOffset: 4,
-        anchorPath: [0, 2, 0],
-        focusOffset: 4,
-        focusPath: [0, 2, 0],
-      });
-    } else {
-      await assertSelection(page, {
-        anchorOffset: 3,
-        anchorPath: [0, 2, 0],
-        focusOffset: 3,
-        focusPath: [0, 2, 0],
-      });
-    }
-    // 4 right
-    await moveToNextWord(page);
-    if (browserName === 'firefox') {
-      await assertSelection(page, {
-        anchorOffset: 5,
-        anchorPath: [0, 5, 0],
-        focusOffset: 5,
-        focusPath: [0, 5, 0],
-      });
-    } else {
-      // 5 right
+      // 3 right
       await moveToNextWord(page);
       if (browserName === 'webkit') {
+        await assertSelection(page, {
+          anchorOffset: 7,
+          anchorPath: [0, 2, 0],
+          focusOffset: 7,
+          focusPath: [0, 2, 0],
+        });
+      } else if (browserName === 'firefox') {
         await assertSelection(page, {
           anchorOffset: 5,
           anchorPath: [0, 5, 0],
@@ -1077,23 +1042,22 @@ test.describe('Keyboard Navigation', () => {
         });
       } else if (IS_WINDOWS) {
         await assertSelection(page, {
-          anchorOffset: 2,
-          anchorPath: [0, 4, 0, 0],
-          focusOffset: 2,
-          focusPath: [0, 4, 0, 0],
+          anchorOffset: 4,
+          anchorPath: [0, 2, 0],
+          focusOffset: 4,
+          focusPath: [0, 2, 0],
         });
-
-        // 6 right
-        await moveToNextWord(page);
+      } else {
         await assertSelection(page, {
           anchorOffset: 3,
-          anchorPath: [0, 5, 0],
+          anchorPath: [0, 2, 0],
           focusOffset: 3,
-          focusPath: [0, 5, 0],
+          focusPath: [0, 2, 0],
         });
-
-        // 7 right
-        await moveToNextWord(page);
+      }
+      // 4 right
+      await moveToNextWord(page);
+      if (browserName === 'firefox') {
         await assertSelection(page, {
           anchorOffset: 5,
           anchorPath: [0, 5, 0],
@@ -1101,42 +1065,78 @@ test.describe('Keyboard Navigation', () => {
           focusPath: [0, 5, 0],
         });
       } else {
-        await assertSelection(page, {
-          anchorOffset: 2,
-          anchorPath: [0, 4, 0, 0],
-          focusOffset: 2,
-          focusPath: [0, 4, 0, 0],
-        });
-
-        // 6 right
+        // 5 right
         await moveToNextWord(page);
-        await assertSelection(page, {
-          anchorOffset: 2,
-          anchorPath: [0, 5, 0],
-          focusOffset: 2,
-          focusPath: [0, 5, 0],
-        });
+        if (browserName === 'webkit') {
+          await assertSelection(page, {
+            anchorOffset: 5,
+            anchorPath: [0, 5, 0],
+            focusOffset: 5,
+            focusPath: [0, 5, 0],
+          });
+        } else if (IS_WINDOWS) {
+          await assertSelection(page, {
+            anchorOffset: 2,
+            anchorPath: [0, 4, 0, 0],
+            focusOffset: 2,
+            focusPath: [0, 4, 0, 0],
+          });
 
-        // 7 right
-        await moveToNextWord(page);
-        await assertSelection(page, {
-          anchorOffset: 5,
-          anchorPath: [0, 5, 0],
-          focusOffset: 5,
-          focusPath: [0, 5, 0],
-        });
+          // 6 right
+          await moveToNextWord(page);
+          await assertSelection(page, {
+            anchorOffset: 3,
+            anchorPath: [0, 5, 0],
+            focusOffset: 3,
+            focusPath: [0, 5, 0],
+          });
+
+          // 7 right
+          await moveToNextWord(page);
+          await assertSelection(page, {
+            anchorOffset: 5,
+            anchorPath: [0, 5, 0],
+            focusOffset: 5,
+            focusPath: [0, 5, 0],
+          });
+        } else {
+          await assertSelection(page, {
+            anchorOffset: 2,
+            anchorPath: [0, 4, 0, 0],
+            focusOffset: 2,
+            focusPath: [0, 4, 0, 0],
+          });
+
+          // 6 right
+          await moveToNextWord(page);
+          await assertSelection(page, {
+            anchorOffset: 2,
+            anchorPath: [0, 5, 0],
+            focusOffset: 2,
+            focusPath: [0, 5, 0],
+          });
+
+          // 7 right
+          await moveToNextWord(page);
+          await assertSelection(page, {
+            anchorOffset: 5,
+            anchorPath: [0, 5, 0],
+            focusOffset: 5,
+            focusPath: [0, 5, 0],
+          });
+        }
+
+        if (browserName === 'webkit') {
+          // 6 right
+          await moveToNextWord(page);
+          await assertSelection(page, {
+            anchorOffset: 5,
+            anchorPath: [0, 5, 0],
+            focusOffset: 5,
+            focusPath: [0, 5, 0],
+          });
+        }
       }
-
-      if (browserName === 'webkit') {
-        // 6 right
-        await moveToNextWord(page);
-        await assertSelection(page, {
-          anchorOffset: 5,
-          anchorPath: [0, 5, 0],
-          focusOffset: 5,
-          focusPath: [0, 5, 0],
-        });
-      }
-    }
-  });
+    },
+  );
 });

@@ -19,33 +19,36 @@ import {
 
 test.describe('Regression test #230', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test.fixme(`Is able to right arrow before hashtag after inserting text node`, async ({
-    page,
-  }) => {
-    await focusEditor(page);
-    await page.keyboard.type('#foo');
-    await waitForSelector(page, '.PlaygroundEditorTheme__hashtag');
-    await moveLeft(page, 4);
-    await page.keyboard.type('a');
-    await page.keyboard.press('Backspace');
-    await page.keyboard.press('ArrowRight');
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span class="PlaygroundEditorTheme__hashtag" data-lexical-text="true">
-            #foo
-          </span>
-        </p>
-      `,
-    );
-    await assertSelection(page, {
-      anchorOffset: 1,
-      anchorPath: [0, 0, 0],
-      focusOffset: 1,
-      focusPath: [0, 0, 0],
-    });
-  });
+  test.fixme(
+    `Is able to right arrow before hashtag after inserting text node`,
+    async ({page}) => {
+      await focusEditor(page);
+      await page.keyboard.type('#foo');
+      await waitForSelector(page, '.PlaygroundEditorTheme__hashtag');
+      await moveLeft(page, 4);
+      await page.keyboard.type('a');
+      await page.keyboard.press('Backspace');
+      await page.keyboard.press('ArrowRight');
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span
+              class="PlaygroundEditorTheme__hashtag"
+              data-lexical-text="true">
+              #foo
+            </span>
+          </p>
+        `,
+      );
+      await assertSelection(page, {
+        anchorOffset: 1,
+        anchorPath: [0, 0, 0],
+        focusOffset: 1,
+        focusPath: [0, 0, 0],
+      });
+    },
+  );
 });

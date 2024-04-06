@@ -156,42 +156,45 @@ test.describe('Auto Links', () => {
     );
   });
 
-  test.fixme('Does not create redundant auto-link', async ({page, isPlainText}) => {
-    test.skip(isPlainText);
-    await focusEditor(page);
-    await page.keyboard.type('hm');
+  test.fixme(
+    'Does not create redundant auto-link',
+    async ({page, isPlainText}) => {
+      test.skip(isPlainText);
+      await focusEditor(page);
+      await page.keyboard.type('hm');
 
-    await selectAll(page);
-    await click(page, '.link');
+      await selectAll(page);
+      await click(page, '.link');
 
-    await assertHTML(
-      page,
-      html`
-        <p dir="ltr">
-          <a href="https://" dir="ltr" rel="noopener">
-            <span data-lexical-text="true">hm</span>
-          </a>
-        </p>
-      `,
-      undefined,
-      {ignoreClasses: true},
-    );
-    await moveLeft(page, 1);
-    await moveRight(page, 1);
-    await page.keyboard.type('ttps://facebook.co');
-    await assertHTML(
-      page,
-      html`
-        <p dir="ltr">
-          <a href="https://" dir="ltr" rel="noopener">
-            <span data-lexical-text="true">https://facebook.com</span>
-          </a>
-        </p>
-      `,
-      undefined,
-      {ignoreClasses: true},
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <p dir="ltr">
+            <a href="https://" dir="ltr" rel="noopener">
+              <span data-lexical-text="true">hm</span>
+            </a>
+          </p>
+        `,
+        undefined,
+        {ignoreClasses: true},
+      );
+      await moveLeft(page, 1);
+      await moveRight(page, 1);
+      await page.keyboard.type('ttps://facebook.co');
+      await assertHTML(
+        page,
+        html`
+          <p dir="ltr">
+            <a href="https://" dir="ltr" rel="noopener">
+              <span data-lexical-text="true">https://facebook.com</span>
+            </a>
+          </p>
+        `,
+        undefined,
+        {ignoreClasses: true},
+      );
+    },
+  );
 
   test('Can create links when pasting text with multiple autolinks in a row separated by non-alphanumeric characters, but not whitespaces', async ({
     page,
