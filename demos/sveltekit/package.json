@@ -6,7 +6,8 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check": "svelte-check --fail-on-warnings"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.0.1",

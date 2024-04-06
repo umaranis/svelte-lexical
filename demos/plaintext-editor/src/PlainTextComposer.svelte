@@ -10,6 +10,7 @@
 
   const initialConfig = {
     theme: PlaygroundEditorTheme,
+    namespace: 'Playground',
     nodes: [],
     onError: (error) => {
       throw error;

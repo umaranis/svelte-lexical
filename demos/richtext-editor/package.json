@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "size": "pnpm build && size-limit",
-    "svelte-check": "svelte-check --fail-on-warnings"
+    "check": "svelte-check --fail-on-warnings"
   },
   "devDependencies": {
     "@size-limit/preset-app": "^8.2.6",

@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "size": "pnpm build && size-limit"
+    "size": "pnpm build && size-limit",
+    "check": "svelte-check --tsconfig ./tsconfig.json --fail-on-warnings"
   },
   "devDependencies": {
     "@size-limit/preset-app": "^8.2.6",
