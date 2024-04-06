@@ -22,7 +22,7 @@
   },
   "type": "module",
   "dependencies": {
-    "svelte-lexical": "0.3.5",
+    "svelte-lexical": "0.4.0",
     "svelte-preprocess": "^5.1.3"
   }
 }
