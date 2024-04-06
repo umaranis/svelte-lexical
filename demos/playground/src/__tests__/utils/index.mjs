@@ -671,7 +671,6 @@ export function prettifyHTML(string, { ignoreClasses, ignoreInlineStyles } = {})
       htmlWhitespaceSensitivity: 'ignore',
       parser: 'html',
     })
-    .trim();
 }
 
 // This function does not suppose to do anything, it's only used as a trigger
