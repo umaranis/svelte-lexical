@@ -14,3 +14,4 @@ flow-typed
 pnpm-lock.yaml
 package-lock.json
 yarn.lock
+**/.svelte-kit

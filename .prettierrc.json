@@ -6,6 +6,5 @@
   "printWidth": 80,
   "trailingComma": "all",
   "htmlWhitespaceSensitivity": "ignore",
-  "attributeGroups": ["$DEFAULT", "^data-"],
   "overrides": [{"files": "*.svelte", "options": {"parser": "svelte"}}]
 }

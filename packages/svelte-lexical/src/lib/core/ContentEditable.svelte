@@ -48,8 +48,8 @@
   aria-expanded={!isEditable
     ? undefined
     : role === 'combobox'
-    ? !!ariaExpanded
-    : undefined}
+      ? !!ariaExpanded
+      : undefined}
   aria-label={ariaLabel}
   aria-labelledby={ariaLabelledBy}
   aria-multiline={ariaMultiline}

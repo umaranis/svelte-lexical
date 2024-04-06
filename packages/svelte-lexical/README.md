@@ -1,4 +1,4 @@
-*svelte-lexical is in early development and it is not production-ready yet.*
+_svelte-lexical is in early development and it is not production-ready yet._
 
 ---
 
