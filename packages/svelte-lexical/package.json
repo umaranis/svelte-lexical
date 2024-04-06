@@ -33,8 +33,9 @@
     "test": "vitest run",
     "test:ui": "vitest --ui",
     "test:watch": "vitest",
-    "lint": "prettier --check . && eslint .",
-    "format": "prettier --write ."
+    "lint": "pnpm run format:check && eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check . --ignore-path ../../.gitignore"
   },
   "peerDependencies": {
     "svelte": "^4.0.0"
