@@ -59,10 +59,10 @@ importers:
         version: link:../../packages/svelte-lexical
       y-websocket:
         specifier: 1.5.0
-        version: 1.5.0(yjs@13.6.0)
+        version: 1.5.0(yjs@13.6.2)
       yjs:
-        specifier: 13.6.0
-        version: 13.6.0
+        specifier: 13.6.2
+        version: 13.6.2
     devDependencies:
       '@playwright/test':
         specifier: ^1.36.1
@@ -9176,18 +9176,6 @@ packages:
     dev: false
     optional: true
 
-  /y-leveldb@0.1.2(yjs@13.6.0):
-    resolution: {integrity: sha512-6ulEn5AXfXJYi89rXPEg2mMHAyyw8+ZfeMMdOtBbV8FJpQ1NOrcgi6DTAcXof0dap84NjHPT2+9d0rb6cFsjEg==}
-    requiresBuild: true
-    peerDependencies:
-      yjs: ^13.0.0
-    dependencies:
-      level: 6.0.1
-      lib0: 0.2.78
-      yjs: 13.6.0
-    dev: false
-    optional: true
-
   /y-leveldb@0.1.2(yjs@13.6.2):
     resolution: {integrity: sha512-6ulEn5AXfXJYi89rXPEg2mMHAyyw8+ZfeMMdOtBbV8FJpQ1NOrcgi6DTAcXof0dap84NjHPT2+9d0rb6cFsjEg==}
     requiresBuild: true
@@ -9204,24 +9192,6 @@ packages:
     resolution: {integrity: sha512-Wil92b7cGk712lRHDqS4T90IczF6RkcvCwAD0A2OPg+adKmOe+nOiT/N2hvpQIWS3zfjmtL4CPaH5sIW1Hkm/A==}
     dependencies:
       lib0: 0.2.78
-    dev: false
-
-  /y-websocket@1.5.0(yjs@13.6.0):
-    resolution: {integrity: sha512-A8AO6XtnQlYwWFytWdkDCeXg4l8ghRTIw5h2YUgUYDmEC9ugWGIwYNW80yadhSFAF7CvuWTEkQNEpevnH6EiZw==}
-    hasBin: true
-    peerDependencies:
-      yjs: ^13.5.6
-    dependencies:
-      lib0: 0.2.78
-      lodash.debounce: 4.0.8
-      y-protocols: 1.0.5
-      yjs: 13.6.0
-    optionalDependencies:
-      ws: 6.2.2
-      y-leveldb: 0.1.2(yjs@13.6.0)
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
     dev: false
 
   /y-websocket@1.5.0(yjs@13.6.2):
@@ -9283,13 +9253,6 @@ packages:
       buffer-crc32: 0.2.13
       fd-slicer: 1.1.0
     dev: true
-
-  /yjs@13.6.0:
-    resolution: {integrity: sha512-tFZtuQV6XamtDa9SfZhUsxchUcTBWe7fzpo1UWZDLXGejTZ5t9MCswGYzyvq7+BDzfEc9oX54QEbzI/4NyS6+g==}
-    engines: {node: '>=16.0.0', npm: '>=8.0.0'}
-    dependencies:
-      lib0: 0.2.78
-    dev: false
 
   /yjs@13.6.2:
     resolution: {integrity: sha512-shFc4JI8Hr3NqKYlS09xX6lyQwU3LvQlOXEkHK2aBa1T/luNLf0qHtoujgb9pRPxhIK0uevobHhDw0+AET1Vkw==}
