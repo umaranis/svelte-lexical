@@ -85,14 +85,15 @@
     "svelte": "^4.2.12",
     "svelte-check": "^3.4.3",
     "svelte-preprocess": "^5.0.3",
+    "svelte-prism": "^1.1.6",
     "tslib": "^2.5.0",
     "typescript": "^5.0.4",
     "vite": "^5.2.7"
   },
   "dependencies": {
     "@lexical/markdown": "^0.14.5",
+    "prismjs": "^1.29.0",
     "svelte-lexical": "0.4.0",
-    "svelte-prism": "^1.1.6",
     "y-websocket": "1.5.0",
     "yjs": "13.6.2"
   },
