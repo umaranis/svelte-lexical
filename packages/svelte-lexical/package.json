@@ -95,6 +95,7 @@
     "@lexical/table": "0.14.2",
     "@lexical/utils": "0.14.2",
     "@lexical/yjs": "0.14.2",
+    "@lexical/markdown": "0.14.2",
     "lexical": "0.14.2",
     "lodash-es": "^4.17.21",
     "prettier": "^3.2.5",
