@@ -5,5 +5,6 @@
   "editor.formatOnSave": true,
   "svelte.plugin.svelte.compilerWarnings": {
     "a11y-no-noninteractive-tabindex": "ignore"
-  }
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
