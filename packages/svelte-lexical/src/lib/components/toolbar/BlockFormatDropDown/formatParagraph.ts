@@ -1,9 +1,16 @@
 import {$setBlocksType} from '@lexical/selection';
-import {$createParagraphNode, $getSelection, type LexicalEditor} from 'lexical';
+import {
+  $createParagraphNode,
+  $getSelection,
+  $isRangeSelection,
+  type LexicalEditor,
+} from 'lexical';
 
 export function formatParagraph(editor: LexicalEditor) {
   editor.update(() => {
     const selection = $getSelection();
-    $setBlocksType(selection, () => $createParagraphNode());
+    if ($isRangeSelection(selection)) {
+      $setBlocksType(selection, () => $createParagraphNode());
+    }
   });
 }
