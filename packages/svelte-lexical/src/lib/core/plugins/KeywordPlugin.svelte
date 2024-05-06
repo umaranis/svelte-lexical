@@ -7,7 +7,7 @@
   } from './KeywordNode.js';
   import {getEditor} from '../composerContext.js';
   import {mergeRegister} from '@lexical/utils';
-  import {registerLexicalTextEntity} from '../LexicalText.js';
+  import {registerLexicalTextEntity} from '@lexical/text';
   import {onMount} from 'svelte';
 
   export let keywordsRegex: RegExp;

@@ -1,5 +1,5 @@
 import {$isAtNodeEnd as isAtNodeEnd} from '@lexical/selection';
-import type {RangeSelection} from 'lexical/LexicalSelection.js';
+import type {RangeSelection} from 'lexical';
 
 export default function getSelectedNode(selection: RangeSelection) {
   const anchor = selection.anchor;
