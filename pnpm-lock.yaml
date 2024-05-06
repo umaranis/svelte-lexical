@@ -58,8 +58,8 @@ importers:
         specifier: 0.4.0
         version: link:../../packages/svelte-lexical
       y-websocket:
-        specifier: 1.5.0
-        version: 1.5.0(yjs@13.6.2)
+        specifier: 1.5.4
+        version: 1.5.4(yjs@13.6.2)
       yjs:
         specifier: 13.6.2
         version: 13.6.2
@@ -289,8 +289,8 @@ importers:
         specifier: ^3.2.5
         version: 3.2.5
       y-websocket:
-        specifier: 1.5.0
-        version: 1.5.0(yjs@13.6.2)
+        specifier: 1.5.4
+        version: 1.5.4(yjs@13.6.2)
       yjs:
         specifier: 13.6.2
         version: 13.6.2
@@ -8475,8 +8475,9 @@ packages:
       yjs: 13.6.2
     dev: false
 
-  /y-websocket@1.5.0(yjs@13.6.2):
-    resolution: {integrity: sha512-A8AO6XtnQlYwWFytWdkDCeXg4l8ghRTIw5h2YUgUYDmEC9ugWGIwYNW80yadhSFAF7CvuWTEkQNEpevnH6EiZw==}
+  /y-websocket@1.5.4(yjs@13.6.2):
+    resolution: {integrity: sha512-Y3021uy0anOIHqAPyAZbNDoR05JuMEGjRNI8c+K9MHzVS8dWoImdJUjccljAznc8H2L7WkIXhRHZ1igWNRSgPw==}
+    engines: {node: '>=16.0.0', npm: '>=8.0.0'}
     hasBin: true
     peerDependencies:
       yjs: ^13.5.6
