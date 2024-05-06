@@ -15,7 +15,7 @@
   const editor = getEditor();
 
   onMount(() => {
-    editor.registerCommand(
+    return editor.registerCommand(
       INSERT_HORIZONTAL_RULE_COMMAND,
       (type) => {
         const selection = getSelection();

@@ -81,6 +81,6 @@
   ];
 
   onMount(() => {
-    registerMarkdownShortcuts(editor, TRANSFORMERS);
+    return registerMarkdownShortcuts(editor, TRANSFORMERS);
   });
 </script>

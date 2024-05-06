@@ -20,7 +20,7 @@
 
   // unregisters onDestroy through returned callback
   onMount(() => {
-    editor.registerCommand(
+    return editor.registerCommand(
       CAN_UNDO_COMMAND,
       (payload) => {
         canUndo = payload;

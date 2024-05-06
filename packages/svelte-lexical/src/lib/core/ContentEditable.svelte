@@ -38,7 +38,7 @@
     }
 
     isEditable = editor.isEditable();
-    editor.registerEditableListener((currentIsEditable) => {
+    return editor.registerEditableListener((currentIsEditable) => {
       isEditable = currentIsEditable;
     });
   });
