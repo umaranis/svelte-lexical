@@ -1,6 +1,6 @@
 <script lang="ts">
   import {LinkNode, TOGGLE_LINK_COMMAND, toggleLink} from '@lexical/link';
-  import {mergeRegister} from '@lexical/utils';
+  import {mergeRegister, objectKlassEquals} from '@lexical/utils';
   import {
     $getSelection as getSelection,
     $isElementNode as isElementNode,
@@ -48,12 +48,16 @@
               if (
                 !isRangeSelection(selection) ||
                 selection.isCollapsed() ||
-                !(event instanceof ClipboardEvent) ||
-                event.clipboardData == null
+                !objectKlassEquals(event, ClipboardEvent)
               ) {
                 return false;
               }
-              const clipboardText = event.clipboardData.getData('text');
+              const clipboardEvent = event as ClipboardEvent;
+              if (clipboardEvent.clipboardData === null) {
+                return false;
+              }
+              const clipboardText =
+                clipboardEvent.clipboardData.getData('text');
               if (!validateUrl!(clipboardText)) {
                 return false;
               }

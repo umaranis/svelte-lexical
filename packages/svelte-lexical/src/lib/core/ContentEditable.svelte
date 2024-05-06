@@ -31,7 +31,12 @@
   let ref: null | HTMLElement;
 
   onMount(() => {
-    editor.setRootElement(ref);
+    // defaultView is required for a root element.
+    // In multi-window setups, the defaultView may not exist at certain points.
+    if (ref && ref.ownerDocument && ref.ownerDocument.defaultView) {
+      editor.setRootElement(ref);
+    }
+
     isEditable = editor.isEditable();
     editor.registerEditableListener((currentIsEditable) => {
       isEditable = currentIsEditable;
