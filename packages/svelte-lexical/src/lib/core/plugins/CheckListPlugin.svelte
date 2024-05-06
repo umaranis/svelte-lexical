@@ -9,6 +9,7 @@
     insertList,
   } from '@lexical/list';
   import {
+    calculateZoomLevel,
     $findMatchingParent as findMatchingParent,
     isHTMLElement,
     mergeRegister,
@@ -180,9 +181,8 @@
       return;
     }
 
-    const pageX = event.pageX;
     const rect = target.getBoundingClientRect();
-
+    const pageX = event.pageX / calculateZoomLevel(target);
     if (
       target.dir === 'rtl'
         ? pageX < rect.right && pageX > rect.right - 20
