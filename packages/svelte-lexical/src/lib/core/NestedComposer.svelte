@@ -4,6 +4,8 @@
     Klass,
     LexicalEditor,
     LexicalNode,
+    KlassConstructor,
+    Transform,
   } from 'lexical';
   import {onMount, setContext} from 'svelte';
 
@@ -12,6 +14,15 @@
   export let parentEditor: LexicalEditor;
   export let initialTheme: EditorThemeClasses | null = null;
   export let initialNodes: ReadonlyArray<Klass<LexicalNode>> | null = null;
+
+  function getTransformSetFromKlass(
+    klass: KlassConstructor<typeof LexicalNode>,
+  ): Set<Transform<LexicalNode>> {
+    const transform = klass.transform();
+    return transform !== null
+      ? new Set<Transform<LexicalNode>>([transform])
+      : new Set<Transform<LexicalNode>>();
+  }
 
   setContext('editor', initialEditor);
 
@@ -30,7 +41,7 @@
         klass: entry.klass,
         replace: entry.replace,
         replaceWithKlass: entry.replaceWithKlass,
-        transforms: new Set(),
+        transforms: getTransformSetFromKlass(entry.klass),
       });
     }
   } else {
