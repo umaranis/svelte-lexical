@@ -23,8 +23,11 @@ test.describe('Regression test #379', () => {
     `Is able to correctly handle backspace press at the line boundary`,
     async ({page}) => {
       await focusEditor(page);
-      await page.keyboard.type('Luke');
-      await waitForSelector(page, '#typeahead-menu ul li');
+      await page.keyboard.type('@Luke');
+      await waitForSelector(
+        page,
+        '#typeahead-menu ul li:has-text("Luke Skywalker")',
+      );
       await page.keyboard.press('Enter');
       await assertHTML(
         page,

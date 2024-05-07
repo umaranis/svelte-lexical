@@ -15,7 +15,6 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Regression test #3433', () => {
-  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test('can merge markdown lists created immediately before existing lists', async ({
     page,
