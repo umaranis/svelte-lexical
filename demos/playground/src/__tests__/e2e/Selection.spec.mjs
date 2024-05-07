@@ -16,6 +16,7 @@ import {
   moveToPrevWord,
   pressShiftEnter,
   selectAll,
+  selectPrevWord,
 } from '../keyboardShortcuts/index.mjs';
 import {
   assertHTML,
@@ -27,16 +28,22 @@ import {
   html,
   initialize,
   insertCollapsible,
+  insertHorizontalRule,
   insertImageCaption,
   insertSampleImage,
   insertTable,
+  insertYouTubeEmbed,
+  IS_LINUX,
   IS_MAC,
   keyDownCtrlOrMeta,
   keyUpCtrlOrMeta,
   pasteFromClipboard,
+  pressToggleBold,
+  pressToggleItalic,
   selectFromFormatDropdown,
   sleep,
   test,
+  YOUTUBE_SAMPLE_URL,
 } from '../utils/index.mjs';
 
 test.describe('Selection', () => {
@@ -115,38 +122,38 @@ test.describe('Selection', () => {
     },
   );
 
-  test.fixme(
-    'can wrap post-linebreak nodes into new element',
-    async ({page, isPlainText}) => {
-      test.skip(isPlainText);
-      await focusEditor(page);
-      await page.keyboard.type('Line1');
-      await pressShiftEnter(page);
-      await page.keyboard.type('Line2');
-      await page.keyboard.down('Shift');
-      await moveToLineBeginning(page);
-      await page.keyboard.up('Shift');
-      await selectFromFormatDropdown(page, '.code');
-      await assertHTML(
-        page,
-        html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">Line1</span>
-          </p>
-          <code
-            class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-            spellcheck="false"
-            dir="ltr"
-            data-highlight-language="javascript"
-            data-gutter="1">
-            <span data-lexical-text="true">Line2</span>
-          </code>
-        `,
-      );
-    },
-  );
+  test('can wrap post-linebreak nodes into new element', async ({
+    page,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+    await page.keyboard.type('Line1');
+    await pressShiftEnter(page);
+    await page.keyboard.type('Line2');
+    await page.keyboard.down('Shift');
+    await moveToLineBeginning(page);
+    await page.keyboard.up('Shift');
+    await selectFromFormatDropdown(page, '.code');
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">Line1</span>
+        </p>
+        <code
+          class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
+          spellcheck="false"
+          dir="ltr"
+          data-highlight-language="javascript"
+          data-gutter="1">
+          <span data-lexical-text="true">Line2</span>
+        </code>
+      `,
+    );
+  });
 
   test('can delete text by line with CMD+delete', async ({
     page,
@@ -209,25 +216,25 @@ test.describe('Selection', () => {
     );
   });
 
-  test.fixme(
-    'Can insert inline element within text and put selection after it',
-    async ({page, isPlainText}) => {
-      test.skip(isPlainText);
-      await focusEditor(page);
-      await page.keyboard.type('Hello world');
-      await moveToPrevWord(page);
-      await pasteFromClipboard(page, {
-        'text/html': `<a href="https://test.com">link</a>`,
-      });
-      await sleep(3000);
-      await assertSelection(page, {
-        anchorOffset: 4,
-        anchorPath: [0, 1, 0, 0],
-        focusOffset: 4,
-        focusPath: [0, 1, 0, 0],
-      });
-    },
-  );
+  test('Can insert inline element within text and put selection after it', async ({
+    page,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+    await page.keyboard.type('Hello world');
+    await moveToPrevWord(page);
+    await pasteFromClipboard(page, {
+      'text/html': `<a href="https://test.com">link</a>`,
+    });
+    await sleep(3000);
+    await assertSelection(page, {
+      anchorOffset: 4,
+      anchorPath: [0, 1, 0, 0],
+      focusOffset: 4,
+      focusPath: [0, 1, 0, 0],
+    });
+  });
 
   test('Can delete at boundary #4221', async ({page, isPlainText}) => {
     test.skip(!isPlainText);
@@ -358,7 +365,6 @@ test.describe('Selection', () => {
   });
 
   test('Can delete block elements', async ({page, isPlainText}) => {
-    test.fixme(true, 'requires markdown plugin');
     test.skip(isPlainText);
     await focusEditor(page);
     await page.keyboard.type('# A');
@@ -425,7 +431,6 @@ test.describe('Selection', () => {
   });
 
   test('Can delete sibling elements forward', async ({page, isPlainText}) => {
-    test.fixme(true, 'requires markdown plugin');
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -441,6 +446,276 @@ test.describe('Selection', () => {
           dir="ltr">
           <span data-lexical-text="true">Title</span>
         </h1>
+      `,
+    );
+  });
+
+  test('Can adjust tripple click selection', async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    test.skip(isPlainText || isCollab);
+
+    await page.keyboard.type('Paragraph 1');
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('Paragraph 2');
+    await page
+      .locator('div[contenteditable="true"] > p')
+      .first()
+      .click({clickCount: 3});
+
+    await click(page, '.block-controls');
+    await click(page, '.dropdown .item:has(.icon.h1)');
+
+    await assertHTML(
+      page,
+      html`
+        <h1
+          class="PlaygroundEditorTheme__h1 PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">Paragraph 1</span>
+        </h1>
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">Paragraph 2</span>
+        </p>
+      `,
+    );
+  });
+
+  test.fixme(
+    'Select all from Node selection #4658',
+    async ({page, isPlainText}) => {
+      // TODO selectAll is bad for Linux #4665
+      test.skip(isPlainText || IS_LINUX);
+
+      await insertYouTubeEmbed(page, YOUTUBE_SAMPLE_URL);
+      await page.keyboard.type('abcdefg');
+      await moveLeft(page, 'abcdefg'.length + 1);
+
+      await selectAll(page);
+      await page.keyboard.press('Backspace');
+
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
+    },
+  );
+
+  test.fixme(
+    'Select all (DecoratorNode at start) #4670',
+    async ({page, isPlainText}) => {
+      // TODO selectAll is bad for Linux #4665
+      test.skip(isPlainText || IS_LINUX);
+
+      await insertYouTubeEmbed(page, YOUTUBE_SAMPLE_URL);
+      // Delete empty paragraph in front
+      await moveLeft(page, 2);
+      await page.keyboard.press('Backspace');
+      await moveRight(page, 2);
+      await page.keyboard.type('abcdefg');
+
+      await selectAll(page);
+      await page.keyboard.press('Backspace');
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
+    },
+  );
+
+  test('Can use block controls on selections including decorator nodes #5371', async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    test.skip(isPlainText || isCollab);
+
+    await page.keyboard.type('Some text');
+    await insertHorizontalRule(page);
+    await page.keyboard.type('More text');
+    await selectAll(page);
+
+    await click(page, '.block-controls');
+    await click(page, '.dropdown .icon.h1');
+
+    await assertHTML(
+      page,
+      html`
+        <h1
+          class="PlaygroundEditorTheme__h1 PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">Some text</span>
+        </h1>
+        <hr
+          class="selected"
+          contenteditable="false"
+          data-lexical-decorator="true" />
+        <h1
+          class="PlaygroundEditorTheme__h1 PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">More text</span>
+        </h1>
+      `,
+    );
+  });
+
+  test.fixme(
+    'Can delete table node present at the end #5543',
+    async ({page, isPlainText, isCollab}) => {
+      test.skip(isPlainText);
+
+      await focusEditor(page);
+      await insertTable(page, 1, 2);
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.down('Shift');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.up('Shift');
+      await page.keyboard.press('Backspace');
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
+    },
+  );
+
+  test('Can persist the text format from the paragraph', async ({
+    page,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+    await pressToggleBold(page);
+    await page.keyboard.type('Line1');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('Line2');
+    await page.keyboard.press('ArrowUp');
+    await page.keyboard.type('Line3');
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <strong
+            class="PlaygroundEditorTheme__textBold"
+            data-lexical-text="true">
+            Line1
+          </strong>
+        </p>
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <strong
+            class="PlaygroundEditorTheme__textBold"
+            data-lexical-text="true">
+            Line3
+          </strong>
+        </p>
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <strong
+            class="PlaygroundEditorTheme__textBold"
+            data-lexical-text="true">
+            Line2
+          </strong>
+        </p>
+      `,
+    );
+  });
+
+  test('toggle format at the start of paragraph to a different format persists the format', async ({
+    page,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+    await pressToggleBold(page);
+    await page.keyboard.type('Line1');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Enter');
+    await pressToggleItalic(page);
+    await page.keyboard.type('Line2');
+    await page.keyboard.press('ArrowUp');
+    await pressToggleBold(page);
+    await page.keyboard.type('Line3');
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <strong
+            class="PlaygroundEditorTheme__textBold"
+            data-lexical-text="true">
+            Line1
+          </strong>
+        </p>
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">Line3</span>
+        </p>
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <strong
+            class="PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textItalic"
+            data-lexical-text="true">
+            Line2
+          </strong>
+        </p>
+      `,
+    );
+  });
+
+  test('formatting is persisted after deleting all nodes from the paragraph node', async ({
+    page,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+    await pressToggleBold(page);
+    await page.keyboard.type('Line1');
+    await page.keyboard.press('Enter');
+    await pressToggleBold(page);
+    await page.keyboard.type('Line2');
+    await selectPrevWord(page);
+    await page.keyboard.press('Backspace');
+    await page.keyboard.type('Line3');
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <strong
+            class="PlaygroundEditorTheme__textBold"
+            data-lexical-text="true">
+            Line1
+          </strong>
+        </p>
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">Line3</span>
+        </p>
       `,
     );
   });

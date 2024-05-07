@@ -206,7 +206,7 @@ test.describe('Toolbar', () => {
     );
   });
 
-  test.fixme('Center align image', async ({page, isPlainText, isCollab}) => {
+  test('Center align image', async ({page, isPlainText, isCollab}) => {
     // Image selection can't be synced in collab
     test.skip(isPlainText || isCollab);
     await focusEditor(page);

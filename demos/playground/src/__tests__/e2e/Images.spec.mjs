@@ -23,6 +23,7 @@ import {
   insertUploadImage,
   insertUrlImage,
   IS_WINDOWS,
+  LEGACY_EVENTS,
   SAMPLE_IMAGE_URL,
   SAMPLE_LANDSCAPE_IMAGE_URL,
   selectorBoundingBox,
@@ -404,8 +405,6 @@ test.describe('Images', () => {
       'a pretty yellow flower :)',
     );
 
-    await page.waitForTimeout(3000);
-
     await assertHTML(
       page,
       html`
@@ -588,7 +587,7 @@ test.describe('Images', () => {
     isCollab,
   }) => {
     // This test is flaky in collab #3915
-    test.fixme(isCollab); // lexical
+    test.fixme(isCollab);
     test.skip(isPlainText);
 
     await page.setViewportSize({
@@ -619,7 +618,10 @@ test.describe('Images', () => {
   test('Node selection: can select multiple image nodes and replace them with a new image', async ({
     page,
     isPlainText,
+    browserName,
   }) => {
+    // It doesn't work in legacy events mode in WebKit #5673
+    test.fixme(LEGACY_EVENTS && browserName === 'webkit');
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -734,6 +736,53 @@ test.describe('Images', () => {
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
           dir="ltr">
           <span data-lexical-text="true">text3</span>
+        </p>
+      `,
+    );
+  });
+
+  test('Can resolve selection correctly when the image is clicked and dragged right', async ({
+    page,
+    isPlainText,
+    browserName,
+    isCollab,
+  }) => {
+    test.skip(isPlainText);
+    let leftFrame = page;
+    if (isCollab) {
+      leftFrame = await page.frame('left');
+    }
+    await focusEditor(page);
+
+    await page.keyboard.type('HelloWorld');
+    await insertSampleImage(page);
+    await click(page, '.editor-image img');
+
+    await leftFrame.locator('.editor-image img').hover();
+    await page.mouse.down();
+    await leftFrame.locator('.PlaygroundEditorTheme__paragraph').hover();
+    await page.mouse.up();
+    await waitForSelector(page, '.editor-image img');
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">HelloWorld</span>
+          <span
+            class="editor-image"
+            contenteditable="false"
+            data-lexical-decorator="true">
+            <div draggable="false">
+              <img
+                alt="Yellow flower in tilt shift lens"
+                draggable="false"
+                src="${SAMPLE_IMAGE_URL}"
+                style="height: inherit; max-width: 500px; width: inherit" />
+            </div>
+          </span>
+          <br />
         </p>
       `,
     );

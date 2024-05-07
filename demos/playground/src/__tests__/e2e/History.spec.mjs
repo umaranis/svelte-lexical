@@ -564,77 +564,168 @@ test.describe('History', () => {
 
 test.describe('History - IME', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test.fixme(
-    'Can undo composed Hirigana via IME after composition ends (#2479)',
-    async ({page, browserName, isCollab, isPlainText, legacyEvents}) => {
-      // We don't yet support FF.
-      test.skip(isCollab || isPlainText || browserName === 'firefox');
+  test('Can undo composed Hirigana via IME after composition ends (#2479)', async ({
+    page,
+    browserName,
+    isCollab,
+    isPlainText,
+    legacyEvents,
+  }) => {
+    // We don't yet support FF.
+    test.skip(isCollab || isPlainText || browserName !== 'chromium');
 
-      await focusEditor(page);
-      await enableCompositionKeyEvents(page);
+    await focusEditor(page);
+    await enableCompositionKeyEvents(page);
 
-      await page.keyboard.imeSetComposition('ｓ', 1, 1);
-      await page.keyboard.imeSetComposition('す', 1, 1);
-      await page.keyboard.imeSetComposition('すｓ', 2, 2);
-      await page.keyboard.imeSetComposition('すｓｈ', 3, 3);
-      await page.keyboard.imeSetComposition('すし', 2, 2);
-      await page.keyboard.insertText('すし');
+    const client = await page.context().newCDPSession(page);
+    // await page.keyboard.imeSetComposition('ｓ', 1, 1);
+    await client.send('Input.imeSetComposition', {
+      selectionStart: 1,
+      selectionEnd: 1,
+      text: 'ｓ',
+    });
+    // await page.keyboard.imeSetComposition('す', 1, 1);
+    await client.send('Input.imeSetComposition', {
+      selectionStart: 1,
+      selectionEnd: 1,
+      text: 'す',
+    });
+    // await page.keyboard.imeSetComposition('すｓ', 2, 2);
+    await client.send('Input.imeSetComposition', {
+      selectionStart: 2,
+      selectionEnd: 2,
+      text: 'すｓ',
+    });
+    // await page.keyboard.imeSetComposition('すｓｈ', 3, 3);
+    await client.send('Input.imeSetComposition', {
+      selectionStart: 3,
+      selectionEnd: 3,
+      text: 'すｓｈ',
+    });
+    // await page.keyboard.imeSetComposition('すし', 2, 2);
+    await client.send('Input.imeSetComposition', {
+      selectionStart: 2,
+      selectionEnd: 2,
+      text: 'すし',
+    });
+    // await page.keyboard.insertText('すし');
+    await client.send('Input.insertText', {
+      text: 'すし',
+    });
 
-      await sleep(1050); // default merge interval is 1000, add 50ms as overhead due to CI latency.
+    await sleep(1050); // default merge interval is 1000, add 50ms as overhead due to CI latency.
 
-      await page.keyboard.type(' ');
+    await page.keyboard.type(' ');
 
-      await sleep(1050);
+    await sleep(1050);
 
-      await page.keyboard.imeSetComposition('m', 1, 1);
-      await page.keyboard.imeSetComposition('も', 1, 1);
-      await page.keyboard.imeSetComposition('もj', 2, 2);
-      await page.keyboard.imeSetComposition('もじ', 2, 2);
-      await page.keyboard.imeSetComposition('もじあ', 3, 3);
-      await page.keyboard.insertText('もじあ');
+    // await page.keyboard.imeSetComposition('m', 1, 1);
+    await client.send('Input.imeSetComposition', {
+      selectionStart: 1,
+      selectionEnd: 1,
+      text: 'm',
+    });
+    // await page.keyboard.imeSetComposition('も', 1, 1);
+    await client.send('Input.imeSetComposition', {
+      selectionStart: 1,
+      selectionEnd: 1,
+      text: 'も',
+    });
+    // await page.keyboard.imeSetComposition('もj', 2, 2);
+    await client.send('Input.imeSetComposition', {
+      selectionStart: 2,
+      selectionEnd: 2,
+      text: 'もj',
+    });
+    // await page.keyboard.imeSetComposition('もじ', 2, 2);
+    await client.send('Input.imeSetComposition', {
+      selectionStart: 2,
+      selectionEnd: 2,
+      text: 'もじ',
+    });
+    // await page.keyboard.imeSetComposition('もじあ', 3, 3);
+    await client.send('Input.imeSetComposition', {
+      selectionStart: 3,
+      selectionEnd: 3,
+      text: 'もじあ',
+    });
+    // await page.keyboard.insertText('もじあ');
+    await client.send('Input.insertText', {
+      text: 'もじあ',
+    });
 
-      await assertHTML(
-        page,
-        html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">すし もじあ</span>
-          </p>
-        `,
-      );
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">すし もじあ</span>
+        </p>
+      `,
+    );
 
-      await assertSelection(page, {
-        anchorOffset: 6,
-        anchorPath: [0, 0, 0],
-        focusOffset: 6,
-        focusPath: [0, 0, 0],
-      });
+    await assertSelection(page, {
+      anchorOffset: 6,
+      anchorPath: [0, 0, 0],
+      focusOffset: 6,
+      focusPath: [0, 0, 0],
+    });
 
-      await undo(page);
+    await undo(page);
 
-      const WHITESPACE_TOKEN = ' ';
+    const WHITESPACE_TOKEN = ' ';
 
-      await assertHTML(
-        page,
-        html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">すし${WHITESPACE_TOKEN}</span>
-          </p>
-        `,
-      );
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">すし${WHITESPACE_TOKEN}</span>
+        </p>
+      `,
+    );
 
+    await assertSelection(page, {
+      anchorOffset: 3,
+      anchorPath: [0, 0, 0],
+      focusOffset: 3,
+      focusPath: [0, 0, 0],
+    });
+
+    await undo(page);
+
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">すし</span>
+        </p>
+      `,
+    );
+
+    if (browserName === 'webkit' && !legacyEvents) {
       await assertSelection(page, {
         anchorOffset: 3,
         anchorPath: [0, 0, 0],
         focusOffset: 3,
         focusPath: [0, 0, 0],
       });
+    } else {
+      await assertSelection(page, {
+        anchorOffset: 2,
+        anchorPath: [0, 0, 0],
+        focusOffset: 2,
+        focusPath: [0, 0, 0],
+      });
+    }
 
-      await undo(page);
+    await undo(page);
 
+    if (browserName === 'webkit' && !legacyEvents) {
       await assertHTML(
         page,
         html`
@@ -645,89 +736,58 @@ test.describe('History - IME', () => {
           </p>
         `,
       );
-
-      if (browserName === 'webkit' && !legacyEvents) {
-        await assertSelection(page, {
-          anchorOffset: 3,
-          anchorPath: [0, 0, 0],
-          focusOffset: 3,
-          focusPath: [0, 0, 0],
-        });
-      } else {
-        await assertSelection(page, {
-          anchorOffset: 2,
-          anchorPath: [0, 0, 0],
-          focusOffset: 2,
-          focusPath: [0, 0, 0],
-        });
-      }
-
-      await undo(page);
-
-      if (browserName === 'webkit' && !legacyEvents) {
-        await assertHTML(
-          page,
-          html`
-            <p
-              class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-              dir="ltr">
-              <span data-lexical-text="true">すし</span>
-            </p>
-          `,
-        );
-      } else {
-        await assertHTML(
-          page,
-          html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          `,
-        );
-      }
-
-      if (browserName === 'webkit' && !legacyEvents) {
-        await assertSelection(page, {
-          anchorOffset: 2,
-          anchorPath: [0, 0, 0],
-          focusOffset: 2,
-          focusPath: [0, 0, 0],
-        });
-      } else {
-        await assertSelection(page, {
-          anchorOffset: 0,
-          anchorPath: [0],
-          focusOffset: 0,
-          focusPath: [0],
-        });
-      }
-
-      await redo(page);
-
+    } else {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
-            <span data-lexical-text="true">すし</span>
-          </p>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
         `,
       );
+    }
 
-      if (browserName === 'webkit' && !legacyEvents) {
-        await assertSelection(page, {
-          anchorOffset: 3,
-          anchorPath: [0, 0, 0],
-          focusOffset: 3,
-          focusPath: [0, 0, 0],
-        });
-      } else {
-        await assertSelection(page, {
-          anchorOffset: 2,
-          anchorPath: [0, 0, 0],
-          focusOffset: 2,
-          focusPath: [0, 0, 0],
-        });
-      }
-    },
-  );
+    if (browserName === 'webkit' && !legacyEvents) {
+      await assertSelection(page, {
+        anchorOffset: 2,
+        anchorPath: [0, 0, 0],
+        focusOffset: 2,
+        focusPath: [0, 0, 0],
+      });
+    } else {
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [0],
+        focusOffset: 0,
+        focusPath: [0],
+      });
+    }
+
+    await redo(page);
+
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">すし</span>
+        </p>
+      `,
+    );
+
+    if (browserName === 'webkit' && !legacyEvents) {
+      await assertSelection(page, {
+        anchorOffset: 3,
+        anchorPath: [0, 0, 0],
+        focusOffset: 3,
+        focusPath: [0, 0, 0],
+      });
+    } else {
+      await assertSelection(page, {
+        anchorOffset: 2,
+        anchorPath: [0, 0, 0],
+        focusOffset: 2,
+        focusPath: [0, 0, 0],
+      });
+    }
+  });
 });

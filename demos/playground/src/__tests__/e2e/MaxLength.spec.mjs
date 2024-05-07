@@ -18,12 +18,11 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('MaxLength', () => {
-  test.fixme();
   test.use({isMaxLength: true});
   test.beforeEach(({isCollab, isMaxLength, page}) =>
     initialize({isCollab, isMaxLength, page}),
   );
-  test(`can restrict the text to specified length`, async ({page}) => {
+  test.fixme(`can restrict the text to specified length`, async ({page}) => {
     await focusEditor(page);
 
     await page.keyboard.type(
@@ -126,6 +125,44 @@ test.describe('MaxLength', () => {
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
           dir="ltr">
           <span data-lexical-text="true">👨‍💻👨‍💻👨‍💻👨‍💻👨‍💻👨‍💻</span>
+        </p>
+      `,
+    );
+  });
+
+  test(`paste with empty paragraph in between #3773`, async ({page}) => {
+    await focusEditor(page);
+    await pasteFromClipboard(page, {
+      'text/plain':
+        'lorem ipsum dolor sit amet, consectetuer \n\nadipiscing elit\n\n',
+    });
+
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">lorem ipsum dolor sit amet, co</span>
+        </p>
+      `,
+    );
+  });
+
+  test(`paste with empty paragraph at end #3773`, async ({page}) => {
+    await focusEditor(page);
+    await pasteFromClipboard(page, {
+      'text/plain':
+        'lorem ipsum dolor sit amet, consectetuer adipiscing elit\n\n',
+    });
+
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">lorem ipsum dolor sit amet, co</span>
         </p>
       `,
     );

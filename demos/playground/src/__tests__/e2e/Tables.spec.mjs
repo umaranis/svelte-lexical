@@ -7,6 +7,7 @@
  */
 
 import {
+  deleteBackward,
   moveDown,
   moveLeft,
   moveRight,
@@ -25,19 +26,23 @@ import {
   focusEditor,
   html,
   initialize,
+  insertCollapsible,
   insertHorizontalRule,
   insertSampleImage,
   insertTable,
   insertTableColumnBefore,
   insertTableRowBelow,
   IS_COLLAB,
+  LEGACY_EVENTS,
   mergeTableCells,
   pasteFromClipboard,
   SAMPLE_IMAGE_URL,
   selectCellsFromTableCords,
   selectFromAdditionalStylesDropdown,
+  selectFromAlignDropdown,
   setBackgroundColor,
   test,
+  toggleColumnHeader,
   unmergeTableCell,
 } from '../utils/index.mjs';
 
@@ -144,6 +149,342 @@ test.describe('Tables', () => {
       undefined,
       {ignoreClasses: true},
     );
+  });
+
+  test.describe(`Can exit tables with the horizontal arrow keys`, () => {
+    test(`Can exit the first cell of a non-nested table`, async ({
+      page,
+      isPlainText,
+      isCollab,
+    }) => {
+      await initialize({isCollab, page});
+      test.skip(isPlainText);
+
+      await focusEditor(page);
+      await insertTable(page, 2, 2);
+
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [1, 0, 0, 0],
+        focusOffset: 0,
+        focusPath: [1, 0, 0, 0],
+      });
+
+      await moveLeft(page, 1);
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [0],
+        focusOffset: 0,
+        focusPath: [0],
+      });
+
+      await moveRight(page, 1);
+      await page.keyboard.type('ab');
+      await assertSelection(page, {
+        anchorOffset: 2,
+        anchorPath: [1, 0, 0, 0, 0, 0],
+        focusOffset: 2,
+        focusPath: [1, 0, 0, 0, 0, 0],
+      });
+
+      await moveRight(page, 3);
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [1, 1, 1, 0],
+        focusOffset: 0,
+        focusPath: [1, 1, 1, 0],
+      });
+    });
+
+    test(`Can exit the last cell of a non-nested table`, async ({
+      page,
+      isPlainText,
+      isCollab,
+    }) => {
+      await initialize({isCollab, page});
+      test.skip(isPlainText);
+
+      await focusEditor(page);
+      await insertTable(page, 2, 2);
+
+      await moveRight(page, 3);
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [1, 1, 1, 0],
+        focusOffset: 0,
+        focusPath: [1, 1, 1, 0],
+      });
+
+      await moveRight(page, 1);
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [2],
+        focusOffset: 0,
+        focusPath: [2],
+      });
+
+      await moveLeft(page, 1);
+      await page.keyboard.type('ab');
+      await assertSelection(page, {
+        anchorOffset: 2,
+        anchorPath: [1, 1, 1, 0, 0, 0],
+        focusOffset: 2,
+        focusPath: [1, 1, 1, 0, 0, 0],
+      });
+
+      await moveRight(page, 3);
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [2],
+        focusOffset: 0,
+        focusPath: [2],
+      });
+    });
+
+    test(`Can exit the first cell of a nested table into the parent table cell`, async ({
+      page,
+      isPlainText,
+      isCollab,
+    }) => {
+      await initialize({isCollab, page});
+      test.skip(isPlainText);
+
+      await focusEditor(page);
+      await insertTable(page, 2, 2);
+      await insertTable(page, 2, 2);
+
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [1, 0, 0, 1, 0, 0, 0],
+        focusOffset: 0,
+        focusPath: [1, 0, 0, 1, 0, 0, 0],
+      });
+
+      await moveLeft(page, 1);
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [1, 0, 0, 0],
+        focusOffset: 0,
+        focusPath: [1, 0, 0, 0],
+      });
+    });
+
+    test(`Can exit the last cell of a nested table into the parent table cell`, async ({
+      page,
+      isPlainText,
+      isCollab,
+    }) => {
+      await initialize({isCollab, page});
+      test.skip(isPlainText);
+
+      await focusEditor(page);
+      await insertTable(page, 2, 2);
+      await insertTable(page, 2, 2);
+
+      await moveRight(page, 3);
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [1, 0, 0, 1, 1, 1, 0],
+        focusOffset: 0,
+        focusPath: [1, 0, 0, 1, 1, 1, 0],
+      });
+
+      await moveRight(page, 1);
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [1, 0, 0, 2],
+        focusOffset: 0,
+        focusPath: [1, 0, 0, 2],
+      });
+    });
+  });
+
+  test(`Can insert a paragraph after a table, that is the last node, with the "Enter" key`, async ({
+    page,
+    isPlainText,
+    isCollab,
+    browserName,
+  }) => {
+    await initialize({isCollab, page});
+    test.skip(isPlainText);
+    // Table edge cursor doesn't show up in Firefox.
+    test.fixme(browserName === 'firefox');
+
+    await focusEditor(page);
+    await insertTable(page, 2, 2);
+
+    await moveDown(page, 2);
+    await assertSelection(page, {
+      anchorOffset: 0,
+      anchorPath: [2],
+      focusOffset: 0,
+      focusPath: [2],
+    });
+
+    await deleteBackward(page);
+    await assertSelection(page, {
+      anchorOffset: 0,
+      anchorPath: [1, 1, 1, 0],
+      focusOffset: 0,
+      focusPath: [1, 1, 1, 0],
+    });
+    await assertHTML(
+      page,
+      html`
+        <p><br /></p>
+        <table>
+          <tr>
+            <th>
+              <p><br /></p>
+            </th>
+            <th>
+              <p><br /></p>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <p><br /></p>
+            </th>
+            <td>
+              <p><br /></p>
+            </td>
+          </tr>
+        </table>
+      `,
+      undefined,
+      {ignoreClasses: true},
+    );
+
+    await moveRight(page, 1);
+    // The native window selection should be on the root, whereas
+    // the editor selection should be on the last cell of the table.
+    await assertSelection(page, {
+      anchorOffset: 2,
+      anchorPath: [],
+      focusOffset: 2,
+      focusPath: [],
+    });
+
+    await page.keyboard.press('Enter');
+    await assertSelection(page, {
+      anchorOffset: 0,
+      anchorPath: [2],
+      focusOffset: 0,
+      focusPath: [2],
+    });
+
+    await assertHTML(
+      page,
+      html`
+        <p><br /></p>
+        <table>
+          <tr>
+            <th>
+              <p><br /></p>
+            </th>
+            <th>
+              <p><br /></p>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <p><br /></p>
+            </th>
+            <td>
+              <p><br /></p>
+            </td>
+          </tr>
+        </table>
+        <p><br /></p>
+      `,
+      undefined,
+      {ignoreClasses: true},
+    );
+  });
+
+  test(`Can type text after a table that is the last node`, async ({
+    page,
+    isPlainText,
+    isCollab,
+    browserName,
+  }) => {
+    await initialize({isCollab, page});
+    test.skip(isPlainText);
+    // Table edge cursor doesn't show up in Firefox.
+    test.fixme(browserName === 'firefox');
+    // After typing, the dom selection gets set back to the internal previous selection during the update.
+    test.fixme(LEGACY_EVENTS);
+
+    await focusEditor(page);
+    await insertTable(page, 2, 2);
+
+    await moveDown(page, 2);
+    await deleteBackward(page);
+
+    await moveRight(page, 1);
+    await page.keyboard.type('a');
+    await assertSelection(page, {
+      anchorOffset: 1,
+      anchorPath: [2, 0, 0],
+      focusOffset: 1,
+      focusPath: [2, 0, 0],
+    });
+
+    await assertHTML(
+      page,
+      html`
+        <p><br /></p>
+        <table>
+          <tr>
+            <th>
+              <p><br /></p>
+            </th>
+            <th>
+              <p><br /></p>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <p><br /></p>
+            </th>
+            <td>
+              <p><br /></p>
+            </td>
+          </tr>
+        </table>
+        <p dir="ltr"><span data-lexical-text="true">a</span></p>
+      `,
+      undefined,
+      {ignoreClasses: true},
+    );
+  });
+
+  test(`Can enter a table from a paragraph underneath via the left arrow key`, async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    await initialize({isCollab, page});
+    test.skip(isPlainText);
+
+    await focusEditor(page);
+    await insertTable(page, 2, 2);
+
+    await moveDown(page, 2);
+    await assertSelection(page, {
+      anchorOffset: 0,
+      anchorPath: [2],
+      focusOffset: 0,
+      focusPath: [2],
+    });
+
+    await moveLeft(page, 1);
+    await assertSelection(page, {
+      anchorOffset: 0,
+      anchorPath: [1, 1, 1, 0],
+      focusOffset: 0,
+      focusPath: [1, 1, 1, 0],
+    });
   });
 
   test(`Can navigate table with keyboard`, async ({
@@ -284,6 +625,7 @@ test.describe('Tables', () => {
     page,
     isPlainText,
     isCollab,
+    browserName,
   }) => {
     await initialize({isCollab, page});
     test.skip(isPlainText);
@@ -309,6 +651,10 @@ test.describe('Tables', () => {
 
     await page.keyboard.down('Shift');
     await page.keyboard.press('ArrowRight');
+    // Firefox range selection spans across cells after two arrow key press
+    if (browserName === 'firefox') {
+      await page.keyboard.press('ArrowRight');
+    }
     await page.keyboard.press('ArrowDown');
     await page.keyboard.up('Shift');
 
@@ -396,7 +742,7 @@ test.describe('Tables', () => {
         </table>
         <p><br /></p>
       `,
-      {ignoreClasses: true},
+      {ignoreClasses: true, ignoreInlineStyles: true},
     );
   });
 
@@ -802,6 +1148,7 @@ test.describe('Tables', () => {
     page,
     isPlainText,
     isCollab,
+    browserName,
   }) => {
     await initialize({isCollab, page});
     test.skip(isPlainText);
@@ -815,6 +1162,10 @@ test.describe('Tables', () => {
 
     await page.keyboard.down('Shift');
     await page.keyboard.press('ArrowRight');
+    // Firefox range selection spans across cells after two arrow key press
+    if (browserName === 'firefox') {
+      await page.keyboard.press('ArrowRight');
+    }
     await page.keyboard.press('ArrowDown');
     await page.keyboard.up('Shift');
 
@@ -940,6 +1291,95 @@ test.describe('Tables', () => {
                 dir="ltr">
                 <span data-lexical-text="true">cell one</span>
               </p>
+            </th>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+          </tr>
+        </table>
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+      `,
+    );
+  });
+
+  test('Can remove new lines in a collapsible section inside of a table', async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    await initialize({isCollab, page});
+    test.skip(isPlainText);
+
+    await focusEditor(page);
+
+    await insertTable(page, 1, 2);
+    await insertCollapsible(page);
+
+    await page.keyboard.type('123');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.type('123');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Enter');
+
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <table class="PlaygroundEditorTheme__table">
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              <details class="Collapsible__container" open="">
+                <summary class="Collapsible__title">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <span data-lexical-text="true">123</span>
+                  </p>
+                </summary>
+                <div class="Collapsible__content">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <span data-lexical-text="true">123</span>
+                  </p>
+                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                </div>
+              </details>
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+          </tr>
+        </table>
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+      `,
+    );
+
+    await pressBackspace(page, 10);
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <table class="PlaygroundEditorTheme__table">
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              <details class="Collapsible__container" open="">
+                <summary class="Collapsible__title">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <span data-lexical-text="true">123</span>
+                  </p>
+                </summary>
+                <div class="Collapsible__content">
+                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                </div>
+              </details>
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
             </th>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
@@ -1302,7 +1742,8 @@ test.describe('Tables', () => {
       page,
       html`
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <table class="PlaygroundEditorTheme__table disable-selection">
+        <table
+          class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
           <tr>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
@@ -1431,7 +1872,10 @@ test.describe('Tables', () => {
             </th>
           </tr>
           <tr>
-            <td class="PlaygroundEditorTheme__tableCell"><br /></td>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
           </tr>
           <tr>
             <th
@@ -1538,9 +1982,10 @@ test.describe('Tables', () => {
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
         <table class="PlaygroundEditorTheme__table">
           <tr>
-            <td class="PlaygroundEditorTheme__tableCell">
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
               <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
+            </th>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
               rowspan="2">
@@ -1548,6 +1993,77 @@ test.describe('Tables', () => {
             </th>
           </tr>
           <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+          </tr>
+        </table>
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+      `,
+    );
+  });
+
+  test('Insert column before (with 1+ selected cells in a row)', async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    await initialize({isCollab, page});
+    test.skip(isPlainText);
+    if (IS_COLLAB) {
+      // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
+      page.setViewportSize({height: 1000, width: 3000});
+    }
+
+    await focusEditor(page);
+
+    await insertTable(page, 2, 2);
+
+    await click(page, '.PlaygroundEditorTheme__tableCell');
+    await selectCellsFromTableCords(
+      page,
+      {x: 0, y: 0},
+      {x: 1, y: 0},
+      true,
+      true,
+    );
+    await insertTableColumnBefore(page);
+
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <table class="PlaygroundEditorTheme__table">
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+          </tr>
+          <tr>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph"><br /></p>
             </td>
@@ -1881,6 +2397,204 @@ test.describe('Tables', () => {
           </tr>
         </table>
       `,
+    );
+  });
+
+  test('Add column header after merging cells #4378', async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    await initialize({isCollab, page});
+    test.skip(isPlainText);
+    if (IS_COLLAB) {
+      // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
+      page.setViewportSize({height: 1000, width: 3000});
+    }
+
+    await focusEditor(page);
+
+    await insertTable(page, 4, 4);
+    await selectCellsFromTableCords(
+      page,
+      {x: 1, y: 2},
+      {x: 3, y: 3},
+      false,
+      false,
+    );
+    await mergeTableCells(page);
+    await selectCellsFromTableCords(
+      page,
+      {x: 3, y: 1},
+      {x: 3, y: 1},
+      false,
+      false,
+    );
+    await toggleColumnHeader(page);
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <table class="PlaygroundEditorTheme__table">
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+          </tr>
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+          </tr>
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <td
+              class="PlaygroundEditorTheme__tableCell"
+              colspan="3"
+              rowspan="2">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+          </tr>
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+          </tr>
+        </table>
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+      `,
+    );
+  });
+
+  test('Can align text using Table selection', async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    await initialize({isCollab, page});
+    test.skip(isPlainText);
+
+    await focusEditor(page);
+    await insertTable(page, 2, 3);
+
+    await fillTablePartiallyWithText(page);
+    await selectCellsFromTableCords(
+      page,
+      {x: 0, y: 0},
+      {x: 1, y: 1},
+      true,
+      false,
+    );
+
+    await selectFromAlignDropdown(page, '.center-align');
+
+    await assertHTML(
+      page,
+      html`
+        <p><br /></p>
+        <table>
+          <tr>
+            <th
+              style="background-color: rgb(172, 206, 247); caret-color: transparent; text-align: center">
+              <p dir="ltr" style="text-align: center">
+                <span data-lexical-text="true">a</span>
+              </p>
+            </th>
+            <th
+              style="background-color: rgb(172, 206, 247); caret-color: transparent; text-align: center">
+              <p dir="ltr" style="text-align: center">
+                <span data-lexical-text="true">bb</span>
+              </p>
+            </th>
+            <th>
+              <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+            </th>
+          </tr>
+          <tr>
+            <th
+              style="background-color: rgb(172, 206, 247); caret-color: transparent; text-align: center">
+              <p dir="ltr" style="text-align: center">
+                <span data-lexical-text="true">d</span>
+              </p>
+            </th>
+            <td
+              style="background-color: rgb(172, 206, 247); caret-color: transparent; text-align: center">
+              <p dir="ltr" style="text-align: center">
+                <span data-lexical-text="true">e</span>
+              </p>
+            </td>
+            <td>
+              <p dir="ltr"><span data-lexical-text="true">f</span></p>
+            </td>
+          </tr>
+        </table>
+        <p><br /></p>
+      `,
+      html`
+        <p><br /></p>
+        <table>
+          <tr>
+            <th style="text-align: center">
+              <p dir="ltr" style="text-align: center">
+                <span data-lexical-text="true">a</span>
+              </p>
+            </th>
+            <th style="text-align: center">
+              <p dir="ltr" style="text-align: center">
+                <span data-lexical-text="true">bb</span>
+              </p>
+            </th>
+            <th>
+              <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+            </th>
+          </tr>
+          <tr>
+            <th style="text-align: center">
+              <p dir="ltr" style="text-align: center">
+                <span data-lexical-text="true">d</span>
+              </p>
+            </th>
+            <td style="text-align: center">
+              <p dir="ltr" style="text-align: center">
+                <span data-lexical-text="true">e</span>
+              </p>
+            </td>
+            <td>
+              <p dir="ltr"><span data-lexical-text="true">f</span></p>
+            </td>
+          </tr>
+        </table>
+        <p><br /></p>
+      `,
+      {ignoreClasses: true},
     );
   });
 });

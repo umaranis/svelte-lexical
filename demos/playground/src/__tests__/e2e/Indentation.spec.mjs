@@ -19,6 +19,7 @@ import {
 
 test.describe('Identation', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
+
   test.fixme(
     `Can create content and indent and outdent it all`,
     async ({page, browserName, isPlainText, isCollab}) => {
@@ -99,7 +100,8 @@ test.describe('Identation', () => {
             <span data-lexical-text="true">code</span>
           </code>
           <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table disable-selection">
+          <table
+            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
@@ -179,7 +181,8 @@ test.describe('Identation', () => {
             style="padding-inline-start: calc(40px)">
             <br />
           </p>
-          <table class="PlaygroundEditorTheme__table disable-selection">
+          <table
+            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
@@ -270,7 +273,8 @@ test.describe('Identation', () => {
             style="padding-inline-start: calc(80px)">
             <br />
           </p>
-          <table class="PlaygroundEditorTheme__table disable-selection">
+          <table
+            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
@@ -355,7 +359,8 @@ test.describe('Identation', () => {
             style="padding-inline-start: calc(40px)">
             <br />
           </p>
-          <table class="PlaygroundEditorTheme__table disable-selection">
+          <table
+            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
@@ -430,7 +435,8 @@ test.describe('Identation', () => {
             <span data-lexical-text="true">code</span>
           </code>
           <p class="PlaygroundEditorTheme__paragraph" style=""><br /></p>
-          <table class="PlaygroundEditorTheme__table disable-selection">
+          <table
+            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"

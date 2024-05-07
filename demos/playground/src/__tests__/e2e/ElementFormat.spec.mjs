@@ -18,10 +18,9 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Element format', () => {
-  test.fixme();
   test.beforeEach(({isCollab, isPlainText, page}) => {
     test.skip(isPlainText);
-    initialize({isCollab, page});
+    return initialize({isCollab, page});
   });
 
   test('Can indent/align paragraph when caret is within link', async ({

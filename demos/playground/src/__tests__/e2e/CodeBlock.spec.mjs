@@ -31,149 +31,146 @@ async function toggleCodeBlock(page) {
 
 test.describe('CodeBlock', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test.fixme(
-    'Can create code block with markdown',
-    async ({page, isRichText}) => {
-      await focusEditor(page);
-      await page.keyboard.type('``` alert(1);');
-      if (isRichText) {
-        await assertSelection(page, {
-          anchorOffset: 1,
-          anchorPath: [0, 4, 0],
-          focusOffset: 1,
-          focusPath: [0, 4, 0],
-        });
-        await assertHTML(
-          page,
-          html`
-            <code
-              class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-              spellcheck="false"
-              dir="ltr"
-              data-gutter="1"
-              data-highlight-language="javascript">
-              <span
-                class="PlaygroundEditorTheme__tokenFunction"
-                data-lexical-text="true">
-                alert
-              </span>
-              <span
-                class="PlaygroundEditorTheme__tokenPunctuation"
-                data-lexical-text="true">
-                (
-              </span>
-              <span
-                class="PlaygroundEditorTheme__tokenProperty"
-                data-lexical-text="true">
-                1
-              </span>
-              <span
-                class="PlaygroundEditorTheme__tokenPunctuation"
-                data-lexical-text="true">
-                )
-              </span>
-              <span
-                class="PlaygroundEditorTheme__tokenPunctuation"
-                data-lexical-text="true">
-                ;
-              </span>
-            </code>
-          `,
-        );
+  test('Can create code block with markdown', async ({page, isRichText}) => {
+    await focusEditor(page);
+    await page.keyboard.type('``` alert(1);');
+    if (isRichText) {
+      await assertSelection(page, {
+        anchorOffset: 1,
+        anchorPath: [0, 4, 0],
+        focusOffset: 1,
+        focusPath: [0, 4, 0],
+      });
+      await assertHTML(
+        page,
+        html`
+          <code
+            class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
+            spellcheck="false"
+            dir="ltr"
+            data-gutter="1"
+            data-highlight-language="javascript">
+            <span
+              class="PlaygroundEditorTheme__tokenFunction"
+              data-lexical-text="true">
+              alert
+            </span>
+            <span
+              class="PlaygroundEditorTheme__tokenPunctuation"
+              data-lexical-text="true">
+              (
+            </span>
+            <span
+              class="PlaygroundEditorTheme__tokenProperty"
+              data-lexical-text="true">
+              1
+            </span>
+            <span
+              class="PlaygroundEditorTheme__tokenPunctuation"
+              data-lexical-text="true">
+              )
+            </span>
+            <span
+              class="PlaygroundEditorTheme__tokenPunctuation"
+              data-lexical-text="true">
+              ;
+            </span>
+          </code>
+        `,
+      );
 
-        // Remove code block (back to a normal paragraph) and check that highlights are converted into regular text
-        await moveToEditorBeginning(page);
-        await page.keyboard.press('Backspace');
-        await assertHTML(
-          page,
-          html`
-            <p
-              class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-              dir="ltr">
-              <span data-lexical-text="true">alert(1);</span>
-            </p>
-          `,
-        );
-      } else {
-        await assertHTML(
-          page,
-          html`
-            <p
-              class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-              dir="ltr">
-              <span data-lexical-text="true">\`\`\` alert(1);</span>
-            </p>
-          `,
-        );
-      }
-    },
-  );
-
-  test.fixme(
-    'Can create code block with markdown and wrap existing text',
-    async ({page, isRichText}) => {
-      await focusEditor(page);
-      await page.keyboard.type('alert(1);');
+      // Remove code block (back to a normal paragraph) and check that highlights are converted into regular text
       await moveToEditorBeginning(page);
-      await page.keyboard.type('``` ');
-      if (isRichText) {
-        await assertSelection(page, {
-          anchorOffset: 0,
-          anchorPath: [0, 0, 0],
-          focusOffset: 0,
-          focusPath: [0, 0, 0],
-        });
-        await assertHTML(
-          page,
-          html`
-            <code
-              class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-              spellcheck="false"
-              dir="ltr"
-              data-gutter="1"
-              data-highlight-language="javascript">
-              <span
-                class="PlaygroundEditorTheme__tokenFunction"
-                data-lexical-text="true">
-                alert
-              </span>
-              <span
-                class="PlaygroundEditorTheme__tokenPunctuation"
-                data-lexical-text="true">
-                (
-              </span>
-              <span
-                class="PlaygroundEditorTheme__tokenProperty"
-                data-lexical-text="true">
-                1
-              </span>
-              <span
-                class="PlaygroundEditorTheme__tokenPunctuation"
-                data-lexical-text="true">
-                )
-              </span>
-              <span
-                class="PlaygroundEditorTheme__tokenPunctuation"
-                data-lexical-text="true">
-                ;
-              </span>
-            </code>
-          `,
-        );
-      } else {
-        await assertHTML(
-          page,
-          html`
-            <p
-              class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-              dir="ltr">
-              <span data-lexical-text="true">\`\`\` alert(1);</span>
-            </p>
-          `,
-        );
-      }
-    },
-  );
+      await page.keyboard.press('Backspace');
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">alert(1);</span>
+          </p>
+        `,
+      );
+    } else {
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">\`\`\` alert(1);</span>
+          </p>
+        `,
+      );
+    }
+  });
+
+  test('Can create code block with markdown and wrap existing text', async ({
+    page,
+    isRichText,
+  }) => {
+    await focusEditor(page);
+    await page.keyboard.type('alert(1);');
+    await moveToEditorBeginning(page);
+    await page.keyboard.type('``` ');
+    if (isRichText) {
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [0, 0, 0],
+        focusOffset: 0,
+        focusPath: [0, 0, 0],
+      });
+      await assertHTML(
+        page,
+        html`
+          <code
+            class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
+            spellcheck="false"
+            dir="ltr"
+            data-gutter="1"
+            data-highlight-language="javascript">
+            <span
+              class="PlaygroundEditorTheme__tokenFunction"
+              data-lexical-text="true">
+              alert
+            </span>
+            <span
+              class="PlaygroundEditorTheme__tokenPunctuation"
+              data-lexical-text="true">
+              (
+            </span>
+            <span
+              class="PlaygroundEditorTheme__tokenProperty"
+              data-lexical-text="true">
+              1
+            </span>
+            <span
+              class="PlaygroundEditorTheme__tokenPunctuation"
+              data-lexical-text="true">
+              )
+            </span>
+            <span
+              class="PlaygroundEditorTheme__tokenPunctuation"
+              data-lexical-text="true">
+              ;
+            </span>
+          </code>
+        `,
+      );
+    } else {
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">\`\`\` alert(1);</span>
+          </p>
+        `,
+      );
+    }
+  });
 
   test('Can select multiple paragraphs and convert to code block', async ({
     page,
@@ -243,450 +240,95 @@ test.describe('CodeBlock', () => {
     );
   });
 
-  test.fixme(
-    'Can switch highlighting language in a toolbar',
-    async ({page, isRichText}) => {
-      await focusEditor(page);
-      await page.keyboard.type('``` select * from users');
-      if (isRichText) {
-        await assertHTML(
-          page,
-          html`
-            <code
-              class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-              spellcheck="false"
-              dir="ltr"
-              data-gutter="1"
-              data-highlight-language="javascript">
-              <span data-lexical-text="true">select</span>
-              <span
-                class="PlaygroundEditorTheme__tokenOperator"
-                data-lexical-text="true">
-                *
-              </span>
-              <span data-lexical-text="true">from users</span>
-            </code>
-          `,
-        );
-        await click(page, '.toolbar-item.code-language');
-        await click(page, 'button:has-text("SQL")');
-        await assertHTML(
-          page,
-          html`
-            <code
-              class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-              spellcheck="false"
-              dir="ltr"
-              data-gutter="1"
-              data-highlight-language="sql">
-              <span
-                class="PlaygroundEditorTheme__tokenAttr"
-                data-lexical-text="true">
-                select
-              </span>
-              <span data-lexical-text="true"></span>
-              <span
-                class="PlaygroundEditorTheme__tokenOperator"
-                data-lexical-text="true">
-                *
-              </span>
-              <span data-lexical-text="true"></span>
-              <span
-                class="PlaygroundEditorTheme__tokenAttr"
-                data-lexical-text="true">
-                from
-              </span>
-              <span data-lexical-text="true">users</span>
-            </code>
-          `,
-        );
-      } else {
-        await assertHTML(
-          page,
-          html`
-            <p
-              class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-              dir="ltr">
-              <span data-lexical-text="true">\`\`\` select * from users</span>
-            </p>
-          `,
-        );
-      }
-    },
-  );
+  test('Can switch highlighting language in a toolbar', async ({
+    page,
+    isRichText,
+  }) => {
+    await focusEditor(page);
+    await page.keyboard.type('``` select * from users');
+    if (isRichText) {
+      await assertHTML(
+        page,
+        html`
+          <code
+            class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
+            spellcheck="false"
+            dir="ltr"
+            data-gutter="1"
+            data-highlight-language="javascript">
+            <span data-lexical-text="true">select</span>
+            <span
+              class="PlaygroundEditorTheme__tokenOperator"
+              data-lexical-text="true">
+              *
+            </span>
+            <span data-lexical-text="true">from users</span>
+          </code>
+        `,
+      );
+      await click(page, '.toolbar-item.code-language');
+      await click(page, 'button:has-text("SQL")');
+      await assertHTML(
+        page,
+        html`
+          <code
+            class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
+            spellcheck="false"
+            dir="ltr"
+            data-gutter="1"
+            data-highlight-language="sql">
+            <span
+              class="PlaygroundEditorTheme__tokenAttr"
+              data-lexical-text="true">
+              select
+            </span>
+            <span data-lexical-text="true"></span>
+            <span
+              class="PlaygroundEditorTheme__tokenOperator"
+              data-lexical-text="true">
+              *
+            </span>
+            <span data-lexical-text="true"></span>
+            <span
+              class="PlaygroundEditorTheme__tokenAttr"
+              data-lexical-text="true">
+              from
+            </span>
+            <span data-lexical-text="true">users</span>
+          </code>
+        `,
+      );
+    } else {
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">\`\`\` select * from users</span>
+          </p>
+        `,
+      );
+    }
+  });
 
-  test.fixme(
-    'Can maintain indent when creating new lines',
-    async ({page, isRichText, isPlainText}) => {
-      test.skip(isPlainText);
-      await focusEditor(page);
-      await page.keyboard.type('``` alert(1);');
-      await page.keyboard.press('Enter');
-      await click(page, '.toolbar-item.alignment');
-      await click(page, 'button:has-text("Indent")');
-      await page.keyboard.type('alert(2);');
-      await page.keyboard.press('Enter');
-      await assertHTML(
-        page,
-        html`
-          <code
-            class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-            spellcheck="false"
-            dir="ltr"
-            data-gutter="123"
-            data-highlight-language="javascript">
-            <span
-              class="PlaygroundEditorTheme__tokenFunction"
-              data-lexical-text="true">
-              alert
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              (
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenProperty"
-              data-lexical-text="true">
-              1
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              )
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              ;
-            </span>
-            <br />
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenFunction"
-              data-lexical-text="true">
-              alert
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              (
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenProperty"
-              data-lexical-text="true">
-              2
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              )
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              ;
-            </span>
-            <br />
-            <span data-lexical-text="true"></span>
-          </code>
-        `,
-      );
-    },
-  );
-
-  test.fixme(
-    'Can (un)indent multiple lines at once',
-    async ({page, isRichText, isPlainText}) => {
-      test.skip(isPlainText);
-      await focusEditor(page);
-      await page.keyboard.type('``` if (x) {');
-      await page.keyboard.press('Enter');
-      await click(page, '.toolbar-item.alignment');
-      await click(page, 'button:has-text("Indent")');
-      await page.keyboard.type('x();');
-      await page.keyboard.press('Enter');
-      await page.keyboard.press('Backspace');
-      await page.keyboard.type('}');
-      await assertHTML(
-        page,
-        html`
-          <code
-            class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-            spellcheck="false"
-            dir="ltr"
-            data-gutter="123"
-            data-highlight-language="javascript">
-            <span
-              class="PlaygroundEditorTheme__tokenAttr"
-              data-lexical-text="true">
-              if
-            </span>
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              (
-            </span>
-            <span data-lexical-text="true">x</span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              )
-            </span>
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              {
-            </span>
-            <br />
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenFunction"
-              data-lexical-text="true">
-              x
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              (
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              )
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              ;
-            </span>
-            <br />
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              }
-            </span>
-          </code>
-        `,
-      );
-      await page.keyboard.down('Shift');
-      await page.keyboard.press('ArrowUp');
-      await page.keyboard.press('ArrowUp');
-      await page.keyboard.up('Shift');
-      await click(page, '.toolbar-item.alignment');
-      await click(page, 'button:has-text("Indent")');
-      await click(page, '.toolbar-item.alignment');
-      await click(page, 'button:has-text("Indent")');
-      await assertHTML(
-        page,
-        html`
-          <code
-            class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-            spellcheck="false"
-            dir="ltr"
-            data-gutter="123"
-            data-highlight-language="javascript">
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenAttr"
-              data-lexical-text="true">
-              if
-            </span>
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              (
-            </span>
-            <span data-lexical-text="true">x</span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              )
-            </span>
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              {
-            </span>
-            <br />
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenFunction"
-              data-lexical-text="true">
-              x
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              (
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              )
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              ;
-            </span>
-            <br />
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              }
-            </span>
-          </code>
-        `,
-      );
-      await page.keyboard.down('Shift');
-      await click(page, '.toolbar-item.alignment');
-      await click(page, 'button:has-text("Outdent")');
-      await page.keyboard.up('Shift');
-      await assertHTML(
-        page,
-        html`
-          <code
-            class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-            spellcheck="false"
-            dir="ltr"
-            data-gutter="123"
-            data-highlight-language="javascript">
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenAttr"
-              data-lexical-text="true">
-              if
-            </span>
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              (
-            </span>
-            <span data-lexical-text="true">x</span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              )
-            </span>
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              {
-            </span>
-            <br />
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenFunction"
-              data-lexical-text="true">
-              x
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              (
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              )
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              ;
-            </span>
-            <br />
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              }
-            </span>
-          </code>
-        `,
-      );
-      await click(page, '.toolbar-item.alignment');
-      await click(page, 'button:has-text("Outdent")');
-      await click(page, '.toolbar-item.alignment');
-      await click(page, 'button:has-text("Outdent")');
-      await assertHTML(
-        page,
-        html`
-          <code
-            class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-            spellcheck="false"
-            dir="ltr"
-            data-gutter="123"
-            data-highlight-language="javascript">
-            <span
-              class="PlaygroundEditorTheme__tokenAttr"
-              data-lexical-text="true">
-              if
-            </span>
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              (
-            </span>
-            <span data-lexical-text="true">x</span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              )
-            </span>
-            <span data-lexical-text="true"></span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              {
-            </span>
-            <br />
-            <span
-              class="PlaygroundEditorTheme__tokenFunction"
-              data-lexical-text="true">
-              x
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              (
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              )
-            </span>
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              ;
-            </span>
-            <br />
-            <span
-              class="PlaygroundEditorTheme__tokenPunctuation"
-              data-lexical-text="true">
-              }
-            </span>
-          </code>
-        `,
-      );
-    },
-  );
-
-  test.fixme(
-    'Can move around lines with option+arrow keys',
-    async ({page, isPlainText}) => {
-      test.skip(isPlainText);
-      const abcHTML = html`
+  test('Can maintain indent when creating new lines', async ({
+    page,
+    isRichText,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+    await page.keyboard.type('``` alert(1);');
+    await page.keyboard.press('Enter');
+    await click(page, '.toolbar-item.alignment');
+    await click(page, 'button:has-text("Indent")');
+    await page.keyboard.type('alert(2);');
+    await page.keyboard.press('Enter');
+    await page.keyboard.type(';');
+    await assertHTML(
+      page,
+      html`
         <code
           class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
           spellcheck="false"
@@ -696,12 +338,17 @@ test.describe('CodeBlock', () => {
           <span
             class="PlaygroundEditorTheme__tokenFunction"
             data-lexical-text="true">
-            a
+            alert
           </span>
           <span
             class="PlaygroundEditorTheme__tokenPunctuation"
             data-lexical-text="true">
             (
+          </span>
+          <span
+            class="PlaygroundEditorTheme__tokenProperty"
+            data-lexical-text="true">
+            1
           </span>
           <span
             class="PlaygroundEditorTheme__tokenPunctuation"
@@ -714,15 +361,21 @@ test.describe('CodeBlock', () => {
             ;
           </span>
           <br />
+          <span data-lexical-text="true"></span>
           <span
             class="PlaygroundEditorTheme__tokenFunction"
             data-lexical-text="true">
-            b
+            alert
           </span>
           <span
             class="PlaygroundEditorTheme__tokenPunctuation"
             data-lexical-text="true">
             (
+          </span>
+          <span
+            class="PlaygroundEditorTheme__tokenProperty"
+            data-lexical-text="true">
+            2
           </span>
           <span
             class="PlaygroundEditorTheme__tokenPunctuation"
@@ -735,29 +388,35 @@ test.describe('CodeBlock', () => {
             ;
           </span>
           <br />
-          <span
-            class="PlaygroundEditorTheme__tokenFunction"
-            data-lexical-text="true">
-            c
-          </span>
-          <span
-            class="PlaygroundEditorTheme__tokenPunctuation"
-            data-lexical-text="true">
-            (
-          </span>
-          <span
-            class="PlaygroundEditorTheme__tokenPunctuation"
-            data-lexical-text="true">
-            )
-          </span>
+          <span data-lexical-text="true"></span>
           <span
             class="PlaygroundEditorTheme__tokenPunctuation"
             data-lexical-text="true">
             ;
           </span>
         </code>
-      `;
-      const bcaHTML = html`
+      `,
+    );
+  });
+
+  test('Can (un)indent multiple lines at once', async ({
+    page,
+    isRichText,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+    await page.keyboard.type('``` if (x) {');
+    await page.keyboard.press('Enter');
+    await click(page, '.toolbar-item.alignment');
+    await click(page, 'button:has-text("Indent")');
+    await page.keyboard.type('x();');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Backspace');
+    await page.keyboard.type('}');
+    await assertHTML(
+      page,
+      html`
         <code
           class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
           spellcheck="false"
@@ -765,9 +424,34 @@ test.describe('CodeBlock', () => {
           data-gutter="123"
           data-highlight-language="javascript">
           <span
+            class="PlaygroundEditorTheme__tokenAttr"
+            data-lexical-text="true">
+            if
+          </span>
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            (
+          </span>
+          <span data-lexical-text="true">x</span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            )
+          </span>
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            {
+          </span>
+          <br />
+          <span data-lexical-text="true"></span>
+          <span
             class="PlaygroundEditorTheme__tokenFunction"
             data-lexical-text="true">
-            b
+            x
           </span>
           <span
             class="PlaygroundEditorTheme__tokenPunctuation"
@@ -786,86 +470,412 @@ test.describe('CodeBlock', () => {
           </span>
           <br />
           <span
-            class="PlaygroundEditorTheme__tokenFunction"
-            data-lexical-text="true">
-            c
-          </span>
-          <span
             class="PlaygroundEditorTheme__tokenPunctuation"
             data-lexical-text="true">
-            (
-          </span>
-          <span
-            class="PlaygroundEditorTheme__tokenPunctuation"
-            data-lexical-text="true">
-            )
-          </span>
-          <span
-            class="PlaygroundEditorTheme__tokenPunctuation"
-            data-lexical-text="true">
-            ;
-          </span>
-          <br />
-          <span
-            class="PlaygroundEditorTheme__tokenFunction"
-            data-lexical-text="true">
-            a
-          </span>
-          <span
-            class="PlaygroundEditorTheme__tokenPunctuation"
-            data-lexical-text="true">
-            (
-          </span>
-          <span
-            class="PlaygroundEditorTheme__tokenPunctuation"
-            data-lexical-text="true">
-            )
-          </span>
-          <span
-            class="PlaygroundEditorTheme__tokenPunctuation"
-            data-lexical-text="true">
-            ;
+            }
           </span>
         </code>
-      `;
-      const endOfFirstLine = {
-        anchorOffset: 1,
-        anchorPath: [0, 3, 0],
-        focusOffset: 1,
-        focusPath: [0, 3, 0],
-      };
-      const endOfLastLine = {
-        anchorOffset: 1,
-        anchorPath: [0, 13, 0],
-        focusOffset: 1,
-        focusPath: [0, 13, 0],
-      };
-      await focusEditor(page);
-      await page.keyboard.type('``` a();\nb();\nc();');
-      await assertHTML(page, abcHTML);
-      await assertSelection(page, endOfLastLine);
-      await page.keyboard.press('ArrowUp');
-      await page.keyboard.press('ArrowUp');
-      // Workaround for #1173: just insert and remove a space to fix Firefox losing the selection
-      await page.keyboard.type(' ');
-      await page.keyboard.press('Backspace');
-      await assertSelection(page, endOfFirstLine);
-      // End workaround
-      // Ensure attempting to move a line up at the top of a codeblock no-ops
-      await page.keyboard.down('Alt');
-      await page.keyboard.press('ArrowUp');
-      await assertSelection(page, endOfFirstLine);
-      await assertHTML(page, abcHTML);
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await assertSelection(page, endOfLastLine);
-      // Can't move a line down and out of codeblock
-      await assertHTML(page, bcaHTML);
-      await page.keyboard.press('ArrowDown');
-      await assertSelection(page, endOfLastLine);
-      await assertHTML(page, bcaHTML);
-    },
-  );
+      `,
+    );
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('ArrowUp');
+    await page.keyboard.press('ArrowUp');
+    await page.keyboard.up('Shift');
+    await click(page, '.toolbar-item.alignment');
+    await click(page, 'button:has-text("Indent")');
+    await click(page, '.toolbar-item.alignment');
+    await click(page, 'button:has-text("Indent")');
+    await assertHTML(
+      page,
+      html`
+        <code
+          class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
+          dir="ltr"
+          spellcheck="false"
+          data-gutter="123"
+          data-highlight-language="javascript">
+          <span data-lexical-text="true"></span>
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenAttr"
+            data-lexical-text="true">
+            if
+          </span>
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            (
+          </span>
+          <span data-lexical-text="true">x</span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            )
+          </span>
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            {
+          </span>
+          <br />
+          <span data-lexical-text="true"></span>
+          <span data-lexical-text="true"></span>
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenFunction"
+            data-lexical-text="true">
+            x
+          </span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            (
+          </span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            )
+          </span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            ;
+          </span>
+          <br />
+          <span data-lexical-text="true"></span>
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            }
+          </span>
+        </code>
+      `,
+    );
+    await page.keyboard.down('Shift');
+    await click(page, '.toolbar-item.alignment');
+    await click(page, 'button:has-text("Outdent")');
+    await page.keyboard.up('Shift');
+    await assertHTML(
+      page,
+      html`
+        <code
+          class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
+          dir="ltr"
+          spellcheck="false"
+          data-gutter="123"
+          data-highlight-language="javascript">
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenAttr"
+            data-lexical-text="true">
+            if
+          </span>
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            (
+          </span>
+          <span data-lexical-text="true">x</span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            )
+          </span>
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            {
+          </span>
+          <br />
+          <span data-lexical-text="true"></span>
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenFunction"
+            data-lexical-text="true">
+            x
+          </span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            (
+          </span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            )
+          </span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            ;
+          </span>
+          <br />
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            }
+          </span>
+        </code>
+      `,
+    );
+    await click(page, '.toolbar-item.alignment');
+    await click(page, 'button:has-text("Outdent")');
+    await click(page, '.toolbar-item.alignment');
+    await click(page, 'button:has-text("Outdent")');
+    await assertHTML(
+      page,
+      html`
+        <code
+          class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
+          spellcheck="false"
+          dir="ltr"
+          data-gutter="123"
+          data-highlight-language="javascript">
+          <span
+            class="PlaygroundEditorTheme__tokenAttr"
+            data-lexical-text="true">
+            if
+          </span>
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            (
+          </span>
+          <span data-lexical-text="true">x</span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            )
+          </span>
+          <span data-lexical-text="true"></span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            {
+          </span>
+          <br />
+          <span
+            class="PlaygroundEditorTheme__tokenFunction"
+            data-lexical-text="true">
+            x
+          </span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            (
+          </span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            )
+          </span>
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            ;
+          </span>
+          <br />
+          <span
+            class="PlaygroundEditorTheme__tokenPunctuation"
+            data-lexical-text="true">
+            }
+          </span>
+        </code>
+      `,
+    );
+  });
+
+  test('Can move around lines with option+arrow keys', async ({
+    page,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    const abcHTML = html`
+      <code
+        class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
+        spellcheck="false"
+        dir="ltr"
+        data-gutter="123"
+        data-highlight-language="javascript">
+        <span
+          class="PlaygroundEditorTheme__tokenFunction"
+          data-lexical-text="true">
+          a
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          (
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          )
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          ;
+        </span>
+        <br />
+        <span
+          class="PlaygroundEditorTheme__tokenFunction"
+          data-lexical-text="true">
+          b
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          (
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          )
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          ;
+        </span>
+        <br />
+        <span
+          class="PlaygroundEditorTheme__tokenFunction"
+          data-lexical-text="true">
+          c
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          (
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          )
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          ;
+        </span>
+      </code>
+    `;
+    const bcaHTML = html`
+      <code
+        class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
+        spellcheck="false"
+        dir="ltr"
+        data-gutter="123"
+        data-highlight-language="javascript">
+        <span
+          class="PlaygroundEditorTheme__tokenFunction"
+          data-lexical-text="true">
+          b
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          (
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          )
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          ;
+        </span>
+        <br />
+        <span
+          class="PlaygroundEditorTheme__tokenFunction"
+          data-lexical-text="true">
+          c
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          (
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          )
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          ;
+        </span>
+        <br />
+        <span
+          class="PlaygroundEditorTheme__tokenFunction"
+          data-lexical-text="true">
+          a
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          (
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          )
+        </span>
+        <span
+          class="PlaygroundEditorTheme__tokenPunctuation"
+          data-lexical-text="true">
+          ;
+        </span>
+      </code>
+    `;
+    const endOfFirstLine = {
+      anchorOffset: 1,
+      anchorPath: [0, 3, 0],
+      focusOffset: 1,
+      focusPath: [0, 3, 0],
+    };
+    const endOfLastLine = {
+      anchorOffset: 1,
+      anchorPath: [0, 13, 0],
+      focusOffset: 1,
+      focusPath: [0, 13, 0],
+    };
+    await focusEditor(page);
+    await page.keyboard.type('``` a();\nb();\nc();');
+    await assertHTML(page, abcHTML);
+    await assertSelection(page, endOfLastLine);
+    await page.keyboard.press('ArrowUp');
+    await page.keyboard.press('ArrowUp');
+    // Workaround for #1173: just insert and remove a space to fix Firefox losing the selection
+    await page.keyboard.type(' ');
+    await page.keyboard.press('Backspace');
+    await assertSelection(page, endOfFirstLine);
+    // End workaround
+    // Ensure attempting to move a line up at the top of a codeblock no-ops
+    await page.keyboard.down('Alt');
+    await page.keyboard.press('ArrowUp');
+    await assertSelection(page, endOfFirstLine);
+    await assertHTML(page, abcHTML);
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await assertSelection(page, endOfLastLine);
+    // Can't move a line down and out of codeblock
+    await assertHTML(page, bcaHTML);
+    await page.keyboard.press('ArrowDown');
+    await assertSelection(page, endOfLastLine);
+    await assertHTML(page, bcaHTML);
+  });
 
   /**
    * Code example for tests:
@@ -970,6 +980,69 @@ test.describe('CodeBlock', () => {
       </span>
     </code>
   `;
+  const EXPECTED_HTML_GOOGLE_SPREADSHEET = html`
+    <table class="PlaygroundEditorTheme__table">
+      <tr style="height: 21px">
+        <td class="PlaygroundEditorTheme__tableCell">
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <strong
+              class="PlaygroundEditorTheme__textBold"
+              data-lexical-text="true">
+              Surface
+            </strong>
+          </p>
+        </td>
+        <td class="PlaygroundEditorTheme__tableCell">
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <em
+              class="PlaygroundEditorTheme__textItalic"
+              data-lexical-text="true">
+              MWP_WORK_LS_COMPOSER
+            </em>
+          </p>
+        </td>
+        <td class="PlaygroundEditorTheme__tableCell">
+          <p class="PlaygroundEditorTheme__paragraph">
+            <span
+              class="PlaygroundEditorTheme__textUnderline"
+              data-lexical-text="true">
+              77349
+            </span>
+          </p>
+        </td>
+      </tr>
+      <tr style="height: 21px">
+        <td class="PlaygroundEditorTheme__tableCell">
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Lexical</span>
+          </p>
+        </td>
+        <td class="PlaygroundEditorTheme__tableCell">
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">XDS_RICH_TEXT_AREA</span>
+          </p>
+        </td>
+        <td
+          class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">sdvd</span>
+          <strong
+            class="PlaygroundEditorTheme__textBold"
+            data-lexical-text="true">
+            sdfvsfs
+          </strong>
+        </td>
+      </tr>
+    </table>
+  `;
   const CODE_PASTING_TESTS = [
     {
       expectedHTML: EXPECTED_HTML,
@@ -1022,14 +1095,14 @@ test.describe('CodeBlock', () => {
         <code
           class="PlaygroundEditorTheme__code"
           spellcheck="false"
-          data-gutter="1"
+          data-gutter="12"
           data-highlight-language="javascript">
           <span
             class="PlaygroundEditorTheme__tokenProperty"
             data-lexical-text="true">
             1
           </span>
-          <span data-lexical-text="true"></span>
+          <br />
           <span
             class="PlaygroundEditorTheme__tokenProperty"
             data-lexical-text="true">
@@ -1038,7 +1111,14 @@ test.describe('CodeBlock', () => {
         </code>
       `,
       name: 'Multiline <code>',
-      pastedHTML: `<meta charset='utf-8'><code>1\n2</code>`,
+      // TODO This is not correct. This resembles how Lexical exports code right now but
+      // semantically it should be wrapped in a pre
+      pastedHTML: `<meta charset='utf-8'><code>1<br>2</code>`,
+    },
+    {
+      expectedHTML: EXPECTED_HTML_GOOGLE_SPREADSHEET,
+      name: 'Google Spreadsheet',
+      pastedHTML: `<google-sheets-html-origin><style type="text/css"><!--td {border: 1px solid #cccccc;}br {mso-data-placement:same-cell;}--></style><table xmlns="http://www.w3.org/1999/xhtml" cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout:fixed;font-size:10pt;font-family:Arial;width:0px;border-collapse:collapse;border:none" data-sheets-root="1"><colgroup><col width="100"/><col width="210"/><col width="100"/></colgroup><tbody><tr style="height:21px;"><td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:bottom;font-weight:bold;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Surface&quot;}">Surface</td><td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:bottom;font-style:italic;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;MWP_WORK_LS_COMPOSER&quot;}">MWP_WORK_LS_COMPOSER</td><td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:bottom;text-decoration:underline;text-align:right;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:77349}">77349</td></tr><tr style="height:21px;"><td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:bottom;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Lexical&quot;}">Lexical</td><td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:bottom;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;XDS_RICH_TEXT_AREA&quot;}">XDS_RICH_TEXT_AREA</td><td style="overflow:hidden;padding:2px 3px 2px 3px;vertical-align:bottom;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;sdvd sdfvsfs&quot;}" data-sheets-textstyleruns="{&quot;1&quot;:0}{&quot;1&quot;:5,&quot;2&quot;:{&quot;5&quot;:1}}"><span style="font-size:10pt;font-family:Arial;font-style:normal;">sdvd </span><span style="font-size:10pt;font-family:Arial;font-weight:bold;font-style:normal;">sdfvsfs</span></td></tr></tbody></table>`,
     },
   ];
 
@@ -1057,85 +1137,85 @@ test.describe('CodeBlock', () => {
     });
   });
 
-  test.fixme(
-    'When pressing CMD/Ctrl + Left, CMD/Ctrl + Right, the cursor should go to the start of the code',
-    async ({page, isPlainText}) => {
-      test.skip(isPlainText);
-      await focusEditor(page);
-      await page.keyboard.type('``` ');
-      await page.keyboard.press('Space');
-      await click(page, '.toolbar-item.alignment');
-      await click(page, 'button:has-text("Indent")');
-      await page.keyboard.type('a b');
-      await page.keyboard.press('Space');
-      await page.keyboard.press('Enter');
-      await page.keyboard.type('c d');
-      await page.keyboard.press('Space');
-      await assertHTML(
-        page,
-        `
+  test('When pressing CMD/Ctrl + Left, CMD/Ctrl + Right, the cursor should go to the start of the code', async ({
+    page,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+    await page.keyboard.type('``` ');
+    await page.keyboard.press('Space');
+    await click(page, '.toolbar-item.alignment');
+    await click(page, 'button:has-text("Indent")');
+    await page.keyboard.type('a b');
+    await page.keyboard.press('Space');
+    await page.keyboard.press('Enter');
+    await page.keyboard.type('c d');
+    await page.keyboard.press('Space');
+    await assertHTML(
+      page,
+      `
       <code
         class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
         dir="ltr"
         spellcheck="false"
         data-gutter="12"
         data-highlight-language="javascript">
+        <span data-lexical-text="true"></span>
         <span data-lexical-text="true">a b</span>
         <br />
+        <span data-lexical-text="true"></span>
         <span data-lexical-text="true">c d</span>
       </code>
     `,
-      );
+    );
 
-      await selectCharacters(page, 'left', 13);
-      await assertSelection(page, {
-        anchorOffset: 6,
-        anchorPath: [0, 2, 0],
-        focusOffset: 0,
-        focusPath: [0, 0, 0],
-      });
+    await selectCharacters(page, 'left', 11);
+    await assertSelection(page, {
+      anchorOffset: 5,
+      anchorPath: [0, 4, 0],
+      focusOffset: 1,
+      focusPath: [0, 1, 0],
+    });
 
-      await moveToStart(page);
-      await assertSelection(page, {
-        anchorOffset: 2,
-        anchorPath: [0, 0, 0],
-        focusOffset: 2,
-        focusPath: [0, 0, 0],
-      });
+    await moveToStart(page);
+    await assertSelection(page, {
+      anchorOffset: 0,
+      anchorPath: [0, 0, 0],
+      focusOffset: 0,
+      focusPath: [0, 0, 0],
+    });
 
-      await moveToEnd(page);
-      await assertSelection(page, {
-        anchorOffset: 5,
-        anchorPath: [0, 0, 0],
-        focusOffset: 5,
-        focusPath: [0, 0, 0],
-      });
+    await moveToEnd(page);
+    await assertSelection(page, {
+      anchorOffset: 5,
+      anchorPath: [0, 1, 0],
+      focusOffset: 5,
+      focusPath: [0, 1, 0],
+    });
 
-      await moveToStart(page);
-      await assertSelection(page, {
-        anchorOffset: 2,
-        anchorPath: [0, 0, 0],
-        focusOffset: 2,
-        focusPath: [0, 0, 0],
-      });
+    await moveToStart(page);
+    await assertSelection(page, {
+      anchorOffset: 1,
+      anchorPath: [0, 1, 0],
+      focusOffset: 1,
+      focusPath: [0, 1, 0],
+    });
 
-      await selectCharacters(page, 'right', 11);
-      await assertSelection(page, {
-        anchorOffset: 2,
-        anchorPath: [0, 0, 0],
-        focusOffset: 6,
-        focusPath: [0, 2, 0],
-      });
+    await selectCharacters(page, 'right', 11);
+    await assertSelection(page, {
+      anchorOffset: 1,
+      anchorPath: [0, 1, 0],
+      focusOffset: 5,
+      focusPath: [0, 4, 0],
+    });
 
-      await moveToEnd(page);
-      await assertSelection(page, {
-        anchorOffset: 5,
-        anchorPath: [0, 2, 0],
-        focusOffset: 5,
-        focusPath: [0, 2, 0],
-      });
-
-      await page.pause();
-    },
-  );
+    await moveToEnd(page);
+    await assertSelection(page, {
+      anchorOffset: 5,
+      anchorPath: [0, 4, 0],
+      focusOffset: 5,
+      focusPath: [0, 4, 0],
+    });
+  });
 });

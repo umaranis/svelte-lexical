@@ -30,7 +30,6 @@ async function clickIndentButton(page, times = 1) {
 const MAX_INDENT_LEVEL = 6;
 
 test.describe('Nested List', () => {
-  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test(`Can only indent until the max depth when list is empty`, async ({
     page,

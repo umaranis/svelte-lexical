@@ -23,7 +23,6 @@ import {
   selectFromInsertDropdown,
   test,
   waitForSelector,
-  IS_WINDOWS,
 } from '../utils/index.mjs';
 
 test.describe('HorizontalRule', () => {
@@ -34,9 +33,6 @@ test.describe('HorizontalRule', () => {
     isPlainText,
     browserName,
   }) => {
-    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
-      test.fixme();
-    }
     test.skip(isPlainText);
     await focusEditor(page);
 
@@ -48,7 +44,7 @@ test.describe('HorizontalRule', () => {
       page,
       html`
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <hr contenteditable="false" data-lexical-decorator="true" />
+        <hr class="" contenteditable="false" data-lexical-decorator="true" />
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
       `,
     );
@@ -111,7 +107,7 @@ test.describe('HorizontalRule', () => {
           dir="ltr">
           <span data-lexical-text="true">Some text</span>
         </p>
-        <hr contenteditable="false" data-lexical-decorator="true" />
+        <hr class="" contenteditable="false" data-lexical-decorator="true" />
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
           dir="ltr">
@@ -139,7 +135,7 @@ test.describe('HorizontalRule', () => {
     if (!isCollab) {
       await assertHTML(
         page,
-        '<div class="PlaygroundEditorTheme__blockCursor" contenteditable="false" data-lexical-cursor="true"></div><hr data-lexical-decorator="true" contenteditable="false"><p class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">Some more text</span></p>',
+        '<div class="PlaygroundEditorTheme__blockCursor" contenteditable="false" data-lexical-cursor="true"></div><hr class="" data-lexical-decorator="true" contenteditable="false"><p class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">Some more text</span></p>',
       );
     }
 
@@ -191,7 +187,7 @@ test.describe('HorizontalRule', () => {
           dir="ltr">
           <span data-lexical-text="true">Test</span>
         </p>
-        <hr contenteditable="false" data-lexical-decorator="true" />
+        <hr class="" contenteditable="false" data-lexical-decorator="true" />
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
       `,
     );
@@ -252,7 +248,7 @@ test.describe('HorizontalRule', () => {
           dir="ltr">
           <span data-lexical-text="true">Te</span>
         </p>
-        <hr contenteditable="false" data-lexical-decorator="true" />
+        <hr class="" contenteditable="false" data-lexical-decorator="true" />
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
           dir="ltr">
@@ -269,15 +265,7 @@ test.describe('HorizontalRule', () => {
     });
   });
 
-  test('Can copy and paste a horizontal rule', async ({
-    page,
-    isPlainText,
-    browserName,
-    isCollab,
-  }) => {
-    if (IS_WINDOWS && browserName === 'firefox' && isCollab) {
-      test.fixme();
-    }
+  test('Can copy and paste a horizontal rule', async ({page, isPlainText}) => {
     test.skip(isPlainText);
 
     await focusEditor(page);
@@ -290,7 +278,7 @@ test.describe('HorizontalRule', () => {
       page,
       html`
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <hr contenteditable="false" data-lexical-decorator="true" />
+        <hr class="" contenteditable="false" data-lexical-decorator="true" />
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
       `,
     );
@@ -317,7 +305,7 @@ test.describe('HorizontalRule', () => {
       page,
       html`
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <hr contenteditable="false" data-lexical-decorator="true" />
+        <hr class="" contenteditable="false" data-lexical-decorator="true" />
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
       `,
     );
@@ -338,9 +326,9 @@ test.describe('HorizontalRule', () => {
       page,
       html`
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <hr contenteditable="false" data-lexical-decorator="true" />
+        <hr class="" contenteditable="false" data-lexical-decorator="true" />
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <hr contenteditable="false" data-lexical-decorator="true" />
+        <hr class="" contenteditable="false" data-lexical-decorator="true" />
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
       `,
     );
@@ -371,7 +359,7 @@ test.describe('HorizontalRule', () => {
       page,
       html`
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <hr contenteditable="false" data-lexical-decorator="true" />
+        <hr class="" contenteditable="false" data-lexical-decorator="true" />
         <p class="PlaygroundEditorTheme__paragraph"><br /></p>
       `,
     );

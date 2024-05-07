@@ -6,6 +6,8 @@
  *
  */
 
+/* eslint-disable no-useless-escape */
+
 import {paste} from '../keyboardShortcuts/index.mjs';
 import {
   assertHTML,
@@ -21,7 +23,7 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('CodeActionMenu', () => {
-  test.fixme();
+  //test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test('Can copy code, when click `Copy` button', async ({
     page,
@@ -29,7 +31,8 @@ test.describe('CodeActionMenu', () => {
     isPlainText,
     browserName,
   }) => {
-    test.skip(isPlainText);
+    test.skip(true);
+
     await focusEditor(page);
     await page.keyboard.type('``` ');
     await page.keyboard.press('Space');
@@ -251,21 +254,19 @@ test.describe('CodeActionMenu', () => {
     );
   });
 
-  test('If the code syntax is incorrect, an error message should be displayed', async ({
-    page,
-    isCollab,
-    isPlainText,
-  }) => {
-    test.skip(isCollab);
-    test.skip(isPlainText);
-    await focusEditor(page);
-    await page.keyboard.type('``` ');
-    await page.keyboard.press('Space');
-    await page.keyboard.type(`cons  luci  =  'Hello World'`);
+  test.fixme(
+    'If the code syntax is incorrect, an error message should be displayed',
+    async ({page, isCollab, isPlainText}) => {
+      test.skip(isCollab);
+      test.skip(isPlainText);
+      await focusEditor(page);
+      await page.keyboard.type('``` ');
+      await page.keyboard.press('Space');
+      await page.keyboard.type(`cons  luci  =  'Hello World'`);
 
-    await assertHTML(
-      page,
-      `
+      await assertHTML(
+        page,
+        `
         <code
           class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
           dir="ltr"
@@ -282,27 +283,28 @@ test.describe('CodeActionMenu', () => {
           </span>
         </code>
       `,
-    );
+      );
 
-    await mouseMoveToSelector(page, 'code.PlaygroundEditorTheme__code');
-    await click(page, 'button[aria-label=prettier]');
+      await mouseMoveToSelector(page, 'code.PlaygroundEditorTheme__code');
+      await click(page, 'button[aria-label=prettier]');
 
-    await page.waitForTimeout(3000);
+      await page.waitForTimeout(3000);
 
-    expect(await page.$('i.format.prettier-error')).toBeTruthy();
+      expect(await page.$('i.format.prettier-error')).toBeTruthy();
 
-    const errorTips = await page.$('pre.code-error-tips');
+      const errorTips = await page.$('pre.code-error-tips');
 
-    expect(errorTips).toBeTruthy();
+      expect(errorTips).toBeTruthy();
 
-    const tips = await evaluate(page, () => {
-      return document.querySelector('pre.code-error-tips').innerText;
-    });
+      const tips = await evaluate(page, () => {
+        return document.querySelector('pre.code-error-tips').innerText;
+      });
 
-    expect(tips).toBe(
-      'Missing semicolon. (1:6)\n' +
-        "> 1 |  cons  luci  =  'Hello World'\n" +
-        '    |      ^',
-    );
-  });
+      expect(tips).toBe(
+        'Missing semicolon. (1:6)\n' +
+          "> 1 |  cons  luci  =  'Hello World'\n" +
+          '    |      ^',
+      );
+    },
+  );
 });

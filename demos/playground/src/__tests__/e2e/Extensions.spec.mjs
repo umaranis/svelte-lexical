@@ -200,7 +200,7 @@ test.describe('Extensions', () => {
     isPlainText,
   }) => {
     // This test is flaky in collab #3915
-    test.fixme(isCollab); // lexical
+    test.fixme(isCollab);
     test.skip(isPlainText);
     await focusEditor(page);
 
