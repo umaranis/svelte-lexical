@@ -33,6 +33,15 @@ export const SAMPLE_LANDSCAPE_IMAGE_URL =
     : '/assets/landscape-DorzbG8Q.jpg';
 export const LEXICAL_IMAGE_BASE64 =
   'data:image/png;base64,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';
+export const YOUTUBE_SAMPLE_URL =
+  'https://www.youtube-nocookie.com/embed/jNQXAC9IVRw';
+
+function wrapAndSlowDown(method, delay) {
+  return async function () {
+    await new Promise((resolve) => setTimeout(resolve, delay));
+    return method.apply(this, arguments);
+  };
+}
 
 export async function initialize({
   page,
@@ -45,6 +54,13 @@ export async function initialize({
   tableCellMerge,
   tableCellBackgroundColor,
 }) {
+  // Tests with legacy events often fail to register keypress, so
+  // slowing it down to reduce flakiness
+  if (LEGACY_EVENTS) {
+    page.keyboard.type = wrapAndSlowDown(page.keyboard.type, 50);
+    page.keyboard.press = wrapAndSlowDown(page.keyboard.press, 50);
+  }
+
   const appSettings = {};
   appSettings.isRichText = IS_RICH_TEXT;
   appSettings.emptyEditor = true;
@@ -80,15 +96,28 @@ export async function initialize({
   await exposeLexicalEditor(page);
 }
 
+/**
+ * @param {import('@playwright/test').Page} page
+ */
 async function exposeLexicalEditor(page) {
-  let leftFrame = page;
   if (IS_COLLAB) {
-    leftFrame = await page.frame('left');
+    await Promise.all(
+      ['left', 'right'].map(async (name) => {
+        const frameLocator = page.frameLocator(`[name="${name}"]`);
+        await expect(
+          frameLocator.locator('.action-button.connect'),
+        ).toHaveAttribute('title', /Disconnect/);
+        await expect(
+          frameLocator.locator('[data-lexical-editor="true"] p'),
+        ).toBeVisible();
+      }),
+    );
   }
+  const leftFrame = getPageOrFrame(page);
   await leftFrame.waitForSelector('.tree-view-output pre');
   await leftFrame.evaluate(() => {
     window.lexicalEditor = document.querySelector(
-      '.tree-view-output pre',
+      '[data-lexical-editor="true"]',
     ).__lexicalEditor;
   });
 }
@@ -124,28 +153,39 @@ export async function clickSelectors(page, selectors) {
     await click(page, selectors[i]);
   }
 }
-
+/**
+ * @param {import('@playwright/test').Page | import('@playwright/test').Frame} pageOrFrame
+ */
 async function assertHTMLOnPageOrFrame(
   pageOrFrame,
   expectedHtml,
   ignoreClasses,
   ignoreInlineStyles,
+  frameName,
 ) {
-  let actualHtml = await pageOrFrame.innerHTML('div[contenteditable="true"]');
-  actualHtml = actualHtml.replace(/<!--[\s\S]*?-->/g, ''); // remove comments introduced by svelte
-  actualHtml = actualHtml.replace(/class=""/g, ''); //remove blank class attribute
-
-  const actual = prettifyHTML(actualHtml.replace(/\n/gm, ''), {
-    ignoreClasses,
-    ignoreInlineStyles,
-  });
   const expected = prettifyHTML(expectedHtml.replace(/\n/gm, ''), {
     ignoreClasses,
     ignoreInlineStyles,
   });
-  expect(actual).toEqual(expected);
+  return await expect(async () => {
+    const actualHtml = await pageOrFrame
+      .locator('div[contenteditable="true"]')
+      .first()
+      .innerHTML();
+    const actual = prettifyHTML(actualHtml.replace(/\n/gm, ''), {
+      ignoreClasses,
+      ignoreInlineStyles,
+    });
+    expect(
+      actual,
+      `innerHTML of contenteditable in ${frameName} did not match`,
+    ).toEqual(expected);
+  }).toPass({intervals: [100, 250, 500], timeout: 5000});
 }
 
+/**
+ * @param {import('@playwright/test').Page} page
+ */
 export async function assertHTML(
   page,
   expectedHtml,
@@ -153,26 +193,21 @@ export async function assertHTML(
   {ignoreClasses = false, ignoreInlineStyles = false} = {},
 ) {
   if (IS_COLLAB) {
-    const withRetry = async (fn) => await retryAsync(page, fn, 5);
     await Promise.all([
-      withRetry(async () => {
-        const leftFrame = await page.frame('left');
-        return assertHTMLOnPageOrFrame(
-          leftFrame,
-          expectedHtml,
-          ignoreClasses,
-          ignoreInlineStyles,
-        );
-      }),
-      withRetry(async () => {
-        const rightFrame = await page.frame('right');
-        return assertHTMLOnPageOrFrame(
-          rightFrame,
-          expectedHtmlFrameRight,
-          ignoreClasses,
-          ignoreInlineStyles,
-        );
-      }),
+      assertHTMLOnPageOrFrame(
+        page.frame('left'),
+        expectedHtml,
+        ignoreClasses,
+        ignoreInlineStyles,
+        'left frame',
+      ),
+      assertHTMLOnPageOrFrame(
+        page.frame('right'),
+        expectedHtmlFrameRight,
+        ignoreClasses,
+        ignoreInlineStyles,
+        'right frame',
+      ),
     ]);
   } else {
     await assertHTMLOnPageOrFrame(
@@ -180,26 +215,57 @@ export async function assertHTML(
       expectedHtml,
       ignoreClasses,
       ignoreInlineStyles,
+      'page',
     );
   }
 }
 
-async function retryAsync(page, fn, attempts) {
-  while (attempts > 0) {
-    let failed = false;
-    try {
-      await fn();
-    } catch (e) {
-      if (attempts === 1) {
-        throw e;
-      }
-      failed = true;
+/**
+ * @param {import('@playwright/test').Page} page
+ */
+export function getPageOrFrame(page) {
+  return IS_COLLAB ? page.frame('left') : page;
+}
+
+export async function assertTableSelectionCoordinates(page, coordinates) {
+  const pageOrFrame = getPageOrFrame(page);
+
+  const {_anchor, _focus} = await pageOrFrame.evaluate(() => {
+    const editor = window.lexicalEditor;
+    const editorState = editor.getEditorState();
+    const selection = editorState._selection;
+    if (!selection.tableKey) {
+      throw new Error('Expected table selection');
     }
-    if (!failed) {
-      break;
+    const anchorElement = editor.getElementByKey(selection.anchor.key);
+    const focusElement = editor.getElementByKey(selection.focus.key);
+    return {
+      _anchor: {
+        x: anchorElement._cell?.x,
+        y: anchorElement._cell?.y,
+      },
+      _focus: {
+        x: focusElement._cell?.x,
+        y: focusElement._cell?.y,
+      },
+    };
+  });
+
+  if (coordinates.anchor) {
+    if (coordinates.anchor.x !== undefined) {
+      expect(_anchor.x).toEqual(coordinates.anchor.x);
     }
-    attempts--;
-    await sleep(500);
+    if (coordinates.anchor.y !== undefined) {
+      expect(_anchor.y).toEqual(coordinates.anchor.y);
+    }
+  }
+  if (coordinates.focus) {
+    if (coordinates.focus.x !== undefined) {
+      expect(_focus.x).toEqual(coordinates.focus.x);
+    }
+    if (coordinates.focus.y !== undefined) {
+      expect(_focus.y).toEqual(coordinates.focus.y);
+    }
   }
 }
 
@@ -253,12 +319,7 @@ async function assertSelectionOnPageOrFrame(page, expected) {
 }
 
 export async function assertSelection(page, expected) {
-  if (IS_COLLAB) {
-    const frame = await page.frame('left');
-    await assertSelectionOnPageOrFrame(frame, expected);
-  } else {
-    await assertSelectionOnPageOrFrame(page, expected);
-  }
+  await assertSelectionOnPageOrFrame(getPageOrFrame(page), expected);
 }
 
 export async function isMac(page) {
@@ -328,16 +389,11 @@ async function copyToClipboardPageOrFrame(pageOrFrame) {
 }
 
 export async function copyToClipboard(page) {
-  if (IS_COLLAB) {
-    const leftFrame = await page.frame('left');
-    return await copyToClipboardPageOrFrame(leftFrame);
-  } else {
-    return await copyToClipboardPageOrFrame(page);
-  }
+  return await copyToClipboardPageOrFrame(getPageOrFrame(page));
 }
 
 async function pasteFromClipboardPageOrFrame(pageOrFrame, clipboardData) {
-  const canUseBeforeInput = supportsBeforeInput(pageOrFrame);
+  const canUseBeforeInput = await supportsBeforeInput(pageOrFrame);
   await pageOrFrame.evaluate(
     async ({
       clipboardData: _clipboardData,
@@ -403,13 +459,11 @@ async function pasteFromClipboardPageOrFrame(pageOrFrame, clipboardData) {
   );
 }
 
+/**
+ * @param {import('@playwright/test').Page} page
+ */
 export async function pasteFromClipboard(page, clipboardData) {
-  if (IS_COLLAB) {
-    const leftFrame = await page.frame('left');
-    await pasteFromClipboardPageOrFrame(leftFrame, clipboardData);
-  } else {
-    await pasteFromClipboardPageOrFrame(page, clipboardData);
-  }
+  await pasteFromClipboardPageOrFrame(getPageOrFrame(page), clipboardData);
 }
 
 export async function sleep(delay) {
@@ -421,107 +475,59 @@ export async function sleepInsertImage(count = 1) {
   return await sleep(1000 * count);
 }
 
+/**
+ * @param {import('@playwright/test').Page} page
+ */
 export async function focusEditor(page, parentSelector = '.editor-shell') {
-  const selector = `${parentSelector} div[contenteditable="true"]`;
-  if (IS_COLLAB) {
-    await page.waitForSelector('iframe[name="left"]');
-    const leftFrame = page.frame('left');
-    if ((await leftFrame.$$('.loading')).length !== 0) {
-      await leftFrame.waitForSelector('.loading', {
-        state: 'detached',
-      });
-    }
-    // This sleep used to be "conditional" based on a broken version of
-    // the above test (undefined !== 0 is always true). It turns out there
-    // were tests that needed this sleep even when the left frame was not
-    // in a loading state.
-    await sleep(500);
-    await leftFrame.focus(selector);
-  } else {
-    await page.focus(selector);
-  }
+  const locator = getEditorElement(page, parentSelector);
+  await locator.focus();
 }
 
 export async function getHTML(page, selector = 'div[contenteditable="true"]') {
-  const pageOrFrame = IS_COLLAB ? await page.frame('left') : page;
-  const element = await pageOrFrame.locator(selector);
-  return element.innerHTML();
+  return await locate(page, selector).innerHTML();
 }
 
-export async function getEditorElement(page, parentSelector = '.editor-shell') {
+export function getEditorElement(page, parentSelector = '.editor-shell') {
   const selector = `${parentSelector} div[contenteditable="true"]`;
-
-  if (IS_COLLAB) {
-    const leftFrame = await page.frame('left');
-    return leftFrame.locator(selector);
-  } else {
-    return page.locator(selector);
-  }
+  return locate(page, selector).first();
 }
 
 export async function waitForSelector(page, selector, options) {
-  if (IS_COLLAB) {
-    const leftFrame = await page.frame('left');
-    await leftFrame.waitForSelector(selector, options);
-  } else {
-    await page.waitForSelector(selector, options);
-  }
+  await getPageOrFrame(page).waitForSelector(selector, options);
+}
+
+export function locate(page, selector) {
+  return getPageOrFrame(page).locator(selector);
 }
 
 export async function selectorBoundingBox(page, selector) {
-  let leftFrame = page;
-  if (IS_COLLAB) {
-    leftFrame = await page.frame('left');
-  }
-  const node = await leftFrame.locator(selector);
-  return await node.boundingBox();
+  return await locate(page, selector).boundingBox();
 }
 
 export async function click(page, selector, options) {
-  if (IS_COLLAB) {
-    const leftFrame = await page.frame('left');
-    await leftFrame.waitForSelector(selector, options);
-    await leftFrame.click(selector, options);
-  } else {
-    await page.waitForSelector(selector, options);
-    await page.click(selector, options);
-  }
+  const frame = getPageOrFrame(page);
+  await frame.waitForSelector(selector, options);
+  await frame.click(selector, options);
 }
 
 export async function focus(page, selector, options) {
-  if (IS_COLLAB) {
-    const leftFrame = await page.frame('left');
-    await leftFrame.focus(selector, options);
-  } else {
-    await page.focus(selector, options);
-  }
+  await locate(page, selector).focus(options);
+}
+
+export async function fill(page, selector, value) {
+  await locate(page, selector).fill(value);
 }
 
 export async function selectOption(page, selector, options) {
-  if (IS_COLLAB) {
-    const leftFrame = await page.frame('left');
-    await leftFrame.selectOption(selector, options);
-  } else {
-    await page.selectOption(selector, options);
-  }
+  await getPageOrFrame(page).selectOption(selector, options);
 }
 
 export async function textContent(page, selector, options) {
-  if (IS_COLLAB) {
-    const leftFrame = await page.frame('left');
-    return await leftFrame.textContent(selector, options);
-  } else {
-    return await page.textContent(selector, options);
-  }
+  return await getPageOrFrame(page).textContent(selector, options);
 }
 
 export async function evaluate(page, fn, args) {
-  if (IS_COLLAB) {
-    const leftFrame = await page.frame('left');
-    return await leftFrame.evaluate(fn, args);
-  } else {
-    return await page.evaluate(fn, args);
-  }
+  return await getPageOrFrame(page).evaluate(fn, args);
 }
 
 export async function clearEditor(page) {
@@ -557,7 +563,7 @@ export async function insertUploadImage(page, files, altText) {
   await selectFromInsertDropdown(page, '.image');
   await click(page, 'button[data-test-id="image-modal-option-file"]');
 
-  const frame = IS_COLLAB ? await page.frame('left') : page;
+  const frame = getPageOrFrame(page);
   await frame.setInputFiles(
     'input[data-test-id="image-modal-file-upload"]',
     files,
@@ -662,6 +668,8 @@ export function prettifyHTML(string, {ignoreClasses, ignoreInlineStyles} = {}) {
     output = output.replace(/\sstyle="([^"]*)"/g, '');
   }
 
+  output = output.replace(/\s__playwright_target__="[^"]+"/, '');
+
   return prettier.format(output, {
     plugins: ['prettier-plugin-organize-attributes'],
     pluginSearchDirs: ['../../../../'],
@@ -733,10 +741,7 @@ export async function selectFromTableDropdown(page, selector) {
 }
 
 export async function insertTable(page, rows = 2, columns = 3) {
-  let leftFrame = page;
-  if (IS_COLLAB) {
-    leftFrame = await page.frame('left');
-  }
+  const leftFrame = getPageOrFrame(page);
   await selectFromInsertDropdown(page, '.item .table');
   if (rows !== null) {
     await leftFrame
@@ -765,10 +770,9 @@ export async function selectCellsFromTableCords(
   isFirstHeader = false,
   isSecondHeader = false,
 ) {
-  let leftFrame = page;
+  const leftFrame = getPageOrFrame(page);
   if (IS_COLLAB) {
     await focusEditor(page);
-    leftFrame = await page.frame('left');
   }
 
   const firstRowFirstColumnCell = await leftFrame.locator(
@@ -783,11 +787,7 @@ export async function selectCellsFromTableCords(
   );
 
   // Focus on inside the iFrame or the boundingBox() below returns null.
-  await firstRowFirstColumnCell.click(
-    // This is a test runner quirk. Chrome seems to need two clicks to focus on the
-    // content editable cell before dragging, but Firefox treats it as a double click event.
-    E2E_BROWSER === 'chromium' ? {clickCount: 2} : {},
-  );
+  await firstRowFirstColumnCell.click();
 
   await dragMouse(
     page,
@@ -826,6 +826,11 @@ export async function unmergeTableCell(page) {
   await click(page, '.item[data-test-id="table-unmerge-cells"]');
 }
 
+export async function toggleColumnHeader(page) {
+  await click(page, '.table-cell-action-button-container');
+  await click(page, '.item[data-test-id="table-column-header"]');
+}
+
 export async function deleteTableRows(page) {
   await click(page, '.table-cell-action-button-container');
   await click(page, '.item[data-test-id="table-delete-rows"]');
@@ -847,7 +852,7 @@ export async function setBackgroundColor(page) {
 }
 
 export async function enableCompositionKeyEvents(page) {
-  const targetPage = IS_COLLAB ? await page.frame('left') : page;
+  const targetPage = getPageOrFrame(page);
   await targetPage.evaluate(() => {
     window.addEventListener(
       'compositionstart',
@@ -874,7 +879,7 @@ export async function pressToggleBold(page) {
 
 export async function pressToggleItalic(page) {
   await keyDownCtrlOrMeta(page);
-  await page.keyboard.press('b');
+  await page.keyboard.press('i');
   await keyUpCtrlOrMeta(page);
 }
 
