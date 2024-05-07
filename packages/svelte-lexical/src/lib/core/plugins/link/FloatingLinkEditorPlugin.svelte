@@ -40,19 +40,19 @@
         $isLink = false;
         return;
       }
-      const badNode = selection.getNodes().find((node) => {
-        const linkNode = findMatchingParent(node, isLinkNode);
-        const autoLinkNode = findMatchingParent(node, isAutoLinkNode);
-        if (
-          !linkNode?.is(focusLinkNode) &&
-          !autoLinkNode?.is(focusAutoLinkNode) &&
-          !linkNode &&
-          !autoLinkNode &&
-          !isLineBreakNode(node)
-        ) {
-          return node;
-        }
-      });
+      const badNode = selection
+        .getNodes()
+        .filter((node) => !isLineBreakNode(node))
+        .find((node) => {
+          const linkNode = findMatchingParent(node, isLinkNode);
+          const autoLinkNode = findMatchingParent(node, isAutoLinkNode);
+          return (
+            (focusLinkNode && !focusLinkNode.is(linkNode)) ||
+            (linkNode && !linkNode.is(focusLinkNode)) ||
+            (focusAutoLinkNode && !focusAutoLinkNode.is(autoLinkNode)) ||
+            (autoLinkNode && !autoLinkNode.is(focusAutoLinkNode))
+          );
+        });
       if (!badNode) {
         $isLink = true;
       } else {
