@@ -6,6 +6,7 @@
     LexicalCommand,
     LexicalEditor,
     LexicalNode,
+    ParagraphNode,
     RangeSelection,
     TextNode,
   } from 'lexical';
@@ -21,6 +22,7 @@
     $isRangeSelection as isRangeSelection,
     $isTextNode as isTextNode,
     $isNodeSelection as isNodeSelection,
+    $isParagraphNode as isParagraphNode,
   } from 'lexical';
   import {
     $isTableSelection as isTableSelection,
@@ -323,6 +325,9 @@
         .filter(Boolean)
         .join(' ')
         .trim();
+    } else if (isParagraphNode(node)) {
+      const formatText = printTextFormatProperties(node);
+      return formatText !== '' ? `{ ${formatText} }` : '';
     } else {
       return '';
     }
@@ -340,6 +345,17 @@
       node.hasFormat('superscript') && 'Superscript',
     (node: TextNode | RangeSelection) =>
       node.hasFormat('underline') && 'Underline',
+  ];
+
+  const FORMAT_PREDICATES_PARAGRAPH = [
+    (node: ParagraphNode) => node.hasTextFormat('bold') && 'Bold',
+    (node: ParagraphNode) => node.hasTextFormat('code') && 'Code',
+    (node: ParagraphNode) => node.hasTextFormat('italic') && 'Italic',
+    (node: ParagraphNode) =>
+      node.hasTextFormat('strikethrough') && 'Strikethrough',
+    (node: ParagraphNode) => node.hasTextFormat('subscript') && 'Subscript',
+    (node: ParagraphNode) => node.hasTextFormat('superscript') && 'Superscript',
+    (node: ParagraphNode) => node.hasTextFormat('underline') && 'Underline',
   ];
 
   const DETAIL_PREDICATES = [
@@ -393,6 +409,21 @@
 
     if (str !== '') {
       str = 'mode: ' + str;
+    }
+
+    return str;
+  }
+
+  function printTextFormatProperties(nodeOrSelection: ParagraphNode) {
+    let str = FORMAT_PREDICATES_PARAGRAPH.map((predicate) =>
+      predicate(nodeOrSelection),
+    )
+      .filter(Boolean)
+      .join(', ')
+      .toLocaleLowerCase();
+
+    if (str !== '') {
+      str = 'format: ' + str;
     }
 
     return str;
