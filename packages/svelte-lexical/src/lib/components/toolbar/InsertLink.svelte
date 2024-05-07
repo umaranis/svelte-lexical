@@ -5,7 +5,7 @@
   import {sanitizeUrl} from '$lib/core/plugins/link/url.js';
   import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {COMMAND_PRIORITY_NORMAL, KEY_MODIFIER_COMMAND} from 'lexical';
-  import {IS_APPLE} from '../../environment/environment.js';
+  import {IS_APPLE} from '@lexical/utils';
 
   const editor = getEditor();
   const isEditable = getIsEditable();

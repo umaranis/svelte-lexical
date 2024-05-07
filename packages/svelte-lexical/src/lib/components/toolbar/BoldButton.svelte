@@ -3,7 +3,7 @@
   import {getActiveEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
-  import {IS_APPLE} from '../../environment/environment.js';
+  import {IS_APPLE} from '@lexical/utils';
 
   const activeEditor = getActiveEditor();
   const isEditable = getIsEditable();
