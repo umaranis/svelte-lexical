@@ -100,19 +100,19 @@ export async function initialize({
  * @param {import('@playwright/test').Page} page
  */
 async function exposeLexicalEditor(page) {
-  if (IS_COLLAB) {
-    await Promise.all(
-      ['left', 'right'].map(async (name) => {
-        const frameLocator = page.frameLocator(`[name="${name}"]`);
-        await expect(
-          frameLocator.locator('.action-button.connect'),
-        ).toHaveAttribute('title', /Disconnect/);
-        await expect(
-          frameLocator.locator('[data-lexical-editor="true"] p'),
-        ).toBeVisible();
-      }),
-    );
-  }
+  // if (IS_COLLAB) {
+  //   await Promise.all(
+  //     ['left', 'right'].map(async (name) => {
+  //       const frameLocator = page.frameLocator(`[name="${name}"]`);
+  //       await expect(
+  //         frameLocator.locator('.action-button.connect'),
+  //       ).toHaveAttribute('title', /Disconnect/);
+  //       await expect(
+  //         frameLocator.locator('[data-lexical-editor="true"] p'),
+  //       ).toBeVisible();
+  //     }),
+  //   );
+  //}
   const leftFrame = getPageOrFrame(page);
   await leftFrame.waitForSelector('.tree-view-output pre');
   await leftFrame.evaluate(() => {

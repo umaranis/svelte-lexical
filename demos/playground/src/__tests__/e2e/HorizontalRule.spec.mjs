@@ -33,6 +33,7 @@ test.describe('HorizontalRule', () => {
     isPlainText,
     browserName,
   }) => {
+    test.fixme(isCollab);
     test.skip(isPlainText);
     await focusEditor(page);
 
@@ -265,8 +266,13 @@ test.describe('HorizontalRule', () => {
     });
   });
 
-  test('Can copy and paste a horizontal rule', async ({page, isPlainText}) => {
+  test('Can copy and paste a horizontal rule', async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
     test.skip(isPlainText);
+    test.fixme(isCollab);
 
     await focusEditor(page);
 

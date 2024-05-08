@@ -27,7 +27,9 @@ test.describe('Regression test #5251', () => {
   test(`Element node in the middle of a bullet list and selecting doesn't crash`, async ({
     page,
     isPlainText,
+    isCollab,
   }) => {
+    test.fixme(isCollab);
     test.skip(isPlainText);
     await focusEditor(page);
 

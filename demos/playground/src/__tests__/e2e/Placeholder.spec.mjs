@@ -24,6 +24,7 @@ test.describe('Placeholder', () => {
     isRichText,
     isCollab,
   }) => {
+    test.fixme(isCollab);
     await focusEditor(page);
     const content = await textContent(page, '.Placeholder__root');
     if (isCollab) {

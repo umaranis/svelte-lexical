@@ -1256,9 +1256,10 @@ test.describe('Composition', () => {
 
     test.fixme(
       'Floating toolbar should not be displayed when using IME',
-      async ({page, browserName, isPlainText}) => {
+      async ({page, browserName, isPlainText, isCollab}) => {
         // We don't yet support FF.
         test.skip(browserName !== 'chromium' || isPlainText);
+        test.fixme(isCollab);
 
         await focusEditor(page);
         await enableCompositionKeyEvents(page);

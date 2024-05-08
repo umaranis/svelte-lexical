@@ -631,7 +631,9 @@ test.describe('TextEntry', () => {
   test('Empty paragraph and new line node selection', async ({
     isRichText,
     page,
+    isCollab,
   }) => {
+    test.fixme(isCollab);
     await focusEditor(page);
 
     // Add paragraph

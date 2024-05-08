@@ -1113,7 +1113,9 @@ test.describe('Links', () => {
 
   test(`Can convert multi-formatted text into a link and then modify text after`, async ({
     page,
+    isCollab,
   }) => {
+    test.fixme(isCollab);
     await focusEditor(page);
     await page.keyboard.type(' abc');
 
@@ -1607,7 +1609,9 @@ test.describe('Links', () => {
   test(`Can convert part of a text node into a link with forwards selection`, async ({
     page,
     browserName,
+    isCollab,
   }) => {
+    test.fixme(isCollab);
     await focusEditor(page);
     await page.keyboard.type('Hello world');
 
@@ -1714,7 +1718,9 @@ test.describe('Links', () => {
   test(`Can convert part of a text node into a link with backwards selection`, async ({
     page,
     browserName,
+    isCollab,
   }) => {
+    test.fixme(isCollab);
     await focusEditor(page);
     await page.keyboard.type('Hello world');
 

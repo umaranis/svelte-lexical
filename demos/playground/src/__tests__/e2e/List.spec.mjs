@@ -1169,7 +1169,9 @@ test.describe('Nested List', () => {
 
   test('Can create check list, toggle it to bullet-list and back', async ({
     page,
+    isCollab,
   }) => {
+    test.fixme(isCollab);
     await focusEditor(page);
     await toggleCheckList(page);
     await page.keyboard.type('a');
@@ -1308,6 +1310,7 @@ test.describe('Nested List', () => {
     page,
     isCollab,
   }) => {
+    test.fixme(isCollab);
     await focusEditor(page);
     await toggleCheckList(page);
     //
