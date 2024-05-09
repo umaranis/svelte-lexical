@@ -20,13 +20,8 @@ test.describe('Autocomplete', () => {
   test.beforeEach(({isCollab, page}) =>
     initialize({isAutocomplete: true, isCollab, page}),
   );
-  test('Can autocomplete a word', async ({
-    page,
-    isPlainText,
-    isCollab,
-    browserName,
-  }) => {
-    test.fixme(isCollab && browserName === 'firefox' && IS_LINUX);
+  test('Can autocomplete a word', async ({page, isPlainText, browserName}) => {
+    test.fixme(browserName === 'firefox' && IS_LINUX);
     await focusEditor(page);
     await page.keyboard.type('Sort by alpha');
     await sleep(500);
