@@ -19,7 +19,6 @@
     BoldButton,
     ItalicButton,
     UnderlineButton,
-    StrikethroughButton,
     InsertLink,
     FormatCodeButton,
     InsertDropDown,
@@ -28,6 +27,8 @@
     InsertImageDropDownItem,
     MoreStylesDropDown,
     StrikethroughDropDownItem,
+    SubscriptDropDownItem,
+    SuperscriptDropDownItem,
   } from 'svelte-lexical';
   import InsertImageDialog from './InsertImageDialog.svelte';
 
@@ -66,6 +67,8 @@
     <InsertLink />
     <MoreStylesDropDown>
       <StrikethroughDropDownItem />
+      <SubscriptDropDownItem />
+      <SuperscriptDropDownItem />
     </MoreStylesDropDown>
     <Divider />
     <InsertDropDown>

@@ -64,6 +64,8 @@ export {default as InsertLink} from './components/toolbar/InsertLink.svelte';
 export {default as CodeLanguageDropDown} from './components/toolbar/CodeLanguageDropDown.svelte';
 export {default as MoreStylesDropDown} from './components/toolbar/MoreStylesDropDown/MoreStylesDropDown.svelte';
 export {default as StrikethroughDropDownItem} from './components/toolbar/MoreStylesDropDown/StrikethroughDropDownItem.svelte';
+export {default as SubscriptDropDownItem} from './components/toolbar/MoreStylesDropDown/SubscriptDropDownItem.svelte';
+export {default as SuperscriptDropDownItem} from './components/toolbar/MoreStylesDropDown/SuperscriptDropDownItem.svelte';
 // dialogs
 export {default as InsertImageDialog} from './components/toolbar/dialogs/InsertImageDialog.svelte';
 export {default as InsertImageUploadedDialogBody} from './components/toolbar/dialogs/InsertImageUploadedDialogBody.svelte';
