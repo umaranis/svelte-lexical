@@ -61,8 +61,8 @@
     <ItalicButton />
     <UnderlineButton />
     <StrikethroughButton />
-    <InsertLink />
     <FormatCodeButton />
+    <InsertLink />
     <Divider />
     <InsertDropDown>
       <InsertHRDropDownItem />
