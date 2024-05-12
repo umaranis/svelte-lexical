@@ -5,6 +5,7 @@
   let className: string;
   export {className as class};
   export let title: string | undefined = undefined;
+  export let ariaLabel: string | undefined = undefined;
 
   let ref: HTMLButtonElement;
 
@@ -19,6 +20,12 @@
   });
 </script>
 
-<button class={className} on:click bind:this={ref} {title} type="button">
+<button
+  class={className}
+  on:click
+  bind:this={ref}
+  {title}
+  type="button"
+  aria-label={ariaLabel}>
   <slot />
 </button>

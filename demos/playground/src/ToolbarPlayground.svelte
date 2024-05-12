@@ -26,6 +26,8 @@
     DropDownAlign,
     InsertHRDropDownItem,
     InsertImageDropDownItem,
+    MoreStylesDropDown,
+    StrikethroughDropDownItem,
   } from 'svelte-lexical';
   import InsertImageDialog from './InsertImageDialog.svelte';
 
@@ -60,9 +62,11 @@
     <BoldButton />
     <ItalicButton />
     <UnderlineButton />
-    <StrikethroughButton />
     <FormatCodeButton />
     <InsertLink />
+    <MoreStylesDropDown>
+      <StrikethroughDropDownItem />
+    </MoreStylesDropDown>
     <Divider />
     <InsertDropDown>
       <InsertHRDropDownItem />
