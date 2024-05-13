@@ -377,6 +377,10 @@ test.describe('TextFormatting', () => {
 
     await toggleUnderline(page);
 
+    await click(
+      page,
+      '.toolbar-item[aria-label="Formatting options for additional text styles"]',
+    );
     await click(page, '.strikethrough');
 
     await assertHTML(
@@ -402,6 +406,10 @@ test.describe('TextFormatting', () => {
       focusPath: [0, 1, 0],
     });
 
+    await click(
+      page,
+      '.toolbar-item[aria-label="Formatting options for additional text styles"]',
+    );
     await click(page, '.strikethrough');
 
     await assertHTML(
