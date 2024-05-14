@@ -29,6 +29,7 @@
     StrikethroughDropDownItem,
     SubscriptDropDownItem,
     SuperscriptDropDownItem,
+    ClearFormattingDropDownItem,
   } from 'svelte-lexical';
   import InsertImageDialog from './InsertImageDialog.svelte';
 
@@ -69,6 +70,7 @@
       <StrikethroughDropDownItem />
       <SubscriptDropDownItem />
       <SuperscriptDropDownItem />
+      <ClearFormattingDropDownItem />
     </MoreStylesDropDown>
     <Divider />
     <InsertDropDown>

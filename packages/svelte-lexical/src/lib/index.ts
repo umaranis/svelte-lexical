@@ -66,6 +66,7 @@ export {default as MoreStylesDropDown} from './components/toolbar/MoreStylesDrop
 export {default as StrikethroughDropDownItem} from './components/toolbar/MoreStylesDropDown/StrikethroughDropDownItem.svelte';
 export {default as SubscriptDropDownItem} from './components/toolbar/MoreStylesDropDown/SubscriptDropDownItem.svelte';
 export {default as SuperscriptDropDownItem} from './components/toolbar/MoreStylesDropDown/SuperscriptDropDownItem.svelte';
+export {default as ClearFormattingDropDownItem} from './components/toolbar/MoreStylesDropDown/ClearFormattingDropDownItem.svelte';
 // dialogs
 export {default as InsertImageDialog} from './components/toolbar/dialogs/InsertImageDialog.svelte';
 export {default as InsertImageUploadedDialogBody} from './components/toolbar/dialogs/InsertImageUploadedDialogBody.svelte';
