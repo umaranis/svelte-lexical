@@ -1,7 +1,7 @@
 <script lang="ts">
   import {getEditor} from '../../../../composerContext.js';
 
-  import {$isCodeNode as isCodeNode} from '@lexical/code';
+  import {CodeNode, $isCodeNode as isCodeNode} from '@lexical/code';
   import {$getNearestNodeFromDOMNode as getNearestNodeFromDOMNode} from 'lexical';
   import type {Options} from 'prettier';
   import {
@@ -30,37 +30,37 @@
 
   async function handleClick(): Promise<void> {
     const codeDOMNode = getCodeDOMNode();
+    if (!codeDOMNode) {
+      return;
+    }
 
     try {
       const format = await loadPrettierFormat();
       const options = getPrettierOptions(lang);
-      options.plugins = [await loadPrettierParserByLang(lang)];
+      options.plugins = await loadPrettierParserByLang(lang);
 
-      if (!codeDOMNode) {
-        return;
-      }
-
-      editor.update(async () => {
-        const codeNode = getNearestNodeFromDOMNode(codeDOMNode);
-
+      let codeNode: CodeNode;
+      let content = '';
+      editor.update(() => {
+        codeNode = getNearestNodeFromDOMNode(codeDOMNode) as CodeNode;
         if (isCodeNode(codeNode)) {
-          const content = codeNode.getTextContent();
+          content = codeNode.getTextContent();
+        }
+      });
 
-          let parsed = '';
-          try {
-            parsed = await format(content, options);
-          } catch (error: unknown) {
-            setError(error);
-          }
+      if (content) {
+        let parsed = '';
+        parsed = await format(content, options);
 
+        editor.update(() => {
           if (parsed !== '') {
             const selection = codeNode.select(0);
             selection.insertText(parsed);
             syntaxError = '';
             tipsVisible = false;
           }
-        }
-      });
+        });
+      }
     } catch (error: unknown) {
       setError(error);
     }

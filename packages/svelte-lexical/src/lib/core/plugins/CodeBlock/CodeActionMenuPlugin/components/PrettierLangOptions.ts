@@ -1,10 +1,13 @@
-import type {Options} from 'prettier';
+import type {Options, Plugin} from 'prettier';
 
 const PRETTIER_PARSER_MODULES = {
-  css: () => import('prettier/parser-postcss'),
-  html: () => import('prettier/parser-html'),
-  js: () => import('prettier/parser-babel'),
-  markdown: () => import('prettier/parser-markdown'),
+  css: async () => [await import('prettier/parser-postcss')],
+  html: async () => [await import('prettier/parser-html')],
+  js: async () => [
+    await import('prettier/parser-babel'),
+    (await import('prettier/plugins/estree')) as Plugin,
+  ],
+  markdown: async () => [await import('prettier/parser-markdown')],
 } as const;
 
 type LanguagesType = keyof typeof PRETTIER_PARSER_MODULES;
