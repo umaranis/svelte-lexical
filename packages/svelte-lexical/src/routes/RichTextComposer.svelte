@@ -25,7 +25,6 @@
     $createTextNode as createTextNode,
     $createParagraphNode as createParagraphNode,
   } from '$lib/index.js';
-  import MarkdownShortcutPlugin from '$lib/core/plugins/MardownShortcut/MarkdownShortcutPlugin.svelte';
 
   const initialConfig = {
     theme: PlaygroundEditorTheme,
