@@ -1,6 +1,6 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {ImageNode, getEditor} from 'svelte-lexical';
+  import {ImageNode} from '../Image/ImageNode.js';
   import {
     registerMarkdownShortcuts,
     type ElementTransformer,
@@ -23,6 +23,7 @@
     $createHorizontalRuleNode as createHorizontalRuleNode,
   } from '../HorizontalRuleNode.js';
   import type {LexicalNode} from 'lexical';
+  import {getEditor} from '$lib/core/composerContext.js';
 
   const editor = getEditor();
 
