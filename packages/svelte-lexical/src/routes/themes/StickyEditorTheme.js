@@ -8,7 +8,7 @@
 
 import './StickyEditorTheme.css';
 
-import baseTheme from './PlaygroundEditorTheme';
+import baseTheme from './PlaygroundEditorTheme.js';
 
 const theme = {
   ...baseTheme,
