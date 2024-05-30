@@ -6,7 +6,6 @@
  *
  */
 
-
 import './PlaygroundEditorTheme.css';
 
 const theme = {
