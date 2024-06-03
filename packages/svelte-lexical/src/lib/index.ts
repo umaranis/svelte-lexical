@@ -44,9 +44,9 @@ export {
 export {HR, IMAGE} from './core/plugins/MardownShortcut/transformers.js';
 // markdown transformer groups
 export {
+  TEXT_FORMAT_TRANSFORMERS,
   ELEMENT_TRANSFORMERS,
   ALL_TRANSFORMERS,
-  TEXT_FORMAT_TRANSFORMERS,
 } from './core/plugins/MardownShortcut/transformers.js';
 
 export {HeadingNode, QuoteNode} from '@lexical/rich-text';

@@ -10,6 +10,11 @@
     CheckListPlugin,
     HorizontalRulePlugin,
     ImagePlugin,
+    TEXT_FORMAT_TRANSFORMERS,
+    ELEMENT_TRANSFORMERS,
+    HR,
+    IMAGE,
+    CHECK_LIST,
   } from '$lib/index.js';
   import {
     HeadingNode,
@@ -25,6 +30,7 @@
     $createTextNode as createTextNode,
     $createParagraphNode as createParagraphNode,
   } from '$lib/index.js';
+  import MarkdownShortcutPlugin from '$lib/core/plugins/MardownShortcut/MarkdownShortcutPlugin.svelte';
 
   const initialConfig = {
     theme: PlaygroundEditorTheme,
@@ -75,6 +81,14 @@
       <CheckListPlugin />
       <HorizontalRulePlugin />
       <ImagePlugin />
+      <MarkdownShortcutPlugin
+        transformers={[
+          ...TEXT_FORMAT_TRANSFORMERS,
+          ...ELEMENT_TRANSFORMERS,
+          HR,
+          IMAGE,
+          CHECK_LIST,
+        ]} />
 
       <ActionBar />
     </div>
