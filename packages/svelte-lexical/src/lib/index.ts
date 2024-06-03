@@ -21,7 +21,33 @@ export {sanitizeUrl, validateUrl} from './core/plugins/link/url.js';
 export {default as FloatingLinkEditorPlugin} from './core/plugins/link/FloatingLinkEditorPlugin.svelte';
 export {default as CodeHighlightPlugin} from './core/plugins/CodeBlock/CodeHighlightPlugin.svelte';
 export {default as CodeActionMenuPlugin} from './core/plugins/CodeBlock/CodeActionMenuPlugin/CodeActionMenuPlugin.svelte';
+
 export {default as MarkdownShortcutPlugin} from './core/plugins/MardownShortcut/MarkdownShortcutPlugin.svelte';
+export {
+  INLINE_CODE,
+  BOLD_ITALIC_STAR,
+  BOLD_ITALIC_UNDERSCORE,
+  BOLD_STAR,
+  BOLD_UNDERSCORE,
+  HIGHLIGHT,
+  ITALIC_STAR,
+  ITALIC_UNDERSCORE,
+  STRIKETHROUGH,
+  HEADING,
+  QUOTE,
+  CODE,
+  UNORDERED_LIST,
+  ORDERED_LIST,
+  CHECK_LIST,
+  LINK,
+} from '@lexical/markdown';
+export {HR, IMAGE} from './core/plugins/MardownShortcut/transformers.js';
+// markdown transformer groups
+export {
+  ELEMENT_TRANSFORMERS,
+  ALL_TRANSFORMERS,
+  TEXT_FORMAT_TRANSFORMERS,
+} from './core/plugins/MardownShortcut/transformers.js';
 
 export {HeadingNode, QuoteNode} from '@lexical/rich-text';
 export {ListNode, ListItemNode} from '@lexical/list';

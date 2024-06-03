@@ -39,6 +39,7 @@
     CaptionEditorHistoryPlugin,
     CAN_USE_DOM,
     MarkdownShortcutPlugin,
+    ALL_TRANSFORMERS,
   } from 'svelte-lexical';
   import {prepopulatedRichText} from './prepopulatedRichText';
   import type {SettingsStore} from './settings/setttingsStore';
@@ -126,7 +127,7 @@
       <KeywordPlugin {keywordsRegex} />
       <HashtagPlugin />
       <AutoLinkPlugin />
-      <MarkdownShortcutPlugin />
+      <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
 
       {#if $settings.isRichText}
         <RichTextPlugin />
