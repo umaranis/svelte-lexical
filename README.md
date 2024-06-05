@@ -11,6 +11,7 @@ Lexical is an extensible text editor framework developed by awesome developers a
 ![Screenshot-Svelte-Lexical](docs/images/Screenshot-Svelte-Lexical.jpg)
 
 ## Development Notes
+
 - This project is set up as a monorepo using pnpm workspaces.
 - To run a demo in development, execute <code>pnpm -C demos/playground dev</code>.
 - ESLint is set up for VS Code.
@@ -18,3 +19,7 @@ Lexical is an extensible text editor framework developed by awesome developers a
 - Unit testing is set up for the svelte-lexical package using Jest and Testing Library.
 - E2E testing is set up for the playground package using Playwright.
 - [Size Limit](https://github.com/ai/size-limit) controls the library size.
+
+## Plugins
+
+Most of the `svelte-lexical` functionality is implemented through plugins. See the [list of plugins here](docs/plugins/readme.md).
