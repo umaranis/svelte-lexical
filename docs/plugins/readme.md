@@ -1,0 +1,24 @@
+# List of Plugins
+
+| Plugin                                   | Description                                                                                        | Plugin file                      | Dependencies                     |
+| ---------------------------------------- | :------------------------------------------------------------------------------------------------- | :------------------------------- | :------------------------------- |
+| Rich Text                                | Enable rich text support. It's a must to include this plugin or PlainTextPlugin                    | RichTextPlugin                   |                                  |
+| Plain Text                               | Enable plain text support. It's a must to include this plugin or RichTextPlugin                    | PlainTextPlugin                  |                                  |
+| History                                  | Support undo / redo. It shares the history with nested editors                                     | SharedHistoryPlugin              |                                  |
+| List                                     | Enable ordered and unordered lists                                                                 | ListPlugin                       |                                  |
+| Checklist                                | Enable Checklist                                                                                   | CheckListPlugin                  |                                  |
+| Horizontal Rule                          | Enable Horizontal Rule                                                                             | HorizontalRulePlugin             |                                  |
+| Link                                     | Enable hyperlinks                                                                                  | LinkPlugin                       |                                  |
+| Link Editor                              | Show a floating editor for links                                                                   | FloatingLinkEditorPlugin         | LinkPlugin                       |
+| Auto Link                                | Auto detect links in the text                                                                      | AutoLinkPlugin                   |                                  |
+| Auto Focus                               | Automatically focus the editor on page load                                                        | AutoFocusPlugin                  |                                  |
+| Collaboration                            | Enable collaborative editing. It replaces the SharedHistoryPLugin. Requires a collaboration server | CollaborationPlugin              |                                  |
+| Image                                    | Add image support                                                                                  | ImagePlugin                      |                                  |
+| Caption History                          | Enables undo / redo for image caption                                                              | CaptionEditorHistoryPlugin       | ImagePlugin                      |
+| Caption Collaboration                    | Enable collaborative editing for image caption. Replaces CaptionEditorHistoryPlugin                | CaptionEditorCollaborationPlugin | ImagePlugin                      |
+| Code Block                               | Enable code blocks                                                                                 | CodeHighlightPlugin              |                                  |
+| Code Block Actions                       | Enable `copy` and `prettier` actions for code blocks                                               | CodeActionMenuPlugin             | CodeHighlightPlugin              |
+| Keyword                                  | Auto formatting given keywords                                                                     | KeywordPlugin                    |                                  |
+| Hashtag                                  | Formatting for tags that begin with `#`                                                            | HashtagPlugin                    |                                  |
+| [Markdown Shortcut](MarkdownShortcut.md) | Enable markdown shortcuts                                                                          | MarkdownShortcutPlugin           | Depends on the transformers used |
+| Tree View                                | Shows developer tools                                                                              | TreeViewPlugin                   |                                  |
