@@ -21,6 +21,8 @@
     CAN_USE_DOM,
     FloatingLinkEditorPlugin,
     LINK,
+    AutoLinkNode,
+    AutoLinkPlugin,
   } from '$lib/index.js';
   import {
     HeadingNode,
@@ -53,6 +55,7 @@
       HorizontalRuleNode,
       ImageNode,
       LinkNode,
+      AutoLinkNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -109,6 +112,7 @@
       <CheckListPlugin />
       <HorizontalRulePlugin />
       <ImagePlugin />
+      <AutoLinkPlugin />
       <LinkPlugin {validateUrl} />
       {#if !isSmallWidthViewport}
         <FloatingLinkEditorPlugin anchorElem={editorDiv} />
