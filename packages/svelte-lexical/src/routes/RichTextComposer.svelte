@@ -2,7 +2,6 @@
   import {
     Composer,
     ContentEditable,
-    ToolbarRichText,
     ActionBar,
     RichTextPlugin,
     HistoryPlugin,
@@ -10,11 +9,18 @@
     CheckListPlugin,
     HorizontalRulePlugin,
     ImagePlugin,
+    MarkdownShortcutPlugin,
     TEXT_FORMAT_TRANSFORMERS,
     ELEMENT_TRANSFORMERS,
     HR,
     IMAGE,
     CHECK_LIST,
+    LinkNode,
+    LinkPlugin,
+    validateUrl,
+    CAN_USE_DOM,
+    FloatingLinkEditorPlugin,
+    LINK,
   } from '$lib/index.js';
   import {
     HeadingNode,
@@ -30,7 +36,11 @@
     $createTextNode as createTextNode,
     $createParagraphNode as createParagraphNode,
   } from '$lib/index.js';
-  import MarkdownShortcutPlugin from '$lib/core/plugins/MardownShortcut/MarkdownShortcutPlugin.svelte';
+  import RichTextToolbar from './RichTextToolbar.svelte';
+  import {onMount} from 'svelte';
+
+  let isSmallWidthViewport = true;
+  let editorDiv;
 
   const initialConfig = {
     theme: PlaygroundEditorTheme,
@@ -42,6 +52,7 @@
       QuoteNode,
       HorizontalRuleNode,
       ImageNode,
+      LinkNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -64,14 +75,31 @@
       }
     },
   };
+
+  onMount(() => {
+    function updateViewPortWidth() {
+      const isNextSmallWidthViewport =
+        CAN_USE_DOM && window.matchMedia('(max-width: 1025px)').matches;
+
+      if (isNextSmallWidthViewport !== isSmallWidthViewport) {
+        isSmallWidthViewport = isNextSmallWidthViewport;
+      }
+    }
+    updateViewPortWidth();
+    window.addEventListener('resize', updateViewPortWidth);
+
+    return () => {
+      window.removeEventListener('resize', updateViewPortWidth);
+    };
+  });
 </script>
 
 <Composer {initialConfig}>
   <div class="editor-shell">
-    <ToolbarRichText />
+    <RichTextToolbar />
     <div class="editor-container">
       <div class="editor-scroller">
-        <div class="editor">
+        <div class="editor" bind:this={editorDiv}>
           <ContentEditable />
         </div>
       </div>
@@ -81,6 +109,10 @@
       <CheckListPlugin />
       <HorizontalRulePlugin />
       <ImagePlugin />
+      <LinkPlugin {validateUrl} />
+      {#if !isSmallWidthViewport}
+        <FloatingLinkEditorPlugin anchorElem={editorDiv} />
+      {/if}
       <MarkdownShortcutPlugin
         transformers={[
           ...TEXT_FORMAT_TRANSFORMERS,
@@ -88,6 +120,7 @@
           HR,
           IMAGE,
           CHECK_LIST,
+          LINK,
         ]} />
 
       <ActionBar />

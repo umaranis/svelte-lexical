@@ -61,7 +61,7 @@
       ? 'Enter some rich text...'
       : 'Enter some plain text...';
 
-  let isSmallWidthViewport = false;
+  let isSmallWidthViewport = true;
 
   let editorDiv;
 
