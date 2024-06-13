@@ -10,6 +10,21 @@ Lexical is an extensible text editor framework developed by awesome developers a
 
 ![Screenshot-Svelte-Lexical](docs/images/Screenshot-Svelte-Lexical.jpg)
 
+## Getting Started
+
+Pick one of the demo projects to understand how `svelte-lexical` can be incorporated into your project. For instance, use `demos/sveltekit` for a SvelteKit and `demos/playground` for Svelte.
+
+To run the demo project:
+
+- First build `svelte-lexical` library
+  - change directory: `cd packages/svelte-lexical`
+  - install dependencies: `pnpm i`
+  - build the lib: `pnpm build`
+- Run the demo project
+  - change directory: `cd ../../demos/playground`
+  - run dev: `pnpm dev`
+
+
 ## Development Notes
 
 - This project is set up as a monorepo using pnpm workspaces.
