@@ -8,7 +8,7 @@
 
   export const INSERT_IMAGE_COMMAND: LexicalCommand<InsertImagePayload> =
     createCommand();
-  export type InsertImagePayload = Readonly<ImagePayload>;
+  export type InsertImagePayload = ImagePayload;
 
   const getDOMSelection = (targetWindow: Window | null): Selection | null =>
     CAN_USE_DOM ? (targetWindow || window).getSelection() : null;
@@ -54,6 +54,8 @@
     'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
   let img: HTMLImageElement;
 
+  export let captionsEnabled = true;
+
   onMount(() => {
     if (!editor.hasNodes([ImageNode])) {
       throw new Error('ImagesPlugin: ImageNode not registered on editor');
@@ -66,6 +68,7 @@
       editor.registerCommand<InsertImagePayload>(
         INSERT_IMAGE_COMMAND,
         (payload) => {
+          payload.captionsEnabled = captionsEnabled;
           const imageNode = createImageNode(payload);
           insertNodes([imageNode]);
           if (isRootOrShadowRoot(imageNode.getParentOrThrow())) {
