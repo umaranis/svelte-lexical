@@ -151,9 +151,9 @@
           {/if}
         </ImagePlugin>
         <LinkPlugin {validateUrl} />
+        <CodeHighlightPlugin />
         {#if !isSmallWidthViewport}
           <FloatingLinkEditorPlugin anchorElem={editorDiv} />
-          <CodeHighlightPlugin />
           <CodeActionMenuPlugin anchorElem={editorDiv} />
         {/if}
       {:else}
