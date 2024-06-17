@@ -1,5 +1,9 @@
 <script lang="ts">
-  import {BlockFormatDropDown, InsertLink} from '../lib/index.js';
+  import {
+    BlockFormatDropDown,
+    CodeDropDrownItem,
+    InsertLink,
+  } from '../lib/index.js';
   import {BoldButton} from '../lib/index.js';
   import {Divider} from '../lib/index.js';
   import {RedoButton} from '../lib/index.js';
@@ -40,6 +44,7 @@
       <NumberDropDrownItem />
       <CheckDropDrownItem />
       <QuoteDropDrownItem />
+      <CodeDropDrownItem />
     </BlockFormatDropDown>
     <Divider />
   {/if}

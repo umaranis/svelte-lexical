@@ -23,6 +23,10 @@
     LINK,
     AutoLinkNode,
     AutoLinkPlugin,
+    CodeNode,
+    CodeHighlightNode,
+    CodeHighlightPlugin,
+    CodeActionMenuPlugin,
   } from '$lib/index.js';
   import {
     HeadingNode,
@@ -56,6 +60,8 @@
       ImageNode,
       LinkNode,
       AutoLinkNode,
+      CodeNode,
+      CodeHighlightNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -111,11 +117,13 @@
       <ListPlugin />
       <CheckListPlugin />
       <HorizontalRulePlugin />
-      <ImagePlugin />
+      <ImagePlugin captionsEnabled={false} />
       <AutoLinkPlugin />
       <LinkPlugin {validateUrl} />
+      <CodeHighlightPlugin />
       {#if !isSmallWidthViewport}
         <FloatingLinkEditorPlugin anchorElem={editorDiv} />
+        <CodeActionMenuPlugin anchorElem={editorDiv} />
       {/if}
       <MarkdownShortcutPlugin
         transformers={[
