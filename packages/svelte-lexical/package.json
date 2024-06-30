@@ -57,8 +57,6 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-svelte": "^2.35.1",
-    "jest": "^29.5.0",
-    "jest-environment-jsdom": "^29.5.0",
     "jsdom": "^24.0.0",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-svelte": "^3.2.2",
