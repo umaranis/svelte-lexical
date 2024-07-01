@@ -11,7 +11,7 @@
     "check": "svelte-check --tsconfig ./tsconfig.json --fail-on-warnings",
     "lint": "prettier --check . --ignore-path ../../.gitignore && eslint .",
     "size": "pnpm build && size-limit",
-    "collab": "cross-env HOST=localhost PORT=1234 npx y-websocket-server",
+    "collab": "cross-env HOST=localhost PORT=1234 pnpm y-websocket-server",
     "prepare-ci": "pnpm run build-dev",
     "start-test-server": "pnpm preview --port 4000",
     "test-e2e-chromium": "cross-env E2E_BROWSER=chromium playwright test --project=\"chromium\"",
