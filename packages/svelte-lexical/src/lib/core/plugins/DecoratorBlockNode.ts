@@ -39,6 +39,10 @@ export class DecoratorBlockNode extends DecoratorNode<unknown> {
     };
   }
 
+  canIndent(): false {
+    return false;
+  }
+
   createDOM(): HTMLElement {
     return document.createElement('div');
   }
