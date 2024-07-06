@@ -25,6 +25,7 @@
   import getSelectedNode from './getSelectionInfo.js';
   import {$isLinkNode as isLinkNode} from '@lexical/link';
   import {blockTypeToBlockName} from './BlockFormatDropDown/blockTypeToBlockName.js';
+  import {$isTableSelection as isTableSelection} from '@lexical/table';
 
   const editor = getEditor();
   const activeEditor = getActiveEditor();
@@ -114,11 +115,6 @@
         }
       }
       // Hande buttons
-      $fontSize = getSelectionStyleValueForProperty(
-        selection,
-        'font-size',
-        '15px',
-      );
       $fontColor = getSelectionStyleValueForProperty(
         selection,
         'color',
@@ -133,6 +129,15 @@
         selection,
         'font-family',
         'Arial',
+      );
+    }
+
+    //TODO: create a separate toolbar updator that doesn't suppprt tables (doesn't use isTableSelection) and save on package size
+    if (isRangeSelection(selection) || isTableSelection(selection)) {
+      $fontSize = getSelectionStyleValueForProperty(
+        selection,
+        'font-size',
+        '15px',
       );
     }
   };
