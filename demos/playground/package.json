@@ -87,10 +87,10 @@
     "svelte-preprocess": "^5.0.3",
     "tslib": "^2.5.0",
     "typescript": "^5.0.4",
-    "vite": "^5.3.3"
+    "vite": "^5.3.3",
+    "glob": "^10.4.3"
   },
   "dependencies": {
-    "glob": "^10.4.3",
     "svelte-lexical": "0.4.1",
     "y-websocket": "1.5.4",
     "yjs": "13.6.2"
