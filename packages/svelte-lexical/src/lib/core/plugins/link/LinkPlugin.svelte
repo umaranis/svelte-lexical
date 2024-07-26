@@ -1,5 +1,9 @@
 <script lang="ts">
-  import {LinkNode, TOGGLE_LINK_COMMAND, toggleLink} from '@lexical/link';
+  import {
+    LinkNode,
+    TOGGLE_LINK_COMMAND,
+    $toggleLink as toggleLink,
+  } from '@lexical/link';
   import {mergeRegister, objectKlassEquals} from '@lexical/utils';
   import {
     $getSelection as getSelection,

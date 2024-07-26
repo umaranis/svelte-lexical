@@ -113,6 +113,13 @@ async function exposeLexicalEditor(page) {
   //     }),
   //   );
   //}
+  // Ensure that they started up with the correct empty state
+  await assertHTML(
+    page,
+    html`
+      <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+    `,
+  );
   const leftFrame = getPageOrFrame(page);
   await leftFrame.waitForSelector('.tree-view-output pre');
   await leftFrame.evaluate(() => {
