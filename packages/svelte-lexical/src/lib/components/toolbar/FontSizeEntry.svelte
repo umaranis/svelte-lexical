@@ -21,6 +21,7 @@
   let editor = getEditor();
 
   $: inputValue = $selectionFontSize.slice(0, -2);
+  let inputChangeFlag = false;
 
   /**
    * Calculates the new font size based on the update type.
@@ -129,20 +130,20 @@
       inputValue = '';
       return;
     }
-
-    if (e.key === 'Enter') {
+    inputChangeFlag = true;
+    if (e.key === 'Enter' || e.key === 'Tab' || e.key === 'Escape') {
       e.preventDefault();
 
-      let updatedFontSize = inputValueNumber;
-      if (inputValueNumber > MAX_ALLOWED_FONT_SIZE) {
-        updatedFontSize = MAX_ALLOWED_FONT_SIZE;
-      } else if (inputValueNumber < MIN_ALLOWED_FONT_SIZE) {
-        updatedFontSize = MIN_ALLOWED_FONT_SIZE;
-      }
-      inputValue = String(updatedFontSize);
-      updateFontSizeInSelection(String(updatedFontSize) + 'px', null);
+      updateFontSizeByInputValue(inputValueNumber);
     }
   }
+
+  const handleInputBlur = () => {
+    if (inputValue !== '' && inputChangeFlag) {
+      const inputValueNumber = Number(inputValue);
+      updateFontSizeByInputValue(inputValueNumber);
+    }
+  };
 
   function handleButtonClick(updateType: updateFontSizeType) {
     if (inputValue !== '') {
@@ -154,6 +155,19 @@
     } else {
       updateFontSizeInSelection(null, updateType);
     }
+  }
+
+  function updateFontSizeByInputValue(inputValueNumber: number) {
+    let updatedFontSize = inputValueNumber;
+    if (inputValueNumber > MAX_ALLOWED_FONT_SIZE) {
+      updatedFontSize = MAX_ALLOWED_FONT_SIZE;
+    } else if (inputValueNumber < MIN_ALLOWED_FONT_SIZE) {
+      updatedFontSize = MIN_ALLOWED_FONT_SIZE;
+    }
+
+    inputValue = String(updatedFontSize);
+    updateFontSizeInSelection(String(updatedFontSize) + 'px', null);
+    inputChangeFlag = false;
   }
 </script>
 
@@ -173,7 +187,8 @@
   class="toolbar-item sl_font-size-input"
   min={MIN_ALLOWED_FONT_SIZE}
   max={MAX_ALLOWED_FONT_SIZE}
-  on:keydown={handleKeyPress} />
+  on:keydown={handleKeyPress}
+  on:blur={handleInputBlur} />
 
 <button
   type="button"

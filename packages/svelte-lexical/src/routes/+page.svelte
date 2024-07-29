@@ -15,6 +15,9 @@
   <div style="text-align: left;">
     <RichTextComposer />
   </div>
+  <footer style="padding-top: 50px; color:gray; font-size:small">
+    <a href="examples">See more examples</a>
+  </footer>
 </main>
 
 <style>

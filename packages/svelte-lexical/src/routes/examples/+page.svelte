@@ -4,6 +4,7 @@
   import '../../global.css';
   import Composer1PlainText from './Composer1PlainText.svelte';
   import Composer4RtLinks from './Composer4RTLinks.svelte';
+  import Composer5Code from './Composer5Code.svelte';
 </script>
 
 <main>
@@ -52,7 +53,22 @@
       </div>
       <Composer4RtLinks />
     </div>
+    <div>
+      <div class="example-intro">
+        <h1>5. Rich Text Editor with Code Blocks</h1>
+        <div>
+          Rich text Editor with support for Code Blocks. It also includes all
+          plugins from the previous example i.e. History, List, CheckList,
+          HorizontalRule, Image, Link, AutoLink and MarkdownShortcutPlugin.
+          <p>
+            The font size drop down is replaced with font size entry control.
+          </p>
+        </div>
+      </div>
+      <Composer5Code />
+    </div>
   </div>
+  <footer style="margin: 150px"></footer>
 </main>
 
 <style>
