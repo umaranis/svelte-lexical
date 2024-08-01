@@ -10,6 +10,7 @@ import type {
 } from 'lexical';
 import {createCommand, DecoratorNode, $applyNodeReplacement} from 'lexical';
 import HorizontalRuleComponent from './HorizontalRuleComponent.svelte';
+import {addClassNamesToElement} from '@lexical/utils';
 
 export type SerializedHorizontalRuleNode = SerializedLexicalNode;
 
@@ -57,8 +58,9 @@ export class HorizontalRuleNode extends DecoratorNode<unknown> {
     return {element: document.createElement('hr')};
   }
 
-  createDOM(editorConfig: EditorConfig, editor: LexicalEditor): HTMLElement {
+  createDOM(config: EditorConfig, editor: LexicalEditor): HTMLElement {
     const hr = document.createElement('hr');
+    addClassNamesToElement(hr, config.theme.hr);
 
     new HorizontalRuleComponent({
       target: hr,

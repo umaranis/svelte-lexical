@@ -57,6 +57,7 @@ const theme = {
     h5: 'PlaygroundEditorTheme__h5',
     h6: 'PlaygroundEditorTheme__h6',
   },
+  hr: 'PlaygroundEditorTheme__hr',
   image: 'editor-image',
   link: 'PlaygroundEditorTheme__link',
   list: {

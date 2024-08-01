@@ -1,5 +1,9 @@
 <script lang="ts">
-  import {mergeRegister} from '@lexical/utils';
+  import {
+    addClassNamesToElement,
+    mergeRegister,
+    removeClassNamesFromElement,
+  } from '@lexical/utils';
   import {
     $getNodeByKey as getNodeByKey,
     $getSelection as getSelection,
@@ -21,9 +25,14 @@
   export let nodeKey: string;
   export let self: HTMLElement;
   let isSelected = createNodeSelectionStore(editor, nodeKey);
+  const isSelectedClassName = 'selected';
 
   $: {
-    self.className = $isSelected ? 'selected' : '';
+    if ($isSelected) {
+      addClassNamesToElement(self, isSelectedClassName);
+    } else {
+      removeClassNamesFromElement(self, isSelectedClassName);
+    }
   }
 
   function onDelete(event: KeyboardEvent) {
