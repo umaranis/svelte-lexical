@@ -66,7 +66,7 @@
   $: draggable = $isSelected && isNodeSelection(selection) && !isResizing;
   $: isFocused = $isSelected || isResizing;
 
-  let promise = new Promise((resolve) => {
+  let promise = new Promise((resolve, reject) => {
     if (imageCache.has(src)) {
       resolve(null);
     } else {
@@ -75,6 +75,9 @@
       img.onload = () => {
         imageCache.add(src);
         resolve(null);
+      };
+      img.onerror = () => {
+        reject(null);
       };
     }
   });
@@ -274,6 +277,12 @@
       alt={altText}
       bind:this={imageRef}
       style="height:{heightCss};max-width:{maxWidth}px;width:{widthCss};"
+      draggable="false" />
+  {:catch _}
+    <img
+      src="/images/image-broken.svg"
+      alt="broken link"
+      style="height: 200px; width: 200px; opacity: 0.2;"
       draggable="false" />
   {/await}
 </div>
