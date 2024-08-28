@@ -71,7 +71,9 @@
   let showLimited = false;
   let lastEditorStateRef: EditorState | null = null;
 
-  let commandsLog: ReadonlyArray<LexicalCommand<unknown> & {payload: unknown}>;
+  let commandsLog: ReadonlyArray<
+    {index: number} & LexicalCommand<unknown> & {payload: unknown}
+  >;
 
   function generateTree(editorState: EditorState) {
     const treeText = generateContent(editor, commandsLog, showExportDOM);
@@ -191,7 +193,9 @@
 
   function generateContent(
     editor: LexicalEditor,
-    commandsLog: ReadonlyArray<LexicalCommand<unknown> & {payload: unknown}>,
+    commandsLog: ReadonlyArray<
+      {index: number} & LexicalCommand<unknown> & {payload: unknown}
+    >,
     exportDOM: boolean,
   ): string {
     const editorState = editor.getEditorState();
@@ -249,8 +253,8 @@
     res += '\n\n commands:';
 
     if (commandsLog.length) {
-      for (const {type, payload} of commandsLog) {
-        res += `\n  └ { type: ${type}, payload: ${
+      for (const {index, type, payload} of commandsLog) {
+        res += `\n  └ ${index}. { type: ${type}, payload: ${
           payload instanceof Event ? payload.constructor.name : payload
         } }`;
       }

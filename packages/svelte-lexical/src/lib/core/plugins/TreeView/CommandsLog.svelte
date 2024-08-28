@@ -6,19 +6,22 @@
   const editor = getEditor();
 
   export let loggedCommands: ReadonlyArray<
-    LexicalCommand<unknown> & {payload: unknown}
+    {index: number} & LexicalCommand<unknown> & {payload: unknown}
   > = [];
 
   onMount(() => {
     const unregisterCommandListeners = new Set<() => void>();
 
+    let i = 0;
     for (const [command] of editor._commands) {
       unregisterCommandListeners.add(
         editor.registerCommand(
           command,
           (payload) => {
+            i += 1;
             const newState = [...loggedCommands];
             newState.push({
+              index: i,
               payload,
               type: command.type ? command.type : 'UNKNOWN',
             });
