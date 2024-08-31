@@ -69,7 +69,7 @@ async function fillTablePartiallyWithText(page) {
   await page.keyboard.press('c');
 }
 
-test.describe('Tables', () => {
+test.describe.parallel('Tables', () => {
   test.fixme();
   test(`Can a table be inserted from the toolbar`, async ({
     page,
@@ -153,7 +153,8 @@ test.describe('Tables', () => {
     );
   });
 
-  test.describe(`Can exit tables with the horizontal arrow keys`, () => {
+  test.describe
+    .parallel(`Can exit tables with the horizontal arrow keys`, () => {
     test(`Can exit the first cell of a non-nested table`, async ({
       page,
       isPlainText,
@@ -489,7 +490,7 @@ test.describe('Tables', () => {
     });
   });
 
-  test.describe(`Can navigate table with keyboard`, () => {
+  test.describe.parallel(`Can navigate table with keyboard`, () => {
     test(`Can navigate cells horizontally`, async ({
       page,
       isPlainText,
