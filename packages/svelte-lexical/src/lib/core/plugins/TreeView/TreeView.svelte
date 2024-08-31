@@ -329,6 +329,8 @@
         .filter(Boolean)
         .join(' ')
         .trim();
+    } else if (isMarkNode(node)) {
+      return `ids: [ ${node.getIDs().join(', ')} ]`;
     } else if (isParagraphNode(node)) {
       const formatText = printTextFormatProperties(node);
       return formatText !== '' ? `{ ${formatText} }` : '';
