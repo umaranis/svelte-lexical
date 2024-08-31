@@ -172,6 +172,7 @@ async function assertHTMLOnPageOrFrame(
   ignoreClasses,
   ignoreInlineStyles,
   frameName,
+  actualHtmlModificationsCallback = (actualHtml) => actualHtml,
 ) {
   const expected = prettifyHTML(expectedHtml.replace(/\n/gm, ''), {
     ignoreClasses,
@@ -182,10 +183,13 @@ async function assertHTMLOnPageOrFrame(
       .locator('div[contenteditable="true"]')
       .first()
       .innerHTML();
-    const actual = prettifyHTML(actualHtml.replace(/\n/gm, ''), {
+    let actual = prettifyHTML(actualHtml.replace(/\n/gm, ''), {
       ignoreClasses,
       ignoreInlineStyles,
     });
+
+    actual = actualHtmlModificationsCallback(actual);
+
     expect(
       actual,
       `innerHTML of contenteditable in ${frameName} did not match`,
@@ -201,6 +205,7 @@ export async function assertHTML(
   expectedHtml,
   expectedHtmlFrameRight = expectedHtml,
   {ignoreClasses = false, ignoreInlineStyles = false} = {},
+  actualHtmlModificationsCallback,
 ) {
   if (IS_COLLAB) {
     await Promise.all([
@@ -210,6 +215,7 @@ export async function assertHTML(
         ignoreClasses,
         ignoreInlineStyles,
         'left frame',
+        actualHtmlModificationsCallback,
       ),
       assertHTMLOnPageOrFrame(
         page.frame('right'),
@@ -217,6 +223,7 @@ export async function assertHTML(
         ignoreClasses,
         ignoreInlineStyles,
         'right frame',
+        actualHtmlModificationsCallback,
       ),
     ]);
   } else {
