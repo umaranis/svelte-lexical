@@ -233,6 +233,7 @@ export async function assertHTML(
       ignoreClasses,
       ignoreInlineStyles,
       'page',
+      actualHtmlModificationsCallback,
     );
   }
 }
