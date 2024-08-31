@@ -210,7 +210,6 @@
         });
       }
     });
-    event.stopPropagation(); // Prevents potential parent-editor listeners from firing, causing the checkbox toggle to be undone
   }
 
   function handlePointerDown(event: PointerEvent) {
@@ -218,7 +217,6 @@
       // Prevents caret moving when clicking on check mark
       event.preventDefault();
     });
-    event.stopPropagation();
   }
 
   function findEditor(target: Node) {
