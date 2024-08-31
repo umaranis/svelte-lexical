@@ -200,6 +200,7 @@ test.describe('CodeActionMenu', () => {
           dir="ltr"
           spellcheck="false"
           data-gutter="1"
+          data-language="javascript"
           data-highlight-language="javascript">
           <span data-lexical-text="true"></span>
           <span class="PlaygroundEditorTheme__tokenAttr" data-lexical-text="true">
@@ -230,6 +231,7 @@ test.describe('CodeActionMenu', () => {
         dir="ltr"
         spellcheck="false"
         data-gutter="12"
+        data-language="javascript"
         data-highlight-language="javascript">
           <span class="PlaygroundEditorTheme__tokenAttr" data-lexical-text="true">
             const
@@ -272,6 +274,7 @@ test.describe('CodeActionMenu', () => {
           dir="ltr"
           spellcheck="false"
           data-gutter="1"
+          data-language="javascript"
           data-highlight-language="javascript">
           <span data-lexical-text="true">cons luci</span>
           <span class="PlaygroundEditorTheme__tokenOperator" data-lexical-text="true">
