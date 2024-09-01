@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "command": "pnpm -C packages/svelte-lexical build",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "build - svelte-lexical",
+      "detail": "pnpm -C packages/svelte-lexical build"
+    },
+    {
+      "type": "shell",
+      "command": "pnpm -r build && pnpm -r size && pnpm -r check && pnpm -r lint",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "build & lint - all",
+      "detail": "pnpm -r build && pnpm -r size && pnpm -r check && pnpm -r lint"
+    }
+  ]
+}
