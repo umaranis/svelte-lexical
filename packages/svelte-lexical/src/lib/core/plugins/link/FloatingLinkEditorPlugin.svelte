@@ -50,7 +50,9 @@
             (focusLinkNode && !focusLinkNode.is(linkNode)) ||
             (linkNode && !linkNode.is(focusLinkNode)) ||
             (focusAutoLinkNode && !focusAutoLinkNode.is(autoLinkNode)) ||
-            (autoLinkNode && !autoLinkNode.is(focusAutoLinkNode))
+            (autoLinkNode &&
+              (!autoLinkNode.is(focusAutoLinkNode) ||
+                autoLinkNode.getIsUnlinked()))
           );
         });
       if (!badNode) {

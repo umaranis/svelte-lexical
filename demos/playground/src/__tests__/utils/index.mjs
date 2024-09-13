@@ -949,3 +949,7 @@ export async function dragDraggableMenuTo(
     positionEnd,
   );
 }
+
+export async function pressInsertLinkButton(page) {
+  await click(page, '.toolbar-item[aria-label="Insert link"]');
+}
