@@ -73,11 +73,13 @@
       <ClearFormattingDropDownItem />
     </MoreStylesDropDown>
     <Divider />
-    <InsertDropDown>
-      <InsertHRDropDownItem />
-      <InsertImageDropDownItem on:click={() => imageDialog.open()} />
-    </InsertDropDown>
-    <Divider />
+    {#if activeEditor === editor}
+      <InsertDropDown>
+        <InsertHRDropDownItem />
+        <InsertImageDropDownItem on:click={() => imageDialog.open()} />
+      </InsertDropDown>
+      <Divider />
+    {/if}
   {/if}
   <DropDownAlign />
   <!-- dialogs -->

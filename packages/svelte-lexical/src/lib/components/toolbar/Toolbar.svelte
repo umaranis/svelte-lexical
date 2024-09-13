@@ -35,6 +35,7 @@
   setContext('isRTL', writable(false));
   setContext('codeLanguage', writable(''));
   setContext('isLink', writable(false));
+  setContext('isImageCaption', writable(false));
 
   onMount(() => {
     return editor.registerEditableListener((editable) => {

@@ -3,27 +3,27 @@
   import {getContext, onMount} from 'svelte';
   import type {Writable} from 'svelte/store';
   import {sanitizeUrl} from '$lib/core/plugins/link/url.js';
-  import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
+  import {getActiveEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {COMMAND_PRIORITY_NORMAL, KEY_MODIFIER_COMMAND} from 'lexical';
   import {IS_APPLE} from '@lexical/utils';
 
-  const editor = getEditor();
+  const activEeditor = getActiveEditor();
   const isEditable = getIsEditable();
   const isLink: Writable<boolean> = getContext('isLink');
 
   function insertLink() {
     if (!$isLink) {
-      return editor.dispatchCommand(
+      return $activEeditor.dispatchCommand(
         TOGGLE_LINK_COMMAND,
         sanitizeUrl('https://'),
       );
     } else {
-      return editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
+      return $activEeditor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
     }
   }
 
   onMount(() => {
-    return editor.registerCommand(
+    return $activEeditor.registerCommand(
       KEY_MODIFIER_COMMAND,
       (payload) => {
         const event: KeyboardEvent = payload;

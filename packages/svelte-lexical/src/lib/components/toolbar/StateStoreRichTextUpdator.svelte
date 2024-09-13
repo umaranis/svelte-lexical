@@ -16,6 +16,7 @@
     $findMatchingParent as findMatchingParent,
     $getNearestNodeOfType as getNearestNodeOfType,
     mergeRegister,
+    $isEditorIsNestedEditor as isEditorIsNestedEditor,
   } from '@lexical/utils';
   import {getContext, onMount} from 'svelte';
   import {$isCodeNode as isCodeNode, CODE_LANGUAGE_MAP} from '@lexical/code';
@@ -47,10 +48,19 @@
   const fontColor: Writable<string> = getContext('fontColor');
   const bgColor: Writable<string> = getContext('bgColor');
   const isLink: Writable<boolean> = getContext('isLink');
+  const isImageCaption: Writable<boolean> = getContext('isImageCaption');
 
   const updateToolbar = () => {
     const selection = getSelection();
     if (isRangeSelection(selection)) {
+      if ($activeEditor !== editor && isEditorIsNestedEditor($activeEditor)) {
+        const rootElement = $activeEditor.getRootElement();
+        $isImageCaption = !!rootElement?.parentElement?.classList.contains(
+          'image-caption-container',
+        );
+      } else {
+        $isImageCaption = false;
+      }
       const anchorNode = selection.anchor.getNode();
       let element =
         anchorNode.getKey() === 'root'
@@ -153,8 +163,8 @@
       editor.registerCommand(
         SELECTION_CHANGE_COMMAND,
         (_payload, newEditor) => {
-          updateToolbar();
           $activeEditor = newEditor;
+          updateToolbar();
           return false;
         },
         COMMAND_PRIORITY_CRITICAL,

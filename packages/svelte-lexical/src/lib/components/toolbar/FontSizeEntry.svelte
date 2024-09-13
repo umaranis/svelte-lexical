@@ -1,7 +1,7 @@
 <script lang="ts">
   import {$patchStyleText as patchStyleText} from '@lexical/selection';
   import {$getSelection as getSelection} from 'lexical';
-  import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
+  import {getActiveEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {getContext} from 'svelte';
   import type {Readable} from 'svelte/store';
 
@@ -18,7 +18,7 @@
   let selectionFontSize: Readable<string> = getContext('fontSize');
   let isEditable = getIsEditable();
 
-  let editor = getEditor();
+  let activeEditor = getActiveEditor();
 
   $: inputValue = $selectionFontSize.slice(0, -2);
   let inputChangeFlag = false;
@@ -110,8 +110,8 @@
       return `${nextFontSize}px`;
     };
 
-    editor.update(() => {
-      if (editor.isEditable()) {
+    $activeEditor.update(() => {
+      if ($activeEditor.isEditable()) {
         const selection = getSelection();
         if (selection !== null) {
           patchStyleText(selection, {

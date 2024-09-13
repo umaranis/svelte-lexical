@@ -7,6 +7,8 @@
 
 <script lang="ts">
   import './ImageNodeStyles.css';
+  import {HashtagNode} from '@lexical/hashtag';
+  import {LinkNode} from '@lexical/link';
   import {
     $getSelection as getSelection,
     $isNodeSelection as isNodeSelection,
@@ -23,12 +25,17 @@
     KEY_BACKSPACE_COMMAND,
     KEY_ESCAPE_COMMAND,
     KEY_ENTER_COMMAND,
+    LineBreakNode,
+    ParagraphNode,
+    RootNode,
     type BaseSelection,
+    TextNode,
   } from 'lexical';
   import {onMount} from 'svelte';
   import {mergeRegister} from '@lexical/utils';
   import ImageResizer from '../../../components/ImageResizer.svelte';
   import {$isImageNode as isImageNode} from './ImageNode.js';
+  import {KeywordNode} from '../KeywordNode.js';
   import {
     clearSelection,
     createNodeSelectionStore,
@@ -288,7 +295,18 @@
 </div>
 {#if showCaption}
   <div class="image-caption-container">
-    <NestedComposer initialEditor={caption} parentEditor={editor}>
+    <NestedComposer
+      initialEditor={caption}
+      parentEditor={editor}
+      initialNodes={[
+        RootNode,
+        TextNode,
+        LineBreakNode,
+        ParagraphNode,
+        LinkNode,
+        HashtagNode,
+        KeywordNode,
+      ]}>
       <AutoFocusPlugin />
 
       <!-- {#if isCollabActive}
