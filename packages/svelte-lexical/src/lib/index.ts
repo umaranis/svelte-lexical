@@ -80,6 +80,8 @@ export {default as StrikethroughButton} from './components/toolbar/Strikethrough
 export {default as FormatCodeButton} from './components/toolbar/FormatCodeButton.svelte';
 export {default as StateStoreRichTextUpdator} from './components/toolbar/StateStoreRichTextUpdator.svelte';
 export {default as DropDownAlign} from './components/toolbar/DropDownAlign.svelte';
+export {default as DropDownTextColorPicker} from './components/toolbar/DropDownTextColorPicker.svelte';
+export {default as DropDownBackColorPicker} from './components/toolbar/DropDownBackColorPicker.svelte';
 export {default as InsertDropDown} from './components/toolbar/InsertDropDown/InsertDropDown.svelte';
 export {default as InsertHRDropDownItem} from './components/toolbar/InsertDropDown/InsertHRDropDownItem.svelte';
 export {default as InsertImageDropDownItem} from './components/toolbar/InsertDropDown/InsertImageDropDownItem.svelte';

@@ -30,6 +30,8 @@
     SubscriptDropDownItem,
     SuperscriptDropDownItem,
     ClearFormattingDropDownItem,
+    DropDownTextColorPicker,
+    DropDownBackColorPicker,
   } from 'svelte-lexical';
   import InsertImageDialog from './InsertImageDialog.svelte';
 
@@ -65,6 +67,8 @@
     <ItalicButton />
     <UnderlineButton />
     <FormatCodeButton />
+    <DropDownTextColorPicker />
+    <DropDownBackColorPicker />
     <InsertLink />
     <MoreStylesDropDown>
       <StrikethroughDropDownItem />

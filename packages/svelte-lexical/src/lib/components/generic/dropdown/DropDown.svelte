@@ -7,7 +7,8 @@
   export let buttonClassName: string;
   export let buttonIconClassName: string | undefined = undefined;
   export let buttonLabel: string | undefined = undefined;
-  export let stopCloseOnClickSelf: boolean | undefined = undefined;
+  export let stopCloseOnClickSelf = false;
+  export let title: string | undefined = undefined;
 
   let dropDownRef: HTMLDivElement;
   let buttonRef: HTMLButtonElement;
@@ -52,7 +53,8 @@
   aria-label={buttonAriaLabel || buttonLabel}
   class={buttonClassName}
   on:click={() => (showDropDown = !showDropDown)}
-  bind:this={buttonRef}>
+  bind:this={buttonRef}
+  {title}>
   {#if buttonIconClassName}
     <span class={buttonIconClassName} />
   {/if}
