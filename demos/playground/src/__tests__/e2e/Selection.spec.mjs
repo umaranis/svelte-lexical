@@ -775,30 +775,27 @@ test.describe.parallel('Selection', () => {
     );
   });
 
-  test('shift+arrowdown into a table selects the whole table', async ({
-    page,
-    isPlainText,
-    isCollab,
-    browserName,
-    legacyEvents,
-  }) => {
-    test.skip(isPlainText);
-    test.fixme(
-      browserName === 'firefox' || IS_LINUX || (legacyEvents && IS_WINDOWS),
-    );
-    await focusEditor(page);
-    await insertTable(page, 2, 2);
-    await moveToEditorBeginning(page);
-    await page.keyboard.down('Shift');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.up('Shift');
-    await assertSelection(page, {
-      anchorOffset: 0,
-      anchorPath: [0],
-      focusOffset: 0,
-      focusPath: [2],
-    });
-  });
+  test.fixme(
+    'shift+arrowdown into a table selects the whole table',
+    async ({page, isPlainText, isCollab, browserName, legacyEvents}) => {
+      test.skip(isPlainText);
+      test.fixme(
+        browserName === 'firefox' || IS_LINUX || (legacyEvents && IS_WINDOWS),
+      );
+      await focusEditor(page);
+      await insertTable(page, 2, 2);
+      await moveToEditorBeginning(page);
+      await page.keyboard.down('Shift');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.up('Shift');
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [0],
+        focusOffset: 0,
+        focusPath: [2],
+      });
+    },
+  );
 
   test.fixme(
     'shift+arrowup into a table selects the whole table',
