@@ -4,7 +4,7 @@
   export let placeholder = '';
   export let value: string;
   export let id = '';
-  export let onChange: (value: string) => void;
+  export let onChange: ((value: string) => void) | undefined = undefined;
   export let width: string | undefined = undefined;
 </script>
 
@@ -19,7 +19,9 @@
     data-test-id={dataTestId}
     {id}
     on:change={(e) => {
-      /* @ts-ignore TS not supported in Svelte Html */
-      onChange(e.target.value);
+      if (onChange) {
+        /* @ts-ignore TS not supported in Svelte Html */
+        onChange(e.target.value);
+      }
     }} />
 </div>
