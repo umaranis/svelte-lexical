@@ -21,6 +21,7 @@ export {sanitizeUrl, validateUrl} from './core/plugins/link/url.js';
 export {default as FloatingLinkEditorPlugin} from './core/plugins/link/FloatingLinkEditorPlugin.svelte';
 export {default as CodeHighlightPlugin} from './core/plugins/CodeBlock/CodeHighlightPlugin.svelte';
 export {default as CodeActionMenuPlugin} from './core/plugins/CodeBlock/CodeActionMenuPlugin/CodeActionMenuPlugin.svelte';
+export {default as ColumnLayoutPlugin} from './core/plugins/ColumnsLayout/ColumnLayoutPlugin.svelte';
 
 export {default as MarkdownShortcutPlugin} from './core/plugins/MardownShortcut/MarkdownShortcutPlugin.svelte';
 export {
@@ -58,6 +59,8 @@ export {HashtagNode} from './core/plugins/HashtagNode.js';
 export {AutoLinkNode, LinkNode} from '@lexical/link';
 export {CodeNode, CodeHighlightNode} from '@lexical/code';
 export type {Provider} from '@lexical/yjs';
+export {LayoutContainerNode} from './core/plugins/ColumnsLayout/LayoutContainerNode.js';
+export {LayoutItemNode} from './core/plugins/ColumnsLayout/LayoutItemNode.js';
 
 // toolbar
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';
