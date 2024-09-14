@@ -9,6 +9,8 @@
 import './PlaygroundEditorTheme.css';
 
 const theme = {
+  layoutContainer: 'PlaygroundEditorTheme__layoutContainer',
+  layoutItem: 'PlaygroundEditorTheme__layoutItem',
   blockCursor: 'PlaygroundEditorTheme__blockCursor',
   characterLimit: 'PlaygroundEditorTheme__characterLimit',
   code: 'PlaygroundEditorTheme__code',

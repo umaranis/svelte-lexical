@@ -1,5 +1,6 @@
 <script lang="ts">
   export let showModal: boolean;
+  export let stopPropagation: boolean = true;
 
   let dialog: HTMLDialogElement;
 
@@ -18,10 +19,17 @@
   bind:this={dialog}
   on:close={() => (showModal = false)}
   on:click|self={() => dialog.close()}>
-  <!-- svelte-ignore a11y-no-static-element-interactions -->
-  <div on:click|stopPropagation>
-    <slot />
-  </div>
+  {#if stopPropagation}
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div on:click|stopPropagation>
+      <slot />
+    </div>
+  {:else}
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div on:click>
+      <slot />
+    </div>
+  {/if}
 </dialog>
 
 <style>

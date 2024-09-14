@@ -117,7 +117,6 @@
         INSERT_LAYOUT_COMMAND,
         (template: string) => {
           editor.update(() => {
-            console.log(template);
             const container = createLayoutContainerNode(template);
             const itemsCount = getItemsCountFromTemplate(template);
 
