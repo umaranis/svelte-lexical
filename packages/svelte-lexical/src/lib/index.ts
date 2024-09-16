@@ -21,6 +21,7 @@ export {sanitizeUrl, validateUrl} from './core/plugins/link/url.js';
 export {default as FloatingLinkEditorPlugin} from './core/plugins/link/FloatingLinkEditorPlugin.svelte';
 export {default as CodeHighlightPlugin} from './core/plugins/CodeBlock/CodeHighlightPlugin.svelte';
 export {default as CodeActionMenuPlugin} from './core/plugins/CodeBlock/CodeActionMenuPlugin/CodeActionMenuPlugin.svelte';
+export {default as ColumnLayoutPlugin} from './core/plugins/ColumnsLayout/ColumnLayoutPlugin.svelte';
 
 export {default as MarkdownShortcutPlugin} from './core/plugins/MardownShortcut/MarkdownShortcutPlugin.svelte';
 export {
@@ -58,6 +59,8 @@ export {HashtagNode} from './core/plugins/HashtagNode.js';
 export {AutoLinkNode, LinkNode} from '@lexical/link';
 export {CodeNode, CodeHighlightNode} from '@lexical/code';
 export type {Provider} from '@lexical/yjs';
+export {LayoutContainerNode} from './core/plugins/ColumnsLayout/LayoutContainerNode.js';
+export {LayoutItemNode} from './core/plugins/ColumnsLayout/LayoutItemNode.js';
 
 // toolbar
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';
@@ -95,10 +98,12 @@ export {default as StrikethroughDropDownItem} from './components/toolbar/MoreSty
 export {default as SubscriptDropDownItem} from './components/toolbar/MoreStylesDropDown/SubscriptDropDownItem.svelte';
 export {default as SuperscriptDropDownItem} from './components/toolbar/MoreStylesDropDown/SuperscriptDropDownItem.svelte';
 export {default as ClearFormattingDropDownItem} from './components/toolbar/MoreStylesDropDown/ClearFormattingDropDownItem.svelte';
+export {default as InsertColumnLayoutDropDownItem} from './components/toolbar/InsertDropDown/InsertColumnLayoutDropDownItem.svelte';
 // dialogs
 export {default as InsertImageDialog} from './components/toolbar/dialogs/InsertImageDialog.svelte';
 export {default as InsertImageUploadedDialogBody} from './components/toolbar/dialogs/InsertImageUploadedDialogBody.svelte';
 export {default as InsertImageUriDialogBody} from './components/toolbar/dialogs/InsertImageUriDialogBody.svelte';
+export {default as InsertColumnsDialog} from './components/toolbar/dialogs/InsertColumnsDialog.svelte';
 
 export {getCommands} from './core/commands.js';
 export type {ImagePayload} from './core/plugins/Image/ImageNode.js';

@@ -27,6 +27,7 @@
     CodeHighlightNode,
     CodeHighlightPlugin,
     CodeActionMenuPlugin,
+    ColumnLayoutPlugin,
   } from '$lib/index.js';
   import {
     HeadingNode,
@@ -35,6 +36,8 @@
     ListItemNode,
     HorizontalRuleNode,
     ImageNode,
+    LayoutContainerNode,
+    LayoutItemNode,
   } from '$lib/index.js';
   import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme.js';
   import {
@@ -62,6 +65,8 @@
       AutoLinkNode,
       CodeNode,
       CodeHighlightNode,
+      LayoutContainerNode,
+      LayoutItemNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -134,7 +139,7 @@
           CHECK_LIST,
           LINK,
         ]} />
-
+      <ColumnLayoutPlugin />
       <ActionBar />
     </div>
   </div>

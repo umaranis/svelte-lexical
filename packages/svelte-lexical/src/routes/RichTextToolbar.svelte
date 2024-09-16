@@ -26,8 +26,11 @@
   import {InsertImageDialog} from '../lib/index.js';
   import {InsertHRDropDownItem} from '../lib/index.js';
   import {InsertImageDropDownItem} from '../lib/index.js';
+  import {InsertColumnLayoutDropDownItem} from '../lib/index.js';
+  import {InsertColumnsDialog} from '../lib/index.js';
 
   let imageDialog: InsertImageDialog;
+  let columnsDialog: InsertColumnsDialog;
 </script>
 
 <Toolbar let:editor let:activeEditor let:blockType>
@@ -61,9 +64,11 @@
   <InsertDropDown>
     <InsertHRDropDownItem />
     <InsertImageDropDownItem on:click={() => imageDialog.open()} />
+    <InsertColumnLayoutDropDownItem on:click={() => columnsDialog.open()} />
   </InsertDropDown>
   <Divider />
   <DropDownAlign />
   <!-- dialogs -->
   <InsertImageDialog bind:this={imageDialog} />
+  <InsertColumnsDialog bind:this={columnsDialog} />
 </Toolbar>
