@@ -1,5 +1,4 @@
 <script lang="ts">
-  import {createEventDispatcher} from 'svelte';
   import {getActiveEditor} from '$lib/core/composerContext.js';
   import {getCommands} from '$lib/core/commands.js';
   import {getEditor} from '$lib/core/composerContext.js';

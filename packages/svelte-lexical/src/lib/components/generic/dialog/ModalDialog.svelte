@@ -1,6 +1,6 @@
 <script lang="ts">
   export let showModal: boolean;
-  export let stopPropagation: boolean = true;
+  export let stopPropagation = true;
 
   let dialog: HTMLDialogElement;
 
