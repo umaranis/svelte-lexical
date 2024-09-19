@@ -40,6 +40,9 @@
     CAN_USE_DOM,
     MarkdownShortcutPlugin,
     ALL_TRANSFORMERS,
+    ColumnLayoutPlugin,
+    LayoutContainerNode,
+    LayoutItemNode,
   } from 'svelte-lexical';
   import {prepopulatedRichText} from './prepopulatedRichText';
   import type {SettingsStore} from './settings/setttingsStore';
@@ -85,6 +88,8 @@
       LinkNode,
       CodeNode,
       CodeHighlightNode,
+      LayoutContainerNode,
+      LayoutItemNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -128,6 +133,7 @@
       <HashtagPlugin />
       <AutoLinkPlugin />
       <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
+      <ColumnLayoutPlugin />
 
       {#if $settings.isRichText}
         <RichTextPlugin />

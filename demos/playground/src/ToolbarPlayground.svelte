@@ -32,10 +32,13 @@
     ClearFormattingDropDownItem,
     DropDownTextColorPicker,
     DropDownBackColorPicker,
+    InsertColumnLayoutDropDownItem,
+    InsertColumnsDialog,
   } from 'svelte-lexical';
   import InsertImageDialog from './InsertImageDialog.svelte';
 
   let imageDialog: InsertImageDialog;
+  let columnsDialog: InsertColumnsDialog;
 </script>
 
 <Toolbar let:editor let:activeEditor let:blockType>
@@ -81,6 +84,7 @@
       <InsertDropDown>
         <InsertHRDropDownItem />
         <InsertImageDropDownItem on:click={() => imageDialog.open()} />
+        <InsertColumnLayoutDropDownItem on:click={() => columnsDialog.open()} />
       </InsertDropDown>
       <Divider />
     {/if}
@@ -88,4 +92,5 @@
   <DropDownAlign />
   <!-- dialogs -->
   <InsertImageDialog bind:this={imageDialog} />
+  <InsertColumnsDialog bind:this={columnsDialog} />
 </Toolbar>

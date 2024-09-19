@@ -472,6 +472,10 @@ i.poll {
   background-image: url(images/icons/card-checklist.svg);
 }
 
+i.columns {
+  background-image: url(images/icons/3-columns.svg);
+}
+
 i.tweet {
   background-image: url(images/icons/tweet.svg);
 }
@@ -485,14 +489,17 @@ i.left-align {
   background-image: url(images/icons/text-left.svg);
 }
 
+.icon.center-align,
 i.center-align {
   background-image: url(images/icons/text-center.svg);
 }
 
+.icon.right-align,
 i.right-align {
   background-image: url(images/icons/text-right.svg);
 }
 
+.icon.justify-align,
 i.justify-align {
   background-image: url(images/icons/justify.svg);
 }
@@ -533,6 +540,10 @@ i.export {
   background-image: url(images/icons/download.svg);
 }
 
+i.share {
+  background-image: url(images/icons/send.svg);
+}
+
 i.diagram-2 {
   background-image: url(images/icons/diagram-2.svg);
 }
@@ -563,6 +574,11 @@ i.prettier {
 
 i.prettier-error {
   background-image: url(images/icons/prettier-error.svg);
+}
+
+i.page-break,
+.icon.page-break {
+  background-image: url(images/icons/scissors.svg);
 }
 
 .link-editor .button.active,
@@ -715,7 +731,7 @@ i.prettier-error {
 }
 
 .dropdown {
-  z-index: 10;
+  z-index: 100;
   display: block;
   position: fixed;
   box-shadow:
