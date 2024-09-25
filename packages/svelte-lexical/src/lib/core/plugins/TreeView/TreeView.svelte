@@ -252,7 +252,7 @@
 
     res += '\n\n commands:';
 
-    if (commandsLog.length) {
+    if (commandsLog && commandsLog.length) {
       for (const {index, type, payload} of commandsLog) {
         res += `\n  └ ${index}. { type: ${type}, payload: ${
           payload instanceof Event ? payload.constructor.name : payload
