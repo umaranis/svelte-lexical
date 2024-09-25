@@ -1,0 +1,3 @@
+{
+    "startCommand": "pnpm install && (cd packages/svelte-lexical && pnpm run build) && (cd demos/playground && pnpm run dev)"
+}
