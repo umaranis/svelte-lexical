@@ -22,3 +22,4 @@
 | Hashtag                                  | Formatting for tags that begin with `#`                                                            | HashtagPlugin                    |                                  |
 | [Markdown Shortcut](MarkdownShortcut.md) | Enable markdown shortcuts                                                                          | MarkdownShortcutPlugin           | Depends on the transformers used |
 | Tree View                                | Shows developer tools                                                                              | TreeViewPlugin                   |                                  |
+| Column Layout                            | Arrange content in horizontally in columns                                                         | ColumnLayoutPlugin               |                                  |
