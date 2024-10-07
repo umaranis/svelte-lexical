@@ -20,6 +20,9 @@ test.describe('Regression test #4697', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test.fixme(
     'repeated table selection results in table selection',
+    {
+      tag: '@flaky',
+    },
     async ({page, isPlainText, isCollab}) => {
       test.skip(isPlainText);
 
