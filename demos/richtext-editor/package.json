@@ -24,7 +24,7 @@
     "svelte-preprocess": "^5.0.3",
     "tslib": "^2.5.0",
     "typescript": "^5.4.5",
-    "vite": "^5.3.3"
+    "vite": "^5.4.8"
   },
   "dependencies": {
     "svelte-lexical": "0.4.2"
