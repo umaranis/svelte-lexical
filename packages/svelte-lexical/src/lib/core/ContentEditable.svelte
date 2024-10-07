@@ -35,6 +35,8 @@
     // In multi-window setups, the defaultView may not exist at certain points.
     if (ref && ref.ownerDocument && ref.ownerDocument.defaultView) {
       editor.setRootElement(ref);
+    } else {
+      editor.setRootElement(null);
     }
 
     isEditable = editor.isEditable();
