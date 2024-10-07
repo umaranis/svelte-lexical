@@ -83,26 +83,29 @@
   );
 
   onMount(() => {
-    return editor.registerMutationListener(CodeNode, (mutations) => {
-      editor.getEditorState().read(() => {
-        for (const [key, type] of mutations) {
-          switch (type) {
-            case 'created':
-              codeSetRef.add(key);
-              shouldListenMouseMove = codeSetRef.size > 0;
-              break;
+    return editor.registerMutationListener(
+      CodeNode,
+      (mutations) => {
+        editor.getEditorState().read(() => {
+          for (const [key, type] of mutations) {
+            switch (type) {
+              case 'created':
+                codeSetRef.add(key);
+                break;
 
-            case 'destroyed':
-              codeSetRef.delete(key);
-              shouldListenMouseMove = codeSetRef.size > 0;
-              break;
+              case 'destroyed':
+                codeSetRef.delete(key);
+                break;
 
-            default:
-              break;
+              default:
+                break;
+            }
           }
-        }
-      });
-    });
+        });
+        shouldListenMouseMove = codeSetRef.size > 0;
+      },
+      {skipInitialization: false},
+    );
   });
 
   $: if (shouldListenMouseMove) {
