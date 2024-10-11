@@ -47,6 +47,8 @@
   } from '$lib/index.js';
   import RichTextToolbar from './RichTextToolbar.svelte';
   import {onMount} from 'svelte';
+  import TablePlugin from '$lib/core/plugins/Table/TablePlugin.svelte';
+  import {TableCellNode, TableNode, TableRowNode} from '@lexical/table';
 
   let isSmallWidthViewport = true;
   let editorDiv;
@@ -67,6 +69,9 @@
       CodeHighlightNode,
       LayoutContainerNode,
       LayoutItemNode,
+      TableNode,
+      TableCellNode,
+      TableRowNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -140,6 +145,7 @@
           LINK,
         ]} />
       <ColumnLayoutPlugin />
+      <TablePlugin />
       <ActionBar />
     </div>
   </div>

@@ -1,0 +1,64 @@
+<script lang="ts">
+  import {getActiveEditor} from '$lib/core/composerContext.js';
+  import {INSERT_TABLE_COMMAND} from '@lexical/table';
+  import ModalDialog from '../../generic/dialog/ModalDialog.svelte';
+  import {getCommands} from '$lib/core/commands.js';
+  import NumberInput from '$lib/components/generic/input/NumberInput.svelte';
+
+  let rows = '5';
+  let columns = '5';
+  let isDisabled = true;
+
+  $: {
+    const row = Number(rows);
+    const column = Number(columns);
+    if (row && row > 0 && row <= 500 && column && column > 0 && column <= 50) {
+      isDisabled = false;
+    } else {
+      isDisabled = true;
+    }
+  }
+
+  const activeEditor = getActiveEditor();
+
+  export let showModal = false;
+  export function open() {
+    showModal = true;
+  }
+
+  function close() {
+    showModal = false;
+    getCommands().FocusEditor.execute($activeEditor);
+  }
+
+  const onClick = () => {
+    $activeEditor.dispatchCommand(INSERT_TABLE_COMMAND, {
+      columns,
+      rows,
+    });
+
+    close();
+  };
+</script>
+
+<ModalDialog bind:showModal>
+  <NumberInput
+    placeholder={'# of rows (1-500)'}
+    label="Rows"
+    value={rows}
+    dataTestId="table-modal-rows" />
+  <NumberInput
+    placeholder={'# of columns (1-50)'}
+    label="Columns"
+    value={columns}
+    dataTestId="table-modal-columns" />
+  <div class="DialogActions" data-test-id="table-model-confirm-insert">
+    <button
+      disabled={isDisabled}
+      class="Button__root"
+      class:Button__disabled={isDisabled}
+      on:click={onClick}>
+      Confirm
+    </button>
+  </div>
+</ModalDialog>

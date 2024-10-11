@@ -1,4 +1,6 @@
 <script lang="ts">
+  import InsertTableDialog from '$lib/components/toolbar/dialogs/InsertTableDialog.svelte';
+  import InsertTableDropDownItem from '$lib/components/toolbar/InsertDropDown/InsertTableDropDownItem.svelte';
   import {
     BlockFormatDropDown,
     CodeDropDrownItem,
@@ -31,6 +33,7 @@
 
   let imageDialog: InsertImageDialog;
   let columnsDialog: InsertColumnsDialog;
+  let tableDialog: InsertTableDialog;
 </script>
 
 <Toolbar let:editor let:activeEditor let:blockType>
@@ -65,10 +68,12 @@
     <InsertHRDropDownItem />
     <InsertImageDropDownItem on:click={() => imageDialog.open()} />
     <InsertColumnLayoutDropDownItem on:click={() => columnsDialog.open()} />
+    <InsertTableDropDownItem on:click={() => tableDialog.open()} />
   </InsertDropDown>
   <Divider />
   <DropDownAlign />
   <!-- dialogs -->
   <InsertImageDialog bind:this={imageDialog} />
   <InsertColumnsDialog bind:this={columnsDialog} />
+  <InsertTableDialog bind:this={tableDialog} />
 </Toolbar>

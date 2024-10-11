@@ -104,6 +104,7 @@ export {default as InsertImageDialog} from './components/toolbar/dialogs/InsertI
 export {default as InsertImageUploadedDialogBody} from './components/toolbar/dialogs/InsertImageUploadedDialogBody.svelte';
 export {default as InsertImageUriDialogBody} from './components/toolbar/dialogs/InsertImageUriDialogBody.svelte';
 export {default as InsertColumnsDialog} from './components/toolbar/dialogs/InsertColumnsDialog.svelte';
+export {default as InsertTableDialog} from './components/toolbar/dialogs/InsertTableDialog.svelte';
 
 export {getCommands} from './core/commands.js';
 export type {ImagePayload} from './core/plugins/Image/ImageNode.js';
