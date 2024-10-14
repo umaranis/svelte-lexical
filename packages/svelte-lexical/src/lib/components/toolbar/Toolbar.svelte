@@ -3,14 +3,12 @@
 
   import StateStoreRichTextUpdator from './StateStoreRichTextUpdator.svelte';
   import {setContext} from 'svelte';
-  import {getEditor} from '$lib/core/composerContext.js';
-  import {onMount} from 'svelte';
+  import {getEditor, setIsEditable} from '$lib/core/composerContext.js';
   import type {NodeKey} from 'lexical';
 
   const editor = getEditor();
 
-  const isEditable = writable(editor.isEditable());
-  setContext('isEditable', isEditable);
+  setIsEditable(editor)
 
   const activeEditor = writable(editor);
   setContext('activeEditor', activeEditor);
@@ -36,12 +34,6 @@
   setContext('codeLanguage', writable(''));
   setContext('isLink', writable(false));
   setContext('isImageCaption', writable(false));
-
-  onMount(() => {
-    return editor.registerEditableListener((editable) => {
-      $isEditable = editable;
-    });
-  });
 </script>
 
 <StateStoreRichTextUpdator />
