@@ -1,7 +1,7 @@
 import type {HistoryState} from '@lexical/history';
 import type {LexicalEditor} from 'lexical';
 import {SvelteComponent, getContext, setContext} from 'svelte';
-import type {Writable} from 'svelte/store';
+import {readable, type Readable,type Writable} from 'svelte/store';
 
 export function getEditor(): LexicalEditor {
   return getContext('editor');
@@ -13,8 +13,21 @@ export function setEditor(editor: LexicalEditor): void {
   setContext('editor', editor);
 }
 
-export function getIsEditable(): Writable<boolean> {
+export function getIsEditable(): Readable <boolean> {
   return getContext('isEditable');
+}
+
+/**
+ * Readable store that subscribes to the {@link LexicalEditor._editable} state.
+ */
+export function setIsEditable(editor: LexicalEditor): Readable<boolean> {
+  const isEditable = readable(editor.isEditable(), (set) => {
+    const unsubscribe = editor.registerEditableListener((editable) => {
+      set(editable)
+    })
+    return unsubscribe
+  });
+  return setContext('isEditable', isEditable)
 }
 
 export function getActiveEditor(): Writable<LexicalEditor> {
