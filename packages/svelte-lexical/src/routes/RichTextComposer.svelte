@@ -49,6 +49,7 @@
   import {onMount} from 'svelte';
   import TablePlugin from '$lib/core/plugins/Table/TablePlugin.svelte';
   import {TableCellNode, TableNode, TableRowNode} from '@lexical/table';
+  import TableHoverActionPlugin from '$lib/core/plugins/Table/TableHoverActionPlugin.svelte';
 
   let isSmallWidthViewport = true;
   let editorDiv;
@@ -146,6 +147,7 @@
         ]} />
       <ColumnLayoutPlugin />
       <TablePlugin />
+      <TableHoverActionPlugin anchorElem={editorDiv} />
       <ActionBar />
     </div>
   </div>
