@@ -682,8 +682,7 @@ i.page-break,
 
 .link-editor .link-input a {
   color: rgb(33, 111, 219);
-  text-decoration: none;
-  display: block;
+  text-decoration: underline;
   white-space: nowrap;
   overflow: hidden;
   margin-right: 30px;
@@ -705,10 +704,6 @@ i.page-break,
   border: none;
   background-color: rgba(0, 0, 0, 0.075);
   border-radius: 4px;
-}
-
-.ContentEditable__root .PlaygroundEditorTheme__link {
-  pointer-events: none;
 }
 
 .mention:focus {
@@ -1030,6 +1025,27 @@ i.page-break,
   background-color: rgba(60, 132, 244, 0.5);
 }
 
+.editor-shell .editor-image .image-edit-button {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  background-image: url(images/icons/pencil-fill.svg);
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 35px;
+  height: 35px;
+  vertical-align: -0.25em;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.editor-shell .editor-image .image-edit-button:hover {
+  background-color: rgba(60, 132, 244, 0.1);
+}
+
 .editor-shell .editor-image .image-resizer {
   display: block;
   width: 7px;
@@ -1087,6 +1103,79 @@ i.page-break,
   cursor: nw-resize;
 }
 
+.editor-shell span.inline-editor-image {
+  cursor: default;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.editor-shell .inline-editor-image img {
+  max-width: 100%;
+  cursor: default;
+}
+
+.editor-shell .inline-editor-image img.focused {
+  outline: 2px solid rgb(60, 132, 244);
+}
+
+.editor-shell .inline-editor-image img.focused.draggable {
+  cursor: grab;
+}
+
+.editor-shell .inline-editor-image img.focused.draggable:active {
+  cursor: grabbing;
+}
+
+.editor-shell .inline-editor-image .image-caption-container .tree-view-output {
+  margin: 0;
+  border-radius: 0;
+}
+
+.editor-shell .inline-editor-image.position-full {
+  margin: 1em 0 1em 0;
+}
+
+.editor-shell .inline-editor-image.position-left {
+  float: left;
+  width: 50%;
+  margin: 1em 1em 0 0;
+}
+
+.editor-shell .inline-editor-image.position-right {
+  float: right;
+  width: 50%;
+  margin: 1em 0 0 1em;
+}
+
+.editor-shell .inline-editor-image .image-edit-button {
+  display: block;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 8px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  min-width: 60px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.editor-shell .inline-editor-image .image-edit-button:hover {
+  background-color: rgba(60, 132, 244, 0.5);
+}
+
+.editor-shell .inline-editor-image .image-caption-container {
+  display: block;
+  background-color: #f4f4f4;
+  min-width: 100%;
+  color: #000;
+  overflow: hidden;
+}
+
 .emoji {
   color: transparent;
   caret-color: rgb(5, 5, 5);
@@ -1133,9 +1222,16 @@ i.page-break,
 }
 
 .actions {
-  position: relative;
+  position: absolute;
   text-align: right;
-  padding: 10px;
+  margin: 10px;
+  bottom: 0;
+  right: 0;
+}
+
+.actions.tree-view {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .actions i {
@@ -1192,23 +1288,6 @@ i.page-break,
 
 .actions i.connect {
   background-image: url(images/icons/plug-fill.svg);
-}
-
-table.disable-selection {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-table.disable-selection span::selection {
-  background-color: transparent;
-}
-
-table.disable-selection br::selection {
-  background-color: transparent;
 }
 
 .table-cell-action-button-container {
@@ -1370,7 +1449,7 @@ button.action-button:disabled {
   z-index: 2;
 }
 
-.toolbar button.toolbar-item {
+button.toolbar-item {
   border: 0;
   display: flex;
   background: none;
@@ -1383,15 +1462,15 @@ button.action-button:disabled {
   justify-content: space-between;
 }
 
-.toolbar button.toolbar-item:disabled {
+button.toolbar-item:disabled {
   cursor: not-allowed;
 }
 
-.toolbar button.toolbar-item.spaced {
+button.toolbar-item.spaced {
   margin-right: 2px;
 }
 
-.toolbar button.toolbar-item i.format {
+button.toolbar-item i.format {
   background-size: contain;
   display: inline-block;
   height: 18px;
@@ -1401,26 +1480,26 @@ button.action-button:disabled {
   opacity: 0.6;
 }
 
-.toolbar button.toolbar-item:disabled .icon,
-.toolbar button.toolbar-item:disabled .text,
-.toolbar button.toolbar-item:disabled i.format,
-.toolbar button.toolbar-item:disabled .chevron-down {
+button.toolbar-item:disabled .icon,
+button.toolbar-item:disabled .text,
+button.toolbar-item:disabled i.format,
+button.toolbar-item:disabled .chevron-down {
   opacity: 0.2;
 }
 
-.toolbar button.toolbar-item.active {
+button.toolbar-item.active {
   background-color: rgba(223, 232, 250, 0.3);
 }
 
-.toolbar button.toolbar-item.active i {
+button.toolbar-item.active i {
   opacity: 1;
 }
 
-.toolbar .toolbar-item:hover:not([disabled]) {
+.toolbar-item:hover:not([disabled]) {
   background-color: #eee;
 }
 
-.toolbar .toolbar-item.font-family .text {
+.toolbar-item.font-family .text {
   display: block;
   max-width: 40px;
 }
@@ -1452,7 +1531,8 @@ button.action-button:disabled {
   background-size: contain;
 }
 
-.toolbar i.chevron-down {
+.toolbar i.chevron-down,
+.toolbar-item i.chevron-down {
   margin-top: 3px;
   width: 16px;
   height: 16px;
@@ -1649,7 +1729,6 @@ button.item.dropdown-item-active i {
   cursor: text;
   display: block;
   position: relative;
-  tab-size: 1;
   outline: 0px;
   padding: 0;
   user-select: text;
@@ -1679,6 +1758,12 @@ button.item.dropdown-item-active i {
   to {
     visibility: hidden;
   }
+}
+
+.dialog-dropdown {
+  background-color: #eee !important;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 /* START: dialog input fields (InsertImageDialog) */
