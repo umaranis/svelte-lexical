@@ -50,6 +50,7 @@
   import TablePlugin from '$lib/core/plugins/Table/TablePlugin.svelte';
   import {TableCellNode, TableNode, TableRowNode} from '@lexical/table';
   import TableHoverActionPlugin from '$lib/core/plugins/Table/TableHoverActionPlugin.svelte';
+  import TableActionMenuPlugin from '$lib/core/plugins/Table/TableActionMenuPlugin.svelte';
 
   let isSmallWidthViewport = true;
   let editorDiv;
@@ -148,6 +149,7 @@
       <ColumnLayoutPlugin />
       <TablePlugin />
       <TableHoverActionPlugin anchorElem={editorDiv} />
+      <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
       <ActionBar />
     </div>
   </div>

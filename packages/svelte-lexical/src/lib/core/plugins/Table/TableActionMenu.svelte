@@ -1,113 +1,156 @@
 <script lang="ts">
-    import ColorPickerDialog from "$lib/components/generic/colorpicker/ColorPickerDialog.svelte";
-    import { getEditor } from "$lib/core/composerContext.js";
-    import  { TableCellNode } from "@lexical/table";
-    import { $getSelection as getSelection, $isRangeSelection as isRangeSelection, type LexicalEditor, $getRoot as getRoot } from "lexical";
-import {$isTableSelection as isTableSelection,
-  $getNodeTriplet as getNodeTriplet,
-  $isTableCellNode as isTableCellNode,
-  type TableSelection,
-  $getTableNodeFromLexicalNodeOrThrow as getTableNodeFromLexicalNodeOrThrow,
-  type HTMLTableElementWithWithTableSelectionState,
-getTableObserverFromTableElement,
-} from '@lexical/table';
-    import { onMount } from "svelte";
-    import { mergeRegister } from "@lexical/utils";
-  export let onClose : () => void;
+  import ColorPickerDialog from '$lib/components/generic/colorpicker/ColorPickerDialog.svelte';
+  import {getEditor} from '$lib/core/composerContext.js';
+  import {
+    $unmergeCell as unmergeCell,
+    TableCellNode,
+    $insertTableRow__EXPERIMENTAL as insertTableRow__EXPERIMENTAL,
+    $insertTableColumn__EXPERIMENTAL as insertTableColumn__EXPERIMENTAL,
+    $deleteTableRow__EXPERIMENTAL as deleteTableRow__EXPERIMENTAL,
+    $deleteTableColumn__EXPERIMENTAL as deleteTableColumn__EXPERIMENTAL,
+    $getTableRowIndexFromTableCellNode as getTableRowIndexFromTableCellNode,
+    $isTableRowNode as isTableRowNode,
+    TableCellHeaderStates,
+    TableRowNode,
+    $getTableColumnIndexFromTableCellNode as getTableColumnIndexFromTableCellNode,
+  } from '@lexical/table';
+  import {
+    $getSelection as getSelection,
+    $isRangeSelection as isRangeSelection,
+    type LexicalEditor,
+    $getRoot as getRoot,
+    $isParagraphNode as isParagraphNode,
+    $createParagraphNode as createParagraphNode,
+    ElementNode,
+    $isTextNode as isTextNode,
+    $isElementNode as isElementNode,
+  } from 'lexical';
+  import {
+    $isTableSelection as isTableSelection,
+    $getNodeTriplet as getNodeTriplet,
+    $isTableCellNode as isTableCellNode,
+    type TableSelection,
+    $getTableNodeFromLexicalNodeOrThrow as getTableNodeFromLexicalNodeOrThrow,
+    type HTMLTableElementWithWithTableSelectionState,
+    getTableObserverFromTableElement,
+  } from '@lexical/table';
+  import {onMount} from 'svelte';
+  import {mergeRegister} from '@lexical/utils';
+  import {writable} from 'svelte/store';
+  import Portal from './Portal.svelte';
+  export let onClose: () => void;
   export let _tableCellNode: TableCellNode;
   export let setIsMenuOpen: (isOpen: boolean) => void;
   export let contextRef: null | HTMLElement;
-  export let cellMerge : boolean;
+  export let cellMerge: boolean;
 
-  let colorPicker: HTMLElement;
+  let colorPicker: ColorPickerDialog;
 
   const editor = getEditor();
-  const dropDownRef : HTMLDivElement ;
-      let tableCellNode  = _tableCellNode;
-  let selectionCounts = ({
+  let dropDownRef: HTMLDivElement;
+  let tableCellNode = _tableCellNode;
+  let selectionCounts = {
     columns: 1,
     rows: 1,
-  });
-  let canMergeCells = (false);
-  let canUnmergeCell = (false);
+  };
+  let canMergeCells = false;
+  let canUnmergeCell = false;
 
   function currentCellBackgroundColor(editor: LexicalEditor): null | string {
-  return editor.getEditorState().read(() => {
-    const selection = getSelection();
-    if (isRangeSelection(selection) || isTableSelection(selection)) {
-      const [cell] = getNodeTriplet(selection.anchor);
-      if (isTableCellNode(cell)) {
-        return cell.getBackgroundColor();
+    return editor.getEditorState().read(() => {
+      const selection = getSelection();
+      if (isRangeSelection(selection) || isTableSelection(selection)) {
+        const [cell] = getNodeTriplet(selection.anchor);
+        if (isTableCellNode(cell)) {
+          return cell.getBackgroundColor();
+        }
       }
-    }
-    return null;
-  });
-}
-
-
-function computeSelectionCount(selection: TableSelection): {
-  columns: number;
-  rows: number;
-} {
-  const selectionShape = selection.getShape();
-  return {
-    columns: selectionShape.toX - selectionShape.fromX + 1,
-    rows: selectionShape.toY - selectionShape.fromY + 1,
-  };
-}
-
-function canUnmerge(): boolean {
-  const selection = getSelection();
-  if (
-    (isRangeSelection(selection) && !selection.isCollapsed()) ||
-    (isTableSelection(selection) && !selection.anchor.is(selection.focus)) ||
-    (!isRangeSelection(selection) && !isTableSelection(selection))
-  ) {
-    return false;
+      return null;
+    });
   }
-  const [cell] = getNodeTriplet(selection.anchor);
-  return cell.__colSpan > 1 || cell.__rowSpan > 1;
-}
-  
-  let backgroundColor = currentCellBackgroundColor(editor) || '';
+
+  function computeSelectionCount(selection: TableSelection): {
+    columns: number;
+    rows: number;
+  } {
+    const selectionShape = selection.getShape();
+    return {
+      columns: selectionShape.toX - selectionShape.fromX + 1,
+      rows: selectionShape.toY - selectionShape.fromY + 1,
+    };
+  }
+
+  function canUnmerge(): boolean {
+    const selection = getSelection();
+    if (
+      (isRangeSelection(selection) && !selection.isCollapsed()) ||
+      (isTableSelection(selection) && !selection.anchor.is(selection.focus)) ||
+      (!isRangeSelection(selection) && !isTableSelection(selection))
+    ) {
+      return false;
+    }
+    const [cell] = getNodeTriplet(selection.anchor);
+    return cell.__colSpan > 1 || cell.__rowSpan > 1;
+  }
+
+  function cellContainsEmptyParagraph(cell: TableCellNode): boolean {
+    if (cell.getChildrenSize() !== 1) {
+      return false;
+    }
+    const firstChild = cell.getFirstChildOrThrow();
+    if (!isParagraphNode(firstChild) || !firstChild.isEmpty()) {
+      return false;
+    }
+    return true;
+  }
+
+  function selectLastDescendant(node: ElementNode): void {
+    const lastDescendant = node.getLastDescendant();
+    if (isTextNode(lastDescendant)) {
+      lastDescendant.select();
+    } else if (isElementNode(lastDescendant)) {
+      lastDescendant.selectEnd();
+    } else if (lastDescendant !== null) {
+      lastDescendant.selectNext();
+    }
+  }
+
+  let backgroundColor = writable(currentCellBackgroundColor(editor) || '');
 
   onMount(() => {
-editor.getEditorState().read(() => {
+    editor.getEditorState().read(() => {
       const selection = getSelection();
       // Merge cells
       if (isTableSelection(selection)) {
         const currentSelectionCounts = computeSelectionCount(selection);
-        selectionCounts=(computeSelectionCount(selection));
-        canMergeCells = 
+        selectionCounts = computeSelectionCount(selection);
+        canMergeCells =
           currentSelectionCounts.columns > 1 || currentSelectionCounts.rows > 1;
       }
       // Unmerge cell
-      canUnmergeCell = (canUnmerge());
+      canUnmergeCell = canUnmerge();
     });
 
     return mergeRegister(
-          editor.registerMutationListener(
-      TableCellNode,
-      (nodeMutations) => {
-        const nodeUpdated =
-          nodeMutations.get(tableCellNode.getKey()) === 'updated';
+      editor.registerMutationListener(
+        TableCellNode,
+        (nodeMutations) => {
+          const nodeUpdated =
+            nodeMutations.get(tableCellNode.getKey()) === 'updated';
 
-        if (nodeUpdated) {
-          editor.getEditorState().read(() => {
-            tableCellNode=(tableCellNode.getLatest());
-          });
-          backgroundColor=(currentCellBackgroundColor(editor) || '');
-        }
-      },
-      {skipInitialization: true},
-    ),
-    ) 
-  }
-  );
-  
-  
+          if (nodeUpdated) {
+            editor.getEditorState().read(() => {
+              tableCellNode = tableCellNode.getLatest();
+            });
+            $backgroundColor = currentCellBackgroundColor(editor) || '';
+          }
+        },
+        {skipInitialization: true},
+      ),
+    );
+  });
 
-  onMount(() => {
+  $: {
     const menuButtonElement = contextRef;
     const dropDownElement = dropDownRef;
     const rootElement = editor.getRootElement();
@@ -140,7 +183,7 @@ editor.getEditorState().read(() => {
       }
       dropDownElement.style.top = `${topPosition + +window.pageYOffset}px`;
     }
-  });
+  }
 
   onMount(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -177,37 +220,37 @@ editor.getEditorState().read(() => {
         }
 
         tableNode.markDirty();
-        tableCellNode=(tableCellNode.getLatest());
+        tableCellNode = tableCellNode.getLatest();
       }
 
       const rootNode = getRoot();
       rootNode.selectStart();
     });
-  }
+  };
 
   const mergeTableCellsAtSelection = () => {
     editor.update(() => {
-      const selection = $getSelection();
-      if ($isTableSelection(selection)) {
+      const selection = getSelection();
+      if (isTableSelection(selection)) {
         const {columns, rows} = computeSelectionCount(selection);
         const nodes = selection.getNodes();
         let firstCell: null | TableCellNode = null;
         for (let i = 0; i < nodes.length; i++) {
           const node = nodes[i];
-          if ($isTableCellNode(node)) {
+          if (isTableCellNode(node)) {
             if (firstCell === null) {
               node.setColSpan(columns).setRowSpan(rows);
               firstCell = node;
-              const isEmpty = $cellContainsEmptyParagraph(node);
+              const isEmpty = cellContainsEmptyParagraph(node);
               let firstChild;
               if (
                 isEmpty &&
-                $isParagraphNode((firstChild = node.getFirstChild()))
+                isParagraphNode((firstChild = node.getFirstChild()))
               ) {
                 firstChild.remove();
               }
-            } else if ($isTableCellNode(firstCell)) {
-              const isEmpty = $cellContainsEmptyParagraph(node);
+            } else if (isTableCellNode(firstCell)) {
+              const isEmpty = cellContainsEmptyParagraph(node);
               if (!isEmpty) {
                 firstCell.append(...node.getChildren());
               }
@@ -217,9 +260,9 @@ editor.getEditorState().read(() => {
         }
         if (firstCell !== null) {
           if (firstCell.getChildrenSize() === 0) {
-            firstCell.append($createParagraphNode());
+            firstCell.append(createParagraphNode());
           }
-          $selectLastDescendant(firstCell);
+          selectLastDescendant(firstCell);
         }
         onClose();
       }
@@ -228,61 +271,55 @@ editor.getEditorState().read(() => {
 
   const unmergeTableCellsAtSelection = () => {
     editor.update(() => {
-      $unmergeCell();
+      unmergeCell();
     });
   };
 
-  const insertTableRowAtSelection = useCallback(
-    (shouldInsertAfter: boolean) => {
-      editor.update(() => {
-        $insertTableRow__EXPERIMENTAL(shouldInsertAfter);
-        onClose();
-      });
-    },
-    [editor, onClose],
-  );
-
-  const insertTableColumnAtSelection = useCallback(
-    (shouldInsertAfter: boolean) => {
-      editor.update(() => {
-        for (let i = 0; i < selectionCounts.columns; i++) {
-          $insertTableColumn__EXPERIMENTAL(shouldInsertAfter);
-        }
-        onClose();
-      });
-    },
-    [editor, onClose, selectionCounts.columns],
-  );
-
-  const deleteTableRowAtSelection = useCallback(() => {
+  const insertTableRowAtSelection = (shouldInsertAfter: boolean) => {
     editor.update(() => {
-      $deleteTableRow__EXPERIMENTAL();
+      insertTableRow__EXPERIMENTAL(shouldInsertAfter);
       onClose();
     });
-  }, [editor, onClose]);
+  };
 
-  const deleteTableAtSelection = useCallback(() => {
+  const insertTableColumnAtSelection = (shouldInsertAfter: boolean) => {
     editor.update(() => {
-      const tableNode = $getTableNodeFromLexicalNodeOrThrow(tableCellNode);
+      for (let i = 0; i < selectionCounts.columns; i++) {
+        insertTableColumn__EXPERIMENTAL(shouldInsertAfter);
+      }
+      onClose();
+    });
+  };
+
+  const deleteTableRowAtSelection = () => {
+    editor.update(() => {
+      deleteTableRow__EXPERIMENTAL();
+      onClose();
+    });
+  };
+
+  const deleteTableAtSelection = () => {
+    editor.update(() => {
+      const tableNode = getTableNodeFromLexicalNodeOrThrow(tableCellNode);
       tableNode.remove();
 
       clearTableSelection();
       onClose();
     });
-  }, [editor, tableCellNode, clearTableSelection, onClose]);
+  };
 
-  const deleteTableColumnAtSelection = useCallback(() => {
+  const deleteTableColumnAtSelection = () => {
     editor.update(() => {
-      $deleteTableColumn__EXPERIMENTAL();
+      deleteTableColumn__EXPERIMENTAL();
       onClose();
     });
-  }, [editor, onClose]);
+  };
 
-  const toggleTableRowIsHeader = useCallback(() => {
+  const toggleTableRowIsHeader = () => {
     editor.update(() => {
-      const tableNode = $getTableNodeFromLexicalNodeOrThrow(tableCellNode);
+      const tableNode = getTableNodeFromLexicalNodeOrThrow(tableCellNode);
 
-      const tableRowIndex = $getTableRowIndexFromTableCellNode(tableCellNode);
+      const tableRowIndex = getTableRowIndexFromTableCellNode(tableCellNode);
 
       const tableRows = tableNode.getChildren();
 
@@ -292,31 +329,29 @@ editor.getEditorState().read(() => {
 
       const tableRow = tableRows[tableRowIndex];
 
-      if (!$isTableRowNode(tableRow)) {
+      if (!isTableRowNode(tableRow)) {
         throw new Error('Expected table row');
       }
 
-      const newStyle =
-        tableCellNode.getHeaderStyles() ^ TableCellHeaderStates.ROW;
       tableRow.getChildren().forEach((tableCell) => {
-        if (!$isTableCellNode(tableCell)) {
+        if (!isTableCellNode(tableCell)) {
           throw new Error('Expected table cell');
         }
 
-        tableCell.setHeaderStyles(newStyle, TableCellHeaderStates.ROW);
+        tableCell.toggleHeaderStyle(TableCellHeaderStates.ROW);
       });
 
       clearTableSelection();
       onClose();
     });
-  }, [editor, tableCellNode, clearTableSelection, onClose]);
+  };
 
-  const toggleTableColumnIsHeader = useCallback(() => {
+  const toggleTableColumnIsHeader = () => {
     editor.update(() => {
-      const tableNode = $getTableNodeFromLexicalNodeOrThrow(tableCellNode);
+      const tableNode = getTableNodeFromLexicalNodeOrThrow(tableCellNode);
 
       const tableColumnIndex =
-        $getTableColumnIndexFromTableCellNode(tableCellNode);
+        getTableColumnIndexFromTableCellNode(tableCellNode);
 
       const tableRows = tableNode.getChildren<TableRowNode>();
       const maxRowsLength = Math.max(
@@ -327,12 +362,10 @@ editor.getEditorState().read(() => {
         throw new Error('Expected table cell to be inside of table row.');
       }
 
-      const newStyle =
-        tableCellNode.getHeaderStyles() ^ TableCellHeaderStates.COLUMN;
       for (let r = 0; r < tableRows.length; r++) {
         const tableRow = tableRows[r];
 
-        if (!$isTableRowNode(tableRow)) {
+        if (!isTableRowNode(tableRow)) {
           throw new Error('Expected table row');
         }
 
@@ -344,60 +377,53 @@ editor.getEditorState().read(() => {
 
         const tableCell = tableCells[tableColumnIndex];
 
-        if (!$isTableCellNode(tableCell)) {
+        if (!isTableCellNode(tableCell)) {
           throw new Error('Expected table cell');
         }
 
-        tableCell.setHeaderStyles(newStyle, TableCellHeaderStates.COLUMN);
+        tableCell.toggleHeaderStyle(TableCellHeaderStates.COLUMN);
       }
       clearTableSelection();
       onClose();
     });
-  }, [editor, tableCellNode, clearTableSelection, onClose]);
+  };
 
-  const toggleRowStriping = useCallback(() => {
+  const handleCellBackgroundColor = (value: string) => {
     editor.update(() => {
-      if (tableCellNode.isAttached()) {
-        const tableNode = $getTableNodeFromLexicalNodeOrThrow(tableCellNode);
-        if (tableNode) {
-          tableNode.setRowStriping(!tableNode.getRowStriping());
+      const selection = getSelection();
+      if (isRangeSelection(selection) || isTableSelection(selection)) {
+        const [cell] = getNodeTriplet(selection.anchor);
+        if (isTableCellNode(cell)) {
+          cell.setBackgroundColor(value);
         }
-      }
-      clearTableSelection();
-      onClose();
-    });
-  }, [editor, tableCellNode, clearTableSelection, onClose]);
 
-  const handleCellBackgroundColor = useCallback(
-    (value: string) => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection) || $isTableSelection(selection)) {
-          const [cell] = $getNodeTriplet(selection.anchor);
-          if ($isTableCellNode(cell)) {
-            cell.setBackgroundColor(value);
-          }
+        if (isTableSelection(selection)) {
+          const nodes = selection.getNodes();
 
-          if ($isTableSelection(selection)) {
-            const nodes = selection.getNodes();
-
-            for (let i = 0; i <script nodes.length; i++) {
-              const node = nodes[i];
-              if ($isTableCellNode(node)) {
-                node.setBackgroundColor(value);
-              }
+          for (let i = 0; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (isTableCellNode(node)) {
+              node.setBackgroundColor(value);
             }
           }
         }
-      });
-    },
-    [editor],
-  );
+      }
+    });
+  };
+</script>
 
-  let mergeCellButton: null | JSX.Element = null;
-  if (cellMerge) {
-    if (canMergeCells) {
-      mergeCellButton = (
+<Portal>
+  <!-- eslint-disable-next-line jsx-a11y/no-static-element-interactions -->
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y-no-static-element-interactions -->
+  <div
+    class="dropdown"
+    bind:this={dropDownRef}
+    on:click={(e) => {
+      e.stopPropagation();
+    }}>
+    {#if cellMerge}
+      {#if canMergeCells}
         <button
           type="button"
           class="item"
@@ -405,9 +431,7 @@ editor.getEditorState().read(() => {
           data-test-id="table-merge-cells">
           Merge cells
         </button>
-      );
-    } else if (canUnmergeCell) {
-      mergeCellButton = (
+      {:else if canUnmergeCell}
         <button
           type="button"
           class="item"
@@ -415,134 +439,123 @@ editor.getEditorState().read(() => {
           data-test-id="table-unmerge-cells">
           Unmerge cells
         </button>
-      );
-    }
-  }
-</script>
-
-// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-<div
-  class="dropdown"
-  bind:this={dropDownRef}
-  on:click={(e) => {
-    e.stopPropagation();
-  }}>
-  {mergeCellButton}
-  <button
-    type="button"
-    class="item"
-    on:click={() => {
-      colorPicker.open();
-    }}
-    data-test-id="table-background-color">
-    <span class="text">Background color</span>
-  </button>
-  <button
-    type="button"
-    class="item"
-    on:click={() => toggleRowStriping()}
-    data-test-id="table-row-striping">
-    <span class="text">Toggle Row Striping</span>
-  </button>
-  <hr />
-  <button
-    type="button"
-    class="item"
-    on:click={() => insertTableRowAtSelection(false)}
-    data-test-id="table-insert-row-above">
-    <span class="text">
-      Insert{' '}
-      {selectionCounts.rows === 1 ? 'row' : `${selectionCounts.rows} rows`}{' '}
-      above
-    </span>
-  </button>
-  <button
-    type="button"
-    class="item"
-    on:click={() => insertTableRowAtSelection(true)}
-    data-test-id="table-insert-row-below">
-    <span class="text">
-      Insert{' '}
-      {selectionCounts.rows === 1 ? 'row' : `${selectionCounts.rows} rows`}{' '}
-      below
-    </span>
-  </button>
-  <hr />
-  <button
-    type="button"
-    class="item"
-    on:click={() => insertTableColumnAtSelection(false)}
-    data-test-id="table-insert-column-before">
-    <span class="text">
-      Insert{' '}
-      {selectionCounts.columns === 1
-        ? 'column'
-        : `${selectionCounts.columns} columns`}{' '}
-      left
-    </span>
-  </button>
-  <button
-    type="button"
-    class="item"
-    on:click={() => insertTableColumnAtSelection(true)}
-    data-test-id="table-insert-column-after">
-    <span class="text">
-      Insert{' '}
-      {selectionCounts.columns === 1
-        ? 'column'
-        : `${selectionCounts.columns} columns`}{' '}
-      right
-    </span>
-  </button>
-  <hr />
-  <button
-    type="button"
-    class="item"
-    on:click={() => deleteTableColumnAtSelection()}
-    data-test-id="table-delete-columns">
-    <span class="text">Delete column</span>
-  </button>
-  <button
-    type="button"
-    class="item"
-    on:click={() => deleteTableRowAtSelection()}
-    data-test-id="table-delete-rows">
-    <span class="text">Delete row</span>
-  </button>
-  <button
-    type="button"
-    class="item"
-    on:click={() => deleteTableAtSelection()}
-    data-test-id="table-delete">
-    <span class="text">Delete table</span>
-  </button>
-  <hr />
-  <button type="button" class="item" on:click={() => toggleTableRowIsHeader()}>
-    <span class="text">
-      {(tableCellNode.__headerState & TableCellHeaderStates.ROW) ===
-      TableCellHeaderStates.ROW
-        ? 'Remove'
-        : 'Add'}{' '}
-      row header
-    </span>
-  </button>
-  <button
-    type="button"
-    class="item"
-    on:click={() => toggleTableColumnIsHeader()}
-    data-test-id="table-column-header">
-    <span class="text">
-      {(tableCellNode.__headerState & TableCellHeaderStates.COLUMN) ===
-      TableCellHeaderStates.COLUMN
-        ? 'Remove'
-        : 'Add'}{' '}
-      column header
-    </span>
-  </button>
-</div>
+      {/if}
+    {/if}
+    <button
+      type="button"
+      class="item"
+      on:click={() => {
+        colorPicker.open(handleCellBackgroundColor);
+      }}
+      data-test-id="table-background-color">
+      <span class="text">Background color</span>
+    </button>
+    <hr />
+    <button
+      type="button"
+      class="item"
+      on:click={() => insertTableRowAtSelection(false)}
+      data-test-id="table-insert-row-above">
+      <span class="text">
+        Insert{' '}
+        {selectionCounts.rows === 1
+          ? 'row'
+          : `${selectionCounts.rows} rows`}{' '}
+        above
+      </span>
+    </button>
+    <button
+      type="button"
+      class="item"
+      on:click={() => insertTableRowAtSelection(true)}
+      data-test-id="table-insert-row-below">
+      <span class="text">
+        Insert{' '}
+        {selectionCounts.rows === 1
+          ? 'row'
+          : `${selectionCounts.rows} rows`}{' '}
+        below
+      </span>
+    </button>
+    <hr />
+    <button
+      type="button"
+      class="item"
+      on:click={() => insertTableColumnAtSelection(false)}
+      data-test-id="table-insert-column-before">
+      <span class="text">
+        Insert{' '}
+        {selectionCounts.columns === 1
+          ? 'column'
+          : `${selectionCounts.columns} columns`}{' '}
+        left
+      </span>
+    </button>
+    <button
+      type="button"
+      class="item"
+      on:click={() => insertTableColumnAtSelection(true)}
+      data-test-id="table-insert-column-after">
+      <span class="text">
+        Insert{' '}
+        {selectionCounts.columns === 1
+          ? 'column'
+          : `${selectionCounts.columns} columns`}{' '}
+        right
+      </span>
+    </button>
+    <hr />
+    <button
+      type="button"
+      class="item"
+      on:click={() => deleteTableColumnAtSelection()}
+      data-test-id="table-delete-columns">
+      <span class="text">Delete column</span>
+    </button>
+    <button
+      type="button"
+      class="item"
+      on:click={() => deleteTableRowAtSelection()}
+      data-test-id="table-delete-rows">
+      <span class="text">Delete row</span>
+    </button>
+    <button
+      type="button"
+      class="item"
+      on:click={() => deleteTableAtSelection()}
+      data-test-id="table-delete">
+      <span class="text">Delete table</span>
+    </button>
+    <hr />
+    <button
+      type="button"
+      class="item"
+      on:click={() => toggleTableRowIsHeader()}>
+      <span class="text">
+        {(tableCellNode.__headerState & TableCellHeaderStates.ROW) ===
+        TableCellHeaderStates.ROW
+          ? 'Remove'
+          : 'Add'}{' '}
+        row header
+      </span>
+    </button>
+    <button
+      type="button"
+      class="item"
+      on:click={() => toggleTableColumnIsHeader()}
+      data-test-id="table-column-header">
+      <span class="text">
+        {(tableCellNode.__headerState & TableCellHeaderStates.COLUMN) ===
+        TableCellHeaderStates.COLUMN
+          ? 'Remove'
+          : 'Add'}{' '}
+        column header
+      </span>
+    </button>
+  </div>
+</Portal>
 
 <ColorPickerDialog
   title="Cell background color"
-  color={backgroundColor}
-  onChange={handleCellBackgroundColor}
+  color={$backgroundColor}
   bind:this={colorPicker} />
