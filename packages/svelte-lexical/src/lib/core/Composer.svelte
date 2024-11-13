@@ -29,13 +29,14 @@
     type LexicalNodeReplacement,
     type HTMLConfig,
   } from 'lexical';
-  import {onMount} from 'svelte';
+  import {onMount, setContext} from 'svelte';
   import {initializeEditor} from './initializeEditor.js';
   import {
     createSharedEditorContext,
     setEditor,
     setHistoryStateContext,
   } from './composerContext.js';
+  import {writable} from 'svelte/store';
 
   export let initialConfig: InitialConfigType;
 
@@ -60,15 +61,20 @@
   initializeEditor(editor, initialEditorState);
   setEditor(editor);
 
+  const isEditable = writable(editable !== undefined ? editable : true);
+  setContext('isEditable', isEditable);
+
+  onMount(() => {
+    editor.setEditable($isEditable);
+    return editor.registerEditableListener((editable) => {
+      $isEditable = editable;
+    });
+  });
+
   setHistoryStateContext(createEmptyHistoryState());
 
   // allows sharing context between plugins and decorator nodes
   createSharedEditorContext();
-
-  onMount(() => {
-    const isEditable = initialConfig.editable;
-    editor.setEditable(isEditable !== undefined ? isEditable : true);
-  });
 
   export function getEditor() {
     return editor;
