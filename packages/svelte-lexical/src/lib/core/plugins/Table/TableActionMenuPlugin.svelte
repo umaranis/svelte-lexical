@@ -11,12 +11,13 @@
   import {onMount} from 'svelte';
   import TableActionMenu from './TableActionMenu.svelte';
   import {writable, type Writable} from 'svelte/store';
-  import {getEditor} from '$lib/core/composerContext.js';
+  import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
 
   export let anchorElem: HTMLElement;
   export let cellMerge: boolean;
 
   const editor = getEditor();
+  const isEditable = getIsEditable();
 
   let menuButtonRef: HTMLElement | null = null;
   let menuRootRef = null;
@@ -110,25 +111,27 @@
   }
 </script>
 
-<div class="table-cell-action-button-container" bind:this={menuButtonRef}>
-  {#if $tableCellNode != null}
-    <button
-      type="button"
-      class="table-cell-action-button chevron-down"
-      on:click={(e) => {
-        e.stopPropagation();
-        $isMenuOpen = !$isMenuOpen;
-      }}
-      bind:this={menuRootRef}>
-      <i class="chevron-down" />
-    </button>
-    {#if $isMenuOpen}
-      <TableActionMenu
-        contextRef={menuRootRef}
-        setIsMenuOpen={(val) => ($isMenuOpen = val)}
-        onClose={() => ($isMenuOpen = false)}
-        _tableCellNode={$tableCellNode}
-        {cellMerge} />
+{#if $isEditable}
+  <div class="table-cell-action-button-container" bind:this={menuButtonRef}>
+    {#if $tableCellNode != null}
+      <button
+        type="button"
+        class="table-cell-action-button chevron-down"
+        on:click={(e) => {
+          e.stopPropagation();
+          $isMenuOpen = !$isMenuOpen;
+        }}
+        bind:this={menuRootRef}>
+        <i class="chevron-down" />
+      </button>
+      {#if $isMenuOpen}
+        <TableActionMenu
+          contextRef={menuRootRef}
+          setIsMenuOpen={(val) => ($isMenuOpen = val)}
+          onClose={() => ($isMenuOpen = false)}
+          _tableCellNode={$tableCellNode}
+          {cellMerge} />
+      {/if}
     {/if}
-  {/if}
-</div>
+  </div>
+{/if}
