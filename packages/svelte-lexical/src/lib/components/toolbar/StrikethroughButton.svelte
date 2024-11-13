@@ -11,7 +11,7 @@
 </script>
 
 <button
-  disabled={!isEditable}
+  disabled={!$isEditable}
   on:click={() => {
     $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough');
   }}

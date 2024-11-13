@@ -183,7 +183,7 @@
 <input
   type="number"
   bind:value={inputValue}
-  disabled={!isEditable}
+  disabled={!$isEditable}
   class="toolbar-item sl_font-size-input"
   min={MIN_ALLOWED_FONT_SIZE}
   max={MAX_ALLOWED_FONT_SIZE}

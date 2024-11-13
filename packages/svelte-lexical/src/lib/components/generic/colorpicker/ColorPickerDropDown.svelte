@@ -21,7 +21,7 @@
   {buttonIconClassName}
   {buttonLabel}
   {title}
-  disabled={!isEditable}
+  disabled={!$isEditable}
   {stopCloseOnClickSelf}>
   <ColorPicker {color} {onChange} />
 </DropDown>
