@@ -7,6 +7,7 @@
   import {INSERT_LAYOUT_COMMAND} from '../../../core/plugins/ColumnsLayout/LayoutItemNode.js';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
   import DropDown from '../../generic/dropdown/DropDown.svelte';
+  import {tick} from 'svelte';
 
   const editor = getEditor();
   const activeEditor = getActiveEditor();
@@ -16,8 +17,9 @@
     showModal = true;
   }
 
-  function close() {
+  async function close() {
     showModal = false;
+    await tick();
     getCommands().FocusEditor.execute(editor);
   }
 

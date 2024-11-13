@@ -4,7 +4,7 @@
   import ModalDialog from '../../generic/dialog/ModalDialog.svelte';
   import {getCommands} from '$lib/core/commands.js';
   import NumberInput from '$lib/components/generic/input/NumberInput.svelte';
-
+  import {tick} from 'svelte';
   let rows = '5';
   let columns = '5';
   let isDisabled = true;
@@ -26,8 +26,9 @@
     showModal = true;
   }
 
-  function close() {
+  async function close() {
     showModal = false;
+    await tick();
     getCommands().FocusEditor.execute($activeEditor);
   }
 
