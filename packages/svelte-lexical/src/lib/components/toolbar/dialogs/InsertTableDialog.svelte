@@ -4,7 +4,9 @@
   import ModalDialog from '../../generic/dialog/ModalDialog.svelte';
   import {getCommands} from '$lib/core/commands.js';
   import NumberInput from '$lib/components/generic/input/NumberInput.svelte';
+  import CloseCircleButton from '$lib/components/generic/button/CloseCircleButton.svelte';
   import {tick} from 'svelte';
+
   let rows = '5';
   let columns = '5';
   let isDisabled = true;
@@ -43,23 +45,35 @@
 </script>
 
 <ModalDialog bind:showModal>
-  <NumberInput
-    placeholder={'# of rows (1-500)'}
-    label="Rows"
-    value={rows}
-    dataTestId="table-modal-rows" />
-  <NumberInput
-    placeholder={'# of columns (1-50)'}
-    label="Columns"
-    value={columns}
-    dataTestId="table-modal-columns" />
-  <div class="DialogActions" data-test-id="table-model-confirm-insert">
-    <button
-      disabled={isDisabled}
-      class="Button__root"
-      class:Button__disabled={isDisabled}
-      on:click={onClick}>
-      Confirm
-    </button>
+  <CloseCircleButton on:click={close} />
+  <div class="modal">
+    <h2 class="Modal__title">Insert Table</h2>
+    <div class="Modal__content">
+      <NumberInput
+        placeholder={'# of rows (1-500)'}
+        label="Rows"
+        value={rows}
+        dataTestId="table-modal-rows" />
+      <NumberInput
+        placeholder={'# of columns (1-50)'}
+        label="Columns"
+        value={columns}
+        dataTestId="table-modal-columns" />
+      <div class="DialogActions" data-test-id="table-model-confirm-insert">
+        <button
+          disabled={isDisabled}
+          class="Button__root"
+          class:Button__disabled={isDisabled}
+          on:click={onClick}>
+          Confirm
+        </button>
+      </div>
+    </div>
   </div>
 </ModalDialog>
+
+<style>
+  .modal {
+    width: 20em;
+  }
+</style>
