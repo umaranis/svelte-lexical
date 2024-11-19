@@ -1,6 +1,6 @@
 [![Build](https://github.com/umaranis/svelte-lexical/actions/workflows/build.yml/badge.svg)](https://github.com/umaranis/svelte-lexical/actions/workflows/build.yml)
 [![E2E Tests](https://github.com/umaranis/svelte-lexical/actions/workflows/tests.yml/badge.svg)](https://github.com/umaranis/svelte-lexical/actions/workflows/tests.yml)
-[![npm version](https://img.shields.io/npm/v/svelte-lexical)](https://www.npmjs.com/package/svelte-lexical)
+[![npm version](https://img.shields.io/npm/v/svelte-lexical?logo=npm)](https://www.npmjs.com/package/svelte-lexical)
 
 <img src="docs/logo/SVG/banner-slim.svg" alt="svelte-lexical banner" width="750px">
 
