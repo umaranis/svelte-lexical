@@ -9,7 +9,7 @@
 </script>
 
 <main>
-  <img src="src/images/logo.svg" alt="Svelte Lexical!" />
+  <img src="images/logo.svg" alt="Svelte Lexical!" />
   <p>
     This Rich Text Editor is build with <a
       href="https://github.com/umaranis/svelte-lexical/">
