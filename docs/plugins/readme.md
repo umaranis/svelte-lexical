@@ -23,3 +23,6 @@
 | [Markdown Shortcut](MarkdownShortcut.md) | Enable markdown shortcuts                                                                          | MarkdownShortcutPlugin           | Depends on the transformers used |
 | Tree View                                | Shows developer tools                                                                              | TreeViewPlugin                   |                                  |
 | [Column Layout](ColumnLayout.md)         | Arrange content in horizontally in columns                                                         | ColumnLayoutPlugin               |                                  |
+| Table                                    | Enable Html Table support                                                                          | TablePlugin                      |                                  |
+| Table Hover Action                       | Show buttons for adding rows and columns when the hovering over the last row or column             | TableHoverActionPlugin           | TablePlugin                      |
+| Table Action Menu                        | Show a button in the focused cell to open Action Menu (add, delete, merge, cell color etc.)        | TableActionMenuPlugin            | TablePlugin                      |
