@@ -86,7 +86,7 @@
 
   let commandsLog: ReadonlyArray<
     {index: number} & LexicalCommand<unknown> & {payload: unknown}
-  > = $state();
+  > = $state([]);
 
   function generateTree(editorState: EditorState) {
     const treeText = generateContent(editor, commandsLog, showExportDOM);

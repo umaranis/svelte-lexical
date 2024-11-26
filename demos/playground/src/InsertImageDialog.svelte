@@ -25,13 +25,12 @@
     showModal = true;
   }
 
+  let mode: null | 'url' | 'file' = $state(null);
   run(() => {
     if (!showModal) {
       mode = null;
     }
   });
-
-  let mode: null | 'url' | 'file' = $state(null);
   let hasModifier = $state(false);
 
   const editor = getEditor();

@@ -11,7 +11,7 @@
   >;
   }
 
-  let { loggedCommands = $bindable([]) }: Props = $props();
+  let { loggedCommands = $bindable() }: Props = $props();
 
   onMount(() => {
     const unregisterCommandListeners = new Set<() => void>();
