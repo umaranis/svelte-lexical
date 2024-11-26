@@ -12,7 +12,7 @@ import type {
 } from 'lexical';
 
 import {$applyNodeReplacement, createEditor, DecoratorNode} from 'lexical';
-import type {ComponentProps, SvelteComponent} from 'svelte';
+import type {ComponentProps, Component} from 'svelte';
 import ImageComponent from './ImageComponent.svelte';
 /*import * as React from 'react';
 import {Suspense} from 'react';*/
@@ -68,8 +68,8 @@ export type SerializedImageNode = Spread<
 
 type DecoratorImageType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  componentClass: typeof SvelteComponent<any>;
-  props: ComponentProps<ImageComponent>;
+  componentClass: Component<any>;
+  props: ComponentProps<typeof ImageComponent>;
 };
 
 export class ImageNode extends DecoratorNode<DecoratorImageType> {
