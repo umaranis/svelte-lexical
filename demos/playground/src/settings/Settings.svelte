@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import type {SettingsStore} from './setttingsStore';
   import {getContext} from 'svelte';
   import {isDevPlayground} from './appSettings';
@@ -7,19 +9,19 @@
   const settings: SettingsStore = getContext('settings');
 
   const windowLocation = window.location;
-  let measureTypingPerf: boolean,
-    isCollab: boolean,
-    isRichText: boolean,
-    isMaxLength: boolean,
-    isCharLimit: boolean,
-    isCharLimitUtf8: boolean,
-    isAutocomplete: boolean,
-    showTreeView: boolean,
-    showNestedEditorTreeView: boolean,
-    disableBeforeInput: boolean,
-    showTableOfContents: boolean;
+  let measureTypingPerf: boolean = $state(),
+    isCollab: boolean = $state(),
+    isRichText: boolean = $state(),
+    isMaxLength: boolean = $state(),
+    isCharLimit: boolean = $state(),
+    isCharLimitUtf8: boolean = $state(),
+    isAutocomplete: boolean = $state(),
+    showTreeView: boolean = $state(),
+    showNestedEditorTreeView: boolean = $state(),
+    disableBeforeInput: boolean = $state(),
+    showTableOfContents: boolean = $state();
 
-  $: {
+  run(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     measureTypingPerf = $settings.measureTypingPerf;
     isCollab = $settings.isCollab;
@@ -39,9 +41,9 @@
     disableBeforeInput = $settings.disableBeforeInput;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     showTableOfContents = $settings.showTableOfContents;
-  }
+  });
 
-  let showSettings = false;
+  let showSettings = $state(false);
   const parentWindow = window.parent;
   const search = windowLocation.search;
   const isSplitScreen =
@@ -51,7 +53,7 @@
 <button
   id="options-button"
   class={`editor-dev-button ${showSettings ? 'active' : ''}`}
-  on:click={() => (showSettings = !showSettings)} />
+  onclick={() => (showSettings = !showSettings)}></button>
 {#if showSettings}
   <div class="switches">
     {#if isRichText && isDevPlayground}
