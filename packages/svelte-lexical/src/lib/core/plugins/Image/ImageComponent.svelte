@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
   const imageCache = new Set();
 
   export const RIGHT_CLICK_IMAGE_COMMAND: LexicalCommand<MouseEvent> =
@@ -47,31 +47,47 @@
   import AutoFocusPlugin from '../AutoFocusPlugin.svelte';
   import {getImageHistoryPluginType} from '../../composerContext.js';
 
-  export let src: string;
-  export let altText: string;
-  export let nodeKey: string;
-  export let width: 'inherit' | number;
-  export let height: 'inherit' | number;
-  export let maxWidth: number;
-  export let resizable: boolean;
-  export let showCaption: boolean;
-  export let caption: LexicalEditor;
-  export let captionsEnabled: boolean;
-  export let editor: LexicalEditor;
+  interface Props {
+    src: string;
+    altText: string;
+    nodeKey: string;
+    width: 'inherit' | number;
+    height: 'inherit' | number;
+    maxWidth: number;
+    resizable: boolean;
+    showCaption: boolean;
+    caption: LexicalEditor;
+    captionsEnabled: boolean;
+    editor: LexicalEditor;
+  }
 
-  $: heightCss = height === 'inherit' ? 'inherit' : height + 'px';
-  $: widthCss = width === 'inherit' ? 'inherit' : width + 'px';
+  let {
+    src,
+    altText,
+    nodeKey,
+    width,
+    height,
+    maxWidth,
+    resizable,
+    showCaption,
+    caption,
+    captionsEnabled,
+    editor
+  }: Props = $props();
 
-  let selection: BaseSelection | null = null;
+  let heightCss = $derived(height === 'inherit' ? 'inherit' : height + 'px');
+  let widthCss = $derived(width === 'inherit' ? 'inherit' : width + 'px');
 
-  let imageRef: HTMLImageElement | null;
+  let selection: BaseSelection | null = $state(null);
+
+  let imageRef: HTMLImageElement | null = $state();
   let buttonRef: HTMLButtonElement | null;
   let isSelected = createNodeSelectionStore(editor, nodeKey);
-  let isResizing = false;
+  let isResizing = $state(false);
   let activeEditorRef: LexicalEditor;
 
-  $: draggable = $isSelected && isNodeSelection(selection) && !isResizing;
-  $: isFocused = $isSelected || isResizing;
+  let draggable = $derived($isSelected && isNodeSelection(selection) && !isResizing);
+  let isFocused = $derived($isSelected || isResizing);
 
   let promise = new Promise((resolve, reject) => {
     if (imageCache.has(src)) {
@@ -317,8 +333,7 @@
       {:else}
         <SharedHistoryPlugin />
       {/if} -->
-      <svelte:component
-        this={historyPlugin.componentType}
+      <historyPlugin.componentType
         {...historyPlugin.props} />
 
       <RichTextPlugin />

@@ -1,18 +1,34 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import {CAN_USE_DOM} from '../../../environment/canUseDOM.js';
   import DropDownItems from './DropDownItems.svelte';
 
-  export let disabled = false;
-  export let buttonAriaLabel: string | undefined = undefined;
-  export let buttonClassName: string;
-  export let buttonIconClassName: string | undefined = undefined;
-  export let buttonLabel: string | undefined = undefined;
-  export let stopCloseOnClickSelf = false;
-  export let title: string | undefined = undefined;
+  interface Props {
+    disabled?: boolean;
+    buttonAriaLabel?: string | undefined;
+    buttonClassName: string;
+    buttonIconClassName?: string | undefined;
+    buttonLabel?: string | undefined;
+    stopCloseOnClickSelf?: boolean;
+    title?: string | undefined;
+    children?: import('svelte').Snippet;
+  }
 
-  let dropDownRef: HTMLDivElement;
-  let buttonRef: HTMLButtonElement;
-  let showDropDown = false;
+  let {
+    disabled = false,
+    buttonAriaLabel = undefined,
+    buttonClassName,
+    buttonIconClassName = undefined,
+    buttonLabel = undefined,
+    stopCloseOnClickSelf = false,
+    title = undefined,
+    children
+  }: Props = $props();
+
+  let dropDownRef: HTMLDivElement = $state();
+  let buttonRef: HTMLButtonElement = $state();
+  let showDropDown = $state(false);
 
   function handleClose() {
     showDropDown = false;
@@ -21,14 +37,16 @@
     }
   }
 
-  $: if (showDropDown && buttonRef && dropDownRef) {
-    const {top, left} = buttonRef.getBoundingClientRect();
-    dropDownRef.style.top = `${top + 42}px`;
-    dropDownRef.style.left = `${Math.min(
-      left,
-      window.innerWidth - dropDownRef.offsetWidth - 20,
-    )}px`;
-  }
+  run(() => {
+    if (showDropDown && buttonRef && dropDownRef) {
+      const {top, left} = buttonRef.getBoundingClientRect();
+      dropDownRef.style.top = `${top + 42}px`;
+      dropDownRef.style.left = `${Math.min(
+        left,
+        window.innerWidth - dropDownRef.offsetWidth - 20,
+      )}px`;
+    }
+  });
 
   const handle = (event: MouseEvent) => {
     const target = event.target;
@@ -40,11 +58,13 @@
     }
   };
 
-  $: if (showDropDown) {
-    document.addEventListener('click', handle);
-  } else if (CAN_USE_DOM) {
-    document.removeEventListener('click', handle);
-  }
+  run(() => {
+    if (showDropDown) {
+      document.addEventListener('click', handle);
+    } else if (CAN_USE_DOM) {
+      document.removeEventListener('click', handle);
+    }
+  });
 </script>
 
 <button
@@ -52,22 +72,22 @@
   {disabled}
   aria-label={buttonAriaLabel || buttonLabel}
   class={buttonClassName}
-  on:click={() => (showDropDown = !showDropDown)}
+  onclick={() => (showDropDown = !showDropDown)}
   bind:this={buttonRef}
   {title}>
   {#if buttonIconClassName}
-    <span class={buttonIconClassName} />
+    <span class={buttonIconClassName}></span>
   {/if}
 
   {#if buttonLabel}
     <span class="text dropdown-button-text">{buttonLabel}</span>
   {/if}
 
-  <i class="chevron-down" />
+  <i class="chevron-down"></i>
 </button>
 
 {#if showDropDown}
   <DropDownItems bind:dropDownRef onClose={handleClose}>
-    <slot />
+    {@render children?.()}
   </DropDownItems>
 {/if}

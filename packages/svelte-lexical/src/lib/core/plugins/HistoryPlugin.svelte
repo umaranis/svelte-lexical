@@ -9,8 +9,12 @@
   import {getEditor} from '../composerContext.js';
 
   const editor: LexicalEditor = getEditor();
-  export let externalHistoryState: HistoryState = createEmptyHistoryState();
-  export let delay = 1000;
+  interface Props {
+    externalHistoryState?: HistoryState;
+    delay?: number;
+  }
+
+  let { externalHistoryState = createEmptyHistoryState(), delay = 1000 }: Props = $props();
 
   // returns callback to unregister
   onMount(() => registerHistory(editor, externalHistoryState, delay));

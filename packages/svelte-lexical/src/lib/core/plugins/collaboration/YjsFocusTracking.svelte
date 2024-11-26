@@ -9,11 +9,21 @@
   } from 'lexical';
   import {onMount} from 'svelte';
 
-  export let editor: LexicalEditor;
-  export let provider: Provider;
-  export let name: string;
-  export let color: string;
-  export let awarenessData: object | undefined = undefined;
+  interface Props {
+    editor: LexicalEditor;
+    provider: Provider;
+    name: string;
+    color: string;
+    awarenessData?: object | undefined;
+  }
+
+  let {
+    editor,
+    provider,
+    name,
+    color,
+    awarenessData = undefined
+  }: Props = $props();
 
   onMount(() => {
     return mergeRegister(

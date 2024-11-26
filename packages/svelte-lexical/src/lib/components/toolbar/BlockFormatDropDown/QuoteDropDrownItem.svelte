@@ -26,6 +26,6 @@
   class={'item ' +
     ($blockType === 'quote' ? 'active dropdown-item-active' : '')}
   on:click={formatQuote}>
-  <i class="icon quote" />
+  <i class="icon quote"></i>
   <span class="text">Quote</span>
 </DropDownItem>

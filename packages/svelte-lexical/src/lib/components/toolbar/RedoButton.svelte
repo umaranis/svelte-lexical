@@ -16,7 +16,7 @@
   const activeEditor = getActiveEditor();
   const isEditable = getIsEditable();
 
-  let canRedo = false;
+  let canRedo = $state(false);
 
   // unregisters onDestroy through returned callback
   onMount(() => {
@@ -33,12 +33,12 @@
 
 <button
   disabled={!canRedo || !$isEditable}
-  on:click={() => {
+  onclick={() => {
     $activeEditor.dispatchCommand(REDO_COMMAND, undefined);
   }}
   title={IS_APPLE ? 'Redo (⌘Y)' : 'Redo (Ctrl+Y)'}
   type="button"
   class="toolbar-item"
   aria-label="Redo">
-  <i class="format redo" />
+  <i class="format redo"></i>
 </button>

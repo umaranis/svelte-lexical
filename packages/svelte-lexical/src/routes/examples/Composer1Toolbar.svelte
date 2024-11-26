@@ -2,7 +2,9 @@
   import {Toolbar, UndoButton, RedoButton} from '$lib/index.js';
 </script>
 
-<Toolbar let:editor let:activeEditor let:blockType>
-  <UndoButton />
-  <RedoButton />
+<Toolbar   >
+  {#snippet children({ editor, activeEditor, blockType })}
+    <UndoButton />
+    <RedoButton />
+  {/snippet}
 </Toolbar>

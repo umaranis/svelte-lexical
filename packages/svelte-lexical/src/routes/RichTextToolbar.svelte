@@ -31,49 +31,51 @@
   import {InsertColumnLayoutDropDownItem} from '../lib/index.js';
   import {InsertColumnsDialog} from '../lib/index.js';
 
-  let imageDialog: InsertImageDialog;
-  let columnsDialog: InsertColumnsDialog;
-  let tableDialog: InsertTableDialog;
+  let imageDialog: InsertImageDialog = $state();
+  let columnsDialog: InsertColumnsDialog = $state();
+  let tableDialog: InsertTableDialog = $state();
 </script>
 
-<Toolbar let:editor let:activeEditor let:blockType>
-  <UndoButton />
-  <RedoButton />
-  <Divider />
-  {#if activeEditor === editor}
-    <BlockFormatDropDown>
-      <ParagraphDropDownItem />
-      <HeadingDropDownItem headingSize="h1" />
-      <HeadingDropDownItem headingSize="h2" />
-      <HeadingDropDownItem headingSize="h3" />
-      <BulletDropDrownItem />
-      <NumberDropDrownItem />
-      <CheckDropDrownItem />
-      <QuoteDropDrownItem />
-      <CodeDropDrownItem />
-    </BlockFormatDropDown>
+<Toolbar   >
+  {#snippet children({ editor, activeEditor, blockType })}
+    <UndoButton />
+    <RedoButton />
     <Divider />
-  {/if}
-  <FontFamilyDropDown />
-  <FontSizeEntry />
-  <Divider />
-  <BoldButton />
-  <ItalicButton />
-  <UnderlineButton />
-  <StrikethroughButton />
-  <FormatCodeButton />
-  <InsertLink />
-  <Divider />
-  <InsertDropDown>
-    <InsertHRDropDownItem />
-    <InsertImageDropDownItem on:click={() => imageDialog.open()} />
-    <InsertColumnLayoutDropDownItem on:click={() => columnsDialog.open()} />
-    <InsertTableDropDownItem on:click={() => tableDialog.open()} />
-  </InsertDropDown>
-  <Divider />
-  <DropDownAlign />
-  <!-- dialogs -->
-  <InsertImageDialog bind:this={imageDialog} />
-  <InsertColumnsDialog bind:this={columnsDialog} />
-  <InsertTableDialog bind:this={tableDialog} />
+    {#if activeEditor === editor}
+      <BlockFormatDropDown>
+        <ParagraphDropDownItem />
+        <HeadingDropDownItem headingSize="h1" />
+        <HeadingDropDownItem headingSize="h2" />
+        <HeadingDropDownItem headingSize="h3" />
+        <BulletDropDrownItem />
+        <NumberDropDrownItem />
+        <CheckDropDrownItem />
+        <QuoteDropDrownItem />
+        <CodeDropDrownItem />
+      </BlockFormatDropDown>
+      <Divider />
+    {/if}
+    <FontFamilyDropDown />
+    <FontSizeEntry />
+    <Divider />
+    <BoldButton />
+    <ItalicButton />
+    <UnderlineButton />
+    <StrikethroughButton />
+    <FormatCodeButton />
+    <InsertLink />
+    <Divider />
+    <InsertDropDown>
+      <InsertHRDropDownItem />
+      <InsertImageDropDownItem on:click={() => imageDialog.open()} />
+      <InsertColumnLayoutDropDownItem on:click={() => columnsDialog.open()} />
+      <InsertTableDropDownItem on:click={() => tableDialog.open()} />
+    </InsertDropDown>
+    <Divider />
+    <DropDownAlign />
+    <!-- dialogs -->
+    <InsertImageDialog bind:this={imageDialog} />
+    <InsertColumnsDialog bind:this={columnsDialog} />
+    <InsertTableDialog bind:this={tableDialog} />
+  {/snippet}
 </Toolbar>

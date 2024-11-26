@@ -4,31 +4,55 @@
   import {onMount} from 'svelte';
   import {getEditor} from './composerContext.js';
 
-  export let ariaActiveDescendantID: string | undefined = undefined;
-  export let ariaAutoComplete: 'list' | 'none' | 'inline' | 'both' | null =
-    null;
-  export let ariaControls: string | undefined = undefined;
-  export let ariaDescribedBy: string | undefined = undefined;
-  export let ariaExpanded: boolean | undefined = undefined;
-  export let ariaLabel: string | undefined = undefined;
-  export let ariaLabelledBy: string | undefined = undefined;
-  export let ariaMultiline: boolean | undefined = undefined;
-  export let ariaOwns: string | undefined = undefined;
-  export let ariaRequired: boolean | undefined = undefined;
-  export let autoCapitalize: string | undefined = undefined;
-  //export let className: string;  // @lexical/image plugin seems to depend on the harded class name.
-  export let className = 'ContentEditable__root';
-  export let id: string | undefined = undefined;
-  //export let readOnly: boolean; // it is defined in lexical code but not used
-  export let role: string | undefined = 'textbox';
-  export let spellCheck = true;
-  export let style: string | undefined = undefined;
-  export let tabIndex: number | undefined = undefined;
-  export let testid: string | undefined = undefined;
+  
+  
+  interface Props {
+    ariaActiveDescendantID?: string | undefined;
+    ariaAutoComplete?: 'list' | 'none' | 'inline' | 'both' | null;
+    ariaControls?: string | undefined;
+    ariaDescribedBy?: string | undefined;
+    ariaExpanded?: boolean | undefined;
+    ariaLabel?: string | undefined;
+    ariaLabelledBy?: string | undefined;
+    ariaMultiline?: boolean | undefined;
+    ariaOwns?: string | undefined;
+    ariaRequired?: boolean | undefined;
+    autoCapitalize?: string | undefined;
+    //export let className: string;  // @lexical/image plugin seems to depend on the harded class name.
+    className?: string;
+    id?: string | undefined;
+    //export let readOnly: boolean; // it is defined in lexical code but not used
+    role?: string | undefined;
+    spellCheck?: boolean;
+    style?: string | undefined;
+    tabIndex?: number | undefined;
+    testid?: string | undefined;
+  }
 
-  let isEditable = false;
+  let {
+    ariaActiveDescendantID = undefined,
+    ariaAutoComplete = null,
+    ariaControls = undefined,
+    ariaDescribedBy = undefined,
+    ariaExpanded = undefined,
+    ariaLabel = undefined,
+    ariaLabelledBy = undefined,
+    ariaMultiline = undefined,
+    ariaOwns = undefined,
+    ariaRequired = undefined,
+    autoCapitalize = undefined,
+    className = 'ContentEditable__root',
+    id = undefined,
+    role = 'textbox',
+    spellCheck = true,
+    style = undefined,
+    tabIndex = undefined,
+    testid = undefined
+  }: Props = $props();
+
+  let isEditable = $state(false);
   const editor: LexicalEditor = getEditor();
-  let ref: null | HTMLElement;
+  let ref: null | HTMLElement = $state();
 
   onMount(() => {
     // defaultView is required for a root element.
@@ -46,7 +70,7 @@
   });
 </script>
 
-<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 <div
   aria-activedescendant={!isEditable ? undefined : ariaActiveDescendantID}
   aria-autocomplete={!isEditable ? 'none' : ariaAutoComplete}
@@ -72,4 +96,4 @@
   {role}
   spellcheck={spellCheck}
   {style}
-  tabindex={tabIndex} />
+  tabindex={tabIndex}></div>

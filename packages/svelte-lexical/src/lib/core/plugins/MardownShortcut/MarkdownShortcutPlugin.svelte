@@ -4,7 +4,11 @@
   import {type Transformer} from '@lexical/markdown';
   import {getEditor} from '$lib/core/composerContext.js';
 
-  export let transformers: Array<Transformer>;
+  interface Props {
+    transformers: Array<Transformer>;
+  }
+
+  let { transformers }: Props = $props();
 
   const editor = getEditor();
 

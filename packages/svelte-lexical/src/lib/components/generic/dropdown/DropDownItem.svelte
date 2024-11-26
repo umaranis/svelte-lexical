@@ -1,13 +1,26 @@
 <script lang="ts">
+  import { createBubbler } from 'svelte/legacy';
+
+  const bubble = createBubbler();
   import {onMount} from 'svelte';
   import {getRegisterItemFunc} from './utils.js';
 
-  let className: string;
-  export {className as class};
-  export let title: string | undefined = undefined;
-  export let ariaLabel: string | undefined = undefined;
+  
+  interface Props {
+    class: string;
+    title?: string | undefined;
+    ariaLabel?: string | undefined;
+    children?: import('svelte').Snippet;
+  }
 
-  let ref: HTMLButtonElement;
+  let {
+    class: className,
+    title = undefined,
+    ariaLabel = undefined,
+    children
+  }: Props = $props();
+
+  let ref: HTMLButtonElement = $state();
 
   const registerItem = getRegisterItemFunc();
 
@@ -22,10 +35,10 @@
 
 <button
   class={className}
-  on:click
+  onclick={bubble('click')}
   bind:this={ref}
   {title}
   type="button"
   aria-label={ariaLabel}>
-  <slot />
+  {@render children?.()}
 </button>

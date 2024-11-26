@@ -3,6 +3,6 @@
 </script>
 
 <DropDownItem on:click class="item">
-  <i class="icon image" />
+  <i class="icon image"></i>
   <span class="text">Image</span>
 </DropDownItem>

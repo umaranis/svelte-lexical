@@ -10,9 +10,13 @@
   import {useDebounce} from '../utils.js';
 
   const editor = getEditor();
-  export let getCodeDOMNode: () => HTMLElement | null;
+  interface Props {
+    getCodeDOMNode: () => HTMLElement | null;
+  }
 
-  let isCopyCompleted = false;
+  let { getCodeDOMNode }: Props = $props();
+
+  let isCopyCompleted = $state(false);
 
   const removeSuccessIcon = useDebounce(() => {
     isCopyCompleted = false;
@@ -49,10 +53,10 @@
   }
 </script>
 
-<button class="menu-item" on:click={handleClick} aria-label="copy">
+<button class="menu-item" onclick={handleClick} aria-label="copy">
   {#if isCopyCompleted}
-    <i class="format success" />
+    <i class="format success"></i>
   {:else}
-    <i class="format copy" />
+    <i class="format copy"></i>
   {/if}
 </button>

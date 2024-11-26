@@ -27,43 +27,45 @@
   import {InsertHRDropDownItem} from '$lib/index.js';
   import {InsertImageDropDownItem} from '$lib/index.js';
 
-  let imageDialog: InsertImageDialog;
+  let imageDialog: InsertImageDialog = $state();
 </script>
 
-<Toolbar let:editor let:activeEditor let:blockType>
-  <UndoButton />
-  <RedoButton />
-  <Divider />
-  {#if activeEditor === editor}
-    <BlockFormatDropDown>
-      <ParagraphDropDownItem />
-      <HeadingDropDownItem headingSize="h1" />
-      <HeadingDropDownItem headingSize="h2" />
-      <HeadingDropDownItem headingSize="h3" />
-      <BulletDropDrownItem />
-      <NumberDropDrownItem />
-      <CheckDropDrownItem />
-      <QuoteDropDrownItem />
-      <CodeDropDrownItem />
-    </BlockFormatDropDown>
+<Toolbar   >
+  {#snippet children({ editor, activeEditor, blockType })}
+    <UndoButton />
+    <RedoButton />
     <Divider />
-  {/if}
-  <FontFamilyDropDown />
-  <FontSizeEntry />
-  <Divider />
-  <BoldButton />
-  <ItalicButton />
-  <UnderlineButton />
-  <StrikethroughButton />
-  <FormatCodeButton />
-  <InsertLink />
-  <Divider />
-  <InsertDropDown>
-    <InsertHRDropDownItem />
-    <InsertImageDropDownItem on:click={() => imageDialog.open()} />
-  </InsertDropDown>
-  <Divider />
-  <DropDownAlign />
-  <!-- dialogs -->
-  <InsertImageDialog bind:this={imageDialog} />
+    {#if activeEditor === editor}
+      <BlockFormatDropDown>
+        <ParagraphDropDownItem />
+        <HeadingDropDownItem headingSize="h1" />
+        <HeadingDropDownItem headingSize="h2" />
+        <HeadingDropDownItem headingSize="h3" />
+        <BulletDropDrownItem />
+        <NumberDropDrownItem />
+        <CheckDropDrownItem />
+        <QuoteDropDrownItem />
+        <CodeDropDrownItem />
+      </BlockFormatDropDown>
+      <Divider />
+    {/if}
+    <FontFamilyDropDown />
+    <FontSizeEntry />
+    <Divider />
+    <BoldButton />
+    <ItalicButton />
+    <UnderlineButton />
+    <StrikethroughButton />
+    <FormatCodeButton />
+    <InsertLink />
+    <Divider />
+    <InsertDropDown>
+      <InsertHRDropDownItem />
+      <InsertImageDropDownItem on:click={() => imageDialog.open()} />
+    </InsertDropDown>
+    <Divider />
+    <DropDownAlign />
+    <!-- dialogs -->
+    <InsertImageDialog bind:this={imageDialog} />
+  {/snippet}
 </Toolbar>

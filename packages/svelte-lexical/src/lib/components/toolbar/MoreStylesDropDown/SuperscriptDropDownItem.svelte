@@ -17,6 +17,6 @@
   class={'item ' + ($isSuperscript ? 'active dropdown-item-active' : '')}
   title="Superscript"
   ariaLabel="Format text with a superscript">
-  <i class="icon subscript" />
+  <i class="icon subscript"></i>
   <span class="text">Superscript</span>
 </DropDownItem>

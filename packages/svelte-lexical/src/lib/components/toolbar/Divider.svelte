@@ -1,1 +1,1 @@
-<div class="divider" />
+<div class="divider"></div>

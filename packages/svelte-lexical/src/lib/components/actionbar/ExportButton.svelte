@@ -8,12 +8,12 @@
 
 <button
   class="action-button export"
-  on:click={() =>
+  onclick={() =>
     exportFile(editor, {
       fileName: `Playground ${new Date().toISOString()}`,
       source: 'Playground',
     })}
   title="Export"
   aria-label="Export editor state to JSON">
-  <i class="export" />
+  <i class="export"></i>
 </button>

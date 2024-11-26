@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
   declare global {
     interface DragEvent {
       rangeOffset?: number;
@@ -54,7 +54,12 @@
     'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
   let img: HTMLImageElement;
 
-  export let captionsEnabled = true;
+  interface Props {
+    captionsEnabled?: boolean;
+    children?: import('svelte').Snippet;
+  }
+
+  let { captionsEnabled = true, children }: Props = $props();
 
   onMount(() => {
     if (!editor.hasNodes([ImageNode])) {
@@ -226,4 +231,4 @@
 </script>
 
 <!--for ImageComponent history plugin -->
-<slot />
+{@render children?.()}

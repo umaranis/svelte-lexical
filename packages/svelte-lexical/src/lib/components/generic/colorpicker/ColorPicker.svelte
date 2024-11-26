@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import {
     basicColors,
     transformColor,
@@ -11,23 +13,27 @@
   const WIDTH = 214;
   const HEIGHT = 150;
 
-  export let color: string;
-  export let onChange:
+  interface Props {
+    color: string;
+    onChange: 
     | ((value: string, skipHistoryStack: boolean) => void)
     | undefined;
+  }
 
-  let selfColor = transformColor('hex', color);
-  let inputColor = color;
-  let innerDivRef: HTMLDivElement;
+  let { color, onChange }: Props = $props();
 
-  $: saturationPosition = {
+  let selfColor = $state(transformColor('hex', color));
+  let inputColor = $state(color);
+  let innerDivRef: HTMLDivElement = $state();
+
+  let saturationPosition = $derived({
     x: (selfColor.hsv.s / 100) * WIDTH,
     y: ((100 - selfColor.hsv.v) / 100) * HEIGHT,
-  };
+  });
 
-  $: huePosition = {
+  let huePosition = $derived({
     x: (selfColor.hsv.h / 360) * WIDTH,
-  };
+  });
 
   const onSetHex = (hex: string) => {
     inputColor = hex;
@@ -57,16 +63,20 @@
   };
 
   // Check if the dropdown is actually active
-  $: if (innerDivRef !== null && onChange) {
-    onChange(selfColor.hex, $skipAddingToHistoryStack);
-    inputColor = selfColor.hex;
-  }
+  run(() => {
+    if (innerDivRef !== null && onChange) {
+      onChange(selfColor.hex, $skipAddingToHistoryStack);
+      inputColor = selfColor.hex;
+    }
+  });
 
-  $: if (color) {
-    const newColor = transformColor('hex', color);
-    selfColor = newColor;
-    inputColor = newColor.hex;
-  }
+  run(() => {
+    if (color) {
+      const newColor = transformColor('hex', color);
+      selfColor = newColor;
+      inputColor = newColor.hex;
+    }
+  });
 </script>
 
 <div
@@ -79,10 +89,10 @@
       <button
         class={basicColor === selfColor.hex ? ' active' : ''}
         style="background-color: {basicColor}"
-        on:click={() => {
+        onclick={() => {
           inputColor = basicColor;
           selfColor = transformColor('hex', basicColor);
-        }} />
+        }}></button>
     {/each}
   </div>
   <MoveWrapper
@@ -91,15 +101,15 @@
     onChange={onMoveSaturation}>
     <div
       class="color-picker-saturation_cursor"
-      style="background-color: {selfColor.hex}; left: {saturationPosition.x}px; top: {saturationPosition.y}px" />
+      style="background-color: {selfColor.hex}; left: {saturationPosition.x}px; top: {saturationPosition.y}px"></div>
   </MoveWrapper>
   <MoveWrapper className="color-picker-hue" onChange={onMoveHue}>
     <div
       class="color-picker-hue_cursor"
       style="background-color: hsl({selfColor.hsv
-        .h}, 100%, 50%); left: {huePosition.x}px" />
+        .h}, 100%, 50%); left: {huePosition.x}px"></div>
   </MoveWrapper>
-  <div class="color-picker-color" style="background-color: {selfColor.hex}" />
+  <div class="color-picker-color" style="background-color: {selfColor.hex}"></div>
 </div>
 
 <style>

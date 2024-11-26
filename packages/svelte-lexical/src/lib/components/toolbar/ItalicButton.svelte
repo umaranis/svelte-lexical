@@ -13,7 +13,7 @@
 
 <button
   disabled={!$isEditable}
-  on:click={() => {
+  onclick={() => {
     $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic');
   }}
   class={'toolbar-item spaced ' + ($isItalic ? 'active' : '')}
@@ -22,5 +22,5 @@
   aria-label={`Format text as italics. Shortcut: ${
     IS_APPLE ? '⌘I' : 'Ctrl+I'
   }`}>
-  <i class="format italic" />
+  <i class="format italic"></i>
 </button>

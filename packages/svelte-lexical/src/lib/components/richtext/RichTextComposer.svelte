@@ -20,9 +20,13 @@
   import AutoFocusPlugin from '$lib/core/plugins/AutoFocusPlugin.svelte';
   import CaptionEditorHistoryPlugin from '$lib/core/plugins/Image/CaptionEditorHistoryPlugin.svelte';
 
-  export let theme: EditorThemeClasses;
+  interface Props {
+    theme: EditorThemeClasses;
+  }
 
-  let composer: SvelteComponent;
+  let { theme }: Props = $props();
+
+  let composer: SvelteComponent = $state();
 
   const initialConfig = {
     namespace: 'Playground',

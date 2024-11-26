@@ -7,7 +7,11 @@
 
   const editor = getEditor();
 
-  export let showModal = false;
+  interface Props {
+    showModal?: boolean;
+  }
+
+  let { showModal = $bindable(false) }: Props = $props();
   export function open() {
     showModal = true;
   }
