@@ -1,13 +1,14 @@
 <script lang="ts">
   import type {LexicalEditor} from 'lexical';
   import {calculateZoomLevel} from '@lexical/utils';
+  import type {Writable} from 'svelte/store';
 
   export let onResizeStart: () => void;
   export let onResizeEnd: (
     width: 'inherit' | number,
     height: 'inherit' | number,
   ) => void;
-  export let buttonRef: HTMLButtonElement | null;
+  export let buttonRef: Writable<HTMLButtonElement | null>;
   export let imageRef: HTMLElement | null;
   export let maxWidth: number | null;
   export let editor: LexicalEditor;
@@ -241,7 +242,7 @@
   {#if !showCaption && captionsEnabled}
     <button
       class="image-caption-button"
-      bind:this={buttonRef}
+      bind:this={$buttonRef}
       on:click={() => {
         setShowCaption(!showCaption);
       }}>
