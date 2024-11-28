@@ -48,7 +48,7 @@ importers:
         specifier: ^2.5.0
         version: 2.6.2
       typescript:
-        specifier: ^5.5.0
+        specifier: ^5.7.2
         version: 5.7.2
       vite:
         specifier: ^5.4.10
@@ -185,7 +185,7 @@ importers:
         specifier: ^2.5.0
         version: 2.6.2
       typescript:
-        specifier: ^5.5.0
+        specifier: ^5.7.2
         version: 5.7.2
       vite:
         specifier: ^5.4.10
@@ -222,7 +222,7 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0(svelte@5.2.8)(typescript@5.7.2)
       typescript:
-        specifier: ^5.5.0
+        specifier: ^5.7.2
         version: 5.7.2
       vite:
         specifier: ^5.4.10

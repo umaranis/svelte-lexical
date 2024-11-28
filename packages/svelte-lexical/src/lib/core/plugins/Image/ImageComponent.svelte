@@ -46,6 +46,7 @@
   import PlaceHolder from '../PlaceHolder.svelte';
   import AutoFocusPlugin from '../AutoFocusPlugin.svelte';
   import {getImageHistoryPluginType} from '../../composerContext.js';
+  import {writable, type Writable} from 'svelte/store';
 
   interface Props {
     src: string;
@@ -81,7 +82,7 @@
   let selection: BaseSelection | null = $state(null);
 
   let imageRef: HTMLImageElement | null = $state();
-  let buttonRef: HTMLButtonElement | null;
+  let buttonRef: Writable<HTMLButtonElement | null> = writable(null);
   let isSelected = createNodeSelectionStore(editor, nodeKey);
   let isResizing = $state(false);
   let activeEditorRef: LexicalEditor;
@@ -120,7 +121,7 @@
 
   const onEnter = (event: KeyboardEvent) => {
     const latestSelection = getSelection();
-    const buttonElem = buttonRef;
+    const buttonElem = $buttonRef;
     if (
       $isSelected &&
       isNodeSelection(latestSelection) &&
@@ -142,7 +143,7 @@
   };
 
   const onEscape = (event: KeyboardEvent) => {
-    if (activeEditorRef === caption || buttonRef === event.target) {
+    if (activeEditorRef === caption || $buttonRef === event.target) {
       selection = null;
       editor.update(() => {
         $isSelected = true;
