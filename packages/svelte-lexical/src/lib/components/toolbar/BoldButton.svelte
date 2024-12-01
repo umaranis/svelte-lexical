@@ -13,12 +13,12 @@
 
 <button
   disabled={!$isEditable}
-  on:click={() => {
+  onclick={() => {
     $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold');
   }}
   class={'toolbar-item spaced ' + ($isBold ? 'active' : '')}
   title={IS_APPLE ? 'Bold (⌘B)' : 'Bold (Ctrl+B)'}
   type="button"
   aria-label={`Format text as bold. Shortcut: ${IS_APPLE ? '⌘B' : 'Ctrl+B'}`}>
-  <i class="format bold" />
+  <i class="format bold"></i>
 </button>

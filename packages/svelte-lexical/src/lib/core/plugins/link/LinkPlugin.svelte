@@ -15,7 +15,11 @@
   import {onMount} from 'svelte';
   import {getEditor} from '../../composerContext.js';
 
-  export let validateUrl: undefined | ((url: string) => boolean) = undefined;
+  interface Props {
+    validateUrl?: undefined | ((url: string) => boolean);
+  }
+
+  let { validateUrl = undefined }: Props = $props();
 
   const editor = getEditor();
 

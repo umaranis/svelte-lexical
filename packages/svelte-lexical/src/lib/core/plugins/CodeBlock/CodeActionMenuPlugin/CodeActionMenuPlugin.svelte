@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import {
     $isCodeNode as isCodeNode,
     CodeNode,
@@ -21,18 +23,23 @@
     right: string;
   }
 
-  // this component is supposed to be appended to `anchorElem` as per lexical but positioning works without it
-  export let anchorElem: HTMLElement = document.body;
+  
+  interface Props {
+    // this component is supposed to be appended to `anchorElem` as per lexical but positioning works without it
+    anchorElem?: HTMLElement;
+  }
+
+  let { anchorElem = document.body }: Props = $props();
 
   const editor = getEditor();
 
-  let lang = '';
-  let isShown = false;
-  let shouldListenMouseMove = false;
-  let position: Position = {
+  let lang = $state('');
+  let isShown = $state(false);
+  let shouldListenMouseMove = $state(false);
+  let position: Position = $state({
     right: '0',
     top: '0',
-  };
+  });
   const codeSetRef: Set<string> = new Set();
   let codeDOMNodeRef: HTMLElement | null = null;
 
@@ -108,16 +115,18 @@
     );
   });
 
-  $: if (shouldListenMouseMove) {
-    document.addEventListener('mousemove', debouncedOnMouseMove);
-  } else {
-    isShown = false;
-    debouncedOnMouseMove.cancel();
-    document.removeEventListener('mousemove', debouncedOnMouseMove);
-  }
+  run(() => {
+    if (shouldListenMouseMove) {
+      document.addEventListener('mousemove', debouncedOnMouseMove);
+    } else {
+      isShown = false;
+      debouncedOnMouseMove.cancel();
+      document.removeEventListener('mousemove', debouncedOnMouseMove);
+    }
+  });
 
-  $: normalizedLang = normalizeCodeLang(lang);
-  $: codeFriendlyName = getLanguageFriendlyName(lang);
+  let normalizedLang = $derived(normalizeCodeLang(lang));
+  let codeFriendlyName = $derived(getLanguageFriendlyName(lang));
 
   function getMouseInfo(event: MouseEvent): {
     codeDOMNode: HTMLElement | null;

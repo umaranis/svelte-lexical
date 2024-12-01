@@ -38,7 +38,7 @@ export function clearSelection(editor: LexicalEditor) {
 }
 
 /**
- * Stores `isSelected` state for a SvelteComponent node.
+ * Stores `isSelected` state for a Component node.
  * Rather than updating the component state directly, it updates the editor node selection and receives updates from the editor.
  */
 export function createNodeSelectionStore(

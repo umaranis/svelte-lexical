@@ -409,8 +409,12 @@
   }
 
   const editor = getEditor();
-  export let matchers: Array<LinkMatcher>;
-  export let onChange: ChangeHandler | undefined = undefined;
+  interface Props {
+    matchers: Array<LinkMatcher>;
+    onChange?: ChangeHandler | undefined;
+  }
+
+  let { matchers, onChange = undefined }: Props = $props();
 
   onMount(() => {
     if (!editor.hasNodes([AutoLinkNode])) {

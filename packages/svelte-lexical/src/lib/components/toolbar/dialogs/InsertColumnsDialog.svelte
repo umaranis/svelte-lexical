@@ -12,7 +12,11 @@
   const editor = getEditor();
   const activeEditor = getActiveEditor();
 
-  export let showModal = false;
+  interface Props {
+    showModal?: boolean;
+  }
+
+  let { showModal = $bindable(false) }: Props = $props();
   export function open() {
     showModal = true;
   }
@@ -31,8 +35,8 @@
     {label: '4 columns (equal width)', value: '1fr 1fr 1fr 1fr'},
   ];
 
-  let currentLabel = LAYOUTS[0].label;
-  let currentValue = LAYOUTS[0].value;
+  let currentLabel = $state(LAYOUTS[0].label);
+  let currentValue = $state(LAYOUTS[0].value);
   const handleClick = (label: string, value: string) => {
     currentLabel = label;
     currentValue = value;
@@ -65,7 +69,7 @@
         <button
           data-test-id="image-modal-file-upload-btn"
           class="Button__root"
-          on:click={() => {
+          onclick={() => {
             $activeEditor.dispatchCommand(INSERT_LAYOUT_COMMAND, currentValue);
             close();
           }}>

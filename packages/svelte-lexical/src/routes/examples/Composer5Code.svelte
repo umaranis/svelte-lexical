@@ -45,8 +45,8 @@
   import {onMount} from 'svelte';
   import Composer5Toolbar from './Composer5Toolbar.svelte';
 
-  let isSmallWidthViewport = true;
-  let editorDiv;
+  let isSmallWidthViewport = $state(true);
+  let editorDiv = $state();
 
   const initialConfig = {
     theme: PlaygroundEditorTheme,
