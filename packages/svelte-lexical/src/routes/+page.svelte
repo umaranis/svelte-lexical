@@ -7,7 +7,7 @@
 
 <main>
   <img src="images/logo.svg" alt="Svelte Lexical!" />
-  <p>
+  <p style="margin-top: -1em">
     Welcome to <span class="emp-sl">Svelte-Lexical</span>
     , a rich text editor for
     <span class="emp-svelte">Svelte</span>
@@ -15,7 +15,7 @@
     <span class="emp-svelte">SvelteKit</span>
     .
   </p>
-  <div style="margin-top: 5em">
+  <div style="margin-top: 7em">
     <PlaygroundButton />
     <GitHubButton />
   </div>
