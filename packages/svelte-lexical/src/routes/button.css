@@ -1,0 +1,36 @@
+.btn {
+  --color: rgb(17 24 39);
+  --bk-color: rgb(255 255 255);
+  --hover-bk-color: rgb(243 244 246);
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: #e5e7eb;
+  margin-inline-end: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-color: rgb(229 231 235 / 1);
+  background-color: var(--bk-color);
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--color);
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: var(--hover-bk-color);
+}
+
+.btn-icon {
+  margin-inline-end: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
