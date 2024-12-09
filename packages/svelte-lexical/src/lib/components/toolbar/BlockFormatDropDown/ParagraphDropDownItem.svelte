@@ -28,6 +28,6 @@
   class={'item ' +
     ($blockType === 'paragraph' ? 'active dropdown-item-active' : '')}
   on:click={formatParagraph}>
-  <i class="icon paragraph" />
+  <i class="icon paragraph"></i>
   <span class="text">Normal</span>
 </DropDownItem>

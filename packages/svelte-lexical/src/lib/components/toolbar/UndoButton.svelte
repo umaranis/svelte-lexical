@@ -16,7 +16,7 @@
   const activeEditor = getActiveEditor();
   const isEditable = getIsEditable();
 
-  let canUndo = false;
+  let canUndo = $state(false);
 
   // unregisters onDestroy through returned callback
   onMount(() => {
@@ -33,12 +33,12 @@
 
 <button
   disabled={!canUndo || !$isEditable}
-  on:click={() => {
+  onclick={() => {
     $activeEditor.dispatchCommand(UNDO_COMMAND, undefined);
   }}
   title={IS_APPLE ? 'Undo (⌘Z)' : 'Undo (Ctrl+Z)'}
   type="button"
   class="toolbar-item spaced"
   aria-label="Undo">
-  <i class="format undo" />
+  <i class="format undo"></i>
 </button>

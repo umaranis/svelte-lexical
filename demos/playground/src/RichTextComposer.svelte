@@ -58,15 +58,15 @@
     // @ts-expect-error split view has right and let frames
     window.parent != null && window.parent.frames.right === window;
 
-  $: placeholderText = $settings.isCollab
+  let placeholderText = $derived($settings.isCollab
     ? 'Enter some collaborative rich text...'
     : $settings.isRichText
       ? 'Enter some rich text...'
-      : 'Enter some plain text...';
+      : 'Enter some plain text...');
 
-  let isSmallWidthViewport = true;
+  let isSmallWidthViewport = $state(true);
 
-  let editorDiv;
+  let editorDiv = $state();
 
   const initialConfig = {
     editorState: $settings.isCollab

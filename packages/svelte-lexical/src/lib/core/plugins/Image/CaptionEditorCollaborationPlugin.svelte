@@ -4,11 +4,15 @@
   import type {Provider} from '@lexical/yjs';
   import type {Doc} from 'yjs';
 
-  export let providerFactory: (
+  interface Props {
+    providerFactory: (
     // eslint-disable-next-line no-shadow
     id: string,
     yjsDocMap: Map<string, Doc>,
   ) => Provider;
+  }
+
+  let { providerFactory }: Props = $props();
 
   setImageHistoryPluginType({
     componentType: CollaborationPlugin,

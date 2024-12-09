@@ -16,19 +16,33 @@
 
   const editor = getEditor();
 
-  export let id: string = editor.getKey();
-  export let providerFactory: (
+  interface Props {
+    id?: string;
+    providerFactory: (
     // eslint-disable-next-line no-shadow
     id: string,
     yjsDocMap: Map<string, Doc>,
   ) => Provider;
-  export let shouldBootstrap: boolean;
-  export let username: string | undefined = undefined;
-  export let cursorColor: string | undefined = undefined;
-  export let cursorsContainerRef: HTMLElement | null = null;
-  export let initialEditorState: InitialEditorStateType | null = null;
-  export let excludedProperties: ExcludedProperties | undefined = undefined;
-  export let awarenessData: object | undefined = undefined;
+    shouldBootstrap: boolean;
+    username?: string | undefined;
+    cursorColor?: string | undefined;
+    cursorsContainerRef?: HTMLElement | null;
+    initialEditorState?: InitialEditorStateType | null;
+    excludedProperties?: ExcludedProperties | undefined;
+    awarenessData?: object | undefined;
+  }
+
+  let {
+    id = editor.getKey(),
+    providerFactory,
+    shouldBootstrap,
+    username = undefined,
+    cursorColor = undefined,
+    cursorsContainerRef = null,
+    initialEditorState = null,
+    excludedProperties = undefined,
+    awarenessData = undefined
+  }: Props = $props();
 
   const collabContext = useCollaborationContext(username, cursorColor);
 

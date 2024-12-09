@@ -2,11 +2,21 @@
   import {calculateZoomLevel} from '@lexical/utils';
   import {skipAddingToHistoryStack} from './helpers.js';
 
-  export let className: string | undefined = undefined;
-  export let style: string | undefined = undefined;
-  export let onChange;
+  interface Props {
+    className?: string | undefined;
+    style?: string | undefined;
+    onChange: any;
+    children?: import('svelte').Snippet;
+  }
 
-  let divRef: HTMLDivElement;
+  let {
+    className = undefined,
+    style = undefined,
+    onChange,
+    children
+  }: Props = $props();
+
+  let divRef: HTMLDivElement = $state();
   let draggedRef = false;
 
   function clamp(value: number, max: number, min: number) {
@@ -55,9 +65,9 @@
   };
 </script>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<div bind:this={divRef} class={className} {style} on:mousedown={onMouseDown}>
-  <slot />
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<div bind:this={divRef} class={className} {style} onmousedown={onMouseDown}>
+  {@render children?.()}
 </div>
 
 <style>

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import {
     addClassNamesToElement,
     mergeRegister,
@@ -21,19 +23,23 @@
   } from '../nodeSelectionStore.js';
   import {$isHorizontalRuleNode as isHorizontalRuleNode} from './HorizontalRuleNode.js';
 
-  export let editor: LexicalEditor;
-  export let nodeKey: string;
-  export let self: HTMLElement;
+  interface Props {
+    editor: LexicalEditor;
+    nodeKey: string;
+    self: HTMLElement;
+  }
+
+  let { editor, nodeKey, self }: Props = $props();
   let isSelected = createNodeSelectionStore(editor, nodeKey);
   const isSelectedClassName = 'selected';
 
-  $: {
+  run(() => {
     if ($isSelected) {
       addClassNamesToElement(self, isSelectedClassName);
     } else {
       removeClassNamesFromElement(self, isSelectedClassName);
     }
-  }
+  });
 
   function onDelete(event: KeyboardEvent) {
     if ($isSelected && isNodeSelection(getSelection())) {

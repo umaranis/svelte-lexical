@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import ColorPickerDialog from '$lib/components/generic/colorpicker/ColorPickerDialog.svelte';
   import {getEditor} from '$lib/core/composerContext.js';
   import {
@@ -38,23 +40,33 @@
   import {mergeRegister} from '@lexical/utils';
   import {writable} from 'svelte/store';
   import Portal from '$lib/components/generic/portal/Portal.svelte';
-  export let onClose: () => void;
-  export let _tableCellNode: TableCellNode;
-  export let setIsMenuOpen: (isOpen: boolean) => void;
-  export let contextRef: null | HTMLElement;
-  export let cellMerge: boolean;
+  interface Props {
+    onClose: () => void;
+    _tableCellNode: TableCellNode;
+    setIsMenuOpen: (isOpen: boolean) => void;
+    contextRef: null | HTMLElement;
+    cellMerge: boolean;
+  }
 
-  let colorPicker: ColorPickerDialog;
+  let {
+    onClose,
+    _tableCellNode,
+    setIsMenuOpen,
+    contextRef,
+    cellMerge
+  }: Props = $props();
+
+  let colorPicker: ColorPickerDialog = $state();
 
   const editor = getEditor();
-  let dropDownRef: HTMLDivElement;
-  let tableCellNode = _tableCellNode;
-  let selectionCounts = {
+  let dropDownRef: HTMLDivElement = $state();
+  let tableCellNode = $state(_tableCellNode);
+  let selectionCounts = $state({
     columns: 1,
     rows: 1,
-  };
-  let canMergeCells = false;
-  let canUnmergeCell = false;
+  });
+  let canMergeCells = $state(false);
+  let canUnmergeCell = $state(false);
 
   function currentCellBackgroundColor(editor: LexicalEditor): null | string {
     return editor.getEditorState().read(() => {
@@ -150,7 +162,7 @@
     );
   });
 
-  $: {
+  run(() => {
     const menuButtonElement = contextRef;
     const dropDownElement = dropDownRef;
     const rootElement = editor.getRootElement();
@@ -183,7 +195,7 @@
       }
       dropDownElement.style.top = `${topPosition + +window.pageYOffset}px`;
     }
-  }
+  });
 
   onMount(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -414,12 +426,12 @@
 
 <Portal>
   <!-- eslint-disable-next-line jsx-a11y/no-static-element-interactions -->
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <!-- svelte-ignore a11y-no-static-element-interactions -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div
     class="dropdown"
     bind:this={dropDownRef}
-    on:click={(e) => {
+    onclick={(e) => {
       e.stopPropagation();
     }}>
     {#if cellMerge}
@@ -427,7 +439,7 @@
         <button
           type="button"
           class="item"
-          on:click={() => mergeTableCellsAtSelection()}
+          onclick={() => mergeTableCellsAtSelection()}
           data-test-id="table-merge-cells">
           Merge cells
         </button>
@@ -435,7 +447,7 @@
         <button
           type="button"
           class="item"
-          on:click={() => unmergeTableCellsAtSelection()}
+          onclick={() => unmergeTableCellsAtSelection()}
           data-test-id="table-unmerge-cells">
           Unmerge cells
         </button>
@@ -444,7 +456,7 @@
     <button
       type="button"
       class="item"
-      on:click={() => {
+      onclick={() => {
         colorPicker.open(handleCellBackgroundColor);
       }}
       data-test-id="table-background-color">
@@ -454,7 +466,7 @@
     <button
       type="button"
       class="item"
-      on:click={() => insertTableRowAtSelection(false)}
+      onclick={() => insertTableRowAtSelection(false)}
       data-test-id="table-insert-row-above">
       <span class="text">
         Insert{' '}
@@ -467,7 +479,7 @@
     <button
       type="button"
       class="item"
-      on:click={() => insertTableRowAtSelection(true)}
+      onclick={() => insertTableRowAtSelection(true)}
       data-test-id="table-insert-row-below">
       <span class="text">
         Insert{' '}
@@ -481,7 +493,7 @@
     <button
       type="button"
       class="item"
-      on:click={() => insertTableColumnAtSelection(false)}
+      onclick={() => insertTableColumnAtSelection(false)}
       data-test-id="table-insert-column-before">
       <span class="text">
         Insert{' '}
@@ -494,7 +506,7 @@
     <button
       type="button"
       class="item"
-      on:click={() => insertTableColumnAtSelection(true)}
+      onclick={() => insertTableColumnAtSelection(true)}
       data-test-id="table-insert-column-after">
       <span class="text">
         Insert{' '}
@@ -508,21 +520,21 @@
     <button
       type="button"
       class="item"
-      on:click={() => deleteTableColumnAtSelection()}
+      onclick={() => deleteTableColumnAtSelection()}
       data-test-id="table-delete-columns">
       <span class="text">Delete column</span>
     </button>
     <button
       type="button"
       class="item"
-      on:click={() => deleteTableRowAtSelection()}
+      onclick={() => deleteTableRowAtSelection()}
       data-test-id="table-delete-rows">
       <span class="text">Delete row</span>
     </button>
     <button
       type="button"
       class="item"
-      on:click={() => deleteTableAtSelection()}
+      onclick={() => deleteTableAtSelection()}
       data-test-id="table-delete">
       <span class="text">Delete table</span>
     </button>
@@ -530,7 +542,7 @@
     <button
       type="button"
       class="item"
-      on:click={() => toggleTableRowIsHeader()}>
+      onclick={() => toggleTableRowIsHeader()}>
       <span class="text">
         {(tableCellNode.__headerState & TableCellHeaderStates.ROW) ===
         TableCellHeaderStates.ROW
@@ -542,7 +554,7 @@
     <button
       type="button"
       class="item"
-      on:click={() => toggleTableColumnIsHeader()}
+      onclick={() => toggleTableColumnIsHeader()}
       data-test-id="table-column-header">
       <span class="text">
         {(tableCellNode.__headerState & TableCellHeaderStates.COLUMN) ===

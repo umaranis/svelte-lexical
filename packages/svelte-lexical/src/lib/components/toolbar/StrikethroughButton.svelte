@@ -12,12 +12,12 @@
 
 <button
   disabled={!$isEditable}
-  on:click={() => {
+  onclick={() => {
     $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough');
   }}
   class={'toolbar-item spaced ' + ($isStrikethrough ? 'active' : '')}
   title="Strikethrough"
   type="button"
   aria-label="Format text with a strikethrough">
-  <i class="format strikethrough" />
+  <i class="format strikethrough"></i>
 </button>

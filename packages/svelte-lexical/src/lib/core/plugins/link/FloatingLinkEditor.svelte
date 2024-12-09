@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import './FloatingLinkEditor.css';
   import {
     $isLinkNode as isLinkNode,
@@ -26,24 +28,37 @@
   import {setFloatingElemPositionForLinkEditor} from './setFloatingElemPositionForLinkEditor.js';
   import {sanitizeUrl} from './url.js';
 
-  export let editor: LexicalEditor;
-  export let isLink: Writable<boolean>;
-  export let anchorElem: HTMLElement;
 
-  let editorRef: HTMLDivElement | null;
-  let inputRef: HTMLInputElement;
-  let linkUrl = '';
-  let editedLinkUrl = '';
-  export let isEditMode: Writable<boolean>;
+  let editorRef: HTMLDivElement | null = $state();
+  let inputRef: HTMLInputElement = $state();
+  let linkUrl = $state('');
+  let editedLinkUrl = $state('');
+  interface Props {
+    editor: LexicalEditor;
+    isLink: Writable<boolean>;
+    anchorElem: HTMLElement;
+    isEditMode: Writable<boolean>;
+  }
+
+  let {
+    editor,
+    isLink,
+    anchorElem,
+    isEditMode
+  }: Props = $props();
   let lastSelection: BaseSelection | null = null;
 
-  $: if ($isEditMode && inputRef) {
-    inputRef.focus();
-  }
+  run(() => {
+    if ($isEditMode && inputRef) {
+      inputRef.focus();
+    }
+  });
 
-  $: if (anchorElem && editorRef) {
-    anchorElem.appendChild(editorRef as Node);
-  }
+  run(() => {
+    if (anchorElem && editorRef) {
+      anchorElem.appendChild(editorRef as Node);
+    }
+  });
 
   onMount(() => {
     const scrollerElem = anchorElem.parentElement;
@@ -186,7 +201,7 @@
   }
 </script>
 
-<!-- svelte-ignore a11y-interactive-supports-focus -->
+<!-- svelte-ignore a11y_interactive_supports_focus -->
 
 <div bind:this={editorRef} class="link-editor">
   {#if $isLink}
@@ -195,26 +210,26 @@
         bind:this={inputRef}
         class="link-input"
         bind:value={editedLinkUrl}
-        on:keydown={(event) => {
+        onkeydown={(event) => {
           monitorInputInteraction(event);
         }} />
       <div>
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div
           class="link-cancel"
           role="button"
           tabIndex={0}
-          on:mousedown={(event) => event.preventDefault()}
-          on:click={() => {
+          onmousedown={(event) => event.preventDefault()}
+          onclick={() => {
             $isEditMode = false;
-          }} />
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
+          }}></div>
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div
           class="link-confirm"
           role="button"
           tabIndex={0}
-          on:mousedown={(event) => event.preventDefault()}
-          on:click={handleLinkSubmission} />
+          onmousedown={(event) => event.preventDefault()}
+          onclick={handleLinkSubmission}></div>
       </div>
     {:else}
       <div class="link-view">
@@ -224,25 +239,25 @@
           rel="noopener noreferrer">
           {linkUrl}
         </a>
-        <!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
+        <!-- svelte-ignore a11y_click_events_have_key_events, a11y_interactive_supports_focus -->
         <div
           class="link-edit"
           role="button"
           tabIndex={0}
-          on:mousedown={(event) => event.preventDefault()}
-          on:click={() => {
+          onmousedown={(event) => event.preventDefault()}
+          onclick={() => {
             editedLinkUrl = linkUrl;
             $isEditMode = true;
-          }} />
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
+          }}></div>
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div
           class="link-trash"
           role="button"
           tabIndex={0}
-          on:mousedown={(event) => event.preventDefault()}
-          on:click={() => {
+          onmousedown={(event) => event.preventDefault()}
+          onclick={() => {
             editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
-          }} />
+          }}></div>
       </div>
     {/if}
   {/if}

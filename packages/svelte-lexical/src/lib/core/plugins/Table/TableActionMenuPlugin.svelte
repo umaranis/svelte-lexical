@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import {
     $getTableCellNodeFromLexicalNode as getTableCellNodeFromLexicalNode,
     TableCellNode,
@@ -13,14 +15,18 @@
   import {writable, type Writable} from 'svelte/store';
   import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
 
-  export let anchorElem: HTMLElement;
-  export let cellMerge: boolean;
+  interface Props {
+    anchorElem: HTMLElement;
+    cellMerge: boolean;
+  }
+
+  let { anchorElem, cellMerge }: Props = $props();
 
   const editor = getEditor();
   const isEditable = getIsEditable();
 
-  let menuButtonRef: HTMLElement | null = null;
-  let menuRootRef = null;
+  let menuButtonRef: HTMLElement | null = $state(null);
+  let menuRootRef = $state(null);
   const isMenuOpen = writable(false);
 
   const tableCellNode: Writable<TableCellNode | null> = writable(null);
@@ -76,7 +82,7 @@
     });
   });
 
-  $: {
+  run(() => {
     const menuButtonDOM = menuButtonRef as HTMLButtonElement | null;
 
     if (menuButtonDOM != null && $tableCellNode != null) {
@@ -98,17 +104,17 @@
         menuButtonDOM.style.transform = 'translate(-10000px, -10000px)';
       }
     }
-  }
+  });
 
-  let prevTableCellDOM = $tableCellNode;
+  let prevTableCellDOM = $state($tableCellNode);
 
-  $: {
+  run(() => {
     if (prevTableCellDOM !== $tableCellNode) {
       $isMenuOpen = false;
     }
 
     prevTableCellDOM = $tableCellNode;
-  }
+  });
 </script>
 
 {#if $isEditable}
@@ -117,12 +123,12 @@
       <button
         type="button"
         class="table-cell-action-button chevron-down"
-        on:click={(e) => {
+        onclick={(e) => {
           e.stopPropagation();
           $isMenuOpen = !$isMenuOpen;
         }}
         bind:this={menuRootRef}>
-        <i class="chevron-down" />
+        <i class="chevron-down"></i>
       </button>
       {#if $isMenuOpen}
         <TableActionMenu

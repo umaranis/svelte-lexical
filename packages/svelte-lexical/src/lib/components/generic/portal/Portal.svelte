@@ -1,10 +1,16 @@
 <script lang="ts">
   import {onMount, onDestroy} from 'svelte';
 
-  // eslint-disable-next-line no-undef
-  export let target: HTMLElement | null | undefined = globalThis.document?.body;
+  
+  interface Props {
+    // eslint-disable-next-line no-undef
+    target?: HTMLElement | null | undefined;
+    children?: import('svelte').Snippet;
+  }
 
-  let ref: HTMLElement;
+  let { target = globalThis.document?.body, children }: Props = $props();
+
+  let ref: HTMLElement = $state();
 
   onMount(() => {
     if (target) {
@@ -20,5 +26,5 @@
 </script>
 
 <div bind:this={ref}>
-  <slot />
+  {@render children?.()}
 </div>

@@ -18,6 +18,6 @@
   class={'item ' + ($isStrikethrough ? 'active dropdown-item-active' : '')}
   title="Strikethrough"
   ariaLabel="Format text with a strikethrough">
-  <i class="icon strikethrough" />
+  <i class="icon strikethrough"></i>
   <span class="text">Strikethrough</span>
 </DropDownItem>
