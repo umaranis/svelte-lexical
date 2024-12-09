@@ -46,7 +46,7 @@
   } from 'svelte-lexical';
   import {prepopulatedRichText} from './prepopulatedRichText';
   import type {SettingsStore} from './settings/setttingsStore';
-  import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
+  import {editorTheme as PlaygroundEditorTheme} from 'svelte-lexical';
   import ToolbarPlayground from './ToolbarPlayground.svelte';
   import {createWebsocketProvider} from './collaboration';
 
