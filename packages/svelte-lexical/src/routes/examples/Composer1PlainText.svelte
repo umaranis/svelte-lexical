@@ -6,11 +6,11 @@
     PlainTextPlugin,
     HistoryPlugin,
   } from '$lib/index.js';
-  import PlaygroundEditorTheme from '../themes/PlaygroundEditorTheme.js';
+  import editorTheme from '$lib/themes/PlaygroundEditorTheme.js';
   import Composer1Toolbar from './Composer1Toolbar.svelte';
 
   const initialConfig = {
-    theme: PlaygroundEditorTheme,
+    theme: editorTheme,
     namespace: 'Playground',
     nodes: [],
     onError: (error: Error) => {

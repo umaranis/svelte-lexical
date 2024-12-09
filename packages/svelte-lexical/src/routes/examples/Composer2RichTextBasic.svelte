@@ -5,7 +5,7 @@
     ActionBar,
     RichTextPlugin,
   } from '$lib/index.js';
-  import PlaygroundEditorTheme from '../themes/PlaygroundEditorTheme.js';
+  import editorTheme from '$lib/themes/PlaygroundEditorTheme.js';
   import {
     $getRoot as getRoot,
     $createTextNode as createTextNode,
@@ -14,7 +14,7 @@
   import Composer2Toolbar from './Composer2Toolbar.svelte';
 
   const initialConfig = {
-    theme: PlaygroundEditorTheme,
+    theme: editorTheme,
     namespace: 'pg_sveltekit',
     nodes: [],
     onError: (error: Error) => {

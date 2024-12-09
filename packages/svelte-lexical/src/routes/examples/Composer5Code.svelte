@@ -36,7 +36,7 @@
     HorizontalRuleNode,
     ImageNode,
   } from '$lib/index.js';
-  import PlaygroundEditorTheme from '../themes/PlaygroundEditorTheme.js';
+  import editorTheme from '$lib/themes/PlaygroundEditorTheme.js';
   import {
     $getRoot as getRoot,
     $createTextNode as createTextNode,
@@ -49,7 +49,7 @@
   let editorDiv;
 
   const initialConfig = {
-    theme: PlaygroundEditorTheme,
+    theme: editorTheme,
     namespace: 'pg_sveltekit',
     nodes: [
       HeadingNode,

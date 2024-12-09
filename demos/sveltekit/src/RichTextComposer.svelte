@@ -19,7 +19,7 @@
     HorizontalRuleNode,
     ImageNode,
   } from 'svelte-lexical';
-  import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
+  import {editorTheme as PlaygroundEditorTheme} from 'svelte-lexical';
   import {
     $getRoot as getRoot,
     $createTextNode as createTextNode,

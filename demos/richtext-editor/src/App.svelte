@@ -1,6 +1,6 @@
 <script>
   import {RichTextComposer} from 'svelte-lexical';
-  import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
+  import {editorTheme as PlaygroundEditorTheme} from 'svelte-lexical';
 </script>
 
 <main>

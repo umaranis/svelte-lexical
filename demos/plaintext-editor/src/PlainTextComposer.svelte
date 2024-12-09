@@ -6,7 +6,7 @@
     PlainTextPlugin,
     HistoryPlugin,
   } from 'svelte-lexical';
-  import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
+  import {editorTheme as PlaygroundEditorTheme} from 'svelte-lexical';
 
   const initialConfig = {
     theme: PlaygroundEditorTheme,
