@@ -11,12 +11,12 @@
 
 <button
   disabled={!$isEditable}
-  on:click={() => {
+  onclick={() => {
     $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code');
   }}
   class={'toolbar-item spaced ' + ($isCode ? 'active' : '')}
   title="Insert code block"
   type="button"
   aria-label="Insert code block">
-  <i class="format code" />
+  <i class="format code"></i>
 </button>

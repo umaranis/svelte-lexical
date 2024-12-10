@@ -8,10 +8,10 @@
 
 <button
   class={`action-button ${!$isEditable ? 'unlock' : 'lock'}`}
-  on:click={() => {
+  onclick={() => {
     editor.setEditable(!editor.isEditable());
   }}
   title="Read-Only Mode"
   aria-label={`${!$isEditable ? 'Unlock' : 'Lock'} read-only mode`}>
-  <i class={!$isEditable ? 'unlock' : 'lock'} />
+  <i class={!$isEditable ? 'unlock' : 'lock'}></i>
 </button>

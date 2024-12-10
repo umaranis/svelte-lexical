@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
   export type InitialEditorStateType =
     | null
     | string
@@ -38,7 +38,12 @@
   } from './composerContext.js';
   import {writable} from 'svelte/store';
 
-  export let initialConfig: InitialConfigType;
+  interface Props {
+    initialConfig: InitialConfigType;
+    children?: import('svelte').Snippet;
+  }
+
+  let { initialConfig, children }: Props = $props();
 
   const {
     theme,
@@ -81,4 +86,4 @@
   }
 </script>
 
-<slot />
+{@render children?.()}

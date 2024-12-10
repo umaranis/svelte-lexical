@@ -5,15 +5,27 @@
 
   const isEditable = getIsEditable();
 
-  export let buttonClassName: string;
-  export let buttonIconClassName: string | undefined = undefined;
-  export let buttonLabel: string | undefined = undefined;
-  export let title;
-  export let stopCloseOnClickSelf = true;
-  export let color: string;
-  export let onChange:
+  interface Props {
+    buttonClassName: string;
+    buttonIconClassName?: string | undefined;
+    buttonLabel?: string | undefined;
+    title: any;
+    stopCloseOnClickSelf?: boolean;
+    color: string;
+    onChange: 
     | ((color: string, skipHistoryStack: boolean) => void)
     | undefined;
+  }
+
+  let {
+    buttonClassName,
+    buttonIconClassName = undefined,
+    buttonLabel = undefined,
+    title,
+    stopCloseOnClickSelf = true,
+    color,
+    onChange
+  }: Props = $props();
 </script>
 
 <DropDown

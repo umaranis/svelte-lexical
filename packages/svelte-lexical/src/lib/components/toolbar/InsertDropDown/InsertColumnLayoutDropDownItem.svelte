@@ -3,6 +3,6 @@
 </script>
 
 <DropDownItem on:click class="item">
-  <i class="icon columns" />
+  <i class="icon columns"></i>
   <span class="text">Columns Layout</span>
 </DropDownItem>

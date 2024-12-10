@@ -8,9 +8,9 @@
   const activeEditor = getActiveEditor();
   const dispatch = createEventDispatcher();
 
-  let src = '';
-  let altText = '';
-  $: isDisabled = src === '';
+  let src = $state('');
+  let altText = $state('');
+  let isDisabled = $derived(src === '');
 
   function loadImage(files: FileList | null) {
     const reader = new FileReader();
@@ -44,7 +44,7 @@
         data-test-id="image-modal-file-upload-btn"
         disabled={isDisabled}
         class="Button__root"
-        on:click={() => {
+        onclick={() => {
           $activeEditor.dispatchCommand(INSERT_IMAGE_COMMAND, {altText, src});
           dispatch('confirm');
         }}>

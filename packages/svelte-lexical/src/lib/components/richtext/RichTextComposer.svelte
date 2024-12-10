@@ -15,14 +15,18 @@
   import RichTextPlugin from '$lib/core/plugins/RichTextPlugin.svelte';
   import ActionBar from '../actionbar/ActionBar.svelte';
   import ToolbarRichText from './ToolbarRichText.svelte';
-  import type {SvelteComponent} from 'svelte';
+  import {type Component} from 'svelte';
   import PlaceHolder from '$lib/core/plugins/PlaceHolder.svelte';
   import AutoFocusPlugin from '$lib/core/plugins/AutoFocusPlugin.svelte';
   import CaptionEditorHistoryPlugin from '$lib/core/plugins/Image/CaptionEditorHistoryPlugin.svelte';
 
-  export let theme: EditorThemeClasses;
+  interface Props {
+    theme: EditorThemeClasses;
+  }
 
-  let composer: SvelteComponent;
+  let { theme }: Props = $props();
+
+  let composer: Component = $state();
 
   const initialConfig = {
     namespace: 'Playground',

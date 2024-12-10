@@ -10,7 +10,11 @@
   import {registerLexicalTextEntity} from '@lexical/text';
   import {onMount} from 'svelte';
 
-  export let keywordsRegex: RegExp;
+  interface Props {
+    keywordsRegex: RegExp;
+  }
+
+  let { keywordsRegex }: Props = $props();
 
   const editor = getEditor();
 

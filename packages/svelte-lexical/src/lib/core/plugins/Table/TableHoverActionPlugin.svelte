@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import {
     $getTableColumnIndexFromTableCellNode as getTableColumnIndexFromTableCellNode,
     $getTableRowIndexFromTableCellNode as getTableRowIndexFromTableCellNode,
@@ -29,12 +31,16 @@
   const editor = getEditor();
   let isShownRow = writable(false);
   let isShownColumn = writable(false);
-  let shouldListenMouseMove = false;
+  let shouldListenMouseMove = $state(false);
   let position = writable('');
   const codeSetRef: Set<NodeKey> = new Set();
   let tableDOMNodeRef: HTMLElement | null = null;
 
-  export let anchorElem: HTMLElement;
+  interface Props {
+    anchorElem: HTMLElement;
+  }
+
+  let { anchorElem }: Props = $props();
 
   function getMouseInfo(event: MouseEvent): {
     tableDOMNode: HTMLElement | null;
@@ -144,14 +150,16 @@
     250,
   );
 
-  $: if (CAN_USE_DOM && shouldListenMouseMove) {
-    document.addEventListener('mousemove', debouncedOnMouseMove);
-  } else if (CAN_USE_DOM) {
-    $isShownRow = false;
-    $isShownColumn = false;
-    debouncedOnMouseMove.cancel();
-    document.removeEventListener('mousemove', debouncedOnMouseMove);
-  }
+  run(() => {
+    if (CAN_USE_DOM && shouldListenMouseMove) {
+      document.addEventListener('mousemove', debouncedOnMouseMove);
+    } else if (CAN_USE_DOM) {
+      $isShownRow = false;
+      $isShownColumn = false;
+      debouncedOnMouseMove.cancel();
+      document.removeEventListener('mousemove', debouncedOnMouseMove);
+    }
+  });
 
   onDestroy(() => {
     $isShownRow = false;
@@ -211,11 +219,11 @@
   <button
     class={'PlaygroundEditorTheme__tableAddRows'}
     style={$position}
-    on:click={() => insertAction(true)} />
+    onclick={() => insertAction(true)}></button>
 {/if}
 {#if $isShownColumn}
   <button
     class={'PlaygroundEditorTheme__tableAddColumns'}
     style={$position}
-    on:click={() => insertAction(false)} />
+    onclick={() => insertAction(false)}></button>
 {/if}

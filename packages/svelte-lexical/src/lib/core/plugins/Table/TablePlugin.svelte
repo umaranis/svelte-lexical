@@ -35,9 +35,13 @@
   import {onMount} from 'svelte';
   import {getEditor} from '../../composerContext.js';
 
-  export let hasCellMerge = true;
-  export let hasCellBackgroundColor = true;
-  export let hasTabHandler = true;
+  interface Props {
+    hasCellMerge?: boolean;
+    hasCellBackgroundColor?: boolean;
+    hasTabHandler?: boolean;
+  }
+
+  let { hasCellMerge = true, hasCellBackgroundColor = true, hasTabHandler = true }: Props = $props();
 
   const editor: LexicalEditor = getEditor();
 

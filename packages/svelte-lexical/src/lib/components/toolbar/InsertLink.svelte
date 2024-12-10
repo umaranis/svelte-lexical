@@ -42,10 +42,10 @@
 
 <button
   disabled={!$isEditable}
-  on:click={insertLink}
+  onclick={insertLink}
   class={'toolbar-item spaced ' + ($isLink ? 'active' : '')}
   aria-label="Insert link"
   title={IS_APPLE ? 'Insert link (⌘K)' : 'Insert link (Ctrl+K)'}
   type="button">
-  <i class="format link" />
+  <i class="format link"></i>
 </button>

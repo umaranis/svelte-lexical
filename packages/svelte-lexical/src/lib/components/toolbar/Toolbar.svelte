@@ -5,6 +5,11 @@
   import {setContext} from 'svelte';
   import {getEditor} from '$lib/core/composerContext.js';
   import type {NodeKey} from 'lexical';
+  interface Props {
+    children?: import('svelte').Snippet<[any]>;
+  }
+
+  let { children }: Props = $props();
 
   const editor = getEditor();
 
@@ -36,5 +41,5 @@
 
 <StateStoreRichTextUpdator />
 <div class="toolbar">
-  <slot {editor} activeEditor={$activeEditor} blockType={$blockType} />
+  {@render children?.({ editor, activeEditor: $activeEditor, blockType: $blockType, })}
 </div>

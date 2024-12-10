@@ -24,6 +24,6 @@
   class={'item ' +
     ($blockType === 'check' ? 'active dropdown-item-active' : '')}
   on:click={formatCheckList}>
-  <i class="icon check-list" />
+  <i class="icon check-list"></i>
   <span class="text">Check List</span>
 </DropDownItem>
