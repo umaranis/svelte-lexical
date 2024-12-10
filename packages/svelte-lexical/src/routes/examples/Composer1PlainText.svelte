@@ -6,7 +6,7 @@
     PlainTextPlugin,
     HistoryPlugin,
   } from '$lib/index.js';
-  import editorTheme from '$lib/themes/PlaygroundEditorTheme.js';
+  import editorTheme from '$lib/themes/DefaultEditorTheme.js';
   import Composer1Toolbar from './Composer1Toolbar.svelte';
 
   const initialConfig = {

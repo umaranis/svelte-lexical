@@ -23,7 +23,7 @@
     HorizontalRuleNode,
     ImageNode,
   } from '$lib/index.js';
-  import editorTheme from '$lib/themes/PlaygroundEditorTheme.js';
+  import editorTheme from '$lib/themes/DefaultEditorTheme.js';
   import {
     $getRoot as getRoot,
     $createTextNode as createTextNode,
