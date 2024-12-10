@@ -6,17 +6,17 @@
  *
  *
  */
-.PlaygroundEditorTheme__ltr {
+.SL_Theme__ltr {
   text-align: left;
 }
-.PlaygroundEditorTheme__rtl {
+.SL_Theme__rtl {
   text-align: right;
 }
-.PlaygroundEditorTheme__paragraph {
+.SL_Theme__paragraph {
   margin: 0;
   position: relative;
 }
-.PlaygroundEditorTheme__quote {
+.SL_Theme__quote {
   margin: 0;
   margin-left: 20px;
   margin-bottom: 10px;
@@ -27,69 +27,83 @@
   border-left-style: solid;
   padding-left: 16px;
 }
-.PlaygroundEditorTheme__h1 {
+.SL_Theme__h1 {
   font-size: 24px;
   color: rgb(5, 5, 5);
   font-weight: 400;
   margin: 0;
 }
-.PlaygroundEditorTheme__h2 {
+.SL_Theme__h2 {
   font-size: 15px;
   color: rgb(101, 103, 107);
   font-weight: 700;
   margin: 0;
   text-transform: uppercase;
 }
-.PlaygroundEditorTheme__h3 {
+.SL_Theme__h3 {
   font-size: 12px;
   margin: 0;
   text-transform: uppercase;
 }
-.PlaygroundEditorTheme__indent {
+.SL_Theme__indent {
   --lexical-indent-base-value: 40px;
 }
-.PlaygroundEditorTheme__textBold {
+.SL_Theme__textBold {
   font-weight: bold;
 }
-.PlaygroundEditorTheme__textItalic {
+.SL_Theme__textItalic {
   font-style: italic;
 }
-.PlaygroundEditorTheme__textUnderline {
+.SL_Theme__textUnderline {
   text-decoration: underline;
 }
-.PlaygroundEditorTheme__textStrikethrough {
+.SL_Theme__textStrikethrough {
   text-decoration: line-through;
 }
-.PlaygroundEditorTheme__textUnderlineStrikethrough {
+.SL_Theme__textUnderlineStrikethrough {
   text-decoration: underline line-through;
 }
-.PlaygroundEditorTheme__textSubscript {
+.SL_Theme__textSubscript {
   font-size: 0.8em;
   vertical-align: sub !important;
 }
-.PlaygroundEditorTheme__textSuperscript {
+.SL_Theme__textSuperscript {
   font-size: 0.8em;
   vertical-align: super;
 }
-.PlaygroundEditorTheme__textCode {
+.SL_Theme__textCode {
   background-color: rgb(240, 242, 245);
   padding: 1px 0.25rem;
   font-family: Menlo, Consolas, Monaco, monospace;
   font-size: 94%;
 }
-.PlaygroundEditorTheme__hashtag {
+.SL_Theme__hashtag {
   background-color: rgba(88, 144, 255, 0.15);
   border-bottom: 1px solid rgba(88, 144, 255, 0.3);
 }
-.PlaygroundEditorTheme__link {
+.SL_Theme__link {
   color: rgb(33, 111, 219);
   text-decoration: none;
 }
-.PlaygroundEditorTheme__link:hover {
+.SL_Theme__link:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-.PlaygroundEditorTheme__code {
+.SL_Theme__blockCursor {
+  display: block;
+  pointer-events: none;
+  position: absolute;
+}
+.SL_Theme__blockCursor:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -2px;
+  width: 20px;
+  border-top: 1px solid black;
+  animation: CursorBlink 1.1s steps(2, start) infinite;
+}
+.SL_Theme__code {
   background-color: rgb(240, 242, 245);
   font-family: Menlo, Consolas, Monaco, monospace;
   display: block;
@@ -103,7 +117,7 @@
   position: relative;
   tab-size: 2;
 }
-.PlaygroundEditorTheme__code:before {
+.SL_Theme__code:before {
   content: attr(data-gutter);
   position: absolute;
   background-color: #eee;
@@ -116,15 +130,15 @@
   text-align: right;
   min-width: 25px;
 }
-.PlaygroundEditorTheme__tableScrollableWrapper {
+.SL_Theme__tableScrollableWrapper {
   overflow-x: auto;
   margin: 0px 25px 30px 0px;
 }
-.PlaygroundEditorTheme__tableScrollableWrapper > .PlaygroundEditorTheme__table {
+.SL_Theme__tableScrollableWrapper > .SL_Theme__table {
   /* Remove the table's margin and put it on the wrapper */
   margin: 0;
 }
-.PlaygroundEditorTheme__table {
+.SL_Theme__table {
   border-collapse: collapse;
   border-spacing: 0;
   overflow-y: scroll;
@@ -133,16 +147,16 @@
   width: fit-content;
   margin: 0px 25px 30px 0px;
 }
-.PlaygroundEditorTheme__tableRowStriping tr:nth-child(even) {
+.SL_Theme__tableRowStriping tr:nth-child(even) {
   background-color: #f2f5fb;
 }
-.PlaygroundEditorTheme__tableSelection *::selection {
+.SL_Theme__tableSelection *::selection {
   background-color: transparent;
 }
-.PlaygroundEditorTheme__tableSelected {
+.SL_Theme__tableSelected {
   outline: 2px solid rgb(60, 132, 244);
 }
-.PlaygroundEditorTheme__tableCell {
+.SL_Theme__tableCell {
   border: 1px solid #bbb;
   width: 75px;
   vertical-align: top;
@@ -151,7 +165,7 @@
   position: relative;
   outline: none;
 }
-.PlaygroundEditorTheme__tableCellResizer {
+.SL_Theme__tableCellResizer {
   position: absolute;
   right: -4px;
   height: 100%;
@@ -160,14 +174,14 @@
   z-index: 10;
   top: 0;
 }
-.PlaygroundEditorTheme__tableCellHeader {
+.SL_Theme__tableCellHeader {
   background-color: #f2f3f5;
   text-align: start;
 }
-.PlaygroundEditorTheme__tableCellSelected {
+.SL_Theme__tableCellSelected {
   caret-color: transparent;
 }
-.PlaygroundEditorTheme__tableCellSelected::after {
+.SL_Theme__tableCellSelected::after {
   position: absolute;
   left: 0;
   right: 0;
@@ -178,7 +192,7 @@
   content: '';
   pointer-events: none;
 }
-.PlaygroundEditorTheme__tableAddColumns {
+.SL_Theme__tableAddColumns {
   position: absolute;
   background-color: #eee;
   height: 100%;
@@ -186,7 +200,7 @@
   border: 0;
   cursor: pointer;
 }
-.PlaygroundEditorTheme__tableAddColumns:after {
+.SL_Theme__tableAddColumns:after {
   background-image: url(../images/icons/plus.svg);
   background-size: contain;
   background-position: center;
@@ -200,11 +214,11 @@
   height: 100%;
   opacity: 0.4;
 }
-.PlaygroundEditorTheme__tableAddColumns:hover,
-.PlaygroundEditorTheme__tableAddRows:hover {
+.SL_Theme__tableAddColumns:hover,
+.SL_Theme__tableAddRows:hover {
   background-color: #c9dbf0;
 }
-.PlaygroundEditorTheme__tableAddRows {
+.SL_Theme__tableAddRows {
   position: absolute;
   width: calc(100% - 25px);
   background-color: #eee;
@@ -212,7 +226,7 @@
   border: 0;
   cursor: pointer;
 }
-.PlaygroundEditorTheme__tableAddRows:after {
+.SL_Theme__tableAddRows:after {
   background-image: url(../images/icons/plus.svg);
   background-size: contain;
   background-position: center;
@@ -234,7 +248,7 @@
     opacity: 1;
   }
 }
-.PlaygroundEditorTheme__tableCellResizeRuler {
+.SL_Theme__tableCellResizeRuler {
   display: block;
   position: absolute;
   width: 1px;
@@ -242,7 +256,7 @@
   height: 100%;
   top: 0;
 }
-.PlaygroundEditorTheme__tableCellActionButtonContainer {
+.SL_Theme__tableCellActionButtonContainer {
   display: block;
   right: 5px;
   top: 6px;
@@ -251,7 +265,7 @@
   width: 20px;
   height: 20px;
 }
-.PlaygroundEditorTheme__tableCellActionButton {
+.SL_Theme__tableCellActionButton {
   background-color: #eee;
   display: block;
   border: 0;
@@ -261,52 +275,52 @@
   color: #222;
   cursor: pointer;
 }
-.PlaygroundEditorTheme__tableCellActionButton:hover {
+.SL_Theme__tableCellActionButton:hover {
   background-color: #ddd;
 }
-.PlaygroundEditorTheme__characterLimit {
+.SL_Theme__characterLimit {
   display: inline;
   background-color: #ffbbbb !important;
 }
-.PlaygroundEditorTheme__ol1 {
+.SL_Theme__ol1 {
   padding: 0;
   margin: 0;
   list-style-position: outside;
 }
-.PlaygroundEditorTheme__ol2 {
+.SL_Theme__ol2 {
   padding: 0;
   margin: 0;
   list-style-type: upper-alpha;
   list-style-position: outside;
 }
-.PlaygroundEditorTheme__ol3 {
+.SL_Theme__ol3 {
   padding: 0;
   margin: 0;
   list-style-type: lower-alpha;
   list-style-position: outside;
 }
-.PlaygroundEditorTheme__ol4 {
+.SL_Theme__ol4 {
   padding: 0;
   margin: 0;
   list-style-type: upper-roman;
   list-style-position: outside;
 }
-.PlaygroundEditorTheme__ol5 {
+.SL_Theme__ol5 {
   padding: 0;
   margin: 0;
   list-style-type: lower-roman;
   list-style-position: outside;
 }
-.PlaygroundEditorTheme__ul {
+.SL_Theme__ul {
   padding: 0;
   margin: 0;
   list-style-position: outside;
 }
-.PlaygroundEditorTheme__listItem {
+.SL_Theme__listItem {
   margin: 0 32px;
 }
-.PlaygroundEditorTheme__listItemChecked,
-.PlaygroundEditorTheme__listItemUnchecked {
+.SL_Theme__listItemChecked,
+.SL_Theme__listItemUnchecked {
   position: relative;
   margin-left: 8px;
   margin-right: 8px;
@@ -315,11 +329,11 @@
   list-style-type: none;
   outline: none;
 }
-.PlaygroundEditorTheme__listItemChecked {
+.SL_Theme__listItemChecked {
   text-decoration: line-through;
 }
-.PlaygroundEditorTheme__listItemUnchecked:before,
-.PlaygroundEditorTheme__listItemChecked:before {
+.SL_Theme__listItemUnchecked:before,
+.SL_Theme__listItemChecked:before {
   content: '';
   width: 16px;
   height: 16px;
@@ -330,27 +344,27 @@
   background-size: cover;
   position: absolute;
 }
-.PlaygroundEditorTheme__listItemUnchecked[dir='rtl']:before,
-.PlaygroundEditorTheme__listItemChecked[dir='rtl']:before {
+.SL_Theme__listItemUnchecked[dir='rtl']:before,
+.SL_Theme__listItemChecked[dir='rtl']:before {
   left: auto;
   right: 0;
 }
-.PlaygroundEditorTheme__listItemUnchecked:focus:before,
-.PlaygroundEditorTheme__listItemChecked:focus:before {
+.SL_Theme__listItemUnchecked:focus:before,
+.SL_Theme__listItemChecked:focus:before {
   box-shadow: 0 0 0 2px #a6cdfe;
   border-radius: 2px;
 }
-.PlaygroundEditorTheme__listItemUnchecked:before {
+.SL_Theme__listItemUnchecked:before {
   border: 1px solid #999;
   border-radius: 2px;
 }
-.PlaygroundEditorTheme__listItemChecked:before {
+.SL_Theme__listItemChecked:before {
   border: 1px solid rgb(61, 135, 245);
   border-radius: 2px;
   background-color: #3d87f5;
   background-repeat: no-repeat;
 }
-.PlaygroundEditorTheme__listItemChecked:after {
+.SL_Theme__listItemChecked:after {
   content: '';
   cursor: pointer;
   border-color: #fff;
@@ -365,91 +379,91 @@
   transform: rotate(45deg);
   border-width: 0 2px 2px 0;
 }
-.PlaygroundEditorTheme__nestedListItem {
+.SL_Theme__nestedListItem {
   list-style-type: none;
 }
-.PlaygroundEditorTheme__nestedListItem:before,
-.PlaygroundEditorTheme__nestedListItem:after {
+.SL_Theme__nestedListItem:before,
+.SL_Theme__nestedListItem:after {
   display: none;
 }
-.PlaygroundEditorTheme__tokenComment {
+.SL_Theme__tokenComment {
   color: slategray;
 }
-.PlaygroundEditorTheme__tokenPunctuation {
+.SL_Theme__tokenPunctuation {
   color: #999;
 }
-.PlaygroundEditorTheme__tokenProperty {
+.SL_Theme__tokenProperty {
   color: #905;
 }
-.PlaygroundEditorTheme__tokenSelector {
+.SL_Theme__tokenSelector {
   color: #690;
 }
-.PlaygroundEditorTheme__tokenOperator {
+.SL_Theme__tokenOperator {
   color: #9a6e3a;
 }
-.PlaygroundEditorTheme__tokenAttr {
+.SL_Theme__tokenAttr {
   color: #07a;
 }
-.PlaygroundEditorTheme__tokenVariable {
+.SL_Theme__tokenVariable {
   color: #e90;
 }
-.PlaygroundEditorTheme__tokenFunction {
+.SL_Theme__tokenFunction {
   color: #dd4a68;
 }
-.PlaygroundEditorTheme__mark {
+.SL_Theme__mark {
   background: rgba(255, 212, 0, 0.14);
   border-bottom: 2px solid rgba(255, 212, 0, 0.3);
   padding-bottom: 2px;
 }
-.PlaygroundEditorTheme__markOverlap {
+.SL_Theme__markOverlap {
   background: rgba(255, 212, 0, 0.3);
   border-bottom: 2px solid rgba(255, 212, 0, 0.7);
 }
-.PlaygroundEditorTheme__mark.selected {
+.SL_Theme__mark.selected {
   background: rgba(255, 212, 0, 0.5);
   border-bottom: 2px solid rgba(255, 212, 0, 1);
 }
-.PlaygroundEditorTheme__markOverlap.selected {
+.SL_Theme__markOverlap.selected {
   background: rgba(255, 212, 0, 0.7);
   border-bottom: 2px solid rgba(255, 212, 0, 0.7);
 }
-.PlaygroundEditorTheme__embedBlock {
+.SL_Theme__embedBlock {
   user-select: none;
 }
-.PlaygroundEditorTheme__embedBlockFocus {
+.SL_Theme__embedBlockFocus {
   outline: 2px solid rgb(60, 132, 244);
 }
-.PlaygroundEditorTheme__layoutContainer {
+.SL_Theme__layoutContainer {
   display: grid;
   gap: 10px;
   margin: 10px 0;
 }
-.PlaygroundEditorTheme__layoutItem {
+.SL_Theme__layoutItem {
   border: 1px dashed #ddd;
   padding: 8px 16px;
 }
-.PlaygroundEditorTheme__autocomplete {
+.SL_Theme__autocomplete {
   color: #ccc;
 }
-.PlaygroundEditorTheme__hr {
+.SL_Theme__hr {
   padding: 2px 2px;
   border: none;
   margin: 1em 0;
   cursor: pointer;
 }
-.PlaygroundEditorTheme__hr:after {
+.SL_Theme__hr:after {
   content: '';
   display: block;
   height: 2px;
   background-color: #ccc;
   line-height: 2px;
 }
-.PlaygroundEditorTheme__hr.selected {
+.SL_Theme__hr.selected {
   outline: 2px solid rgb(60, 132, 244);
   user-select: none;
 }
 
-.PlaygroundEditorTheme__specialText {
+.SL_Theme__specialText {
   background-color: yellow;
   font-weight: bold;
 }

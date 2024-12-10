@@ -10,7 +10,7 @@ import type {EditorThemeClasses} from 'svelte-lexical';
 
 import './CommentEditorTheme.css';
 
-import baseTheme from './PlaygroundEditorTheme.js';
+import baseTheme from './DefaultEditorTheme.js';
 
 const theme: EditorThemeClasses = {
   ...baseTheme,
