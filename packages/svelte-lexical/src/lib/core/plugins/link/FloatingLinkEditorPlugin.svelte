@@ -24,7 +24,7 @@
   import FloatingLinkEditor from './FloatingLinkEditor.svelte';
 
   const editor = getEditor();
-  let { anchorElem = document.body } = $props();
+  let {anchorElem = document.body} = $props();
 
   let activeEditor = $state(editor);
   const isLink = writable(false);

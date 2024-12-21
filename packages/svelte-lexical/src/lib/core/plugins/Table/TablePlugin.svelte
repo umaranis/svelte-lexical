@@ -41,7 +41,11 @@
     hasTabHandler?: boolean;
   }
 
-  let { hasCellMerge = true, hasCellBackgroundColor = true, hasTabHandler = true }: Props = $props();
+  let {
+    hasCellMerge = true,
+    hasCellBackgroundColor = true,
+    hasTabHandler = true,
+  }: Props = $props();
 
   const editor: LexicalEditor = getEditor();
 

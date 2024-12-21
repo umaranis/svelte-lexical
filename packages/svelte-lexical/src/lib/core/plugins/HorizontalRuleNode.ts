@@ -11,7 +11,7 @@ import type {
 import {createCommand, DecoratorNode, $applyNodeReplacement} from 'lexical';
 import HorizontalRuleComponent from './HorizontalRuleComponent.svelte';
 import {addClassNamesToElement} from '@lexical/utils';
-import { mount } from "svelte";
+import {mount} from 'svelte';
 
 export type SerializedHorizontalRuleNode = SerializedLexicalNode;
 
@@ -64,13 +64,13 @@ export class HorizontalRuleNode extends DecoratorNode<unknown> {
     addClassNamesToElement(hr, config.theme.hr);
 
     mount(HorizontalRuleComponent, {
-            target: hr,
-            props: {
-              nodeKey: this.__key,
-              editor,
-              self: hr,
-            },
-          });
+      target: hr,
+      props: {
+        nodeKey: this.__key,
+        editor,
+        self: hr,
+      },
+    });
 
     return hr;
   }

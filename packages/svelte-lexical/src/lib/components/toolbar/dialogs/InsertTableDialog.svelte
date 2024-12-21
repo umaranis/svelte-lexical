@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import {run} from 'svelte/legacy';
 
   import {getActiveEditor} from '$lib/core/composerContext.js';
   import {INSERT_TABLE_COMMAND} from '@lexical/table';
@@ -29,7 +29,7 @@
     showModal?: boolean;
   }
 
-  let { showModal = $bindable(false) }: Props = $props();
+  let {showModal = $bindable(false)}: Props = $props();
   export function open() {
     showModal = true;
   }

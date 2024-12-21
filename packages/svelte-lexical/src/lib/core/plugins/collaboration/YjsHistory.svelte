@@ -15,7 +15,7 @@
     binding: Binding;
   }
 
-  let { editor, binding }: Props = $props();
+  let {editor, binding}: Props = $props();
 
   const undoManager = createUndoManager(binding, binding.root.getSharedType());
 

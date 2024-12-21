@@ -19,7 +19,7 @@
     validateUrl?: undefined | ((url: string) => boolean);
   }
 
-  let { validateUrl = undefined }: Props = $props();
+  let {validateUrl = undefined}: Props = $props();
 
   const editor = getEditor();
 

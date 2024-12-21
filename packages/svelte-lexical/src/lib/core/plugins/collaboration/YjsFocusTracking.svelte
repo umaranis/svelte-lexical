@@ -22,7 +22,7 @@
     provider,
     name,
     color,
-    awarenessData = undefined
+    awarenessData = undefined,
   }: Props = $props();
 
   onMount(() => {

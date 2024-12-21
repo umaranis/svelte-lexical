@@ -6,13 +6,13 @@
 
   interface Props {
     providerFactory: (
-    // eslint-disable-next-line no-shadow
-    id: string,
-    yjsDocMap: Map<string, Doc>,
-  ) => Provider;
+      // eslint-disable-next-line no-shadow
+      id: string,
+      yjsDocMap: Map<string, Doc>,
+    ) => Provider;
   }
 
-  let { providerFactory }: Props = $props();
+  let {providerFactory}: Props = $props();
 
   setImageHistoryPluginType({
     componentType: CollaborationPlugin,

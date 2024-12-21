@@ -7,11 +7,11 @@
 
   interface Props {
     loggedCommands?: ReadonlyArray<
-    {index: number} & LexicalCommand<unknown> & {payload: unknown}
-  >;
+      {index: number} & LexicalCommand<unknown> & {payload: unknown}
+    >;
   }
 
-  let { loggedCommands = $bindable([]) }: Props = $props();
+  let {loggedCommands = $bindable([])}: Props = $props();
 
   onMount(() => {
     const unregisterCommandListeners = new Set<() => void>();

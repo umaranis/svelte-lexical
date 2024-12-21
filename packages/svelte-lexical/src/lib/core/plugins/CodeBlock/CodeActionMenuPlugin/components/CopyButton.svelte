@@ -14,7 +14,7 @@
     getCodeDOMNode: () => HTMLElement | null;
   }
 
-  let { getCodeDOMNode }: Props = $props();
+  let {getCodeDOMNode}: Props = $props();
 
   let isCopyCompleted = $state(false);
 

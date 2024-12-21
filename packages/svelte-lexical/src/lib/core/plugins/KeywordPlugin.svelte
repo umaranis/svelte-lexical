@@ -14,7 +14,7 @@
     keywordsRegex: RegExp;
   }
 
-  let { keywordsRegex }: Props = $props();
+  let {keywordsRegex}: Props = $props();
 
   const editor = getEditor();
 

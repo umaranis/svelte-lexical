@@ -16,7 +16,7 @@
     getCodeDOMNode: () => HTMLElement | null;
   }
 
-  let { lang, getCodeDOMNode }: Props = $props();
+  let {lang, getCodeDOMNode}: Props = $props();
 
   function getPrettierOptions(lang: string): Options {
     const options = PRETTIER_OPTIONS_BY_LANG[lang];

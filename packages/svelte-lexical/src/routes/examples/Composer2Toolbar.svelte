@@ -13,8 +13,8 @@
   import {Toolbar} from '$lib/index.js';
 </script>
 
-<Toolbar   >
-  {#snippet children({ editor, activeEditor, blockType })}
+<Toolbar>
+  {#snippet children({editor, activeEditor, blockType})}
     <FontFamilyDropDown />
     <FontSizeDropDown />
     <Divider />

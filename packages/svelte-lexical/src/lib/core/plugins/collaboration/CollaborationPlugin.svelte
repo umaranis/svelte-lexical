@@ -19,10 +19,10 @@
   interface Props {
     id?: string;
     providerFactory: (
-    // eslint-disable-next-line no-shadow
-    id: string,
-    yjsDocMap: Map<string, Doc>,
-  ) => Provider;
+      // eslint-disable-next-line no-shadow
+      id: string,
+      yjsDocMap: Map<string, Doc>,
+    ) => Provider;
     shouldBootstrap: boolean;
     username?: string | undefined;
     cursorColor?: string | undefined;
@@ -41,7 +41,7 @@
     cursorsContainerRef = null,
     initialEditorState = null,
     excludedProperties = undefined,
-    awarenessData = undefined
+    awarenessData = undefined,
   }: Props = $props();
 
   const collabContext = useCollaborationContext(username, cursorColor);

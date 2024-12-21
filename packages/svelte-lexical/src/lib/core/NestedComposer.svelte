@@ -9,7 +9,6 @@
   } from 'lexical';
   import {onMount, setContext} from 'svelte';
 
-  
   interface Props {
     // unlike Composer, a NestedComposer doesn't create the editor, it is passed to it
     initialEditor: LexicalEditor;
@@ -24,7 +23,7 @@
     parentEditor,
     initialTheme = null,
     initialNodes = null,
-    children
+    children,
   }: Props = $props();
 
   function getTransformSetFromKlass(

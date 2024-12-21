@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import {run} from 'svelte/legacy';
 
   import {
     addClassNamesToElement,
@@ -29,7 +29,7 @@
     self: HTMLElement;
   }
 
-  let { editor, nodeKey, self }: Props = $props();
+  let {editor, nodeKey, self}: Props = $props();
   let isSelected = createNodeSelectionStore(editor, nodeKey);
   const isSelectedClassName = 'selected';
 

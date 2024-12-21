@@ -414,7 +414,7 @@
     onChange?: ChangeHandler | undefined;
   }
 
-  let { matchers, onChange = undefined }: Props = $props();
+  let {matchers, onChange = undefined}: Props = $props();
 
   onMount(() => {
     if (!editor.hasNodes([AutoLinkNode])) {

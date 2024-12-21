@@ -8,7 +8,7 @@
     transformers: Array<Transformer>;
   }
 
-  let { transformers }: Props = $props();
+  let {transformers}: Props = $props();
 
   const editor = getEditor();
 

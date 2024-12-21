@@ -10,7 +10,7 @@
     children?: import('svelte').Snippet;
   }
 
-  let { className = 'Placeholder__root', children }: Props = $props();
+  let {className = 'Placeholder__root', children}: Props = $props();
 
   const editor = getEditor();
   let canShowPlaceHolder = $state(true);

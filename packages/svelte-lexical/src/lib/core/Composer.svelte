@@ -43,7 +43,7 @@
     children?: import('svelte').Snippet;
   }
 
-  let { initialConfig, children }: Props = $props();
+  let {initialConfig, children}: Props = $props();
 
   const {
     theme,

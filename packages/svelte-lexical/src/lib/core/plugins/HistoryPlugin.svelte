@@ -14,7 +14,8 @@
     delay?: number;
   }
 
-  let { externalHistoryState = createEmptyHistoryState(), delay = 1000 }: Props = $props();
+  let {externalHistoryState = createEmptyHistoryState(), delay = 1000}: Props =
+    $props();
 
   // returns callback to unregister
   onMount(() => registerHistory(editor, externalHistoryState, delay));

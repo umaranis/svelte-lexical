@@ -16,7 +16,7 @@
     value = $bindable(),
     id = '',
     onChange = undefined,
-    width = undefined
+    width = undefined,
   }: Props = $props();
 </script>
 

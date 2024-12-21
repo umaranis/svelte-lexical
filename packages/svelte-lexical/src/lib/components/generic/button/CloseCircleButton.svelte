@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createBubbler } from 'svelte/legacy';
+  import {createBubbler} from 'svelte/legacy';
 
   const bubble = createBubbler();
 </script>

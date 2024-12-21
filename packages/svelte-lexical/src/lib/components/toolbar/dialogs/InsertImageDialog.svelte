@@ -11,7 +11,7 @@
     showModal?: boolean;
   }
 
-  let { showModal = $bindable(false) }: Props = $props();
+  let {showModal = $bindable(false)}: Props = $props();
   export function open() {
     showModal = true;
   }

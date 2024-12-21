@@ -8,7 +8,7 @@
     children?: import('svelte').Snippet;
   }
 
-  let { children }: Props = $props();
+  let {children}: Props = $props();
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
     getContext('blockType');

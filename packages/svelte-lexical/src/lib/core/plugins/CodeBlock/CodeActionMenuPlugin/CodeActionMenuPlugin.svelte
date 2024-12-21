@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import {run} from 'svelte/legacy';
 
   import {
     $isCodeNode as isCodeNode,
@@ -23,13 +23,12 @@
     right: string;
   }
 
-  
   interface Props {
     // this component is supposed to be appended to `anchorElem` as per lexical but positioning works without it
     anchorElem?: HTMLElement;
   }
 
-  let { anchorElem = document.body }: Props = $props();
+  let {anchorElem = document.body}: Props = $props();
 
   const editor = getEditor();
 

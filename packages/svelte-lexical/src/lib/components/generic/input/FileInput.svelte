@@ -12,7 +12,7 @@
     accept = undefined,
     label,
     onChange,
-    id = ''
+    id = '',
   }: Props = $props();
 </script>
 
