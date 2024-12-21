@@ -120,6 +120,7 @@
 {#if $isEditable}
   <div class="table-cell-action-button-container" bind:this={menuButtonRef}>
     {#if $tableCellNode != null}
+      <!-- svelte-ignore a11y_consider_explicit_label -->
       <button
         type="button"
         class="table-cell-action-button chevron-down"

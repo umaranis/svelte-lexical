@@ -216,6 +216,7 @@
 </script>
 
 {#if $isShownRow}
+  <!-- svelte-ignore a11y_consider_explicit_label -->
   <button
     class={'PlaygroundEditorTheme__tableAddRows'}
     style={$position}
@@ -223,6 +224,7 @@
   </button>
 {/if}
 {#if $isShownColumn}
+  <!-- svelte-ignore a11y_consider_explicit_label -->
   <button
     class={'PlaygroundEditorTheme__tableAddColumns'}
     style={$position}

@@ -181,6 +181,7 @@
   disabled={!isEditable ||
     ($selectionFontSize !== '' && Number(inputValue) <= MIN_ALLOWED_FONT_SIZE)}
   onclick={() => handleButtonClick(updateFontSizeType.decrement)}
+  aria-label="Increase font size"
   class="toolbar-item sl_font-decrement">
   <i class="format sl_minus-icon"></i>
 </button>
@@ -200,6 +201,7 @@
   disabled={!isEditable ||
     ($selectionFontSize !== '' && Number(inputValue) >= MAX_ALLOWED_FONT_SIZE)}
   onclick={() => handleButtonClick(updateFontSizeType.increment)}
+  aria-label="Decrease font size"
   class="toolbar-item sl_font-increment">
   <i class="format sl_add-icon"></i>
 </button>
