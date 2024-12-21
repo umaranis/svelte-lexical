@@ -84,14 +84,12 @@
   let showLimited = $state(false);
   let lastEditorStateRef: EditorState | null = $state(null);
 
-  let commandsLog:
-    | ReadonlyArray<
-        {index: number} & LexicalCommand<unknown> & {payload: unknown}
-      >
-    | undefined = $state();
+  let commandsLog: ReadonlyArray<
+    {index: number} & LexicalCommand<unknown> & {payload: unknown}
+  > = $state([]);
 
   function generateTree(editorState: EditorState) {
-    const treeText = generateContent(editor, commandsLog!, showExportDOM);
+    const treeText = generateContent(editor, commandsLog, showExportDOM);
 
     content = treeText;
 
@@ -151,7 +149,7 @@
         generateTree(editorState);
       }),
       editor.registerEditableListener(() => {
-        const treeText = generateContent(editor, commandsLog!, showExportDOM);
+        const treeText = generateContent(editor, commandsLog, showExportDOM);
         content = treeText;
       }),
     );
@@ -628,7 +626,7 @@
   run(() => {
     const editorState = editor.getEditorState();
     if (!showLimited && editorState._nodeMap.size > 1) {
-      content = generateContent(editor, commandsLog!, showExportDOM);
+      content = generateContent(editor, commandsLog, showExportDOM);
     }
   });
   let totalEditorStates = $derived(timeStampedEditorStates.length);
