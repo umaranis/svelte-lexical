@@ -235,7 +235,8 @@
           rel="noopener noreferrer">
           {linkUrl}
         </a>
-        <!-- svelte-ignore a11y_click_events_have_key_events, a11y_interactive_supports_focus -->
+        <!-- svelte-ignore a11y_interactive_supports_focus -->
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div
           class="link-edit"
           role="button"

@@ -26,7 +26,6 @@
     children,
   }: Props = $props();
 
-  // svelte-ignore non_reactive_update
   let dropDownRef = $state<HTMLDivElement | undefined>();
   let buttonRef: HTMLButtonElement;
   let showDropDown = $state(false);

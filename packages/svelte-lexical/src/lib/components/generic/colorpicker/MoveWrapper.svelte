@@ -5,7 +5,7 @@
   interface Props {
     className?: string | undefined;
     style?: string | undefined;
-    onChange: any;
+    onChange: (coords: {x: number; y: number}) => void;
     children?: import('svelte').Snippet;
   }
 

@@ -2,7 +2,6 @@
   import {onMount, onDestroy} from 'svelte';
 
   interface Props {
-    // eslint-disable-next-line no-undef
     target?: HTMLElement | null | undefined;
     children?: import('svelte').Snippet;
   }

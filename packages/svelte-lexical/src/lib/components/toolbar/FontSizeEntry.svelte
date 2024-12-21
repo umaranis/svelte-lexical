@@ -11,7 +11,6 @@
   const MAX_ALLOWED_FONT_SIZE = 72;
   const DEFAULT_FONT_SIZE = 15;
 
-  // eslint-disable-next-line no-shadow
   enum updateFontSizeType {
     increment = 1,
     decrement,

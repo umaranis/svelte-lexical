@@ -12,7 +12,7 @@ import type {
 } from 'lexical';
 
 import {$applyNodeReplacement, createEditor, DecoratorNode} from 'lexical';
-import type {ComponentProps, Component} from 'svelte';
+import type {ComponentProps} from 'svelte';
 import ImageComponent from './ImageComponent.svelte';
 /*import * as React from 'react';
 import {Suspense} from 'react';*/
@@ -67,7 +67,7 @@ export type SerializedImageNode = Spread<
 >;
 
 type DecoratorImageType = {
-  componentClass: Component<any>;
+  componentClass: typeof ImageComponent;
   updateProps: (props: ComponentProps<typeof ImageComponent>) => void;
 };
 

@@ -4,9 +4,11 @@
   import StateStoreRichTextUpdator from './StateStoreRichTextUpdator.svelte';
   import {setContext} from 'svelte';
   import {getEditor} from '$lib/core/composerContext.js';
-  import type {NodeKey} from 'lexical';
+  import type {LexicalEditor, NodeKey} from 'lexical';
   interface Props {
-    children?: import('svelte').Snippet<[any]>;
+    children?: import('svelte').Snippet<
+      [{editor: LexicalEditor; activeEditor: LexicalEditor; blockType: string}]
+    >;
   }
 
   let {children}: Props = $props();

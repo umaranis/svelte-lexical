@@ -18,11 +18,7 @@
 
   interface Props {
     id?: string;
-    providerFactory: (
-      // eslint-disable-next-line no-shadow
-      id: string,
-      yjsDocMap: Map<string, Doc>,
-    ) => Provider;
+    providerFactory: (id: string, yjsDocMap: Map<string, Doc>) => Provider;
     shouldBootstrap: boolean;
     username?: string | undefined;
     cursorColor?: string | undefined;

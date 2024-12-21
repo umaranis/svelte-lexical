@@ -63,7 +63,7 @@
   const disconnect = () => {
     try {
       provider.disconnect();
-    } catch (e) {
+    } catch {
       // Do nothing
     }
   };
