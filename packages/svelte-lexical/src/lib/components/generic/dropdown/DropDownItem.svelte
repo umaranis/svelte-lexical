@@ -18,7 +18,7 @@
     children,
   }: Props = $props();
 
-  let ref: HTMLButtonElement = $state();
+  let ref: HTMLButtonElement | undefined = $state();
 
   const registerItem = getRegisterItemFunc();
 
@@ -27,7 +27,7 @@
   }
 
   onMount(() => {
-    registerItem(ref);
+    registerItem(ref!);
   });
 </script>
 

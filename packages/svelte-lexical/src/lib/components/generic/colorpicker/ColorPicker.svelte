@@ -24,7 +24,7 @@
 
   let selfColor = $state(transformColor('hex', color));
   let inputColor = $state(color);
-  let innerDivRef: HTMLDivElement = $state();
+  let innerDivRef: HTMLDivElement | null = $state(null);
 
   let saturationPosition = $derived({
     x: (selfColor.hsv.s / 100) * WIDTH,

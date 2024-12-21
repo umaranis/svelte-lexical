@@ -56,7 +56,7 @@
     cellMerge
   }: Props = $props();
 
-  let colorPicker: ColorPickerDialog = $state();
+  let colorPicker: ColorPickerDialog;
 
   const editor = getEditor();
   let dropDownRef: HTMLDivElement | null = $state(null);
