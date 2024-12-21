@@ -6,9 +6,9 @@
   interface Props {
     onResizeStart: () => void;
     onResizeEnd: (
-    width: 'inherit' | number,
-    height: 'inherit' | number,
-  ) => void;
+      width: 'inherit' | number,
+      height: 'inherit' | number,
+    ) => void;
     buttonRef: Writable<HTMLButtonElement | null>;
     imageRef: HTMLElement | null;
     maxWidth: number | null;
@@ -27,7 +27,7 @@
     editor,
     showCaption,
     setShowCaption,
-    captionsEnabled
+    captionsEnabled,
   }: Props = $props();
 
   let controlWrapperRef: HTMLDivElement | null = $state(null);
@@ -267,40 +267,48 @@
     class="image-resizer image-resizer-n"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.north);
-    }}></div>
+    }}>
+  </div>
   <div
     class="image-resizer image-resizer-ne"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.north | Direction.east);
-    }}></div>
+    }}>
+  </div>
   <div
     class="image-resizer image-resizer-e"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.east);
-    }}></div>
+    }}>
+  </div>
   <div
     class="image-resizer image-resizer-se"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.south | Direction.east);
-    }}></div>
+    }}>
+  </div>
   <div
     class="image-resizer image-resizer-s"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.south);
-    }}></div>
+    }}>
+  </div>
   <div
     class="image-resizer image-resizer-sw"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.south | Direction.west);
-    }}></div>
+    }}>
+  </div>
   <div
     class="image-resizer image-resizer-w"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.west);
-    }}></div>
+    }}>
+  </div>
   <div
     class="image-resizer image-resizer-nw"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.north | Direction.west);
-    }}></div>
+    }}>
+  </div>
 </div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import {run} from 'svelte/legacy';
 
   import {onMount} from 'svelte';
   import {setRegisterItemFunc} from './utils.js';
@@ -10,7 +10,7 @@
     children?: import('svelte').Snippet;
   }
 
-  let { onClose, dropDownRef = $bindable(), children }: Props = $props();
+  let {onClose, dropDownRef = $bindable(), children}: Props = $props();
 
   let items: Array<HTMLButtonElement> = [];
   let highlightedItem: HTMLButtonElement | null = $state(null);

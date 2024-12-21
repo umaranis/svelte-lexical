@@ -13,7 +13,7 @@
     className = undefined,
     style = undefined,
     onChange,
-    children
+    children,
   }: Props = $props();
 
   let divRef: HTMLDivElement = $state();

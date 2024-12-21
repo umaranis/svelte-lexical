@@ -1,14 +1,13 @@
 <script lang="ts">
   import {onMount, onDestroy} from 'svelte';
 
-  
   interface Props {
     // eslint-disable-next-line no-undef
     target?: HTMLElement | null | undefined;
     children?: import('svelte').Snippet;
   }
 
-  let { target = globalThis.document?.body, children }: Props = $props();
+  let {target = globalThis.document?.body, children}: Props = $props();
 
   let ref: HTMLElement | undefined = $state();
 

@@ -17,7 +17,7 @@
     showModal?: boolean;
   }
 
-  let { color, title, showModal = $bindable(false) }: Props = $props();
+  let {color, title, showModal = $bindable(false)}: Props = $props();
   export function open(onChangeCallback: (value: string) => void) {
     onChange = onChangeCallback;
     showModal = true;

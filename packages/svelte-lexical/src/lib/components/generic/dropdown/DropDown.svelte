@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import {run} from 'svelte/legacy';
 
   import {CAN_USE_DOM} from '../../../environment/canUseDOM.js';
   import DropDownItems from './DropDownItems.svelte';
@@ -23,7 +23,7 @@
     buttonLabel = undefined,
     stopCloseOnClickSelf = false,
     title = undefined,
-    children
+    children,
   }: Props = $props();
 
   // svelte-ignore non_reactive_update

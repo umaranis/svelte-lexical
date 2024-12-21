@@ -53,7 +53,7 @@
     spellCheck = true,
     style = undefined,
     tabIndex = undefined,
-    testid = undefined
+    testid = undefined,
   }: Props = $props();
 
   let isEditable = $state(false);
@@ -102,4 +102,5 @@
   {role}
   spellcheck={spellCheck}
   {style}
-  tabindex={tabIndex}></div>
+  tabindex={tabIndex}>
+</div>

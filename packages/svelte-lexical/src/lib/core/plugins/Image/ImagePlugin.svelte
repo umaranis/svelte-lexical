@@ -59,7 +59,7 @@
     children?: import('svelte').Snippet;
   }
 
-  let { captionsEnabled = true, children }: Props = $props();
+  let {captionsEnabled = true, children}: Props = $props();
 
   onMount(() => {
     if (!editor.hasNodes([ImageNode])) {

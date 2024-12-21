@@ -15,7 +15,7 @@
     headingSize: HeadingTagType;
   }
 
-  let { headingSize }: Props = $props();
+  let {headingSize}: Props = $props();
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
     getContext('blockType');

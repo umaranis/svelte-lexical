@@ -26,8 +26,8 @@
   let imageDialog: InsertImageDialog;
 </script>
 
-<Toolbar   >
-  {#snippet children({ editor, activeEditor, blockType })}
+<Toolbar>
+  {#snippet children({editor, activeEditor, blockType})}
     <UndoButton />
     <RedoButton />
     <Divider />

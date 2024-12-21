@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import {run} from 'svelte/legacy';
 
   import {
     $getTableCellNodeFromLexicalNode as getTableCellNodeFromLexicalNode,
@@ -20,7 +20,7 @@
     cellMerge: boolean;
   }
 
-  let { anchorElem, cellMerge }: Props = $props();
+  let {anchorElem, cellMerge}: Props = $props();
 
   const editor = getEditor();
   const isEditable = getIsEditable();

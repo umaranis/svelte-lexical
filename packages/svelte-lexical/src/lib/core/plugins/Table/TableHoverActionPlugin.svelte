@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import {run} from 'svelte/legacy';
 
   import {
     $getTableColumnIndexFromTableCellNode as getTableColumnIndexFromTableCellNode,
@@ -40,7 +40,7 @@
     anchorElem: HTMLElement;
   }
 
-  let { anchorElem }: Props = $props();
+  let {anchorElem}: Props = $props();
 
   function getMouseInfo(event: MouseEvent): {
     tableDOMNode: HTMLElement | null;
@@ -219,11 +219,13 @@
   <button
     class={'PlaygroundEditorTheme__tableAddRows'}
     style={$position}
-    onclick={() => insertAction(true)}></button>
+    onclick={() => insertAction(true)}>
+  </button>
 {/if}
 {#if $isShownColumn}
   <button
     class={'PlaygroundEditorTheme__tableAddColumns'}
     style={$position}
-    onclick={() => insertAction(false)}></button>
+    onclick={() => insertAction(false)}>
+  </button>
 {/if}

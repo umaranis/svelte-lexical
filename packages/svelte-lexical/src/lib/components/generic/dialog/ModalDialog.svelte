@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { run, self, createBubbler, stopPropagation as stopPropagation_1 } from 'svelte/legacy';
+  import {
+    run,
+    self,
+    createBubbler,
+    stopPropagation as stopPropagation_1,
+  } from 'svelte/legacy';
 
   const bubble = createBubbler();
   interface Props {
@@ -8,7 +13,11 @@
     children?: import('svelte').Snippet;
   }
 
-  let { showModal = $bindable(), stopPropagation = true, children }: Props = $props();
+  let {
+    showModal = $bindable(),
+    stopPropagation = true,
+    children,
+  }: Props = $props();
 
   let dialog: HTMLDialogElement | undefined = $state();
 

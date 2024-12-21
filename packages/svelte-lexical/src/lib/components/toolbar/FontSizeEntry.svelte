@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import {run} from 'svelte/legacy';
 
   import {$patchStyleText as patchStyleText} from '@lexical/selection';
   import {$getSelection as getSelection} from 'lexical';

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import {run} from 'svelte/legacy';
 
   import type {
     BaseSelection,
@@ -67,7 +67,7 @@
     timeTravelPanelButtonClassName,
     timeTravelPanelClassName,
     timeTravelPanelSliderClassName,
-    viewClassName
+    viewClassName,
   }: Props = $props();
 
   const editor: LexicalEditor = getEditor();
@@ -86,7 +86,7 @@
 
   let commandsLog:
     | ReadonlyArray<
-    {index: number} & LexicalCommand<unknown> & {payload: unknown}
+        {index: number} & LexicalCommand<unknown> & {payload: unknown}
       >
     | undefined = $state();
 
@@ -129,8 +129,6 @@
       play();
     }, timeDiff);
   }
-
-
 
   onMount(() => {
     const element = treeElementRef;

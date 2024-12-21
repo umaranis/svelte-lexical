@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import {run} from 'svelte/legacy';
 
   import {
     basicColors,
@@ -15,12 +15,10 @@
 
   interface Props {
     color: string;
-    onChange: 
-    | ((value: string, skipHistoryStack: boolean) => void)
-    | undefined;
+    onChange: ((value: string, skipHistoryStack: boolean) => void) | undefined;
   }
 
-  let { color, onChange }: Props = $props();
+  let {color, onChange}: Props = $props();
 
   let selfColor = $state(transformColor('hex', color));
   let inputColor = $state(color);
@@ -92,7 +90,8 @@
         onclick={() => {
           inputColor = basicColor;
           selfColor = transformColor('hex', basicColor);
-        }}></button>
+        }}>
+      </button>
     {/each}
   </div>
   <MoveWrapper
@@ -101,15 +100,18 @@
     onChange={onMoveSaturation}>
     <div
       class="color-picker-saturation_cursor"
-      style="background-color: {selfColor.hex}; left: {saturationPosition.x}px; top: {saturationPosition.y}px"></div>
+      style="background-color: {selfColor.hex}; left: {saturationPosition.x}px; top: {saturationPosition.y}px">
+    </div>
   </MoveWrapper>
   <MoveWrapper className="color-picker-hue" onChange={onMoveHue}>
     <div
       class="color-picker-hue_cursor"
       style="background-color: hsl({selfColor.hsv
-        .h}, 100%, 50%); left: {huePosition.x}px"></div>
+        .h}, 100%, 50%); left: {huePosition.x}px">
+    </div>
   </MoveWrapper>
-  <div class="color-picker-color" style="background-color: {selfColor.hex}"></div>
+  <div class="color-picker-color" style="background-color: {selfColor.hex}">
+  </div>
 </div>
 
 <style>

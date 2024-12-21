@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import {run} from 'svelte/legacy';
 
   import './FloatingLinkEditor.css';
   import {
@@ -39,12 +39,7 @@
     isEditMode: Writable<boolean>;
   }
 
-  let {
-    editor,
-    isLink,
-    anchorElem,
-    isEditMode
-  }: Props = $props();
+  let {editor, isLink, anchorElem, isEditMode}: Props = $props();
   let lastSelection: BaseSelection | null = null;
 
   run(() => {
@@ -221,14 +216,16 @@
           onmousedown={(event) => event.preventDefault()}
           onclick={() => {
             $isEditMode = false;
-          }}></div>
+          }}>
+        </div>
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div
           class="link-confirm"
           role="button"
           tabIndex={0}
           onmousedown={(event) => event.preventDefault()}
-          onclick={handleLinkSubmission}></div>
+          onclick={handleLinkSubmission}>
+        </div>
       </div>
     {:else}
       <div class="link-view">
@@ -247,7 +244,8 @@
           onclick={() => {
             editedLinkUrl = linkUrl;
             $isEditMode = true;
-          }}></div>
+          }}>
+        </div>
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div
           class="link-trash"
@@ -256,7 +254,8 @@
           onmousedown={(event) => event.preventDefault()}
           onclick={() => {
             editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
-          }}></div>
+          }}>
+        </div>
       </div>
     {/if}
   {/if}
