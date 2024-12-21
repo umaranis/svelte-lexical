@@ -1,6 +1,6 @@
 import type {HistoryState} from '@lexical/history';
 import type {LexicalEditor} from 'lexical';
-import {SvelteComponent, getContext, setContext} from 'svelte';
+import {type Component, getContext, setContext} from 'svelte';
 import type {Writable} from 'svelte/store';
 
 export function getEditor(): LexicalEditor {
@@ -33,7 +33,7 @@ export function setHistoryStateContext(historyState: HistoryState) {
 
 export type SvelteComponentTypeRef = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  componentType: typeof SvelteComponent<any>;
+  componentType: typeof Component<any>;
   props?: Record<string, object | string | boolean>;
 };
 

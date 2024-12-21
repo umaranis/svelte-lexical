@@ -6,7 +6,7 @@
     type LexicalEditor,
     type LexicalNode,
   } from 'lexical';
-  import {getAllContexts, onMount, SvelteComponent} from 'svelte';
+  import {getAllContexts, onMount, type Component} from 'svelte';
   import {getEditor} from './composerContext.js';
 
   type MyKlassConstructor = KlassConstructor<typeof LexicalNode> & {
@@ -17,7 +17,7 @@
 
   const editor: LexicalEditor = getEditor();
   // cache for svelte components
-  const components: Record<string, SvelteComponent> = {};
+  const components: Record<string, Component> = {};
   // cache for dirty components identified by mutation listener (cache is cleared after decorator listener renders them)
   const dirtyComponents: Array<string> = [];
 
@@ -54,7 +54,7 @@
       // 1- set `props` on existing svelte components
       // 2- create new components and put them in cache
       editor.registerDecoratorListener<{
-        componentClass: typeof SvelteComponent;
+        componentClass: typeof Component;
         props: object;
       }>((decorators) => {
         dirtyComponents.forEach((nodeKey) => {
