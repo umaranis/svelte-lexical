@@ -1,3 +1,5 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
   import {BlockFormatDropDown} from '$lib/index.js';
   import {BoldButton} from '$lib/index.js';
@@ -23,11 +25,11 @@
   import {InsertHRDropDownItem} from '$lib/index.js';
   import {InsertImageDropDownItem} from '$lib/index.js';
 
-  let imageDialog: InsertImageDialog = $state();
+  let imageDialog: InsertImageDialog;
 </script>
 
-<Toolbar   >
-  {#snippet children({ editor, activeEditor, blockType })}
+<Toolbar>
+  {#snippet children({editor, activeEditor, blockType})}
     <UndoButton />
     <RedoButton />
     <Divider />
@@ -55,7 +57,7 @@
     <Divider />
     <InsertDropDown>
       <InsertHRDropDownItem />
-      <InsertImageDropDownItem on:click={() => imageDialog.open()} />
+      <InsertImageDropDownItem onclick={() => imageDialog!.open()} />
     </InsertDropDown>
     <Divider />
     <DropDownAlign />

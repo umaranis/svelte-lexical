@@ -1,3 +1,5 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
   import InsertTableDialog from '$lib/components/toolbar/dialogs/InsertTableDialog.svelte';
   import InsertTableDropDownItem from '$lib/components/toolbar/InsertDropDown/InsertTableDropDownItem.svelte';

@@ -1,3 +1,5 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
   import {BoldButton} from '$lib/index.js';
   import {Divider} from '$lib/index.js';
