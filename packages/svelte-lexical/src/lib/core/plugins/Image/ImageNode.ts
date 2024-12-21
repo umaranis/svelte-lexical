@@ -67,9 +67,8 @@ export type SerializedImageNode = Spread<
 >;
 
 type DecoratorImageType = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  componentClass: typeof Component<any>;
-  props: ComponentProps<ImageComponent>;
+  componentClass: Component<any>;
+  updateProps: (props: ComponentProps<typeof ImageComponent>) => void;
 };
 
 export class ImageNode extends DecoratorNode<DecoratorImageType> {
@@ -219,18 +218,18 @@ export class ImageNode extends DecoratorNode<DecoratorImageType> {
   decorate(editor: LexicalEditor, config: EditorConfig): DecoratorImageType {
     return {
       componentClass: ImageComponent,
-      props: {
-        src: this.__src,
-        altText: this.__altText,
-        width: this.__width,
-        height: this.__height,
-        maxWidth: this.__maxWidth,
-        nodeKey: this.__key,
-        showCaption: this.__showCaption,
-        caption: this.__caption,
-        captionsEnabled: this.__captionsEnabled,
-        resizable: true,
-        editor: editor,
+      updateProps: (props) => {
+        props.src = this.__src;
+        props.altText = this.__altText;
+        props.width = this.__width;
+        props.height = this.__height;
+        props.maxWidth = this.__maxWidth;
+        props.nodeKey = this.__key;
+        props.showCaption = this.__showCaption;
+        props.caption = this.__caption;
+        props.captionsEnabled = this.__captionsEnabled;
+        props.resizable = true;
+        props.editor = editor;
       },
     };
   }

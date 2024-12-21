@@ -12,6 +12,7 @@ Here is the order of execution when a decorator node is created or changed:
     - If this method is called for an existing node, it means the whole component has to be re-rendered
 3. DecoratorNode.decorate
     - Responsible for returning the relevant component and props which will be used later to render the component using decorator listener
+        - Instead of props, it returns a function for updating props in Svelte 5. We cannot call `$.set` to update properties like you used to in Svelte 4. rather props is a `$state` rune that to be updated in place.
     - Called every time there is change in node properties
 4. Reconciler ends
 5. Mutation Listeners are called
@@ -37,6 +38,15 @@ We can avoid decorator concept and implement the whole logic in createDOM or dec
 ### Null pointer exception on dragging dropping an image with caption
 
 We get a null pointer exception on dragging and dropping an image with caption. There is a reconciliation process, part of lexical, that is triggered when any change happens in the editor. This reconciliation process calls createDOM and decorate methods on the lexical nodes as required. This reconciliation process should complete before reconciliation can start on any of the nested editors. This is because reconcilation process uses a global variable for storing the active editor being reconciled.  What happens in our case, if we do the whole rendering inside of createDOM or decorate method is that the reconciler starts and it does the reconciliation and runs createDOM and decorate methods. And if any of those methods is fully rendering the decorator nodes, then an image having a caption will create a nested editor triggering a reconciliation process from within a reconciliation process and overwriting the global active editor variable. The reconciliation process for the caption editor works fine, but when it ends, it sets the root, the global active editor as null, and then when it returns back to reconcile root editor data. This is where the whole thing breaks down and we get a null pointer exception.
+
+### Ephemeral Decorator Node object
+
+Decorator Nodes object like `ImageNode` are often cloned and replaced. Whenever a property changes, a new clooned object is created. The new object takes the place previous one during reconciliation. This cloning of object helps with maintaining undo/redo stack as well.
+
+The upshot is:
+
+- Decorator Nodes cannot hold any references or data, other than the node properties
+- We cannot hold a reference to a Decorator Node. We can save the `nodeKey` and use `editor.getElementByKey(nodeKey)` to get to the node when needed.
 
 ### svelte-lexical implementation of DecoratorNode
 

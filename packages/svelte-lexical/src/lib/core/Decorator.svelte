@@ -1,3 +1,4 @@
+<!-- read the documentation at `/docs/decorator-node.md` -->
 <script lang="ts">
   import {mergeRegister} from '@lexical/utils';
   import {
@@ -6,9 +7,8 @@
     type LexicalEditor,
     type LexicalNode,
   } from 'lexical';
-  import {getAllContexts, onMount, type SvelteComponent} from 'svelte';
+  import {getAllContexts, mount, onMount, type Component} from 'svelte';
   import {getEditor} from './composerContext.js';
-  import {createClassComponent} from 'svelte/legacy';
 
   type MyKlassConstructor = KlassConstructor<typeof LexicalNode> & {
     skipDecorateRender: boolean;
@@ -17,8 +17,8 @@
   const contexts = getAllContexts();
 
   const editor: LexicalEditor = getEditor();
-  // cache for svelte components
-  const components: Record<string, SvelteComponent> = {};
+  // cache for svelte components' props
+  const components: Record<string, Record<string, unknown>> = {};
   // cache for dirty components identified by mutation listener (cache is cleared after decorator listener renders them)
   const dirtyComponents: Array<string> = [];
 
@@ -55,21 +55,24 @@
       // 1- set `props` on existing svelte components
       // 2- create new components and put them in cache
       editor.registerDecoratorListener<{
-        componentClass: typeof SvelteComponent;
-        props: object;
+        componentClass: Component;
+        updateProps: (props: Record<string, unknown>) => void;
       }>((decorators) => {
         dirtyComponents.forEach((nodeKey) => {
           const decorator = decorators[nodeKey];
           const com = components[nodeKey];
           const element = editor.getElementByKey(nodeKey);
           if (element?.innerHTML && com) {
-            com.$set(decorator.props);
+            const props = components[nodeKey];
+            decorator.updateProps(props);
           } else if (element) {
             // render component to target and save reference in cache
-            components[nodeKey] = createClassComponent({
-              component: decorator.componentClass,
+            const props = $state({});
+            decorator.updateProps(props);
+            components[nodeKey] = props;
+            mount(decorator.componentClass, {
               target: element,
-              props: decorator.props,
+              props: props,
               context: contexts,
             });
           }

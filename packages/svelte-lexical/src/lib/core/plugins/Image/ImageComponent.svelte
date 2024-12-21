@@ -73,7 +73,7 @@
     showCaption,
     caption,
     captionsEnabled,
-    editor
+    editor,
   }: Props = $props();
 
   let heightCss = $derived(height === 'inherit' ? 'inherit' : height + 'px');
@@ -81,13 +81,15 @@
 
   let selection: BaseSelection | null = $state(null);
 
-  let imageRef: HTMLImageElement | null = $state();
+  let imageRef: HTMLImageElement | null = $state(null);
   let buttonRef: Writable<HTMLButtonElement | null> = writable(null);
   let isSelected = createNodeSelectionStore(editor, nodeKey);
   let isResizing = $state(false);
   let activeEditorRef: LexicalEditor;
 
-  let draggable = $derived($isSelected && isNodeSelection(selection) && !isResizing);
+  let draggable = $derived(
+    $isSelected && isNodeSelection(selection) && !isResizing,
+  );
   let isFocused = $derived($isSelected || isResizing);
 
   let promise = new Promise((resolve, reject) => {
@@ -334,8 +336,7 @@
       {:else}
         <SharedHistoryPlugin />
       {/if} -->
-      <historyPlugin.componentType
-        {...historyPlugin.props} />
+      <historyPlugin.componentType {...historyPlugin.props} />
 
       <RichTextPlugin />
       <ContentEditable className="ImageNode__contentEditable" />
