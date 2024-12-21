@@ -22,7 +22,7 @@
 
   let activeEditor = getActiveEditor();
 
-  let inputValue;
+  let inputValue: string;
   run(() => {
     inputValue = $selectionFontSize.slice(0, -2);
   });

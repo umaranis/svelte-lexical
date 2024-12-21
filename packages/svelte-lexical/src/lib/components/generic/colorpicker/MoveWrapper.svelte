@@ -16,7 +16,7 @@
     children,
   }: Props = $props();
 
-  let divRef: HTMLDivElement = $state();
+  let divRef: HTMLDivElement;
   let draggedRef = false;
 
   function clamp(value: number, max: number, min: number) {
