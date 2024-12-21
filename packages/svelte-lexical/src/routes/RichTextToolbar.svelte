@@ -33,13 +33,13 @@
   import {InsertColumnLayoutDropDownItem} from '../lib/index.js';
   import {InsertColumnsDialog} from '../lib/index.js';
 
-  let imageDialog: InsertImageDialog = $state();
-  let columnsDialog: InsertColumnsDialog = $state();
-  let tableDialog: InsertTableDialog = $state();
+  let imageDialog: InsertImageDialog;
+  let columnsDialog: InsertColumnsDialog;
+  let tableDialog: InsertTableDialog;
 </script>
 
-<Toolbar   >
-  {#snippet children({ editor, activeEditor, blockType })}
+<Toolbar>
+  {#snippet children({editor, activeEditor, blockType})}
     <UndoButton />
     <RedoButton />
     <Divider />

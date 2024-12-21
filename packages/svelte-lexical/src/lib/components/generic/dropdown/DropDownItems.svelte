@@ -6,7 +6,7 @@
 
   interface Props {
     onClose: () => void;
-    dropDownRef: HTMLDivElement;
+    dropDownRef: HTMLDivElement | undefined;
     children?: import('svelte').Snippet;
   }
 

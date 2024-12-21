@@ -28,9 +28,8 @@
   import {setFloatingElemPositionForLinkEditor} from './setFloatingElemPositionForLinkEditor.js';
   import {sanitizeUrl} from './url.js';
 
-
-  let editorRef: HTMLDivElement | null = $state();
-  let inputRef: HTMLInputElement = $state();
+  let editorRef: HTMLDivElement;
+  let inputRef: HTMLInputElement | undefined = $state();
   let linkUrl = $state('');
   let editedLinkUrl = $state('');
   interface Props {

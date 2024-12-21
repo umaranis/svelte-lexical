@@ -23,7 +23,7 @@
   import InsertHRDropDownItem from '../toolbar/InsertDropDown/InsertHRDropDownItem.svelte';
   import InsertImageDropDownItem from '../toolbar/InsertDropDown/InsertImageDropDownItem.svelte';
 
-  let imageDialog: InsertImageDialog = $state();
+  let imageDialog: InsertImageDialog;
 </script>
 
 <Toolbar   >

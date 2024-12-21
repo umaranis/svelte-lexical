@@ -26,7 +26,7 @@
 
   let {theme}: Props = $props();
 
-  let composer: Composer = $state();
+  let composer: Composer;
 
   const initialConfig = {
     namespace: 'Playground',

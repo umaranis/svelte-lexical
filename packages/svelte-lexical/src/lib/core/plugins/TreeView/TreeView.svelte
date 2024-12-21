@@ -84,12 +84,14 @@
   let showLimited = $state(false);
   let lastEditorStateRef: EditorState | null = $state(null);
 
-  let commandsLog: ReadonlyArray<
+  let commandsLog:
+    | ReadonlyArray<
     {index: number} & LexicalCommand<unknown> & {payload: unknown}
-  > = $state();
+      >
+    | undefined = $state();
 
   function generateTree(editorState: EditorState) {
-    const treeText = generateContent(editor, commandsLog, showExportDOM);
+    const treeText = generateContent(editor, commandsLog!, showExportDOM);
 
     content = treeText;
 
@@ -101,8 +103,7 @@
     }
   }
 
-
-  let timeoutId: ReturnType<typeof setTimeout> = $state();
+  let timeoutId: ReturnType<typeof setTimeout>;
 
   function play() {
     const currentIndex = playingIndexRef;
@@ -152,7 +153,7 @@
         generateTree(editorState);
       }),
       editor.registerEditableListener(() => {
-        const treeText = generateContent(editor, commandsLog, showExportDOM);
+        const treeText = generateContent(editor, commandsLog!, showExportDOM);
         content = treeText;
       }),
     );
@@ -629,7 +630,7 @@
   run(() => {
     const editorState = editor.getEditorState();
     if (!showLimited && editorState._nodeMap.size > 1) {
-      content = generateContent(editor, commandsLog, showExportDOM);
+      content = generateContent(editor, commandsLog!, showExportDOM);
     }
   });
   let totalEditorStates = $derived(timeStampedEditorStates.length);

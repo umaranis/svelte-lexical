@@ -10,7 +10,7 @@
 
   let { showModal = $bindable(), stopPropagation = true, children }: Props = $props();
 
-  let dialog: HTMLDialogElement = $state();
+  let dialog: HTMLDialogElement | undefined = $state();
 
   run(() => {
     if (dialog) {
@@ -28,7 +28,7 @@
 <dialog
   bind:this={dialog}
   onclose={() => (showModal = false)}
-  onclick={self(() => dialog.close())}>
+  onclick={self(() => dialog!.close())}>
   {#if stopPropagation}
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div onclick={stopPropagation_1(bubble('click'))}>

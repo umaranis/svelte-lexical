@@ -59,7 +59,7 @@
   let colorPicker: ColorPickerDialog = $state();
 
   const editor = getEditor();
-  let dropDownRef: HTMLDivElement = $state();
+  let dropDownRef: HTMLDivElement | null = $state(null);
   let tableCellNode = $state(_tableCellNode);
   let selectionCounts = $state({
     columns: 1,

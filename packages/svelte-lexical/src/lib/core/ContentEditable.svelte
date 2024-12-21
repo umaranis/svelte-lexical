@@ -4,8 +4,6 @@
   import {onMount} from 'svelte';
   import {getEditor} from './composerContext.js';
 
-  
-  
   interface Props {
     ariaActiveDescendantID?: string | undefined;
     ariaAutoComplete?: 'list' | 'none' | 'inline' | 'both' | null;
@@ -17,7 +15,15 @@
     ariaMultiline?: boolean | undefined;
     ariaOwns?: string | undefined;
     ariaRequired?: boolean | undefined;
-    autoCapitalize?: string | undefined;
+    autoCapitalize?:
+      | 'none'
+      | 'characters'
+      | 'off'
+      | 'on'
+      | 'sentences'
+      | 'words'
+      | null
+      | undefined;
     //export let className: string;  // @lexical/image plugin seems to depend on the harded class name.
     className?: string;
     id?: string | undefined;
@@ -52,7 +58,7 @@
 
   let isEditable = $state(false);
   const editor: LexicalEditor = getEditor();
-  let ref: null | HTMLElement = $state();
+  let ref: null | HTMLElement = $state(null);
 
   onMount(() => {
     // defaultView is required for a root element.

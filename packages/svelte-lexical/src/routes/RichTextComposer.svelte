@@ -53,7 +53,7 @@
   import TableActionMenuPlugin from '$lib/core/plugins/Table/TableActionMenuPlugin.svelte';
 
   let isSmallWidthViewport = $state(true);
-  let editorDiv = $state();
+  let editorDiv: HTMLDivElement | undefined = $state();
 
   const initialConfig = {
     theme: editorTheme,

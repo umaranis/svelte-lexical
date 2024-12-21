@@ -26,7 +26,7 @@
   const isEditable = getIsEditable();
 
   let menuButtonRef: HTMLElement | null = $state(null);
-  let menuRootRef = $state(null);
+  let menuRootRef: HTMLButtonElement | null = $state(null);
   const isMenuOpen = writable(false);
 
   const tableCellNode: Writable<TableCellNode | null> = writable(null);

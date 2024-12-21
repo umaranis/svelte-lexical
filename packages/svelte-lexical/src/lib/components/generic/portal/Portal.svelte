@@ -10,11 +10,11 @@
 
   let { target = globalThis.document?.body, children }: Props = $props();
 
-  let ref: HTMLElement = $state();
+  let ref: HTMLElement | undefined = $state();
 
   onMount(() => {
     if (target) {
-      target.appendChild(ref);
+      target.appendChild(ref!);
     }
   });
 
