@@ -44,7 +44,7 @@
   {#each FONT_FAMILY_OPTIONS as [option, text]}
     <DropDownItem
       class={`item ${$value === option ? 'active dropdown-item-active' : ''}`}
-      on:click={() => handleClick(option)}>
+      onclick={() => handleClick(option)}>
       <span class="text">{text}</span>
     </DropDownItem>
   {/each}

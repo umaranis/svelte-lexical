@@ -23,7 +23,7 @@
 <DropDownItem
   class={'item ' +
     ($blockType === 'number' ? 'active dropdown-item-active' : '')}
-  on:click={formatNumberedList}>
+  onclick={formatNumberedList}>
   <i class="icon numbered-list"></i>
   <span class="text">Numbered List</span>
 </DropDownItem>

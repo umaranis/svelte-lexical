@@ -69,9 +69,9 @@
     <Divider />
     <InsertDropDown>
       <InsertHRDropDownItem />
-      <InsertImageDropDownItem on:click={() => imageDialog.open()} />
-      <InsertColumnLayoutDropDownItem on:click={() => columnsDialog.open()} />
-      <InsertTableDropDownItem on:click={() => tableDialog.open()} />
+      <InsertImageDropDownItem onclick={() => imageDialog.open()} />
+      <InsertColumnLayoutDropDownItem onclick={() => columnsDialog.open()} />
+      <InsertTableDropDownItem onclick={() => tableDialog.open()} />
     </InsertDropDown>
     <Divider />
     <DropDownAlign />

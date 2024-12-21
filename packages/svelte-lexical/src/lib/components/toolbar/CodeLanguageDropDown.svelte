@@ -54,7 +54,7 @@
       class={`item ${
         value === $codeLanguage ? 'active dropdown-item-active' : ''
       }`}
-      on:click={() => onCodeLanguageSelect(value)}>
+      onclick={() => onCodeLanguageSelect(value)}>
       <span class="text">{name}</span>
     </DropDownItem>
   {/each}

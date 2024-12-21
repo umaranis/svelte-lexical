@@ -23,7 +23,7 @@
 <DropDownItem
   class={'item ' +
     ($blockType === 'bullet' ? 'active dropdown-item-active' : '')}
-  on:click={formatBulletList}>
+  onclick={formatBulletList}>
   <i class="icon bullet-list"></i>
   <span class="text">Bullet List</span>
 </DropDownItem>

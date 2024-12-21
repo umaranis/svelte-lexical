@@ -55,7 +55,7 @@
     <Divider />
     <InsertDropDown>
       <InsertHRDropDownItem />
-      <InsertImageDropDownItem on:click={() => imageDialog.open()} />
+      <InsertImageDropDownItem onclick={() => imageDialog.open()} />
     </InsertDropDown>
     <Divider />
     <DropDownAlign />

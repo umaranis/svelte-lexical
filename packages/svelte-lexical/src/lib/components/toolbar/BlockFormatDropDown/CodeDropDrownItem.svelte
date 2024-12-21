@@ -39,7 +39,7 @@
 
 <DropDownItem
   class={'item ' + ($blockType === 'code' ? 'active dropdown-item-active' : '')}
-  on:click={formatCode}>
+  onclick={formatCode}>
   <i class="icon code"></i>
   <span class="text">Code Block</span>
 </DropDownItem>

@@ -75,7 +75,7 @@
 </script>
 
 <DropDownItem
-  on:click={clearFormatting}
+  onclick={clearFormatting}
   class="item"
   title="Clear text formatting"
   ariaLabel="Clear all text formatting">

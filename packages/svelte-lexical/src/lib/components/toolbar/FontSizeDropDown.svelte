@@ -54,7 +54,7 @@
       class={`item ${
         $value === option ? 'active dropdown-item-active' : ''
       } 'fontsize-item'`}
-      on:click={() => handleClick(option)}>
+      onclick={() => handleClick(option)}>
       <span class="text">{text}</span>
     </DropDownItem>
   {/each}

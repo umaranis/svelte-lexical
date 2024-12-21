@@ -23,7 +23,7 @@
   buttonClassName="toolbar-item spaced alignment"
   buttonAriaLabel="Formatting options for text alignment">
   <DropDownItem
-    on:click={() => {
+    onclick={() => {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'left');
     }}
     class="item">
@@ -31,7 +31,7 @@
     <span class="text">Left Align</span>
   </DropDownItem>
   <DropDownItem
-    on:click={() => {
+    onclick={() => {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'center');
     }}
     class="item">
@@ -39,7 +39,7 @@
     <span class="text">Center Align</span>
   </DropDownItem>
   <DropDownItem
-    on:click={() => {
+    onclick={() => {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'right');
     }}
     class="item">
@@ -47,7 +47,7 @@
     <span class="text">Right Align</span>
   </DropDownItem>
   <DropDownItem
-    on:click={() => {
+    onclick={() => {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'justify');
     }}
     class="item">
@@ -56,7 +56,7 @@
   </DropDownItem>
   <Divider />
   <DropDownItem
-    on:click={() => {
+    onclick={() => {
       $activeEditor.dispatchCommand(OUTDENT_CONTENT_COMMAND, undefined);
     }}
     class="item">
@@ -64,7 +64,7 @@
     <span class="text">Outdent</span>
   </DropDownItem>
   <DropDownItem
-    on:click={() => {
+    onclick={() => {
       $activeEditor.dispatchCommand(INDENT_CONTENT_COMMAND, undefined);
     }}
     class="item">

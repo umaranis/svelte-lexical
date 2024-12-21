@@ -11,7 +11,7 @@
 </script>
 
 <DropDownItem
-  on:click={() => {
+  onclick={() => {
     $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'superscript');
   }}
   class={'item ' + ($isSuperscript ? 'active dropdown-item-active' : '')}

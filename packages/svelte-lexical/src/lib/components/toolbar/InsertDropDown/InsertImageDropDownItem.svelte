@@ -2,9 +2,11 @@
 
 <script lang="ts">
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
+
+  let {onclick} = $props();
 </script>
 
-<DropDownItem on:click class="item">
+<DropDownItem {onclick} class="item">
   <i class="icon image"></i>
   <span class="text">Image</span>
 </DropDownItem>
