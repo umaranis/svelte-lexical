@@ -22,17 +22,33 @@
   import type {InitialEditorStateType} from '../../initializeEditor.js';
   import {onMount} from 'svelte';
 
-  export let editor: LexicalEditor;
-  export let id: string;
-  export let provider: Provider;
-  export let binding: Binding;
-  export let docMap: Map<string, Doc>;
-  export let name: string;
-  export let color: string;
-  export let shouldBootstrap: boolean;
-  export let cursorsContainerRef: HTMLElement | null = null;
-  export let initialEditorState: InitialEditorStateType | null = null;
-  export let awarenessData: object | undefined = undefined;
+  interface Props {
+    editor: LexicalEditor;
+    id: string;
+    provider: Provider;
+    binding: Binding;
+    docMap: Map<string, Doc>;
+    name: string;
+    color: string;
+    shouldBootstrap: boolean;
+    cursorsContainerRef?: HTMLElement | null;
+    initialEditorState?: InitialEditorStateType | null;
+    awarenessData?: object | undefined;
+  }
+
+  let {
+    editor,
+    id,
+    provider,
+    binding = $bindable(),
+    docMap,
+    name,
+    color,
+    shouldBootstrap,
+    cursorsContainerRef = null,
+    initialEditorState = null,
+    awarenessData = undefined
+  }: Props = $props();
 
   let isReloadingDoc = false;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

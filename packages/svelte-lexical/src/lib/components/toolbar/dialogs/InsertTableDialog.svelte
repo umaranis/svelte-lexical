@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import {getActiveEditor} from '$lib/core/composerContext.js';
   import {INSERT_TABLE_COMMAND} from '@lexical/table';
   import ModalDialog from '../../generic/dialog/ModalDialog.svelte';
@@ -9,9 +11,9 @@
 
   let rows = '5';
   let columns = '5';
-  let isDisabled = true;
+  let isDisabled = $state(true);
 
-  $: {
+  run(() => {
     const row = Number(rows);
     const column = Number(columns);
     if (row && row > 0 && row <= 500 && column && column > 0 && column <= 50) {
@@ -19,11 +21,15 @@
     } else {
       isDisabled = true;
     }
-  }
+  });
 
   const activeEditor = getActiveEditor();
 
-  export let showModal = false;
+  interface Props {
+    showModal?: boolean;
+  }
+
+  let { showModal = $bindable(false) }: Props = $props();
   export function open() {
     showModal = true;
   }
@@ -64,7 +70,7 @@
           disabled={isDisabled}
           class="Button__root"
           class:Button__disabled={isDisabled}
-          on:click={onClick}>
+          onclick={onClick}>
           Confirm
         </button>
       </div>

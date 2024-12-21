@@ -27,7 +27,7 @@
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'left');
     }}
     class="item">
-    <i class="icon left-align" />
+    <i class="icon left-align"></i>
     <span class="text">Left Align</span>
   </DropDownItem>
   <DropDownItem
@@ -35,7 +35,7 @@
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'center');
     }}
     class="item">
-    <i class="icon center-align" />
+    <i class="icon center-align"></i>
     <span class="text">Center Align</span>
   </DropDownItem>
   <DropDownItem
@@ -43,7 +43,7 @@
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'right');
     }}
     class="item">
-    <i class="icon right-align" />
+    <i class="icon right-align"></i>
     <span class="text">Right Align</span>
   </DropDownItem>
   <DropDownItem
@@ -51,7 +51,7 @@
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'justify');
     }}
     class="item">
-    <i class="icon justify-align" />
+    <i class="icon justify-align"></i>
     <span class="text">Justify Align</span>
   </DropDownItem>
   <Divider />
@@ -60,7 +60,7 @@
       $activeEditor.dispatchCommand(OUTDENT_CONTENT_COMMAND, undefined);
     }}
     class="item">
-    <i class={'icon ' + ($isRTL ? 'indent' : 'outdent')} />
+    <i class={'icon ' + ($isRTL ? 'indent' : 'outdent')}></i>
     <span class="text">Outdent</span>
   </DropDownItem>
   <DropDownItem
@@ -68,7 +68,7 @@
       $activeEditor.dispatchCommand(INDENT_CONTENT_COMMAND, undefined);
     }}
     class="item">
-    <i class={'icon ' + ($isRTL ? 'outdent' : 'indent')} />
+    <i class={'icon ' + ($isRTL ? 'outdent' : 'indent')}></i>
     <span class="text">Indent</span>
   </DropDownItem>
 </DropDown>

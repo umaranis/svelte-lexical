@@ -13,7 +13,7 @@
 
 <button
   disabled={!$isEditable}
-  on:click={() => {
+  onclick={() => {
     $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline');
   }}
   class={'toolbar-item spaced ' + ($isUnderline ? 'active' : '')}
@@ -22,5 +22,5 @@
   aria-label={`Format text to underlined. Shortcut: ${
     IS_APPLE ? '⌘U' : 'Ctrl+U'
   }`}>
-  <i class="format underline" />
+  <i class="format underline"></i>
 </button>

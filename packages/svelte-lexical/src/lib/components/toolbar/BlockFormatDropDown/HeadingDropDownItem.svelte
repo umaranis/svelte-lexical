@@ -11,7 +11,11 @@
   import {getContext} from 'svelte';
   import {getEditor} from '$lib/core/composerContext.js';
 
-  export let headingSize: HeadingTagType;
+  interface Props {
+    headingSize: HeadingTagType;
+  }
+
+  let { headingSize }: Props = $props();
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
     getContext('blockType');
@@ -31,6 +35,6 @@
   class={'item ' +
     ($blockType === headingSize ? 'active dropdown-item-active' : '')}
   on:click={() => formatHeading(headingSize)}>
-  <i class="icon {headingSize}" />
+  <i class="icon {headingSize}"></i>
   <span class="text">Heading {headingSize.charAt(1)}</span>
 </DropDownItem>

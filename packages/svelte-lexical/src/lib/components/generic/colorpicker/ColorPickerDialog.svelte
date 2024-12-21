@@ -5,15 +5,19 @@
   import ModalDialog from '../../generic/dialog/ModalDialog.svelte';
   import ColorPicker from './ColorPicker.svelte';
 
-  export let color: string;
-  export let title: string;
   let onChange:
     | ((value: string, skipHistoryStack: boolean) => void)
     | undefined;
 
   const editor = getEditor();
 
-  export let showModal = false;
+  interface Props {
+    color: string;
+    title: string;
+    showModal?: boolean;
+  }
+
+  let { color, title, showModal = $bindable(false) }: Props = $props();
   export function open(onChangeCallback: (value: string) => void) {
     onChange = onChangeCallback;
     showModal = true;

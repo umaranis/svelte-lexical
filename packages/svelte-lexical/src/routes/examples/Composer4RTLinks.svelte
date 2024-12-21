@@ -41,8 +41,8 @@
   import {onMount} from 'svelte';
   import Composer4Toolbar from './Composer4Toolbar.svelte';
 
-  let isSmallWidthViewport = true;
-  let editorDiv;
+  let isSmallWidthViewport = $state(true);
+  let editorDiv = $state();
 
   const initialConfig = {
     theme: editorTheme,

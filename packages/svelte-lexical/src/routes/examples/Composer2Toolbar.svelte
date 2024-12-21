@@ -11,15 +11,17 @@
   import {Toolbar} from '$lib/index.js';
 </script>
 
-<Toolbar let:editor let:activeEditor let:blockType>
-  <FontFamilyDropDown />
-  <FontSizeDropDown />
-  <Divider />
-  <BoldButton />
-  <ItalicButton />
-  <UnderlineButton />
-  <StrikethroughButton />
-  <FormatCodeButton />
-  <Divider />
-  <DropDownAlign />
+<Toolbar   >
+  {#snippet children({ editor, activeEditor, blockType })}
+    <FontFamilyDropDown />
+    <FontSizeDropDown />
+    <Divider />
+    <BoldButton />
+    <ItalicButton />
+    <UnderlineButton />
+    <StrikethroughButton />
+    <FormatCodeButton />
+    <Divider />
+    <DropDownAlign />
+  {/snippet}
 </Toolbar>

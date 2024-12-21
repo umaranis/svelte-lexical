@@ -5,9 +5,13 @@
 
   const editor = getEditor();
 
-  export let loggedCommands: ReadonlyArray<
+  interface Props {
+    loggedCommands?: ReadonlyArray<
     {index: number} & LexicalCommand<unknown> & {payload: unknown}
-  > = [];
+  >;
+  }
+
+  let { loggedCommands = $bindable([]) }: Props = $props();
 
   onMount(() => {
     const unregisterCommandListeners = new Set<() => void>();

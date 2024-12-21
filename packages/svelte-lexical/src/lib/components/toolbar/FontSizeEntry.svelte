@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import {$patchStyleText as patchStyleText} from '@lexical/selection';
   import {$getSelection as getSelection} from 'lexical';
   import {getActiveEditor, getIsEditable} from '$lib/core/composerContext.js';
@@ -20,7 +22,10 @@
 
   let activeEditor = getActiveEditor();
 
-  $: inputValue = $selectionFontSize.slice(0, -2);
+  let inputValue;
+  run(() => {
+    inputValue = $selectionFontSize.slice(0, -2);
+  });
   let inputChangeFlag = false;
 
   /**
@@ -175,9 +180,9 @@
   type="button"
   disabled={!isEditable ||
     ($selectionFontSize !== '' && Number(inputValue) <= MIN_ALLOWED_FONT_SIZE)}
-  on:click={() => handleButtonClick(updateFontSizeType.decrement)}
+  onclick={() => handleButtonClick(updateFontSizeType.decrement)}
   class="toolbar-item sl_font-decrement">
-  <i class="format sl_minus-icon" />
+  <i class="format sl_minus-icon"></i>
 </button>
 
 <input
@@ -187,16 +192,16 @@
   class="toolbar-item sl_font-size-input"
   min={MIN_ALLOWED_FONT_SIZE}
   max={MAX_ALLOWED_FONT_SIZE}
-  on:keydown={handleKeyPress}
-  on:blur={handleInputBlur} />
+  onkeydown={handleKeyPress}
+  onblur={handleInputBlur} />
 
 <button
   type="button"
   disabled={!isEditable ||
     ($selectionFontSize !== '' && Number(inputValue) >= MAX_ALLOWED_FONT_SIZE)}
-  on:click={() => handleButtonClick(updateFontSizeType.increment)}
+  onclick={() => handleButtonClick(updateFontSizeType.increment)}
   class="toolbar-item sl_font-increment">
-  <i class="format sl_add-icon" />
+  <i class="format sl_add-icon"></i>
 </button>
 
 <style>

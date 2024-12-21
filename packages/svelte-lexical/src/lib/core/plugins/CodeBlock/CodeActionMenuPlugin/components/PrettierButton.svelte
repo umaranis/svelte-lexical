@@ -10,9 +10,13 @@
     PRETTIER_OPTIONS_BY_LANG,
   } from './PrettierLangOptions.js';
 
-  export let lang: string;
   const editor = getEditor();
-  export let getCodeDOMNode: () => HTMLElement | null;
+  interface Props {
+    lang: string;
+    getCodeDOMNode: () => HTMLElement | null;
+  }
+
+  let { lang, getCodeDOMNode }: Props = $props();
 
   function getPrettierOptions(lang: string): Options {
     const options = PRETTIER_OPTIONS_BY_LANG[lang];
@@ -25,8 +29,8 @@
     return options;
   }
 
-  let syntaxError = '';
-  let tipsVisible = false;
+  let syntaxError = $state('');
+  let tipsVisible = $state(false);
 
   async function handleClick(): Promise<void> {
     const codeDOMNode = getCodeDOMNode();
@@ -92,14 +96,14 @@
 <div class="prettier-wrapper">
   <button
     class="menu-item"
-    on:click={handleClick}
-    on:mouseenter={handleMouseEnter}
-    on:mouseleave={handleMouseLeave}
+    onclick={handleClick}
+    onmouseenter={handleMouseEnter}
+    onmouseleave={handleMouseLeave}
     aria-label="prettier">
     {#if syntaxError}
-      <i class="format prettier-error" />
+      <i class="format prettier-error"></i>
     {:else}
-      <i class="format prettier" />
+      <i class="format prettier"></i>
     {/if}
   </button>
   {#if tipsVisible}

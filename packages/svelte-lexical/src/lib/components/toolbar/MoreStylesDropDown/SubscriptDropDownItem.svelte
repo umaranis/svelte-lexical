@@ -17,6 +17,6 @@
   class={'item ' + ($isSubscript ? 'active dropdown-item-active' : '')}
   title="Subscript"
   ariaLabel="Format text with a subscript">
-  <i class="icon subscript" />
+  <i class="icon subscript"></i>
   <span class="text">Subscript</span>
 </DropDownItem>

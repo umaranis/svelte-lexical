@@ -10,8 +10,12 @@
   import {onMount} from 'svelte';
   import {CAN_REDO_COMMAND, CAN_UNDO_COMMAND} from 'lexical';
 
-  export let editor: LexicalEditor;
-  export let binding: Binding;
+  interface Props {
+    editor: LexicalEditor;
+    binding: Binding;
+  }
+
+  let { editor, binding }: Props = $props();
 
   const undoManager = createUndoManager(binding, binding.root.getSharedType());
 

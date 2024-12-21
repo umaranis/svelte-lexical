@@ -1,12 +1,19 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import {onMount} from 'svelte';
   import {setRegisterItemFunc} from './utils.js';
 
-  export let onClose: () => void;
-  export let dropDownRef: HTMLDivElement;
+  interface Props {
+    onClose: () => void;
+    dropDownRef: HTMLDivElement;
+    children?: import('svelte').Snippet;
+  }
+
+  let { onClose, dropDownRef = $bindable(), children }: Props = $props();
 
   let items: Array<HTMLButtonElement> = [];
-  let highlightedItem: HTMLButtonElement | null = null;
+  let highlightedItem: HTMLButtonElement | null = $state(null);
 
   function registerItem(itemRef: HTMLButtonElement) {
     items.push(itemRef);
@@ -48,12 +55,14 @@
     }
   });
 
-  $: if (highlightedItem) {
-    highlightedItem.focus();
-  }
+  run(() => {
+    if (highlightedItem) {
+      highlightedItem.focus();
+    }
+  });
 </script>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="dropdown" bind:this={dropDownRef} on:keydown={handleKeyDown}>
-  <slot />
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<div class="dropdown" bind:this={dropDownRef} onkeydown={handleKeyDown}>
+  {@render children?.()}
 </div>

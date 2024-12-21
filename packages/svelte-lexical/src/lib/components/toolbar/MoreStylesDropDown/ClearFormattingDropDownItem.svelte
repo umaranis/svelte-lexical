@@ -79,6 +79,6 @@
   class="item"
   title="Clear text formatting"
   ariaLabel="Clear all text formatting">
-  <i class="icon clear" />
+  <i class="icon clear"></i>
   <span class="text">Clear Formatting</span>
 </DropDownItem>

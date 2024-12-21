@@ -9,11 +9,23 @@
   } from 'lexical';
   import {onMount, setContext} from 'svelte';
 
-  // unlike Composer, a NestedComposer doesn't create the editor, it is passed to it
-  export let initialEditor: LexicalEditor;
-  export let parentEditor: LexicalEditor;
-  export let initialTheme: EditorThemeClasses | null = null;
-  export let initialNodes: ReadonlyArray<Klass<LexicalNode>> | null = null;
+  
+  interface Props {
+    // unlike Composer, a NestedComposer doesn't create the editor, it is passed to it
+    initialEditor: LexicalEditor;
+    parentEditor: LexicalEditor;
+    initialTheme?: EditorThemeClasses | null;
+    initialNodes?: ReadonlyArray<Klass<LexicalNode>> | null;
+    children?: import('svelte').Snippet;
+  }
+
+  let {
+    initialEditor = $bindable(),
+    parentEditor,
+    initialTheme = null,
+    initialNodes = null,
+    children
+  }: Props = $props();
 
   function getTransformSetFromKlass(
     klass: KlassConstructor<typeof LexicalNode>,
@@ -70,4 +82,4 @@
 </script>
 
 <!-- TODO: [from lexical - not implemented - not sure if required] If collaboration is enabled, make sure we don't render the children until the collaboration subdocument is ready. -->
-<slot />
+{@render children?.()}

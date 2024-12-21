@@ -5,10 +5,15 @@
   import {onMount} from 'svelte';
   import {mergeRegister} from '@lexical/utils';
 
-  export let className = 'Placeholder__root';
+  interface Props {
+    className?: string;
+    children?: import('svelte').Snippet;
+  }
+
+  let { className = 'Placeholder__root', children }: Props = $props();
 
   const editor = getEditor();
-  let canShowPlaceHolder = true;
+  let canShowPlaceHolder = $state(true);
 
   onMount(() => {
     return mergeRegister(
@@ -34,7 +39,7 @@
 
 {#if canShowPlaceHolder}
   <div class={className}>
-    <slot />
+    {@render children?.()}
   </div>
 {/if}
 

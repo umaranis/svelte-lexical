@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import type {
     BaseSelection,
     EditorState,
@@ -50,30 +52,41 @@
     selectedLine: '>',
   });
 
-  export let treeTypeButtonClassName: string;
-  export let timeTravelButtonClassName: string;
-  export let timeTravelPanelButtonClassName: string;
-  export let timeTravelPanelClassName: string;
-  export let timeTravelPanelSliderClassName: string;
-  export let viewClassName: string;
+  interface Props {
+    treeTypeButtonClassName: string;
+    timeTravelButtonClassName: string;
+    timeTravelPanelButtonClassName: string;
+    timeTravelPanelClassName: string;
+    timeTravelPanelSliderClassName: string;
+    viewClassName: string;
+  }
+
+  let {
+    treeTypeButtonClassName,
+    timeTravelButtonClassName,
+    timeTravelPanelButtonClassName,
+    timeTravelPanelClassName,
+    timeTravelPanelSliderClassName,
+    viewClassName
+  }: Props = $props();
 
   const editor: LexicalEditor = getEditor();
 
-  let timeStampedEditorStates: Array<[number, EditorState]> = [];
-  let content = '';
-  let timeTravelEnabled = false;
-  let showExportDOM = false;
-  let playingIndexRef = 0;
-  let treeElementRef: HTMLElement | null = null;
-  let inputRef: HTMLInputElement | null = null;
-  let isPlaying = false;
-  let isLimited = false;
-  let showLimited = false;
-  let lastEditorStateRef: EditorState | null = null;
+  let timeStampedEditorStates: Array<[number, EditorState]> = $state([]);
+  let content = $state('');
+  let timeTravelEnabled = $state(false);
+  let showExportDOM = $state(false);
+  let playingIndexRef = $state(0);
+  let treeElementRef: HTMLElement | null = $state(null);
+  let inputRef: HTMLInputElement | null = $state(null);
+  let isPlaying = $state(false);
+  let isLimited = $state(false);
+  let showLimited = $state(false);
+  let lastEditorStateRef: EditorState | null = $state(null);
 
   let commandsLog: ReadonlyArray<
     {index: number} & LexicalCommand<unknown> & {payload: unknown}
-  >;
+  > = $state();
 
   function generateTree(editorState: EditorState) {
     const treeText = generateContent(editor, commandsLog, showExportDOM);
@@ -88,15 +101,8 @@
     }
   }
 
-  $: {
-    const editorState = editor.getEditorState();
-    if (!showLimited && editorState._nodeMap.size > 1) {
-      content = generateContent(editor, commandsLog, showExportDOM);
-    }
-  }
 
-  $: totalEditorStates = timeStampedEditorStates.length;
-  let timeoutId: ReturnType<typeof setTimeout>;
+  let timeoutId: ReturnType<typeof setTimeout> = $state();
 
   function play() {
     const currentIndex = playingIndexRef;
@@ -123,13 +129,7 @@
     }, timeDiff);
   }
 
-  $: if (isPlaying) {
-    play();
-  }
 
-  $: if (!isPlaying) {
-    clearInterval(timeoutId);
-  }
 
   onMount(() => {
     const element = treeElementRef;
@@ -626,6 +626,23 @@
         numNonSingleWidthCharInSelection,
     ];
   }
+  run(() => {
+    const editorState = editor.getEditorState();
+    if (!showLimited && editorState._nodeMap.size > 1) {
+      content = generateContent(editor, commandsLog, showExportDOM);
+    }
+  });
+  let totalEditorStates = $derived(timeStampedEditorStates.length);
+  run(() => {
+    if (isPlaying) {
+      play();
+    }
+  });
+  run(() => {
+    if (!isPlaying) {
+      clearInterval(timeoutId);
+    }
+  });
 </script>
 
 <CommandsLog bind:loggedCommands={commandsLog} />
@@ -636,7 +653,7 @@
         Detected large EditorState, this can impact debugging performance.
       </span>
       <button
-        on:click={() => {
+        onclick={() => {
           showLimited = true;
           const editorState = lastEditorStateRef;
           if (editorState !== null) {
@@ -657,7 +674,7 @@
   {/if}
   {#if !showLimited}
     <button
-      on:click={() => (showExportDOM = !showExportDOM)}
+      onclick={() => (showExportDOM = !showExportDOM)}
       class={treeTypeButtonClassName}
       type="button">
       {showExportDOM ? 'Tree' : 'Export DOM'}
@@ -665,7 +682,7 @@
   {/if}
   {#if !timeTravelEnabled && (showLimited || !isLimited) && totalEditorStates > 2}
     <button
-      on:click={() => {
+      onclick={() => {
         const rootElement = editor.getRootElement();
 
         if (rootElement !== null) {
@@ -686,7 +703,7 @@
     <div class={timeTravelPanelClassName}>
       <button
         class={timeTravelPanelButtonClassName}
-        on:click={() => {
+        onclick={() => {
           if (playingIndexRef === totalEditorStates - 1) {
             playingIndexRef = 1;
           }
@@ -698,7 +715,7 @@
       <input
         class={timeTravelPanelSliderClassName}
         bind:this={inputRef}
-        on:change={(event) => {
+        onchange={(event) => {
           // @ts-ignore TS not supported in Svelte Html - https://github.com/sveltejs/svelte/issues/4701
           const editorStateIndex = Number(event.target.value);
           const timeStampedEditorState =
@@ -714,7 +731,7 @@
         max={totalEditorStates - 1} />
       <button
         class={timeTravelPanelButtonClassName}
-        on:click={() => {
+        onclick={() => {
           const rootElement = editor.getRootElement();
 
           if (rootElement !== null) {
