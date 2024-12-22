@@ -1,4 +1,6 @@
 <script lang="ts">
+  import {run} from 'svelte/legacy';
+
   import {onMount} from 'svelte';
   import {
     CloseCircleButton,
@@ -14,17 +16,23 @@
   import landscapeImage from './images/landscape.jpg';
   import yellowFlowerImage from './images/yellow-flower.jpg';
 
-  export let showModal = false;
+  interface Props {
+    showModal?: boolean;
+  }
+
+  let {showModal = $bindable(false)}: Props = $props();
   export function open() {
     showModal = true;
   }
 
-  $: if (!showModal) {
-    mode = null;
-  }
+  run(() => {
+    if (!showModal) {
+      mode = null;
+    }
+  });
 
-  let mode: null | 'url' | 'file' = null;
-  let hasModifier = false;
+  let mode: null | 'url' | 'file' = $state(null);
+  let hasModifier = $state(false);
 
   const editor = getEditor();
   const activeEditor = getActiveEditor();
@@ -62,7 +70,7 @@
           <button
             class="Button__root"
             data-test-id="image-modal-option-sample"
-            on:click={() =>
+            onclick={() =>
               insertAndClose(
                 hasModifier
                   ? {
@@ -80,13 +88,13 @@
           <button
             class="Button__root"
             data-test-id="image-modal-option-url"
-            on:click={() => (mode = 'url')}>
+            onclick={() => (mode = 'url')}>
             URL
           </button>
           <button
             class="Button__root"
             data-test-id="image-modal-option-file"
-            on:click={() => (mode = 'file')}>
+            onclick={() => (mode = 'file')}>
             File
           </button>
         </div>
