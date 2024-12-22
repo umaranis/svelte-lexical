@@ -19,7 +19,7 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-svelte": "^2.45.1",
     "size-limit": "^8.2.6",
-    "svelte": "^5.0.0",
+    "svelte": "^5.15.0",
     "svelte-check": "^4.1.0",
     "svelte-preprocess": "^6.0.0",
     "tslib": "^2.5.0",
