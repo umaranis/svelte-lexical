@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createBubbler } from 'svelte/legacy';
+  import {createBubbler} from 'svelte/legacy';
 
   const bubble = createBubbler();
   interface Props {
@@ -8,7 +8,7 @@
     id?: string | undefined;
   }
 
-  let { checked, text, id = undefined }: Props = $props();
+  let {checked, text, id = undefined}: Props = $props();
 
   const buttonId = 'id_' + Math.floor(Math.random() * 10000);
 </script>
@@ -18,6 +18,7 @@
   <button
     role="switch"
     aria-checked={checked ? 'true' : 'false'}
+    aria-label={text}
     id={buttonId}
     onclick={bubble('click')}>
     <span></span>

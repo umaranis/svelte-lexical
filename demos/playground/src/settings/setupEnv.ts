@@ -18,7 +18,9 @@ for (const param of Object.keys(DEFAULT_SETTINGS)) {
       DEFAULT_SETTINGS[param as keyof Settings] = Boolean(value);
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.warn(`Unable to parse query parameter "${param}"`);
+      console.warn(
+        `Unable to parse query parameter "${param}". \nError: ${error}`,
+      );
     }
   }
 }

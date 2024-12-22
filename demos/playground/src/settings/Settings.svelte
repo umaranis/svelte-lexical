@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
-
   import type {SettingsStore} from './setttingsStore';
   import {getContext} from 'svelte';
   import {isDevPlayground} from './appSettings';
@@ -9,39 +7,6 @@
   const settings: SettingsStore = getContext('settings');
 
   const windowLocation = window.location;
-  let measureTypingPerf: boolean = $state(),
-    isCollab: boolean = $state(),
-    isRichText: boolean = $state(),
-    isMaxLength: boolean = $state(),
-    isCharLimit: boolean = $state(),
-    isCharLimitUtf8: boolean = $state(),
-    isAutocomplete: boolean = $state(),
-    showTreeView: boolean = $state(),
-    showNestedEditorTreeView: boolean = $state(),
-    disableBeforeInput: boolean = $state(),
-    showTableOfContents: boolean = $state();
-
-  run(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    measureTypingPerf = $settings.measureTypingPerf;
-    isCollab = $settings.isCollab;
-    isRichText = $settings.isRichText;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    isMaxLength = $settings.isMaxLength;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    isCharLimit = $settings.isCharLimit;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    isCharLimitUtf8 = $settings.isCharLimit;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    isAutocomplete = $settings.isAutocomplete;
-    showTreeView = $settings.showTreeView;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    showNestedEditorTreeView = $settings.showNestedEditorTreeView;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    disableBeforeInput = $settings.disableBeforeInput;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    showTableOfContents = $settings.showTableOfContents;
-  });
 
   let showSettings = $state(false);
   const parentWindow = window.parent;
@@ -53,16 +18,18 @@
 <button
   id="options-button"
   class={`editor-dev-button ${showSettings ? 'active' : ''}`}
-  onclick={() => (showSettings = !showSettings)}></button>
+  onclick={() => (showSettings = !showSettings)}
+  aria-label="Toggle settings">
+</button>
 {#if showSettings}
   <div class="switches">
-    {#if isRichText && isDevPlayground}
+    {#if $settings.isRichText && isDevPlayground}
       <Switch
         on:click={() => {
-          settings.setOption('isCollab', !isCollab);
+          settings.setOption('isCollab', !$settings.isCollab);
           window.location.reload();
         }}
-        checked={isCollab}
+        checked={$settings.isCollab}
         text="Collaboration" />
     {/if}
     {#if isDevPlayground}
@@ -83,8 +50,9 @@
       checked={measureTypingPerf}
       text="Measure Perf" /> -->
     <Switch
-      on:click={() => settings.setOption('showTreeView', !showTreeView)}
-      checked={showTreeView}
+      on:click={() =>
+        settings.setOption('showTreeView', !$settings.showTreeView)}
+      checked={$settings.showTreeView}
       text="Debug View" />
     <!-- <Switch
       on:click={() =>
@@ -96,10 +64,10 @@
       text="Nested Editors Debug View" />-->
     <Switch
       on:click={() => {
-        settings.setOption('isRichText', !isRichText);
+        settings.setOption('isRichText', !$settings.isRichText);
         settings.setOption('isCollab', false);
       }}
-      checked={isRichText}
+      checked={$settings.isRichText}
       text="Rich Text" />
     <!--<Switch
       on:click={() => settings.setOption('isCharLimit', !isCharLimit)}
