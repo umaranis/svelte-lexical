@@ -54,7 +54,7 @@
     "@tsconfig/svelte": "^5.0.4",
     "@types/lodash-es": "^4.17.12",
     "@vitest/ui": "^2.1.8",
-    "eslint": "^9.16.0",
+    "eslint": "^9.17.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-svelte": "^2.46.1",
