@@ -1873,6 +1873,11 @@ test.describe.parallel('Links', () => {
 
     await page.keyboard.press('ArrowLeft');
 
+    // sua: firefox works a bit differently
+    if (browserName === 'firefox') {
+      await page.keyboard.press('ArrowLeft');
+    }
+
     await click(page, '.block-controls');
     await click(page, '.dropdown .icon.h1');
 
