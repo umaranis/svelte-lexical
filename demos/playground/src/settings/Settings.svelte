@@ -25,7 +25,7 @@
   <div class="switches">
     {#if $settings.isRichText && isDevPlayground}
       <Switch
-        on:click={() => {
+        onclick={() => {
           settings.setOption('isCollab', !$settings.isCollab);
           window.location.reload();
         }}
@@ -34,7 +34,7 @@
     {/if}
     {#if isDevPlayground}
       <Switch
-        on:click={() => {
+        onclick={() => {
           if (isSplitScreen) {
             window.parent.location.href = `/${search}`;
           } else {
@@ -50,7 +50,7 @@
       checked={measureTypingPerf}
       text="Measure Perf" /> -->
     <Switch
-      on:click={() =>
+      onclick={() =>
         settings.setOption('showTreeView', !$settings.showTreeView)}
       checked={$settings.showTreeView}
       text="Debug View" />
@@ -63,7 +63,7 @@
       checked={showNestedEditorTreeView}
       text="Nested Editors Debug View" />-->
     <Switch
-      on:click={() => {
+      onclick={() => {
         settings.setOption('isRichText', !$settings.isRichText);
         settings.setOption('isCollab', false);
       }}

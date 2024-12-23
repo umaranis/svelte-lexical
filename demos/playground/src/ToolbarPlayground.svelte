@@ -37,12 +37,12 @@
   } from 'svelte-lexical';
   import InsertImageDialog from './InsertImageDialog.svelte';
 
-  let imageDialog: InsertImageDialog = $state();
-  let columnsDialog: InsertColumnsDialog = $state();
+  let imageDialog: InsertImageDialog;
+  let columnsDialog: InsertColumnsDialog;
 </script>
 
-<Toolbar   >
-  {#snippet children({ editor, activeEditor, blockType })}
+<Toolbar>
+  {#snippet children({editor, activeEditor, blockType})}
     <UndoButton />
     <RedoButton />
     <Divider />
@@ -84,8 +84,9 @@
       {#if activeEditor === editor}
         <InsertDropDown>
           <InsertHRDropDownItem />
-          <InsertImageDropDownItem on:click={() => imageDialog.open()} />
-          <InsertColumnLayoutDropDownItem on:click={() => columnsDialog.open()} />
+          <InsertImageDropDownItem onclick={() => imageDialog.open()} />
+          <InsertColumnLayoutDropDownItem
+            onclick={() => columnsDialog.open()} />
         </InsertDropDown>
         <Divider />
       {/if}
