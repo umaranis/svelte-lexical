@@ -174,7 +174,7 @@ async function assertHTMLOnPageOrFrame(
   frameName,
   actualHtmlModificationsCallback = (actualHtml) => actualHtml,
 ) {
-  const expected = prettifyHTML(expectedHtml.replace(/\n/gm, ''), {
+  const expected = await prettifyHTML(expectedHtml.replace(/\n/gm, ''), {
     ignoreClasses,
     ignoreInlineStyles,
   });
@@ -183,7 +183,7 @@ async function assertHTMLOnPageOrFrame(
       .locator('div[contenteditable="true"]')
       .first()
       .innerHTML();
-    let actual = prettifyHTML(actualHtml.replace(/\n/gm, ''), {
+    let actual = await prettifyHTML(actualHtml.replace(/\n/gm, ''), {
       ignoreClasses,
       ignoreInlineStyles,
     });
