@@ -135,11 +135,12 @@
       <KeywordPlugin {keywordsRegex} />
       <HashtagPlugin />
       <AutoLinkPlugin />
-      <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
       <ColumnLayoutPlugin />
 
       {#if $settings.isRichText}
         <RichTextPlugin />
+
+        <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
         {#if $settings.isCollab}
           <CollaborationPlugin
             id="main"
