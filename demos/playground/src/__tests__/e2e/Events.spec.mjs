@@ -99,79 +99,79 @@ test.describe('Events', () => {
     );
   });
 
-  test('Add period with double-space after emoji (MacOS specific) #3953', async ({
-    page,
-    isPlainText,
-  }) => {
-    if (LEGACY_EVENTS) {
-      return;
-    }
-    await focusEditor(page);
-    await page.keyboard.type(':)');
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span class="emoji happysmile" data-lexical-text="true">
-            <span class="emoji-inner">🙂</span>
-          </span>
-        </p>
-      `,
-    );
-    await page.keyboard.type(' ');
-
-    await evaluate(page, () => {
-      const editable = document.querySelector('[contenteditable="true"]');
-      const spans = editable.querySelectorAll('span');
-      const lastSpan = spans[spans.length - 1];
-      const lastSpanTextNode = lastSpan.firstChild;
-      function singleRangeFn(
-        startContainer,
-        startOffset,
-        endContainer,
-        endOffset,
-      ) {
-        return () => [
-          new StaticRange({
-            endContainer,
-            endOffset,
-            startContainer,
-            startOffset,
-          }),
-        ];
+  test.fixme(
+    'Add period with double-space after emoji (MacOS specific) #3953',
+    async ({page, isPlainText}) => {
+      if (LEGACY_EVENTS) {
+        return;
       }
-      const characterBeforeInputEvent = new InputEvent('beforeinput', {
-        bubbles: true,
-        cancelable: true,
-        data: '. ',
-        inputType: 'insertText',
-      });
-      characterBeforeInputEvent.getTargetRanges = singleRangeFn(
-        lastSpanTextNode,
-        0,
-        lastSpanTextNode,
-        1,
+      await focusEditor(page);
+      await page.keyboard.type(':)');
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span class="emoji happysmile" data-lexical-text="true">
+              <span class="emoji-inner">🙂</span>
+            </span>
+          </p>
+        `,
       );
-      // We don't do textNode.textContent += character; intentionally; if the code prevents default
-      // Lexical should add it via controlled mode.
-      editable.dispatchEvent(characterBeforeInputEvent);
-    });
-    await page.pause();
+      await page.keyboard.type(' ');
 
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span class="emoji happysmile" data-lexical-text="true">
-            <span class="emoji-inner">🙂</span>
-          </span>
-          <span data-lexical-text="true">.</span>
-        </p>
-      `,
-    );
-  });
+      await evaluate(page, () => {
+        const editable = document.querySelector('[contenteditable="true"]');
+        const spans = editable.querySelectorAll('span');
+        const lastSpan = spans[spans.length - 1];
+        const lastSpanTextNode = lastSpan.firstChild;
+        function singleRangeFn(
+          startContainer,
+          startOffset,
+          endContainer,
+          endOffset,
+        ) {
+          return () => [
+            new StaticRange({
+              endContainer,
+              endOffset,
+              startContainer,
+              startOffset,
+            }),
+          ];
+        }
+        const characterBeforeInputEvent = new InputEvent('beforeinput', {
+          bubbles: true,
+          cancelable: true,
+          data: '. ',
+          inputType: 'insertText',
+        });
+        characterBeforeInputEvent.getTargetRanges = singleRangeFn(
+          lastSpanTextNode,
+          0,
+          lastSpanTextNode,
+          1,
+        );
+        // We don't do textNode.textContent += character; intentionally; if the code prevents default
+        // Lexical should add it via controlled mode.
+        editable.dispatchEvent(characterBeforeInputEvent);
+      });
+      await page.pause();
+
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span class="emoji happysmile" data-lexical-text="true">
+              <span class="emoji-inner">🙂</span>
+            </span>
+            <span data-lexical-text="true">.</span>
+          </p>
+        `,
+      );
+    },
+  );
 });

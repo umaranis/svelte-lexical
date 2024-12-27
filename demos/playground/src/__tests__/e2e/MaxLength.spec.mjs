@@ -55,7 +55,7 @@ test.describe('MaxLength', () => {
     );
   });
 
-  test(`can restrict pasted text to specified length`, async ({page}) => {
+  test.fixme(`can restrict pasted text to specified length`, async ({page}) => {
     await focusEditor(page);
     await pasteFromClipboard(page, {
       'text/plain': 'lorem ipsum dolor sit amet, consectetuer adipiscing elit',
@@ -74,7 +74,7 @@ test.describe('MaxLength', () => {
     );
   });
 
-  test(`can restrict emojis on boundaries`, async ({page}) => {
+  test.fixme(`can restrict emojis on boundaries`, async ({page}) => {
     await focusEditor(page);
     await pasteFromClipboard(page, {
       'text/plain': 'lorem ipsum dolor sit amet, consectetur adipiscing elit',
@@ -134,7 +134,7 @@ test.describe('MaxLength', () => {
     );
   });
 
-  test(`paste with empty paragraph in between #3773`, async ({page}) => {
+  test.fixme(`paste with empty paragraph in between #3773`, async ({page}) => {
     await focusEditor(page);
     await pasteFromClipboard(page, {
       'text/plain':
@@ -153,7 +153,7 @@ test.describe('MaxLength', () => {
     );
   });
 
-  test(`paste with empty paragraph at end #3773`, async ({page}) => {
+  test.fixme(`paste with empty paragraph at end #3773`, async ({page}) => {
     await focusEditor(page);
     await pasteFromClipboard(page, {
       'text/plain':

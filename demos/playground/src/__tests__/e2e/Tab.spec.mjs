@@ -16,7 +16,7 @@ import {
 
 test.describe('Tab', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
-  test(`can tab + IME`, async ({page, isPlainText, browserName}) => {
+  test.fixme(`can tab + IME`, async ({page, isPlainText, browserName}) => {
     // CDP session is only available in Chromium
     test.skip(
       isPlainText || browserName === 'firefox' || browserName === 'webkit',

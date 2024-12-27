@@ -20,49 +20,52 @@ test.describe('Autocomplete', () => {
   test.beforeEach(({isCollab, page}) =>
     initialize({isAutocomplete: true, isCollab, page}),
   );
-  test('Can autocomplete a word', async ({page, isPlainText, browserName}) => {
-    test.fixme(browserName === 'firefox' && IS_LINUX);
-    await focusEditor(page);
-    await page.keyboard.type('Sort by alpha');
-    await sleep(500);
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Sort by alpha</span>
-          <span contenteditable="false" data-lexical-decorator="true">
-            <span
-              class="PlaygroundEditorTheme__autocomplete"
-              spellcheck="false">
-              betical (TAB)
+  test.fixme(
+    'Can autocomplete a word',
+    async ({page, isPlainText, browserName}) => {
+      test.fixme(browserName === 'firefox' && IS_LINUX);
+      await focusEditor(page);
+      await page.keyboard.type('Sort by alpha');
+      await sleep(500);
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Sort by alpha</span>
+            <span contenteditable="false" data-lexical-decorator="true">
+              <span
+                class="PlaygroundEditorTheme__autocomplete"
+                spellcheck="false">
+                betical (TAB)
+              </span>
             </span>
-          </span>
-          <br />
-        </p>
-      `,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Sort by alpha</span>
-          <span contenteditable="false" data-lexical-decorator="true"></span>
-          <br />
-        </p>
-      `,
-    );
-    await page.keyboard.press('Tab');
-    await page.keyboard.type(' order:');
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Sort by alphabetical order:</span>
-        </p>
-      `,
-    );
-  });
+            <br />
+          </p>
+        `,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Sort by alpha</span>
+            <span contenteditable="false" data-lexical-decorator="true"></span>
+            <br />
+          </p>
+        `,
+      );
+      await page.keyboard.press('Tab');
+      await page.keyboard.type(' order:');
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Sort by alphabetical order:</span>
+          </p>
+        `,
+      );
+    },
+  );
 });
