@@ -17,6 +17,7 @@ import {
   dragMouse,
   evaluate,
   focusEditor,
+  getProjectRootPath,
   html,
   initialize,
   insertSampleImage,
@@ -30,6 +31,7 @@ import {
   test,
   waitForSelector,
 } from '../utils/index.mjs';
+import path from 'node:path';
 
 test.describe('Images', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
@@ -401,7 +403,7 @@ test.describe('Images', () => {
 
     await insertUploadImage(
       page,
-      'src/images/yellow-flower-small.jpg',
+      path.join(getProjectRootPath(), 'src/images/yellow-flower-small.jpg'),
       'a pretty yellow flower :)',
     );
 

@@ -12,6 +12,7 @@ import prettier from 'prettier';
 import {URLSearchParams} from 'url';
 
 import {selectAll} from '../keyboardShortcuts/index.mjs';
+import path from 'node:path';
 
 export const E2E_PORT = process.env.E2E_PORT || 5173;
 export const E2E_BROWSER = process.env.E2E_BROWSER;
@@ -952,4 +953,12 @@ export async function dragDraggableMenuTo(
 
 export async function pressInsertLinkButton(page) {
   await click(page, '.toolbar-item[aria-label="Insert link"]');
+}
+
+export function getProjectRootPath() {
+  const basePath = path.basename(process.cwd());
+  if (basePath === 'svelte-lexical') {
+    return path.join('demos', 'playground');
+  }
+  return '';
 }
