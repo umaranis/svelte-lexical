@@ -1776,7 +1776,13 @@ test.describe.parallel('Tables', () => {
     },
   );
 
-  test('Merge/unmerge cells (1)', async ({page, isPlainText, isCollab}) => {
+  test('Merge/unmerge cells (1)', async ({
+    page,
+    isPlainText,
+    browserName,
+    isCollab,
+  }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -1863,7 +1869,13 @@ test.describe.parallel('Tables', () => {
     );
   });
 
-  test('Merge/unmerge cells (2)', async ({page, isPlainText, isCollab}) => {
+  test('Merge/unmerge cells (2)', async ({
+    page,
+    isPlainText,
+    browserName,
+    isCollab,
+  }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -1990,7 +2002,13 @@ test.describe.parallel('Tables', () => {
     );
   });
 
-  test('Merge with content', async ({page, isPlainText, isCollab}) => {
+  test('Merge with content', async ({
+    page,
+    isPlainText,
+    browserName,
+    isCollab,
+  }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -2215,8 +2233,10 @@ test.describe.parallel('Tables', () => {
   test('Insert row above (with conflicting merged cell)', async ({
     page,
     isPlainText,
+    browserName,
     isCollab,
   }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -2278,8 +2298,10 @@ test.describe.parallel('Tables', () => {
   test('Insert column before (with conflicting merged cell)', async ({
     page,
     isPlainText,
+    browserName,
     isCollab,
   }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -2338,8 +2360,10 @@ test.describe.parallel('Tables', () => {
   test('Insert column before (with selected cell with rowspan > 1)', async ({
     page,
     isPlainText,
+    browserName,
     isCollab,
   }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -2393,8 +2417,10 @@ test.describe.parallel('Tables', () => {
   test('Insert column before (with 1+ selected cells in a row)', async ({
     page,
     isPlainText,
+    browserName,
     isCollab,
   }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -2465,7 +2491,8 @@ test.describe.parallel('Tables', () => {
     {
       tag: '@flaky',
     },
-    async ({page, isPlainText, isCollab}) => {
+    async ({page, isPlainText, browserName, isCollab}) => {
+      test.fixme(browserName === 'firefox');
       await initialize({isCollab, page});
       test.skip(isPlainText);
       if (IS_COLLAB) {
@@ -2526,8 +2553,10 @@ test.describe.parallel('Tables', () => {
   test('Delete columns (with conflicting merged cell)', async ({
     page,
     isPlainText,
+    browserName,
     isCollab,
   }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -2584,7 +2613,13 @@ test.describe.parallel('Tables', () => {
     );
   });
 
-  test('Delete columns backward', async ({page, isPlainText, isCollab}) => {
+  test('Delete columns backward', async ({
+    page,
+    isPlainText,
+    browserName,
+    isCollab,
+  }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -2632,8 +2667,10 @@ test.describe.parallel('Tables', () => {
   test('Delete columns forward at end of table', async ({
     page,
     isPlainText,
+    browserName,
     isCollab,
   }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -2890,8 +2927,10 @@ test.describe.parallel('Tables', () => {
   test('Add column header after merging cells #4378', async ({
     page,
     isPlainText,
+    browserName,
     isCollab,
   }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {

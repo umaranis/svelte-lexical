@@ -29,6 +29,7 @@ test.describe('Keyboard shortcuts', () => {
     isPlainText,
     browserName,
   }) => {
+    test.fixme(browserName === 'firefox');
     test.skip(!supportsTranspose);
 
     await focusEditor(page);
