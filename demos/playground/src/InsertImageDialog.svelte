@@ -1,7 +1,7 @@
 <script lang="ts">
   import {run} from 'svelte/legacy';
 
-  import {onMount} from 'svelte';
+  import {onMount, tick} from 'svelte';
   import {
     CloseCircleButton,
     InsertImageUploadedDialogBody,
@@ -53,8 +53,9 @@
     closeDialog();
   }
 
-  function closeDialog() {
+  async function closeDialog() {
     showModal = false;
+    await tick();
     getCommands().FocusEditor.execute(editor);
   }
 </script>
