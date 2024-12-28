@@ -9,8 +9,8 @@
   import CloseCircleButton from '$lib/components/generic/button/CloseCircleButton.svelte';
   import {tick} from 'svelte';
 
-  let rows = '5';
-  let columns = '5';
+  let rows = $state('5');
+  let columns = $state('5');
   let isDisabled = $state(true);
 
   run(() => {
@@ -58,12 +58,12 @@
       <NumberInput
         placeholder={'# of rows (1-500)'}
         label="Rows"
-        value={rows}
+        bind:value={rows}
         dataTestId="table-modal-rows" />
       <NumberInput
         placeholder={'# of columns (1-50)'}
         label="Columns"
-        value={columns}
+        bind:value={columns}
         dataTestId="table-modal-columns" />
       <div class="DialogActions" data-test-id="table-model-confirm-insert">
         <button
