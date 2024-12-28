@@ -2,6 +2,8 @@
 
 <script lang="ts">
   import InsertTableDialog from '$lib/components/toolbar/dialogs/InsertTableDialog.svelte';
+  import DropDownBackColorPicker from '$lib/components/toolbar/DropDownBackColorPicker.svelte';
+  import DropDownTextColorPicker from '$lib/components/toolbar/DropDownTextColorPicker.svelte';
   import InsertTableDropDownItem from '$lib/components/toolbar/InsertDropDown/InsertTableDropDownItem.svelte';
   import {
     BlockFormatDropDown,
@@ -65,6 +67,9 @@
     <UnderlineButton />
     <StrikethroughButton />
     <FormatCodeButton />
+    <DropDownTextColorPicker />
+    <DropDownBackColorPicker />
+    <Divider />
     <InsertLink />
     <Divider />
     <InsertDropDown>
