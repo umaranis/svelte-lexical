@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import {
     basicColors,
     transformColor,
@@ -61,20 +59,20 @@
   };
 
   // Check if the dropdown is actually active
-  run(() => {
+  $effect(() => {
     if (innerDivRef !== null && onChange) {
       onChange(selfColor.hex, $skipAddingToHistoryStack);
       inputColor = selfColor.hex;
     }
   });
 
-  run(() => {
-    if (color) {
-      const newColor = transformColor('hex', color);
-      selfColor = newColor;
-      inputColor = newColor.hex;
-    }
-  });
+  // run(() => {
+  //   if (color) {
+  //     const newColor = transformColor('hex', color);
+  //     selfColor = newColor;
+  //     inputColor = newColor.hex;
+  //   }
+  // });
 </script>
 
 <div
