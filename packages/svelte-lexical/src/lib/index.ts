@@ -22,6 +22,9 @@ export {default as FloatingLinkEditorPlugin} from './core/plugins/link/FloatingL
 export {default as CodeHighlightPlugin} from './core/plugins/CodeBlock/CodeHighlightPlugin.svelte';
 export {default as CodeActionMenuPlugin} from './core/plugins/CodeBlock/CodeActionMenuPlugin/CodeActionMenuPlugin.svelte';
 export {default as ColumnLayoutPlugin} from './core/plugins/ColumnsLayout/ColumnLayoutPlugin.svelte';
+export {default as TablePlugin} from './core/plugins/Table/TablePlugin.svelte';
+export {default as TableActionMenuPlugin} from './core/plugins/Table/TableActionMenuPlugin.svelte';
+export {default as TableHoverActionPlugin} from './core/plugins/Table/TableHoverActionPlugin.svelte';
 
 export {default as MarkdownShortcutPlugin} from './core/plugins/MardownShortcut/MarkdownShortcutPlugin.svelte';
 export {
@@ -61,6 +64,7 @@ export {CodeNode, CodeHighlightNode} from '@lexical/code';
 export type {Provider} from '@lexical/yjs';
 export {LayoutContainerNode} from './core/plugins/ColumnsLayout/LayoutContainerNode.js';
 export {LayoutItemNode} from './core/plugins/ColumnsLayout/LayoutItemNode.js';
+export {TableNode, TableRowNode, TableCellNode} from '@lexical/table';
 
 // toolbar
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';
@@ -99,6 +103,7 @@ export {default as SubscriptDropDownItem} from './components/toolbar/MoreStylesD
 export {default as SuperscriptDropDownItem} from './components/toolbar/MoreStylesDropDown/SuperscriptDropDownItem.svelte';
 export {default as ClearFormattingDropDownItem} from './components/toolbar/MoreStylesDropDown/ClearFormattingDropDownItem.svelte';
 export {default as InsertColumnLayoutDropDownItem} from './components/toolbar/InsertDropDown/InsertColumnLayoutDropDownItem.svelte';
+export {default as InsertTableDropDownItem} from './components/toolbar/InsertDropDown/InsertTableDropDownItem.svelte';
 // dialogs
 export {default as InsertImageDialog} from './components/toolbar/dialogs/InsertImageDialog.svelte';
 export {default as InsertImageUploadedDialogBody} from './components/toolbar/dialogs/InsertImageUploadedDialogBody.svelte';
