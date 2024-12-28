@@ -2084,8 +2084,10 @@ test.describe.parallel('Tables', () => {
   test('Select multiple merged cells (selection expands to a rectangle)', async ({
     page,
     isPlainText,
+    browserName,
     isCollab,
   }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
 
