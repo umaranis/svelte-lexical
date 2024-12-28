@@ -73,7 +73,7 @@ async function fillTablePartiallyWithText(page) {
 }
 
 test.describe.parallel('Tables', () => {
-  test.fixme();
+  //test.fixme();
   test(`Can a table be inserted from the toolbar`, async ({
     page,
     isPlainText,
@@ -629,40 +629,42 @@ test.describe.parallel('Tables', () => {
       });
     });
 
-    test('Should not navigate cells when typeahead menu is open and focused', async ({
-      page,
-      isCollab,
-      isPlainText,
-    }) => {
-      await initialize({isCollab, page});
-      test.skip(isPlainText);
+    test.fixme(
+      'Should not navigate cells when typeahead menu is open and focused',
+      async ({page, isCollab, isPlainText}) => {
+        await initialize({isCollab, page});
+        test.skip(isPlainText);
 
-      await focusEditor(page);
-      await insertTable(page, 2, 2);
+        await focusEditor(page);
+        await insertTable(page, 2, 2);
 
-      await page.keyboard.type('@A');
-      await assertSelection(page, {
-        anchorOffset: 2,
-        anchorPath: [1, 0, 0, 0, 0, 0],
-        focusOffset: 2,
-        focusPath: [1, 0, 0, 0, 0, 0],
-      });
+        await page.keyboard.type('@A');
+        await assertSelection(page, {
+          anchorOffset: 2,
+          anchorPath: [1, 0, 0, 0, 0, 0],
+          focusOffset: 2,
+          focusPath: [1, 0, 0, 0, 0, 0],
+        });
 
-      await waitForSelector(page, `#typeahead-menu ul li:first-child.selected`);
+        await waitForSelector(
+          page,
+          `#typeahead-menu ul li:first-child.selected`,
+        );
 
-      await moveDown(page, 1);
-      await assertSelection(page, {
-        anchorOffset: 2,
-        anchorPath: [1, 0, 0, 0, 0, 0],
-        focusOffset: 2,
-        focusPath: [1, 0, 0, 0, 0, 0],
-      });
+        await moveDown(page, 1);
+        await assertSelection(page, {
+          anchorOffset: 2,
+          anchorPath: [1, 0, 0, 0, 0, 0],
+          focusOffset: 2,
+          focusPath: [1, 0, 0, 0, 0, 0],
+        });
 
-      await waitForSelector(
-        page,
-        '#typeahead-menu ul li:nth-child(2).selected',
-      );
-    });
+        await waitForSelector(
+          page,
+          '#typeahead-menu ul li:nth-child(2).selected',
+        );
+      },
+    );
   });
 
   test(`Can select cells using Table selection`, async ({
@@ -1433,186 +1435,182 @@ test.describe.parallel('Tables', () => {
     );
   });
 
-  test('Can remove new lines in a collapsible section inside of a table', async ({
-    page,
-    isPlainText,
-    isCollab,
-    browserName,
-  }) => {
-    await initialize({isCollab, page});
-    test.skip(isPlainText);
+  test.fixme(
+    'Can remove new lines in a collapsible section inside of a table',
+    async ({page, isPlainText, isCollab, browserName}) => {
+      await initialize({isCollab, page});
+      test.skip(isPlainText);
 
-    await focusEditor(page);
+      await focusEditor(page);
 
-    await insertTable(page, 1, 2);
-    await insertCollapsible(page);
+      await insertTable(page, 1, 2);
+      await insertCollapsible(page);
 
-    await page.keyboard.type('123');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.type('123');
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Enter');
+      await page.keyboard.type('123');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.type('123');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
 
-    const collapsibleOpeningTag =
-      browserName === 'chromium'
-        ? '<div class="Collapsible__container" open="">'
-        : '<details class="Collapsible__container" open="">';
-    const collapsibleClosingTag =
-      browserName === 'chromium' ? '</div>' : '</details>';
+      const collapsibleOpeningTag =
+        browserName === 'chromium'
+          ? '<div class="Collapsible__container" open="">'
+          : '<details class="Collapsible__container" open="">';
+      const collapsibleClosingTag =
+        browserName === 'chromium' ? '</div>' : '</details>';
 
-    await assertHTML(
-      page,
-      html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <table class="PlaygroundEditorTheme__table">
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              ${collapsibleOpeningTag}
-              <summary class="Collapsible__title">
-                <p class="PlaygroundEditorTheme__paragraph">
-                  <span data-lexical-text="true">123</span>
-                </p>
-              </summary>
-              <div class="Collapsible__content">
-                <p class="PlaygroundEditorTheme__paragraph">
-                  <span data-lexical-text="true">123</span>
-                </p>
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <table class="PlaygroundEditorTheme__table">
+            <tr>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
                 <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                ${collapsibleOpeningTag}
+                <summary class="Collapsible__title">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <span data-lexical-text="true">123</span>
+                  </p>
+                </summary>
+                <div class="Collapsible__content">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <span data-lexical-text="true">123</span>
+                  </p>
+                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                </div>
+                ${collapsibleClosingTag}
                 <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </th>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
                 <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </div>
-              ${collapsibleClosingTag}
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-          </tr>
-        </table>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-      `,
-    );
+              </th>
+            </tr>
+          </table>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
 
-    await pressBackspace(page, 10);
-    await assertHTML(
-      page,
-      html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <table class="PlaygroundEditorTheme__table">
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              ${collapsibleOpeningTag}
-              <summary class="Collapsible__title">
-                <p class="PlaygroundEditorTheme__paragraph">
-                  <span data-lexical-text="true">123</span>
-                </p>
-              </summary>
-              <div class="Collapsible__content">
+      await pressBackspace(page, 10);
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <table class="PlaygroundEditorTheme__table">
+            <tr>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
                 <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </div>
-              ${collapsibleClosingTag}
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-          </tr>
-        </table>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-      `,
-    );
-  });
+                ${collapsibleOpeningTag}
+                <summary class="Collapsible__title">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <span data-lexical-text="true">123</span>
+                  </p>
+                </summary>
+                <div class="Collapsible__content">
+                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                </div>
+                ${collapsibleClosingTag}
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </th>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </th>
+            </tr>
+          </table>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
+    },
+  );
 
-  test('Resize merged cells width (1)', async ({
-    browserName,
-    page,
-    isPlainText,
-    isCollab,
-  }) => {
-    await initialize({isCollab, page});
-    test.fixme(
-      isCollab && IS_LINUX && browserName === 'firefox',
-      'Flaky on Linux + Collab',
-    );
-    test.skip(isPlainText);
-    if (IS_COLLAB) {
-      // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({height: 1000, width: 3000});
-    }
+  test.fixme(
+    'Resize merged cells width (1)',
+    async ({browserName, page, isPlainText, isCollab}) => {
+      await initialize({isCollab, page});
+      test.fixme(
+        isCollab && IS_LINUX && browserName === 'firefox',
+        'Flaky on Linux + Collab',
+      );
+      test.skip(isPlainText);
+      if (IS_COLLAB) {
+        // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
+        page.setViewportSize({height: 1000, width: 3000});
+      }
 
-    await focusEditor(page);
+      await focusEditor(page);
 
-    await insertTable(page, 3, 3);
-    await click(page, '.PlaygroundEditorTheme__tableCell');
-    await selectCellsFromTableCords(
-      page,
-      {x: 0, y: 0},
-      {x: 1, y: 1},
-      true,
-      false,
-    );
-    await mergeTableCells(page);
-    await click(page, 'td:nth-child(3) > .PlaygroundEditorTheme__paragraph');
-    const resizerBoundingBox = await selectorBoundingBox(
-      page,
-      '.TableCellResizer__resizer:first-child',
-    );
-    const x = resizerBoundingBox.x + resizerBoundingBox.width / 2;
-    const y = resizerBoundingBox.y + resizerBoundingBox.height / 2;
-    await page.mouse.move(x, y);
-    await page.mouse.down();
-    await page.mouse.move(x + 50, y);
-    await page.mouse.up();
+      await insertTable(page, 3, 3);
+      await click(page, '.PlaygroundEditorTheme__tableCell');
+      await selectCellsFromTableCords(
+        page,
+        {x: 0, y: 0},
+        {x: 1, y: 1},
+        true,
+        false,
+      );
+      await mergeTableCells(page);
+      await click(page, 'td:nth-child(3) > .PlaygroundEditorTheme__paragraph');
+      const resizerBoundingBox = await selectorBoundingBox(
+        page,
+        '.TableCellResizer__resizer:first-child',
+      );
+      const x = resizerBoundingBox.x + resizerBoundingBox.width / 2;
+      const y = resizerBoundingBox.y + resizerBoundingBox.height / 2;
+      await page.mouse.move(x, y);
+      await page.mouse.down();
+      await page.mouse.move(x + 50, y);
+      await page.mouse.up();
 
-    await assertHTML(
-      page,
-      html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <table class="PlaygroundEditorTheme__table">
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-              colspan="2"
-              rowspan="2">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-              style="width: 125px">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-          </tr>
-          <tr>
-            <td class="PlaygroundEditorTheme__tableCell" style="width: 125px">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell" style="width: 125px">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-        </table>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-      `,
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <table class="PlaygroundEditorTheme__table">
+            <tr>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
+                colspan="2"
+                rowspan="2">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </th>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
+                style="width: 125px">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </th>
+            </tr>
+            <tr>
+              <td class="PlaygroundEditorTheme__tableCell" style="width: 125px">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </td>
+            </tr>
+            <tr>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </th>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell" style="width: 125px">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </td>
+            </tr>
+          </table>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
+    },
+  );
 
-  test(
+  test.fixme(
     'Resize merged cells width (2)',
     {
       tag: '@flaky',
@@ -1691,94 +1689,92 @@ test.describe.parallel('Tables', () => {
     },
   );
 
-  test('Resize merged cells height', async ({
-    browserName,
-    page,
-    isPlainText,
-    isCollab,
-  }) => {
-    await initialize({isCollab, page});
-    test.skip(isPlainText);
-    test.fixme(IS_COLLAB && IS_LINUX && browserName === 'firefox');
-    if (IS_COLLAB) {
-      // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({height: 1000, width: 3000});
-    }
+  test.fixme(
+    'Resize merged cells height',
+    async ({browserName, page, isPlainText, isCollab}) => {
+      await initialize({isCollab, page});
+      test.skip(isPlainText);
+      test.fixme(IS_COLLAB && IS_LINUX && browserName === 'firefox');
+      if (IS_COLLAB) {
+        // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
+        page.setViewportSize({height: 1000, width: 3000});
+      }
 
-    await focusEditor(page);
+      await focusEditor(page);
 
-    await insertTable(page, 3, 3);
-    await click(page, '.PlaygroundEditorTheme__tableCell');
-    await selectCellsFromTableCords(
-      page,
-      {x: 0, y: 0},
-      {x: 1, y: 1},
-      true,
-      false,
-    );
-    await mergeTableCells(page);
-    await click(page, 'th');
-    const resizerBoundingBox = await selectorBoundingBox(
-      page,
-      '.TableCellResizer__resizer:nth-child(2)',
-    );
-    const x = resizerBoundingBox.x + resizerBoundingBox.width / 2;
-    const y = resizerBoundingBox.y + resizerBoundingBox.height / 2;
-    await page.mouse.move(x, y);
-    await page.mouse.down();
-    await page.mouse.move(x, y + 50);
-    await page.mouse.up();
+      await insertTable(page, 3, 3);
+      await click(page, '.PlaygroundEditorTheme__tableCell');
+      await selectCellsFromTableCords(
+        page,
+        {x: 0, y: 0},
+        {x: 1, y: 1},
+        true,
+        false,
+      );
+      await mergeTableCells(page);
+      await click(page, 'th');
+      const resizerBoundingBox = await selectorBoundingBox(
+        page,
+        '.TableCellResizer__resizer:nth-child(2)',
+      );
+      const x = resizerBoundingBox.x + resizerBoundingBox.width / 2;
+      const y = resizerBoundingBox.y + resizerBoundingBox.height / 2;
+      await page.mouse.move(x, y);
+      await page.mouse.down();
+      await page.mouse.move(x, y + 50);
+      await page.mouse.up();
 
-    await assertHTML(
-      page,
-      html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <table class="PlaygroundEditorTheme__table">
-          <tr style="height: 87px">
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-              colspan="2"
-              rowspan="2">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-          </tr>
-          <tr>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </td>
-          </tr>
-        </table>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-      `,
-      undefined,
-      {
-        ignoreClasses: false,
-        ignoreInlineStyles: false,
-      },
-      (actualHtml) =>
-        // flaky fix: +- 1px for the height assertion
-        actualHtml.replace(
-          '<tr style="height: 88px">',
-          '<tr style="height: 87px">',
-        ),
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <table class="PlaygroundEditorTheme__table">
+            <tr style="height: 87px">
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
+                colspan="2"
+                rowspan="2">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </th>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </th>
+            </tr>
+            <tr>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </td>
+            </tr>
+            <tr>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </th>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </td>
+            </tr>
+          </table>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+        undefined,
+        {
+          ignoreClasses: false,
+          ignoreInlineStyles: false,
+        },
+        (actualHtml) =>
+          // flaky fix: +- 1px for the height assertion
+          actualHtml.replace(
+            '<tr style="height: 88px">',
+            '<tr style="height: 87px">',
+          ),
+      );
+    },
+  );
 
   test('Merge/unmerge cells (1)', async ({page, isPlainText, isCollab}) => {
     await initialize({isCollab, page});
@@ -2708,46 +2704,51 @@ test.describe.parallel('Tables', () => {
     });
   });
 
-  test('Background color to cell', async ({page, isPlainText, isCollab}) => {
-    await initialize({isCollab, page});
-    test.skip(isPlainText);
-    if (IS_COLLAB) {
-      // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
-      page.setViewportSize({height: 1000, width: 3000});
-    }
+  test.fixme(
+    'Background color to cell',
+    async ({page, isPlainText, isCollab}) => {
+      await initialize({isCollab, page});
+      test.skip(isPlainText);
+      if (IS_COLLAB) {
+        // The contextual menu positioning needs fixing (it's hardcoded to show on the right side)
+        page.setViewportSize({height: 1000, width: 3000});
+      }
 
-    await focusEditor(page);
+      await focusEditor(page);
 
-    await insertTable(page, 1, 1);
-    await setBackgroundColor(page);
-    await click(page, '.color-picker-basic-color button');
-    await click(page, '.Modal__closeButton');
+      await insertTable(page, 1, 1);
+      await setBackgroundColor(page);
+      await click(page, '.color-picker-basic-color button');
+      await click(page, '.Modal__closeButton');
 
-    await assertHTML(
-      page,
-      html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <table class="PlaygroundEditorTheme__table">
-          <tr>
-            <th
-              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-              style="background-color: rgb(208, 2, 27)">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            </th>
-          </tr>
-        </table>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-      `,
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <table class="PlaygroundEditorTheme__table">
+            <tr>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
+                style="background-color: rgb(208, 2, 27)">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </th>
+            </tr>
+          </table>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
+    },
+  );
 
-  test('Cell merge feature disabled', async ({page, isPlainText, isCollab}) => {
-    await initialize({isCollab, page, tableCellMerge: false});
-    test.skip(isPlainText);
+  test.fixme(
+    'Cell merge feature disabled',
+    async ({page, isPlainText, isCollab}) => {
+      await initialize({isCollab, page, tableCellMerge: false});
+      test.skip(isPlainText);
 
-    await focusEditor(page);
-    await pasteFromClipboard(page, {
-      'text/html': `<div dir="ltr">
+      await focusEditor(page);
+      await pasteFromClipboard(page, {
+        'text/html': `<div dir="ltr">
       <table>
          <tbody>
             <tr>
@@ -2777,81 +2778,80 @@ test.describe.parallel('Tables', () => {
          </tbody>
       </table>
    </div>`,
-    });
+      });
 
-    await page.pause();
+      await page.pause();
 
-    await assertHTML(
-      page,
-      html`
-        <table class="PlaygroundEditorTheme__table">
-          <tr>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">Hello world</span>
-              </p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell"><br /></td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">a</span>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td class="PlaygroundEditorTheme__tableCell"><br /></td>
-            <td class="PlaygroundEditorTheme__tableCell"><br /></td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">b</span>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">c</span>
-              </p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">d</span>
-              </p>
-            </td>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">e</span>
-              </p>
-            </td>
-          </tr>
-        </table>
-      `,
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <table class="PlaygroundEditorTheme__table">
+            <tr>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p
+                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">Hello world</span>
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell"><br /></td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p
+                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">a</span>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="PlaygroundEditorTheme__tableCell"><br /></td>
+              <td class="PlaygroundEditorTheme__tableCell"><br /></td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p
+                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">b</span>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p
+                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">c</span>
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p
+                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">d</span>
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p
+                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">e</span>
+                </p>
+              </td>
+            </tr>
+          </table>
+        `,
+      );
+    },
+  );
 
-  test('Cell background color feature disabled', async ({
-    page,
-    isPlainText,
-    isCollab,
-  }) => {
-    await initialize({isCollab, page, tableCellBackgroundColor: false});
-    test.skip(isPlainText);
+  test.fixme(
+    'Cell background color feature disabled',
+    async ({page, isPlainText, isCollab}) => {
+      await initialize({isCollab, page, tableCellBackgroundColor: false});
+      test.skip(isPlainText);
 
-    await focusEditor(page);
-    await pasteFromClipboard(page, {
-      'text/html': `<div dir="ltr">
+      await focusEditor(page);
+      await pasteFromClipboard(page, {
+        'text/html': `<div dir="ltr">
         <table>
            <tbody>
               <tr>
@@ -2862,27 +2862,28 @@ test.describe.parallel('Tables', () => {
            </tbody>
         </table>
      </div>`,
-    });
+      });
 
-    await page.pause();
+      await page.pause();
 
-    await assertHTML(
-      page,
-      html`
-        <table class="PlaygroundEditorTheme__table">
-          <tr>
-            <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
-                <span data-lexical-text="true">Hello world</span>
-              </p>
-            </td>
-          </tr>
-        </table>
-      `,
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <table class="PlaygroundEditorTheme__table">
+            <tr>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p
+                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                  dir="ltr">
+                  <span data-lexical-text="true">Hello world</span>
+                </p>
+              </td>
+            </tr>
+          </table>
+        `,
+      );
+    },
+  );
 
   test('Add column header after merging cells #4378', async ({
     page,
