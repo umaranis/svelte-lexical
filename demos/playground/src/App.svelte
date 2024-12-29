@@ -11,10 +11,14 @@
 <main>
   <img src="images/logo.svg" alt="Svelte Lexical!" />
   <p>
-    This Rich Text Editor is build with <a
-      href="https://github.com/umaranis/svelte-lexical/">
+    This is the <a href="https://github.com/umaranis/svelte-lexical/">
       svelte-lexical
     </a>
+    <strong>playground.</strong>
+  </p>
+  <p>
+    It demonstrates most of the features of the library. It is also used for
+    running end-to-end (e2e) tests.
   </p>
 
   <!-- `text-align: left` added to reset the center text alignment of the main div.
