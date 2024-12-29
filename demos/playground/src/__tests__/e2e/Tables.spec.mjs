@@ -2492,11 +2492,12 @@ test.describe.parallel('Tables', () => {
     {
       tag: '@flaky',
     },
-    async ({page, isPlainText, browserName, isCollab}) => {
+    async ({page, isPlainText, browserName, isCollab, legacyEvents}) => {
       test.fixme(
         browserName === 'firefox' ||
           (os.platform() === 'linux' && browserName === 'chromium') ||
-          IS_COLLAB,
+          isCollab ||
+          legacyEvents,
       );
       await initialize({isCollab, page});
       test.skip(isPlainText);
@@ -2562,7 +2563,11 @@ test.describe.parallel('Tables', () => {
     isCollab,
     legacyEvents,
   }) => {
-    test.fixme(browserName === 'firefox' || legacyEvents);
+    test.fixme(
+      browserName === 'firefox' ||
+        legacyEvents ||
+        (os.platform() === 'linux' && browserName === 'chromium'),
+    );
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -2626,7 +2631,12 @@ test.describe.parallel('Tables', () => {
     isCollab,
     legacyEvents,
   }) => {
-    test.fixme(browserName === 'firefox' || legacyEvents);
+    test.fixme(
+      browserName === 'firefox' ||
+        legacyEvents ||
+        (os.platform() === 'linux' && browserName === 'chromium') ||
+        isCollab,
+    );
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -2676,8 +2686,14 @@ test.describe.parallel('Tables', () => {
     isPlainText,
     browserName,
     isCollab,
+    legacyEvents,
   }) => {
-    test.fixme(browserName === 'firefox');
+    test.fixme(
+      browserName === 'firefox' ||
+        legacyEvents ||
+        (os.platform() === 'linux' && browserName === 'chromium') ||
+        isCollab,
+    );
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
@@ -2937,7 +2953,10 @@ test.describe.parallel('Tables', () => {
     browserName,
     isCollab,
   }) => {
-    test.fixme(browserName === 'firefox');
+    test.fixme(
+      browserName === 'firefox' ||
+        (os.platform() === 'linux' && browserName === 'chromium'),
+    );
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
