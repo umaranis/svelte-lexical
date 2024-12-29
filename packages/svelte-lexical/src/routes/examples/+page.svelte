@@ -20,7 +20,13 @@
     <div>
       <div class="example-intro">
         <h1>1. Plain Text Editor</h1>
-        <div>Plain text Editor with history plugin.</div>
+        <div>
+          <p>Plain text Editor with history plugin.</p>
+          <p>
+            It also has the Action bar (bottom right corner with import/export
+            and other actions).
+          </p>
+        </div>
       </div>
       <Composer1PlainText />
     </div>
@@ -35,8 +41,20 @@
       <div class="example-intro">
         <h1>3. Rich Text Editor - Advanced</h1>
         <div>
-          Rich text Editor with following plugins: History, List, CheckList,
-          HorizontalRule, Image and MarkdownShortcutPlugin.
+          <p>Rich text Editor with the following plugins:</p>
+          <ul>
+            <li>History</li>
+            <li>List</li>
+            <li>CheckList</li>
+            <li>HorizontalRule</li>
+            <li>Image</li>
+            <li>MarkdownShortcutPlugin</li>
+          </ul>
+
+          <p>
+            It also adds toolbar color pickers for text color and text
+            background.
+          </p>
         </div>
       </div>
       <Composer3RichTextAdv />
@@ -45,10 +63,11 @@
       <div class="example-intro">
         <h1>4. Rich Text Editor with Hyperlinks</h1>
         <div>
-          Rich text Editor with links support using LinkPlugin, AutoLinkPlugin
-          and FloatingLinkEditorPlugin. It also includes all plugins from the
-          previous example i.e. History, List, CheckList, HorizontalRule, Image
-          and MarkdownShortcutPlugin.
+          <p>
+            Rich text Editor with links support using LinkPlugin, AutoLinkPlugin
+            and FloatingLinkEditorPlugin.
+          </p>
+          <p>It also includes all plugins from the previous example.</p>
         </div>
       </div>
       <Composer4RtLinks />
@@ -57,9 +76,14 @@
       <div class="example-intro">
         <h1>5. Rich Text Editor with Code Blocks</h1>
         <div>
-          Rich text Editor with support for Code Blocks. It also includes all
-          plugins from the previous example i.e. History, List, CheckList,
-          HorizontalRule, Image, Link, AutoLink and MarkdownShortcutPlugin.
+          <p>
+            Rich text Editor with support for Code Blocks. It also includes all
+            plugins from the previous example.
+          </p>
+          <p>
+            When the focus is inside a Code Block, the toolbar shows dropdown
+            for language selection and hides rich text formatting options.
+          </p>
           <p>
             The font size drop down is replaced with font size entry control.
           </p>

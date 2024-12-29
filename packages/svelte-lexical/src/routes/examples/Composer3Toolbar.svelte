@@ -1,6 +1,8 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
+  import DropDownBackColorPicker from '$lib/components/toolbar/DropDownBackColorPicker.svelte';
+  import DropDownTextColorPicker from '$lib/components/toolbar/DropDownTextColorPicker.svelte';
   import {BlockFormatDropDown} from '$lib/index.js';
   import {BoldButton} from '$lib/index.js';
   import {Divider} from '$lib/index.js';
@@ -54,10 +56,12 @@
     <UnderlineButton />
     <StrikethroughButton />
     <FormatCodeButton />
+    <DropDownTextColorPicker />
+    <DropDownBackColorPicker />
     <Divider />
     <InsertDropDown>
       <InsertHRDropDownItem />
-      <InsertImageDropDownItem onclick={() => imageDialog!.open()} />
+      <InsertImageDropDownItem onclick={() => imageDialog.open()} />
     </InsertDropDown>
     <Divider />
     <DropDownAlign />

@@ -111,7 +111,7 @@
       <ListPlugin />
       <CheckListPlugin />
       <HorizontalRulePlugin />
-      <ImagePlugin />
+      <ImagePlugin captionsEnabled={false} />
       <AutoLinkPlugin />
       <LinkPlugin {validateUrl} />
       {#if !isSmallWidthViewport}

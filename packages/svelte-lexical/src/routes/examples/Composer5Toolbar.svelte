@@ -1,6 +1,9 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
+  import CodeLanguageDropDown from '$lib/components/toolbar/CodeLanguageDropDown.svelte';
+  import DropDownBackColorPicker from '$lib/components/toolbar/DropDownBackColorPicker.svelte';
+  import DropDownTextColorPicker from '$lib/components/toolbar/DropDownTextColorPicker.svelte';
   import {
     BlockFormatDropDown,
     CodeDropDrownItem,
@@ -51,21 +54,27 @@
       </BlockFormatDropDown>
       <Divider />
     {/if}
-    <FontFamilyDropDown />
-    <FontSizeEntry />
-    <Divider />
-    <BoldButton />
-    <ItalicButton />
-    <UnderlineButton />
-    <StrikethroughButton />
-    <FormatCodeButton />
-    <InsertLink />
-    <Divider />
-    <InsertDropDown>
-      <InsertHRDropDownItem />
-      <InsertImageDropDownItem onclick={() => imageDialog!.open()} />
-    </InsertDropDown>
-    <Divider />
+    {#if blockType === 'code'}
+      <CodeLanguageDropDown />
+    {:else}
+      <FontFamilyDropDown />
+      <FontSizeEntry />
+      <Divider />
+      <BoldButton />
+      <ItalicButton />
+      <UnderlineButton />
+      <StrikethroughButton />
+      <FormatCodeButton />
+      <DropDownTextColorPicker />
+      <DropDownBackColorPicker />
+      <InsertLink />
+      <Divider />
+      <InsertDropDown>
+        <InsertHRDropDownItem />
+        <InsertImageDropDownItem onclick={() => imageDialog.open()} />
+      </InsertDropDown>
+      <Divider />
+    {/if}
     <DropDownAlign />
     <!-- dialogs -->
     <InsertImageDialog bind:this={imageDialog} />

@@ -80,7 +80,7 @@
       <ListPlugin />
       <CheckListPlugin />
       <HorizontalRulePlugin />
-      <ImagePlugin />
+      <ImagePlugin captionsEnabled={false} />
       <MarkdownShortcutPlugin
         transformers={[
           ...TEXT_FORMAT_TRANSFORMERS,
