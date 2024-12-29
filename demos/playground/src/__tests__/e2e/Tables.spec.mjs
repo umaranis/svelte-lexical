@@ -2634,7 +2634,7 @@ test.describe.parallel('Tables', () => {
     test.fixme(
       browserName === 'firefox' ||
         legacyEvents ||
-        (os.platform() === 'linux' && browserName === 'chromium') ||
+        (os.platform() !== 'darwin' && browserName === 'chromium') ||
         isCollab,
     );
     await initialize({isCollab, page});
