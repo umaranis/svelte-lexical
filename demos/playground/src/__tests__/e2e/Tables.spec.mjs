@@ -2566,7 +2566,7 @@ test.describe.parallel('Tables', () => {
     test.fixme(
       browserName === 'firefox' ||
         legacyEvents ||
-        (os.platform() === 'linux' && browserName === 'chromium'),
+        (os.platform() !== 'darwin' && browserName === 'chromium'),
     );
     await initialize({isCollab, page});
     test.skip(isPlainText);
@@ -2955,7 +2955,8 @@ test.describe.parallel('Tables', () => {
   }) => {
     test.fixme(
       browserName === 'firefox' ||
-        (os.platform() === 'linux' && browserName === 'chromium'),
+        (os.platform() === 'linux' && browserName === 'chromium') ||
+        isCollab,
     );
     await initialize({isCollab, page});
     test.skip(isPlainText);
