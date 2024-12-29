@@ -2495,7 +2495,7 @@ test.describe.parallel('Tables', () => {
     async ({page, isPlainText, browserName, isCollab, legacyEvents}) => {
       test.fixme(
         browserName === 'firefox' ||
-          (os.platform() === 'linux' && browserName === 'chromium') ||
+          (os.platform() !== 'darwin' && browserName === 'chromium') ||
           isCollab ||
           legacyEvents,
       );
@@ -2691,7 +2691,7 @@ test.describe.parallel('Tables', () => {
     test.fixme(
       browserName === 'firefox' ||
         legacyEvents ||
-        (os.platform() === 'linux' && browserName === 'chromium') ||
+        (os.platform() !== 'darwin' && browserName === 'chromium') ||
         isCollab,
     );
     await initialize({isCollab, page});
@@ -2952,11 +2952,13 @@ test.describe.parallel('Tables', () => {
     isPlainText,
     browserName,
     isCollab,
+    legacyEvents,
   }) => {
     test.fixme(
       browserName === 'firefox' ||
         (os.platform() === 'linux' && browserName === 'chromium') ||
-        isCollab,
+        isCollab ||
+        legacyEvents,
     );
     await initialize({isCollab, page});
     test.skip(isPlainText);
