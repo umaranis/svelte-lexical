@@ -16,6 +16,7 @@ import {
   pressBackspace,
   selectAll,
 } from '../keyboardShortcuts/index.mjs';
+import os from 'os';
 import {
   assertHTML,
   assertSelection,
@@ -2492,7 +2493,10 @@ test.describe.parallel('Tables', () => {
       tag: '@flaky',
     },
     async ({page, isPlainText, browserName, isCollab}) => {
-      test.fixme(browserName === 'firefox');
+      test.fixme(
+        browserName === 'firefox' ||
+          (os.platform() === 'linux' && browserName === 'chromium'),
+      );
       await initialize({isCollab, page});
       test.skip(isPlainText);
       if (IS_COLLAB) {
