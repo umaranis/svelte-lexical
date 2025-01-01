@@ -34,6 +34,7 @@
 
   let lang = $state('');
   let isShown = $state(false);
+  $inspect(isShown);
   let shouldListenMouseMove = $state(false);
   let position: Position = $state({
     right: '0',
@@ -134,9 +135,7 @@
     const target = event.target;
 
     if (target && target instanceof HTMLElement) {
-      const codeDOMNode = target.closest<HTMLElement>(
-        'code.PlaygroundEditorTheme__code',
-      );
+      const codeDOMNode = target.closest<HTMLElement>('code');
       const isOutside = !(
         codeDOMNode ||
         target.closest<HTMLElement>('div.code-action-menu-container')
