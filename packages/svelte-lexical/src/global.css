@@ -65,6 +65,7 @@ header h1 {
   display: block;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  border: #eee 1px solid;
 }
 
 .editor-shell .editor-container.tree-view {
@@ -722,7 +723,7 @@ i.page-break,
 }
 
 .dropdown {
-  z-index: 10;
+  z-index: 100;
   display: block;
   position: fixed;
   box-shadow:
@@ -751,7 +752,6 @@ i.page-break,
   border: 0;
   max-width: 250px;
   min-width: 100px;
-  width: calc(100% - 16px);
 }
 
 .dropdown .item.fontsize-item,
@@ -1433,11 +1433,13 @@ button.action-button:disabled {
 
 .toolbar {
   display: flex;
-  margin-bottom: 1px;
+  /* margin-bottom: 1px; */
   background: #fff;
   padding: 4px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  border: #eee 1px solid;
+  border-bottom-width: 0px;
   vertical-align: middle;
   overflow: auto;
   height: 36px;
