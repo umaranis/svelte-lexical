@@ -33,7 +33,7 @@
   } from 'lexical';
   import {onMount} from 'svelte';
   import {mergeRegister} from '@lexical/utils';
-  import ImageResizer from '../../../components/ImageResizer.svelte';
+  import ImageResizer from './ImageResizer.svelte';
   import {$isImageNode as isImageNode} from './ImageNode.js';
   import {KeywordNode} from '../KeywordNode.js';
   import {
