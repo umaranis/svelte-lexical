@@ -8,6 +8,7 @@
   import {
     BlockFormatDropDown,
     CodeDropDrownItem,
+    CodeLanguageDropDown,
     FontSizeEntry,
     InsertLink,
   } from '../lib/index.js';
@@ -59,26 +60,30 @@
       </BlockFormatDropDown>
       <Divider />
     {/if}
-    <FontFamilyDropDown />
-    <FontSizeEntry />
-    <Divider />
-    <BoldButton />
-    <ItalicButton />
-    <UnderlineButton />
-    <StrikethroughButton />
-    <FormatCodeButton />
-    <DropDownTextColorPicker />
-    <DropDownBackColorPicker />
-    <Divider />
-    <InsertLink />
-    <Divider />
-    <InsertDropDown>
-      <InsertHRDropDownItem />
-      <InsertImageDropDownItem onclick={() => imageDialog.open()} />
-      <InsertColumnLayoutDropDownItem onclick={() => columnsDialog.open()} />
-      <InsertTableDropDownItem onclick={() => tableDialog.open()} />
-    </InsertDropDown>
-    <Divider />
+    {#if blockType === 'code'}
+      <CodeLanguageDropDown />
+    {:else}
+      <FontFamilyDropDown />
+      <FontSizeEntry />
+      <Divider />
+      <BoldButton />
+      <ItalicButton />
+      <UnderlineButton />
+      <StrikethroughButton />
+      <FormatCodeButton />
+      <DropDownTextColorPicker />
+      <DropDownBackColorPicker />
+      <Divider />
+      <InsertLink />
+      <Divider />
+      <InsertDropDown>
+        <InsertHRDropDownItem />
+        <InsertImageDropDownItem onclick={() => imageDialog.open()} />
+        <InsertColumnLayoutDropDownItem onclick={() => columnsDialog.open()} />
+        <InsertTableDropDownItem onclick={() => tableDialog.open()} />
+      </InsertDropDown>
+      <Divider />
+    {/if}
     <DropDownAlign />
     <!-- dialogs -->
     <InsertImageDialog bind:this={imageDialog} />

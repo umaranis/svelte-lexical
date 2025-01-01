@@ -28,6 +28,7 @@
     CodeHighlightPlugin,
     CodeActionMenuPlugin,
     ColumnLayoutPlugin,
+    TreeViewPlugin,
   } from '$lib/index.js';
   import {
     HeadingNode,
@@ -118,7 +119,7 @@
 <Composer {initialConfig}>
   <div class="editor-shell">
     <RichTextToolbar />
-    <div class="editor-container">
+    <div class="editor-container tree-view">
       <div class="editor-scroller">
         <div class="editor" bind:this={editorDiv}>
           <ContentEditable />
@@ -152,5 +153,6 @@
       <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
       <ActionBar />
     </div>
+    <TreeViewPlugin />
   </div>
 </Composer>

@@ -77,9 +77,11 @@
         <h1>5. Rich Text Editor with Code Blocks</h1>
         <div>
           <p>
-            Rich text Editor with support for Code Blocks. It also includes all
-            plugins from the previous example.
+            Rich text Editor with support for Code Blocks. It also has `Code
+            Action Menu` which shows the current language, copy button and
+            prettier button for formatting.
           </p>
+          <p>It also includes all plugins from the previous example.</p>
           <p>
             When the focus is inside a Code Block, the toolbar shows dropdown
             for language selection and hides rich text formatting options.
