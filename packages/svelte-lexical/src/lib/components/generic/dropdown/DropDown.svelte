@@ -3,6 +3,7 @@
 
   import {CAN_USE_DOM} from '../../../environment/canUseDOM.js';
   import DropDownItems from './DropDownItems.svelte';
+  import Portal from '../portal/Portal.svelte';
 
   interface Props {
     disabled?: boolean;
@@ -87,7 +88,9 @@
 </button>
 
 {#if showDropDown}
-  <DropDownItems bind:dropDownRef onClose={handleClose}>
-    {@render children?.()}
-  </DropDownItems>
+  <Portal>
+    <DropDownItems bind:dropDownRef onClose={handleClose}>
+      {@render children?.()}
+    </DropDownItems>
+  </Portal>
 {/if}
