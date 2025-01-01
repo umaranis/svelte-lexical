@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type {SettingsStore} from './setttingsStore';
+  import type {SettingsStore} from './settingsStore';
   import {getContext} from 'svelte';
   import {isDevPlayground} from './appSettings';
   import Switch from '../ui/Switch.svelte';

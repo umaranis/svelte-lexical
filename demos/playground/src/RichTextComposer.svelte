@@ -51,7 +51,7 @@
     TableActionMenuPlugin,
   } from 'svelte-lexical';
   import {prepopulatedRichText} from './prepopulatedRichText';
-  import type {SettingsStore} from './settings/setttingsStore';
+  import type {SettingsStore} from './settings/settingsStore';
   import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
   import ToolbarPlayground from './ToolbarPlayground.svelte';
   import {createWebsocketProvider} from './collaboration';

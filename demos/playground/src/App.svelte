@@ -2,7 +2,7 @@
   import {setContext} from 'svelte';
   import RichTextComposer from './RichTextComposer.svelte';
   import Settings from './settings/Settings.svelte';
-  import {createSettingsStore} from './settings/setttingsStore';
+  import {createSettingsStore} from './settings/settingsStore';
 
   const settings = createSettingsStore();
   setContext('settings', settings);
