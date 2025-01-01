@@ -1,4 +1,5 @@
 <script lang="ts">
+  import './TreeView.css';
   import TreeView from './TreeView.svelte';
 </script>
 

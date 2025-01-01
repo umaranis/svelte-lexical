@@ -752,3 +752,16 @@
     </div>
   {/if}
 </div>
+
+<style>
+  pre {
+    line-height: 1.1;
+    background: #222;
+    color: #fff;
+    margin: 0;
+    padding: 10px;
+    font-size: 12px;
+    overflow: auto;
+    max-height: 400px;
+  }
+</style>
