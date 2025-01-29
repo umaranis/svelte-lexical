@@ -7,7 +7,7 @@
 
 <main>
   <img src="images/logo.svg" alt="Svelte Lexical!" />
-  <p style="margin-top: -1em">
+  <p style="margin-top: -1em; line-height: 1.7em">
     Welcome to <span class="emp-sl">Svelte-Lexical</span>
     , a rich text editor for
     <span class="emp-svelte">Svelte</span>
