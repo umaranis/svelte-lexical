@@ -19,7 +19,7 @@
     HorizontalRuleNode,
     ImageNode,
   } from 'svelte-lexical';
-  import {editorTheme as PlaygroundEditorTheme} from 'svelte-lexical';
+  import {theme} from 'svelte-lexical/dist/themes/default';
   import {
     $getRoot as getRoot,
     $createTextNode as createTextNode,
@@ -27,7 +27,7 @@
   } from 'svelte-lexical';
 
   const initialConfig = {
-    theme: PlaygroundEditorTheme,
+    theme: theme,
     nodes: [
       HeadingNode,
       ListNode,
@@ -60,7 +60,7 @@
 </script>
 
 <Composer {initialConfig}>
-  <div class="editor-shell">
+  <div class="editor-shell svelte-lexical">
     <ToolbarRichText />
     <div class="editor-container">
       <div class="editor-scroller">
