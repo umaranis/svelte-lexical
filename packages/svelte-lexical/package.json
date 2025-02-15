@@ -13,6 +13,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js"
+    },
+    "./dist/themes/default": {
+      "types": "./dist/themes/default/index.d.ts",
+      "svelte": "./dist/themes/default/index.js"
     }
   },
   "svelte": "./dist/index.js",

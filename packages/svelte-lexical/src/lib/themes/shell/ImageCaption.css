@@ -1,0 +1,43 @@
+.svelte-lexical {
+  .editor-image .image-caption-container .tree-view-output {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .editor-image .image-caption-container {
+    display: block;
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid #fff;
+    background-color: rgba(255, 255, 255, 0.9);
+    min-width: 100px;
+    color: #000;
+    overflow: hidden;
+  }
+
+  .editor-image .image-caption-button {
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    width: 30%;
+    padding: 10px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    min-width: 100px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .editor-image .image-caption-button:hover {
+    background-color: rgba(60, 132, 244, 0.5);
+  }
+}

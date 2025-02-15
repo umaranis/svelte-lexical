@@ -49,7 +49,7 @@
 </script>
 
 <Composer {initialConfig} bind:this={composer}>
-  <div class="editor-shell">
+  <div class="editor-shell svelte-lexical">
     <ToolbarRichText />
     <div class="editor-container">
       <div class="editor-scroller">

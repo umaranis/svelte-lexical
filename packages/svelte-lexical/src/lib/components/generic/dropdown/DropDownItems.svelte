@@ -63,6 +63,9 @@
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div class="dropdown" bind:this={dropDownRef} onkeydown={handleKeyDown}>
+<div
+  class="dropdown svelte-lexical"
+  bind:this={dropDownRef}
+  onkeydown={handleKeyDown}>
   {@render children?.()}
 </div>

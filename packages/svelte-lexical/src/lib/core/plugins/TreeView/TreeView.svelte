@@ -764,4 +764,13 @@
     overflow: auto;
     max-height: 400px;
   }
+
+  pre::-webkit-scrollbar {
+    background: transparent;
+    width: 10px;
+  }
+
+  pre::-webkit-scrollbar-thumb {
+    background: #999;
+  }
 </style>

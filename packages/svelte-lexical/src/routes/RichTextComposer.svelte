@@ -40,7 +40,7 @@
     LayoutContainerNode,
     LayoutItemNode,
   } from '$lib/index.js';
-  import editorTheme from '$lib/themes/DefaultEditorTheme.js';
+  import {theme} from '$lib/themes/DefaultEditorTheme.js';
   import {
     $getRoot as getRoot,
     $createTextNode as createTextNode,
@@ -57,7 +57,7 @@
   let editorDiv: HTMLDivElement | undefined = $state();
 
   const initialConfig = {
-    theme: editorTheme,
+    theme: theme,
     namespace: 'pg_sveltekit',
     nodes: [
       HeadingNode,
@@ -117,7 +117,7 @@
 </script>
 
 <Composer {initialConfig}>
-  <div class="editor-shell">
+  <div class="editor-shell svelte-lexical">
     <RichTextToolbar />
     <div class="editor-container tree-view">
       <div class="editor-scroller">

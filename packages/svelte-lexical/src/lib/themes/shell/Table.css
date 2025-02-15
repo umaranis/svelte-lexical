@@ -1,0 +1,21 @@
+.svelte-lexical {
+  .table-cell-action-button-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    will-change: transform;
+  }
+
+  .table-cell-action-button {
+    background-color: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    position: relative;
+    border-radius: 15px;
+    color: #222;
+    display: inline-block;
+    cursor: pointer;
+  }
+}

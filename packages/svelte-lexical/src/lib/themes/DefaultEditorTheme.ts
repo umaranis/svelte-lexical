@@ -6,11 +6,12 @@
  *
  */
 
-import type {EditorThemeClasses} from 'svelte-lexical';
+import type {EditorThemeClasses} from 'lexical';
 
 import './DefaultEditorTheme.css';
+import './shell/DefaultShellTheme.js';
 
-const theme: EditorThemeClasses = {
+export const theme: EditorThemeClasses = {
   autocomplete: 'SL_Theme__autocomplete',
   blockCursor: 'SL_Theme__blockCursor',
   characterLimit: 'SL_Theme__characterLimit',
@@ -113,5 +114,3 @@ const theme: EditorThemeClasses = {
     underlineStrikethrough: 'SL_Theme__textUnderlineStrikethrough',
   },
 };
-
-export default theme;

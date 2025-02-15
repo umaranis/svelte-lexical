@@ -1,0 +1,81 @@
+.svelte-lexical.dropdown {
+  z-index: 100;
+  display: block;
+  position: fixed;
+  box-shadow:
+    0 12px 28px 0 rgba(0, 0, 0, 0.2),
+    0 2px 4px 0 rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  min-height: 40px;
+  background-color: #fff;
+}
+
+.svelte-lexical.dropdown .item {
+  margin: 0 8px 0 8px;
+  padding: 8px;
+  color: #050505;
+  cursor: pointer;
+  line-height: 16px;
+  font-size: 15px;
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+  flex-shrink: 0;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 0;
+  max-width: 250px;
+  min-width: 100px;
+}
+
+.svelte-lexical.dropdown .item.fontsize-item,
+.svelte-lexical.dropdown .item.fontsize-item .text {
+  min-width: unset;
+}
+
+.svelte-lexical.dropdown .item .active {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+}
+
+.svelte-lexical.dropdown .item:first-child {
+  margin-top: 8px;
+}
+
+.svelte-lexical.dropdown .item:last-child {
+  margin-bottom: 8px;
+}
+
+.svelte-lexical.dropdown .item:hover {
+  background-color: #eee;
+}
+
+.svelte-lexical.dropdown .item .text {
+  display: flex;
+  line-height: 20px;
+  flex-grow: 1;
+  min-width: 150px;
+}
+
+.svelte-lexical.dropdown .item .icon {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  user-select: none;
+  margin-right: 12px;
+  line-height: 16px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.svelte-lexical.dropdown .divider {
+  width: auto;
+  background-color: #eee;
+  margin: 4px 8px;
+  height: 1px;
+}
