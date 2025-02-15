@@ -103,6 +103,8 @@ export const theme: EditorThemeClasses = {
   tableScrollableWrapper: 'SL_Theme__tableScrollableWrapper',
   tableSelected: 'SL_Theme__tableSelected',
   tableSelection: 'SL_Theme__tableSelection',
+  tableAddRows: 'SL_Theme__tableAddRows',
+  tableAddColumns: 'SL_Theme__tableAddColumns',
   text: {
     bold: 'SL_Theme__textBold',
     code: 'SL_Theme__textCode',

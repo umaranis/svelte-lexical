@@ -50,16 +50,16 @@
 
     if (target && target instanceof HTMLElement) {
       const tableDOMNode = target.closest<HTMLElement>(
-        'td.PlaygroundEditorTheme__tableCell, th.PlaygroundEditorTheme__tableCell',
+        `td.${editor._config.theme.tableCell}, th.${editor._config.theme.tableCell}`,
       );
 
       const isOutside = !(
         tableDOMNode ||
         target.closest<HTMLElement>(
-          'button.PlaygroundEditorTheme__tableAddRows',
+          `button.${editor._config.theme.tableAddRows}`,
         ) ||
         target.closest<HTMLElement>(
-          'button.PlaygroundEditorTheme__tableAddColumns',
+          `button.${editor._config.theme.tableAddColumns}`,
         ) ||
         target.closest<HTMLElement>('div.TableCellResizer__resizer')
       );
@@ -218,7 +218,7 @@
 {#if $isShownRow}
   <!-- svelte-ignore a11y_consider_explicit_label -->
   <button
-    class={'PlaygroundEditorTheme__tableAddRows'}
+    class={`${editor._config.theme.tableAddRows}`}
     style={$position}
     onclick={() => insertAction(true)}>
   </button>
@@ -226,7 +226,7 @@
 {#if $isShownColumn}
   <!-- svelte-ignore a11y_consider_explicit_label -->
   <button
-    class={'PlaygroundEditorTheme__tableAddColumns'}
+    class={`${editor._config.theme.tableAddColumns}`}
     style={$position}
     onclick={() => insertAction(false)}>
   </button>
