@@ -6,7 +6,7 @@
     PlainTextPlugin,
     HistoryPlugin,
   } from 'svelte-lexical';
-  import {editorTheme as PlaygroundEditorTheme} from 'svelte-lexical';
+  import {theme as PlaygroundEditorTheme} from 'svelte-lexical/dist/themes/default';
 
   const initialConfig = {
     theme: PlaygroundEditorTheme,
@@ -19,7 +19,7 @@
 </script>
 
 <Composer {initialConfig}>
-  <div class="editor-shell">
+  <div class="editor-shell svelte-lexical">
     <div class="editor-container">
       <div class="editor-scroller">
         <div class="editor">
