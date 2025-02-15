@@ -22,3 +22,62 @@
     <span></span>
   </button>
 </div>
+
+<style>
+  .switch {
+    display: block;
+    color: #444;
+    margin: 5px 0;
+    background-color: rgba(238, 238, 238, 0.7);
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+
+  .switch label {
+    margin-right: 5px;
+    line-height: 24px;
+    width: 100px;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .switch button {
+    background-color: rgb(206, 208, 212);
+    height: 24px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    width: 44px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.1s;
+    border: 2px solid transparent;
+  }
+
+  .switch button:focus-visible {
+    border-color: blue;
+  }
+
+  .switch button span {
+    top: 0px;
+    left: 0px;
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 12px;
+    background-color: white;
+    transition: transform 0.2s;
+  }
+
+  .switch button[aria-checked='true'] {
+    background-color: rgb(24, 119, 242);
+  }
+
+  .switch button[aria-checked='true'] span {
+    transform: translateX(20px);
+  }
+</style>
