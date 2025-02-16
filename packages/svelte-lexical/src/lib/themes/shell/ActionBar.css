@@ -1,0 +1,123 @@
+.svelte-lexical {
+  .actions {
+    position: absolute;
+    text-align: right;
+    margin: 10px;
+    bottom: 0;
+    right: 0;
+  }
+
+  .actions.tree-view {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .actions i {
+    background-size: contain;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    vertical-align: -0.25em;
+  }
+
+  .actions i.indent {
+    background-image: url(/images/icons/indent.svg);
+  }
+
+  .actions i.outdent {
+    background-image: url(/images/icons/outdent.svg);
+  }
+
+  .actions i.lock {
+    background-image: url(/images/icons/lock-fill.svg);
+  }
+
+  .actions i.image {
+    background-image: url(/images/icons/file-image.svg);
+  }
+
+  .actions i.table {
+    background-image: url(/images/icons/table.svg);
+  }
+
+  .actions i.unlock {
+    background-image: url(/images/icons/lock.svg);
+  }
+
+  .actions i.left-align {
+    background-image: url(/images/icons/text-left.svg);
+  }
+
+  .actions i.center-align {
+    background-image: url(/images/icons/text-center.svg);
+  }
+
+  .actions i.right-align {
+    background-image: url(/images/icons/text-right.svg);
+  }
+
+  .actions i.justify-align {
+    background-image: url(/images/icons/justify.svg);
+  }
+
+  .actions i.disconnect {
+    background-image: url(/images/icons/plug.svg);
+  }
+
+  .actions i.connect {
+    background-image: url(/images/icons/plug-fill.svg);
+  }
+
+  .action-button {
+    background-color: #eee;
+    border: 0;
+    padding: 8px 12px;
+    position: relative;
+    margin-left: 5px;
+    border-radius: 15px;
+    color: #222;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .action-button:hover {
+    background-color: #ddd;
+    color: #000;
+  }
+
+  .action-button-mic.active {
+    animation: mic-pulsate-color 3s infinite;
+  }
+
+  button.action-button:disabled {
+    opacity: 0.6;
+    background: #eee;
+    cursor: not-allowed;
+  }
+
+  @keyframes mic-pulsate-color {
+    0% {
+      background-color: #ffdcdc;
+    }
+    50% {
+      background-color: #ff8585;
+    }
+    100% {
+      background-color: #ffdcdc;
+    }
+  }
+
+  .connecting {
+    font-size: 15px;
+    color: #999;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    top: 10px;
+    left: 10px;
+    user-select: none;
+    white-space: nowrap;
+    display: inline-block;
+    pointer-events: none;
+  }
+}
