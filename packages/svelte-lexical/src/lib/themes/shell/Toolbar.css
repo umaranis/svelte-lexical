@@ -122,6 +122,15 @@
     pointer-events: none;
   }
 
+  i.chevron-down {
+    background-color: transparent;
+    background-size: contain;
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    background-image: url(/images/icons/chevron-down.svg);
+  }
+
   .toolbar > .divider {
     /* need '>' to avoid conflict with `.dropdown .divider` in svelte-lexical  */
     width: 1px;
