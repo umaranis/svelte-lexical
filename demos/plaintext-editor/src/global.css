@@ -32,14 +32,6 @@ body {
     font-weight: bold;
 }
 
-.ltr {
-    text-align: left;
-}
-
-.rtl {
-    text-align: right;
-}
-
 .sticky-note-container {
     position: absolute;
     z-index: 9;
