@@ -8,3 +8,4 @@ import './Icons.css';
 import './DropDown.css';
 import './Table.css';
 import './ActionBar.css';
+import './Dialog.css';
