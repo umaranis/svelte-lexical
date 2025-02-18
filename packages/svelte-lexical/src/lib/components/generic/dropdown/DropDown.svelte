@@ -13,6 +13,7 @@
     buttonLabel?: string | undefined;
     stopCloseOnClickSelf?: boolean;
     title?: string | undefined;
+    target?: HTMLElement;
     children?: import('svelte').Snippet;
   }
 
@@ -25,6 +26,7 @@
     stopCloseOnClickSelf = false,
     title = undefined,
     children,
+    target = undefined,
   }: Props = $props();
 
   let dropDownRef = $state<HTMLDivElement | undefined>();
@@ -88,7 +90,7 @@
 </button>
 
 {#if showDropDown}
-  <Portal>
+  <Portal {target}>
     <DropDownItems bind:dropDownRef onClose={handleClose}>
       {@render children?.()}
     </DropDownItems>

@@ -41,19 +41,22 @@
     currentLabel = label;
     currentValue = value;
   };
+
+  let modalDiv = $state<HTMLDivElement | null>(null);
 </script>
 
 <ModalDialog bind:showModal stopPropagation={false}>
   <CloseCircleButton on:click={close} />
 
-  <div class="modal">
+  <div class="modal" bind:this={modalDiv}>
     <h2 class="Modal__title">Insert Columns Layout</h2>
     <div class="Modal__content">
       <DropDown
-        buttonClassName="toolbar-item spaced"
+        buttonClassName="toolbar-item dialog-dropdown"
         buttonLabel={currentLabel}
         buttonAriaLabel="Insert specialized editor node"
-        buttonIconClassName="">
+        buttonIconClassName=""
+        target={modalDiv}>
         {#each LAYOUTS as layout}
           <DropDownItem
             class={`item ${currentLabel === layout.label ? 'active dropdown-item-active' : ''}`}
