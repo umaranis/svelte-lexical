@@ -144,3 +144,7 @@ export {
 } from './core/nodeSelectionStore.js';
 
 export {$getSelection} from 'lexical';
+
+// commands
+export {$generateHtmlFromNodes as generateHtmlFromNodes} from '@lexical/html';
+export {$generateNodesFromDOM as generateNodesFromDOM} from '@lexical/html';
