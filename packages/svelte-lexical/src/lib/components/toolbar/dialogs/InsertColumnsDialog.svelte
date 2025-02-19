@@ -4,7 +4,7 @@
   import {getEditor} from '$lib/core/composerContext.js';
   import CloseCircleButton from '../../generic/button/CloseCircleButton.svelte';
   import ModalDialog from '../../generic/dialog/ModalDialog.svelte';
-  import {INSERT_LAYOUT_COMMAND} from '../../../core/plugins/ColumnsLayout/LayoutItemNode.js';
+  import {INSERT_LAYOUT_COMMAND} from '$lib/core/plugins/ColumnsLayout/LayoutItemNode.js';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
   import DropDown from '../../generic/dropdown/DropDown.svelte';
   import {tick} from 'svelte';
@@ -68,7 +68,7 @@
         {/each}
       </DropDown>
 
-      <div class="ToolbarPlugin__dialogActions">
+      <div class="DialogActions">
         <button
           data-test-id="image-modal-file-upload-btn"
           class="Button__root"

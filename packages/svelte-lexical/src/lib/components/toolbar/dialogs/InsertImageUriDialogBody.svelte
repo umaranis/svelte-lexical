@@ -27,7 +27,7 @@
       bind:value={altText}
       dataTestId="image-modal-alt-text-input"
       id="lexical-modal-image-alttext" />
-    <div class="ToolbarPlugin__dialogActions">
+    <div class="DialogActions">
       <button
         data-test-id="image-modal-confirm-btn"
         disabled={isDisabled}

@@ -1627,7 +1627,7 @@ button.item.dropdown-item-active i {
   background-color: #ddd;
 }
 
-.ToolbarPlugin__dialogActions {
+.DialogActions {
   display: flex;
   flex-direction: row;
   justify-content: right;

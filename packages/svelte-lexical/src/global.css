@@ -21,28 +21,3 @@ body {
   background: #eee;
   padding: 0 20px;
 }
-
-.mention:focus {
-  box-shadow: rgb(180 213 255) 0px 0px 0px 2px;
-  outline: none;
-}
-
-.keyword {
-  color: rgb(241, 118, 94);
-  font-weight: bold;
-}
-
-.editor-equation {
-  cursor: default;
-  user-select: none;
-}
-
-.editor-equation.focused {
-  outline: 2px solid rgb(60, 132, 244);
-}
-
-.dialog-dropdown {
-  background-color: #eee !important;
-  margin-bottom: 10px;
-  width: 100%;
-}

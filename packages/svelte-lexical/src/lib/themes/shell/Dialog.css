@@ -1,6 +1,6 @@
 .svelte-lexical {
-
   /* START: modal dialog */
+
   .Modal__overlay {
     display: flex;
     justify-content: center;
@@ -107,4 +107,16 @@
 
   /* END: dialog input fields */
 
+  .DialogActions {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-top: 20px;
+  }
+
+  .dialog-dropdown {
+    background-color: #eee !important;
+    margin-bottom: 10px;
+    width: 100%;
+  }
 }

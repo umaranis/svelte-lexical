@@ -39,7 +39,7 @@
       placeholder="Descriptive alternative text"
       bind:value={altText}
       dataTestId="image-modal-alt-text-input" />
-    <div class="ToolbarPlugin__dialogActions">
+    <div class="DialogActions">
       <button
         data-test-id="image-modal-file-upload-btn"
         disabled={isDisabled}
