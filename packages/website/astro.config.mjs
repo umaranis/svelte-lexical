@@ -10,6 +10,7 @@ export default defineConfig({
 			social: {
 				github: 'https://github.com/umaranis/svelte-lexical',
 			},
+			customCss: ['./src/styles/custom.css'],
 			sidebar: [
 				{
 					label: 'Guides',
