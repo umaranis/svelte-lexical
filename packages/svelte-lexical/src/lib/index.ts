@@ -25,6 +25,7 @@ export {default as ColumnLayoutPlugin} from './core/plugins/ColumnsLayout/Column
 export {default as TablePlugin} from './core/plugins/Table/TablePlugin.svelte';
 export {default as TableActionMenuPlugin} from './core/plugins/Table/TableActionMenuPlugin.svelte';
 export {default as TableHoverActionPlugin} from './core/plugins/Table/TableHoverActionPlugin.svelte';
+export {default as TableCellResizerPlugin} from './core/plugins/Table/TableCellResizerPlugin.svelte';
 
 export {default as MarkdownShortcutPlugin} from './core/plugins/MardownShortcut/MarkdownShortcutPlugin.svelte';
 export {
