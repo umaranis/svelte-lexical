@@ -34,3 +34,12 @@
   width: unset;
   height: auto;
 }
+
+.hero > .hero-html > .hero-image {
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hero > .hero-html > .hero-image:hover {
+  transform: rotate(-6deg);
+}
