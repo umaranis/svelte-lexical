@@ -703,62 +703,61 @@ test.describe('Auto Links', () => {
     page,
     isPlainText,
   }) => {
-      test.skip(isPlainText);
-      await focusEditor(page);
+    test.skip(isPlainText);
+    await focusEditor(page);
 
-      await page.keyboard.type('Hello http://www.example.com test');
-      await assertHTML(
-        page,
-        html`
-          <p dir="ltr">
-            <span data-lexical-text="true">Hello</span>
-            <a dir="ltr" href="http://www.example.com">
-              <span data-lexical-text="true">http://www.example.com</span>
-            </a>
-            <span data-lexical-text="true">test</span>
-          </p>
-        `,
-        undefined,
-        {ignoreClasses: true},
-      );
+    await page.keyboard.type('Hello http://www.example.com test');
+    await assertHTML(
+      page,
+      html`
+        <p dir="ltr">
+          <span data-lexical-text="true">Hello</span>
+          <a dir="ltr" href="http://www.example.com">
+            <span data-lexical-text="true">http://www.example.com</span>
+          </a>
+          <span data-lexical-text="true">test</span>
+        </p>
+      `,
+      undefined,
+      {ignoreClasses: true},
+    );
 
-      await focusEditor(page);
-      await click(page, 'a[href="http://www.example.com"]');
-      await click(page, 'div.link-editor div.link-trash');
+    await focusEditor(page);
+    await click(page, 'a[href="http://www.example.com"]');
+    await click(page, 'div.link-editor div.link-trash');
 
-      await assertHTML(
-        page,
-        html`
-          <p dir="ltr">
-            <span data-lexical-text="true">Hello</span>
-            <span class="PlaygroundEditorTheme__ltr" dir="ltr">
-              <span data-lexical-text="true">http://www.example.com</span>
-            </span>
-            <span data-lexical-text="true">test</span>
-          </p>
-        `,
-        undefined,
-        {ignoreClasses: true},
-      );
+    await assertHTML(
+      page,
+      html`
+        <p dir="ltr">
+          <span data-lexical-text="true">Hello</span>
+          <span class="PlaygroundEditorTheme__ltr" dir="ltr">
+            <span data-lexical-text="true">http://www.example.com</span>
+          </span>
+          <span data-lexical-text="true">test</span>
+        </p>
+      `,
+      undefined,
+      {ignoreClasses: true},
+    );
 
-      await click(page, 'span:has-text("http://www.example.com")');
+    await click(page, 'span:has-text("http://www.example.com")');
 
-      pressInsertLinkButton(page);
+    pressInsertLinkButton(page);
 
-      await assertHTML(
-        page,
-        html`
-          <p dir="ltr">
-            <span data-lexical-text="true">Hello</span>
-            <a dir="ltr" href="http://www.example.com">
-              <span data-lexical-text="true">http://www.example.com</span>
-            </a>
-            <span data-lexical-text="true">test</span>
-          </p>
-        `,
-        undefined,
-        {ignoreClasses: true},
-      );
-    },
-  );
+    await assertHTML(
+      page,
+      html`
+        <p dir="ltr">
+          <span data-lexical-text="true">Hello</span>
+          <a dir="ltr" href="http://www.example.com">
+            <span data-lexical-text="true">http://www.example.com</span>
+          </a>
+          <span data-lexical-text="true">test</span>
+        </p>
+      `,
+      undefined,
+      {ignoreClasses: true},
+    );
+  });
 });
