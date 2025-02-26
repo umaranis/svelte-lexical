@@ -6,7 +6,6 @@
     | ((editor: LexicalEditor) => void);
 
   export type InitialConfigType = Readonly<{
-    editor__DEPRECATED?: LexicalEditor | null;
     namespace: string;
     nodes?: ReadonlyArray<Klass<LexicalNode> | LexicalNodeReplacement>;
     onError: (error: Error, editor: LexicalEditor) => void;

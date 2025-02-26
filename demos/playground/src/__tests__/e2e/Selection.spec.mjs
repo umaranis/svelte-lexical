@@ -650,6 +650,48 @@ test.describe.parallel('Selection', () => {
     },
   );
 
+  test.fixme(
+    'Triple-clicking last cell in table should not select entire document',
+    async ({page, isPlainText, isCollab, browserName, legacyEvents}) => {
+      test.skip(isPlainText);
+
+      await focusEditor(page);
+      await page.keyboard.type('Line1');
+      await insertTable(page, 1, 2);
+
+      const lastCell = page.locator(
+        '.PlaygroundEditorTheme__tableCell:last-child',
+      );
+      await lastCell.click();
+      const cellText = 'Foo';
+      await page.keyboard.type(cellText);
+
+      const lastCellText = lastCell.locator('span');
+      const tripleClickDelay = 50;
+      await lastCellText.click({clickCount: 3, delay: tripleClickDelay});
+      const anchorPath = [1, 0, 1, 0];
+
+      // Only the last cell should be selected, and not the entire docuemnt
+      if (browserName === 'firefox') {
+        // Firefox selects the p > span > #text node
+        await assertSelection(page, {
+          anchorOffset: 0,
+          anchorPath: [...anchorPath, 0, 0],
+          focusOffset: cellText.length,
+          focusPath: [...anchorPath, 0, 0],
+        });
+      } else {
+        // Other browsers select the p
+        await assertSelection(page, {
+          anchorOffset: 0,
+          anchorPath,
+          focusOffset: 1,
+          focusPath: anchorPath,
+        });
+      }
+    },
+  );
+
   test('Can persist the text format from the paragraph', async ({
     page,
     isPlainText,
@@ -872,6 +914,7 @@ test.describe.parallel('Selection', () => {
 
   test.fixme(
     'shift+arrowdown into a table, when the table is the last node, selects the whole table',
+    {tag: '@flaky'},
     async ({page, isPlainText, isCollab, browserName, legacyEvents}) => {
       test.skip(isPlainText);
       test.fixme(browserName === 'chromium' && legacyEvents);
@@ -894,6 +937,7 @@ test.describe.parallel('Selection', () => {
 
   test.fixme(
     'shift+arrowup into a table, when the table is the first node, selects the whole table',
+    {tag: '@flaky'},
     async ({page, isPlainText, isCollab, browserName, legacyEvents}) => {
       test.skip(isPlainText);
       test.fixme(browserName === 'chromium' && legacyEvents);
@@ -916,6 +960,7 @@ test.describe.parallel('Selection', () => {
 
   test.fixme(
     'shift+arrowdown into a table, when the table is the only node, selects the whole table',
+    {tag: '@flaky'},
     async ({page, isPlainText, isCollab, legacyEvents, browserName}) => {
       test.skip(isPlainText);
       test.fixme(browserName === 'chromium' && legacyEvents);

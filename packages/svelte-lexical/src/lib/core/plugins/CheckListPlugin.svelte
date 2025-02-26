@@ -20,6 +20,7 @@
     $isElementNode as isElementNode,
     $isRangeSelection as isRangeSelection,
     COMMAND_PRIORITY_LOW,
+    getNearestEditorFromDOMNode,
     KEY_ARROW_DOWN_COMMAND,
     KEY_ARROW_LEFT_COMMAND,
     KEY_ARROW_UP_COMMAND,
@@ -194,20 +195,22 @@
 
   function handleClick(event: Event) {
     handleCheckItemEvent(event as PointerEvent, () => {
-      const domNode = event.target as HTMLElement;
-      const editor = findEditor(domNode);
+      if (event.target instanceof HTMLElement) {
+        const domNode = event.target as HTMLElement;
+        const editor = getNearestEditorFromDOMNode(domNode);
 
-      if (editor != null && editor.isEditable()) {
-        editor.update(() => {
-          if (event.target) {
-            const node = getNearestNodeFromDOMNode(domNode);
+        if (editor != null && editor.isEditable()) {
+          editor.update(() => {
+            if (event.target) {
+              const node = getNearestNodeFromDOMNode(domNode);
 
-            if (isListItemNode(node)) {
-              domNode.focus();
-              node.toggleChecked();
+              if (isListItemNode(node)) {
+                domNode.focus();
+                node.toggleChecked();
+              }
             }
-          }
-        });
+          });
+        }
       }
     });
   }
@@ -217,23 +220,6 @@
       // Prevents caret moving when clicking on check mark
       event.preventDefault();
     });
-  }
-
-  function findEditor(target: Node) {
-    // eslint-disable-next-line no-undef
-    let node: ParentNode | Node | null = target;
-
-    while (node) {
-      // @ts-ignore internal field
-      if (node.__lexicalEditor) {
-        // @ts-ignore internal field
-        return node.__lexicalEditor;
-      }
-
-      node = node.parentNode;
-    }
-
-    return null;
   }
 
   function getActiveCheckListItem(): HTMLElement | null {

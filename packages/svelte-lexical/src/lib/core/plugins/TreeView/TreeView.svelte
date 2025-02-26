@@ -53,12 +53,12 @@
   });
 
   interface Props {
-    treeTypeButtonClassName: string;
-    timeTravelButtonClassName: string;
-    timeTravelPanelButtonClassName: string;
-    timeTravelPanelClassName: string;
-    timeTravelPanelSliderClassName: string;
-    viewClassName: string;
+    treeTypeButtonClassName?: string;
+    timeTravelButtonClassName?: string;
+    timeTravelPanelButtonClassName?: string;
+    timeTravelPanelClassName?: string;
+    timeTravelPanelSliderClassName?: string;
+    viewClassName?: string;
   }
 
   let {
