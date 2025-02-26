@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.32.1",
+    "@astrojs/svelte": "^7.0.4",
     "astro": "^5.1.5",
-    "sharp": "^0.32.5"
+    "sharp": "^0.32.5",
+    "svelte": "^5.20.2",
+    "svelte-lexical": "workspace:0.5.1",
+    "typescript": "^5.7.3"
   }
 }

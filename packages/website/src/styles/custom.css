@@ -43,3 +43,15 @@
 .hero > .hero-html > .hero-image:hover {
   transform: rotate(-6deg);
 }
+
+/* TODO: Dialog position and dark theme need to be fixed */
+
+.action-button {
+  font: revert;
+}
+
+.svelte-lexical *,
+.svelte-lexical *::before,
+.svelte-lexical *::after {
+  box-sizing: content-box;
+}
