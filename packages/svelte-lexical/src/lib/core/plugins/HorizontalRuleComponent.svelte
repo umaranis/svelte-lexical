@@ -7,7 +7,6 @@
     removeClassNamesFromElement,
   } from '@lexical/utils';
   import {
-    $getNodeByKey as getNodeByKey,
     $getSelection as getSelection,
     $isNodeSelection as isNodeSelection,
     CLICK_COMMAND,

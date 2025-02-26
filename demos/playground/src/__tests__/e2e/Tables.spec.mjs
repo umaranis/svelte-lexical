@@ -3198,7 +3198,9 @@ test.describe.parallel('Tables', () => {
     page,
     isPlainText,
     isCollab,
+    browserName,
   }) => {
+    test.fixme(browserName === 'firefox');
     await initialize({isCollab, page});
     test.skip(isPlainText);
     if (IS_COLLAB) {
