@@ -914,4 +914,40 @@ test.describe('CopyAndPaste', () => {
       `,
     );
   });
+
+  test.fixme(
+    'Copy and paste paragraph into quote',
+    async ({page, isPlainText}) => {
+      test.skip(isPlainText);
+      await focusEditor(page);
+
+      await page.keyboard.type('Hello world');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('Some text');
+
+      await selectAll(page);
+
+      const clipboard = await copyToClipboard(page);
+
+      await page.keyboard.type('> ');
+
+      await pasteFromClipboard(page, clipboard);
+
+      await assertHTML(
+        page,
+        html`
+          <blockquote
+            class="PlaygroundEditorTheme__quote PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Hello world</span>
+          </blockquote>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Some text</span>
+          </p>
+        `,
+      );
+    },
+  );
 });
