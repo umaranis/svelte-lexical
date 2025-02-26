@@ -20,6 +20,9 @@ test.describe('Regression test #4872', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test.fixme(
     'merging two full rows does not break table selection',
+    {
+      tag: '@flaky',
+    },
     async ({page, isPlainText, isCollab}) => {
       test.skip(isPlainText);
 

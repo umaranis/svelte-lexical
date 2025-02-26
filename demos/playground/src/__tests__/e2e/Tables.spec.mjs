@@ -970,11 +970,12 @@ test.describe.parallel('Tables', () => {
     );
   });
 
-  test(`Can copy + paste (internal) using Table selection`, async ({
-    page,
-    isPlainText,
-    isCollab,
-  }) => {
+  test(
+    `Can copy + paste (internal) using Table selection`,
+    {
+      tag: '@flaky',
+    },
+    async ({page, isPlainText, isCollab}) => {
     await initialize({isCollab, page});
     test.skip(isPlainText);
 
@@ -1052,11 +1053,12 @@ test.describe.parallel('Tables', () => {
     );
   });
 
-  test(`Can clear text using Table selection`, async ({
-    page,
-    isPlainText,
-    isCollab,
-  }) => {
+  test(
+    `Can clear text using Table selection`,
+    {
+      tag: '@flaky',
+    },
+    async ({page, isPlainText, isCollab}) => {
     await initialize({isCollab, page});
     test.skip(isPlainText);
 
