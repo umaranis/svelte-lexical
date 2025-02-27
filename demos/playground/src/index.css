@@ -1660,6 +1660,11 @@ button.item.dropdown-item-active i {
   width: 20px;
 }
 
+.sl_font-size-input:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
 .sl_add-icon {
   background-image: url(images/icons/add-sign.svg);
   background-repeat: no-repeat;
