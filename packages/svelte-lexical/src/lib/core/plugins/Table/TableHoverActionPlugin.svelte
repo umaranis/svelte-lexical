@@ -150,13 +150,6 @@
     250,
   );
 
-  // Hide the buttons on any table dimensions change to prevent last row cells
-  // overlap behind the 'Add Row' button when text entry changes cell height
-  const tableResizeObserver = new ResizeObserver(() => {
-    $isShownRow = false;
-    $isShownColumn = false;
-  });
-
   run(() => {
     if (CAN_USE_DOM && shouldListenMouseMove) {
       document.addEventListener('mousemove', debouncedOnMouseMove);
@@ -178,6 +171,13 @@
   });
 
   onMount(() => {
+    // Hide the buttons on any table dimensions change to prevent last row cells
+    // overlap behind the 'Add Row' button when text entry changes cell height
+    const tableResizeObserver = new ResizeObserver(() => {
+      $isShownRow = false;
+      $isShownColumn = false;
+    });
+
     return mergeRegister(
       editor.registerMutationListener(
         TableNode,
