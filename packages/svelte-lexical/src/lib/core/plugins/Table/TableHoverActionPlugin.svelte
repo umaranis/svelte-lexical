@@ -33,8 +33,8 @@
   let isShownColumn = writable(false);
   let shouldListenMouseMove = $state(false);
   let position = writable('');
-  const codeSetRef: Set<NodeKey> = new Set();
-  let tableDOMNodeRef: HTMLElement | null = null;
+  const tableSetRef: Set<NodeKey> = new Set();
+  let tableCellDOMNodeRef: HTMLElement | null = null;
 
   interface Props {
     anchorElem: HTMLElement;
@@ -84,7 +84,7 @@
         return;
       }
 
-      tableDOMNodeRef = tableDOMNode;
+      tableCellDOMNodeRef = tableDOMNode;
 
       let hoveredRowNode: TableCellNode | null = null;
       let hoveredColumnNode: TableCellNode | null = null;
@@ -126,29 +126,36 @@
         const {
           width: tableElemWidth,
           y: tableElemY,
-          x: tableElemX,
           right: tableElemRight,
+          left: tableElemLeft,
           bottom: tableElemBottom,
           height: tableElemHeight,
         } = (tableDOMElement as HTMLTableElement).getBoundingClientRect();
 
-        const {x: editorElemX, y: editorElemY} =
+        const {y: editorElemY, left: editorElemLeft} =
           anchorElem.getBoundingClientRect();
 
         if (hoveredRowNode) {
           $isShownColumn = false;
           $isShownRow = true;
-          $position = `height: ${BUTTON_WIDTH_PX}px; left: ${tableElemX - editorElemX}px; top: ${tableElemBottom - editorElemY + 5}px; width: ${tableElemWidth}px;`;
+          $position = `height: ${BUTTON_WIDTH_PX}px; left: ${tableElemLeft - editorElemLeft}px; top: ${tableElemBottom - editorElemY + 5}px; width: ${tableElemWidth}px;`;
         } else if (hoveredColumnNode) {
           $isShownColumn = true;
           $isShownRow = false;
-          $position = `height: ${tableElemHeight}px; left: ${tableElemRight - editorElemX + 5}px; top: ${tableElemY - editorElemY}px; width: ${BUTTON_WIDTH_PX}px;`;
+          $position = `height: ${tableElemHeight}px; left: ${tableElemRight - editorElemLeft + 5}px; top: ${tableElemY - editorElemY}px; width: ${BUTTON_WIDTH_PX}px;`;
         }
       }
     },
     50,
     250,
   );
+
+  // Hide the buttons on any table dimensions change to prevent last row cells
+  // overlap behind the 'Add Row' button when text entry changes cell height
+  const tableResizeObserver = new ResizeObserver(() => {
+    $isShownRow = false;
+    $isShownColumn = false;
+  });
 
   run(() => {
     if (CAN_USE_DOM && shouldListenMouseMove) {
@@ -177,15 +184,27 @@
         (mutations) => {
           editor.getEditorState().read(() => {
             for (const [key, type] of mutations) {
+              const tableDOMElement = editor.getElementByKey(key);
               switch (type) {
                 case 'created':
-                  codeSetRef.add(key);
-                  shouldListenMouseMove = codeSetRef.size > 0;
+                  tableSetRef.add(key);
+                  shouldListenMouseMove = tableSetRef.size > 0;
+                  if (tableDOMElement) {
+                    tableResizeObserver.observe(tableDOMElement);
+                  }
                   break;
 
                 case 'destroyed':
-                  codeSetRef.delete(key);
-                  shouldListenMouseMove = codeSetRef.size > 0;
+                  tableSetRef.delete(key);
+                  shouldListenMouseMove = tableSetRef.size > 0;
+                  // Reset resize observers
+                  tableResizeObserver.disconnect();
+                  tableSetRef.forEach((tableKey: NodeKey) => {
+                    const tableElement = editor.getElementByKey(tableKey);
+                    if (tableElement) {
+                      tableResizeObserver.observe(tableElement);
+                    }
+                  });
                   break;
 
                 default:
@@ -200,8 +219,8 @@
   });
   const insertAction = (insertRow: boolean) => {
     editor.update(() => {
-      if (tableDOMNodeRef) {
-        const maybeTableNode = getNearestNodeFromDOMNode(tableDOMNodeRef);
+      if (tableCellDOMNodeRef) {
+        const maybeTableNode = getNearestNodeFromDOMNode(tableCellDOMNodeRef);
         maybeTableNode?.selectEnd();
         if (insertRow) {
           insertTableRow__EXPERIMENTAL();
