@@ -395,6 +395,19 @@
     });
   };
 
+  const toggleRowStriping = () => {
+    editor.update(() => {
+      if (tableCellNode.isAttached()) {
+        const tableNode = getTableNodeFromLexicalNodeOrThrow(tableCellNode);
+        if (tableNode) {
+          tableNode.setRowStriping(!tableNode.getRowStriping());
+        }
+      }
+      clearTableSelection();
+      onClose();
+    });
+  };
+
   const handleCellBackgroundColor = (value: string) => {
     editor.update(() => {
       const selection = getSelection();
@@ -456,6 +469,13 @@
       }}
       data-test-id="table-background-color">
       <span class="text">Background color</span>
+    </button>
+    <button
+      type="button"
+      class="item"
+      onclick={() => toggleRowStriping()}
+      data-test-id="table-row-striping">
+      <span class="text">Toggle Row Striping</span>
     </button>
     <hr />
     <button
