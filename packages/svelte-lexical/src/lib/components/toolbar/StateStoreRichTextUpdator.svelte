@@ -77,14 +77,6 @@
       const elementKey = element.getKey();
       const elementDOM = $activeEditor.getElementByKey(elementKey);
 
-      // Update text format
-      $isBold = selection.hasFormat('bold');
-      $isItalic = selection.hasFormat('italic');
-      $isUnderline = selection.hasFormat('underline');
-      $isStrikethrough = selection.hasFormat('strikethrough');
-      $isSubscript = selection.hasFormat('subscript');
-      $isSuperscript = selection.hasFormat('superscript');
-      $isCode = selection.hasFormat('code');
       $isRTL = isParentElementRTL(selection);
 
       // Update links
@@ -144,6 +136,15 @@
 
     //TODO: create a separate toolbar updator that doesn't suppprt tables (doesn't use isTableSelection) and save on package size
     if (isRangeSelection(selection) || isTableSelection(selection)) {
+      // Update text format
+      $isBold = selection.hasFormat('bold');
+      $isItalic = selection.hasFormat('italic');
+      $isUnderline = selection.hasFormat('underline');
+      $isStrikethrough = selection.hasFormat('strikethrough');
+      $isSubscript = selection.hasFormat('subscript');
+      $isSuperscript = selection.hasFormat('superscript');
+      $isCode = selection.hasFormat('code');
+
       $fontSize = getSelectionStyleValueForProperty(
         selection,
         'font-size',
