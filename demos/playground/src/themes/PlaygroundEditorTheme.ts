@@ -92,6 +92,8 @@ const theme: EditorThemeClasses = {
   rtl: 'PlaygroundEditorTheme__rtl',
   table: 'PlaygroundEditorTheme__table',
   tableCell: 'PlaygroundEditorTheme__tableCell',
+  tableAddColumns: 'PlaygroundEditorTheme__tableAddColumns',
+  tableAddRows: 'PlaygroundEditorTheme__tableAddRows',
   tableCellActionButton: 'PlaygroundEditorTheme__tableCellActionButton',
   tableCellActionButtonContainer:
     'PlaygroundEditorTheme__tableCellActionButtonContainer',
