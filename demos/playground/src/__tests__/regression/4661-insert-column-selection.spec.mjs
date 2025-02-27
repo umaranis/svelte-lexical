@@ -46,6 +46,12 @@ test.describe('Regression test #4661', () => {
         html`
           <p class="PlaygroundEditorTheme__paragraph"><br /></p>
           <table class="PlaygroundEditorTheme__table">
+            <colgroup>
+              <col style="width: 92px" />
+              <col style="width: 92px" />
+              <col style="width: 92px" />
+              <col style="width: 92px" />
+            </colgroup>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
@@ -110,6 +116,12 @@ test.describe('Regression test #4661', () => {
         html`
           <p class="PlaygroundEditorTheme__paragraph"><br /></p>
           <table class="PlaygroundEditorTheme__table">
+            <colgroup>
+              <col style="width: 92px" />
+              <col style="width: 92px" />
+              <col style="width: 92px" />
+              <col style="width: 92px" />
+            </colgroup>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">

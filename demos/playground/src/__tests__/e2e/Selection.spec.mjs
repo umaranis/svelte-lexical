@@ -401,6 +401,10 @@ test.describe.parallel('Selection', () => {
           <span data-lexical-text="true">abc</span>
         </p>
         <table class="PlaygroundEditorTheme__table">
+          <colgroup>
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+          </colgroup>
           <tr>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
@@ -670,9 +674,7 @@ test.describe.parallel('Selection', () => {
       const lastCellText = lastCell.locator('span');
       const tripleClickDelay = 50;
       await lastCellText.click({clickCount: 3, delay: tripleClickDelay});
-      const anchorPath = [1, 0, 1, 0];
 
-      // Only the last cell should be selected, and not the entire docuemnt
       if (browserName === 'firefox') {
         // Firefox correctly selects the last cell + full text content, unlike Chromium which selects the first cell
         const expectedSelection = createHumanReadableSelection(
