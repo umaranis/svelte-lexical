@@ -45,7 +45,10 @@
   import RichTextPlugin from '../RichTextPlugin.svelte';
   import PlaceHolder from '../PlaceHolder.svelte';
   import AutoFocusPlugin from '../AutoFocusPlugin.svelte';
-  import {getImageHistoryPluginType} from '../../composerContext.js';
+  import {
+    getImageHistoryPluginType,
+    getIsEditable,
+  } from '../../composerContext.js';
   import {writable, type Writable} from 'svelte/store';
 
   interface Props {
@@ -86,11 +89,12 @@
   let isSelected = createNodeSelectionStore(editor, nodeKey);
   let isResizing = $state(false);
   let activeEditorRef: LexicalEditor;
+  let isEditable = getIsEditable();
 
   let draggable = $derived(
     $isSelected && isNodeSelection(selection) && !isResizing,
   );
-  let isFocused = $derived($isSelected || isResizing);
+  let isFocused = $derived(($isSelected || isResizing) && $isEditable);
 
   let promise = new Promise((resolve, reject) => {
     if (imageCache.has(src)) {
