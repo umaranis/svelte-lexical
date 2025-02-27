@@ -21,7 +21,7 @@
     type NodeKey,
   } from 'lexical';
   import {useDebounce} from '../CodeBlock/CodeActionMenuPlugin/utils.js';
-  import {getEditor} from '$lib/core/composerContext.js';
+  import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {onDestroy, onMount} from 'svelte';
   import {writable} from 'svelte/store';
   import {CAN_USE_DOM} from '$lib/environment/canUseDOM.js';
@@ -29,6 +29,7 @@
   const BUTTON_WIDTH_PX = 20;
 
   const editor = getEditor();
+  const isEditable = getIsEditable();
   let isShownRow = writable(false);
   let isShownColumn = writable(false);
   let shouldListenMouseMove = $state(false);
@@ -234,19 +235,21 @@
   };
 </script>
 
-{#if $isShownRow}
-  <!-- svelte-ignore a11y_consider_explicit_label -->
-  <button
-    class={`${editor._config.theme.tableAddRows}`}
-    style={$position}
-    onclick={() => insertAction(true)}>
-  </button>
-{/if}
-{#if $isShownColumn}
-  <!-- svelte-ignore a11y_consider_explicit_label -->
-  <button
-    class={`${editor._config.theme.tableAddColumns}`}
-    style={$position}
-    onclick={() => insertAction(false)}>
-  </button>
+{#if $isEditable}
+  {#if $isShownRow}
+    <!-- svelte-ignore a11y_consider_explicit_label -->
+    <button
+      class={`${editor._config.theme.tableAddRows}`}
+      style={$position}
+      onclick={() => insertAction(true)}>
+    </button>
+  {/if}
+  {#if $isShownColumn}
+    <!-- svelte-ignore a11y_consider_explicit_label -->
+    <button
+      class={`${editor._config.theme.tableAddColumns}`}
+      style={$position}
+      onclick={() => insertAction(false)}>
+    </button>
+  {/if}
 {/if}
