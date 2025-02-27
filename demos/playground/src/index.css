@@ -1251,6 +1251,7 @@ button.action-button:disabled {
   position: sticky;
   top: 0;
   z-index: 2;
+  overflow-y: hidden; /* disable vertical scroll*/
 }
 
 button.toolbar-item {
@@ -1653,11 +1654,11 @@ button.item.dropdown-item-active i {
   color: #777;
   border-radius: 5px;
   border-color: grey;
-  height: 21px;
-  margin-top: 5px;
+  height: 15px;
   padding: 2px 4px;
   text-align: center;
   width: 20px;
+  align-self: center;
 }
 
 .sl_font-size-input:disabled {
