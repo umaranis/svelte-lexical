@@ -129,6 +129,9 @@
   function handleKeyPress(e: KeyboardEvent) {
     const inputValueNumber = Number(inputValue);
 
+    if (e.key === 'Tab') {
+      return;
+    }
     if (['e', 'E', '+', '-'].includes(e.key) || isNaN(inputValueNumber)) {
       e.preventDefault();
       inputValue = '';
