@@ -4,6 +4,7 @@ import type {
   LexicalNode,
   SerializedElementNode,
   NodeKey,
+  DOMConversionOutput,
 } from 'lexical';
 
 import {ElementNode} from 'lexical';
@@ -12,6 +13,10 @@ import {createCommand} from 'lexical';
 import {addClassNamesToElement} from '@lexical/utils';
 
 export type SerializedLayoutItemNode = SerializedElementNode;
+
+function $convertLayoutItemElement(): DOMConversionOutput | null {
+  return {node: $createLayoutItemNode()};
+}
 
 export const INSERT_LAYOUT_COMMAND: LexicalCommand<string> = createCommand(
   'INSERT_LAYOUT_COMMAND',
@@ -33,6 +38,7 @@ export class LayoutItemNode extends ElementNode {
 
   createDOM(config: EditorConfig): HTMLElement {
     const dom = document.createElement('div');
+    dom.setAttribute('data-lexical-layout-item', 'true');
     if (typeof config.theme.layoutItem === 'string') {
       addClassNamesToElement(dom, config.theme.layoutItem);
     }
@@ -44,7 +50,17 @@ export class LayoutItemNode extends ElementNode {
   }
 
   static importDOM(): DOMConversionMap | null {
-    return {};
+    return {
+      div: (domNode: HTMLElement) => {
+        if (!domNode.hasAttribute('data-lexical-layout-item')) {
+          return null;
+        }
+        return {
+          conversion: $convertLayoutItemElement,
+          priority: 2,
+        };
+      },
+    };
   }
 
   static importJSON(): LayoutItemNode {
