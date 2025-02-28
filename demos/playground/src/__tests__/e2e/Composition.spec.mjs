@@ -749,6 +749,7 @@ test.describe('Composition', () => {
               dir="ltr">
               <span
                 class="mention"
+                spellcheck="false"
                 style="background-color: rgba(24, 119, 232, 0.2);"
                 data-lexical-text="true">
                 Luke Skywalker
@@ -948,6 +949,7 @@ test.describe('Composition', () => {
               dir="ltr">
               <span
                 class="mention"
+                spellcheck="false"
                 style="background-color: rgba(24, 119, 232, 0.2)"
                 data-lexical-text="true">
                 Luke Skywalker
