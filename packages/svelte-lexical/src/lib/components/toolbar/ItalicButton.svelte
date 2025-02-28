@@ -3,7 +3,7 @@
   import {getActiveEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
-  import {IS_APPLE} from '@lexical/utils';
+  import {SHORTCUTS} from './shortcuts.js';
 
   const activeEditor = getActiveEditor();
   const isEditable = getIsEditable();
@@ -17,10 +17,8 @@
     $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic');
   }}
   class={'toolbar-item spaced ' + ($isItalic ? 'active' : '')}
-  title={IS_APPLE ? 'Italic (⌘I)' : 'Italic (Ctrl+I)'}
+  title={`Italic (${SHORTCUTS.ITALIC})`}
   type="button"
-  aria-label={`Format text as italics. Shortcut: ${
-    IS_APPLE ? '⌘I' : 'Ctrl+I'
-  }`}>
+  aria-label={`Format text as italics. Shortcut: ${SHORTCUTS.ITALIC}`}>
   <i class="format italic"></i>
 </button>

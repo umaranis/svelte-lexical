@@ -4,6 +4,7 @@
   import {FORMAT_TEXT_COMMAND} from 'lexical';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
+  import {SHORTCUTS} from '../shortcuts.js';
 
   const activeEditor = getActiveEditor();
 
@@ -14,9 +15,12 @@
   onclick={() => {
     $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'superscript');
   }}
-  class={'item ' + ($isSuperscript ? 'active dropdown-item-active' : '')}
+  class={'item wide ' + ($isSuperscript ? 'active dropdown-item-active' : '')}
   title="Superscript"
   ariaLabel="Format text with a superscript">
-  <i class="icon subscript"></i>
-  <span class="text">Superscript</span>
+  <div class="icon-text-container">
+    <i class="icon subscript"></i>
+    <span class="text">Superscript</span>
+  </div>
+  <span class="shortcut">{SHORTCUTS.SUPERSCRIPT}</span>
 </DropDownItem>

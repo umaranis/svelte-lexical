@@ -7,10 +7,11 @@
     InsertImageUploadedDialogBody,
     ModalDialog,
     type ImagePayload,
-    getCommands,
     InsertImageUriDialogBody,
     getActiveEditor,
     getEditor,
+    InsertImage,
+    FocusEditor,
   } from 'svelte-lexical';
 
   import landscapeImage from './images/landscape.jpg';
@@ -49,14 +50,14 @@
   });
 
   function insertAndClose(payload: ImagePayload) {
-    getCommands().InsertImage.execute($activeEditor, payload);
+    InsertImage($activeEditor, payload);
     closeDialog();
   }
 
   async function closeDialog() {
     showModal = false;
     await tick();
-    getCommands().FocusEditor.execute(editor);
+    FocusEditor(editor);
   }
 </script>
 

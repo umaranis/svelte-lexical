@@ -38,6 +38,7 @@
     InsertColumnsDialog,
     InsertTableDialog,
     InsertTableDropDownItem,
+    ShortcutsPlugin,
   } from 'svelte-lexical';
   import InsertImageDialog from './InsertImageDialog.svelte';
 
@@ -48,6 +49,7 @@
 
 <Toolbar>
   {#snippet children({editor, activeEditor, blockType})}
+    <ShortcutsPlugin />
     <UndoButton />
     <RedoButton />
     <Divider />

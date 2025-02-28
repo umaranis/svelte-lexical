@@ -1,6 +1,6 @@
 <script lang="ts">
   import {getActiveEditor} from '$lib/core/composerContext.js';
-  import {getCommands} from '$lib/core/commands.js';
+  import {FocusEditor} from '$lib/core/commands.js';
   import {getEditor} from '$lib/core/composerContext.js';
   import CloseCircleButton from '../../generic/button/CloseCircleButton.svelte';
   import ModalDialog from '../../generic/dialog/ModalDialog.svelte';
@@ -24,7 +24,7 @@
   async function close() {
     showModal = false;
     await tick();
-    getCommands().FocusEditor.execute(editor);
+    FocusEditor(editor);
   }
 
   const LAYOUTS = [

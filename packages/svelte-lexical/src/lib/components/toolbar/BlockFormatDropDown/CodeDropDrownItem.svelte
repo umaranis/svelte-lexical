@@ -3,43 +3,22 @@
   import type {Writable} from 'svelte/store';
   import {getEditor} from '$lib/core/composerContext.js';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
-  import type {blockTypeToBlockName} from './blockTypeToBlockName.js';
-  import {$setBlocksType as setBlocksType} from '@lexical/selection';
-  import {
-    $getSelection as getSelection,
-    $isRangeSelection as isRangeSelection,
-  } from 'lexical';
-  import {$createCodeNode as createCodeNode} from '@lexical/code';
+  import type {blockTypeToBlockName} from '../ToolbarData.js';
+  import {formatCode} from '$lib/core/commands.js';
+  import {SHORTCUTS} from '../shortcuts.js';
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
     getContext('blockType');
   const editor = getEditor();
-
-  const formatCode = () => {
-    if ($blockType !== 'code') {
-      editor.update(() => {
-        let selection = getSelection();
-
-        if (selection !== null) {
-          if (selection.isCollapsed()) {
-            setBlocksType(selection, () => createCodeNode());
-          } else {
-            const textContent = selection.getTextContent();
-            const codeNode = createCodeNode();
-            selection.insertNodes([codeNode]);
-            selection = getSelection();
-            if (isRangeSelection(selection))
-              selection.insertRawText(textContent);
-          }
-        }
-      });
-    }
-  };
 </script>
 
 <DropDownItem
-  class={'item ' + ($blockType === 'code' ? 'active dropdown-item-active' : '')}
-  onclick={formatCode}>
-  <i class="icon code"></i>
-  <span class="text">Code Block</span>
+  class={'item wide ' +
+    ($blockType === 'code' ? 'active dropdown-item-active' : '')}
+  onclick={() => formatCode(editor, $blockType)}>
+  <div class="icon-text-container">
+    <i class="icon code"></i>
+    <span class="text">Code block</span>
+  </div>
+  <span class="shortcut">{SHORTCUTS.CODE_BLOCK}</span>
 </DropDownItem>

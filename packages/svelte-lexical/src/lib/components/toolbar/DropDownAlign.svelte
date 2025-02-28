@@ -10,6 +10,7 @@
   import {getActiveEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
+  import {SHORTCUTS} from './shortcuts.js';
 
   const activeEditor = getActiveEditor();
   const isRTL: Writable<boolean> = getContext('isRTL');
@@ -26,49 +27,67 @@
     onclick={() => {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'left');
     }}
-    class="item">
-    <i class="icon left-align"></i>
-    <span class="text">Left Align</span>
+    class="item wide">
+    <div class="icon-text-container">
+      <i class="icon left-align"></i>
+      <span class="text">Left Align</span>
+    </div>
+    <span class="shortcut">{SHORTCUTS.LEFT_ALIGN}</span>
   </DropDownItem>
   <DropDownItem
     onclick={() => {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'center');
     }}
-    class="item">
-    <i class="icon center-align"></i>
-    <span class="text">Center Align</span>
+    class="item wide">
+    <div class="icon-text-container">
+      <i class="icon center-align"></i>
+      <span class="text">Center Align</span>
+    </div>
+    <span class="shortcut">{SHORTCUTS.CENTER_ALIGN}</span>
   </DropDownItem>
   <DropDownItem
     onclick={() => {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'right');
     }}
-    class="item">
-    <i class="icon right-align"></i>
-    <span class="text">Right Align</span>
+    class="item wide">
+    <div class="icon-text-container">
+      <i class="icon right-align"></i>
+      <span class="text">Right Align</span>
+    </div>
+    <span class="shortcut">{SHORTCUTS.RIGHT_ALIGN}</span>
   </DropDownItem>
   <DropDownItem
     onclick={() => {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'justify');
     }}
-    class="item">
-    <i class="icon justify-align"></i>
-    <span class="text">Justify Align</span>
+    class="item wide">
+    <div class="icon-text-container">
+      <i class="icon justify-align"></i>
+      <span class="text">Justify Align</span>
+    </div>
+    <span class="shortcut">{SHORTCUTS.JUSTIFY_ALIGN}</span>
   </DropDownItem>
   <Divider />
   <DropDownItem
     onclick={() => {
       $activeEditor.dispatchCommand(OUTDENT_CONTENT_COMMAND, undefined);
     }}
-    class="item">
-    <i class={'icon ' + ($isRTL ? 'indent' : 'outdent')}></i>
-    <span class="text">Outdent</span>
+    class="item wide">
+    <div class="icon-text-container">
+      <i class={'icon ' + ($isRTL ? 'indent' : 'outdent')}></i>
+      <span class="text">Outdent</span>
+    </div>
+    <span class="shortcut">{SHORTCUTS.OUTDENT}</span>
   </DropDownItem>
   <DropDownItem
     onclick={() => {
       $activeEditor.dispatchCommand(INDENT_CONTENT_COMMAND, undefined);
     }}
-    class="item">
-    <i class={'icon ' + ($isRTL ? 'outdent' : 'indent')}></i>
-    <span class="text">Indent</span>
+    class="item wide">
+    <div class="icon-text-container">
+      <i class={'icon ' + ($isRTL ? 'outdent' : 'indent')}></i>
+      <span class="text">Indent</span>
+    </div>
+    <span class="shortcut">{SHORTCUTS.INDENT}</span>
   </DropDownItem>
 </DropDown>

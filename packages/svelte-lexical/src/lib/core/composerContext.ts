@@ -1,3 +1,4 @@
+import type {blockTypeToBlockName} from '$lib/components/toolbar/ToolbarData.js';
 import type {HistoryState} from '@lexical/history';
 import type {LexicalEditor} from 'lexical';
 import {type Component, getContext, setContext} from 'svelte';
@@ -29,6 +30,18 @@ export function getHistoryStateContext(): HistoryState {
  */
 export function setHistoryStateContext(historyState: HistoryState) {
   setContext('historyState', historyState);
+}
+
+export function getBlockType(): Writable<keyof typeof blockTypeToBlockName> {
+  return getContext('blockType');
+}
+
+export function getIsLink(): Writable<boolean> {
+  return getContext('isLink');
+}
+
+export function getFontSize(): Writable<string> {
+  return getContext('fontSize');
 }
 
 export type SvelteComponentTypeRef = {

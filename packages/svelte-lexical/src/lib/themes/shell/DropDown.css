@@ -30,9 +30,22 @@
   min-width: 100px;
 }
 
-.svelte-lexical.dropdown .item.fontsize-item,
-.svelte-lexical.dropdown .item.fontsize-item .text {
-  min-width: unset;
+.svelte-lexical.dropdown .item.wide {
+  align-items: center;
+  width: 248px;
+}
+
+.svelte-lexical.dropdown .item.wide .icon-text-container {
+  display: flex;
+
+  .text {
+    min-width: 120px;
+  }
+}
+
+.svelte-lexical.dropdown .item .shortcut {
+  color: #939393;
+  align-self: flex-end;
 }
 
 .svelte-lexical.dropdown .item .active {

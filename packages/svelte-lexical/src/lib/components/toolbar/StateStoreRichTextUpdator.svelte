@@ -25,7 +25,7 @@
   import type {Writable} from 'svelte/store';
   import getSelectedNode from './getSelectionInfo.js';
   import {$isLinkNode as isLinkNode} from '@lexical/link';
-  import {blockTypeToBlockName} from './BlockFormatDropDown/blockTypeToBlockName.js';
+  import {blockTypeToBlockName} from './ToolbarData.js';
   import {$isTableSelection as isTableSelection} from '@lexical/table';
 
   const editor = getEditor();

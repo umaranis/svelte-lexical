@@ -104,6 +104,7 @@ export {default as SuperscriptDropDownItem} from './components/toolbar/MoreStyle
 export {default as ClearFormattingDropDownItem} from './components/toolbar/MoreStylesDropDown/ClearFormattingDropDownItem.svelte';
 export {default as InsertColumnLayoutDropDownItem} from './components/toolbar/InsertDropDown/InsertColumnLayoutDropDownItem.svelte';
 export {default as InsertTableDropDownItem} from './components/toolbar/InsertDropDown/InsertTableDropDownItem.svelte';
+export {default as ShortcutsPlugin} from './components/toolbar/ShortcutsPlugin.svelte';
 // dialogs
 export {default as InsertImageDialog} from './components/toolbar/dialogs/InsertImageDialog.svelte';
 export {default as InsertImageUploadedDialogBody} from './components/toolbar/dialogs/InsertImageUploadedDialogBody.svelte';
@@ -111,9 +112,25 @@ export {default as InsertImageUriDialogBody} from './components/toolbar/dialogs/
 export {default as InsertColumnsDialog} from './components/toolbar/dialogs/InsertColumnsDialog.svelte';
 export {default as InsertTableDialog} from './components/toolbar/dialogs/InsertTableDialog.svelte';
 
-export {getCommands} from './core/commands.js';
+// commands
 export type {ImagePayload} from './core/plugins/Image/ImageNode.js';
 export {getEditor, getActiveEditor} from './core/composerContext.js';
+export {
+  UpdateFontSizeType,
+  calculateNextFontSize,
+  updateFontSizeInSelection,
+  updateFontSize,
+  formatParagraph,
+  formatHeading,
+  formatBulletList,
+  formatCheckList,
+  formatNumberedList,
+  formatQuote,
+  formatCode,
+  clearFormatting,
+  InsertImage,
+  FocusEditor,
+} from './core/commands.js';
 
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
 export {default as TreeViewPlugin} from './core/plugins/TreeView/TreeViewPlugin.svelte';

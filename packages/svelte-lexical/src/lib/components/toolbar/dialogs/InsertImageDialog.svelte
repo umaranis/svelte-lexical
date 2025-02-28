@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {getCommands} from '$lib/core/commands.js';
+  import {FocusEditor} from '$lib/core/commands.js';
   import {getEditor} from '$lib/core/composerContext.js';
   import {tick} from 'svelte';
   import CloseCircleButton from '../../generic/button/CloseCircleButton.svelte';
@@ -20,7 +20,7 @@
   async function close() {
     showModal = false;
     await tick();
-    getCommands().FocusEditor.execute(editor);
+    FocusEditor(editor);
   }
 </script>
 

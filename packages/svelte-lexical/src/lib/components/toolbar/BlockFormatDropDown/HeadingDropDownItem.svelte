@@ -1,15 +1,12 @@
 <script lang="ts">
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
-  import {$getSelection as getSelection} from 'lexical';
-  import {
-    $createHeadingNode as createHeadingNode,
-    type HeadingTagType,
-  } from '@lexical/rich-text';
-  import {$setBlocksType as setBlocksType} from '@lexical/selection';
+  import {type HeadingTagType} from '@lexical/rich-text';
   import type {Writable} from 'svelte/store';
-  import type {blockTypeToBlockName} from './blockTypeToBlockName.js';
+  import type {blockTypeToBlockName} from '../ToolbarData.js';
   import {getContext} from 'svelte';
   import {getEditor} from '$lib/core/composerContext.js';
+  import {formatHeading} from '$lib/core/commands.js';
+  import {SHORTCUTS} from '../shortcuts.js';
 
   interface Props {
     headingSize: HeadingTagType;
@@ -20,21 +17,17 @@
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
     getContext('blockType');
   const editor = getEditor();
-
-  const formatHeading = (headingSize: HeadingTagType) => {
-    if ($blockType !== headingSize) {
-      editor.update(() => {
-        const selection = getSelection();
-        setBlocksType(selection, () => createHeadingNode(headingSize));
-      });
-    }
-  };
 </script>
 
 <DropDownItem
-  class={'item ' +
+  class={'item wide ' +
     ($blockType === headingSize ? 'active dropdown-item-active' : '')}
-  onclick={() => formatHeading(headingSize)}>
-  <i class="icon {headingSize}"></i>
-  <span class="text">Heading {headingSize.charAt(1)}</span>
+  onclick={() => formatHeading(editor, $blockType, headingSize)}>
+  <div class="icon-text-container">
+    <i class="icon {headingSize}"></i>
+    <span class="text">Heading {headingSize.charAt(1)}</span>
+  </div>
+  <span class="shortcut">
+    {SHORTCUTS[`HEADING${headingSize.charAt(1)}` as keyof typeof SHORTCUTS]}
+  </span>
 </DropDownItem>

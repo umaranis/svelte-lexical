@@ -4,7 +4,7 @@
   import {getActiveEditor} from '$lib/core/composerContext.js';
   import {INSERT_TABLE_COMMAND} from '@lexical/table';
   import ModalDialog from '../../generic/dialog/ModalDialog.svelte';
-  import {getCommands} from '$lib/core/commands.js';
+  import {FocusEditor} from '$lib/core/commands.js';
   import NumberInput from '$lib/components/generic/input/NumberInput.svelte';
   import CloseCircleButton from '$lib/components/generic/button/CloseCircleButton.svelte';
   import {tick} from 'svelte';
@@ -37,7 +37,7 @@
   async function close() {
     showModal = false;
     await tick();
-    getCommands().FocusEditor.execute($activeEditor);
+    FocusEditor($activeEditor);
   }
 
   const onClick = () => {

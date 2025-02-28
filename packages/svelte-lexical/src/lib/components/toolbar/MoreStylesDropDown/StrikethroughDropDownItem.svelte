@@ -5,6 +5,7 @@
   import {FORMAT_TEXT_COMMAND} from 'lexical';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
+  import {SHORTCUTS} from '../shortcuts.js';
 
   const activeEditor = getActiveEditor();
 
@@ -15,9 +16,12 @@
   onclick={() => {
     $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough');
   }}
-  class={'item ' + ($isStrikethrough ? 'active dropdown-item-active' : '')}
+  class={'item wide ' + ($isStrikethrough ? 'active dropdown-item-active' : '')}
   title="Strikethrough"
   ariaLabel="Format text with a strikethrough">
-  <i class="icon strikethrough"></i>
-  <span class="text">Strikethrough</span>
+  <div class="icon-text-container">
+    <i class="icon strikethrough"></i>
+    <span class="text">Strikethrough</span>
+  </div>
+  <span class="shortcut">{SHORTCUTS.STRIKETHROUGH}</span>
 </DropDownItem>

@@ -1,29 +1,24 @@
 <script lang="ts">
-  import {INSERT_UNORDERED_LIST_COMMAND} from '@lexical/list';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
   import {getEditor} from '$lib/core/composerContext.js';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
-  import type {blockTypeToBlockName} from './blockTypeToBlockName.js';
-  import {formatParagraph} from './formatParagraph.js';
+  import type {blockTypeToBlockName} from '../ToolbarData.js';
+  import {formatBulletList} from '$lib/core/commands.js';
+  import {SHORTCUTS} from '../shortcuts.js';
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
     getContext('blockType');
   const editor = getEditor();
-
-  const formatBulletList = () => {
-    if ($blockType !== 'bullet') {
-      editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
-    } else {
-      formatParagraph(editor);
-    }
-  };
 </script>
 
 <DropDownItem
-  class={'item ' +
+  class={'item wide ' +
     ($blockType === 'bullet' ? 'active dropdown-item-active' : '')}
-  onclick={formatBulletList}>
-  <i class="icon bullet-list"></i>
-  <span class="text">Bullet List</span>
+  onclick={() => formatBulletList(editor, $blockType)}>
+  <div class="icon-text-container">
+    <i class="icon bullet-list"></i>
+    <span class="text">Bullet List</span>
+  </div>
+  <span class="shortcut">{SHORTCUTS.BULLET_LIST}</span>
 </DropDownItem>

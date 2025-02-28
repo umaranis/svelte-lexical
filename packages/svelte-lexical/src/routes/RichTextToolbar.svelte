@@ -7,10 +7,15 @@
   import InsertTableDropDownItem from '$lib/components/toolbar/InsertDropDown/InsertTableDropDownItem.svelte';
   import {
     BlockFormatDropDown,
+    ClearFormattingDropDownItem,
     CodeDropDrownItem,
     CodeLanguageDropDown,
     FontSizeEntry,
     InsertLink,
+    MoreStylesDropDown,
+    StrikethroughDropDownItem,
+    SubscriptDropDownItem,
+    SuperscriptDropDownItem,
   } from '../lib/index.js';
   import {BoldButton} from '../lib/index.js';
   import {Divider} from '../lib/index.js';
@@ -35,6 +40,7 @@
   import {InsertImageDropDownItem} from '../lib/index.js';
   import {InsertColumnLayoutDropDownItem} from '../lib/index.js';
   import {InsertColumnsDialog} from '../lib/index.js';
+  import ShortcutsPlugin from '$lib/components/toolbar/ShortcutsPlugin.svelte';
 
   let imageDialog: InsertImageDialog;
   let columnsDialog: InsertColumnsDialog;
@@ -43,6 +49,7 @@
 
 <Toolbar>
   {#snippet children({editor, activeEditor, blockType})}
+    <ShortcutsPlugin />
     <UndoButton />
     <RedoButton />
     <Divider />
@@ -73,6 +80,12 @@
       <FormatCodeButton />
       <DropDownTextColorPicker />
       <DropDownBackColorPicker />
+      <MoreStylesDropDown>
+        <StrikethroughDropDownItem />
+        <SubscriptDropDownItem />
+        <SuperscriptDropDownItem />
+        <ClearFormattingDropDownItem />
+      </MoreStylesDropDown>
       <Divider />
       <InsertLink />
       <Divider />
