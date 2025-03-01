@@ -19,11 +19,8 @@
     isHTMLElement,
     mergeRegister,
   } from '@lexical/utils';
-  import {
-    $getNearestNodeFromDOMNode as getNearestNodeFromDOMNode,
-    type LexicalEditor,
-  } from 'lexical';
-  import {onDestroy, onMount} from 'svelte';
+  import {$getNearestNodeFromDOMNode as getNearestNodeFromDOMNode} from 'lexical';
+  import {onMount} from 'svelte';
   import {CAN_USE_DOM} from '$lib/environment/canUseDOM.js';
 
   type MouseDraggingDirection = 'horizontal' | 'vertical';
@@ -76,10 +73,6 @@
         return tableNode;
       }),
     );
-  });
-
-  onDestroy(() => {
-    removeRootListener();
   });
 
   const onPointerUp = (e: PointerEvent) => {};
@@ -144,16 +137,21 @@
     }
   };
 
-  const removeRootListener = editor.registerRootListener(
-    (rootElement, prevRootElement) => {
-      prevRootElement?.removeEventListener('pointermove', onPointerMove);
-      prevRootElement?.removeEventListener('pointerdown', onPointerDown);
-      prevRootElement?.removeEventListener('pointerup', onPointerUp);
-      rootElement?.addEventListener('pointermove', onPointerMove);
-      rootElement?.addEventListener('pointerdown', onPointerDown);
-      rootElement?.addEventListener('pointerup', onPointerUp);
-    },
-  );
+  $effect(() => {
+    if (hasTable) {
+      const removeRootListener = editor.registerRootListener(
+        (rootElement, prevRootElement) => {
+          prevRootElement?.removeEventListener('pointermove', onPointerMove);
+          prevRootElement?.removeEventListener('pointerdown', onPointerDown);
+          prevRootElement?.removeEventListener('pointerup', onPointerUp);
+          rootElement?.addEventListener('pointermove', onPointerMove);
+          rootElement?.addEventListener('pointerdown', onPointerDown);
+          rootElement?.addEventListener('pointerup', onPointerUp);
+        },
+      );
+      return removeRootListener;
+    }
+  });
 
   const updateRowHeight = (updatedHeight: number) => {
     if (!tableRow) {
@@ -231,23 +229,23 @@
     return columnIndex;
   });
 
-  const getRowHeight = () => {
-    if (!activeCell || tableRowIndex === null || !tableNode || !tableRow) {
-      throw new Error(
-        'TableCellResizer: Expected active cell, table and row for computing height of the row.',
-      );
-    }
+  // const getRowHeight = () => {
+  //   if (!activeCell || tableRowIndex === null || !tableNode || !tableRow) {
+  //     throw new Error(
+  //       'TableCellResizer: Expected active cell, table and row for computing height of the row.',
+  //     );
+  //   }
 
-    let height = tableRow.getHeight();
-    if (height === undefined) {
-      const rowCells = tableRow.getChildren<TableCellNode>();
-      height = Math.min(
-        ...rowCells.map((cell) => getCellNodeHeight(cell, editor) ?? Infinity),
-      );
-    }
+  //   let height = tableRow.getHeight();
+  //   if (height === undefined) {
+  //     const rowCells = tableRow.getChildren<TableCellNode>();
+  //     height = Math.min(
+  //       ...rowCells.map((cell) => getCellNodeHeight(cell, editor) ?? Infinity),
+  //     );
+  //   }
 
-    return height;
-  };
+  //   return height;
+  // };
 
   const getRowWidths = () => {
     if (!tableNode || tableColumnIndex === null) {
@@ -270,13 +268,13 @@
     return {currentCellWidth, colWidths};
   };
 
-  const getCellNodeHeight = (
-    cell: TableCellNode,
-    activeEditor: LexicalEditor,
-  ): number | undefined => {
-    const domCellNode = activeEditor.getElementByKey(cell.getKey());
-    return domCellNode?.clientHeight;
-  };
+  // const getCellNodeHeight = (
+  //   cell: TableCellNode,
+  //   activeEditor: LexicalEditor,
+  // ): number | undefined => {
+  //   const domCellNode = activeEditor.getElementByKey(cell.getKey());
+  //   return domCellNode?.clientHeight;
+  // };
 
   const getCellColumnIndex = (
     tableCellNode: TableCellNode,
@@ -389,7 +387,7 @@
     () => {
       if (activeCell) {
         const zoom = calculateZoomLevel(activeCell.elem);
-        const {left, top, bottom, width, height} =
+        const {left, top, width, height} =
           activeCell.elem.getBoundingClientRect();
         const RESIZER_THRESHOLD = 10;
         const RESIZER_SIZE = 4;
