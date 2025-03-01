@@ -26,3 +26,4 @@
 | Table                                    | Enable Html Table support                                                                          | TablePlugin                      |                                  |
 | Table Hover Action                       | Show buttons for adding rows and columns when the hovering over the last row or column             | TableHoverActionPlugin           | TablePlugin                      |
 | Table Action Menu                        | Show a button in the focused cell to open Action Menu (add, delete, merge, cell color etc.)        | TableActionMenuPlugin            | TablePlugin                      |
+| Table Cell Resizer                       | Show a resizer to resize the cell                                              | TableCellResizerPlugin           | TablePlugin                      |
