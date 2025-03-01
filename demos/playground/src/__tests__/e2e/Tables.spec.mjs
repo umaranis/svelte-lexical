@@ -19,7 +19,7 @@ import {
 } from '../keyboardShortcuts/index.mjs';
 import os from 'os';
 import {
-  assertHTML,
+  assertHTML as rawAssertHTML,
   assertSelection,
   click,
   clickSelectors,
@@ -38,6 +38,7 @@ import {
   insertTableRowBelow,
   IS_COLLAB,
   IS_LINUX,
+  IS_TABLE_HORIZONTAL_SCROLL,
   IS_WINDOWS,
   LEGACY_EVENTS,
   mergeTableCells,
@@ -52,6 +53,8 @@ import {
   toggleColumnHeader,
   unmergeTableCell,
   waitForSelector,
+  withExclusiveClipboardAccess,
+  wrapTableHtml,
 } from '../utils/index.mjs';
 
 async function fillTablePartiallyWithText(page) {
@@ -74,6 +77,28 @@ async function fillTablePartiallyWithText(page) {
   await page.keyboard.press('ArrowUp');
   await page.keyboard.press('c');
 }
+
+async function assertHTML(
+  page,
+  expectedHtml,
+  expectedHtmlFrameRight = undefined,
+  options = undefined,
+  ...args
+) {
+  return await rawAssertHTML(
+    page,
+    IS_TABLE_HORIZONTAL_SCROLL
+      ? wrapTableHtml(expectedHtml, options)
+      : expectedHtml,
+    IS_TABLE_HORIZONTAL_SCROLL && expectedHtmlFrameRight !== undefined
+      ? wrapTableHtml(expectedHtmlFrameRight, options)
+      : expectedHtmlFrameRight,
+    options,
+    ...args,
+  );
+}
+
+const WRAPPER = IS_TABLE_HORIZONTAL_SCROLL ? [0] : [];
 
 test.describe.parallel('Tables', () => {
   //test.fixme();
@@ -182,12 +207,13 @@ test.describe.parallel('Tables', () => {
 
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 1, 0, 0],
+        anchorPath: [1, ...WRAPPER, 1, 0, 0],
         focusOffset: 0,
-        focusPath: [1, 1, 0, 0],
+        focusPath: [1, ...WRAPPER, 1, 0, 0],
       });
 
       await moveLeft(page, 1);
+
       await assertSelection(page, {
         anchorOffset: 0,
         anchorPath: [0],
@@ -197,19 +223,20 @@ test.describe.parallel('Tables', () => {
 
       await moveRight(page, 1);
       await page.keyboard.type('ab');
+
       await assertSelection(page, {
         anchorOffset: 2,
-        anchorPath: [1, 1, 0, 0, 0, 0],
+        anchorPath: [1, ...WRAPPER, 1, 0, 0, 0, 0],
         focusOffset: 2,
-        focusPath: [1, 1, 0, 0, 0, 0],
+        focusPath: [1, ...WRAPPER, 1, 0, 0, 0, 0],
       });
 
       await moveRight(page, 3);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 2, 1, 0],
+        anchorPath: [1, ...WRAPPER, 2, 1, 0],
         focusOffset: 0,
-        focusPath: [1, 2, 1, 0],
+        focusPath: [1, ...WRAPPER, 2, 1, 0],
       });
     });
 
@@ -227,9 +254,9 @@ test.describe.parallel('Tables', () => {
       await moveRight(page, 3);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 2, 1, 0],
+        anchorPath: [1, ...WRAPPER, 2, 1, 0],
         focusOffset: 0,
-        focusPath: [1, 2, 1, 0],
+        focusPath: [1, ...WRAPPER, 2, 1, 0],
       });
 
       await moveRight(page, 1);
@@ -244,9 +271,9 @@ test.describe.parallel('Tables', () => {
       await page.keyboard.type('ab');
       await assertSelection(page, {
         anchorOffset: 2,
-        anchorPath: [1, 2, 1, 0, 0, 0],
+        anchorPath: [1, ...WRAPPER, 2, 1, 0, 0, 0],
         focusOffset: 2,
-        focusPath: [1, 2, 1, 0, 0, 0],
+        focusPath: [1, ...WRAPPER, 2, 1, 0, 0, 0],
       });
 
       await moveRight(page, 3);
@@ -272,17 +299,17 @@ test.describe.parallel('Tables', () => {
 
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 1, 0, 1, 1, 0, 0],
+        anchorPath: [1, ...WRAPPER, 1, 0, 1, ...WRAPPER, 1, 0, 0],
         focusOffset: 0,
-        focusPath: [1, 1, 0, 1, 1, 0, 0],
+        focusPath: [1, ...WRAPPER, 1, 0, 1, ...WRAPPER, 1, 0, 0],
       });
 
       await moveLeft(page, 1);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 1, 0, 0],
+        anchorPath: [1, ...WRAPPER, 1, 0, 0],
         focusOffset: 0,
-        focusPath: [1, 1, 0, 0],
+        focusPath: [1, ...WRAPPER, 1, 0, 0],
       });
     });
 
@@ -301,17 +328,17 @@ test.describe.parallel('Tables', () => {
       await moveRight(page, 3);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 1, 0, 1, 2, 1, 0],
+        anchorPath: [1, ...WRAPPER, 1, 0, 1, ...WRAPPER, 2, 1, 0],
         focusOffset: 0,
-        focusPath: [1, 1, 0, 1, 2, 1, 0],
+        focusPath: [1, ...WRAPPER, 1, 0, 1, ...WRAPPER, 2, 1, 0],
       });
 
       await moveRight(page, 1);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 1, 0, 2],
+        anchorPath: [1, ...WRAPPER, 1, 0, 2],
         focusOffset: 0,
-        focusPath: [1, 1, 0, 2],
+        focusPath: [1, ...WRAPPER, 1, 0, 2],
       });
     });
   });
@@ -346,9 +373,9 @@ test.describe.parallel('Tables', () => {
     await deleteBackward(page);
     await assertSelection(page, {
       anchorOffset: 0,
-      anchorPath: [1, 2, 1, 0],
+      anchorPath: [1, ...WRAPPER, 2, 1, 0],
       focusOffset: 0,
-      focusPath: [1, 2, 1, 0],
+      focusPath: [1, ...WRAPPER, 2, 1, 0],
     });
     await assertHTML(
       page,
@@ -382,14 +409,24 @@ test.describe.parallel('Tables', () => {
     );
 
     await moveRight(page, 1);
-    // The native window selection should be on the root, whereas
-    // the editor selection should be on the last cell of the table.
-    await assertSelection(page, {
-      anchorOffset: 2,
-      anchorPath: [],
-      focusOffset: 2,
-      focusPath: [],
-    });
+    if (WRAPPER.length === 0) {
+      // The native window selection should be on the root, whereas
+      // the editor selection should be on the last cell of the table.
+      await assertSelection(page, {
+        anchorOffset: 2,
+        anchorPath: [],
+        focusOffset: 2,
+        focusPath: [],
+      });
+    } else {
+      // The native window selection is in the wrapper after the table
+      await assertSelection(page, {
+        anchorOffset: WRAPPER[0] + 1,
+        anchorPath: [1],
+        focusOffset: WRAPPER[0] + 1,
+        focusPath: [1],
+      });
+    }
 
     await page.keyboard.press('Enter');
     await assertSelection(page, {
@@ -515,9 +552,9 @@ test.describe.parallel('Tables', () => {
     await moveLeft(page, 1);
     await assertSelection(page, {
       anchorOffset: 0,
-      anchorPath: [1, 2, 1, 0],
+      anchorPath: [1, ...WRAPPER, 2, 1, 0],
       focusOffset: 0,
-      focusPath: [1, 2, 1, 0],
+      focusPath: [1, ...WRAPPER, 2, 1, 0],
     });
   });
 
@@ -567,57 +604,57 @@ test.describe.parallel('Tables', () => {
 
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 1, 0, 0],
+        anchorPath: [1, ...WRAPPER, 1, 0, 0],
         focusOffset: 0,
-        focusPath: [1, 1, 0, 0],
+        focusPath: [1, ...WRAPPER, 1, 0, 0],
       });
 
       await moveRight(page, 1);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 1, 1, 0],
+        anchorPath: [1, ...WRAPPER, 1, 1, 0],
         focusOffset: 0,
-        focusPath: [1, 1, 1, 0],
+        focusPath: [1, ...WRAPPER, 1, 1, 0],
       });
 
       await moveRight(page, 1);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 2, 0, 0],
+        anchorPath: [1, ...WRAPPER, 2, 0, 0],
         focusOffset: 0,
-        focusPath: [1, 2, 0, 0],
+        focusPath: [1, ...WRAPPER, 2, 0, 0],
       });
 
       await moveRight(page, 1);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 2, 1, 0],
+        anchorPath: [1, ...WRAPPER, 2, 1, 0],
         focusOffset: 0,
-        focusPath: [1, 2, 1, 0],
+        focusPath: [1, ...WRAPPER, 2, 1, 0],
       });
 
       await moveLeft(page, 1);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 2, 0, 0],
+        anchorPath: [1, ...WRAPPER, 2, 0, 0],
         focusOffset: 0,
-        focusPath: [1, 2, 0, 0],
+        focusPath: [1, ...WRAPPER, 2, 0, 0],
       });
 
       await moveLeft(page, 1);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 1, 1, 0],
+        anchorPath: [1, ...WRAPPER, 1, 1, 0],
         focusOffset: 0,
-        focusPath: [1, 1, 1, 0],
+        focusPath: [1, ...WRAPPER, 1, 1, 0],
       });
 
       await moveLeft(page, 1);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 1, 0, 0],
+        anchorPath: [1, ...WRAPPER, 1, 0, 0],
         focusOffset: 0,
-        focusPath: [1, 1, 0, 0],
+        focusPath: [1, ...WRAPPER, 1, 0, 0],
       });
     });
 
@@ -634,25 +671,25 @@ test.describe.parallel('Tables', () => {
 
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 1, 0, 0],
+        anchorPath: [1, ...WRAPPER, 1, 0, 0],
         focusOffset: 0,
-        focusPath: [1, 1, 0, 0],
+        focusPath: [1, ...WRAPPER, 1, 0, 0],
       });
 
       await moveDown(page, 1);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 2, 0, 0],
+        anchorPath: [1, ...WRAPPER, 2, 0, 0],
         focusOffset: 0,
-        focusPath: [1, 2, 0, 0],
+        focusPath: [1, ...WRAPPER, 2, 0, 0],
       });
 
       await moveUp(page, 1);
       await assertSelection(page, {
         anchorOffset: 0,
-        anchorPath: [1, 1, 0, 0],
+        anchorPath: [1, ...WRAPPER, 1, 0, 0],
         focusOffset: 0,
-        focusPath: [1, 1, 0, 0],
+        focusPath: [1, ...WRAPPER, 1, 0, 0],
       });
     });
 
@@ -668,9 +705,9 @@ test.describe.parallel('Tables', () => {
         await page.keyboard.type('@A');
         await assertSelection(page, {
           anchorOffset: 2,
-          anchorPath: [1, 1, 0, 0, 0, 0],
+          anchorPath: [1, ...WRAPPER, 1, 0, 0, 0, 0],
           focusOffset: 2,
-          focusPath: [1, 1, 0, 0, 0, 0],
+          focusPath: [1, ...WRAPPER, 1, 0, 0, 0, 0],
         });
 
         await waitForSelector(
@@ -681,9 +718,9 @@ test.describe.parallel('Tables', () => {
         await moveDown(page, 1);
         await assertSelection(page, {
           anchorOffset: 2,
-          anchorPath: [1, 1, 0, 0, 0, 0],
+          anchorPath: [1, ...WRAPPER, 1, 0, 0, 0, 0],
           focusOffset: 2,
-          focusPath: [1, 1, 0, 0, 0, 0],
+          focusPath: [1, ...WRAPPER, 1, 0, 0, 0, 0],
         });
 
         await waitForSelector(
@@ -726,12 +763,10 @@ test.describe.parallel('Tables', () => {
               <col style="width: 92px" />
             </colgroup>
             <tr>
-              <th
-                style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <th class="PlaygroundEditorTheme__tableCellSelected">
                 <p dir="ltr"><span data-lexical-text="true">a</span></p>
               </th>
-              <th
-                style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <th class="PlaygroundEditorTheme__tableCellSelected">
                 <p dir="ltr"><span data-lexical-text="true">bb</span></p>
               </th>
               <th>
@@ -739,12 +774,10 @@ test.describe.parallel('Tables', () => {
               </th>
             </tr>
             <tr>
-              <th
-                style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <th class="PlaygroundEditorTheme__tableCellSelected">
                 <p dir="ltr"><span data-lexical-text="true">d</span></p>
               </th>
-              <td
-                style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <td class="PlaygroundEditorTheme__tableCellSelected">
                 <p dir="ltr"><span data-lexical-text="true">e</span></p>
               </td>
               <td>
@@ -840,12 +873,10 @@ test.describe.parallel('Tables', () => {
             <col style="width: 92px" />
           </colgroup>
           <tr>
-            <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+            <th class="PlaygroundEditorTheme__tableCellSelected">
               <p dir="ltr"><span data-lexical-text="true">a</span></p>
             </th>
-            <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+            <th class="PlaygroundEditorTheme__tableCellSelected">
               <p dir="ltr"><span data-lexical-text="true">bb</span></p>
             </th>
             <th>
@@ -853,12 +884,10 @@ test.describe.parallel('Tables', () => {
             </th>
           </tr>
           <tr>
-            <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+            <th class="PlaygroundEditorTheme__tableCellSelected">
               <p dir="ltr"><span data-lexical-text="true">d</span></p>
             </th>
-            <td
-              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+            <td class="PlaygroundEditorTheme__tableCellSelected">
               <p dir="ltr"><span data-lexical-text="true">e</span></p>
             </td>
             <td>
@@ -964,12 +993,10 @@ test.describe.parallel('Tables', () => {
               <col style="width: 92px" />
             </colgroup>
             <tr>
-              <th
-                style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <th class="PlaygroundEditorTheme__tableCellSelected">
                 <p dir="ltr"><strong data-lexical-text="true">a</strong></p>
               </th>
-              <th
-                style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <th class="PlaygroundEditorTheme__tableCellSelected">
                 <p dir="ltr"><strong data-lexical-text="true">bb</strong></p>
               </th>
               <th>
@@ -977,12 +1004,10 @@ test.describe.parallel('Tables', () => {
               </th>
             </tr>
             <tr>
-              <th
-                style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <th class="PlaygroundEditorTheme__tableCellSelected">
                 <p dir="ltr"><strong data-lexical-text="true">d</strong></p>
               </th>
-              <td
-                style="background-color: rgb(172, 206, 247); caret-color: transparent">
+              <td class="PlaygroundEditorTheme__tableCellSelected">
                 <p dir="ltr"><strong data-lexical-text="true">e</strong></p>
               </td>
               <td>
@@ -1030,6 +1055,205 @@ test.describe.parallel('Tables', () => {
     },
   );
 
+  test(`Can style on empty table cells and paragraphs with no text`, async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    await initialize({isCollab, page});
+    test.skip(isPlainText);
+
+    await focusEditor(page);
+    await insertTable(page, 2, 3);
+    await selectAll(page);
+
+    // Apply style on empty table
+    await clickSelectors(page, ['.bold']);
+
+    // Add text after applying styles
+    await click(page, 'div[contenteditable="true"] p:first-of-type');
+    await page.keyboard.type('abc');
+
+    await click(page, 'th p:first-of-type');
+    await fillTablePartiallyWithText(page);
+
+    // Check that the character styles are applied.
+    await assertHTML(
+      page,
+      html`
+        <p dir="ltr"><strong data-lexical-text="true">abc</strong></p>
+        <table>
+          <colgroup>
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+          </colgroup>
+          <tr>
+            <th>
+              <p dir="ltr"><strong data-lexical-text="true">a</strong></p>
+            </th>
+            <th>
+              <p dir="ltr"><strong data-lexical-text="true">bb</strong></p>
+            </th>
+            <th>
+              <p dir="ltr"><strong data-lexical-text="true">cc</strong></p>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <p dir="ltr"><strong data-lexical-text="true">d</strong></p>
+            </th>
+            <td>
+              <p dir="ltr"><strong data-lexical-text="true">e</strong></p>
+            </td>
+            <td>
+              <p dir="ltr"><strong data-lexical-text="true">f</strong></p>
+            </td>
+          </tr>
+        </table>
+        <p><br /></p>
+      `,
+      html`
+        <p dir="ltr"><strong data-lexical-text="true">abc</strong></p>
+        <table>
+          <colgroup>
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+          </colgroup>
+          <tr>
+            <th>
+              <p dir="ltr"><strong data-lexical-text="true">a</strong></p>
+            </th>
+            <th>
+              <p dir="ltr"><strong data-lexical-text="true">bb</strong></p>
+            </th>
+            <th>
+              <p dir="ltr"><strong data-lexical-text="true">cc</strong></p>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <p dir="ltr"><strong data-lexical-text="true">d</strong></p>
+            </th>
+            <td>
+              <p dir="ltr"><strong data-lexical-text="true">e</strong></p>
+            </td>
+            <td>
+              <p dir="ltr"><strong data-lexical-text="true">f</strong></p>
+            </td>
+          </tr>
+        </table>
+        <p><br /></p>
+      `,
+      {ignoreClasses: true},
+    );
+  });
+
+  test(`Align selection style for table cells`, async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    await initialize({isCollab, page});
+    test.skip(isPlainText);
+
+    await focusEditor(page);
+    await insertTable(page, 2, 3);
+
+    // Add text in bold to first cell
+    await click(page, 'th p:first-of-type');
+    await page.keyboard.type('a');
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('ArrowLeft');
+    await page.keyboard.up('Shift');
+    await clickSelectors(page, ['.bold']);
+
+    // Apply bold style to whole table
+    // Bold style shouldn't be applied to any paragraphs and removed from all cells
+    await selectAll(page);
+    await clickSelectors(page, ['.bold']);
+
+    // Add text after applying styles
+    await click(page, 'div[contenteditable="true"] p:first-of-type');
+    await page.keyboard.type('abc');
+
+    await click(page, 'th p:first-of-type');
+    await fillTablePartiallyWithText(page);
+
+    // None of the paragraphs have style applied
+    await assertHTML(
+      page,
+      html`
+        <p dir="ltr"><span data-lexical-text="true">abc</span></p>
+        <table>
+          <colgroup>
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+          </colgroup>
+          <tr>
+            <th>
+              <p dir="ltr"><span data-lexical-text="true">aa</span></p>
+            </th>
+            <th>
+              <p><span data-lexical-text="true">bb</span></p>
+            </th>
+            <th>
+              <p><span data-lexical-text="true">cc</span></p>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <p><span data-lexical-text="true">d</span></p>
+            </th>
+            <td>
+              <p><span data-lexical-text="true">e</span></p>
+            </td>
+            <td>
+              <p><span data-lexical-text="true">f</span></p>
+            </td>
+          </tr>
+        </table>
+        <p><br /></p>
+      `,
+      html`
+        <p dir="ltr"><span data-lexical-text="true">abc</span></p>
+        <table>
+          <colgroup>
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+          </colgroup>
+          <tr>
+            <th>
+              <p dir="ltr"><span data-lexical-text="true">aa</span></p>
+            </th>
+            <th>
+              <p><span data-lexical-text="true">bb</span></p>
+            </th>
+            <th>
+              <p><span data-lexical-text="true">cc</span></p>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <p><span data-lexical-text="true">d</span></p>
+            </th>
+            <td>
+              <p><span data-lexical-text="true">e</span></p>
+            </td>
+            <td>
+              <p><span data-lexical-text="true">f</span></p>
+            </td>
+          </tr>
+        </table>
+        <p><br /></p>
+      `,
+      {ignoreClasses: true},
+    );
+  });
+
   test(
     `Can copy + paste (internal) using Table selection`,
     {
@@ -1051,14 +1275,16 @@ test.describe.parallel('Tables', () => {
         false,
       );
 
-      const clipboard = await copyToClipboard(page);
+      await withExclusiveClipboardAccess(async () => {
+        const clipboard = await copyToClipboard(page);
 
-      // For some reason you need to click the paragraph twice for this to pass
-      // on Collab Firefox.
-      await click(page, 'div.ContentEditable__root > p:first-of-type');
-      await click(page, 'div.ContentEditable__root > p:first-of-type');
+        // For some reason you need to click the paragraph twice for this to pass
+        // on Collab Firefox.
+        await click(page, 'div.ContentEditable__root > p:first-of-type');
+        await click(page, 'div.ContentEditable__root > p:first-of-type');
 
-      await pasteFromClipboard(page, clipboard);
+        await pasteFromClipboard(page, clipboard);
+      });
 
       // Check that the character styles are applied.
       await assertHTML(
@@ -1214,12 +1440,10 @@ test.describe.parallel('Tables', () => {
             <col style="width: 92px" />
           </colgroup>
           <tr>
-            <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+            <th class="PlaygroundEditorTheme__tableCellSelected">
               <p><br /></p>
             </th>
-            <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+            <th class="PlaygroundEditorTheme__tableCellSelected">
               <p><br /></p>
             </th>
           </tr>
@@ -1274,30 +1498,24 @@ test.describe.parallel('Tables', () => {
             <col style="width: 92px" />
           </colgroup>
           <tr>
-            <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+            <th class="PlaygroundEditorTheme__tableCellSelected">
               <p><br /></p>
             </th>
-            <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+            <th class="PlaygroundEditorTheme__tableCellSelected">
               <p><br /></p>
             </th>
-            <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+            <th class="PlaygroundEditorTheme__tableCellSelected">
               <p><br /></p>
             </th>
           </tr>
           <tr>
-            <th
-              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+            <th class="PlaygroundEditorTheme__tableCellSelected">
               <p><br /></p>
             </th>
-            <td
-              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+            <td class="PlaygroundEditorTheme__tableCellSelected">
               <p><br /></p>
             </td>
-            <td
-              style="background-color: rgb(172, 206, 247); caret-color: transparent">
+            <td class="PlaygroundEditorTheme__tableCellSelected">
               <p><br /></p>
             </td>
           </tr>
@@ -2230,6 +2448,304 @@ test.describe.parallel('Tables', () => {
     );
   });
 
+  test('Merged cell tab navigation forward', async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    await initialize({isCollab, page});
+    test.skip(isPlainText);
+    test.skip(isCollab);
+
+    await focusEditor(page);
+
+    await insertTable(page, 3, 3);
+
+    await click(page, '.PlaygroundEditorTheme__tableCell');
+    await selectCellsFromTableCords(
+      page,
+      {x: 0, y: 0},
+      {x: 0, y: 1},
+      true,
+      true,
+    );
+    await mergeTableCells(page);
+    await selectCellsFromTableCords(
+      page,
+      {x: 1, y: 0},
+      {x: 2, y: 0},
+      true,
+      true,
+    );
+    await mergeTableCells(page);
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <table class="PlaygroundEditorTheme__table">
+          <colgroup>
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+          </colgroup>
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
+              rowspan="2">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
+              colspan="2">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+          </tr>
+          <tr>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+          </tr>
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+          </tr>
+        </table>
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+      `,
+    );
+    await click(page, '.PlaygroundEditorTheme__tableCell');
+    for (const i of Array.from({length: 9 - 2}, (_v, idx) => idx)) {
+      await page.keyboard.type(String(i));
+      await page.keyboard.press('Tab');
+    }
+    await page.keyboard.type('Done!');
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <table class="PlaygroundEditorTheme__table">
+          <colgroup>
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+          </colgroup>
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
+              rowspan="2">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">0</span>
+              </p>
+            </th>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
+              colspan="2">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">1</span>
+              </p>
+            </th>
+          </tr>
+          <tr>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">2</span>
+              </p>
+            </td>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">3</span>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">4</span>
+              </p>
+            </th>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">5</span>
+              </p>
+            </td>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">6</span>
+              </p>
+            </td>
+          </tr>
+        </table>
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">Done!</span>
+        </p>
+      `,
+    );
+  });
+
+  test('Merged cell tab navigation reverse', async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    await initialize({isCollab, page});
+    test.skip(isPlainText);
+    test.skip(isCollab);
+
+    await focusEditor(page);
+
+    await insertTable(page, 3, 3);
+
+    await click(page, '.PlaygroundEditorTheme__tableCell');
+    await selectCellsFromTableCords(
+      page,
+      {x: 0, y: 0},
+      {x: 0, y: 1},
+      true,
+      true,
+    );
+    await mergeTableCells(page);
+    await selectCellsFromTableCords(
+      page,
+      {x: 1, y: 0},
+      {x: 2, y: 0},
+      true,
+      true,
+    );
+    await mergeTableCells(page);
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <table class="PlaygroundEditorTheme__table">
+          <colgroup>
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+          </colgroup>
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
+              rowspan="2">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
+              colspan="2">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+          </tr>
+          <tr>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+          </tr>
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </th>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            </td>
+          </tr>
+        </table>
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+      `,
+    );
+    await click(page, ':nth-match(.PlaygroundEditorTheme__tableCell, 7)');
+    for (const i of Array.from({length: 9 - 2}, (_v, idx) => idx)) {
+      await page.keyboard.type(String(i));
+      await page.keyboard.down('Shift');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('Shift');
+    }
+    await page.keyboard.type('Done!');
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr">
+          <span data-lexical-text="true">Done!</span>
+        </p>
+        <table class="PlaygroundEditorTheme__table">
+          <colgroup>
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+            <col style="width: 92px" />
+          </colgroup>
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
+              rowspan="2">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">6</span>
+              </p>
+            </th>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
+              colspan="2">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">5</span>
+              </p>
+            </th>
+          </tr>
+          <tr>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">4</span>
+              </p>
+            </td>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">3</span>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <th
+              class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">2</span>
+              </p>
+            </th>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">1</span>
+              </p>
+            </td>
+            <td class="PlaygroundEditorTheme__tableCell">
+              <p class="PlaygroundEditorTheme__paragraph">
+                <span data-lexical-text="true">0</span>
+              </p>
+            </td>
+          </tr>
+        </table>
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+      `,
+    );
+  });
+
   test('Merge with content', async ({
     page,
     isPlainText,
@@ -2388,27 +2904,23 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-                rowspan="2"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent">
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected"
+                rowspan="2">
                 <p class="PlaygroundEditorTheme__paragraph"><br /></p>
               </th>
               <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
-                colspan="2"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent">
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected"
+                colspan="2">
                 <p class="PlaygroundEditorTheme__paragraph"><br /></p>
               </th>
             </tr>
             <tr>
               <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent">
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
                 <p class="PlaygroundEditorTheme__paragraph"><br /></p>
               </td>
               <td
-                class="PlaygroundEditorTheme__tableCell"
-                style="background-color: rgb(172, 206, 247); caret-color: transparent">
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
                 <p class="PlaygroundEditorTheme__paragraph"><br /></p>
               </td>
             </tr>
@@ -3522,13 +4034,15 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th
-                style="background-color: rgb(172, 206, 247); caret-color: transparent; text-align: center">
+                class="PlaygroundEditorTheme__tableCellSelected"
+                style="text-align: center">
                 <p dir="ltr" style="text-align: center">
                   <span data-lexical-text="true">a</span>
                 </p>
               </th>
               <th
-                style="background-color: rgb(172, 206, 247); caret-color: transparent; text-align: center">
+                class="PlaygroundEditorTheme__tableCellSelected"
+                style="text-align: center">
                 <p dir="ltr" style="text-align: center">
                   <span data-lexical-text="true">bb</span>
                 </p>
@@ -3539,13 +4053,15 @@ test.describe.parallel('Tables', () => {
             </tr>
             <tr>
               <th
-                style="background-color: rgb(172, 206, 247); caret-color: transparent; text-align: center">
+                class="PlaygroundEditorTheme__tableCellSelected"
+                style="text-align: center">
                 <p dir="ltr" style="text-align: center">
                   <span data-lexical-text="true">d</span>
                 </p>
               </th>
               <td
-                style="background-color: rgb(172, 206, 247); caret-color: transparent; text-align: center">
+                class="PlaygroundEditorTheme__tableCellSelected"
+                style="text-align: center">
                 <p dir="ltr" style="text-align: center">
                   <span data-lexical-text="true">e</span>
                 </p>
@@ -3689,27 +4205,29 @@ test.describe.parallel('Tables', () => {
     await page.keyboard.type('Hello');
     await selectCharacters(page, 'left', 'Hello'.length);
 
-    const clipboard = await copyToClipboard(page);
+    await withExclusiveClipboardAccess(async () => {
+      const clipboard = await copyToClipboard(page);
 
-    // move caret to the first position of the editor
-    await click(page, '.PlaygroundEditorTheme__paragraph');
+      // move caret to the first position of the editor
+      await click(page, '.PlaygroundEditorTheme__paragraph');
 
-    // move caret to the table cell (2,2)
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.press('ArrowRight');
+      // move caret to the table cell (2,2)
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
 
-    await pasteFromClipboard(page, clipboard);
-    await pasteFromClipboard(page, clipboard);
-    await pasteFromClipboard(page, clipboard);
+      await pasteFromClipboard(page, clipboard);
+      await pasteFromClipboard(page, clipboard);
+      await pasteFromClipboard(page, clipboard);
 
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
 
-    await pasteFromClipboard(page, clipboard);
+      await pasteFromClipboard(page, clipboard);
+    });
 
     await assertHTML(
       page,

@@ -9,6 +9,7 @@
 import {expect, test as base} from '@playwright/test';
 import {randomUUID} from 'node:crypto';
 import prettier from 'prettier';
+import * as lockfile from 'proper-lockfile';
 import {URLSearchParams} from 'url';
 
 import {selectAll} from '../keyboardShortcuts/index.mjs';
@@ -24,6 +25,8 @@ export const IS_COLLAB =
 const IS_RICH_TEXT = process.env.E2E_EDITOR_MODE !== 'plain-text';
 const IS_PLAIN_TEXT = process.env.E2E_EDITOR_MODE === 'plain-text';
 export const LEGACY_EVENTS = process.env.E2E_EVENTS_MODE === 'legacy-events';
+export const IS_TABLE_HORIZONTAL_SCROLL =
+  process.env.E2E_TABLE_MODE !== 'legacy' && false;
 export const SAMPLE_IMAGE_URL =
   E2E_PORT === 5173
     ? '/src/images/yellow-flower.jpg'
@@ -44,6 +47,21 @@ function wrapAndSlowDown(method, delay) {
   };
 }
 
+export function wrapTableHtml(expected, {ignoreClasses = false} = {}) {
+  return html`
+    ${expected
+      .replace(
+        /<table/g,
+        `<div${
+          ignoreClasses
+            ? ''
+            : ' class="PlaygroundEditorTheme__tableScrollableWrapper"'
+        }><table`,
+      )
+      .replace(/<\/table>/g, '</table></div>')}
+  `;
+}
+
 export async function initialize({
   page,
   isCollab,
@@ -55,6 +73,7 @@ export async function initialize({
   tableCellMerge,
   tableCellBackgroundColor,
   shouldUseLexicalContextMenu,
+  tableHorizontalScroll,
 }) {
   // Tests with legacy events often fail to register keypress, so
   // slowing it down to reduce flakiness
@@ -67,6 +86,8 @@ export async function initialize({
   appSettings.isRichText = IS_RICH_TEXT;
   appSettings.emptyEditor = true;
   appSettings.disableBeforeInput = LEGACY_EVENTS;
+  appSettings.tableHorizontalScroll =
+    tableHorizontalScroll ?? IS_TABLE_HORIZONTAL_SCROLL;
   if (isCollab) {
     appSettings.isCollab = isCollab;
     appSettings.collabId = randomUUID();
@@ -164,6 +185,16 @@ export async function clickSelectors(page, selectors) {
     await click(page, selectors[i]);
   }
 }
+
+function removeSafariLinebreakImgHack(actualHtml) {
+  return E2E_BROWSER === 'webkit'
+    ? actualHtml.replaceAll(
+        /<img (?:[^>]+ )?data-lexical-linebreak="true"(?: [^>]+)?>/g,
+        '',
+      )
+    : actualHtml;
+}
+
 /**
  * @param {import('@playwright/test').Page | import('@playwright/test').Frame} pageOrFrame
  */
@@ -180,10 +211,12 @@ async function assertHTMLOnPageOrFrame(
     ignoreInlineStyles,
   });
   return await expect(async () => {
-    const actualHtml = await pageOrFrame
-      .locator('div[contenteditable="true"]')
-      .first()
-      .innerHTML();
+    const actualHtml = removeSafariLinebreakImgHack(
+      await pageOrFrame
+        .locator('div[contenteditable="true"]')
+        .first()
+        .innerHTML(),
+    );
     let actual = await prettifyHTML(actualHtml.replace(/\n/gm, ''), {
       ignoreClasses,
       ignoreInlineStyles,
@@ -196,6 +229,24 @@ async function assertHTMLOnPageOrFrame(
       `innerHTML of contenteditable in ${frameName} did not match`,
     ).toEqual(expected);
   }).toPass({intervals: [100, 250, 500], timeout: 5000});
+}
+
+/**
+ * @function
+ * @template T
+ * @param {() => T | Promise<T>}
+ * @returns {Promise<T>}
+ */
+export async function withExclusiveClipboardAccess(f) {
+  const release = await lockfile.lock('.', {
+    lockfilePath: '.playwright-clipboard.lock',
+    retries: 5,
+  });
+  try {
+    return f();
+  } finally {
+    await release();
+  }
 }
 
 /**
@@ -309,16 +360,33 @@ async function assertSelectionOnPageOrFrame(page, expected) {
       return path.reverse();
     };
 
+    const fixOffset = (node, offset) => {
+      // If the selection offset is at the br of a webkit img+br linebreak
+      // then move the offset to the img so the tests are consistent across
+      // browsers
+      if (node && node.nodeType === Node.ELEMENT_NODE && offset > 0) {
+        const child = node.children[offset - 1];
+        if (
+          child &&
+          child.nodeType === Node.ELEMENT_NODE &&
+          child.getAttribute('data-lexical-linebreak') === 'true'
+        ) {
+          return offset - 1;
+        }
+      }
+      return offset;
+    };
+
     const {anchorNode, anchorOffset, focusNode, focusOffset} =
       window.getSelection();
 
     return {
-      anchorOffset,
+      anchorOffset: fixOffset(anchorNode, anchorOffset),
       anchorPath: getPathFromNode(anchorNode),
-      focusOffset,
+      focusOffset: fixOffset(focusNode, focusOffset),
       focusPath: getPathFromNode(focusNode),
     };
-  }, expected);
+  });
   expect(selection.anchorPath).toEqual(expected.anchorPath);
   expect(selection.focusPath).toEqual(expected.focusPath);
   if (Array.isArray(expected.anchorOffset)) {
@@ -834,72 +902,75 @@ export async function selectCellsFromTableCords(
     }:nth-child(${secondCords.x + 1})`,
   );
 
-  // Focus on inside the iFrame or the boundingBox() below returns null.
   await firstRowFirstColumnCell.click();
+  await page.keyboard.down('Shift');
+  await secondRowSecondCell.click();
+  await page.keyboard.up('Shift');
 
-  await dragMouse(
+  // const firstBox = await firstRowFirstColumnCell.boundingBox();
+  // const secondBox = await secondRowSecondCell.boundingBox();
+  // await dragMouse(page, firstBox, secondBox, 'middle', 'middle', true, true);
+}
+
+export async function clickTableCellActiveButton(page) {
+  await click(
     page,
-    await firstRowFirstColumnCell.boundingBox(),
-    await secondRowSecondCell.boundingBox(),
-    'middle',
-    'middle',
-    true,
-    true,
+    '.table-cell-action-button-container--active > .table-cell-action-button',
   );
 }
 
 export async function insertTableRowAbove(page) {
-  await click(page, '.table-cell-action-button-container');
+  await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-insert-row-above"]');
 }
 
 export async function insertTableRowBelow(page) {
-  await click(page, '.table-cell-action-button-container');
+  await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-insert-row-below"]');
 }
 
 export async function insertTableColumnBefore(page) {
-  await click(page, '.table-cell-action-button-container');
+  await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-insert-column-before"]');
 }
 
 export async function insertTableColumnAfter(page) {
-  await click(page, '.table-cell-action-button-container');
+  await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-insert-column-after"]');
 }
 
 export async function mergeTableCells(page) {
-  await click(page, '.table-cell-action-button-container');
+  await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-merge-cells"]');
 }
 
 export async function unmergeTableCell(page) {
-  await click(page, '.table-cell-action-button-container');
+  await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-unmerge-cells"]');
 }
 
 export async function toggleColumnHeader(page) {
-  await click(page, '.table-cell-action-button-container');
+  await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-column-header"]');
 }
 
 export async function deleteTableRows(page) {
-  await click(page, '.table-cell-action-button-container');
+  await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-delete-rows"]');
 }
 
 export async function deleteTableColumns(page) {
-  await click(page, '.table-cell-action-button-container');
+  await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-delete-columns"]');
 }
 
 export async function deleteTable(page) {
-  await click(page, '.table-cell-action-button-container');
+  await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-delete"]');
 }
 
 export async function setBackgroundColor(page) {
-  await click(page, '.table-cell-action-button-container');
+  await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-background-color"]');
 }
 
