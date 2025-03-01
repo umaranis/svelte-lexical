@@ -454,7 +454,7 @@
           class="item"
           onclick={() => mergeTableCellsAtSelection()}
           data-test-id="table-merge-cells">
-          Merge cells
+          <span class="text">Merge cells</span>
         </button>
       {:else if canUnmergeCell}
         <button
@@ -462,7 +462,7 @@
           class="item"
           onclick={() => unmergeTableCellsAtSelection()}
           data-test-id="table-unmerge-cells">
-          Unmerge cells
+          <span class="text">Unmerge cells</span>
         </button>
       {/if}
     {/if}
