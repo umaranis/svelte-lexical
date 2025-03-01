@@ -223,7 +223,7 @@
 
         const tableObserver = getTableObserverFromTableElement(tableElement);
         if (tableObserver !== null) {
-          tableObserver.clearHighlight();
+          tableObserver.$clearHighlight();
         }
 
         tableNode.markDirty();
