@@ -2,18 +2,26 @@
   import {run} from 'svelte/legacy';
 
   import {
+    $getTableNodeFromLexicalNodeOrThrow as getTableNodeFromLexicalNodeOrThrow,
     $getTableCellNodeFromLexicalNode as getTableCellNodeFromLexicalNode,
+    getTableElement,
     TableCellNode,
+    TableObserver,
+    getTableObserverFromTableElement,
+    $isTableSelection as isTableSelection,
+    $isTableCellNode as isTableCellNode,
   } from '@lexical/table';
   import {
+    COMMAND_PRIORITY_CRITICAL,
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
+    SELECTION_CHANGE_COMMAND,
   } from 'lexical';
 
-  import {onMount} from 'svelte';
   import TableActionMenu from './TableActionMenu.svelte';
   import {writable, type Writable} from 'svelte/store';
   import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
+  import {mergeRegister} from '@lexical/utils';
 
   interface Props {
     anchorElem: HTMLElement;
@@ -36,13 +44,21 @@
     const selection = getSelection();
     const nativeSelection = window.getSelection();
     const activeElement = document.activeElement;
+    function disable() {
+      if (menu) {
+        menu.classList.remove('table-cell-action-button-container--active');
+        menu.classList.add('table-cell-action-button-container--inactive');
+      }
+      $tableCellNode = null;
+    }
 
     if (selection == null || menu == null) {
-      $tableCellNode = null;
-      return;
+      return disable();
     }
 
     const rootElement = editor.getRootElement();
+    let tableObserver: TableObserver | null = null;
+    let tableCellParentNodeDOM: HTMLElement | null = null;
 
     if (
       isRangeSelection(selection) &&
@@ -55,55 +71,107 @@
       );
 
       if (tableCellNodeFromSelection == null) {
-        $tableCellNode = null;
-        return;
+        return disable();
       }
 
-      const tableCellParentNodeDOM = editor.getElementByKey(
+      tableCellParentNodeDOM = editor.getElementByKey(
         tableCellNodeFromSelection.getKey(),
       );
 
-      if (tableCellParentNodeDOM == null) {
-        $tableCellNode = null;
-        return;
+      if (
+        tableCellParentNodeDOM == null ||
+        !tableCellNodeFromSelection.isAttached()
+      ) {
+        return disable();
       }
 
+      const tableNode = getTableNodeFromLexicalNodeOrThrow(
+        tableCellNodeFromSelection,
+      );
+      const tableElement = getTableElement(
+        tableNode,
+        editor.getElementByKey(tableNode.getKey()),
+      );
+
+      if (!tableElement) {
+        throw new Error('Expected to find tableElement in DOM');
+      }
+
+      tableObserver = getTableObserverFromTableElement(tableElement);
       $tableCellNode = tableCellNodeFromSelection;
+    } else if (isTableSelection(selection)) {
+      const anchorNode = getTableCellNodeFromLexicalNode(
+        selection.anchor.getNode(),
+      );
+      if (!isTableCellNode(anchorNode)) {
+        throw new Error('TableSelection anchorNode must be a TableCellNode');
+      }
+      const tableNode = getTableNodeFromLexicalNodeOrThrow(anchorNode);
+      const tableElement = getTableElement(
+        tableNode,
+        editor.getElementByKey(tableNode.getKey()),
+      );
+      if (!tableElement) {
+        throw new Error('Expected to find tableElement in DOM');
+      }
+      tableObserver = getTableObserverFromTableElement(tableElement);
+      tableCellParentNodeDOM = editor.getElementByKey(anchorNode.getKey());
     } else if (!activeElement) {
-      $tableCellNode = null;
+      return disable();
+    }
+    if (tableObserver === null || tableCellParentNodeDOM === null) {
+      return disable();
+    }
+    const enabled = !tableObserver || !tableObserver.isSelecting;
+    menu.classList.toggle(
+      'table-cell-action-button-container--active',
+      enabled,
+    );
+    menu.classList.toggle(
+      'table-cell-action-button-container--inactive',
+      !enabled,
+    );
+    if (enabled) {
+      const tableCellRect = tableCellParentNodeDOM.getBoundingClientRect();
+      const anchorRect = anchorElem.getBoundingClientRect();
+      const top = tableCellRect.top - anchorRect.top;
+      const left = tableCellRect.right - anchorRect.left;
+      menu.style.transform = `translate(${left}px, ${top}px)`;
     }
   };
 
-  onMount(() => {
-    return editor.registerUpdateListener(() => {
-      editor.getEditorState().read(() => {
-        moveMenu();
-      });
-    });
-  });
-
-  run(() => {
-    const menuButtonDOM = menuButtonRef as HTMLButtonElement | null;
-
-    if (menuButtonDOM != null && $tableCellNode != null) {
-      const tableCellNodeDOM = editor.getElementByKey($tableCellNode.getKey());
-
-      if (tableCellNodeDOM != null) {
-        const tableCellRect = tableCellNodeDOM.getBoundingClientRect();
-        const menuRect = menuButtonDOM.getBoundingClientRect();
-        const anchorRect = anchorElem.getBoundingClientRect();
-
-        const top = tableCellRect.top - anchorRect.top + 4;
-        const left =
-          tableCellRect.right - menuRect.width - 10 - anchorRect.left;
-
-        menuButtonDOM.style.opacity = '1';
-        menuButtonDOM.style.transform = `translate(${left}px, ${top}px)`;
-      } else {
-        menuButtonDOM.style.opacity = '0';
-        menuButtonDOM.style.transform = 'translate(-10000px, -10000px)';
+  $effect(() => {
+    // We call the $moveMenu callback every time the selection changes,
+    // once up front, and once after each mouseUp
+    let timeoutId: ReturnType<typeof setTimeout> | undefined = undefined;
+    const callback = () => {
+      timeoutId = undefined;
+      editor.getEditorState().read(moveMenu);
+    };
+    const delayedCallback = () => {
+      if (timeoutId === undefined) {
+        timeoutId = setTimeout(callback, 0);
       }
-    }
+      return false;
+    };
+    return mergeRegister(
+      editor.registerUpdateListener(delayedCallback),
+      editor.registerCommand(
+        SELECTION_CHANGE_COMMAND,
+        delayedCallback,
+        COMMAND_PRIORITY_CRITICAL,
+      ),
+      editor.registerRootListener((rootElement, prevRootElement) => {
+        if (prevRootElement) {
+          prevRootElement.removeEventListener('mouseup', delayedCallback);
+        }
+        if (rootElement) {
+          rootElement.addEventListener('mouseup', delayedCallback);
+          delayedCallback();
+        }
+      }),
+      () => clearTimeout(timeoutId),
+    );
   });
 
   let prevTableCellDOM = $state($tableCellNode);

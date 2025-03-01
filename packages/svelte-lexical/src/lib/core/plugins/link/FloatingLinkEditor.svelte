@@ -21,6 +21,7 @@
     SELECTION_CHANGE_COMMAND,
     type LexicalEditor,
     type BaseSelection,
+    getDOMSelection,
   } from 'lexical';
   import {onMount} from 'svelte';
   import type {Writable} from 'svelte/store';
@@ -124,7 +125,7 @@
       editedLinkUrl = linkUrl;
     }
     const editorElem = editorRef;
-    const nativeSelection = window.getSelection();
+    const nativeSelection = getDOMSelection(editor._window);
     const activeElement = document.activeElement;
 
     if (editorElem === null) {

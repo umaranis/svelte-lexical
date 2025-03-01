@@ -9,9 +9,6 @@
   export const INSERT_IMAGE_COMMAND: LexicalCommand<InsertImagePayload> =
     createCommand();
   export type InsertImagePayload = ImagePayload;
-
-  const getDOMSelection = (targetWindow: Window | null): Selection | null =>
-    CAN_USE_DOM ? (targetWindow || window).getSelection() : null;
 </script>
 
 <script lang="ts">
@@ -32,6 +29,7 @@
     DROP_COMMAND,
     type LexicalCommand,
     type LexicalEditor,
+    getDOMSelection,
   } from 'lexical';
   import {
     $wrapNodeInElement as wrapNodeInElement,
@@ -46,7 +44,6 @@
     type ImagePayload,
   } from './ImageNode.js';
   import {getEditor} from '../../composerContext.js';
-  import {CAN_USE_DOM} from '../../../environment/canUseDOM.js';
 
   const editor: LexicalEditor = getEditor();
 
