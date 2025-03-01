@@ -49,6 +49,7 @@
     TablePlugin,
     TableHoverActionPlugin,
     TableActionMenuPlugin,
+    TableCellResizerPlugin,
   } from 'svelte-lexical';
   import {prepopulatedRichText} from './prepopulatedRichText';
   import type {SettingsStore} from './settings/settingsStore';
@@ -172,6 +173,7 @@
         <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
         <TablePlugin />
         <TableHoverActionPlugin anchorElem={editorDiv} />
+        <TableCellResizerPlugin />
         <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
         {#if !isSmallWidthViewport}
           <FloatingLinkEditorPlugin anchorElem={editorDiv} />
