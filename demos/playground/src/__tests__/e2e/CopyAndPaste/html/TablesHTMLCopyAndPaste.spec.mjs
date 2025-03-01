@@ -17,7 +17,9 @@ import {
 } from '../../../utils/index.mjs';
 
 test.describe('HTML Tables CopyAndPaste', () => {
-  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
+  test.beforeEach(({isCollab, page}) =>
+    initialize({isCollab, page, tableHorizontalScroll: false}),
+  );
 
   test.fixme(
     'Copy + paste (Table - Google Docs)',

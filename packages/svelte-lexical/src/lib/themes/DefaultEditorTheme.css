@@ -170,6 +170,16 @@
   position: relative;
   outline: none;
 }
+.SL_Theme__tableCellSortedIndicator {
+  display: block;
+  opacity: 0.5;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #999;
+}
 .SL_Theme__tableCellResizer {
   position: absolute;
   right: -4px;
@@ -184,18 +194,21 @@
   text-align: start;
 }
 .SL_Theme__tableCellSelected {
-  caret-color: transparent;
+  background-color: #c9dbf0;
 }
-.SL_Theme__tableCellSelected::after {
+.SL_Theme__tableCellPrimarySelected {
+  border: 2px solid rgb(60, 132, 244);
+  display: block;
+  height: calc(100% - 2px);
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background-color: highlight;
-  mix-blend-mode: multiply;
-  content: '';
-  pointer-events: none;
+  width: calc(100% - 2px);
+  left: -1px;
+  top: -1px;
+  z-index: 2;
+}
+.SL_Theme__tableCellEditing {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
 }
 .SL_Theme__tableAddColumns {
   position: absolute;
@@ -466,9 +479,4 @@
 .SL_Theme__hr.selected {
   outline: 2px solid rgb(60, 132, 244);
   user-select: none;
-}
-
-.SL_Theme__specialText {
-  background-color: yellow;
-  font-weight: bold;
 }

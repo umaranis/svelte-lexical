@@ -15,6 +15,7 @@
     TableCellHeaderStates,
     TableRowNode,
     $getTableColumnIndexFromTableCellNode as getTableColumnIndexFromTableCellNode,
+    getTableElement,
   } from '@lexical/table';
   import {
     $getSelection as getSelection,
@@ -33,7 +34,6 @@
     $isTableCellNode as isTableCellNode,
     type TableSelection,
     $getTableNodeFromLexicalNodeOrThrow as getTableNodeFromLexicalNodeOrThrow,
-    type HTMLTableElementWithWithTableSelectionState,
     getTableObserverFromTableElement,
   } from '@lexical/table';
   import {onMount} from 'svelte';
@@ -213,9 +213,10 @@
     editor.update(() => {
       if (tableCellNode.isAttached()) {
         const tableNode = getTableNodeFromLexicalNodeOrThrow(tableCellNode);
-        const tableElement = editor.getElementByKey(
-          tableNode.getKey(),
-        ) as HTMLTableElementWithWithTableSelectionState;
+        const tableElement = getTableElement(
+          tableNode,
+          editor.getElementByKey(tableNode.getKey()),
+        );
 
         if (!tableElement) {
           throw new Error('Expected to find tableElement in DOM');

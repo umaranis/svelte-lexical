@@ -27,6 +27,7 @@ export const DEFAULT_SETTINGS = {
   showTreeView: true,
   tableCellMerge: true,
   tableCellBackgroundColor: true,
+  hasHorizontalScroll: false,
 };
 
 export type SettingName = keyof typeof DEFAULT_SETTINGS;

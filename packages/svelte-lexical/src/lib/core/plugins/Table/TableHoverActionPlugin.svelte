@@ -2,7 +2,9 @@
   import {run} from 'svelte/legacy';
 
   import {
+    $getTableAndElementByKey as getTableAndElementByKey,
     $getTableColumnIndexFromTableCellNode as getTableColumnIndexFromTableCellNode,
+    getTableElement,
     $getTableRowIndexFromTableCellNode as getTableRowIndexFromTableCellNode,
     $insertTableColumn__EXPERIMENTAL as insertTableColumn__EXPERIMENTAL,
     $insertTableRow__EXPERIMENTAL as insertTableRow__EXPERIMENTAL,
@@ -102,7 +104,10 @@
             return;
           }
 
-          tableDOMElement = editor.getElementByKey(table?.getKey());
+          tableDOMElement = getTableElement(
+            table,
+            editor.getElementByKey(table.getKey()),
+          );
 
           if (tableDOMElement) {
             const rowCount = table.getChildrenSize();
@@ -183,36 +188,37 @@
       editor.registerMutationListener(
         TableNode,
         (mutations) => {
-          editor.getEditorState().read(() => {
-            for (const [key, type] of mutations) {
-              const tableDOMElement = editor.getElementByKey(key);
-              switch (type) {
-                case 'created':
-                  tableSetRef.add(key);
-                  shouldListenMouseMove = tableSetRef.size > 0;
-                  if (tableDOMElement) {
-                    tableResizeObserver.observe(tableDOMElement);
+          editor.getEditorState().read(
+            () => {
+              let resetObserver = false;
+              for (const [key, type] of mutations) {
+                switch (type) {
+                  case 'created': {
+                    tableSetRef.add(key);
+                    resetObserver = true;
+                    break;
                   }
-                  break;
-
-                case 'destroyed':
-                  tableSetRef.delete(key);
-                  shouldListenMouseMove = tableSetRef.size > 0;
-                  // Reset resize observers
-                  tableResizeObserver.disconnect();
-                  tableSetRef.forEach((tableKey: NodeKey) => {
-                    const tableElement = editor.getElementByKey(tableKey);
-                    if (tableElement) {
-                      tableResizeObserver.observe(tableElement);
-                    }
-                  });
-                  break;
-
-                default:
-                  break;
+                  case 'destroyed': {
+                    tableSetRef.delete(key);
+                    resetObserver = true;
+                    break;
+                  }
+                  default:
+                    break;
+                }
               }
-            }
-          });
+              if (resetObserver) {
+                // Reset resize observers
+                tableResizeObserver.disconnect();
+                for (const tableKey of tableSetRef) {
+                  const {tableElement} = getTableAndElementByKey(tableKey);
+                  tableResizeObserver.observe(tableElement);
+                }
+                shouldListenMouseMove = tableSetRef.size > 0;
+              }
+            },
+            {editor},
+          );
         },
         {skipInitialization: false},
       ),

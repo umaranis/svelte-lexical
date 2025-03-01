@@ -149,7 +149,7 @@
           LINK,
         ]} />
       <ColumnLayoutPlugin />
-      <TablePlugin />
+      <TablePlugin hasHorizontalScroll={true} />
       <TableHoverActionPlugin anchorElem={editorDiv} />
       <TableCellResizerPlugin />
       <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />

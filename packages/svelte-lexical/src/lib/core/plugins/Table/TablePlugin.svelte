@@ -13,13 +13,15 @@
     $createTableNodeWithDimensions as createTableNodeWithDimensions,
     $getNodeTriplet as getNodeTriplet,
     $isTableCellNode as isTableCellNode,
-    $isTableNode as isTableNode,
     $isTableRowNode as isTableRowNode,
     applyTableHandlers,
     INSERT_TABLE_COMMAND,
     TableCellNode,
     TableNode,
     TableRowNode,
+    setScrollableTablesActive,
+    getTableElement,
+    $getTableAndElementByKey as getTableAndElementByKey,
   } from '@lexical/table';
   import {
     $insertFirst as insertFirst,
@@ -28,7 +30,6 @@
   } from '@lexical/utils';
   import {
     $createParagraphNode as createParagraphNode,
-    $getNodeByKey as getNodeByKey,
     $isTextNode as isTextNode,
     COMMAND_PRIORITY_EDITOR,
   } from 'lexical';
@@ -36,18 +37,37 @@
   import {getEditor} from '../../composerContext.js';
 
   interface Props {
+    /**
+     * When `false` (default `true`), merged cell support (colspan and rowspan) will be disabled and all
+     * tables will be forced into a regular grid with 1x1 table cells.
+     */
     hasCellMerge?: boolean;
+    /**
+     * When `false` (default `true`), the background color of TableCellNode will always be removed.
+     */
     hasCellBackgroundColor?: boolean;
+    /**
+     * When `true` (default `true`), the tab key can be used to navigate table cells.
+     */
     hasTabHandler?: boolean;
+    /**
+     * When `true` (default `false`), tables will be wrapped in a `<div>` to enable horizontal scrolling
+     */
+    hasHorizontalScroll?: boolean;
   }
 
   let {
     hasCellMerge = true,
     hasCellBackgroundColor = true,
     hasTabHandler = true,
+    hasHorizontalScroll = false,
   }: Props = $props();
 
   const editor: LexicalEditor = getEditor();
+
+  $effect(() => {
+    setScrollableTablesActive(editor, hasHorizontalScroll);
+  });
 
   onMount(() => {
     if (!editor.hasNodes([TableNode, TableCellNode, TableRowNode])) {
@@ -131,7 +151,7 @@
       nodeKey: NodeKey,
       dom: HTMLElement,
     ) => {
-      const tableElement = dom as HTMLTableElementWithWithTableSelectionState;
+      const tableElement = getTableElement(tableNode, dom);
       const tableSelection = applyTableHandlers(
         tableNode,
         tableElement,
@@ -144,34 +164,31 @@
     const unregisterMutationListener = editor.registerMutationListener(
       TableNode,
       (nodeMutations) => {
-        for (const [nodeKey, mutation] of nodeMutations) {
-          if (mutation === 'created' || mutation === 'updated') {
-            const tableSelection = tableSelections.get(nodeKey);
-            const dom = editor.getElementByKey(nodeKey);
-            if (!(tableSelection && dom === tableSelection[1])) {
-              // The update created a new DOM node, destroy the existing TableObserver
-              if (tableSelection) {
-                tableSelection[0].removeListeners();
-                tableSelections.delete(nodeKey);
-              }
-              if (dom !== null) {
-                // Create a new TableObserver
-                editor.getEditorState().read(() => {
-                  const tableNode = getNodeByKey<TableNode>(nodeKey);
-                  if (isTableNode(tableNode)) {
-                    initializeTableNode(tableNode, nodeKey, dom);
-                  }
-                });
+        editor.getEditorState().read(
+          () => {
+            for (const [nodeKey, mutation] of nodeMutations) {
+              const tableSelection = tableSelections.get(nodeKey);
+              if (mutation === 'created' || mutation === 'updated') {
+                const {tableNode, tableElement} =
+                  getTableAndElementByKey(nodeKey);
+                if (tableSelection === undefined) {
+                  initializeTableNode(tableNode, nodeKey, tableElement);
+                } else if (tableElement !== tableSelection[1]) {
+                  // The update created a new DOM node, destroy the existing TableObserver
+                  tableSelection[0].removeListeners();
+                  tableSelections.delete(nodeKey);
+                  initializeTableNode(tableNode, nodeKey, tableElement);
+                }
+              } else if (mutation === 'destroyed') {
+                if (tableSelection !== undefined) {
+                  tableSelection[0].removeListeners();
+                  tableSelections.delete(nodeKey);
+                }
               }
             }
-          } else if (mutation === 'destroyed') {
-            const tableSelection = tableSelections.get(nodeKey);
-            if (tableSelection !== undefined) {
-              tableSelection[0].removeListeners();
-              tableSelections.delete(nodeKey);
-            }
-          }
-        }
+          },
+          {editor},
+        );
       },
       {skipInitialization: false},
     );
