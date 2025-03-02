@@ -33,6 +33,7 @@
 <DropdownColorPicker
   buttonClassName="toolbar-item color-picker"
   buttonIconClassName="icon font-color"
+  buttonLabel="Formatting text color"
   title="Text color"
   color={$fontColor}
   onChange={onFontColorSelect} />
