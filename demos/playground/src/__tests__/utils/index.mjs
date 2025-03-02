@@ -790,7 +790,7 @@ export function prettifyHTML(string, {ignoreClasses, ignoreInlineStyles} = {}) {
     plugins: ['prettier-plugin-organize-attributes'],
     pluginSearchDirs: ['../../../../'],
     attributeGroups: ['$DEFAULT', '^data-'],
-    attributeSort: 'ASC',
+    attributeSort: 'asc',
     bracketSameLine: true,
     htmlWhitespaceSensitivity: 'ignore',
     parser: 'html',

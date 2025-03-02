@@ -8,6 +8,10 @@ const PRETTIER_PARSER_MODULES = {
     (await import('prettier/plugins/estree')) as Plugin,
   ],
   markdown: async () => [await import('prettier/parser-markdown')],
+  typescript: async () => [
+    await import('prettier/parser-typescript'),
+    (await import('prettier/plugins/estree')) as Plugin,
+  ],
 } as const;
 
 type LanguagesType = keyof typeof PRETTIER_PARSER_MODULES;
@@ -34,6 +38,9 @@ export const PRETTIER_OPTIONS_BY_LANG: Record<string, Options> = {
   },
   markdown: {
     parser: 'markdown',
+  },
+  typescript: {
+    parser: 'typescript',
   },
 };
 
