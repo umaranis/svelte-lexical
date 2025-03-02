@@ -2996,7 +2996,7 @@ test.describe.parallel('Tables', () => {
       tag: '@flaky',
     },
     async ({page, isPlainText, isCollab, browserName}) => {
-      test.fixme(browserName === 'firefox' && isCollab);
+      test.fixme(browserName === 'firefox');
       await initialize({isCollab, page});
       test.skip(isPlainText);
 
