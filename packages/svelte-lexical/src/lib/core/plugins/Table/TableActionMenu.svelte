@@ -27,6 +27,7 @@
     ElementNode,
     $isTextNode as isTextNode,
     $isElementNode as isElementNode,
+    isDOMNode,
   } from 'lexical';
   import {
     $isTableSelection as isTableSelection,
@@ -197,8 +198,9 @@
       if (
         dropDownRef != null &&
         contextRef != null &&
-        !dropDownRef.contains(event.target as Node) &&
-        !contextRef.contains(event.target as Node)
+        isDOMNode(event.target) &&
+        !dropDownRef.contains(event.target) &&
+        !contextRef.contains(event.target)
       ) {
         setIsMenuOpen(false);
       }
@@ -285,7 +287,9 @@
 
   const insertTableRowAtSelection = (shouldInsertAfter: boolean) => {
     editor.update(() => {
-      insertTableRow__EXPERIMENTAL(shouldInsertAfter);
+      for (let i = 0; i < selectionCounts.rows; i++) {
+        insertTableRow__EXPERIMENTAL(shouldInsertAfter);
+      }
       onClose();
     });
   };
