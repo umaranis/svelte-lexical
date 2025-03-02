@@ -101,7 +101,6 @@ async function assertHTML(
 const WRAPPER = IS_TABLE_HORIZONTAL_SCROLL ? [0] : [];
 
 test.describe.parallel('Tables', () => {
-  //test.fixme();
   test(`Can a table be inserted from the toolbar`, async ({
     page,
     isPlainText,
@@ -3802,7 +3801,9 @@ test.describe.parallel('Tables', () => {
                   <span data-lexical-text="true">Hello world</span>
                 </p>
               </td>
-              <td class="PlaygroundEditorTheme__tableCell"><br /></td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </td>
               <td class="PlaygroundEditorTheme__tableCell">
                 <p
                   class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
@@ -3812,8 +3813,12 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
             <tr>
-              <td class="PlaygroundEditorTheme__tableCell"><br /></td>
-              <td class="PlaygroundEditorTheme__tableCell"><br /></td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              </td>
               <td class="PlaygroundEditorTheme__tableCell">
                 <p
                   class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
