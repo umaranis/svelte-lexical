@@ -33,6 +33,7 @@
   } from 'lexical';
   import {
     $wrapNodeInElement as wrapNodeInElement,
+    isHTMLElement,
     mergeRegister,
   } from '@lexical/utils';
 
@@ -196,10 +197,9 @@
   function canDropImage(event: DragEvent): boolean {
     const target = event.target;
     return !!(
-      target &&
-      target instanceof HTMLElement &&
+      isHTMLElement(target) &&
       !target.closest('code, span.editor-image') &&
-      target.parentElement &&
+      isHTMLElement(target.parentElement) &&
       target.parentElement.closest('div.ContentEditable__root')
     );
   }

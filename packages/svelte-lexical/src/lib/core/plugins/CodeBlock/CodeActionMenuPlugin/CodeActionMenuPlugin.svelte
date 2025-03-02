@@ -7,7 +7,10 @@
     getLanguageFriendlyName,
     normalizeCodeLang,
   } from '@lexical/code';
-  import {$getNearestNodeFromDOMNode as getNearestNodeFromDOMNode} from 'lexical';
+  import {
+    $getNearestNodeFromDOMNode as getNearestNodeFromDOMNode,
+    isHTMLElement,
+  } from 'lexical';
   import {onMount} from 'svelte';
   import {getEditor} from '../../../composerContext.js';
   import CopyButton from './components/CopyButton.svelte';
@@ -134,7 +137,7 @@
   } {
     const target = event.target;
 
-    if (target && target instanceof HTMLElement) {
+    if (isHTMLElement(target)) {
       const codeDOMNode = target.closest<HTMLElement>('code');
       const isOutside = !(
         codeDOMNode ||

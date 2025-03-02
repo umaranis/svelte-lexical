@@ -16,6 +16,7 @@
   } from '@lexical/table';
   import {
     $findMatchingParent as findMatchingParent,
+    isHTMLElement,
     mergeRegister,
   } from '@lexical/utils';
   import {
@@ -51,7 +52,7 @@
   } {
     const target = event.target;
 
-    if (target && target instanceof HTMLElement) {
+    if (isHTMLElement(target)) {
       const tableDOMNode = target.closest<HTMLElement>(
         `td.${editor._config.theme.tableCell}, th.${editor._config.theme.tableCell}`,
       );

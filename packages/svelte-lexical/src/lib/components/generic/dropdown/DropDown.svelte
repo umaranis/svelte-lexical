@@ -4,6 +4,7 @@
   import {CAN_USE_DOM} from '$lib/environment/canUseDOM.js';
   import DropDownItems from './DropDownItems.svelte';
   import Portal from '../portal/Portal.svelte';
+  import {isDOMNode} from 'lexical';
 
   interface Props {
     disabled?: boolean;
@@ -53,10 +54,13 @@
 
   const handle = (event: MouseEvent) => {
     const target = event.target;
-    if (stopCloseOnClickSelf) {
-      if (dropDownRef && dropDownRef.contains(target as Node)) return;
+    if (!isDOMNode(target)) {
+      return;
     }
-    if (!buttonRef.contains(target as Node)) {
+    if (stopCloseOnClickSelf) {
+      if (dropDownRef && dropDownRef.contains(target)) return;
+    }
+    if (!buttonRef.contains(target)) {
       showDropDown = false;
     }
   };
