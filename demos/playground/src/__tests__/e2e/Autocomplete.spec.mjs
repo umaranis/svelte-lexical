@@ -6,6 +6,7 @@
  *
  */
 
+import {IS_LINUX} from '../utils/index.mjs';
 import {
   decreaseFontSize,
   increaseFontSize,
@@ -13,7 +14,6 @@ import {
   toggleItalic,
   toggleStrikethrough,
   toggleUnderline,
-  IS_LINUX,
 } from '../keyboardShortcuts/index.mjs';
 import {
   assertHTML,
