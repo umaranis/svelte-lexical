@@ -75,7 +75,7 @@
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-svelte": "^2.45.1",
-    "prettier": "^3.3.3",
+    "prettier": "^3.4.2",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-svelte": "^3.2.7",
     "prettier-plugin-tailwindcss": "^0.4.1",

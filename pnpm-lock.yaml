@@ -50,7 +50,7 @@ importers:
         version: 4.1.0(picomatch@4.0.2)(svelte@5.15.0)(typescript@5.7.2)
       svelte-preprocess:
         specifier: ^6.0.0
-        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.4.47))(postcss@8.4.47)(svelte@5.15.0)(typescript@5.7.2)
+        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.4.49))(postcss@8.4.49)(svelte@5.15.0)(typescript@5.7.2)
       tslib:
         specifier: ^2.5.0
         version: 2.6.2
@@ -113,17 +113,17 @@ importers:
         specifier: ^2.45.1
         version: 2.46.1(eslint@9.17.0)(svelte@5.15.0)
       prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
+        specifier: ^3.4.2
+        version: 3.5.2
       prettier-plugin-organize-attributes:
         specifier: ^1.0.0
-        version: 1.0.0(prettier@3.3.3)
+        version: 1.0.0(prettier@3.5.2)
       prettier-plugin-svelte:
         specifier: ^3.2.7
-        version: 3.2.7(prettier@3.3.3)(svelte@5.15.0)
+        version: 3.2.7(prettier@3.5.2)(svelte@5.15.0)
       prettier-plugin-tailwindcss:
         specifier: ^0.4.1
-        version: 0.4.1(prettier-plugin-organize-attributes@1.0.0(prettier@3.3.3))(prettier-plugin-svelte@3.2.7(prettier@3.3.3)(svelte@5.15.0))(prettier@3.3.3)
+        version: 0.4.1(prettier-plugin-organize-attributes@1.0.0(prettier@3.5.2))(prettier-plugin-svelte@3.2.7(prettier@3.5.2)(svelte@5.15.0))(prettier@3.5.2)
       proper-lockfile:
         specifier: ^4.1.2
         version: 4.1.2
@@ -144,7 +144,7 @@ importers:
         version: 4.1.0(picomatch@4.0.2)(svelte@5.15.0)(typescript@5.7.2)
       svelte-preprocess:
         specifier: ^6.0.0
-        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.4.49))(postcss@8.4.49)(svelte@5.15.0)(typescript@5.7.2)
+        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.4.47))(postcss@8.4.47)(svelte@5.15.0)(typescript@5.7.2)
       tslib:
         specifier: ^2.7.0
         version: 2.7.0
@@ -2693,8 +2693,8 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  prettier@3.3.3:
-    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+  prettier@3.5.2:
+    resolution: {integrity: sha512-lc6npv5PH7hVqozBR7lkBNOGXV9vMwROAPlumdBkX0wTbbzPu/U1hk5yL8p2pt4Xoc+2mkT8t/sow2YrV/M5qg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -5878,30 +5878,30 @@ snapshots:
     dependencies:
       prettier: 3.2.5
 
-  prettier-plugin-organize-attributes@1.0.0(prettier@3.3.3):
+  prettier-plugin-organize-attributes@1.0.0(prettier@3.5.2):
     dependencies:
-      prettier: 3.3.3
+      prettier: 3.5.2
 
   prettier-plugin-svelte@3.2.7(prettier@3.2.5)(svelte@5.15.0):
     dependencies:
       prettier: 3.2.5
       svelte: 5.15.0
 
-  prettier-plugin-svelte@3.2.7(prettier@3.3.3)(svelte@5.15.0):
+  prettier-plugin-svelte@3.2.7(prettier@3.5.2)(svelte@5.15.0):
     dependencies:
-      prettier: 3.3.3
+      prettier: 3.5.2
       svelte: 5.15.0
 
-  prettier-plugin-tailwindcss@0.4.1(prettier-plugin-organize-attributes@1.0.0(prettier@3.3.3))(prettier-plugin-svelte@3.2.7(prettier@3.3.3)(svelte@5.15.0))(prettier@3.3.3):
+  prettier-plugin-tailwindcss@0.4.1(prettier-plugin-organize-attributes@1.0.0(prettier@3.5.2))(prettier-plugin-svelte@3.2.7(prettier@3.5.2)(svelte@5.15.0))(prettier@3.5.2):
     dependencies:
-      prettier: 3.3.3
+      prettier: 3.5.2
     optionalDependencies:
-      prettier-plugin-organize-attributes: 1.0.0(prettier@3.3.3)
-      prettier-plugin-svelte: 3.2.7(prettier@3.3.3)(svelte@5.15.0)
+      prettier-plugin-organize-attributes: 1.0.0(prettier@3.5.2)
+      prettier-plugin-svelte: 3.2.7(prettier@3.5.2)(svelte@5.15.0)
 
   prettier@3.2.5: {}
 
-  prettier@3.3.3: {}
+  prettier@3.5.2: {}
 
   pretty-format@27.5.1:
     dependencies:
