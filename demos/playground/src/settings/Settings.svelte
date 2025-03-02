@@ -143,7 +143,7 @@
   }
 
   #options-button::after {
-    background-image: url(images/icons/gear.svg);
+    background-image: url(../images/icons/gear.svg);
   }
 
   .switches {

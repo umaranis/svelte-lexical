@@ -172,10 +172,6 @@ body {
   bottom: 20px;
 }
 
-#options-button::after {
-  background-image: url(images/icons/gear.svg);
-}
-
 #test-recorder-button::after {
   background-image: url(images/icons/journal-code.svg);
 }
