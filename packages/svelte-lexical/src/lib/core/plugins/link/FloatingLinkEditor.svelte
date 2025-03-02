@@ -43,6 +43,10 @@
   let {editor, isLink, anchorElem, isEditMode}: Props = $props();
   let lastSelection: BaseSelection | null = null;
 
+  function preventDefault(event: KeyboardEvent | MouseEvent): void {
+    event.preventDefault();
+  }
+
   run(() => {
     if ($isEditMode && inputRef) {
       inputRef.focus();
@@ -164,19 +168,22 @@
     event: KeyboardEvent & {currentTarget: EventTarget & HTMLInputElement},
   ) {
     if (event.key === 'Enter') {
-      event.preventDefault();
-      handleLinkSubmission();
+      handleLinkSubmission(event);
     } else if (event.key === 'Escape') {
       event.preventDefault();
       $isEditMode = false;
     }
   }
 
-  function handleLinkSubmission() {
+  function handleLinkSubmission(event: KeyboardEvent | MouseEvent) {
+    event.preventDefault();
     if (lastSelection !== null) {
       if (linkUrl !== '') {
-        editor.dispatchCommand(TOGGLE_LINK_COMMAND, sanitizeUrl(editedLinkUrl));
         editor.update(() => {
+          editor.dispatchCommand(
+            TOGGLE_LINK_COMMAND,
+            sanitizeUrl(editedLinkUrl),
+          );
           const selection = getSelection();
           if (isRangeSelection(selection)) {
             const parent = getSelectedNode(selection).getParent();
@@ -214,7 +221,7 @@
           class="link-cancel"
           role="button"
           tabIndex={0}
-          onmousedown={(event) => event.preventDefault()}
+          onmousedown={preventDefault}
           onclick={() => {
             $isEditMode = false;
           }}>
@@ -224,7 +231,7 @@
           class="link-confirm"
           role="button"
           tabIndex={0}
-          onmousedown={(event) => event.preventDefault()}
+          onmousedown={preventDefault}
           onclick={handleLinkSubmission}>
         </div>
       </div>
@@ -242,8 +249,9 @@
           class="link-edit"
           role="button"
           tabIndex={0}
-          onmousedown={(event) => event.preventDefault()}
-          onclick={() => {
+          onmousedown={preventDefault}
+          onclick={(event) => {
+            event.preventDefault();
             editedLinkUrl = linkUrl;
             $isEditMode = true;
           }}>
@@ -253,7 +261,7 @@
           class="link-trash"
           role="button"
           tabIndex={0}
-          onmousedown={(event) => event.preventDefault()}
+          onmousedown={preventDefault}
           onclick={() => {
             editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
           }}>
