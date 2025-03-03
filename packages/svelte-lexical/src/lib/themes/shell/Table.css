@@ -27,4 +27,19 @@
     display: inline-block;
     cursor: pointer;
   }
+
+  .icon.vertical-top,
+  i.left-align {
+    background-image: url(/images/icons/vertical-top.svg);
+  }
+
+  .icon.vertical-middle,
+  i.center-align {
+    background-image: url(/images/icons/vertical-middle.svg);
+  }
+
+  .icon.vertical-bottom,
+  i.right-align {
+    background-image: url(/images/icons/vertical-bottom.svg);
+  }
 }

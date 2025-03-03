@@ -41,6 +41,8 @@
   import {mergeRegister} from '@lexical/utils';
   import {writable} from 'svelte/store';
   import Portal from '$lib/components/generic/portal/Portal.svelte';
+  import DropDown from '$lib/components/generic/dropdown/DropDown.svelte';
+  import DropDownItem from '$lib/components/generic/dropdown/DropDownItem.svelte';
   interface Props {
     onClose: () => void;
     _tableCellNode: TableCellNode;
@@ -439,6 +441,29 @@
       }
     });
   };
+
+  const formatVerticalAlign = (value: string) => {
+    editor.update(() => {
+      const selection = getSelection();
+      if (isRangeSelection(selection) || isTableSelection(selection)) {
+        const [cell] = getNodeTriplet(selection.anchor);
+        if (isTableCellNode(cell)) {
+          cell.setVerticalAlign(value);
+        }
+
+        if (isTableSelection(selection)) {
+          const nodes = selection.getNodes();
+
+          for (let i = 0; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (isTableCellNode(node)) {
+              node.setVerticalAlign(value);
+            }
+          }
+        }
+      }
+    });
+  };
 </script>
 
 <Portal>
@@ -486,6 +511,41 @@
       data-test-id="table-row-striping">
       <span class="text">Toggle Row Striping</span>
     </button>
+    <DropDown
+      buttonLabel="Vertical Align"
+      buttonClassName="item"
+      buttonAriaLabel="Formatting options for vertical alignment">
+      <DropDownItem
+        onclick={() => {
+          formatVerticalAlign('top');
+        }}
+        class="item wide">
+        <div class="icon-text-container">
+          <i class="icon vertical-top"></i>
+          <span class="text">Top Align</span>
+        </div>
+      </DropDownItem>
+      <DropDownItem
+        onclick={() => {
+          formatVerticalAlign('middle');
+        }}
+        class="item wide">
+        <div class="icon-text-container">
+          <i class="icon vertical-middle"></i>
+          <span class="text">Middle Align</span>
+        </div>
+      </DropDownItem>
+      <DropDownItem
+        onclick={() => {
+          formatVerticalAlign('bottom');
+        }}
+        class="item wide">
+        <div class="icon-text-container">
+          <i class="icon vertical-bottom"></i>
+          <span class="text">Bottom Align</span>
+        </div>
+      </DropDownItem>
+    </DropDown>
     <hr />
     <button
       type="button"
