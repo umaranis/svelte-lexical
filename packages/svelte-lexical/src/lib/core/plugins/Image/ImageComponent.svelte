@@ -117,12 +117,10 @@
     if ($isSelected && isNodeSelection(deleteSelection)) {
       const event: KeyboardEvent = payload;
       event.preventDefault();
-      editor.update(() => {
-        deleteSelection.getNodes().forEach((node) => {
-          if (isImageNode(node)) {
-            node.remove();
-          }
-        });
+      deleteSelection.getNodes().forEach((node) => {
+        if (isImageNode(node)) {
+          node.remove();
+        }
       });
     }
     return false;
