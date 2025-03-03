@@ -8,7 +8,7 @@
   interface Props {
     buttonClassName: string;
     buttonIconClassName?: string | undefined;
-    buttonLabel?: string | undefined;
+    buttonAriaLabel?: string | undefined;
     title: string | undefined;
     stopCloseOnClickSelf?: boolean;
     color: string;
@@ -18,7 +18,7 @@
   let {
     buttonClassName,
     buttonIconClassName = undefined,
-    buttonLabel = undefined,
+    buttonAriaLabel = undefined,
     title,
     stopCloseOnClickSelf = true,
     color,
@@ -29,7 +29,7 @@
 <DropDown
   {buttonClassName}
   {buttonIconClassName}
-  {buttonLabel}
+  {buttonAriaLabel}
   {title}
   disabled={!$isEditable}
   {stopCloseOnClickSelf}>
