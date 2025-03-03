@@ -1721,7 +1721,9 @@ test.describe.parallel('Links', () => {
     );
     await assertSelection(page, {
       anchorOffset: 0,
-      anchorPath: [0, 1],
+      // Previous to #7046 NodeCaret the selection anchor would've been
+      // inside the <a> tag but now it's normalized to the text
+      anchorPath: [0, 1, 0, 0],
       focusOffset: 5,
       focusPath: [0, 1, 0, 0],
     });
@@ -1746,21 +1748,14 @@ test.describe.parallel('Links', () => {
       `,
     );
 
-    if (browserName === 'webkit') {
-      await assertSelection(page, {
-        anchorOffset: 0,
-        anchorPath: [0, 1, 0, 0],
-        focusOffset: 5,
-        focusPath: [0, 1, 0, 0],
-      });
-    } else {
-      await assertSelection(page, {
-        anchorOffset: 0,
-        anchorPath: [0, 1, 0, 0],
-        focusOffset: 5,
-        focusPath: [0, 1, 0, 0],
-      });
-    }
+    // Previous to #7046 NodeCaret the selection anchor would've been
+    // inside the <a> tag but now it's normalized to the text
+    await assertSelection(page, {
+      anchorOffset: 0,
+      anchorPath: [0, 1, 0, 0],
+      focusOffset: 5,
+      focusPath: [0, 1, 0, 0],
+    });
 
     // unlink
     await click(page, '.link');
@@ -1828,21 +1823,12 @@ test.describe.parallel('Links', () => {
       `,
     );
 
-    if (browserName === 'chromium') {
-      await assertSelection(page, {
-        anchorOffset: 5,
-        anchorPath: [0, 1, 0, 0],
-        focusOffset: 0,
-        focusPath: [0, 1],
-      });
-    } else {
-      await assertSelection(page, {
-        anchorOffset: 5,
-        anchorPath: [0, 1, 0, 0],
-        focusOffset: 0,
-        focusPath: [0, 1],
-      });
-    }
+    await assertSelection(page, {
+      anchorOffset: 5,
+      anchorPath: [0, 1, 0, 0],
+      focusOffset: 0,
+      focusPath: [0, 1, 0, 0],
+    });
 
     await setURL(page, 'facebook.com');
 
@@ -2042,48 +2028,49 @@ test.describe.parallel('Links', () => {
     },
   );
 
-  test('Can handle pressing Enter inside a Link containing multiple TextNodes', async ({
-    page,
-    isCollab,
-  }) => {
-    test.fixme(isCollab && IS_LINUX, 'Flaky on Linux + Collab');
-    await focusEditor(page);
-    await page.keyboard.type('Hello ');
-    await toggleBold(page);
-    await page.keyboard.type('awe');
-    await toggleBold(page);
-    await page.keyboard.type('some');
-    await selectAll(page);
-    await click(page, '.link');
-    await click(page, '.link-confirm');
-    await page.keyboard.press('ArrowRight');
-    await page.keyboard.type(' world');
+  test(
+    'Can handle pressing Enter inside a Link containing multiple TextNodes',
+    {tag: '@flaky'},
+    async ({page, isCollab}) => {
+      test.fixme(isCollab && IS_LINUX, 'Flaky on Linux + Collab');
+      await focusEditor(page);
+      await page.keyboard.type('Hello ');
+      await toggleBold(page);
+      await page.keyboard.type('awe');
+      await toggleBold(page);
+      await page.keyboard.type('some');
+      await selectAll(page);
+      await click(page, '.link');
+      await click(page, '.link-confirm');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.type(' world');
 
-    await moveToLineBeginning(page);
-    await moveRight(page, 6);
+      await moveToLineBeginning(page);
+      await moveRight(page, 6);
 
-    await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
 
-    await assertHTML(
-      page,
-      html`
-        <p dir="ltr">
-          <a dir="ltr" href="https://" rel="noreferrer">
-            <span data-lexical-text="true">Hello</span>
-          </a>
-        </p>
-        <p dir="ltr">
-          <a dir="ltr" href="https://" rel="noreferrer">
-            <strong data-lexical-text="true">awe</strong>
-            <span data-lexical-text="true">some</span>
-          </a>
-          <span data-lexical-text="true">world</span>
-        </p>
-      `,
-      undefined,
-      {ignoreClasses: true},
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <p dir="ltr">
+            <a dir="ltr" href="https://" rel="noreferrer">
+              <span data-lexical-text="true">Hello</span>
+            </a>
+          </p>
+          <p dir="ltr">
+            <a dir="ltr" href="https://" rel="noreferrer">
+              <strong data-lexical-text="true">awe</strong>
+              <span data-lexical-text="true">some</span>
+            </a>
+            <span data-lexical-text="true">world</span>
+          </p>
+        `,
+        undefined,
+        {ignoreClasses: true},
+      );
+    },
+  );
 
   test(
     'Can handle pressing Enter at the beginning of a Link',
