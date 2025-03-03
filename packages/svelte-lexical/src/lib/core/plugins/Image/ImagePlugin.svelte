@@ -30,6 +30,7 @@
     type LexicalCommand,
     type LexicalEditor,
     getDOMSelection,
+    getDOMSelectionFromTarget,
   } from 'lexical';
   import {
     $wrapNodeInElement as wrapNodeInElement,
@@ -206,14 +207,7 @@
 
   function getDragSelection(event: DragEvent): Range | null | undefined {
     let range;
-    const target = event.target as null | Element | Document;
-    const targetWindow =
-      target == null
-        ? null
-        : target.nodeType === 9
-          ? (target as Document).defaultView
-          : (target as Element).ownerDocument.defaultView;
-    const domSelection = getDOMSelection(targetWindow);
+    const domSelection = getDOMSelectionFromTarget(event.target);
     if (document.caretRangeFromPoint) {
       range = document.caretRangeFromPoint(event.clientX, event.clientY);
     } else if (event.rangeParent && domSelection !== null) {
