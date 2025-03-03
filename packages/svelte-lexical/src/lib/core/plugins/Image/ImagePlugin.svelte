@@ -29,7 +29,6 @@
     DROP_COMMAND,
     type LexicalCommand,
     type LexicalEditor,
-    getDOMSelection,
     getDOMSelectionFromTarget,
   } from 'lexical';
   import {
