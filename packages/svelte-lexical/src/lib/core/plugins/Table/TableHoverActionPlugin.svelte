@@ -143,17 +143,39 @@
           height: tableElemHeight,
         } = (tableDOMElement as HTMLTableElement).getBoundingClientRect();
 
+        // Adjust for using the scrollable table container
+        const parentElement = (tableDOMElement as HTMLTableElement)
+          .parentElement;
+        let tableHasScroll = false;
+        if (
+          parentElement &&
+          parentElement.classList.contains(
+            'PlaygroundEditorTheme__tableScrollableWrapper',
+          )
+        ) {
+          tableHasScroll =
+            parentElement.scrollWidth > parentElement.clientWidth;
+        }
+
         const {y: editorElemY, left: editorElemLeft} =
           anchorElem.getBoundingClientRect();
 
         if (hoveredRowNode) {
           $isShownColumn = false;
           $isShownRow = true;
-          $position = `height: ${BUTTON_WIDTH_PX}px; left: ${tableElemLeft - editorElemLeft}px; top: ${tableElemBottom - editorElemY + 5}px; width: ${tableElemWidth}px;`;
+          $position =
+            `height: ${BUTTON_WIDTH_PX}px; ` +
+            `left: ${tableHasScroll && parentElement ? parentElement.offsetLeft : tableElemLeft - editorElemLeft}px; ` +
+            `top: ${tableElemBottom - editorElemY + 5}px; ` +
+            `width: ${tableHasScroll && parentElement ? parentElement.offsetWidth : tableElemWidth}px;`;
         } else if (hoveredColumnNode) {
           $isShownColumn = true;
           $isShownRow = false;
-          $position = `height: ${tableElemHeight}px; left: ${tableElemRight - editorElemLeft + 5}px; top: ${tableElemY - editorElemY}px; width: ${BUTTON_WIDTH_PX}px;`;
+          $position =
+            `height: ${tableElemHeight}px; ` +
+            `left: ${tableElemRight - editorElemLeft + 5}px; ` +
+            `top: ${tableElemY - editorElemY}px; ` +
+            `width: ${BUTTON_WIDTH_PX}px;`;
         }
       }
     },
