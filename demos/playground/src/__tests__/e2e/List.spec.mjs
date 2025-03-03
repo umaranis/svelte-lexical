@@ -9,6 +9,7 @@
 import {expect} from '@playwright/test';
 
 import {
+  indent,
   moveLeft,
   moveRight,
   moveToEditorBeginning,
@@ -1899,10 +1900,10 @@ test.describe.parallel('Nested List', () => {
       );
       await page.pause();
       await assertSelection(page, {
-        anchorOffset: 1,
-        anchorPath: [1, 0],
-        focusOffset: 1,
-        focusPath: [1, 0],
+        anchorOffset: 0,
+        anchorPath: [2],
+        focusOffset: 0,
+        focusPath: [2],
       });
     },
   );
@@ -1914,7 +1915,7 @@ test.describe.parallel('Nested List', () => {
     await toggleBold(page);
     await page.keyboard.type('MLH Fellowship');
     await page.keyboard.press('Enter');
-    await clickIndentButton(page);
+    await indent(page, 1);
     await page.keyboard.type('Fall 2024');
     await assertHTML(
       page,
