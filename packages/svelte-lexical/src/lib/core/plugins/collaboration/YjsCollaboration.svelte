@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type {Binding, Provider} from '@lexical/yjs';
+  import type {Binding, Provider, SyncCursorPositionsFn} from '@lexical/yjs';
   import type {LexicalEditor} from 'lexical';
 
   import {mergeRegister} from '@lexical/utils';
@@ -34,6 +34,7 @@
     cursorsContainerRef?: HTMLElement | null;
     initialEditorState?: InitialEditorStateType | null;
     awarenessData?: object | undefined;
+    syncCursorPositionsFn: SyncCursorPositionsFn;
   }
 
   let {
@@ -48,6 +49,7 @@
     cursorsContainerRef = null,
     initialEditorState = null,
     awarenessData = undefined,
+    syncCursorPositionsFn = syncCursorPositions,
   }: Props = $props();
 
   let isReloadingDoc = false;
@@ -91,7 +93,7 @@
     };
 
     const onAwarenessUpdate = () => {
-      syncCursorPositions(binding, provider);
+      syncCursorPositionsFn(binding, provider);
     };
 
     const onYjsTreeChanges = (
@@ -103,7 +105,13 @@
       const origin = transaction.origin;
       if (origin !== binding) {
         const isFromUndoManger = origin instanceof UndoManager;
-        syncYjsChangesToLexical(binding, provider, events, isFromUndoManger);
+        syncYjsChangesToLexical(
+          binding,
+          provider,
+          events,
+          isFromUndoManger,
+          syncCursorPositionsFn,
+        );
       }
     };
 
