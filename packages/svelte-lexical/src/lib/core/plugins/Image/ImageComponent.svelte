@@ -198,12 +198,14 @@
   };
 
   onMount(() => {
-    let isMounted = true;
     const rootElement = editor.getRootElement();
     const unregister = mergeRegister(
       editor.registerUpdateListener(({editorState}) => {
-        if (isMounted) {
-          selection = editorState.read(() => getSelection());
+        const updatedSelection = editorState.read(() => getSelection());
+        if (isNodeSelection(updatedSelection)) {
+          selection = updatedSelection;
+        } else {
+          selection = null;
         }
       }),
       editor.registerCommand(
@@ -258,7 +260,6 @@
     rootElement?.addEventListener('contextmenu', onRightClick);
 
     return () => {
-      isMounted = false;
       unregister();
       rootElement?.removeEventListener('contextmenu', onRightClick);
     };
