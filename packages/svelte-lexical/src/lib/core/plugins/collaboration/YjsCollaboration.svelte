@@ -34,7 +34,7 @@
     cursorsContainerRef?: HTMLElement | null;
     initialEditorState?: InitialEditorStateType | null;
     awarenessData?: object | undefined;
-    syncCursorPositionsFn: SyncCursorPositionsFn;
+    syncCursorPositionsFn?: SyncCursorPositionsFn;
   }
 
   let {
