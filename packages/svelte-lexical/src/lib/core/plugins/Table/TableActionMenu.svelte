@@ -487,6 +487,19 @@
     });
   };
 
+  const toggleFirstRowFreeze = () => {
+    editor.update(() => {
+      if (tableCellNode.isAttached()) {
+        const tableNode = getTableNodeFromLexicalNodeOrThrow(tableCellNode);
+        if (tableNode) {
+          tableNode.setFrozenRows(tableNode.getFrozenRows() === 0 ? 1 : 0);
+        }
+      }
+      clearTableSelection();
+      onClose();
+    });
+  };
+
   const toggleFirstColumnFreeze = () => {
     editor.update(() => {
       if (tableCellNode.isAttached()) {
@@ -629,6 +642,13 @@
         </div>
       </DropDownItem>
     </DropDown>
+    <button
+      type="button"
+      class="item"
+      onclick={() => toggleFirstRowFreeze()}
+      data-test-id="table-freeze-first-row">
+      <span class="text">Toggle First Row Freeze</span>
+    </button>
     <button
       type="button"
       class="item"
