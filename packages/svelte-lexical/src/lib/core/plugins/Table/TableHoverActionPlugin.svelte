@@ -28,6 +28,7 @@
   import {onDestroy, onMount} from 'svelte';
   import {writable} from 'svelte/store';
   import {CAN_USE_DOM} from '$lib/environment/canUseDOM.js';
+  import {getThemeSelector} from '../util/getThemeSelector.js';
 
   const BUTTON_WIDTH_PX = 20;
 
@@ -53,17 +54,18 @@
     const target = event.target;
 
     if (isHTMLElement(target)) {
+      const themeSelector = getThemeSelector(editor._config.theme.tableCell);
       const tableDOMNode = target.closest<HTMLElement>(
-        `td.${editor._config.theme.tableCell}, th.${editor._config.theme.tableCell}`,
+        `td.${themeSelector}, th.${themeSelector}`,
       );
 
       const isOutside = !(
         tableDOMNode ||
         target.closest<HTMLElement>(
-          `button.${editor._config.theme.tableAddRows}`,
+          `button.${getThemeSelector(editor._config.theme.tableAddRows)}`,
         ) ||
         target.closest<HTMLElement>(
-          `button.${editor._config.theme.tableAddColumns}`,
+          `button.${getThemeSelector(editor._config.theme.tableAddColumns)}`,
         ) ||
         target.closest<HTMLElement>('div.TableCellResizer__resizer')
       );
