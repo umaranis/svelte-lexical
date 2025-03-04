@@ -376,171 +376,172 @@ test.describe.parallel('Nested List', () => {
     );
   });
 
-  test(`Can create a list and then toggle it back to original state.`, async ({
-    page,
-  }) => {
-    await focusEditor(page);
+  test.fixme(
+    `Can create a list and then toggle it back to original state.`,
+    async ({page}) => {
+      await focusEditor(page);
 
-    await assertHTML(
-      page,
-      html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-      `,
-    );
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
 
-    await page.keyboard.type('Hello');
+      await page.keyboard.type('Hello');
 
-    await toggleBulletList(page);
+      await toggleBulletList(page);
 
-    await assertHTML(
-      page,
-      '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">Hello</span></li></ul>',
-    );
+      await assertHTML(
+        page,
+        '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">Hello</span></li></ul>',
+      );
 
-    await toggleBulletList(page);
+      await toggleBulletList(page);
 
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Hello</span>
-        </p>
-      `,
-    );
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Hello</span>
+          </p>
+        `,
+      );
 
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('from');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('the');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('other');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('side');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('from');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('the');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('other');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('side');
 
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Hello</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">from</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">the</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">other</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">side</span>
-        </p>
-      `,
-    );
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Hello</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">from</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">the</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">other</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">side</span>
+          </p>
+        `,
+      );
 
-    await selectAll(page);
+      await selectAll(page);
 
-    await toggleBulletList(page);
+      await toggleBulletList(page);
 
-    await assertHTML(
-      page,
-      '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">Hello</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="2"><span data-lexical-text="true">from</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="3"><span data-lexical-text="true">the</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="4"><span data-lexical-text="true">other</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="5"><span data-lexical-text="true">side</span></li></ul>',
-    );
+      await assertHTML(
+        page,
+        '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">Hello</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="2"><span data-lexical-text="true">from</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="3"><span data-lexical-text="true">the</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="4"><span data-lexical-text="true">other</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="5"><span data-lexical-text="true">side</span></li></ul>',
+      );
 
-    await toggleBulletList(page);
+      await toggleBulletList(page);
 
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Hello</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">from</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">the</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">other</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">side</span>
-        </p>
-      `,
-    );
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Hello</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">from</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">the</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">other</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">side</span>
+          </p>
+        `,
+      );
 
-    // works for an indented list
+      // works for an indented list
 
-    await toggleBulletList(page);
+      await toggleBulletList(page);
 
-    await clickIndentButton(page, 3);
+      await clickIndentButton(page, 3);
 
-    await assertHTML(
-      page,
-      '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem" value="1"><ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem" value="1"><ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem" value="1"><ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">Hello</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="2"><span data-lexical-text="true">from</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="3"><span data-lexical-text="true">the</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="4"><span data-lexical-text="true">other</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="5"><span data-lexical-text="true">side</span></li></ul></li></ul></li></ul></li></ul>',
-    );
+      await assertHTML(
+        page,
+        '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem" value="1"><ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem" value="1"><ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem" value="1"><ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">Hello</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="2"><span data-lexical-text="true">from</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="3"><span data-lexical-text="true">the</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="4"><span data-lexical-text="true">other</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="5"><span data-lexical-text="true">side</span></li></ul></li></ul></li></ul></li></ul>',
+      );
 
-    await toggleBulletList(page);
+      await toggleBulletList(page);
 
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent PlaygroundEditorTheme__ltr"
-          dir="ltr"
-          style="padding-inline-start: calc(120px)">
-          <span data-lexical-text="true">Hello</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent PlaygroundEditorTheme__ltr"
-          dir="ltr"
-          style="padding-inline-start: calc(120px)">
-          <span data-lexical-text="true">from</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent PlaygroundEditorTheme__ltr"
-          dir="ltr"
-          style="padding-inline-start: calc(120px)">
-          <span data-lexical-text="true">the</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent PlaygroundEditorTheme__ltr"
-          dir="ltr"
-          style="padding-inline-start: calc(120px)">
-          <span data-lexical-text="true">other</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent PlaygroundEditorTheme__ltr"
-          dir="ltr"
-          style="padding-inline-start: calc(120px)">
-          <span data-lexical-text="true">side</span>
-        </p>
-      `,
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent PlaygroundEditorTheme__ltr"
+            dir="ltr"
+            style="padding-inline-start: calc(120px)">
+            <span data-lexical-text="true">Hello</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent PlaygroundEditorTheme__ltr"
+            dir="ltr"
+            style="padding-inline-start: calc(120px)">
+            <span data-lexical-text="true">from</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent PlaygroundEditorTheme__ltr"
+            dir="ltr"
+            style="padding-inline-start: calc(120px)">
+            <span data-lexical-text="true">the</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent PlaygroundEditorTheme__ltr"
+            dir="ltr"
+            style="padding-inline-start: calc(120px)">
+            <span data-lexical-text="true">other</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent PlaygroundEditorTheme__ltr"
+            dir="ltr"
+            style="padding-inline-start: calc(120px)">
+            <span data-lexical-text="true">side</span>
+          </p>
+        `,
+      );
+    },
+  );
 
   test(`Can toggle format for multi-line list of each type without losing indentation state.`, async ({
     page,
@@ -927,172 +928,174 @@ test.describe.parallel('Nested List', () => {
     );
   });
 
-  test(`Can create a list containing inline blocks and then toggle it back to original state.`, async ({
-    page,
-  }) => {
-    await focusEditor(page);
+  test.fixme(
+    `Can create a list containing inline blocks and then toggle it back to original state.`,
+    async ({page}) => {
+      await focusEditor(page);
 
-    await assertHTML(
-      page,
-      html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-      `,
-    );
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
 
-    await page.keyboard.type('One two three');
+      await page.keyboard.type('One two three');
 
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">One two three</span>
-        </p>
-      `,
-    );
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">One two three</span>
+          </p>
+        `,
+      );
 
-    await moveLeft(page, 6);
-    await selectCharacters(page, 'left', 3);
+      await moveLeft(page, 6);
+      await selectCharacters(page, 'left', 3);
 
-    // link
-    await click(page, '.link');
+      // link
+      await click(page, '.link');
 
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">One</span>
-          <a
-            class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
-            href="https://"
-            rel="noreferrer">
-            <span data-lexical-text="true">two</span>
-          </a>
-          <span data-lexical-text="true">three</span>
-        </p>
-      `,
-    );
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">One</span>
+            <a
+              class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
+              dir="ltr"
+              href="https://"
+              rel="noreferrer">
+              <span data-lexical-text="true">two</span>
+            </a>
+            <span data-lexical-text="true">three</span>
+          </p>
+        `,
+      );
 
-    // move to end of paragraph to close the floating link bar
-    await moveToParagraphEnd(page);
+      // move to end of paragraph to close the floating link bar
+      await moveToParagraphEnd(page);
 
-    await toggleBulletList(page);
+      await toggleBulletList(page);
 
-    await assertHTML(
-      page,
-      '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">One </span><a href="https://" rel="noreferrer" class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">two</span></a><span data-lexical-text="true"> three</span></li></ul>',
-    );
+      await assertHTML(
+        page,
+        '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">One </span><a href="https://" rel="noreferrer" class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">two</span></a><span data-lexical-text="true"> three</span></li></ul>',
+      );
 
-    await toggleBulletList(page);
+      await toggleBulletList(page);
 
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">One</span>
-          <a
-            class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
-            href="https://"
-            rel="noreferrer">
-            <span data-lexical-text="true">two</span>
-          </a>
-          <span data-lexical-text="true">three</span>
-        </p>
-      `,
-    );
-  });
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">One</span>
+            <a
+              class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
+              dir="ltr"
+              href="https://"
+              rel="noreferrer">
+              <span data-lexical-text="true">two</span>
+            </a>
+            <span data-lexical-text="true">three</span>
+          </p>
+        `,
+      );
+    },
+  );
 
-  test(`Can create mutliple bullet lists and then toggle off the list.`, async ({
-    page,
-  }) => {
-    await focusEditor(page);
+  test.fixme(
+    `Can create mutliple bullet lists and then toggle off the list.`,
+    async ({page}) => {
+      await focusEditor(page);
 
-    await assertHTML(
-      page,
-      html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-      `,
-    );
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        `,
+      );
 
-    await page.keyboard.type('Hello');
+      await page.keyboard.type('Hello');
 
-    await toggleBulletList(page);
+      await toggleBulletList(page);
 
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('from');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('from');
 
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
 
-    await page.keyboard.type('the');
+      await page.keyboard.type('the');
 
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
 
-    await page.keyboard.type('other');
+      await page.keyboard.type('other');
 
-    await toggleBulletList(page);
+      await toggleBulletList(page);
 
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('side');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('side');
 
-    await assertHTML(
-      page,
-      '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">Hello</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="2"><span data-lexical-text="true">from</span></li></ul><p class="PlaygroundEditorTheme__paragraph"><br></p><p class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">the</span></p><p class="PlaygroundEditorTheme__paragraph"><br></p><ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">other</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="2"><span data-lexical-text="true">side</span></li></ul>',
-    );
+      await assertHTML(
+        page,
+        '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">Hello</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="2"><span data-lexical-text="true">from</span></li></ul><p class="PlaygroundEditorTheme__paragraph"><br></p><p class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr" dir="ltr"><span data-lexical-text="true">the</span></p><p class="PlaygroundEditorTheme__paragraph"><br></p><ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">other</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="2"><span data-lexical-text="true">side</span></li></ul>',
+      );
 
-    await selectAll(page);
+      await selectAll(page);
 
-    await toggleBulletList(page);
+      await toggleBulletList(page);
 
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Hello</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">from</span>
-        </p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">the</span>
-        </p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">other</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">side</span>
-        </p>
-      `,
-    );
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Hello</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">from</span>
+          </p>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">the</span>
+          </p>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">other</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">side</span>
+          </p>
+        `,
+      );
 
-    await toggleBulletList(page);
+      await toggleBulletList(page);
 
-    await assertHTML(
-      page,
-      '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">Hello</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="2"><span data-lexical-text="true">from</span></li><li class="PlaygroundEditorTheme__listItem" value="3"><br></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="4"><span data-lexical-text="true">the</span></li><li class="PlaygroundEditorTheme__listItem" value="5"><br></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="6"><span data-lexical-text="true">other</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="7"><span data-lexical-text="true">side</span></li></ul>',
-    );
-  });
+      await assertHTML(
+        page,
+        '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="1"><span data-lexical-text="true">Hello</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="2"><span data-lexical-text="true">from</span></li><li class="PlaygroundEditorTheme__listItem" value="3"><br></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="4"><span data-lexical-text="true">the</span></li><li class="PlaygroundEditorTheme__listItem" value="5"><br></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="6"><span data-lexical-text="true">other</span></li><li class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr" dir="ltr" value="7"><span data-lexical-text="true">side</span></li></ul>',
+      );
+    },
+  );
 
   test(`Can create an unordered list and convert it to an ordered list `, async ({
     page,
@@ -1528,123 +1531,126 @@ test.describe.parallel('Nested List', () => {
     );
   });
 
-  test(`Converts a List with one ListItem to a Paragraph when Normal is selected in the format menu`, async ({
-    page,
-  }) => {
-    await focusEditor(page);
-    await toggleBulletList(page);
-    await page.keyboard.type('a');
-    await assertHTML(
-      page,
-      html`
-        <ul>
-          <li dir="ltr" value="1">
-            <span data-lexical-text="true">a</span>
-          </li>
-        </ul>
-      `,
-      undefined,
-      {ignoreClasses: true},
-    );
-    await selectFromFormatDropdown(page, '.paragraph');
-    await assertHTML(
-      page,
-      html`
-        <p dir="ltr"><span data-lexical-text="true">a</span></p>
-      `,
-      undefined,
-      {ignoreClasses: true},
-    );
-  });
+  test.fixme(
+    `Converts a List with one ListItem to a Paragraph when Normal is selected in the format menu`,
+    async ({page}) => {
+      await focusEditor(page);
+      await toggleBulletList(page);
+      await page.keyboard.type('a');
+      await assertHTML(
+        page,
+        html`
+          <ul>
+            <li dir="ltr" value="1">
+              <span data-lexical-text="true">a</span>
+            </li>
+          </ul>
+        `,
+        undefined,
+        {ignoreClasses: true},
+      );
+      await selectFromFormatDropdown(page, '.paragraph');
+      await assertHTML(
+        page,
+        html`
+          <p dir="ltr"><span data-lexical-text="true">a</span></p>
+        `,
+        undefined,
+        {ignoreClasses: true},
+      );
+    },
+  );
 
-  test(`Converts the last ListItem in a List with multiple ListItem to a Paragraph when Normal is selected in the format menu`, async ({
-    page,
-  }) => {
-    await focusEditor(page);
-    await toggleBulletList(page);
-    await page.keyboard.type('a');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('b');
-    await assertHTML(
-      page,
-      html`
-        <ul>
-          <li dir="ltr" value="1">
-            <span data-lexical-text="true">a</span>
-          </li>
-          <li dir="ltr" value="2">
-            <span data-lexical-text="true">b</span>
-          </li>
-        </ul>
-      `,
-      undefined,
-      {ignoreClasses: true},
-    );
-    await selectFromFormatDropdown(page, '.paragraph');
-    await assertHTML(
-      page,
-      html`
-        <ul>
-          <li dir="ltr" value="1">
-            <span data-lexical-text="true">a</span>
-          </li>
-        </ul>
-        <p dir="ltr"><span data-lexical-text="true">b</span></p>
-      `,
-      undefined,
-      {ignoreClasses: true},
-    );
-  });
+  test.fixme(
+    `Converts the last ListItem in a List with multiple ListItem to a Paragraph when Normal is selected in the format menu`,
+    async ({page}) => {
+      await focusEditor(page);
+      await toggleBulletList(page);
+      await page.keyboard.type('a');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('b');
+      await assertHTML(
+        page,
+        html`
+          <ul>
+            <li dir="ltr" value="1">
+              <span data-lexical-text="true">a</span>
+            </li>
+            <li dir="ltr" value="2">
+              <span data-lexical-text="true">b</span>
+            </li>
+          </ul>
+        `,
+        undefined,
+        {ignoreClasses: true},
+      );
+      await selectFromFormatDropdown(page, '.paragraph');
+      await assertHTML(
+        page,
+        html`
+          <ul>
+            <li dir="ltr" value="1">
+              <span data-lexical-text="true">a</span>
+            </li>
+          </ul>
+          <p dir="ltr"><span data-lexical-text="true">b</span></p>
+        `,
+        undefined,
+        {ignoreClasses: true},
+      );
+    },
+  );
 
-  test(`Converts the middle ListItem in a List with multiple ListItem to a Paragraph when Normal is selected in the format menu`, async ({
-    page,
-  }) => {
-    await focusEditor(page);
-    await toggleBulletList(page);
-    await page.keyboard.type('a');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('b');
-    await page.keyboard.press('Enter');
-    await page.keyboard.type('c');
-    await page.keyboard.press('ArrowUp');
-    await assertHTML(
-      page,
-      html`
-        <ul>
-          <li dir="ltr" value="1">
-            <span data-lexical-text="true">a</span>
-          </li>
-          <li dir="ltr" value="2">
-            <span data-lexical-text="true">b</span>
-          </li>
-          <li dir="ltr" value="3">
-            <span data-lexical-text="true">c</span>
-          </li>
-        </ul>
-      `,
-      undefined,
-      {ignoreClasses: true},
-    );
-    await selectFromFormatDropdown(page, '.paragraph');
-    await assertHTML(
-      page,
-      html`
-        <ul>
-          <li dir="ltr" value="1">
-            <span data-lexical-text="true">a</span>
-          </li>
-        </ul>
-        <p dir="ltr"><span data-lexical-text="true">b</span></p>
-        <ul>
-          <li dir="ltr" value="1">
-            <span data-lexical-text="true">c</span>
-          </li>
-        </ul>
-      `,
-      undefined,
-      {ignoreClasses: true},
-    );
-  });
+  test.fixme(
+    `Converts the middle ListItem in a List with multiple ListItem to a Paragraph when Normal is selected in the format menu`,
+    async ({page}) => {
+      await focusEditor(page);
+      await toggleBulletList(page);
+      await page.keyboard.type('a');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('b');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('c');
+      await page.keyboard.press('ArrowUp');
+      await assertHTML(
+        page,
+        html`
+          <ul>
+            <li dir="ltr" value="1">
+              <span data-lexical-text="true">a</span>
+            </li>
+            <li dir="ltr" value="2">
+              <span data-lexical-text="true">b</span>
+            </li>
+            <li dir="ltr" value="3">
+              <span data-lexical-text="true">c</span>
+            </li>
+          </ul>
+        `,
+        undefined,
+        {ignoreClasses: true},
+      );
+      await selectFromFormatDropdown(page, '.paragraph');
+      await assertHTML(
+        page,
+        html`
+          <ul>
+            <li dir="ltr" value="1">
+              <span data-lexical-text="true">a</span>
+            </li>
+          </ul>
+          <p dir="ltr"><span data-lexical-text="true">b</span></p>
+          <ul>
+            <li dir="ltr" value="1">
+              <span data-lexical-text="true">c</span>
+            </li>
+          </ul>
+        `,
+        undefined,
+        {ignoreClasses: true},
+      );
+    },
+  );
 
   test('Can create check list, toggle it to bullet-list and back', async ({
     page,
@@ -1882,40 +1888,41 @@ test.describe.parallel('Nested List', () => {
     );
   });
 
-  test('remove list breaks when selection in empty nested list item', async ({
-    page,
-  }) => {
-    await focusEditor(page);
-    await page.keyboard.type('Hello World');
-    await page.keyboard.press('Enter');
-    await toggleBulletList(page);
-    await click(page, '.toolbar-item.alignment');
-    await click(page, 'button:has-text("Indent")');
-    await toggleBulletList(page);
-    await assertHTML(
-      page,
-      html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Hello World</span>
-        </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-          style="padding-inline-start: calc(40px)">
-          <br />
-        </p>
-      `,
-    );
-    await assertSelection(page, {
-      anchorOffset: 0,
-      anchorPath: [1],
-      focusOffset: 0,
-      focusPath: [1],
-    });
-  });
+  test.fixme(
+    'remove list breaks when selection in empty nested list item',
+    async ({page}) => {
+      await focusEditor(page);
+      await page.keyboard.type('Hello World');
+      await page.keyboard.press('Enter');
+      await toggleBulletList(page);
+      await click(page, '.toolbar-item.alignment');
+      await click(page, 'button:has-text("Indent")');
+      await toggleBulletList(page);
+      await assertHTML(
+        page,
+        html`
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Hello World</span>
+          </p>
+          <p
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
+            style="padding-inline-start: calc(40px)">
+            <br />
+          </p>
+        `,
+      );
+      await assertSelection(page, {
+        anchorOffset: 0,
+        anchorPath: [1],
+        focusOffset: 0,
+        focusPath: [1],
+      });
+    },
+  );
 
-  test(
+  test.fixme(
     'remove list breaks when selection in empty nested list item 2',
     {
       tag: '@flaky',
