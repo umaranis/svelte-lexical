@@ -33,3 +33,79 @@ jobs:
         working-directory: ./packages/svelte-lexical
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
+  post-publish-test:
+    needs: publish-npm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v4.0.0
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 9
+          run_install: false
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - run: pnpm --ignore-workspace i
+        working-directory: ./packages/svelte-lexical
+      - run: pnpm build
+        working-directory: ./packages/svelte-lexical
+      - run: pnpm check
+        working-directory: ./packages/svelte-lexical
+      - run: pnpm lint
+        working-directory: ./packages/svelte-lexical
+
+      - run: pnpm --ignore-workspace i
+        working-directory: ./demos/playground
+      - run: pnpm build
+        working-directory: ./demos/playground
+      - run: pnpm check
+        working-directory: ./demos/playground
+      - run: pnpm lint
+        working-directory: ./demos/playground
+      - run: pnpm size
+        working-directory: ./demos/playground
+
+      - run: pnpm --ignore-workspace i
+        working-directory: ./demos/sveltekit
+      - run: pnpm build
+        working-directory: ./demos/sveltekit
+      - run: pnpm check
+        working-directory: ./demos/sveltekit
+      - run: pnpm lint
+        working-directory: ./demos/sveltekit
+
+      - run: pnpm --ignore-workspace i
+        working-directory: ./demos/richtext-editor
+      - run: pnpm build
+        working-directory: ./demos/richtext-editor
+      - run: pnpm check
+        working-directory: ./demos/richtext-editor
+      - run: pnpm lint
+        working-directory: ./demos/richtext-editor
+      - run: pnpm size
+        working-directory: ./demos/richtext-editor
+
+      - run: pnpm --ignore-workspace i
+        working-directory: ./demos/plaintext-editor
+      - run: pnpm build
+        working-directory: ./demos/plaintext-editor
+      - run: pnpm check
+        working-directory: ./demos/plaintext-editor
+      - run: pnpm lint
+        working-directory: ./demos/plaintext-editor
+      - run: pnpm size
+        working-directory: ./demos/plaintext-editor
