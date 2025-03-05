@@ -34,7 +34,9 @@ import {
 import path from 'node:path';
 
 test.describe('Images', () => {
-  test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
+  test.beforeEach(({isCollab, page, browserName}) =>
+    initialize({isCollab, page, browserName}),
+  );
   test(`Can create a decorator and move selection around it`, async ({
     page,
     isPlainText,

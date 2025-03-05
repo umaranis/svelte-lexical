@@ -74,6 +74,7 @@ export async function initialize({
   tableCellBackgroundColor,
   shouldUseLexicalContextMenu,
   tableHorizontalScroll,
+  browserName,
 }) {
   // Tests with legacy events often fail to register keypress, so
   // slowing it down to reduce flakiness
@@ -106,6 +107,10 @@ export async function initialize({
     appSettings.tableCellBackgroundColor = tableCellBackgroundColor;
   }
   appSettings.shouldUseLexicalContextMenu = !!shouldUseLexicalContextMenu;
+
+  if (browserName) {
+    process.env.E2E_BROWSER = browserName;
+  }
 
   const urlParams = appSettingsToURLParams(appSettings);
   const url = `http://localhost:${E2E_PORT}/${
@@ -187,7 +192,7 @@ export async function clickSelectors(page, selectors) {
 }
 
 function removeSafariLinebreakImgHack(actualHtml) {
-  return E2E_BROWSER === 'webkit'
+  return process.env.E2E_BROWSER === 'webkit'
     ? actualHtml.replaceAll(
         /<img (?:[^>]+ )?data-lexical-linebreak="true"(?: [^>]+)?>/g,
         '',
