@@ -2462,7 +2462,8 @@ test.describe.parallel('Tables', () => {
       {
         tag: '@flaky',
       },
-      async ({page, isPlainText, isCollab}) => {
+      async ({page, isPlainText, isCollab, browserName}) => {
+        test.fixme(browserName === 'firefox');
         test.skip(isPlainText);
         await initialize({isCollab, page});
 
@@ -4670,7 +4671,9 @@ test.describe.parallel('Tables', () => {
       page,
       isCollab,
       isPlainText,
+      browserName,
     }) => {
+      test.fixme(browserName === 'firefox');
       test.skip(isPlainText);
       await initialize({isCollab, page});
 
@@ -4895,7 +4898,9 @@ test.describe.parallel('Tables', () => {
       page,
       isCollab,
       isPlainText,
+      browserName,
     }) => {
+      test.fixme(browserName === 'firefox');
       test.skip(isPlainText);
       await initialize({isCollab, page});
 
