@@ -13,7 +13,7 @@
     "@sveltejs/adapter-auto": "^3.2.0",
     "@sveltejs/kit": "^2.5.27",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
-    "eslint": "^9.17.0",
+    "eslint": "^9.21.0",
     "eslint-plugin-svelte": "^2.45.1",
     "svelte": "^5.15.0",
     "svelte-check": "^4.1.0",
