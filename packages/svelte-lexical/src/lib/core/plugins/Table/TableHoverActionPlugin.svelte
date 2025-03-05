@@ -56,16 +56,16 @@
     if (isHTMLElement(target)) {
       const themeSelector = getThemeSelector(editor._config.theme.tableCell);
       const tableDOMNode = target.closest<HTMLElement>(
-        `td.${themeSelector}, th.${themeSelector}`,
+        `td${themeSelector}, th${themeSelector}`,
       );
 
       const isOutside = !(
         tableDOMNode ||
         target.closest<HTMLElement>(
-          `button.${getThemeSelector(editor._config.theme.tableAddRows)}`,
+          `button${getThemeSelector(editor._config.theme.tableAddRows)}`,
         ) ||
         target.closest<HTMLElement>(
-          `button.${getThemeSelector(editor._config.theme.tableAddColumns)}`,
+          `button${getThemeSelector(editor._config.theme.tableAddColumns)}`,
         ) ||
         target.closest<HTMLElement>('div.TableCellResizer__resizer')
       );
