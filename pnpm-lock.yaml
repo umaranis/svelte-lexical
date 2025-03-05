@@ -18,7 +18,7 @@ importers:
   demos/plaintext-editor:
     dependencies:
       svelte-lexical:
-        specifier: 0.5.1
+        specifier: 0.5.2
         version: link:../../packages/svelte-lexical
     devDependencies:
       '@size-limit/preset-app':
@@ -67,7 +67,7 @@ importers:
   demos/playground:
     dependencies:
       svelte-lexical:
-        specifier: 0.5.1
+        specifier: 0.5.2
         version: link:../../packages/svelte-lexical
       y-websocket:
         specifier: 1.5.4
@@ -161,7 +161,7 @@ importers:
   demos/richtext-editor:
     dependencies:
       svelte-lexical:
-        specifier: 0.5.1
+        specifier: 0.5.2
         version: link:../../packages/svelte-lexical
     devDependencies:
       '@size-limit/preset-app':
@@ -210,7 +210,7 @@ importers:
   demos/sveltekit:
     dependencies:
       svelte-lexical:
-        specifier: 0.5.1
+        specifier: 0.5.2
         version: link:../../packages/svelte-lexical
       svelte-preprocess:
         specifier: ^6.0.0
