@@ -59,8 +59,7 @@ test.describe('Regression test #5251', () => {
       page,
       await selectorBoundingBox(page, 'li:has-text("one")'),
       await selectorBoundingBox(page, 'li:has-text("three")'),
-      'middle',
-      'end',
+      {positionEnd: 'end', positionStart: 'middle'},
     );
   });
 });
