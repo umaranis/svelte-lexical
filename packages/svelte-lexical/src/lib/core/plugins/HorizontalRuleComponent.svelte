@@ -30,7 +30,7 @@
 
   let {editor, nodeKey, self}: Props = $props();
   let isSelected = createNodeSelectionStore(editor, nodeKey);
-  const isSelectedClassName = 'selected';
+  const isSelectedClassName = editor._config.theme.hrSelected ?? 'selected';
 
   run(() => {
     if ($isSelected) {

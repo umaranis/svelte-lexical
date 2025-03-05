@@ -589,7 +589,7 @@
   background-color: #ccc;
   line-height: 2px;
 }
-.SL_Theme__hr.selected {
+.SL_Theme__hr.SL_Theme__hrSselected {
   outline: 2px solid rgb(60, 132, 244);
   user-select: none;
 }

@@ -62,6 +62,7 @@ export const theme: EditorThemeClasses = {
     h6: 'SL_Theme__h6',
   },
   hr: 'SL_Theme__hr',
+  hrSelected: 'SL_Theme__hrSelected',
   image: 'editor-image',
   indent: 'SL_Theme__indent',
   inlineImage: 'inline-editor-image',
