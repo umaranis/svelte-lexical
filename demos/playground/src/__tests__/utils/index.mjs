@@ -293,6 +293,29 @@ export async function assertHTML(
 /**
  * @param {import('@playwright/test').Page} page
  */
+export async function assertTableHTML(
+  page,
+  expectedHtml,
+  expectedHtmlFrameRight = undefined,
+  options = undefined,
+  ...args
+) {
+  return await assertHTML(
+    page,
+    IS_TABLE_HORIZONTAL_SCROLL
+      ? wrapTableHtml(expectedHtml, options)
+      : expectedHtml,
+    IS_TABLE_HORIZONTAL_SCROLL && expectedHtmlFrameRight !== undefined
+      ? wrapTableHtml(expectedHtmlFrameRight, options)
+      : expectedHtmlFrameRight,
+    options,
+    ...args,
+  );
+}
+
+/**
+ * @param {import('@playwright/test').Page} page
+ */
 export function getPageOrFrame(page) {
   return IS_COLLAB ? page.frame('left') : page;
 }
@@ -728,9 +751,6 @@ export async function dragMouse(
     fromX += fromBoundingBox.width;
     fromY += fromBoundingBox.height;
   }
-  await page.mouse.move(fromX, fromY);
-  await page.mouse.down();
-
   let toX = toBoundingBox.x;
   let toY = toBoundingBox.y;
   if (positionEnd === 'middle') {
@@ -741,13 +761,9 @@ export async function dragMouse(
     toY += toBoundingBox.height;
   }
 
-  if (slow) {
-    //simulate more than 1 mouse move event to replicate human slow dragging
-    await page.mouse.move((fromX + toX) / 2, (fromY + toY) / 2);
-  }
-
-  await page.mouse.move(toX, toY);
-
+  await page.mouse.move(fromX, fromY);
+  await page.mouse.down();
+  await page.mouse.move(toX, toY, slow ? 10 : 1);
   if (mouseUp) {
     await page.mouse.up();
   }
@@ -768,7 +784,10 @@ export async function dragImage(
   );
 }
 
-export function prettifyHTML(string, {ignoreClasses, ignoreInlineStyles} = {}) {
+export async function prettifyHTML(
+  string,
+  {ignoreClasses, ignoreInlineStyles} = {},
+) {
   let output = string;
 
   if (ignoreClasses) {
@@ -786,7 +805,7 @@ export function prettifyHTML(string, {ignoreClasses, ignoreInlineStyles} = {}) {
 
   output = output.replace(/\s__playwright_target__="[^"]+"/, '');
 
-  return prettier.format(output, {
+  return await prettier.format(output, {
     plugins: ['prettier-plugin-organize-attributes'],
     pluginSearchDirs: ['../../../../'],
     attributeGroups: ['$DEFAULT', '^data-'],
@@ -952,6 +971,11 @@ export async function unmergeTableCell(page) {
 export async function toggleColumnHeader(page) {
   await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-column-header"]');
+}
+
+export async function toggleRowHeader(page) {
+  await clickTableCellActiveButton(page);
+  await click(page, '.item[data-test-id="table-row-header"]');
 }
 
 export async function deleteTableRows(page) {

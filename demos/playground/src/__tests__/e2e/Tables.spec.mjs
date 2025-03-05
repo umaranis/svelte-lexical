@@ -19,8 +19,8 @@ import {
 } from '../keyboardShortcuts/index.mjs';
 import os from 'os';
 import {
-  assertHTML as rawAssertHTML,
   assertSelection,
+  assertTableHTML as assertHTML,
   click,
   clickSelectors,
   copyToClipboard,
@@ -55,7 +55,6 @@ import {
   unmergeTableCell,
   waitForSelector,
   withExclusiveClipboardAccess,
-  wrapTableHtml,
 } from '../utils/index.mjs';
 
 async function fillTablePartiallyWithText(page) {
@@ -77,26 +76,6 @@ async function fillTablePartiallyWithText(page) {
   await page.keyboard.press('f');
   await page.keyboard.press('ArrowUp');
   await page.keyboard.press('c');
-}
-
-async function assertHTML(
-  page,
-  expectedHtml,
-  expectedHtmlFrameRight = undefined,
-  options = undefined,
-  ...args
-) {
-  return await rawAssertHTML(
-    page,
-    IS_TABLE_HORIZONTAL_SCROLL
-      ? wrapTableHtml(expectedHtml, options)
-      : expectedHtml,
-    IS_TABLE_HORIZONTAL_SCROLL && expectedHtmlFrameRight !== undefined
-      ? wrapTableHtml(expectedHtmlFrameRight, options)
-      : expectedHtmlFrameRight,
-    options,
-    ...args,
-  );
 }
 
 const WRAPPER = IS_TABLE_HORIZONTAL_SCROLL ? [0] : [];
@@ -300,8 +279,6 @@ test.describe.parallel('Tables', () => {
     test.skip(isPlainText);
     await initialize({isCollab, page});
 
-    // Table edge cursor doesn't show up in Firefox.
-    test.fixme(browserName === 'firefox');
     test.fixme(
       legacyEvents && browserName === 'chromium' && IS_WINDOWS,
       'Flaky on Windows + Chromium + legacy events',
@@ -357,24 +334,12 @@ test.describe.parallel('Tables', () => {
     );
 
     await moveRight(page, 1);
-    if (WRAPPER.length === 0) {
-      // The native window selection should be on the root, whereas
-      // the editor selection should be on the last cell of the table.
-      await assertSelection(page, {
-        anchorOffset: 2,
-        anchorPath: [],
-        focusOffset: 2,
-        focusPath: [],
-      });
-    } else {
-      // The native window selection is in the wrapper after the table
-      await assertSelection(page, {
-        anchorOffset: WRAPPER[0] + 1,
-        anchorPath: [1],
-        focusOffset: WRAPPER[0] + 1,
-        focusPath: [1],
-      });
-    }
+    await assertSelection(page, {
+      anchorOffset: 2,
+      anchorPath: [],
+      focusOffset: 2,
+      focusPath: [],
+    });
 
     await page.keyboard.press('Enter');
     await assertSelection(page, {
@@ -424,8 +389,6 @@ test.describe.parallel('Tables', () => {
     browserName,
   }) => {
     test.skip(isPlainText);
-    // Table edge cursor doesn't show up in Firefox.
-    test.fixme(browserName === 'firefox');
     // After typing, the dom selection gets set back to the internal previous selection during the update.
     test.fixme(LEGACY_EVENTS);
 
@@ -897,10 +860,6 @@ test.describe.parallel('Tables', () => {
 
       await page.keyboard.down('Shift');
       await page.keyboard.press('ArrowRight');
-      // Firefox range selection spans across cells after two arrow key press
-      if (browserName === 'firefox') {
-        await page.keyboard.press('ArrowRight');
-      }
       await page.keyboard.press('ArrowDown');
       await page.keyboard.up('Shift');
 
@@ -1724,10 +1683,6 @@ test.describe.parallel('Tables', () => {
 
         await page.keyboard.down('Shift');
         await page.keyboard.press('ArrowRight');
-        // Firefox range selection spans across cells after two arrow key press
-        if (browserName === 'firefox') {
-          await page.keyboard.press('ArrowRight');
-        }
         await page.keyboard.press('ArrowDown');
         await page.keyboard.up('Shift');
 
@@ -4391,12 +4346,12 @@ test.describe.parallel('Tables', () => {
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
                 <p class="PlaygroundEditorTheme__paragraph"><br /></p>
               </th>
-              <td
-                class="PlaygroundEditorTheme__tableCell"
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 colspan="3"
                 rowspan="2">
                 <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
+              </th>
             </tr>
             <tr>
               <th
@@ -5658,7 +5613,10 @@ test.describe.parallel('Tables', () => {
             await click(page, 'div[contenteditable] th p', {
               button: 'right',
             });
-            await click(page, '#typeahead-menu [role="option"] :text("Cut")');
+            await click(
+              page,
+              'div[class="typeahead-popover"] [role="option"] :text("Cut")',
+            );
           });
 
           await assertHTML(
