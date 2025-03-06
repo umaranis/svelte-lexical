@@ -47,7 +47,7 @@
   "devDependencies": {
     "@eslint/compat": "^1.2.4",
     "@eslint/eslintrc": "^3.2.0",
-    "@eslint/js": "^9.17.0",
+    "@eslint/js": "^9.21.0",
     "@sveltejs/adapter-auto": "^3.3.1",
     "@sveltejs/kit": "^2.10.1",
     "@sveltejs/package": "^2.3.7",
@@ -66,7 +66,7 @@
     "jsdom": "^25.0.1",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-svelte": "^3.2.6",
-    "publint": "^0.1.9",
+    "publint": "^0.3.8",
     "svelte": "^5.15.0",
     "svelte-check": "^4.1.1",
     "typescript": "^5.7.2",
