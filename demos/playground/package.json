@@ -83,7 +83,7 @@
     "proper-lockfile": "^4.1.2",
     "size-limit": "^8.2.6",
     "start-server-and-test": "^2.0.8",
-    "svelte": "^5.15.0",
+    "svelte": "^5.22.5",
     "svelte-check": "^4.1.0",
     "svelte-preprocess": "^6.0.0",
     "tslib": "^2.7.0",

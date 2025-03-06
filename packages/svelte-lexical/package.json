@@ -67,7 +67,7 @@
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-svelte": "^3.2.6",
     "publint": "^0.3.8",
-    "svelte": "^5.15.0",
+    "svelte": "^5.22.5",
     "svelte-check": "^4.1.1",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1",
