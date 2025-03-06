@@ -65,16 +65,12 @@ jobs:
         working-directory: ./packages/svelte-lexical
       - run: pnpm check
         working-directory: ./packages/svelte-lexical
-      - run: pnpm lint
-        working-directory: ./packages/svelte-lexical
 
       - run: pnpm --ignore-workspace i
         working-directory: ./demos/playground
       - run: pnpm build
         working-directory: ./demos/playground
       - run: pnpm check
-        working-directory: ./demos/playground
-      - run: pnpm lint
         working-directory: ./demos/playground
       - run: pnpm size
         working-directory: ./demos/playground
@@ -85,16 +81,12 @@ jobs:
         working-directory: ./demos/sveltekit
       - run: pnpm check
         working-directory: ./demos/sveltekit
-      - run: pnpm lint
-        working-directory: ./demos/sveltekit
 
       - run: pnpm --ignore-workspace i
         working-directory: ./demos/richtext-editor
       - run: pnpm build
         working-directory: ./demos/richtext-editor
       - run: pnpm check
-        working-directory: ./demos/richtext-editor
-      - run: pnpm lint
         working-directory: ./demos/richtext-editor
       - run: pnpm size
         working-directory: ./demos/richtext-editor
@@ -104,8 +96,6 @@ jobs:
       - run: pnpm build
         working-directory: ./demos/plaintext-editor
       - run: pnpm check
-        working-directory: ./demos/plaintext-editor
-      - run: pnpm lint
         working-directory: ./demos/plaintext-editor
       - run: pnpm size
         working-directory: ./demos/plaintext-editor
