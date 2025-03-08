@@ -1,0 +1,102 @@
+---
+title: Getting Started
+description: A guide to get started with svelte-lexical.
+---
+
+import {Steps} from '@astrojs/starlight/components';
+import {FileTree} from '@astrojs/starlight/components';
+
+You can get started by using one of the demo projects or following the quick start to add `svelte-lexical` to your existing project.
+
+## Quick Start
+
+<Steps>
+
+1. To add `svelte-lexical` to your project, run the following command:
+
+   ```bash
+   pnpm add svelte-lexical
+   ```
+
+2. Import the `RichTextComposer` component in your Svelte component or page:
+
+   ```svelte {3}
+   // +page.svelte
+   <script>
+     import {RichTextComposer} from 'svelte-lexical';
+   </script>
+   ```
+
+3. Import the default theme in your Svelte component or page:
+
+   ```svelte {4}
+   // +page.svelte
+   <script>
+     import {RichTextComposer} from 'svelte-lexical';
+     import {theme as editorTheme} from 'svelte-lexical/dist/themes/default';
+   </script>
+   ```
+
+4. Use the `RichTextComposer` component in your Svelte component or page:
+
+   ```svelte {7}
+   // +page.svelte
+   <script>
+     import {RichTextComposer} from 'svelte-lexical';
+     import {theme} from 'svelte-lexical/dist/themes/default';
+   </script>
+
+   <RichTextComposer {theme} />
+   ```
+
+5. Add the icons used by the toolbar and dialogs in your application:
+
+   Copy the [icons](https://github.com/umaranis/svelte-lexical/tree/master/packages/svelte-lexical/static/images/icons) folder from the `svelte-lexical` package to your project's `static/images` folder.
+
+   Your folder structure should look like this:
+
+   <FileTree>
+   - svelte.config.js
+   - package.json
+   - src
+   - static
+     - images
+       - **icons**
+         - arrow-clockwise.svg
+         - add-sign.svg
+         - bold.svg
+         - camera.svg
+         - ...
+   </FileTree>
+
+   :::caution
+   The `static` folder could also be called `public` depending on your project's configuration.
+   :::
+
+   :::note
+   You can download the icons using command line by running the below command from project root.
+
+   ```bash
+   curl -s https://api.github.com/repos/umaranis/svelte-lexical/contents/packages/svelte-lexical/static/images/icons \
+    | grep 'download_url' | cut -d '"' -f 4 | xargs -I {} wget -P static/images/icons {}
+    ```
+   
+   :::
+
+</Steps>
+
+## Use a demo project to get started
+
+:::note
+Another way to get started is to use one of the demo projects.
+:::
+
+`svelte-lexical` has a few demo projects to cover different use cases. You can pick one of the following as your starting point:
+
+- **richtext-editor**: A basic implementation using the pre-built rich text editor. (Framework: Svelte)
+- **sveltekit**: A custom built rich text editor and the toolbar using the default theme. (Framework: SvelteKit)
+- **playground**: A comprehensive demo with most of the features. (Framework: Svelte)
+  - Showcases most of the features of the library
+  - Defines a custom UI theme for the editor and the shell
+  - Includes Dev Tools for troubleshooting
+  - Includes e2e tests
