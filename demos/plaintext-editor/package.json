@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@size-limit/preset-app": "^8.2.6",
-    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "@tsconfig/svelte": "^4.0.1",
     "eslint": "^9.22.0",
     "eslint-plugin-import": "^2.31.0",
@@ -25,7 +25,7 @@
     "tslib": "^2.5.0",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1",
-    "vite": "^5.4.10"
+    "vite": "^6.2.1"
   },
   "dependencies": {
     "svelte-lexical": "0.5.2"
