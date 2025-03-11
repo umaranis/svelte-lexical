@@ -49,6 +49,7 @@
   buttonLabel={$value}
   buttonIconClassName=""
   {buttonAriaLabel}>
+  <!-- eslint-disable-next-line svelte/require-each-key -->
   {#each FONT_SIZE_OPTIONS as [option, text]}
     <DropDownItem
       class={`item ${

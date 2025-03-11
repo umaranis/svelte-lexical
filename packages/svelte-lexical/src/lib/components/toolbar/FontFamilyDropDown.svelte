@@ -41,6 +41,7 @@
   buttonLabel={$value}
   buttonIconClassName="icon block-type font-family"
   {buttonAriaLabel}>
+  <!-- eslint-disable-next-line svelte/require-each-key -->
   {#each FONT_FAMILY_OPTIONS as [option, text]}
     <DropDownItem
       class={`item ${$value === option ? 'active dropdown-item-active' : ''}`}

@@ -57,6 +57,7 @@
         buttonAriaLabel="Insert specialized editor node"
         buttonIconClassName=""
         target={modalDiv}>
+        <!-- eslint-disable-next-line svelte/require-each-key -->
         {#each LAYOUTS as layout}
           <DropDownItem
             class={`item ${currentLabel === layout.label ? 'active dropdown-item-active' : ''}`}

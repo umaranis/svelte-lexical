@@ -644,10 +644,8 @@
       onclick={() => insertTableRowAtSelection(false)}
       data-test-id="table-insert-row-above">
       <span class="text">
-        Insert{' '}
-        {selectionCounts.rows === 1
-          ? 'row'
-          : `${selectionCounts.rows} rows`}{' '}
+        Insert
+        {selectionCounts.rows === 1 ? 'row' : `${selectionCounts.rows} rows`}
         above
       </span>
     </button>
@@ -657,10 +655,8 @@
       onclick={() => insertTableRowAtSelection(true)}
       data-test-id="table-insert-row-below">
       <span class="text">
-        Insert{' '}
-        {selectionCounts.rows === 1
-          ? 'row'
-          : `${selectionCounts.rows} rows`}{' '}
+        Insert
+        {selectionCounts.rows === 1 ? 'row' : `${selectionCounts.rows} rows`}
         below
       </span>
     </button>
@@ -671,10 +667,10 @@
       onclick={() => insertTableColumnAtSelection(false)}
       data-test-id="table-insert-column-before">
       <span class="text">
-        Insert{' '}
+        Insert
         {selectionCounts.columns === 1
           ? 'column'
-          : `${selectionCounts.columns} columns`}{' '}
+          : `${selectionCounts.columns} columns`}
         left
       </span>
     </button>
@@ -684,10 +680,10 @@
       onclick={() => insertTableColumnAtSelection(true)}
       data-test-id="table-insert-column-after">
       <span class="text">
-        Insert{' '}
+        Insert
         {selectionCounts.columns === 1
           ? 'column'
-          : `${selectionCounts.columns} columns`}{' '}
+          : `${selectionCounts.columns} columns`}
         right
       </span>
     </button>
@@ -723,7 +719,7 @@
         {(tableCellNode.__headerState & TableCellHeaderStates.ROW) ===
         TableCellHeaderStates.ROW
           ? 'Remove'
-          : 'Add'}{' '}
+          : 'Add'}
         row header
       </span>
     </button>
@@ -736,7 +732,7 @@
         {(tableCellNode.__headerState & TableCellHeaderStates.COLUMN) ===
         TableCellHeaderStates.COLUMN
           ? 'Remove'
-          : 'Add'}{' '}
+          : 'Add'}
         column header
       </span>
     </button>

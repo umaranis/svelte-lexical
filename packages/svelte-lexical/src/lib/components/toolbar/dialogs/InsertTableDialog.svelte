@@ -56,12 +56,12 @@
     <h2 class="Modal__title">Insert Table</h2>
     <div class="Modal__content">
       <NumberInput
-        placeholder={'# of rows (1-500)'}
+        placeholder="# of rows (1-500)"
         label="Rows"
         bind:value={rows}
         dataTestId="table-modal-rows" />
       <NumberInput
-        placeholder={'# of columns (1-50)'}
+        placeholder="# of columns (1-50)"
         label="Columns"
         bind:value={columns}
         dataTestId="table-modal-columns" />

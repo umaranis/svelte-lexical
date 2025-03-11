@@ -10,7 +10,7 @@
 <DropDownItem
   onclick={() => clearFormatting($activeEditor)}
   class="item wide "
-  title={`Clear text formatting`}
+  title="Clear text formatting"
   ariaLabel="Clear all text formatting">
   <div class="icon-text-container">
     <i class="icon clear"></i>

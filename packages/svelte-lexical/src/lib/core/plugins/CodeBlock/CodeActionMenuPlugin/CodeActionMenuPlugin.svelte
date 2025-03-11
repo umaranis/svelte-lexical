@@ -37,7 +37,7 @@
 
   let lang = $state('');
   let isShown = $state(false);
-  $inspect(isShown);
+
   let shouldListenMouseMove = $state(false);
   let position: Position = $state({
     right: '0',
