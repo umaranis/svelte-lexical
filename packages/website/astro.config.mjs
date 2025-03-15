@@ -37,6 +37,23 @@ export default defineConfig({
               label: 'Customizing the theme',
               slug: 'guides/custom-theme',
             },
+            {
+              label: 'Import / Export',
+              items: [
+                {
+                  label: 'JSON',
+                  slug: 'guides/import-export/json',
+                },
+                {
+                  label: 'HTML',
+                  slug: 'guides/import-export/html',
+                },
+                {
+                  label: 'Markdown',
+                  slug: 'guides/import-export/markdown',
+                },
+              ],
+            },
           ],
         },
         {

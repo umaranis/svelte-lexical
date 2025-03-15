@@ -1,0 +1,124 @@
+---
+title: Import / Export HTML
+description: How to import and export contents of the editor to HTML.
+---
+
+## Export HTML
+
+Here we have an example of how to export the contents to HTML and print it to console.
+
+```diff lang="svelte"
+// MyEditor.svelte
+<script lang="ts">
+	import {
+		Composer, ContentEditable,
++		generateHtmlFromNodes,
+		HorizontalRuleNode, HorizontalRulePlugin, RichTextPlugin
+	} from 'svelte-lexical';
+	import { theme } from 'svelte-lexical/dist/themes/default';
+	import MyToolbar from './MyToolbar.svelte';
+
+	const initialConfig = {
+		theme: theme,
+		namespace: 'pg_demo',
+		nodes: [HorizontalRuleNode],
+		onError: (error: Error) => {
+			throw error;
+		}
+	};
+
+	let composer: Composer;
+</script>
+
++<button
++	onclick={() => {
++		const editor = composer.getEditor();
++		editor.read(() => {
++			const html = generateHtmlFromNodes(editor);
++			console.log(html);
++		});
++	}}>Export HTML</button
++>
+
+<Composer {initialConfig} bind:this={composer}>
+	<div class="editor-shell svelte-lexical">
+		<MyToolbar />
+		<div class="editor-container">
+			<div class="editor-scroller">
+				<div class="editor">
+					<ContentEditable />
+				</div>
+			</div>
+			<RichTextPlugin />
+			<HorizontalRulePlugin />
+		</div>
+	</div>
+</Composer>
+```
+
+## Import HTML
+
+Here is an example of how to import HTML contents. It will append to the existing contents.
+
+```diff lang="svelte"
+// MyEditor.svelte
+<script lang="ts">
+	import {
+		Composer, ContentEditable, HorizontalRuleNode, HorizontalRulePlugin, RichTextPlugin,
++    $getRoot as getRoot, generateNodesFromDOM,
+	} from 'svelte-lexical';
+	import { theme } from 'svelte-lexical/dist/themes/default';
+	import MyToolbar from './MyToolbar.svelte';
+
+	const initialConfig = {
+		theme: theme,
+		namespace: 'pg_demo',
+		nodes: [HorizontalRuleNode],
+		onError: (error: Error) => {
+			throw error;
+		}
+	};
+
+	let composer: Composer;
++	let htmlString = `<p class="SL_Theme__paragraph" dir="ltr"><span style="white-space: pre-wrap;">Hello </span><b><strong class="SL_Theme__textBold" style="white-space: pre-wrap;">World</strong></b><span style="white-space: pre-wrap;">!</span></p>`;
+</script>
+
++<button
++	onclick={() => {
++		const editor = composer.getEditor();
++		editor.update(() => {
++			// In the browser you can use the native DOMParser API to parse the HTML string.
++			const parser = new DOMParser();
++			const dom = parser.parseFromString(htmlString, 'text/html');
++
++			// Once you have the DOM instance it's easy to generate LexicalNodes.
++			const nodes = generateNodesFromDOM(editor, dom);
++
++			// Select the root
++			const selection = getRoot().select();
++
++			// Insert them at a selection.
++			selection.insertNodes(nodes);
++		});
++	}}>Import HTML</button
++>
+
+<Composer {initialConfig} bind:this={composer}>
+	<div class="editor-shell svelte-lexical">
+		<MyToolbar />
+		<div class="editor-container">
+			<div class="editor-scroller">
+				<div class="editor">
+					<ContentEditable />
+				</div>
+			</div>
+			<RichTextPlugin />
+			<HorizontalRulePlugin />
+		</div>
+	</div>
+</Composer>
+```
+
+:::tip
+JSON is the recommended format for persisting the contents of the editor
+:::
