@@ -1,0 +1,115 @@
+---
+title: Get reference to the editor object
+description: How to get reference to the editor.
+---
+
+Access to `Editor` object is required to perform certain operations programmatically like toggle read-only mode, import/export content, etc. 
+
+`Editor` object is created by the `Composer` component. It is available in the context. 
+
+## Using `Composer.getEditor()` component
+
+You can get the reference to the editor object using the `Composer.getEditor` function. Here we are using the `editor` reference to set the editor to read-only mode.
+
+``` diff lang="svelte"
+// MyEditor.svelte
+<script lang="ts">
+	import { Composer, ContentEditable, getEditor, HorizontalRuleNode, HorizontalRulePlugin, RichTextPlugin } from 'svelte-lexical';
+  import {theme} from 'svelte-lexical/dist/themes/default';
+	import MyToolbar from './MyToolbar.svelte';
+
+  const initialConfig = {
+    theme: theme,
+    namespace: 'pg_demo',
+    nodes: [HorizontalRuleNode],
+    onError: (error: Error) => {
+      throw error;
+    },
+  };
+
++  let composer: Composer;
+</script>
+
++<button on:click={() => composer.getEditor().setEditable(false)}>
++  Read Only Mode
++</button>
+
+-<Composer {initialConfig}>
++<Composer {initialConfig} bind:this={composer}>
+  <div class="editor-shell svelte-lexical">
+    <MyToolbar />
+    <div class="editor-container">
+      <div class="editor-scroller">
+        <div class="editor">
+          <ContentEditable />
+        </div>
+      </div>
+      <RichTextPlugin />
+      <HorizontalRulePlugin />
+    </div>
+  </div>
+</Composer>
+```
+
+## Using Svelte Context API
+
+You can also get the reference to the editor object using the top-level `getEditor` function. It is wrapper around the Svelte Context API.
+
+:::caution
+This only works within the `Composer` context and `getEditor` call can only be made during component initialization.
+:::
+
+Here we create a `ReadonlyButton` component that uses the `getEditor` function to get the reference to the editor object.
+
+``` diff lang="svelte"
+// ReadonlyButton.svelte
+<script lang="ts">
+	import { getEditor } from 'svelte-lexical';
+	const editor = getEditor();
+</script>
+
+<button on:click={() => editor.setEditable(false)}>
+	Read Only Mode
+</button>
+```
+
+Let's add the button to `MyEditor.svelte`
+
+``` diff lang="svelte"
+// MyEditor.svelte
+<script lang="ts">
+	import {
+		Composer, ContentEditable, getEditor,
+		HorizontalRuleNode, HorizontalRulePlugin, RichTextPlugin
+	} from 'svelte-lexical';
+	import { theme } from 'svelte-lexical/dist/themes/default';
+	import MyToolbar from './MyToolbar.svelte';
++	import ReadonlyButton from './ReadonlyButton.svelte';
+
+	const initialConfig = {
+		theme: theme,
+		namespace: 'pg_demo',
+		nodes: [HorizontalRuleNode],
+		onError: (error: Error) => {
+			throw error;
+		}
+	};
+</script>
+
+<Composer {initialConfig}>
+	<div class="editor-shell svelte-lexical">
+		<MyToolbar />
++    <ReadonlyButton/>
+		<div class="editor-container">
+			<div class="editor-scroller">
+				<div class="editor">
+					<ContentEditable />
+				</div>
+			</div>
+			<RichTextPlugin />
+			<HorizontalRulePlugin />
+		</div>
+	</div>
+</Composer>
+```
+

@@ -17,6 +17,26 @@ export default defineConfig({
           items: [
             // Each item here is one entry in the navigation menu.
             {label: 'Getting Started', slug: 'guides/getting-started'},
+            {
+              label: 'Customizing the editor',
+              slug: 'guides/customizing-editor',
+            },
+            {
+              label: 'Add plugins',
+              slug: 'guides/add-plugin',
+            },
+            {
+              label: 'Get editor object reference',
+              slug: 'guides/get-reference-to-editor',
+            },
+            {
+              label: 'Read Mode / Edit Mode',
+              slug: 'guides/read-mode-edit-mode',
+            },
+            {
+              label: 'Customizing the theme',
+              slug: 'guides/custom-theme',
+            },
           ],
         },
         {
