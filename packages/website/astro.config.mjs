@@ -54,6 +54,23 @@ export default defineConfig({
                 },
               ],
             },
+            {
+              label: 'Plugins',
+              items: [
+                {
+                  label: 'List of Plugins',
+                  slug: 'guides/plugins/plugins-list',
+                },
+                {
+                  label: 'Markdown Shortcuts',
+                  slug: 'guides/plugins/markdown-shortcuts',
+                },
+                {
+                  label: 'Column Layout',
+                  slug: 'guides/plugins/column-layout',
+                },
+              ],
+            },
           ],
         },
         {
