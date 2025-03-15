@@ -26,11 +26,10 @@ To run the demo project:
   - change directory: `cd ../../demos/playground`
   - run dev: `pnpm dev`
 
-
 ## Development Notes
 
 - This project is set up as a monorepo using pnpm workspaces.
-- To run a demo in development, execute <code>pnpm -C demos/playground dev</code>.
+- To run a demo in development, execute `pnpm -C demos/playground dev`.
 - ESLint is set up for VS Code.
 - The npm package is automatically published on creation of a GitHub release using GitHub Actions.
 - Unit testing is set up for the svelte-lexical package using Jest and Testing Library.
