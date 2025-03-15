@@ -1,0 +1,125 @@
+---
+title: Add plugins
+description: How to add plugins to the editor.
+---
+
+import {Steps} from '@astrojs/starlight/components';
+
+Let's add a plugin to the editor created in the previous [guide](/guides/customizing-editor).
+
+We are going to use `Horizontal Rule` plugin as an example. The process similar for other plugins. You can find the specifics in the playground or other [demo projects](https://github.com/umaranis/svelte-lexical/tree/master/demos).
+
+<Steps>
+
+1. Add custom node to the editor config
+
+    First, we have to enable the editor to support custom node i.e. `HorizontalRuleNode`. We do this by adding the node to the editor config.
+
+    ```diff lang="svelte"
+    // MyEditor.svelte
+    <script lang="ts">
+      import { Composer, ContentEditable, HorizontalRuleNode, RichTextPlugin } from 'svelte-lexical';
+      import {theme} from 'svelte-lexical/dist/themes/default';
+      import MyToolbar from './MyToolbar.svelte';
+
+      const initialConfig = {
+        theme: theme,
+        namespace: 'pg_demo',
+    -    nodes: [],   
+    +    nodes: [HorizontalRuleNode],
+        onError: (error: Error) => {
+          throw error;
+        },
+      };
+    </script>
+
+    <Composer {initialConfig}>
+      <div class="editor-shell svelte-lexical">
+        <MyToolbar />
+        <div class="editor-container">
+          <div class="editor-scroller">
+            <div class="editor">
+              <ContentEditable />
+            </div>
+          </div>
+          <RichTextPlugin />
+        </div>
+      </div>
+    </Composer>
+    ```
+
+2. Add the plugin to the editor
+
+    Next, we have to include the plugin in the editor.
+
+    ```diff lang="svelte"
+    // MyEditor.svelte
+    <script lang="ts">
+      import { Composer, ContentEditable, HorizontalRuleNode, HorizontalRulePlugin, RichTextPlugin } from 'svelte-lexical';
+      import {theme} from 'svelte-lexical/dist/themes/default';
+      import MyToolbar from './MyToolbar.svelte';
+
+      const initialConfig = {
+        theme: theme,
+        namespace: 'pg_demo',
+        nodes: [HorizontalRuleNode],
+        onError: (error: Error) => {
+          throw error;
+        },
+      };
+    </script>
+
+    <Composer {initialConfig}>
+      <div class="editor-shell svelte-lexical">
+        <MyToolbar />
+        <div class="editor-container">
+          <div class="editor-scroller">
+            <div class="editor">
+              <ContentEditable />
+            </div>
+          </div>
+          <RichTextPlugin />
+    +      <HorizontalRulePlugin />
+        </div>
+      </div>
+    </Composer>
+    ```
+
+3. Add control to the toolbar
+
+    We are going to add a option to the toolbar to insert a horizontal rule. It will placed inside `Insert` dropdown.
+
+    ```diff lang="svelte"
+    // MyToolbar.svelte
+    <script lang="ts">
+      import {
+        BoldButton, Divider, ItalicButton, UnderlineButton, StrikethroughButton,
+        FormatCodeButton, DropDownAlign, FontFamilyDropDown, FontSizeDropDown,
+        Toolbar, InsertDropDown, InsertHRDropDownItem
+      } from 'svelte-lexical';
+    </script>
+
+    <Toolbar>
+      {#snippet children({editor, activeEditor, blockType})}
+        <FontFamilyDropDown />
+        <FontSizeDropDown />
+        <Divider />
+        <BoldButton />
+        <ItalicButton />
+        <UnderlineButton />
+        <StrikethroughButton />
+        <FormatCodeButton />
+        <Divider />
+    +    <InsertDropDown>
+    +      <InsertHRDropDownItem />
+    +    </InsertDropDown>
+        <DropDownAlign />
+      {/snippet}
+    </Toolbar>
+    ```
+
+</Steps>
+
+:::tip
+You can find the list of plugins [here](/guides/plugins/plugins-list).
+:::

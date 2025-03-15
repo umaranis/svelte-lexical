@@ -1,0 +1,55 @@
+---
+title: Read Mode / Edit Mode
+description: How to set Read and Edit mode for the editor
+---
+
+
+## Set the current mode
+
+To get the reference to the editor, see [Get Editor reference](get-reference-to-editor).
+
+You can change the mode as follows:
+
+```js
+editor.setEditable(true);
+```
+
+## Retrieve the current mode
+
+In order to find the current mode of the editor you can use:
+
+```js
+const isEditable = editor.isEditable(); // Returns true or false
+```
+
+You can also get notified when the editor's read only mode has changed:
+
+```js
+const removeEditableListener = editor.registerEditableListener(
+  (isEditable) => {
+    // The editor's mode is passed in!
+    console.log(isEditable);
+  },
+);
+
+// Do not forget to unregister the listener when no longer needed!
+removeEditableListener();
+```
+
+## Launch in Read mode
+
+To launch the editor in Read mode, set the `editable` flag in the `initialConfig`.
+
+```svelte {5}
+	const initialConfig = {
+		theme: theme,
+		namespace: 'pg_demo',
+		nodes: [HorizontalRuleNode],
+    editable: false,
+		onError: (error: Error) => {
+			throw error;
+		}
+	};
+```
+
+

@@ -1,0 +1,114 @@
+---
+title: Import / Export to Markdown
+description: How to import and export contents of the editor to Markdown.
+---
+
+## Export Markdown
+
+Here we have an example of how to export the contents to Markdown and print it to console.
+
+```diff lang="svelte"
+// MyEditor.svelte
+<script lang="ts">
+	import {
+		Composer, ContentEditable, HorizontalRuleNode, HorizontalRulePlugin, RichTextPlugin,
++    convertToMarkdownString,
+	} from 'svelte-lexical';
+	import { theme } from 'svelte-lexical/dist/themes/default';
+	import MyToolbar from './MyToolbar.svelte';
+
+	const initialConfig = {
+		theme: theme,
+		namespace: 'pg_demo',
+		nodes: [HorizontalRuleNode],
+		onError: (error: Error) => {
+			throw error;
+		}
+	};
+
+	let composer: Composer;
+</script>
+
++<button
++	onclick={() => {
++		const editor = composer.getEditor();
++		editor.read(() => {
++			const markdown = convertToMarkdownString();
++			console.log(markdown);
++		});
++	}}>Export Markdown</button
++>
+
+<Composer {initialConfig} bind:this={composer}>
+	<div class="editor-shell svelte-lexical">
+		<MyToolbar />
+		<div class="editor-container">
+			<div class="editor-scroller">
+				<div class="editor">
+					<ContentEditable />
+				</div>
+			</div>
+			<RichTextPlugin />
+			<HorizontalRulePlugin />
+		</div>
+	</div>
+</Composer>
+```
+
+## Import Markdown
+
+Here is an example of how to import Markdown contents. It will replace the contents of the editor.
+
+```diff lang="svelte"
+// MyEditor.svelte
+<script lang="ts">
+	import {
+		Composer, ContentEditable, HorizontalRuleNode, HorizontalRulePlugin, RichTextPlugin,
++    convertFromMarkdownString,
+	} from 'svelte-lexical';
+	import { theme } from 'svelte-lexical/dist/themes/default';
+	import MyToolbar from './MyToolbar.svelte';
+
+	const initialConfig = {
+		theme: theme,
+		namespace: 'pg_demo',
+		nodes: [HorizontalRuleNode],
+		onError: (error: Error) => {
+			throw error;
+		}
+	};
+
+	let composer: Composer;
++  let markdownString = 'Hello **World!**';
+</script>
+
++<button
++	onclick={() => {
++		const editor = composer.getEditor();
++		editor.update(() => {
++			const markdown = convertFromMarkdownString(markdownString);
++			console.log(markdown);
++		});
++	}}>Import Markdown</button
++>
+
+<Composer {initialConfig} bind:this={composer}>
+	<div class="editor-shell svelte-lexical">
+		<MyToolbar />
+		<div class="editor-container">
+			<div class="editor-scroller">
+				<div class="editor">
+					<ContentEditable />
+				</div>
+			</div>
+			<RichTextPlugin />
+			<HorizontalRulePlugin />
+		</div>
+	</div>
+</Composer>
+
+```
+
+:::tip
+JSON is the recommended format for persisting the contents of the editor
+:::

@@ -3,4 +3,5 @@ packages:
   - demos/**
 onlyBuiltDependencies:
   - '@sveltejs/kit'
+  - esbuild
   - svelte-preprocess

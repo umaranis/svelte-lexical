@@ -1,0 +1,42 @@
+---
+title: Collaboration in svelte-lexical
+description: How to enable collaboration in the editor.
+---
+
+Collaboration is implemented using `Yjs` with `y-websocket` as the Connection provider.
+
+## Starting collaboration in the playground
+
+There are two ways to start collaboration in the playground app.
+
+### Cross-tab communication (testing and development)
+
+It works across tabs of a browser (no need to start a `y-websocket` server). Just start the playground app and turn on collaboration.
+
+Svelte-lexical has a Split view that prvides a easier way to work with collaboration.
+
+To start, add the following to the URL: `/split/?isCollab=true`
+
+Or turn on, Split `Split Screen` and `Collaboration` from settings UI.
+
+### Start a collaboration server
+
+1. Start the playground app (run `pnpm dev` from the `/demos/playground` folder)
+2. Start the y-websocket server on localhost (run from `/demos/playground` folder)
+
+    `PORT=1234 pnpm y-websocket-server`
+
+3. Turn on `Collaboration` from settings in UI (or pass `?isCollab=true` in the URL)
+
+## Properly boostrapping CollaborationPlugin
+
+- set editor's `initialEditorState` to null
+- don't use the HistoryPlugin with collaboration
+- resolve path for Yjs in vite config
+
+## Yjs Synchronization issue with vite build in development mode [resolved]
+
+Issue: **Yjs was already imported. This breaks constructor checks and will lead to issues!** (https://github.com/yjs/yjs/issues/438)
+
+See more details [here at lexical](https://github.com/facebook/lexical/issues/2153) and [here at svelte-lexical](https://github.com/umaranis/svelte-lexical/issues/20).
+

@@ -1,0 +1,25 @@
+---
+title: Customizing the theme
+description: How to customize the theme of the editor.
+---
+
+import {FileTree} from '@astrojs/starlight/components';
+
+A theme consists of two parts:
+- **editor theme** - styles for the editor content like heading, paragraph, table, etc.
+- **shell theme** - styles for the editor shell like toolbar, dialog, etc.
+
+To understand how a custom theme is created, you can refer to the [playground](https://svelte-lexical-playground.vercel.app/) and the [source code](https://github.com/umaranis/svelte-lexical/tree/master/demos/playground) for the same.
+
+Following files in the `playground` project define the custom theme:
+
+<FileTree>
+  - svelte.config.js
+  - package.json
+  - src
+    - **index.css** shell theme
+    - themes
+      - **PlaygroundEditorTheme.css** editor theme styles
+      - **PlaygroundEditorTheme.ts** editor theme class names mapping
+  - static
+</FileTree>

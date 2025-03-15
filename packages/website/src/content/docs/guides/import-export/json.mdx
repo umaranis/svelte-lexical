@@ -1,0 +1,110 @@
+---
+title: Import / Export JSON
+description: How to import and export contents of the editor to JSON.
+---
+
+The Editor has its own data model, represented as a tree of nodes. It helps to store the history changes and provides undo/redo functionality. JSON representation of the data model is the recommended way to persist the editor contents.
+
+## Export JSON
+
+We can export to JSON using `editor.getEditorState().toJSON()`.
+
+Here is an example of how to export the editor contents to JSON and print them to console.
+
+```diff lang="svelte"
+// MyEditor.svelte
+<script lang="ts">
+	import {
+		Composer, ContentEditable, HorizontalRuleNode,
+		HorizontalRulePlugin,	RichTextPlugin
+	} from 'svelte-lexical';
+	import { theme } from 'svelte-lexical/dist/themes/default';
+	import MyToolbar from './MyToolbar.svelte';
+
+	const initialConfig = {
+		theme: theme,
+		namespace: 'pg_demo',
+		nodes: [HorizontalRuleNode],
+		onError: (error: Error) => {
+			throw error;
+		}
+	};
+
+	let composer: Composer;
+</script>
+
++<button
++	onclick={() => {
++		const json = composer.getEditor().getEditorState().toJSON();
++    console.log(json);
++	}}>Export JSON</button
++>
+
+<Composer {initialConfig} bind:this={composer}>
+	<div class="editor-shell svelte-lexical">
+		<MyToolbar />
+		<div class="editor-container">
+			<div class="editor-scroller">
+				<div class="editor">
+					<ContentEditable />
+				</div>
+			</div>
+			<RichTextPlugin />
+			<HorizontalRulePlugin />
+		</div>
+	</div>
+</Composer>
+```
+
+## Import JSON
+
+Following is an example of how to import the editor contents from JSON. It will replace the existing contents if any.
+
+```diff lang="svelte"
+// MyEditor.svelte
+<script lang="ts">
+	import {
+		Composer,
+		ContentEditable,
+		HorizontalRuleNode,
+		HorizontalRulePlugin,
+		RichTextPlugin
+	} from 'svelte-lexical';
+	import { theme } from 'svelte-lexical/dist/themes/default';
+	import MyToolbar from './MyToolbar.svelte';
+
+	const initialConfig = {
+		theme: theme,
+		namespace: 'pg_demo',
+		nodes: [HorizontalRuleNode],
+		onError: (error: Error) => {
+			throw error;
+		}
+	};
+
+	let composer: Composer;
++  const json = `...`;  // include JSON here (could be generated using editor.getEditorState())
+</script>
+
++<button
++	onclick={() => {
++    const editor = composer.getEditor();
++    editor.setEditorState(editor.parseEditorState(json));
++	}}>Import JSON</button
++>
+
+<Composer {initialConfig} bind:this={composer}>
+	<div class="editor-shell svelte-lexical">
+		<MyToolbar />
+		<div class="editor-container">
+			<div class="editor-scroller">
+				<div class="editor">
+					<ContentEditable />
+				</div>
+			</div>
+			<RichTextPlugin />
+			<HorizontalRulePlugin />
+		</div>
+	</div>
+</Composer>
+```

@@ -2,7 +2,7 @@
 [![E2E Tests](https://github.com/umaranis/svelte-lexical/actions/workflows/tests.yml/badge.svg)](https://github.com/umaranis/svelte-lexical/actions/workflows/tests.yml)
 [![npm version](https://img.shields.io/npm/v/svelte-lexical?logo=npm)](https://www.npmjs.com/package/svelte-lexical)
 
-<img src="docs/logo/SVG/banner-slim.svg" alt="svelte-lexical banner" width="750px">
+[//]: # (<img src="docs/logo/SVG/banner-slim.svg" alt="svelte-lexical banner" width="750px">)
 
 # svelte-lexical
 
@@ -10,7 +10,7 @@ A rich-text editor for Svelte based on [Lexical](https://lexical.dev/)
 
 Lexical is an extensible text editor framework developed by awesome developers at Facebook. The purpose of this project is to provide Svelte bindings for Lexical and also develop high-level components using Lexical.
 
-![Screenshot-Svelte-Lexical](docs/images/Screenshot-Svelte-Lexical.jpg)
+![Screenshot-Svelte-Lexical](docs/images/editor-image.webp)
 
 ## Getting Started
 

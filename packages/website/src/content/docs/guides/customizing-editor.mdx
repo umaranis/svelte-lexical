@@ -1,0 +1,136 @@
+---
+title: Customizing the editor
+description: How to customize the editor by including the desired plugins.
+---
+
+`svelte-lexical` provides a pre-built editor called `RichTextComposer` (see [Getting Started](/docs/guides/getting-started)). It may fulfil your needs, if not you can create a custom editor by including the desired plugins.
+
+## Create the Toolbar
+
+Let's start by creating a toolbar.
+
+```svelte
+// MyToolbar.svelte
+<script lang="ts">
+  import {Toolbar} from 'svelte-lexical';
+</script>
+
+<Toolbar>
+  <!-- include the desired controls here -->
+</Toolbar>
+```
+
+Next, we have to include the desired controls.
+
+```svelte {11-22}
+// MyToolbar.svelte
+<script lang="ts">
+  import {
+    BoldButton, Divider, ItalicButton, UnderlineButton, StrikethroughButton, 
+    FormatCodeButton, DropDownAlign, FontFamilyDropDown, FontSizeDropDown, 
+    Toolbar 
+  } from 'svelte-lexical';
+</script>
+
+<Toolbar>
+  {#snippet children({editor, activeEditor, blockType})}
+    <FontFamilyDropDown />
+    <FontSizeDropDown />
+    <Divider />
+    <BoldButton />
+    <ItalicButton />
+    <UnderlineButton />
+    <StrikethroughButton />
+    <FormatCodeButton />
+    <Divider />
+    <DropDownAlign />
+  {/snippet}
+</Toolbar>
+```
+
+[Here](https://github.com/umaranis/svelte-lexical/tree/master/packages/svelte-lexical/src/lib/components/toolbar) you can find all toolbar the controls available in the `svelte-lexical` package.
+
+:::note
+You can visit the [playground](https://svelte-lexical-playground.vercel.app/) to see various toolbar controls in action. Source code for playground toolbar is available at [ToolbarPlayground.svelte](https://github.com/umaranis/svelte-lexical/blob/master/demos/playground/src/ToolbarPlayground.svelte)
+:::
+
+## Create the Editor
+
+Create an object that contains the initial configuration for the editor.
+
+```svelte
+// MyEditor.svelte
+<script lang="ts">
+  import {theme} from 'svelte-lexical/dist/themes/default';
+
+  const initialConfig = {
+    theme: theme,
+    namespace: 'my_demo',
+    nodes: [],
+    onError: (error: Error) => {
+      throw error;
+    },
+  };
+</script>
+```
+Here, we have imported the default theme and included it in the initial configuration.
+
+Let's create the editor.
+
+```svelte {17-30}
+// MyEditor.svelte
+<script lang="ts">
+	import { Composer, ContentEditable, RichTextPlugin } from 'svelte-lexical';
+  import {theme} from 'svelte-lexical/dist/themes/default';
+	import MyToolbar from './MyToolbar.svelte';
+
+  const initialConfig = {
+    theme: theme,
+    namespace: 'pg_demo',
+    nodes: [],
+    onError: (error: Error) => {
+      throw error;
+    },
+  };
+</script>
+
+<Composer {initialConfig}>
+  <div class="editor-shell svelte-lexical">
+    <MyToolbar />
+    <div class="editor-container">
+      <div class="editor-scroller">
+        <div class="editor">
+          <ContentEditable />
+        </div>
+      </div>
+      <RichTextPlugin />
+    </div>
+  </div>
+</Composer>
+```
+
+'Composer` is the top level component that houses the editor and the related UI. Below we have 
+
+- initialized the `Composer` providing it the `initialConfig` 
+- and included the `MyToolbar.svelte` component that we created earlier
+- and have `ContentEditable` component that is used to render the editor
+- finally we have included the `RichTextPlugin` that enables rich text support like bold, italic, underline, etc.
+
+## Display the Editor
+
+Finally, we add `MyEditor.svelte` to our page.
+
+```svelte {8}
+// +page.svelte
+<script>
+	import MyEditor from "./MyEditor.svelte";
+
+</script>
+<h1>Welcome to svelte-lexical</h1>
+
+<MyEditor/>
+```
+
+:::note
+All the functionality is `svelte-lexical` is implemented through plugins. You can include the desired plugins in the editor to enable the desired features.
+:::

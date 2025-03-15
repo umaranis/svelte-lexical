@@ -1,0 +1,100 @@
+---
+title: Markdown Shortcut Plugin
+description: How to enable and use markdown shortcuts in the editor.
+---
+
+This plugin enables mardown shortcuts for formatting texts and other elements. For instance, `#` followed by space can be used to create a heading.
+
+## Usage
+
+Include the `MarkdownShortcutPlugin` inside the `Composer` as shown below:
+
+```svelte
+<Composer {initialConfig}>
+  <div class="editor-shell">
+    <ToolbarRichText />
+    <div class="editor-container">
+      <div class="editor-scroller">
+        <div class="editor">
+          <ContentEditable />
+        </div>
+      </div>
+      <RichTextPlugin />
+
+      <!-- other plugins -->
+
+      <MarkdownShortcutPlugin transformers={ALL_TRANFORMERS} />
+
+      <!-- other plugins -->
+    </div>
+  </div>
+</Composer>
+```
+
+## Transformers
+
+You can specify which transformers to enable in the `transformers` attribute.
+
+Here is the list of supported transformers:
+
+| Transformer            | Description                                                                                                                |
+| :--------------------- | :------------------------------------------------------------------------------------------------------------------------- |
+| BOLD_STAR              | Enclose text in ** to make it to bold (e.g. `**bold text\*\*`)                                                             |
+| BOLD_UNDERSCORE        | Enclose text in ** to make it to bold (e.g. `**bold text\_\_`)                                                             |
+| ITALIC_STAR            | Enclose text in * to make it italic (e.g. `*italic text\*`)                                                                |
+| ITALIC_UNDERSCORE      | Enclose text in _ to make it italic (e.g. `\_italic text_`)                                                                |
+| BOLD_ITALIC_STAR       | Enclose text in **_ to make it to bold and italic (e.g. `_**bold text\*\*\*`)                                              |
+| BOLD_ITALIC_UNDERSCORE | Enclose text in ** to make it to bold and italic (e.g. `\_**bold text\_\_\_`)                                              |
+| INLINE_CODE            | Enclose text in backticks to convert it to inline code (e.g. `let value = 5`)                                              |
+| HIGHLIGHT              | Enclose text in `==` to highlight (e.g. `==highlight==`)                                                                   |
+| STRIKETHROUGH          | Enclose text in ~~ for strikethrough (e.g. `~~strikethrough~~`)                                                            |
+| HEADING                | Type `# ` to create a heading. Supports H1 to H6 (e.g. `### ` creates H3)                                                  |
+| QUOTE                  | Type `> ` to create a quote                                                                                                |
+| CODE                   | Type ` ``` ` followed by space to create a code block                                                                      |
+| UNORDERED_LIST         | Tyoe `- ` to create an unordered list                                                                                      |
+| ORDERED_LIST           | Type `1. ` to create an ordered list (you can use any digit instead of 1 as starting number)                               |
+| CHECK_LIST             | Type `[] ` to create an check list                                                                                         |
+| LINK                   | Create a link using `[]()` e.g. `[Syed Umar Anis](http://umaranis.com)`                                                    |
+| HR                     | Create horizontal rule using one of the following: `--- `, `___ `, `*** `                                                  |
+| IMAGE                  | Create a image using `![]()` e.g. `![Image Alt Text](https://i0.wp.com/umaranis.com/wp-content/uploads/2023/09/image.png)` |
+
+Pass the desired transformers to Mardown Shortcut Plugin as shown below:
+
+```svelte
+<MarkdownShortcutPlugin transformers={[INLINE_CODE, BOLD_STAR]} />
+```
+
+### Array of Transformers
+
+All of the above transformers can be included by using the `ALL_TRANSFORMERS` array.
+
+```svelte
+<MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
+```
+
+There is also an array for text formatting transformers called `TEXT_FORMAT_TRANSFORMERS`. It includes the following:
+
+- INLINE_CODE
+- BOLD_ITALIC_STAR
+- BOLD_ITALIC_UNDERSCORE
+- BOLD_STAR
+- BOLD_UNDERSCORE
+- HIGHLIGHT
+- ITALIC_STAR
+- ITALIC_UNDERSCORE
+- STRIKETHROUGH
+
+Another array that group transformers is called `ELEMENT_TRANSFORMERS`. It includes:
+
+- HEADING
+- QUOTE
+- CODE
+- UNORDERED_LIST
+- ORDERED_LIST
+
+We can mix arrays and other transfomers to make the desired list. For instance, here is a snippet that includes all text formatting transformers along with the IMAGE and LINK.
+
+```svelte
+<MarkdownShortcutPlugin
+  transformers={[IMAGE, LINK, ...TEXT_FORMAT_TRANSFORMERS]} />
+```
