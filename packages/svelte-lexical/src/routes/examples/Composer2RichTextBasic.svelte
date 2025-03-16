@@ -41,7 +41,7 @@
 </script>
 
 <Composer {initialConfig}>
-  <div class="editor-shell">
+  <div class="editor-shell svelte-lexical">
     <Composer2Toolbar />
     <div class="editor-container">
       <div class="editor-scroller">
