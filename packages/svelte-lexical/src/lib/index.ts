@@ -61,7 +61,7 @@ export {ImageNode} from './core/plugins/Image/ImageNode.js';
 export {KeywordNode} from './core/plugins/KeywordNode.js';
 export {HashtagNode} from './core/plugins/HashtagNode.js';
 export {AutoLinkNode, LinkNode} from '@lexical/link';
-export {CodeNode, CodeHighlightNode} from '@lexical/code';
+export {CodeNode, CodeHighlightNode, $createCodeNode} from '@lexical/code';
 export type {Provider} from '@lexical/yjs';
 export {LayoutContainerNode} from './core/plugins/ColumnsLayout/LayoutContainerNode.js';
 export {LayoutItemNode} from './core/plugins/ColumnsLayout/LayoutItemNode.js';
