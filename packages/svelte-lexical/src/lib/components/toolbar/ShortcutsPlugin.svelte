@@ -24,8 +24,6 @@
     formatNumberedList,
     formatParagraph,
     formatQuote,
-    updateFontSize,
-    UpdateFontSizeType,
     InsertLink,
   } from '$lib/core/commands.js';
   import {
@@ -51,6 +49,10 @@
     isSubscript,
     isSuperscript,
   } from './shortcuts.js';
+  import {
+    decreaseFontSize,
+    increaseFontSize,
+  } from '$lib/core/commands/updateFontSize.js';
 
   const activeEditor = getActiveEditor();
   const blockType = getBlockType();
@@ -115,18 +117,10 @@
       $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code');
     } else if (isIncreaseFontSize(event)) {
       event.preventDefault();
-      updateFontSize(
-        $activeEditor,
-        UpdateFontSizeType.increment,
-        $fontSize.slice(0, -2), // font size without px
-      );
+      increaseFontSize($activeEditor, Number($fontSize.slice(0, -2)));
     } else if (isDecreaseFontSize(event)) {
       event.preventDefault();
-      updateFontSize(
-        $activeEditor,
-        UpdateFontSizeType.decrement,
-        $fontSize.slice(0, -2),
-      );
+      decreaseFontSize($activeEditor, Number($fontSize.slice(0, -2)));
     } else if (isClearFormatting(event)) {
       event.preventDefault();
       clearFormatting($activeEditor);

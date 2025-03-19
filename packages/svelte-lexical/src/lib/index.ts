@@ -117,10 +117,6 @@ export {default as InsertTableDialog} from './components/toolbar/dialogs/InsertT
 export type {ImagePayload} from './core/plugins/Image/ImageNode.js';
 export {getEditor, getActiveEditor} from './core/composerContext.js';
 export {
-  UpdateFontSizeType,
-  calculateNextFontSize,
-  updateFontSizeInSelection,
-  updateFontSize,
   formatParagraph,
   formatHeading,
   formatBulletList,
@@ -132,6 +128,15 @@ export {
   InsertImage,
   FocusEditor,
 } from './core/commands.js';
+export {
+  increaseFontSize,
+  decreaseFontSize,
+  updateFontSize,
+  MIN_ALLOWED_FONT_SIZE,
+  MAX_ALLOWED_FONT_SIZE,
+  DEFAULT_FONT_SIZE,
+} from './core/commands/updateFontSize.js';
+export {toggleBold} from './core/commands/toggleBold.js';
 
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
 export {default as TreeViewPlugin} from './core/plugins/TreeView/TreeViewPlugin.svelte';

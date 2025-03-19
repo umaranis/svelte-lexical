@@ -3,12 +3,13 @@
   import {getActiveEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {getContext} from 'svelte';
   import type {Readable} from 'svelte/store';
-  import {MAX_ALLOWED_FONT_SIZE, MIN_ALLOWED_FONT_SIZE} from './ToolbarData.js';
   import {
+    decreaseFontSize,
+    increaseFontSize,
+    MAX_ALLOWED_FONT_SIZE,
+    MIN_ALLOWED_FONT_SIZE,
     updateFontSize,
-    updateFontSizeInSelection,
-    UpdateFontSizeType,
-  } from '$lib/core/commands.js';
+  } from '$lib/core/commands/updateFontSize.js';
   import {SHORTCUTS} from './shortcuts.js';
 
   let selectionFontSize: Readable<string> = getContext('fontSize');
@@ -37,42 +38,24 @@
     if (e.key === 'Enter' || e.key === 'Tab' || e.key === 'Escape') {
       e.preventDefault();
 
-      updateFontSizeByInputValue(inputValueNumber);
+      updateFontSize($activeEditor, inputValueNumber);
     }
   }
 
   const handleInputBlur = () => {
     if (inputValue !== '' && inputChangeFlag) {
       const inputValueNumber = Number(inputValue);
-      updateFontSizeByInputValue(inputValueNumber);
+      updateFontSize($activeEditor, inputValueNumber);
     }
   };
-
-  function updateFontSizeByInputValue(inputValueNumber: number) {
-    let updatedFontSize = inputValueNumber;
-    if (inputValueNumber > MAX_ALLOWED_FONT_SIZE) {
-      updatedFontSize = MAX_ALLOWED_FONT_SIZE;
-    } else if (inputValueNumber < MIN_ALLOWED_FONT_SIZE) {
-      updatedFontSize = MIN_ALLOWED_FONT_SIZE;
-    }
-
-    inputValue = String(updatedFontSize);
-    updateFontSizeInSelection(
-      $activeEditor,
-      String(updatedFontSize) + 'px',
-      null,
-    );
-    inputChangeFlag = false;
-  }
 </script>
 
 <button
   type="button"
   disabled={!isEditable ||
     ($selectionFontSize !== '' && Number(inputValue) <= MIN_ALLOWED_FONT_SIZE)}
-  onclick={() =>
-    updateFontSize($activeEditor, UpdateFontSizeType.decrement, inputValue)}
-  aria-label="Increase font size"
+  onclick={() => decreaseFontSize($activeEditor, Number(inputValue))}
+  aria-label="Decrease font size"
   class="toolbar-item sl_font-decrement"
   title={`Decrease font size (${SHORTCUTS.DECREASE_FONT_SIZE})`}>
   <i class="format sl_minus-icon"></i>
@@ -93,9 +76,8 @@
   type="button"
   disabled={!isEditable ||
     ($selectionFontSize !== '' && Number(inputValue) >= MAX_ALLOWED_FONT_SIZE)}
-  onclick={() =>
-    updateFontSize($activeEditor, UpdateFontSizeType.increment, inputValue)}
-  aria-label="Decrease font size"
+  onclick={() => increaseFontSize($activeEditor, Number(inputValue))}
+  aria-label="Increase font size"
   class="toolbar-item sl_font-increment"
   title={`Increase font size (${SHORTCUTS.INCREASE_FONT_SIZE})`}>
   <i class="format sl_add-icon"></i>

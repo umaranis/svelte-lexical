@@ -4,4 +4,6 @@ packages:
 onlyBuiltDependencies:
   - '@sveltejs/kit'
   - esbuild
+  - leveldown
+  - sharp
   - svelte-preprocess
