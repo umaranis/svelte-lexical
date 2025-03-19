@@ -27,7 +27,7 @@
     "vite": "^6.2.1"
   },
   "dependencies": {
-    "svelte-lexical": "0.5.2"
+    "svelte-lexical": "0.5.3"
   },
   "size-limit": [
     {
