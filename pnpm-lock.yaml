@@ -30,8 +30,8 @@ importers:
   demos/plaintext-editor:
     dependencies:
       svelte-lexical:
-        specifier: 0.5.2
-        version: 0.5.2(svelte@5.23.0)
+        specifier: 0.5.3
+        version: link:../../packages/svelte-lexical
     devDependencies:
       '@size-limit/preset-app':
         specifier: ^8.2.6
@@ -76,8 +76,8 @@ importers:
   demos/playground:
     dependencies:
       svelte-lexical:
-        specifier: 0.5.2
-        version: 0.5.2(svelte@5.23.0)
+        specifier: 0.5.3
+        version: link:../../packages/svelte-lexical
       y-websocket:
         specifier: 1.5.4
         version: 1.5.4(yjs@13.6.2)
@@ -164,8 +164,8 @@ importers:
   demos/richtext-editor:
     dependencies:
       svelte-lexical:
-        specifier: 0.5.2
-        version: 0.5.2(svelte@5.23.0)
+        specifier: 0.5.3
+        version: link:../../packages/svelte-lexical
     devDependencies:
       '@size-limit/preset-app':
         specifier: ^8.2.6
@@ -210,8 +210,8 @@ importers:
   demos/sveltekit:
     dependencies:
       svelte-lexical:
-        specifier: 0.5.2
-        version: 0.5.2(svelte@5.23.0)
+        specifier: 0.5.3
+        version: link:../../packages/svelte-lexical
       svelte-preprocess:
         specifier: ^6.0.0
         version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.23.0)(typescript@5.8.2)
@@ -4333,11 +4333,6 @@ packages:
     peerDependenciesMeta:
       svelte:
         optional: true
-
-  svelte-lexical@0.5.2:
-    resolution: {integrity: sha512-SIOf0y7UuCs/wf67L4luAN9r9N5Gayr1YH95VbVcyAyUoyVcV/aivlEe7tVrJhsvN/RIAfgoB+n3TWMy3/iNpA==}
-    peerDependencies:
-      svelte: ^5.0.0
 
   svelte-preprocess@6.0.3:
     resolution: {integrity: sha512-PLG2k05qHdhmRG7zR/dyo5qKvakhm8IJ+hD2eFRQmMLHp7X3eJnjeupUtvuRpbNiF31RjVw45W+abDwHEmP5OA==}
@@ -9772,36 +9767,6 @@ snapshots:
       postcss-selector-parser: 7.1.0
     optionalDependencies:
       svelte: 5.23.0
-
-  svelte-lexical@0.5.2(svelte@5.23.0):
-    dependencies:
-      '@lexical/clipboard': 0.27.1
-      '@lexical/code': 0.27.1
-      '@lexical/file': 0.27.1
-      '@lexical/hashtag': 0.27.1
-      '@lexical/history': 0.27.1
-      '@lexical/html': 0.27.1
-      '@lexical/link': 0.27.1
-      '@lexical/list': 0.27.1
-      '@lexical/mark': 0.27.1
-      '@lexical/markdown': 0.27.1
-      '@lexical/overflow': 0.27.1
-      '@lexical/plain-text': 0.27.1
-      '@lexical/rich-text': 0.27.1
-      '@lexical/selection': 0.27.1
-      '@lexical/table': 0.27.1
-      '@lexical/text': 0.27.1
-      '@lexical/utils': 0.27.1
-      '@lexical/yjs': 0.27.1(yjs@13.6.2)
-      lexical: 0.27.1
-      lodash-es: 4.17.21
-      prettier: 3.5.3
-      svelte: 5.23.0
-      y-websocket: 1.5.4(yjs@13.6.2)
-      yjs: 13.6.2
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
 
   svelte-preprocess@6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.23.0)(typescript@5.8.2):
     dependencies:
