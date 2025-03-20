@@ -6,9 +6,9 @@
 
 A rich-text editor for Svelte based on [Lexical](https://lexical.dev/)
 
-Lexical is an extensible text editor framework developed by awesome developers at Facebook. The purpose of this project is to provide Svelte bindings for Lexical and also develop high-level components using Lexical.
+Lexical is an extensible text editor framework developed by awesome developers at Facebook. This project aims to provide Svelte bindings for Lexical and develop high-level components using Lexical.
 
-![Screenshot-Svelte-Lexical](../../docs/images/editor-image.webp)
+![Screenshot-Svelte-Lexical](https://raw.githubusercontent.com/umaranis/svelte-lexical/refs/heads/master/docs/images/editor-image.webp)
 
 ## Getting Started
 
@@ -36,4 +36,4 @@ To run the demo project:
 
 ## Plugins
 
-Most of the `svelte-lexical` functionality is implemented through plugins. See the [list of plugins here](docs/plugins/readme.md).
+Most of the `svelte-lexical` functionality is implemented through plugins. See the [list of plugins here](../../docs/plugins/readme.md).
