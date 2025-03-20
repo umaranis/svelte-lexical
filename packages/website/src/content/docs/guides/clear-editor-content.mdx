@@ -1,0 +1,96 @@
+---
+title: Clear the content of the editor
+description: Explanation on how to remove all content of the editor
+---
+
+Sometimes you want to programmatically remove all content from the editor in order to start from a blank editor.
+
+The first thing to do is to get a reference to the `Editor`. This is explained on [Get Editor reference](get-reference-to-editor).
+
+This example will create a ClearButton that clears the content of the `Editor`. We will assume that you chose to get the reference to the `Editor` via the `getEditor` API.
+
+:::caution
+Let's repeat here that this `getEditor` API only works within the `Composer` context and `getEditor` call can only be made during component initialization.
+:::
+
+``` diff lang="svelte"
+// ClearButton.svelte
+<script lang="ts">
+	import { getEditor } from 'svelte-lexical';
+	const editor = getEditor();
+</script>
+
+<button on:click={() => editor.clear()}>
+	Clear the content
+</button>
+```
+
+Here we are using the `.clear()` API on the `Editor` that clears the content.
+
+Let's add the button to `MyEditor.svelte`
+
+``` diff lang="svelte"
+// MyEditor.svelte
+<script lang="ts">
+	import {
+		Composer, ContentEditable, getEditor,
+		HorizontalRuleNode, HorizontalRulePlugin, RichTextPlugin
+	} from 'svelte-lexical';
+	import { theme } from 'svelte-lexical/dist/themes/default';
+	import MyToolbar from './MyToolbar.svelte';
++	import ClearButton from './ClearButton.svelte';
+
+	const initialConfig = {
+		theme: theme,
+		namespace: 'pg_demo',
+		nodes: [HorizontalRuleNode],
+		onError: (error: Error) => {
+			throw error;
+		}
+	};
+</script>
+
+<Composer {initialConfig}>
+	<div class="editor-shell svelte-lexical">
+		<MyToolbar />
++    <ClearButton/>
+		<div class="editor-container">
+			<div class="editor-scroller">
+				<div class="editor">
+					<ContentEditable />
+				</div>
+			</div>
+			<RichTextPlugin />
+			<HorizontalRulePlugin />
+		</div>
+	</div>
+</Composer>
+```
+
+
+As a pure educational scenario, and in order to show you that there is a lot more than `.clear()` in the lexical/svelte-lexical API, here is another version of the `ClearButton`: instead of calling `.clear()`, we select all the nodes under the root node of the `Editor` - just like a user would select all the text inside the editor - and then remove the selection.
+
+Here is the modified version of the `ClearButton` button :
+
+``` diff lang="svelte"
+// ClearButton.svelte
+<script lang="ts">
+	import { getEditor } from 'svelte-lexical';
+	const editor = getEditor();
++	function clearEditor() {
++	  // get the root Node of the document
++	  const root = editor.getRoot();
++	  // select all the Nodes under root
++	  const selection = root.select(0, root.getChildrenSize());
++	  // remove the selection from the editor
++    	  selection.removeText();  
++	}
+</script>
+
++<button on:click={() => clearEditor()}>
+-<button on:click={() => editor.clear()}>
+	Clear the content
+</button>
+```
+
+
