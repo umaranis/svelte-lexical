@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/umaranis/svelte-lexical",
+    "url": "git+https://github.com/umaranis/svelte-lexical.git",
     "directory": "svelte-lexical"
   },
   "exports": {
