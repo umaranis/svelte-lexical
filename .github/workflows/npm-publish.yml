@@ -27,9 +27,15 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
-      - run: npm install
+      - uses: pnpm/action-setup@v4.0.0
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 9
+          run_install: false
+      - run: pnpm install
         working-directory: ./packages/svelte-lexical
-      - run: npm publish
+      - run: pnpm publish
         working-directory: ./packages/svelte-lexical
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
