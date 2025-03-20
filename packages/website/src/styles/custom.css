@@ -36,10 +36,19 @@
 }
 
 .hero > .hero-html > .hero-image {
-  transform-origin: bottom left;
-  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  height: auto;
 }
 
-.hero > .hero-html > .hero-image:hover {
-  transform: rotate(-6deg);
+@media (min-width: 50rem) {
+  .hero > .hero-html > .hero-image {
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-in-out;
+    width: 640px;
+    height: 455px;
+  }
+
+  .hero > .hero-html > .hero-image:hover {
+    transform: rotate(-6deg);
+  }
 }
