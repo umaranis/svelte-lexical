@@ -67,7 +67,7 @@
         target.closest<HTMLElement>(
           `button${getThemeSelector(editor._config.theme.tableAddColumns)}`,
         ) ||
-        target.closest<HTMLElement>('div.TableCellResizer__resizer')
+        target.closest<HTMLElement>('div.SL_Theme__tableCellResizer')
       );
 
       return {isOutside, tableDOMNode};
