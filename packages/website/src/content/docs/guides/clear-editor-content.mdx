@@ -20,14 +20,72 @@ Let's repeat here that this `getEditor` API only works within the `Composer` con
 	const editor = getEditor();
 </script>
 
-<button on:click={() => editor.clear()}>
+<button>
 	Clear the content
 </button>
 ```
 
-Here we are using the `.clear()` API on the `Editor` that clears the content.
+Now we want to call a function that will clear the content when the button is clicked. For this, we need to add an onclick listener on the button and then use the `editor.update(..)` API to give lexical a callback that it will call in a next update cycle to update the state of the editor.
 
-Let's add the button to `MyEditor.svelte`
+``` diff lang="svelte"
+// ClearButton.svelte
+<script lang="ts">
+        import { getEditor } from 'svelte-lexical';
+        const editor = getEditor();
++        function clearContent() {
++          // code to be added here
++        }
+</script>
+
+-<button>
++<button on:click={() => editor.update(clearContent)}>
+        Clear the content
+</button>
+```
+
+When `editor.update(..)` is called, the given callback has to build a new editor state and for this, we need to use the corresponding APIs.
+In order to clear the content, one way is to call `.clear()` on the `RootNode` of the content. So we need to first add a method that will give us access to the root node :
+
+``` diff lang="svelte"
+// ClearButton.svelte
+<script lang="ts">
+-        import { getEditor } from 'svelte-lexical';
++        import { getEditor, $getRoot as getRoot } from 'svelte-lexical';
+        const editor = getEditor();
+        function clearContent() {
+          // code to be added here
+        }
+</script>
+
+<button on:click={() => editor.update(clearContent)}>
+        Clear the content
+</button>
+```
+
+:::caution
+Note how `$getRoot` was renamed to `getRoot` during the import. This is necessary in order to not confuse `Svelte` as `$` is part of the `Svelte` semantics and `Svelte` will refuse to expose a function that starts with a `$`
+:::
+
+Next, in order to finalize the `ClearButton` component, we have to fill the `clearContent` method with the necessary call to `root.clear()`.
+
+``` diff lang="svelte"
+// ClearButton.svelte
+<script lang="ts">
+        import { getEditor, $getRoot as getRoot } from 'svelte-lexical';
+        const editor = getEditor();
+        function clearContent() {
+-          // code to be added here
++          const root = getRoot();
++          root.clear();
+        }
+</script>
+
+<button on:click={() => editor.update(clearContent)}>
+        Clear the content
+</button>
+```
+
+The `ClearButton` is now in its final state. Let’s add the button to MyEditor.svelte
 
 ``` diff lang="svelte"
 // MyEditor.svelte
@@ -53,7 +111,7 @@ Let's add the button to `MyEditor.svelte`
 <Composer {initialConfig}>
 	<div class="editor-shell svelte-lexical">
 		<MyToolbar />
-+    <ClearButton/>
++		<ClearButton/>
 		<div class="editor-container">
 			<div class="editor-scroller">
 				<div class="editor">
@@ -75,22 +133,24 @@ Here is the modified version of the `ClearButton` button :
 ``` diff lang="svelte"
 // ClearButton.svelte
 <script lang="ts">
-	import { getEditor } from 'svelte-lexical';
-	const editor = getEditor();
-+	function clearEditor() {
-+	  // get the root Node of the document
-+	  const root = editor.getRoot();
-+	  // select all the Nodes under root
-+	  const selection = root.select(0, root.getChildrenSize());
-+	  // remove the selection from the editor
-+    	  selection.removeText();  
-+	}
+        import { getEditor, $getRoot as getRoot } from 'svelte-lexical';
+        const editor = getEditor();
+        function clearContent() {
+          const root = getRoot();
+-          root.clear();
++          const selection = root.select(0, root.getChildrenSize());
++          selection.removeText();
+        }
 </script>
 
-+<button on:click={() => clearEditor()}>
--<button on:click={() => editor.clear()}>
-	Clear the content
+<button on:click={() => editor.update(clearContent)}>
+        Clear the content
 </button>
 ```
 
 
+If you are interested in the available APIs on the root node, you can check
+- the available methods on the `RootNote` class in the lexical API ([Lexical RootNode API](https://lexical.dev/docs/api/classes/lexical.RootNode))
+- and since `RootNode` inherits from `ElementNode`, the available methods on the `ElementNote` class in the lexical API ([Lexical ElementNode API](https://lexical.dev/docs/api/classes/lexical.ElementNode))
+
+For information, the `.clear()` method that we used earlier is defined by the `ElementNode` class.
