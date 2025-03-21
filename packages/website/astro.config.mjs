@@ -34,6 +34,10 @@ export default defineConfig({
               slug: 'guides/read-mode-edit-mode',
             },
             {
+              label: 'Clear Editor Content',
+              slug: 'guides/clear-editor-content',
+            },
+            {
               label: 'Customizing the theme',
               slug: 'guides/custom-theme',
             },
