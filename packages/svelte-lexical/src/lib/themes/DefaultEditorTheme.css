@@ -448,6 +448,12 @@
 .SL_Theme__listItem {
   margin: 0 32px;
 }
+.SL_Theme__listItem::marker {
+  color: var(--listitem-marker-color);
+  background-color: var(--listitem-marker-background-color);
+  font-family: var(--listitem-marker-font-family);
+  font-size: var(--listitem-marker-font-size);
+}
 .SL_Theme__listItemChecked,
 .SL_Theme__listItemUnchecked {
   position: relative;
