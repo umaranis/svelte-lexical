@@ -20,7 +20,7 @@
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
     type LexicalEditor,
-    $getRoot as getRoot,
+    $setSelection as setSelection,
     $isParagraphNode as isParagraphNode,
     $createParagraphNode as createParagraphNode,
     ElementNode,
@@ -233,9 +233,7 @@
         tableNode.markDirty();
         tableCellNode = tableCellNode.getLatest();
       }
-
-      const rootNode = getRoot();
-      rootNode.selectStart();
+      setSelection(null);
     });
   };
 
