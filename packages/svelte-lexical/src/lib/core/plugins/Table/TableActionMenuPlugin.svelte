@@ -39,6 +39,34 @@
 
   const tableCellNode: Writable<TableCellNode | null> = writable(null);
 
+  const checkTableCellOverflow = (
+    tableCellParentNodeDOM: HTMLElement,
+  ): boolean => {
+    const scrollableContainer = tableCellParentNodeDOM.closest(
+      '.PlaygroundEditorTheme__tableScrollableWrapper',
+    );
+    if (scrollableContainer) {
+      const containerRect = (
+        scrollableContainer as HTMLElement
+      ).getBoundingClientRect();
+      const cellRect = tableCellParentNodeDOM.getBoundingClientRect();
+
+      // Calculate where the action button would be positioned (5px from right edge of cell)
+      // Also account for the button width and table cell padding (8px)
+      const actionButtonRight = cellRect.right - 5;
+      const actionButtonLeft = actionButtonRight - 28; // 20px width + 8px padding
+
+      // Only hide if the action button would overflow the container
+      if (
+        actionButtonRight > containerRect.right ||
+        actionButtonLeft < containerRect.left
+      ) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   const moveMenu = () => {
     const menu = menuButtonRef;
     const selection = getSelection();
@@ -85,6 +113,10 @@
         return disable();
       }
 
+      if (checkTableCellOverflow(tableCellParentNodeDOM)) {
+        return disable();
+      }
+
       const tableNode = getTableNodeFromLexicalNodeOrThrow(
         tableCellNodeFromSelection,
       );
@@ -116,6 +148,14 @@
       }
       tableObserver = getTableObserverFromTableElement(tableElement);
       tableCellParentNodeDOM = editor.getElementByKey(anchorNode.getKey());
+
+      if (tableCellParentNodeDOM === null) {
+        return disable();
+      }
+
+      if (checkTableCellOverflow(tableCellParentNodeDOM)) {
+        return disable();
+      }
     } else if (!activeElement) {
       return disable();
     }
