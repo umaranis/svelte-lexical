@@ -60,12 +60,11 @@
               ) {
                 return false;
               }
-              const clipboardEvent = event as ClipboardEvent;
-              if (clipboardEvent.clipboardData === null) {
+              //const clipboardEvent = event as ClipboardEvent;
+              if (event.clipboardData === null) {
                 return false;
               }
-              const clipboardText =
-                clipboardEvent.clipboardData.getData('text');
+              const clipboardText = event.clipboardData.getData('text');
               if (!validateUrl!(clipboardText)) {
                 return false;
               }
