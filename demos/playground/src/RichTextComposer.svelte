@@ -171,7 +171,7 @@
         <LinkPlugin {validateUrl} />
         <CodeHighlightPlugin />
         <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
-        <TablePlugin hasHorizontalScroll={$settings.hasHorizontalScroll} />
+        <TablePlugin hasHorizontalScroll={$settings.tableHorizontalScroll} />
         <TableHoverActionPlugin anchorElem={editorDiv} />
         <TableCellResizerPlugin />
         <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
