@@ -381,7 +381,6 @@
         styles[draggingDirection]['background-color'] = '#adf';
         styles[draggingDirection]['mix-blend-mode'] = 'unset';
       }
-
       return styles;
     }
 
