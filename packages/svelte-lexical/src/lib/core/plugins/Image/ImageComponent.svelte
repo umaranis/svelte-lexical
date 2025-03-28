@@ -21,8 +21,6 @@
     COMMAND_PRIORITY_LOW,
     CLICK_COMMAND,
     DRAGSTART_COMMAND,
-    KEY_DELETE_COMMAND,
-    KEY_BACKSPACE_COMMAND,
     KEY_ESCAPE_COMMAND,
     KEY_ENTER_COMMAND,
     LineBreakNode,
@@ -111,20 +109,6 @@
       };
     }
   });
-
-  const onDelete = (payload: KeyboardEvent) => {
-    const deleteSelection = getSelection();
-    if ($isSelected && isNodeSelection(deleteSelection)) {
-      const event: KeyboardEvent = payload;
-      event.preventDefault();
-      deleteSelection.getNodes().forEach((node) => {
-        if (isImageNode(node)) {
-          node.remove();
-        }
-      });
-    }
-    return false;
-  };
 
   const onEnter = (event: KeyboardEvent) => {
     const latestSelection = getSelection();
@@ -237,16 +221,6 @@
           }
           return false;
         },
-        COMMAND_PRIORITY_LOW,
-      ),
-      editor.registerCommand(
-        KEY_DELETE_COMMAND,
-        onDelete,
-        COMMAND_PRIORITY_LOW,
-      ),
-      editor.registerCommand(
-        KEY_BACKSPACE_COMMAND,
-        onDelete,
         COMMAND_PRIORITY_LOW,
       ),
       editor.registerCommand(KEY_ENTER_COMMAND, onEnter, COMMAND_PRIORITY_LOW),

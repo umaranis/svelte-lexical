@@ -7,12 +7,8 @@
     removeClassNamesFromElement,
   } from '@lexical/utils';
   import {
-    $getSelection as getSelection,
-    $isNodeSelection as isNodeSelection,
     CLICK_COMMAND,
     COMMAND_PRIORITY_LOW,
-    KEY_BACKSPACE_COMMAND,
-    KEY_DELETE_COMMAND,
     type LexicalEditor,
   } from 'lexical';
   import {onMount} from 'svelte';
@@ -20,7 +16,6 @@
     clearSelection,
     createNodeSelectionStore,
   } from '../nodeSelectionStore.js';
-  import {$isHorizontalRuleNode as isHorizontalRuleNode} from './HorizontalRuleNode.js';
 
   interface Props {
     editor: LexicalEditor;
@@ -40,19 +35,6 @@
     }
   });
 
-  function onDelete(event: KeyboardEvent) {
-    const deleteSelection = getSelection();
-    if ($isSelected && isNodeSelection(deleteSelection)) {
-      event.preventDefault();
-      deleteSelection.getNodes().forEach((node) => {
-        if (isHorizontalRuleNode(node)) {
-          node.remove();
-        }
-      });
-    }
-    return false;
-  }
-
   onMount(() => {
     return mergeRegister(
       editor.registerCommand(
@@ -67,16 +49,6 @@
           }
           return false;
         },
-        COMMAND_PRIORITY_LOW,
-      ),
-      editor.registerCommand(
-        KEY_DELETE_COMMAND,
-        onDelete,
-        COMMAND_PRIORITY_LOW,
-      ),
-      editor.registerCommand(
-        KEY_BACKSPACE_COMMAND,
-        onDelete,
         COMMAND_PRIORITY_LOW,
       ),
     );
