@@ -1,7 +1,6 @@
 <script lang="ts">
   import type {
     EditorThemeClasses,
-    Klass,
     LexicalEditor,
     LexicalNode,
     KlassConstructor,
@@ -14,7 +13,6 @@
     initialEditor: LexicalEditor;
     parentEditor: LexicalEditor;
     initialTheme?: EditorThemeClasses | null;
-    initialNodes?: ReadonlyArray<Klass<LexicalNode>> | null;
     children?: import('svelte').Snippet;
   }
 
@@ -22,7 +20,6 @@
     initialEditor = $bindable(),
     parentEditor,
     initialTheme = null,
-    initialNodes = null,
     children,
   }: Props = $props();
 
@@ -44,29 +41,15 @@
 
   initialEditor._parentEditor = parentEditor;
 
-  if (!initialNodes) {
-    const parentNodes = (initialEditor._nodes = new Map(parentEditor._nodes));
-    for (const [type, entry] of parentNodes) {
-      initialEditor._nodes.set(type, {
-        exportDOM: entry.exportDOM,
-        klass: entry.klass,
-        replace: entry.replace,
-        replaceWithKlass: entry.replaceWithKlass,
-        transforms: getTransformSetFromKlass(entry.klass),
-      });
-    }
-  } else {
-    for (const klass of initialNodes) {
-      const type = klass.getType();
-      const registeredKlass = initialEditor._nodes.get(klass.getType());
-      initialEditor._nodes.set(type, {
-        exportDOM: registeredKlass ? registeredKlass.exportDOM : undefined,
-        klass,
-        replace: null,
-        replaceWithKlass: null,
-        transforms: new Set(),
-      });
-    }
+  const parentNodes = (initialEditor._nodes = new Map(parentEditor._nodes));
+  for (const [type, entry] of parentNodes) {
+    initialEditor._nodes.set(type, {
+      exportDOM: entry.exportDOM,
+      klass: entry.klass,
+      replace: entry.replace,
+      replaceWithKlass: entry.replaceWithKlass,
+      transforms: getTransformSetFromKlass(entry.klass),
+    });
   }
 
   initialEditor._config.namespace = parentEditor._config.namespace;

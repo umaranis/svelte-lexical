@@ -12,9 +12,20 @@ import type {
   Spread,
 } from 'lexical';
 
-import {$applyNodeReplacement, createEditor, DecoratorNode} from 'lexical';
+import {
+  $applyNodeReplacement,
+  createEditor,
+  DecoratorNode,
+  LineBreakNode,
+  ParagraphNode,
+  RootNode,
+  TextNode,
+} from 'lexical';
 import type {ComponentProps} from 'svelte';
 import ImageComponent from './ImageComponent.svelte';
+import {LinkNode} from '@lexical/link';
+import {HashtagNode} from '@lexical/hashtag';
+import {KeywordNode} from '../KeywordNode.js';
 /*import * as React from 'react';
 import {Suspense} from 'react';*/
 
@@ -163,7 +174,16 @@ export class ImageNode extends DecoratorNode<DecoratorImageType> {
     this.__caption =
       caption ||
       createEditor({
-        nodes: [],
+        namespace: 'Playground/ImageNodeCaption',
+        nodes: [
+          RootNode,
+          TextNode,
+          LineBreakNode,
+          ParagraphNode,
+          LinkNode,
+          HashtagNode,
+          KeywordNode,
+        ],
       });
     this.__captionsEnabled = captionsEnabled || captionsEnabled === undefined;
   }
