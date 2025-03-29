@@ -20,9 +20,7 @@ test.describe('Events', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
 
   test('Autocapitalization (MacOS specific)', async ({page, isPlainText}) => {
-    if (LEGACY_EVENTS) {
-      return;
-    }
+    test.skip(LEGACY_EVENTS);
     await focusEditor(page);
     await page.keyboard.type('i');
     await evaluate(page, () => {
@@ -102,9 +100,7 @@ test.describe('Events', () => {
   test.fixme(
     'Add period with double-space after emoji (MacOS specific) #3953',
     async ({page, isPlainText}) => {
-      if (LEGACY_EVENTS) {
-        return;
-      }
+      test.skip(LEGACY_EVENTS);
       await focusEditor(page);
       await page.keyboard.type(':)');
       await assertHTML(
