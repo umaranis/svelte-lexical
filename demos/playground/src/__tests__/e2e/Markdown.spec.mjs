@@ -1024,7 +1024,11 @@ test.describe.parallel('Markdown', () => {
               class="editor-equation"
               contenteditable="false"
               data-lexical-decorator="true">
-              <img alt="" src="#" />
+              <img
+                alt=""
+                height="0"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                width="0" />
               <span role="button" tabindex="-1">
                 <span class="katex">
                   <span class="katex-html" aria-hidden="true">
@@ -1035,7 +1039,11 @@ test.describe.parallel('Markdown', () => {
                   </span>
                 </span>
               </span>
-              <img alt="" src="#" />
+              <img
+                alt=""
+                height="0"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                width="0" />
             </span>
             <br />
           </p>
