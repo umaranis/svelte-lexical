@@ -66,13 +66,13 @@
     }
   });
 
-  // run(() => {
-  //   if (color) {
-  //     const newColor = transformColor('hex', color);
-  //     selfColor = newColor;
-  //     inputColor = newColor.hex;
-  //   }
-  // });
+  $effect(() => {
+    if (color) {
+      const newColor = transformColor('hex', color);
+      selfColor = newColor;
+      inputColor = newColor.hex;
+    }
+  });
 </script>
 
 <div
