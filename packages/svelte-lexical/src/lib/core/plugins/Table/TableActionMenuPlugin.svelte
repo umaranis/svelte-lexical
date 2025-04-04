@@ -1,3 +1,5 @@
+<!-- eslint-disable-next-line svelte/no-unused-svelte-ignore -->
+<!--svelte-ignore state_referenced_locally -->
 <script lang="ts">
   import {run} from 'svelte/legacy';
 
@@ -19,9 +21,11 @@
   } from 'lexical';
 
   import TableActionMenu from './TableActionMenu.svelte';
-  import {writable, type Writable} from 'svelte/store';
+  import {writable} from 'svelte/store';
   import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {mergeRegister} from '@lexical/utils';
+  import ColorPickerDialog from '$lib/components/generic/colorpicker/ColorPickerDialog.svelte';
+  import {CAN_USE_DOM} from '$lib/environment/canUseDOM.js';
 
   interface Props {
     anchorElem: HTMLElement;
@@ -37,7 +41,7 @@
   let menuRootRef: HTMLButtonElement | null = $state(null);
   const isMenuOpen = writable(false);
 
-  const tableCellNode: Writable<TableCellNode | null> = writable(null);
+  let tableCellNode = $state<TableCellNode | null>(null);
 
   const checkTableCellOverflow = (
     tableCellParentNodeDOM: HTMLElement,
@@ -77,7 +81,7 @@
         menu.classList.remove('table-cell-action-button-container--active');
         menu.classList.add('table-cell-action-button-container--inactive');
       }
-      $tableCellNode = null;
+      tableCellNode = null;
     }
 
     if (selection == null || menu == null) {
@@ -130,7 +134,7 @@
       }
 
       tableObserver = getTableObserverFromTableElement(tableElement);
-      $tableCellNode = tableCellNodeFromSelection;
+      tableCellNode = tableCellNodeFromSelection;
     } else if (isTableSelection(selection)) {
       const anchorNode = getTableCellNodeFromLexicalNode(
         selection.anchor.getNode(),
@@ -214,20 +218,22 @@
     );
   });
 
-  let prevTableCellDOM = $state($tableCellNode);
+  let prevTableCellDOM = $state(tableCellNode);
 
   run(() => {
-    if (prevTableCellDOM !== $tableCellNode) {
+    if (prevTableCellDOM !== tableCellNode) {
       $isMenuOpen = false;
     }
 
-    prevTableCellDOM = $tableCellNode;
+    prevTableCellDOM = tableCellNode;
   });
+
+  let colorPicker = $state() as ColorPickerDialog;
 </script>
 
 {#if $isEditable}
   <div class="table-cell-action-button-container" bind:this={menuButtonRef}>
-    {#if $tableCellNode != null}
+    {#if tableCellNode != null}
       <!-- svelte-ignore a11y_consider_explicit_label -->
       <button
         type="button"
@@ -244,9 +250,16 @@
           contextRef={menuRootRef}
           setIsMenuOpen={(val) => ($isMenuOpen = val)}
           onClose={() => ($isMenuOpen = false)}
-          _tableCellNode={$tableCellNode}
-          {cellMerge} />
+          _tableCellNode={tableCellNode}
+          {cellMerge}
+          {colorPicker} />
       {/if}
     {/if}
   </div>
+  {#if CAN_USE_DOM}
+    <ColorPickerDialog
+      title="Cell background color"
+      color="white"
+      bind:this={colorPicker} />
+  {/if}
 {/if}

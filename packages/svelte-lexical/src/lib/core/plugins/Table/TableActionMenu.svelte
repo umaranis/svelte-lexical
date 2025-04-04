@@ -1,7 +1,6 @@
 <script lang="ts">
   import {run} from 'svelte/legacy';
 
-  import ColorPickerDialog from '$lib/components/generic/colorpicker/ColorPickerDialog.svelte';
   import {getEditor} from '$lib/core/composerContext.js';
   import {
     $unmergeCell as unmergeCell,
@@ -42,18 +41,24 @@
   import Portal from '$lib/components/generic/portal/Portal.svelte';
   import DropDown from '$lib/components/generic/dropdown/DropDown.svelte';
   import DropDownItem from '$lib/components/generic/dropdown/DropDownItem.svelte';
+  import ColorPickerDialog from '$lib/components/generic/colorpicker/ColorPickerDialog.svelte';
   interface Props {
     onClose: () => void;
     _tableCellNode: TableCellNode;
     setIsMenuOpen: (isOpen: boolean) => void;
     contextRef: null | HTMLElement;
     cellMerge: boolean;
+    colorPicker: ColorPickerDialog;
   }
 
-  let {onClose, _tableCellNode, setIsMenuOpen, contextRef, cellMerge}: Props =
-    $props();
-
-  let colorPicker: ColorPickerDialog;
+  let {
+    onClose,
+    _tableCellNode,
+    setIsMenuOpen,
+    contextRef,
+    cellMerge,
+    colorPicker,
+  }: Props = $props();
 
   const editor = getEditor();
   let dropDownRef: HTMLDivElement | null = $state(null);
@@ -194,19 +199,19 @@
     }
   });
 
-  onMount(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        dropDownRef != null &&
-        contextRef != null &&
-        isDOMNode(event.target) &&
-        !dropDownRef.contains(event.target) &&
-        !contextRef.contains(event.target)
-      ) {
-        setIsMenuOpen(false);
-      }
+  function handleClickOutside(event: MouseEvent) {
+    if (
+      dropDownRef != null &&
+      contextRef != null &&
+      isDOMNode(event.target) &&
+      !dropDownRef.contains(event.target) &&
+      !contextRef.contains(event.target)
+    ) {
+      setIsMenuOpen(false);
     }
+  }
 
+  onMount(() => {
     window.addEventListener('click', handleClickOutside);
 
     return () => window.removeEventListener('click', handleClickOutside);
@@ -502,10 +507,8 @@
         if (isTableCellNode(cell)) {
           cell.setBackgroundColor(value);
         }
-
         if (isTableSelection(selection)) {
           const nodes = selection.getNodes();
-
           for (let i = 0; i < nodes.length; i++) {
             const node = nodes[i];
             if (isTableCellNode(node)) {
@@ -574,7 +577,8 @@
       type="button"
       class="item"
       onclick={() => {
-        colorPicker.open(handleCellBackgroundColor);
+        setIsMenuOpen(false);
+        colorPicker.open(handleCellBackgroundColor, $backgroundColor);
       }}
       data-test-id="table-background-color">
       <span class="text">Background color</span>
@@ -736,8 +740,3 @@
     </button>
   </div>
 </Portal>
-
-<ColorPickerDialog
-  title="Cell background color"
-  color={$backgroundColor}
-  bind:this={colorPicker} />
