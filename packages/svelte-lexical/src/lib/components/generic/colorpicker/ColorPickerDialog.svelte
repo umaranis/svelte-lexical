@@ -32,7 +32,6 @@
     if (onChange) {
       onChange(value, true);
     }
-    close();
   }
 </script>
 
