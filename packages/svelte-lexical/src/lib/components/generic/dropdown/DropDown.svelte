@@ -60,7 +60,7 @@
     if (stopCloseOnClickSelf) {
       if (dropDownRef && dropDownRef.contains(target)) return;
     }
-    if (!buttonRef.contains(target)) {
+    if (buttonRef && !buttonRef.contains(target)) {
       showDropDown = false;
     }
   };
