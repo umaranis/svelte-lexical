@@ -9,7 +9,7 @@
 import type {EditorThemeClasses} from 'lexical';
 
 import './DefaultEditorTheme.css';
-import './shell/DefaultShellTheme.js';
+import '../shell/DefaultShellTheme.js';
 
 export const theme: EditorThemeClasses = {
   autocomplete: 'SL_Theme__autocomplete',
