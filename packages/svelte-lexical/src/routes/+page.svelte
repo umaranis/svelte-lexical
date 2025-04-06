@@ -3,10 +3,20 @@
   import '../global.css';
   import GitHubButton from './GitHubButton.svelte';
   import PlaygroundButton from './PlaygroundButton.svelte';
+  import {MediaQuery} from 'svelte/reactivity';
+
+  const isDarkMode = new MediaQuery('(prefers-color-scheme: dark)');
+
+  let imageSrc = $state('images/logo.svg');
+
+  $effect(() => {
+    // get around this issue: https://svelte.dev/docs/svelte/runtime-warnings#Client-warnings-hydration_attribute_changed
+    imageSrc = isDarkMode.current ? 'images/logo_white.svg' : 'images/logo.svg';
+  });
 </script>
 
 <main>
-  <img src="images/logo.svg" alt="Svelte Lexical!" />
+  <img src={imageSrc} alt="Svelte Lexical!" />
   <p style="margin-top: -1em; line-height: 1.7em">
     Welcome to <span class="emp-sl">Svelte-Lexical</span>
     , a rich text editor for

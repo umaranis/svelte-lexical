@@ -1,0 +1,131 @@
+@import '../variables.css';
+
+.svelte-lexical {
+  /* START: modal dialog */
+
+  dialog {
+    background-color: var(--modal-background);
+  }
+
+  .Modal__overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    flex-direction: column;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: var(--modal-overlay);
+    flex-grow: 0px;
+    flex-shrink: 1px;
+    z-index: 100;
+  }
+
+  .Modal__modal {
+    padding: 20px;
+    min-height: 100px;
+    min-width: 400px;
+    display: flex;
+    flex-grow: 0px;
+    background-color: var(--modal-background);
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 0 20px 0 var(--modal-shadow);
+    border-radius: 10px;
+  }
+
+  .Modal__title {
+    color: var(--text-color);
+    margin: 0px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .Modal__closeButton {
+    border: 0px;
+    position: absolute;
+    right: 20px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--button-background);
+  }
+
+  .Modal__closeButton:hover {
+    background-color: var(--button-hover-background);
+  }
+
+  .Modal__content {
+    padding-top: 20px;
+  }
+
+  .Button__root {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 0px;
+    background-color: var(--button-background);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-color);
+  }
+
+  .Button__root:hover {
+    background-color: var(--button-hover-background);
+  }
+
+  /* END: modal dialog */
+
+  /* START: dialog input fields (InsertImageDialog) */
+
+  .Input__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .Input__label {
+    display: flex;
+    flex: 1;
+    color: var(--text-muted);
+  }
+
+  .Input__input {
+    display: flex;
+    flex: 3;
+    border: 1px solid var(--border-color);
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: var(--editor-background);
+    color: var(--text-color);
+  }
+
+  /* END: dialog input fields */
+
+  .DialogActions {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-top: 20px;
+  }
+
+  .dialog-dropdown {
+    background-color: var(--button-background) !important;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}

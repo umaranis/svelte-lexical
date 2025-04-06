@@ -5,7 +5,7 @@
     ActionBar,
     RichTextPlugin,
   } from '$lib/index.js';
-  import {theme as editorTheme} from '$lib/themes/DefaultEditorTheme.js';
+  import {theme as editorTheme} from '$lib/themes/light-dark/editor/LightDarkEditorTheme.js';
   import {
     $getRoot as getRoot,
     $createTextNode as createTextNode,

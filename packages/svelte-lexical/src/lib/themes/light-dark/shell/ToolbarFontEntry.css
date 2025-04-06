@@ -1,0 +1,49 @@
+@import '../variables.css';
+
+.svelte-lexical {
+  /* START: Font Size Entry */
+  .sl_font-size-input {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--text-muted);
+    border-radius: 5px;
+    border-color: var(--border-color);
+    height: 15px;
+    padding: 2px 4px;
+    text-align: center;
+    width: 20px;
+    align-self: center;
+    background-color: var(--editor-background);
+  }
+
+  .sl_font-size-input:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+  }
+
+  .sl_add-icon {
+    background-image: url(/images/icons/add-sign.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: var(--icon-filter);
+  }
+
+  .sl_minus-icon {
+    background-image: url(/images/icons/minus-sign.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: var(--icon-filter);
+  }
+
+  button.toolbar-item.sl_font-decrement {
+    padding: 0px;
+    margin-right: 3px;
+  }
+
+  button.toolbar-item.sl_font-increment {
+    padding: 0px;
+    margin-left: 3px;
+  }
+
+  /* END: Font Size Entry */
+}

@@ -1,0 +1,608 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ *
+ */
+
+@import '../variables.css';
+.SL_Theme__ltr {
+  text-align: left;
+}
+.SL_Theme__rtl {
+  text-align: right;
+}
+.SL_Theme__paragraph {
+  margin: 0;
+  position: relative;
+}
+.SL_Theme__quote {
+  margin: 0;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: var(--quote-color);
+  border-left-color: var(--quote-border-color);
+  border-left-width: 4px;
+  border-left-style: solid;
+  padding-left: 16px;
+}
+.SL_Theme__h1 {
+  font-size: 24px;
+  color: var(--text-color);
+  font-weight: 400;
+  margin: 0;
+}
+.SL_Theme__h2 {
+  font-size: 15px;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+}
+.SL_Theme__h3 {
+  font-size: 12px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.SL_Theme__indent {
+  --lexical-indent-base-value: 40px;
+}
+.SL_Theme__textBold {
+  font-weight: bold;
+}
+.SL_Theme__paragraph mark {
+  background-color: unset;
+}
+.SL_Theme__textHighlight {
+  background: rgba(255, 212, 0, 0.14);
+  border-bottom: 2px solid rgba(255, 212, 0, 0.3);
+}
+.SL_Theme__textItalic {
+  font-style: italic;
+}
+.SL_Theme__textUnderline {
+  text-decoration: underline;
+}
+.SL_Theme__textStrikethrough {
+  text-decoration: line-through;
+}
+.SL_Theme__textUnderlineStrikethrough {
+  text-decoration: underline line-through;
+}
+
+.SL_Theme__tabNode {
+  position: relative;
+  text-decoration: none;
+}
+
+.SL_Theme__tabNode.SL_Theme__textUnderline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.15em;
+  border-bottom: 0.1em solid currentColor;
+}
+
+.SL_Theme__tabNode.SL_Theme__textStrikethrough::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0.69em;
+  border-top: 0.1em solid currentColor;
+}
+
+.SL_Theme__tabNode.SL_Theme__textUnderlineStrikethrough::before,
+.SL_Theme__tabNode.SL_Theme__textUnderlineStrikethrough::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.SL_Theme__tabNode.SL_Theme__textUnderlineStrikethrough::before {
+  top: 0.69em;
+  border-top: 0.1em solid currentColor;
+}
+
+.SL_Theme__tabNode.SL_Theme__textUnderlineStrikethrough::after {
+  bottom: 0.05em;
+  border-bottom: 0.1em solid currentColor;
+}
+
+.SL_Theme__textSubscript {
+  font-size: 0.8em;
+  vertical-align: sub !important;
+}
+.SL_Theme__textSuperscript {
+  font-size: 0.8em;
+  vertical-align: super;
+}
+.SL_Theme__textCode {
+  background-color: var(--code-background);
+  padding: 1px 0.25rem;
+  font-family: Menlo, Consolas, Monaco, monospace;
+  font-size: 94%;
+}
+.SL_Theme__textLowercase {
+  text-transform: lowercase;
+}
+.SL_Theme__textUppercase {
+  text-transform: uppercase;
+}
+.SL_Theme__textCapitalize {
+  text-transform: capitalize;
+}
+.SL_Theme__hashtag {
+  background-color: rgba(88, 144, 255, 0.15);
+  border-bottom: 1px solid rgba(88, 144, 255, 0.3);
+}
+.SL_Theme__link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+.SL_Theme__link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.SL_Theme__blockCursor {
+  display: block;
+  pointer-events: none;
+  position: absolute;
+}
+.SL_Theme__blockCursor:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -2px;
+  width: 20px;
+  border-top: 1px solid var(--text-color);
+  animation: CursorBlink 1.1s steps(2, start) infinite;
+}
+@keyframes CursorBlink {
+  to {
+    visibility: hidden;
+  }
+}
+.SL_Theme__code {
+  background-color: var(--code-background);
+  font-family: Menlo, Consolas, Monaco, monospace;
+  display: block;
+  padding: 8px 8px 8px 52px;
+  line-height: 1.53;
+  font-size: 13px;
+  margin: 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  overflow-x: auto;
+  position: relative;
+  tab-size: 2;
+}
+.SL_Theme__code:before {
+  content: attr(data-gutter);
+  position: absolute;
+  background-color: var(--hover-background);
+  left: 0;
+  top: 0;
+  border-right: 1px solid var(--border-color);
+  padding: 8px;
+  color: var(--text-muted);
+  white-space: pre-wrap;
+  text-align: right;
+  min-width: 25px;
+}
+.SL_Theme__tableScrollableWrapper {
+  overflow-x: auto;
+  margin: 0px 25px 30px 0px;
+}
+.SL_Theme__tableScrollableWrapper > .SL_Theme__table {
+  /* Remove the table's vertical margin and put it on the wrapper */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.SL_Theme__tableAlignmentCenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+.SL_Theme__tableAlignmentRight {
+  margin-left: auto;
+}
+.SL_Theme__table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  table-layout: fixed;
+  width: fit-content;
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+.SL_Theme__tableScrollableWrapper.SL_Theme__tableFrozenRow {
+  /* position:sticky needs overflow:clip or visible
+     https://github.com/w3c/csswg-drafts/issues/865#issuecomment-350585274 */
+  overflow-x: clip;
+}
+.SL_Theme__tableFrozenRow tr:nth-of-type(1) > td {
+  overflow: clip;
+  background-color: var(--table-cell-background);
+  position: sticky;
+  z-index: 2;
+  top: 44px;
+}
+.SL_Theme__tableFrozenRow tr:nth-of-type(1) > th {
+  overflow: clip;
+  background-color: var(--table-header-background);
+  position: sticky;
+  z-index: 2;
+  top: 44px;
+}
+.SL_Theme__tableFrozenRow tr:nth-of-type(1) > th:after,
+.SL_Theme__tableFrozenRow tr:nth-of-type(1) > td:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--table-border-color);
+}
+.SL_Theme__tableFrozenColumn tr > td:first-child {
+  background-color: var(--table-cell-background);
+  position: sticky;
+  z-index: 2;
+  left: 0;
+}
+.SL_Theme__tableFrozenColumn tr > th:first-child {
+  background-color: var(--table-header-background);
+  position: sticky;
+  z-index: 2;
+  left: 0;
+}
+.SL_Theme__tableFrozenColumn tr > :first-child::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  border-right: 1px solid var(--table-border-color);
+}
+.SL_Theme__tableRowStriping tr:nth-child(even) {
+  background-color: var(--hover-background);
+}
+.SL_Theme__tableSelection *::selection {
+  background-color: transparent;
+}
+.SL_Theme__tableSelected {
+  outline: 2px solid var(--active-control);
+}
+.SL_Theme__tableCell {
+  border: 1px solid var(--table-border-color);
+  width: 75px;
+  vertical-align: top;
+  text-align: start;
+  padding: 6px 8px;
+  position: relative;
+  outline: none;
+  overflow: auto;
+}
+/*
+  A firefox workaround to allow scrolling of overflowing table cell
+  ref: https://bugzilla.mozilla.org/show_bug.cgi?id=1904159
+*/
+.SL_Theme__tableCell > * {
+  overflow: inherit;
+}
+.SL_Theme__tableCellResizer {
+  position: absolute;
+  right: -4px;
+  height: 100%;
+  width: 8px;
+  cursor: ew-resize;
+  z-index: 10;
+  top: 0;
+}
+.SL_Theme__tableCellHeader {
+  background-color: var(--table-header-background);
+  text-align: start;
+}
+.SL_Theme__tableCellSelected {
+  caret-color: transparent;
+}
+.SL_Theme__tableCellSelected::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: highlight;
+  mix-blend-mode: multiply;
+  content: '';
+  pointer-events: none;
+}
+.SL_Theme__tableAddColumns {
+  position: absolute;
+  background-color: var(--hover-background);
+  height: 100%;
+  animation: table-controls 0.2s ease;
+  border: 0;
+  cursor: pointer;
+}
+.SL_Theme__tableAddColumns:after {
+  background-image: url(/images/icons/plus.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+.SL_Theme__tableAddColumns:hover,
+.SL_Theme__tableAddRows:hover {
+  background-color: var(--table-highlight-color);
+}
+.SL_Theme__tableAddRows {
+  position: absolute;
+  width: calc(100% - 25px);
+  background-color: var(--hover-background);
+  animation: table-controls 0.2s ease;
+  border: 0;
+  cursor: pointer;
+}
+.SL_Theme__tableAddRows:after {
+  background-image: url(/images/icons/plus.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+@keyframes table-controls {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.SL_Theme__tableCellResizeRuler {
+  display: block;
+  position: absolute;
+  width: 1px;
+  background-color: var(--active-control);
+  height: 100%;
+  top: 0;
+}
+.SL_Theme__tableCellActionButtonContainer {
+  display: block;
+  right: 5px;
+  top: 6px;
+  position: absolute;
+  z-index: 4;
+  width: 20px;
+  height: 20px;
+}
+.SL_Theme__tableCellActionButton {
+  background-color: var(--button-background);
+  display: block;
+  border: 0;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+.SL_Theme__tableCellActionButton:hover {
+  background-color: var(--button-hover-background);
+}
+.SL_Theme__characterLimit {
+  display: inline;
+  background-color: #ffbbbb !important;
+}
+.SL_Theme__ol1 {
+  padding: 0;
+  margin: 0;
+  list-style-position: outside;
+}
+.SL_Theme__ol2 {
+  padding: 0;
+  margin: 0;
+  list-style-type: upper-alpha;
+  list-style-position: outside;
+}
+.SL_Theme__ol3 {
+  padding: 0;
+  margin: 0;
+  list-style-type: lower-alpha;
+  list-style-position: outside;
+}
+.SL_Theme__ol4 {
+  padding: 0;
+  margin: 0;
+  list-style-type: upper-roman;
+  list-style-position: outside;
+}
+.SL_Theme__ol5 {
+  padding: 0;
+  margin: 0;
+  list-style-type: lower-roman;
+  list-style-position: outside;
+}
+.SL_Theme__ul {
+  padding: 0;
+  margin: 0;
+  list-style-position: outside;
+}
+.SL_Theme__listItem {
+  margin: 0 32px;
+}
+.SL_Theme__listItem::marker {
+  color: var(--listitem-marker-color);
+  background-color: var(--listitem-marker-background-color);
+  font-family: var(--listitem-marker-font-family);
+  font-size: var(--listitem-marker-font-size);
+}
+.SL_Theme__listItemChecked,
+.SL_Theme__listItemUnchecked {
+  position: relative;
+  margin-left: 8px;
+  margin-right: 8px;
+  padding-left: 24px;
+  padding-right: 24px;
+  list-style-type: none;
+  outline: none;
+}
+.SL_Theme__listItemChecked {
+  text-decoration: line-through;
+}
+.SL_Theme__listItemUnchecked:before,
+.SL_Theme__listItemChecked:before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  top: 2px;
+  left: 0;
+  cursor: pointer;
+  display: block;
+  background-size: cover;
+  position: absolute;
+}
+.SL_Theme__listItemUnchecked[dir='rtl']:before,
+.SL_Theme__listItemChecked[dir='rtl']:before {
+  left: auto;
+  right: 0;
+}
+.SL_Theme__listItemUnchecked:focus:before,
+.SL_Theme__listItemChecked:focus:before {
+  box-shadow: 0 0 0 2px #a6cdfe;
+  border-radius: 2px;
+}
+.SL_Theme__listItemUnchecked:before {
+  border: 1px solid var(--checkbox-border);
+  border-radius: 2px;
+}
+.SL_Theme__listItemChecked:before {
+  border: 1px solid var(--active-control);
+  border-radius: 2px;
+  background-color: var(--checkbox-background);
+  background-repeat: no-repeat;
+}
+.SL_Theme__listItemChecked:after {
+  content: '';
+  cursor: pointer;
+  border-color: #fff;
+  border-style: solid;
+  position: absolute;
+  display: block;
+  top: 6px;
+  width: 3px;
+  left: 7px;
+  right: 7px;
+  height: 6px;
+  transform: rotate(45deg);
+  border-width: 0 2px 2px 0;
+}
+.SL_Theme__nestedListItem {
+  list-style-type: none;
+}
+.SL_Theme__nestedListItem:before,
+.SL_Theme__nestedListItem:after {
+  display: none;
+}
+.SL_Theme__tokenComment {
+  color: slategray;
+}
+.SL_Theme__tokenPunctuation {
+  color: #999;
+}
+.SL_Theme__tokenProperty {
+  color: #905;
+}
+.SL_Theme__tokenSelector {
+  color: #690;
+}
+.SL_Theme__tokenOperator {
+  color: #9a6e3a;
+}
+.SL_Theme__tokenAttr {
+  color: #07a;
+}
+.SL_Theme__tokenVariable {
+  color: #e90;
+}
+.SL_Theme__tokenFunction {
+  color: #dd4a68;
+}
+.SL_Theme__mark {
+  background: rgba(255, 212, 0, 0.14);
+  border-bottom: 2px solid rgba(255, 212, 0, 0.3);
+  padding-bottom: 2px;
+}
+.SL_Theme__markOverlap {
+  background: rgba(255, 212, 0, 0.3);
+  border-bottom: 2px solid rgba(255, 212, 0, 0.7);
+}
+.SL_Theme__mark.selected {
+  background: rgba(255, 212, 0, 0.5);
+  border-bottom: 2px solid rgba(255, 212, 0, 1);
+}
+.SL_Theme__markOverlap.selected {
+  background: rgba(255, 212, 0, 0.7);
+  border-bottom: 2px solid rgba(255, 212, 0, 0.7);
+}
+.SL_Theme__embedBlock {
+  user-select: none;
+}
+.SL_Theme__embedBlockFocus {
+  outline: 2px solid var(--active-control);
+}
+.SL_Theme__layoutContainer {
+  display: grid;
+  gap: 10px;
+  margin: 10px 0;
+}
+.SL_Theme__layoutItem {
+  border: 1px dashed var(--border-color);
+  padding: 8px 16px;
+  min-width: 0;
+  max-width: 100%;
+}
+.SL_Theme__autocomplete {
+  color: #ccc;
+}
+.SL_Theme__hr {
+  padding: 2px 2px;
+  border: none;
+  margin: 1em 0;
+  cursor: pointer;
+}
+.SL_Theme__hr:after {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: var(--hr-color);
+  line-height: 2px;
+}
+.SL_Theme__hr.SL_Theme__hrSelected {
+  outline: 2px solid var(--active-control);
+  user-select: none;
+}
+
+.SL_Theme__specialText {
+  background-color: yellow;
+  font-weight: bold;
+}

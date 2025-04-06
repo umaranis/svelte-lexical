@@ -17,6 +17,10 @@
     "./dist/themes/default": {
       "types": "./dist/themes/default/index.d.ts",
       "svelte": "./dist/themes/default/index.js"
+    },
+    "./dist/themes/light-dark": {
+      "types": "./dist/themes/light-dark/index.d.ts",
+      "svelte": "./dist/themes/light-dark/index.js"
     }
   },
   "svelte": "./dist/index.js",

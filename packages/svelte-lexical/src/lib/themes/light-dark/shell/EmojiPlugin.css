@@ -1,0 +1,43 @@
+@import '../variables.css';
+
+.svelte-lexical {
+  .emoji {
+    color: transparent;
+    caret-color: var(--text-color);
+    background-size: 16px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin: 0 -1px;
+  }
+
+  .emoji-inner {
+    padding: 0 0.15em;
+  }
+
+  .emoji-inner::selection {
+    color: transparent;
+    background-color: rgba(150, 150, 150, 0.4);
+  }
+
+  .emoji-inner::moz-selection {
+    color: transparent;
+    background-color: rgba(150, 150, 150, 0.4);
+  }
+
+  .emoji.happysmile {
+    background-image: url(/images/emoji/1F642.png);
+  }
+
+  .emoji.veryhappysmile {
+    background-image: url(/images/emoji/1F600.png);
+  }
+
+  .emoji.unhappysmile {
+    background-image: url(/images/emoji/1F641.png);
+  }
+
+  .emoji.heart {
+    background-image: url(/images/emoji/2764.png);
+  }
+}

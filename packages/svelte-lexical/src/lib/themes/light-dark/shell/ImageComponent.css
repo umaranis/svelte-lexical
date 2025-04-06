@@ -1,0 +1,29 @@
+@import '../variables.css';
+
+.svelte-lexical {
+  span.editor-image {
+    cursor: default;
+    display: inline-block;
+    position: relative;
+    user-select: none;
+    white-space: nowrap; /* without this, image editor is having extra height (// TODO: see if still required after fully porting lexical) */
+  }
+
+  .editor-image img {
+    max-width: 100%;
+    cursor: default;
+  }
+
+  .editor-image img.focused {
+    outline: 2px solid var(--active-control);
+    user-select: none;
+  }
+
+  .editor-image img.focused.draggable {
+    cursor: grab;
+  }
+
+  .editor-image img.focused.draggable:active {
+    cursor: grabbing;
+  }
+}
