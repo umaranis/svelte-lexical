@@ -19,7 +19,6 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('BlockWithAlignableContents', () => {
-  test.fixme();
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
 
   test('Can create full width blocks for YouTube videos', async ({
@@ -49,7 +48,7 @@ test.describe('BlockWithAlignableContents', () => {
           <span data-lexical-text="true">Hello world</span>
         </p>
         <div contenteditable="false" data-lexical-decorator="true">
-          <div class="PlaygroundEditorTheme__embedBlock">
+          <div class="PlaygroundEditorTheme__embedBlock" style="">
             <iframe
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen=""
@@ -82,7 +81,7 @@ test.describe('BlockWithAlignableContents', () => {
           <span data-lexical-text="true">Hello world</span>
         </p>
         <div contenteditable="false" data-lexical-decorator="true">
-          <div class="PlaygroundEditorTheme__embedBlock">
+          <div class="PlaygroundEditorTheme__embedBlock" style="">
             <iframe
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen=""

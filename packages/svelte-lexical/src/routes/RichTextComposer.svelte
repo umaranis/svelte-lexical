@@ -29,6 +29,7 @@
     CodeActionMenuPlugin,
     ColumnLayoutPlugin,
     TreeViewPlugin,
+    YouTubeNode,
   } from '$lib/index.js';
   import {
     HeadingNode,
@@ -53,6 +54,7 @@
   import TableHoverActionPlugin from '$lib/core/plugins/Table/TableHoverActionPlugin.svelte';
   import TableActionMenuPlugin from '$lib/core/plugins/Table/TableActionMenuPlugin.svelte';
   import TableCellResizerPlugin from '$lib/core/plugins/Table/TableCellResizerPlugin.svelte';
+  import YoutubePlugin from '$lib/core/plugins/youtube/YoutubePlugin.svelte';
 
   let isSmallWidthViewport = $state(true);
   let editorDiv: HTMLDivElement | undefined = $state();
@@ -76,6 +78,7 @@
       TableNode,
       TableCellNode,
       TableRowNode,
+      YouTubeNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -153,6 +156,8 @@
       <TableHoverActionPlugin anchorElem={editorDiv} />
       <TableCellResizerPlugin />
       <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
+      <YoutubePlugin />
+
       <ActionBar />
     </div>
     <TreeViewPlugin />

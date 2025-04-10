@@ -928,51 +928,48 @@ test.describe.parallel('Selection', () => {
     );
   });
 
-  test.fixme(
-    'Select all from Node selection #4658',
-    async ({page, isPlainText}) => {
-      // TODO selectAll is bad for Linux #4665
-      test.skip(isPlainText || IS_LINUX);
+  test('Select all from Node selection #4658', async ({page, isPlainText}) => {
+    // TODO selectAll is bad for Linux #4665
+    test.skip(isPlainText || IS_LINUX);
 
-      await insertYouTubeEmbed(page, YOUTUBE_SAMPLE_URL);
-      await page.keyboard.type('abcdefg');
-      await moveLeft(page, 'abcdefg'.length + 1);
+    await insertYouTubeEmbed(page, YOUTUBE_SAMPLE_URL);
+    await page.keyboard.type('abcdefg');
+    await moveLeft(page, 'abcdefg'.length + 1);
 
-      await selectAll(page);
-      await page.keyboard.press('Backspace');
+    await selectAll(page);
+    await page.keyboard.press('Backspace');
 
-      await assertHTML(
-        page,
-        html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        `,
-      );
-    },
-  );
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+      `,
+    );
+  });
 
-  test.fixme(
-    'Select all (DecoratorNode at start) #4670',
-    async ({page, isPlainText}) => {
-      // TODO selectAll is bad for Linux #4665
-      test.skip(isPlainText || IS_LINUX);
+  test('Select all (DecoratorNode at start) #4670', async ({
+    page,
+    isPlainText,
+  }) => {
+    // TODO selectAll is bad for Linux #4665
+    test.skip(isPlainText || IS_LINUX);
 
-      await insertYouTubeEmbed(page, YOUTUBE_SAMPLE_URL);
-      // Delete empty paragraph in front
-      await moveLeft(page, 2);
-      await page.keyboard.press('Backspace');
-      await moveRight(page, 2);
-      await page.keyboard.type('abcdefg');
+    await insertYouTubeEmbed(page, YOUTUBE_SAMPLE_URL);
+    // Delete empty paragraph in front
+    await moveLeft(page, 2);
+    await page.keyboard.press('Backspace');
+    await moveRight(page, 2);
+    await page.keyboard.type('abcdefg');
 
-      await selectAll(page);
-      await page.keyboard.press('Backspace');
-      await assertHTML(
-        page,
-        html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        `,
-      );
-    },
-  );
+    await selectAll(page);
+    await page.keyboard.press('Backspace');
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+      `,
+    );
+  });
 
   test('Can use block controls on selections including decorator nodes #5371', async ({
     page,

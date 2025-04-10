@@ -26,6 +26,8 @@ export {default as TablePlugin} from './core/plugins/Table/TablePlugin.svelte';
 export {default as TableActionMenuPlugin} from './core/plugins/Table/TableActionMenuPlugin.svelte';
 export {default as TableHoverActionPlugin} from './core/plugins/Table/TableHoverActionPlugin.svelte';
 export {default as TableCellResizerPlugin} from './core/plugins/Table/TableCellResizerPlugin.svelte';
+export {default as ShortcutsPlugin} from './components/toolbar/ShortcutsPlugin.svelte';
+export {default as YoutubePlugin} from './core/plugins/youtube/YoutubePlugin.svelte';
 
 export {default as MarkdownShortcutPlugin} from './core/plugins/MardownShortcut/MarkdownShortcutPlugin.svelte';
 export {
@@ -66,6 +68,7 @@ export type {Provider} from '@lexical/yjs';
 export {LayoutContainerNode} from './core/plugins/ColumnsLayout/LayoutContainerNode.js';
 export {LayoutItemNode} from './core/plugins/ColumnsLayout/LayoutItemNode.js';
 export {TableNode, TableRowNode, TableCellNode} from '@lexical/table';
+export {YouTubeNode} from './core/plugins/youtube/YouTubeNode.js';
 
 // toolbar
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';
@@ -105,13 +108,15 @@ export {default as SuperscriptDropDownItem} from './components/toolbar/MoreStyle
 export {default as ClearFormattingDropDownItem} from './components/toolbar/MoreStylesDropDown/ClearFormattingDropDownItem.svelte';
 export {default as InsertColumnLayoutDropDownItem} from './components/toolbar/InsertDropDown/InsertColumnLayoutDropDownItem.svelte';
 export {default as InsertTableDropDownItem} from './components/toolbar/InsertDropDown/InsertTableDropDownItem.svelte';
-export {default as ShortcutsPlugin} from './components/toolbar/ShortcutsPlugin.svelte';
+export {default as InsertYoutubeDropDownItem} from './components/toolbar/InsertDropDown/InsertYoutubeDropDownItem.svelte';
+
 // dialogs
 export {default as InsertImageDialog} from './components/toolbar/dialogs/InsertImageDialog.svelte';
 export {default as InsertImageUploadedDialogBody} from './components/toolbar/dialogs/InsertImageUploadedDialogBody.svelte';
 export {default as InsertImageUriDialogBody} from './components/toolbar/dialogs/InsertImageUriDialogBody.svelte';
 export {default as InsertColumnsDialog} from './components/toolbar/dialogs/InsertColumnsDialog.svelte';
 export {default as InsertTableDialog} from './components/toolbar/dialogs/InsertTableDialog.svelte';
+export {default as InsertYoutubeDialog} from './components/toolbar/dialogs/InsertYoutubeDialog.svelte';
 
 // commands
 export type {ImagePayload} from './core/plugins/Image/ImageNode.js';

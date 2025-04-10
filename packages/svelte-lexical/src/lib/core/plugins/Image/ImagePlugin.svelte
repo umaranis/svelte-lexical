@@ -37,7 +37,7 @@
     mergeRegister,
   } from '@lexical/utils';
 
-  import {onMount} from 'svelte';
+  import {onMount, type Snippet} from 'svelte';
   import {
     $createImageNode as createImageNode,
     $isImageNode as isImageNode,
@@ -54,7 +54,7 @@
 
   interface Props {
     captionsEnabled?: boolean;
-    children?: import('svelte').Snippet;
+    children?: Snippet;
   }
 
   let {captionsEnabled = true, children}: Props = $props();
