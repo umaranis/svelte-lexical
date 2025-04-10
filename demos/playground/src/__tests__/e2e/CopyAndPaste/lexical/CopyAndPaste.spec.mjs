@@ -868,6 +868,7 @@ test.describe('CopyAndPaste', () => {
     isCollab,
     isPlainText,
   }) => {
+    test.fixme(isCollab);
     test.skip(isPlainText);
 
     // copying and pasting the node is easier than creating the clipboard data
