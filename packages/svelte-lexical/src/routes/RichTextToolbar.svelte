@@ -43,11 +43,14 @@
   import ShortcutsPlugin from '$lib/components/toolbar/ShortcutsPlugin.svelte';
   import InsertYoutubeDialog from '$lib/components/toolbar/dialogs/InsertYoutubeDialog.svelte';
   import InsertYoutubeDropDownItem from '$lib/components/toolbar/InsertDropDown/InsertYoutubeDropDownItem.svelte';
+  import InsertTweetDialog from '$lib/components/toolbar/dialogs/InsertTweetDialog.svelte';
+  import InsertTweetDropDownItem from '$lib/components/toolbar/InsertDropDown/InsertTweetDropDownItem.svelte';
 
   let imageDialog: InsertImageDialog;
   let columnsDialog: InsertColumnsDialog;
   let tableDialog: InsertTableDialog;
   let youtubeDialog: InsertYoutubeDialog;
+  let tweetDialog: InsertTweetDialog;
 </script>
 
 <Toolbar>
@@ -98,6 +101,7 @@
         <InsertColumnLayoutDropDownItem onclick={() => columnsDialog.open()} />
         <InsertTableDropDownItem onclick={() => tableDialog.open()} />
         <InsertYoutubeDropDownItem onclick={() => youtubeDialog.open()} />
+        <InsertTweetDropDownItem onclick={() => tweetDialog.open()} />
       </InsertDropDown>
       <Divider />
     {/if}
@@ -107,5 +111,6 @@
     <InsertColumnsDialog bind:this={columnsDialog} />
     <InsertTableDialog bind:this={tableDialog} />
     <InsertYoutubeDialog bind:this={youtubeDialog} />
+    <InsertTweetDialog bind:this={tweetDialog} />
   {/snippet}
 </Toolbar>

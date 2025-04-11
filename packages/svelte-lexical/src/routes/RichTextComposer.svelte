@@ -30,6 +30,7 @@
     ColumnLayoutPlugin,
     TreeViewPlugin,
     YouTubeNode,
+    TweetNode,
   } from '$lib/index.js';
   import {
     HeadingNode,
@@ -55,6 +56,7 @@
   import TableActionMenuPlugin from '$lib/core/plugins/Table/TableActionMenuPlugin.svelte';
   import TableCellResizerPlugin from '$lib/core/plugins/Table/TableCellResizerPlugin.svelte';
   import YoutubePlugin from '$lib/core/plugins/youtube/YoutubePlugin.svelte';
+  import TwitterPlugin from '$lib/core/plugins/twitter/TwitterPlugin.svelte';
 
   let isSmallWidthViewport = $state(true);
   let editorDiv: HTMLDivElement | undefined = $state();
@@ -79,6 +81,7 @@
       TableCellNode,
       TableRowNode,
       YouTubeNode,
+      TweetNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -157,6 +160,7 @@
       <TableCellResizerPlugin />
       <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
       <YoutubePlugin />
+      <TwitterPlugin />
 
       <ActionBar />
     </div>

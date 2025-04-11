@@ -52,6 +52,8 @@
     TableCellResizerPlugin,
     YoutubePlugin,
     YouTubeNode,
+    TweetNode,
+    TwitterPlugin,
   } from 'svelte-lexical';
   import {prepopulatedRichText} from './prepopulatedRichText';
   import type {SettingsStore} from './settings/settingsStore';
@@ -105,6 +107,7 @@
       TableCellNode,
       TableRowNode,
       YouTubeNode,
+      TweetNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -179,6 +182,7 @@
         <TableCellResizerPlugin />
         <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
         <YoutubePlugin />
+        <TwitterPlugin />
         {#if !isSmallWidthViewport}
           <FloatingLinkEditorPlugin anchorElem={editorDiv} />
           <CodeActionMenuPlugin anchorElem={editorDiv} />

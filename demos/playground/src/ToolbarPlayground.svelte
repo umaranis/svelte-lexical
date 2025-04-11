@@ -41,6 +41,8 @@
     ShortcutsPlugin,
     InsertYoutubeDialog,
     InsertYoutubeDropDownItem,
+    InsertTweetDropDownItem,
+    InsertTweetDialog,
   } from 'svelte-lexical';
   import InsertImageDialog from './InsertImageDialog.svelte';
 
@@ -48,6 +50,7 @@
   let columnsDialog: InsertColumnsDialog;
   let tableDialog: InsertTableDialog;
   let youtubeDialog: InsertYoutubeDialog;
+  let tweetDialog: InsertTweetDialog;
 </script>
 
 <Toolbar>
@@ -99,6 +102,7 @@
             onclick={() => columnsDialog.open()} />
           <InsertTableDropDownItem onclick={() => tableDialog.open()} />
           <InsertYoutubeDropDownItem onclick={() => youtubeDialog.open()} />
+          <InsertTweetDropDownItem onclick={() => tweetDialog.open()} />
         </InsertDropDown>
         <Divider />
       {/if}
@@ -109,5 +113,6 @@
     <InsertColumnsDialog bind:this={columnsDialog} />
     <InsertTableDialog bind:this={tableDialog} />
     <InsertYoutubeDialog bind:this={youtubeDialog} />
+    <InsertTweetDialog bind:this={tweetDialog} />
   {/snippet}
 </Toolbar>
