@@ -72,7 +72,7 @@
     "@types/proper-lockfile": "^4.1.4",
     "concurrently": "^9.1.0",
     "cross-env": "^7.0.3",
-    "eslint": "^9.22.0",
+    "eslint": "^9.24.0",
     "eslint-plugin-import": "^2.31.0",
     "prettier": "^3.4.2",
     "prettier-plugin-organize-attributes": "^1.0.0",
@@ -86,8 +86,8 @@
     "svelte-check": "^4.1.5",
     "svelte-preprocess": "^6.0.0",
     "tslib": "^2.7.0",
-    "typescript": "^5.8.2",
-    "typescript-eslint": "^8.26.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.29.1",
     "vite": "^6.2.1"
   },
   "dependencies": {
@@ -97,7 +97,7 @@
   },
   "size-limit": [
     {
-      "limit": "193 kb",
+      "limit": "194 kb",
       "path": "dist/assets/main-*.js"
     }
   ]
