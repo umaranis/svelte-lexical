@@ -57,6 +57,8 @@
   import TableCellResizerPlugin from '$lib/core/plugins/Table/TableCellResizerPlugin.svelte';
   import YoutubePlugin from '$lib/core/plugins/youtube/YoutubePlugin.svelte';
   import TwitterPlugin from '$lib/core/plugins/twitter/TwitterPlugin.svelte';
+  import BlueskyPlugin from '$lib/core/plugins/bluesky/BlueskyPlugin.svelte';
+  import {BlueskyNode} from '$lib/core/plugins/bluesky/BlueskyNode.js';
 
   let isSmallWidthViewport = $state(true);
   let editorDiv: HTMLDivElement | undefined = $state();
@@ -82,6 +84,7 @@
       TableRowNode,
       YouTubeNode,
       TweetNode,
+      BlueskyNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -161,6 +164,7 @@
       <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
       <YoutubePlugin />
       <TwitterPlugin />
+      <BlueskyPlugin />
 
       <ActionBar />
     </div>

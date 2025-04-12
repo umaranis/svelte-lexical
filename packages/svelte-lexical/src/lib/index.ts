@@ -29,6 +29,7 @@ export {default as TableCellResizerPlugin} from './core/plugins/Table/TableCellR
 export {default as ShortcutsPlugin} from './components/toolbar/ShortcutsPlugin.svelte';
 export {default as YoutubePlugin} from './core/plugins/youtube/YoutubePlugin.svelte';
 export {default as TwitterPlugin} from './core/plugins/twitter/TwitterPlugin.svelte';
+export {default as BlueskyPlugin} from './core/plugins/bluesky/BlueskyPlugin.svelte';
 
 export {default as MarkdownShortcutPlugin} from './core/plugins/MardownShortcut/MarkdownShortcutPlugin.svelte';
 export {
@@ -71,6 +72,7 @@ export {LayoutItemNode} from './core/plugins/ColumnsLayout/LayoutItemNode.js';
 export {TableNode, TableRowNode, TableCellNode} from '@lexical/table';
 export {YouTubeNode} from './core/plugins/youtube/YouTubeNode.js';
 export {TweetNode} from './core/plugins/twitter/TweetNode.js';
+export {BlueskyNode} from './core/plugins/bluesky/BlueskyNode.js';
 
 // toolbar
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';
@@ -112,6 +114,7 @@ export {default as InsertColumnLayoutDropDownItem} from './components/toolbar/In
 export {default as InsertTableDropDownItem} from './components/toolbar/InsertDropDown/InsertTableDropDownItem.svelte';
 export {default as InsertYoutubeDropDownItem} from './components/toolbar/InsertDropDown/InsertYoutubeDropDownItem.svelte';
 export {default as InsertTweetDropDownItem} from './components/toolbar/InsertDropDown/InsertTweetDropDownItem.svelte';
+export {default as InsertBlueskyDropDownItem} from './components/toolbar/InsertDropDown/InsertBlueskyDropDownItem.svelte';
 
 // dialogs
 export {default as InsertImageDialog} from './components/toolbar/dialogs/InsertImageDialog.svelte';
@@ -121,6 +124,7 @@ export {default as InsertColumnsDialog} from './components/toolbar/dialogs/Inser
 export {default as InsertTableDialog} from './components/toolbar/dialogs/InsertTableDialog.svelte';
 export {default as InsertYoutubeDialog} from './components/toolbar/dialogs/InsertYoutubeDialog.svelte';
 export {default as InsertTweetDialog} from './components/toolbar/dialogs/InsertTweetDialog.svelte';
+export {default as InsertBlueskyDialog} from './components/toolbar/dialogs/InsertBlueskyDialog.svelte';
 
 // commands
 export type {ImagePayload} from './core/plugins/Image/ImageNode.js';
@@ -165,6 +169,9 @@ export {$createLayoutContainerNode} from './core/plugins/ColumnsLayout/LayoutCon
 export {$createHashtagNode} from './core/plugins/HashtagNode.js';
 export {$createKeywordNode} from './core/plugins/KeywordNode.js';
 export {$createImageNode} from './core/plugins/Image/ImageNode.js';
+export {$createYouTubeNode} from './core/plugins/youtube/YouTubeNode.js';
+export {$createTweetNode} from './core/plugins/twitter/TweetNode.js';
+export {$createBlueskyNode} from './core/plugins/bluesky/BlueskyNode.js';
 
 // ui components
 export {default as DropDown} from './components/generic/dropdown/DropDown.svelte';

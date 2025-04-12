@@ -54,6 +54,8 @@
     YouTubeNode,
     TweetNode,
     TwitterPlugin,
+    BlueskyPlugin,
+    BlueskyNode,
   } from 'svelte-lexical';
   import {prepopulatedRichText} from './prepopulatedRichText';
   import type {SettingsStore} from './settings/settingsStore';
@@ -108,6 +110,7 @@
       TableRowNode,
       YouTubeNode,
       TweetNode,
+      BlueskyNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -183,6 +186,7 @@
         <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
         <YoutubePlugin />
         <TwitterPlugin />
+        <BlueskyPlugin />
         {#if !isSmallWidthViewport}
           <FloatingLinkEditorPlugin anchorElem={editorDiv} />
           <CodeActionMenuPlugin anchorElem={editorDiv} />

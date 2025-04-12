@@ -43,6 +43,8 @@
     InsertYoutubeDropDownItem,
     InsertTweetDropDownItem,
     InsertTweetDialog,
+    InsertBlueskyDialog,
+    InsertBlueskyDropDownItem,
   } from 'svelte-lexical';
   import InsertImageDialog from './InsertImageDialog.svelte';
 
@@ -51,6 +53,7 @@
   let tableDialog: InsertTableDialog;
   let youtubeDialog: InsertYoutubeDialog;
   let tweetDialog: InsertTweetDialog;
+  let blueskyDialog: InsertBlueskyDialog;
 </script>
 
 <Toolbar>
@@ -103,6 +106,7 @@
           <InsertTableDropDownItem onclick={() => tableDialog.open()} />
           <InsertYoutubeDropDownItem onclick={() => youtubeDialog.open()} />
           <InsertTweetDropDownItem onclick={() => tweetDialog.open()} />
+          <InsertBlueskyDropDownItem onclick={() => blueskyDialog.open()} />
         </InsertDropDown>
         <Divider />
       {/if}
@@ -114,5 +118,6 @@
     <InsertTableDialog bind:this={tableDialog} />
     <InsertYoutubeDialog bind:this={youtubeDialog} />
     <InsertTweetDialog bind:this={tweetDialog} />
+    <InsertBlueskyDialog bind:this={blueskyDialog} />
   {/snippet}
 </Toolbar>

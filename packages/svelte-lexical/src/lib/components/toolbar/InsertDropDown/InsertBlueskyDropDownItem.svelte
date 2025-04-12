@@ -5,6 +5,6 @@
 </script>
 
 <DropDownItem {onclick} class="item">
-  <i class="icon youtube"></i>
-  <span class="text">Youtube Video</span>
+  <i class="icon bluesky"></i>
+  <span class="text">Bluesky Post</span>
 </DropDownItem>

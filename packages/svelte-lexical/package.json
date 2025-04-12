@@ -101,6 +101,7 @@
     "@lexical/text": "0.29.0",
     "@lexical/utils": "0.29.0",
     "@lexical/yjs": "0.29.0",
+    "bluesky-post-embed": "^1.0.5",
     "lexical": "0.29.0",
     "lodash-es": "^4.17.21",
     "prettier": "^3.2.5",
