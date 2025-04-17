@@ -180,7 +180,7 @@ export {default as ModalDialog} from './components/generic/dialog/ModalDialog.sv
 export {default as CloseCircleButton} from './components/generic/button/CloseCircleButton.svelte';
 
 // util
-export {CAN_USE_DOM} from './environment/canUseDOM.js';
+export {CAN_USE_DOM} from '@lexical/utils';
 export {
   isNodeSelected,
   clearSelection,

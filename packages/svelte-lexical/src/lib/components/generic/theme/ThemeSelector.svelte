@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {CAN_USE_DOM} from '$lib/environment/canUseDOM.js';
+  import {CAN_USE_DOM} from '@lexical/utils';
   import {onMount, onDestroy} from 'svelte';
   import {themeTracker, type ThemeMode} from './themeTracker.svelte.js';
 

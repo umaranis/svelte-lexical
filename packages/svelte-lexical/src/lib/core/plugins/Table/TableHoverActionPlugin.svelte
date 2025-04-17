@@ -27,7 +27,7 @@
   import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {onDestroy, onMount} from 'svelte';
   import {writable} from 'svelte/store';
-  import {CAN_USE_DOM} from '$lib/environment/canUseDOM.js';
+  import {CAN_USE_DOM} from '@lexical/utils';
   import {getThemeSelector} from '../util/getThemeSelector.js';
 
   const BUTTON_WIDTH_PX = 20;

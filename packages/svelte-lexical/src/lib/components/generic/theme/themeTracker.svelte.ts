@@ -1,4 +1,4 @@
-import {CAN_USE_DOM} from '../../../environment/canUseDOM.js';
+import {CAN_USE_DOM} from '@lexical/utils';
 
 export type ThemeMode = 'system' | 'light' | 'dark';
 export type ThemeColor = Omit<ThemeMode, 'system'>;

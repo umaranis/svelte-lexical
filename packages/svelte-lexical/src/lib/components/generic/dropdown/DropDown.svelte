@@ -1,7 +1,7 @@
 <script lang="ts">
   import {run} from 'svelte/legacy';
 
-  import {CAN_USE_DOM} from '$lib/environment/canUseDOM.js';
+  import {CAN_USE_DOM} from '@lexical/utils';
   import DropDownItems from './DropDownItems.svelte';
   import Portal from '../portal/Portal.svelte';
   import {isDOMNode} from 'lexical';

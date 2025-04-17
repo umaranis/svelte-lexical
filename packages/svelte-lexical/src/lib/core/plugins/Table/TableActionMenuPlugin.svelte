@@ -25,7 +25,7 @@
   import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {mergeRegister} from '@lexical/utils';
   import ColorPickerDialog from '$lib/components/generic/colorpicker/ColorPickerDialog.svelte';
-  import {CAN_USE_DOM} from '$lib/environment/canUseDOM.js';
+  import {CAN_USE_DOM} from '@lexical/utils';
 
   interface Props {
     anchorElem: HTMLElement;
