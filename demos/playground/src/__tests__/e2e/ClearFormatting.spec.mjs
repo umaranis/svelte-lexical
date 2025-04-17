@@ -7,6 +7,8 @@
  */
 
 import {
+  centerAlign,
+  rightAlign,
   selectAll,
   toggleBold,
   toggleItalic,
@@ -27,7 +29,6 @@ import {
 } from '../utils/index.mjs';
 
 test.describe('Clear All Formatting', () => {
-  test.fixme();
   test.beforeEach(({isPlainText, isCollab, page}) => {
     test.skip(isPlainText);
     return initialize({isCollab, page});
@@ -55,59 +56,60 @@ test.describe('Clear All Formatting', () => {
     );
   });
 
-  test(`Should preserve the default styling of links and quoted text`, async ({
-    page,
-  }) => {
-    await focusEditor(page);
+  test.fixme(
+    `Should preserve the default styling of links and quoted text`,
+    async ({page}) => {
+      await focusEditor(page);
 
-    const clipboard = {
-      'text/html': '<a href="https://facebook.com">Facebook!</a>',
-    };
+      const clipboard = {
+        'text/html': '<a href="https://facebook.com">Facebook!</a>',
+      };
 
-    await pasteFromClipboard(page, clipboard);
-    await selectAll(page);
-    await toggleBold(page);
-    await toggleItalic(page);
-    await toggleUnderline(page);
-    await selectFromColorPicker(page);
-    await selectFromAdditionalStylesDropdown(page, '.clear');
-    await assertHTML(
-      page,
-      html`
-        <p class="PlaygroundEditorTheme__paragraph">
-          <a
-            class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
-            href="https://facebook.com">
-            <span data-lexical-text="true">Facebook!</span>
-          </a>
-        </p>
-      `,
-    );
+      await pasteFromClipboard(page, clipboard);
+      await selectAll(page);
+      await toggleBold(page);
+      await toggleItalic(page);
+      await toggleUnderline(page);
+      await selectFromColorPicker(page);
+      await selectFromAdditionalStylesDropdown(page, '.clear');
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph">
+            <a
+              class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
+              dir="ltr"
+              href="https://facebook.com">
+              <span data-lexical-text="true">Facebook!</span>
+            </a>
+          </p>
+        `,
+      );
 
-    await clearEditor(page);
+      await clearEditor(page);
 
-    await page.keyboard.type('> Testing for quote node');
-    await selectAll(page);
-    await toggleBold(page);
-    await toggleItalic(page);
-    await toggleUnderline(page);
-    await selectFromBackgroundColorPicker(page);
-    await selectFromColorPicker(page);
-    await selectFromAdditionalStylesDropdown(page, '.clear');
-    await assertHTML(
-      page,
-      html`
-        <blockquote
-          class="PlaygroundEditorTheme__quote PlaygroundEditorTheme__ltr"
-          dir="ltr">
-          <span data-lexical-text="true">Testing for quote node</span>
-        </blockquote>
-      `,
-    );
-  });
+      await page.keyboard.type('> Testing for quote node');
+      await selectAll(page);
+      await toggleBold(page);
+      await toggleItalic(page);
+      await toggleUnderline(page);
+      await selectFromBackgroundColorPicker(page);
+      await selectFromColorPicker(page);
+      await selectFromAdditionalStylesDropdown(page, '.clear');
+      await assertHTML(
+        page,
+        html`
+          <blockquote
+            class="PlaygroundEditorTheme__quote PlaygroundEditorTheme__ltr"
+            dir="ltr">
+            <span data-lexical-text="true">Testing for quote node</span>
+          </blockquote>
+        `,
+      );
+    },
+  );
 
-  test(
+  test.fixme(
     `Should preserve the default styling of hashtags and mentions`,
     {
       tag: '@flaky',
@@ -193,4 +195,53 @@ test.describe('Clear All Formatting', () => {
       );
     },
   );
+
+  test(`Can clear left/center/right alignment when BIU formatting already applied`, async ({
+    page,
+  }) => {
+    await focusEditor(page);
+
+    await page.keyboard.type('Hello');
+    await toggleBold(page);
+    await page.keyboard.type(' World');
+    await rightAlign(page);
+    await page.keyboard.type(' Test');
+    await selectAll(page);
+    await selectFromAdditionalStylesDropdown(page, '.clear');
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr"
+          style="">
+          <span data-lexical-text="true">Hello World Test</span>
+        </p>
+      `,
+    );
+  });
+
+  test(`Can clear left/center/right alignment when BIU formatting not applied`, async ({
+    page,
+  }) => {
+    await focusEditor(page);
+
+    await page.keyboard.type('Hello World');
+    await rightAlign(page);
+    await page.keyboard.type(' Test');
+    await centerAlign(page);
+    await selectAll(page);
+    await selectFromAdditionalStylesDropdown(page, '.clear');
+    await assertHTML(
+      page,
+      html`
+        <p
+          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+          dir="ltr"
+          style="">
+          <span data-lexical-text="true">Hello World Test</span>
+        </p>
+      `,
+    );
+  });
 });
