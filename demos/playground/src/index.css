@@ -45,43 +45,41 @@
   --hr-color: #ccc;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark theme */
-    --background: #1e1e1e;
-    --editor-background: #2d2d2d;
-    --text-color: #e0e0e0;
-    --text-muted: #aaa;
-    --border-color: #444;
-    --hover-background: #3d3d3d;
-    --active-background: rgba(60, 132, 244, 0.2);
-    --active-control: rgb(82, 145, 255);
-    --dropdown-background: #2d2d2d;
-    --dropdown-shadow: rgba(0, 0, 0, 0.5);
-    --dropdown-hover: #3d3d3d;
-    --toolbar-background: #2d2d2d;
-    --link-color: rgb(100, 160, 255);
-    --link-editor-background: #3d3d3d;
-    --modal-overlay: rgba(0, 0, 0, 0.7);
-    --modal-background: #2d2d2d;
-    --modal-shadow: #111;
-    --button-background: #3d3d3d;
-    --button-hover-background: #4d4d4d;
-    --icon-filter: invert(0.8);
-    --sticky-shadow: rgba(0, 0, 0, 0.4);
-    --sticky-shadow-darker: rgba(0, 0, 0, 0.6);
-    --code-background: #2a2a2a;
-    --quote-color: #aaa;
-    --quote-border-color: #555;
-    --table-border-color: #555;
-    --table-header-background: #333;
-    --table-cell-background: #2d2d2d;
-    --table-highlight-color: #3d5a7a;
-    --table-selected-outline: rgb(82, 145, 255);
-    --checkbox-border: #666;
-    --checkbox-background: #4d97f5;
-    --hr-color: #555;
-  }
+:root[data-theme='dark'] {
+  /* Dark theme */
+  --background: #1e1e1e;
+  --editor-background: #2d2d2d;
+  --text-color: #e0e0e0;
+  --text-muted: #aaa;
+  --border-color: #444;
+  --hover-background: #3d3d3d;
+  --active-background: rgba(60, 132, 244, 0.2);
+  --active-control: rgb(82, 145, 255);
+  --dropdown-background: #2d2d2d;
+  --dropdown-shadow: rgba(0, 0, 0, 0.5);
+  --dropdown-hover: #3d3d3d;
+  --toolbar-background: #2d2d2d;
+  --link-color: rgb(100, 160, 255);
+  --link-editor-background: #3d3d3d;
+  --modal-overlay: rgba(0, 0, 0, 0.7);
+  --modal-background: #2d2d2d;
+  --modal-shadow: #111;
+  --button-background: #3d3d3d;
+  --button-hover-background: #4d4d4d;
+  --icon-filter: invert(0.8);
+  --sticky-shadow: rgba(0, 0, 0, 0.4);
+  --sticky-shadow-darker: rgba(0, 0, 0, 0.6);
+  --code-background: #2a2a2a;
+  --quote-color: #aaa;
+  --quote-border-color: #555;
+  --table-border-color: #555;
+  --table-header-background: #333;
+  --table-cell-background: #2d2d2d;
+  --table-highlight-color: #3d5a7a;
+  --table-selected-outline: rgb(82, 145, 255);
+  --checkbox-border: #666;
+  --checkbox-background: #4d97f5;
+  --hr-color: #555;
 }
 
 body {

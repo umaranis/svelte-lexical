@@ -1,6 +1,5 @@
 <script lang="ts">
   import {themeTracker} from './themeTracker.svelte.js';
-  import {browser} from '$app/environment';
 
   interface Props {
     lightSrc: string;
@@ -23,8 +22,6 @@
 
   // Update source when theme changes or on client-side initialization
   $effect(() => {
-    if (!browser) return;
-
     if (themeTracker.color === 'dark') {
       src = darkSrc;
     } else {

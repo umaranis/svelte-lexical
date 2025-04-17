@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import RichTextComposer from './RichTextComposer.svelte';
   import '../global.css';
   import GitHubButton from './GitHubButton.svelte';
@@ -16,7 +16,8 @@
   <ThemeImage
     lightSrc="images/logo.svg"
     darkSrc="images/logo_white.svg"
-    alt="Svelte Lexical!" />
+    alt="Svelte Lexical!"
+    style="margin: 2em; max-width: 800px;" />
   <p style="margin-top: -1em; line-height: 1.7em">
     Welcome to <span class="emp-sl">Svelte-Lexical</span>
     , a rich text editor for
@@ -49,11 +50,6 @@
     display: flex;
     justify-content: flex-end;
     padding: 0.5em 1em;
-  }
-
-  :global(img) {
-    margin: 2em;
-    max-width: 800px;
   }
 
   .emp-sl {

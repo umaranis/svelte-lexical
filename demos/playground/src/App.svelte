@@ -3,23 +3,24 @@
   import RichTextComposer from './RichTextComposer.svelte';
   import Settings from './settings/Settings.svelte';
   import {createSettingsStore} from './settings/settingsStore';
-  import {MediaQuery} from 'svelte/reactivity';
-
-  const isDarkMode = new MediaQuery('(prefers-color-scheme: dark)');
+  import {
+    ThemeSelector,
+    ThemeImage,
+  } from 'svelte-lexical/dist/themes/system-light-dark/ui';
 
   const settings = createSettingsStore();
   setContext('settings', settings);
-
-  let imageSrc = $state('images/logo.svg');
-
-  $effect(() => {
-    // get around this issue: https://svelte.dev/docs/svelte/runtime-warnings#Client-warnings-hydration_attribute_changed
-    imageSrc = isDarkMode.current ? 'images/logo_white.svg' : 'images/logo.svg';
-  });
 </script>
 
 <main>
-  <img src={imageSrc} alt="Svelte Lexical!" />
+  <div class="header-container">
+    <ThemeSelector />
+  </div>
+  <ThemeImage
+    lightSrc="images/logo.svg"
+    darkSrc="images/logo_white.svg"
+    alt="Svelte Lexical!"
+    style="margin: 2em; max-width: 800px;" />
   <p>
     This is the <a href="https://github.com/umaranis/svelte-lexical/">
       svelte-lexical
@@ -49,9 +50,10 @@
     margin: 0 auto;
   }
 
-  img {
-    margin: 2em;
-    max-width: 800px;
+  .header-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5em 1em;
   }
 
   a {
