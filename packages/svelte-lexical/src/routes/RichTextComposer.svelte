@@ -42,7 +42,7 @@
     LayoutContainerNode,
     LayoutItemNode,
   } from '$lib/index.js';
-  import {theme} from '$lib/themes/light-dark/editor/LightDarkEditorTheme.js';
+  import {theme} from '$lib/themes/system-light-dark/index.js';
   import {
     $getRoot as getRoot,
     $createTextNode as createTextNode,

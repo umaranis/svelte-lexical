@@ -21,6 +21,14 @@
     "./dist/themes/light-dark": {
       "types": "./dist/themes/light-dark/index.d.ts",
       "svelte": "./dist/themes/light-dark/index.js"
+    },
+    "./dist/themes/system-light-dark": {
+      "types": "./dist/themes/system-light-dark/index.d.ts",
+      "svelte": "./dist/themes/system-light-dark/index.js"
+    },
+    "./dist/themes/system-light-dark/ui": {
+      "types": "./dist/themes/system-light-dark/ui/index.d.ts",
+      "svelte": "./dist/themes/system-light-dark/ui/index.js"
     }
   },
   "svelte": "./dist/index.js",

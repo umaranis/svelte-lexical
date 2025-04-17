@@ -3,20 +3,20 @@
   import '../global.css';
   import GitHubButton from './GitHubButton.svelte';
   import PlaygroundButton from './PlaygroundButton.svelte';
-  import {MediaQuery} from 'svelte/reactivity';
-
-  const isDarkMode = new MediaQuery('(prefers-color-scheme: dark)');
-
-  let imageSrc = $state('images/logo.svg');
-
-  $effect(() => {
-    // get around this issue: https://svelte.dev/docs/svelte/runtime-warnings#Client-warnings-hydration_attribute_changed
-    imageSrc = isDarkMode.current ? 'images/logo_white.svg' : 'images/logo.svg';
-  });
+  import {
+    ThemeSelector,
+    ThemeImage,
+  } from '$lib/themes/system-light-dark/ui/index.js';
 </script>
 
 <main>
-  <img src={imageSrc} alt="Svelte Lexical!" />
+  <div class="header-container">
+    <ThemeSelector />
+  </div>
+  <ThemeImage
+    lightSrc="images/logo.svg"
+    darkSrc="images/logo_white.svg"
+    alt="Svelte Lexical!" />
   <p style="margin-top: -1em; line-height: 1.7em">
     Welcome to <span class="emp-sl">Svelte-Lexical</span>
     , a rich text editor for
@@ -45,7 +45,13 @@
     margin: 0 auto;
   }
 
-  img {
+  .header-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5em 1em;
+  }
+
+  :global(img) {
     margin: 2em;
     max-width: 800px;
   }

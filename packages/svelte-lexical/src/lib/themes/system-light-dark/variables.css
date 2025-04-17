@@ -1,0 +1,82 @@
+/**
+ * Copyright (c) Syed Umar Anis.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+/* Light theme (default) */
+:root {
+  --background: #eee;
+  --editor-background: #fff;
+  --text-color: #000;
+  --text-muted: #777;
+  --border-color: #eee;
+  --hover-background: #eee;
+  --active-background: rgba(223, 232, 250, 0.3);
+  --active-control: rgb(60, 132, 244);
+  --dropdown-background: #fff;
+  --dropdown-shadow: rgba(0, 0, 0, 0.3);
+  --dropdown-hover: #eee;
+  --toolbar-background: #fff;
+  --link-color: rgb(33, 111, 219);
+  --link-editor-background: #eee;
+  --modal-overlay: rgba(40, 40, 40, 0.6);
+  --modal-background: #fff;
+  --modal-shadow: #444;
+  --button-background: #eee;
+  --button-hover-background: #ddd;
+  --icon-filter: none;
+  --sticky-shadow: rgba(0, 0, 0, 0.2);
+  --sticky-shadow-darker: rgba(0, 0, 0, 0.4);
+  --code-background: rgb(240, 242, 245);
+  --quote-color: rgb(101, 103, 107);
+  --quote-border-color: rgb(206, 208, 212);
+  --table-border-color: #bbb;
+  --table-header-background: #f2f3f5;
+  --table-cell-background: #ffffff;
+  --table-highlight-color: #c9dbf0;
+  --table-selected-outline: rgb(60, 132, 244);
+  --checkbox-border: #999;
+  --checkbox-background: #3d87f5;
+  --hr-color: #ccc;
+}
+
+/* dark theme */
+
+:root[data-theme='dark'] {
+  --background: #1e1e1e;
+  --editor-background: #2d2d2d;
+  --text-color: #e0e0e0;
+  --text-muted: #aaa;
+  --border-color: #444;
+  --hover-background: #3d3d3d;
+  --active-background: rgba(60, 132, 244, 0.2);
+  --active-control: rgb(82, 145, 255);
+  --dropdown-background: #2d2d2d;
+  --dropdown-shadow: rgba(0, 0, 0, 0.5);
+  --dropdown-hover: #3d3d3d;
+  --toolbar-background: #2d2d2d;
+  --link-color: rgb(100, 160, 255);
+  --link-editor-background: #3d3d3d;
+  --modal-overlay: rgba(0, 0, 0, 0.7);
+  --modal-background: #2d2d2d;
+  --modal-shadow: #111;
+  --button-background: #3d3d3d;
+  --button-hover-background: #4d4d4d;
+  --icon-filter: invert(0.8);
+  --sticky-shadow: rgba(0, 0, 0, 0.4);
+  --sticky-shadow-darker: rgba(0, 0, 0, 0.6);
+  --code-background: #2a2a2a;
+  --quote-color: #aaa;
+  --quote-border-color: #555;
+  --table-border-color: #555;
+  --table-header-background: #333;
+  --table-cell-background: #2d2d2d;
+  --table-highlight-color: #3d5a7a;
+  --table-selected-outline: rgb(82, 145, 255);
+  --checkbox-border: #666;
+  --checkbox-background: #4d97f5;
+  --hr-color: #555;
+}

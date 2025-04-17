@@ -6,7 +6,7 @@
     PlainTextPlugin,
     HistoryPlugin,
   } from '$lib/index.js';
-  import {theme as editorTheme} from '$lib/themes/light-dark/editor/LightDarkEditorTheme.js';
+  import {theme as editorTheme} from '$lib/themes/system-light-dark/index.js';
   import Composer1Toolbar from './Composer1Toolbar.svelte';
 
   const initialConfig = {

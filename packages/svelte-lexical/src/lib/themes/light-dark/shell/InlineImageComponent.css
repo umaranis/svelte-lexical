@@ -1,5 +1,3 @@
-@import '../variables.css';
-
 .svelte-lexical {
   .editor-image .image-edit-button {
     border: 1px solid var(--border-color);
