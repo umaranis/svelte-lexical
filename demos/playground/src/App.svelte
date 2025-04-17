@@ -53,7 +53,7 @@
   .header-container {
     display: flex;
     justify-content: flex-end;
-    padding: 0.5em 1em;
+    /* padding: 0.5em 1em; */ /* this somehow affects a unit test for selection*/
   }
 
   a {
