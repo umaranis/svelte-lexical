@@ -70,9 +70,6 @@
     editor,
   }: Props = $props();
 
-  let heightCss = $derived(height === 'inherit' ? 'inherit' : height + 'px');
-  let widthCss = $derived(width === 'inherit' ? 'inherit' : width + 'px');
-
   let selection: BaseSelection | null = $state(null);
 
   let imageRef: HTMLImageElement | null = $state(null);
@@ -263,6 +260,68 @@
   };
 
   const historyPlugin = getImageHistoryPluginType();
+
+  let dimensions = $state<{
+    width: number;
+    height: number;
+  } | null>(null);
+
+  function isSVG(src: string): boolean {
+    return src.toLowerCase().endsWith('.svg');
+  }
+  const isSVGImage = isSVG(src);
+
+  // Set initial dimensions for SVG images
+  $effect(() => {
+    if (imageRef && isSVGImage) {
+      const {naturalWidth, naturalHeight} = imageRef;
+      dimensions = {
+        height: naturalHeight,
+        width: naturalWidth,
+      };
+    }
+  });
+
+  // Calculate final dimensions with proper scaling
+  function calculateDimensions() {
+    if (!isSVGImage) {
+      return {
+        height,
+        maxWidth,
+        width,
+      };
+    }
+
+    // Use natural dimensions if available, otherwise fallback to defaults
+    const naturalWidth = dimensions?.width || 200;
+    const naturalHeight = dimensions?.height || 200;
+
+    let finalWidth = naturalWidth;
+    let finalHeight = naturalHeight;
+
+    // Scale down if width exceeds maxWidth while maintaining aspect ratio
+    if (finalWidth > maxWidth) {
+      const scale = maxWidth / finalWidth;
+      finalWidth = maxWidth;
+      finalHeight = Math.round(finalHeight * scale);
+    }
+
+    // Scale down if height exceeds maxHeight while maintaining aspect ratio
+    const maxHeight = 500;
+    if (finalHeight > maxHeight) {
+      const scale = maxHeight / finalHeight;
+      finalHeight = maxHeight;
+      finalWidth = Math.round(finalWidth * scale);
+    }
+
+    return {
+      height: finalHeight,
+      maxWidth,
+      width: finalWidth,
+    };
+  }
+
+  const imageStyle = $derived.by(calculateDimensions);
 </script>
 
 <div {draggable}>
@@ -275,8 +334,22 @@
       {src}
       alt={altText}
       bind:this={imageRef}
-      style="height:{heightCss};max-width:{maxWidth}px;width:{widthCss};"
-      draggable="false" />
+      style="height:{imageStyle.height === 'inherit'
+        ? 'inherit'
+        : imageStyle.height +
+          'px'};max-width:{maxWidth}px;width:{imageStyle.width === 'inherit'
+        ? 'inherit'
+        : imageStyle.width + 'px'};"
+      draggable="false"
+      onload={(e) => {
+        if (isSVGImage) {
+          const img = e.currentTarget as HTMLImageElement;
+          dimensions = {
+            height: img.naturalHeight,
+            width: img.naturalWidth,
+          };
+        }
+      }} />
   {:catch _}
     <img
       src="/images/image-broken.svg"
