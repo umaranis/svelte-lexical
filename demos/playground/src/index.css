@@ -498,6 +498,10 @@ i.x {
   background-image: url(images/icons/x.svg);
 }
 
+i.bluesky {
+  background-image: url(images/icons/bluesky.svg);
+}
+
 i.youtube {
   background-image: url(images/icons/youtube.svg);
 }
