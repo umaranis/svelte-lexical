@@ -22,6 +22,7 @@
     type LexicalEditor,
     type BaseSelection,
     getDOMSelection,
+    $isNodeSelection as isNodeSelection,
   } from 'lexical';
   import {onMount} from 'svelte';
   import type {Writable} from 'svelte/store';
@@ -117,6 +118,7 @@
     if (isRangeSelection(selection)) {
       const node = getSelectedNode(selection);
       const linkParent = findMatchingParent(node, isLinkNode);
+
       if (isLinkNode(linkParent)) {
         linkUrl = linkParent.getURL();
       } else if (isLinkNode(node)) {
@@ -124,9 +126,25 @@
       } else {
         linkUrl = '';
       }
-    }
-    if ($isEditMode) {
-      editedLinkUrl = linkUrl;
+      if ($isEditMode) {
+        editedLinkUrl = linkUrl;
+      }
+    } else if (isNodeSelection(selection)) {
+      const nodes = selection.getNodes();
+      if (nodes.length > 0) {
+        const node = nodes[0];
+        const parent = node.getParent();
+        if (isLinkNode(parent)) {
+          linkUrl = parent.getURL();
+        } else if (isLinkNode(node)) {
+          linkUrl = node.getURL();
+        } else {
+          linkUrl = '';
+        }
+      }
+      if ($isEditMode) {
+        editedLinkUrl = linkUrl;
+      }
     }
     const editorElem = editorRef;
     const nativeSelection = getDOMSelection(editor._window);
@@ -138,15 +156,25 @@
 
     const rootElement = editor.getRootElement();
 
-    if (
-      selection !== null &&
-      nativeSelection !== null &&
-      rootElement !== null &&
-      rootElement.contains(nativeSelection.anchorNode) &&
-      editor.isEditable()
-    ) {
-      const domRect: DOMRect | undefined =
-        nativeSelection.focusNode?.parentElement?.getBoundingClientRect();
+    if (selection !== null && rootElement !== null && editor.isEditable()) {
+      let domRect: DOMRect | undefined;
+
+      if (isNodeSelection(selection)) {
+        const nodes = selection.getNodes();
+        if (nodes.length > 0) {
+          const element = editor.getElementByKey(nodes[0].getKey());
+          if (element) {
+            domRect = element.getBoundingClientRect();
+          }
+        }
+      } else if (
+        nativeSelection !== null &&
+        rootElement.contains(nativeSelection.anchorNode)
+      ) {
+        domRect =
+          nativeSelection.focusNode?.parentElement?.getBoundingClientRect();
+      }
+
       if (domRect) {
         domRect.y += 40;
         setFloatingElemPositionForLinkEditor(domRect, editorElem, anchorElem);

@@ -16,6 +16,7 @@
     COMMAND_PRIORITY_LOW,
     SELECTION_CHANGE_COMMAND,
     $isLineBreakNode as isLineBreakNode,
+    $isNodeSelection as isNodeSelection,
   } from 'lexical';
   import {writable} from 'svelte/store';
   import {onMount} from 'svelte';
@@ -56,6 +57,19 @@
           );
         });
       if (!badNode) {
+        $isLink = true;
+      } else {
+        $isLink = false;
+      }
+    } else if (isNodeSelection(selection)) {
+      const nodes = selection.getNodes();
+      if (nodes.length === 0) {
+        $isLink = false;
+        return;
+      }
+      const node = nodes[0];
+      const parent = node.getParent();
+      if (isLinkNode(parent) || isLinkNode(node)) {
         $isLink = true;
       } else {
         $isLink = false;
