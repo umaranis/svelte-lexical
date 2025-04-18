@@ -5,10 +5,10 @@
   import {
     $unmergeCell as unmergeCell,
     TableCellNode,
-    $insertTableRow__EXPERIMENTAL as insertTableRow__EXPERIMENTAL,
-    $insertTableColumn__EXPERIMENTAL as insertTableColumn__EXPERIMENTAL,
-    $deleteTableRow__EXPERIMENTAL as deleteTableRow__EXPERIMENTAL,
-    $deleteTableColumn__EXPERIMENTAL as deleteTableColumn__EXPERIMENTAL,
+    $insertTableRowAtSelection as _insertTableRowAtSelection,
+    $insertTableColumnAtSelection as _insertTableColumnAtSelection,
+    $deleteTableRowAtSelection as _deleteTableRowAtSelection,
+    $deleteTableColumnAtSelection as _deleteTableColumnAtSelection,
     $getTableRowIndexFromTableCellNode as getTableRowIndexFromTableCellNode,
     TableCellHeaderStates,
     $getTableColumnIndexFromTableCellNode as getTableColumnIndexFromTableCellNode,
@@ -257,7 +257,7 @@
   const insertTableRowAtSelection = (shouldInsertAfter: boolean) => {
     editor.update(() => {
       for (let i = 0; i < selectionCounts.rows; i++) {
-        insertTableRow__EXPERIMENTAL(shouldInsertAfter);
+        _insertTableRowAtSelection(shouldInsertAfter);
       }
       onClose();
     });
@@ -266,7 +266,7 @@
   const insertTableColumnAtSelection = (shouldInsertAfter: boolean) => {
     editor.update(() => {
       for (let i = 0; i < selectionCounts.columns; i++) {
-        insertTableColumn__EXPERIMENTAL(shouldInsertAfter);
+        _insertTableColumnAtSelection(shouldInsertAfter);
       }
       onClose();
     });
@@ -274,7 +274,7 @@
 
   const deleteTableRowAtSelection = () => {
     editor.update(() => {
-      deleteTableRow__EXPERIMENTAL();
+      _deleteTableRowAtSelection();
       onClose();
     });
   };
@@ -291,7 +291,7 @@
 
   const deleteTableColumnAtSelection = () => {
     editor.update(() => {
-      deleteTableColumn__EXPERIMENTAL();
+      _deleteTableColumnAtSelection();
       onClose();
     });
   };

@@ -6,8 +6,8 @@
     $getTableColumnIndexFromTableCellNode as getTableColumnIndexFromTableCellNode,
     getTableElement,
     $getTableRowIndexFromTableCellNode as getTableRowIndexFromTableCellNode,
-    $insertTableColumn__EXPERIMENTAL as insertTableColumn__EXPERIMENTAL,
-    $insertTableRow__EXPERIMENTAL as insertTableRow__EXPERIMENTAL,
+    $insertTableColumnAtSelection as insertTableColumnAtSelection,
+    $insertTableRowAtSelection as insertTableRowAtSelection,
     $isTableCellNode as isTableCellNode,
     $isTableNode as isTableNode,
     TableCellNode,
@@ -259,10 +259,10 @@
         const maybeTableNode = getNearestNodeFromDOMNode(tableCellDOMNodeRef);
         maybeTableNode?.selectEnd();
         if (insertRow) {
-          insertTableRow__EXPERIMENTAL();
+          insertTableRowAtSelection();
           $isShownRow = false;
         } else {
-          insertTableColumn__EXPERIMENTAL();
+          insertTableColumnAtSelection();
           $isShownColumn = false;
         }
       }
