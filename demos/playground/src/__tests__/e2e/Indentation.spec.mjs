@@ -14,6 +14,7 @@ import {
   html,
   initialize,
   insertTable,
+  pasteFromClipboard,
   selectFromAlignDropdown,
   test,
 } from '../utils/index.mjs';
@@ -26,6 +27,12 @@ async function toggleBulletList(page) {
 async function clickIndentButton(page, times = 1) {
   for (let i = 0; i < times; i++) {
     await selectFromAlignDropdown(page, '.indent');
+  }
+}
+
+async function clickOutdentButton(page, times = 1) {
+  for (let i = 0; i < times; i++) {
+    await selectFromAlignDropdown(page, '.outdent');
   }
 }
 
@@ -599,4 +606,49 @@ test.describe('Identation', () => {
       );
     },
   );
+
+  test(`Cannot have negative indents (#7410)`, async ({page, isPlainText}) => {
+    test.skip(isPlainText);
+    await focusEditor(page);
+
+    await pasteFromClipboard(page, {
+      'text/html': html`
+        <p style="padding-inline-start: 1px">hello1</p>
+        <p style="padding-inline-start: 2px">hello2</p>
+        <p style="padding-inline-start: 3px">hello3</p>
+      `,
+    });
+
+    await selectAll(page);
+    await clickOutdentButton(page, 2);
+
+    await click(page, '.block-controls');
+    await click(page, '.dropdown .icon.bullet-list');
+
+    await assertHTML(
+      page,
+      html`
+        <ul class="PlaygroundEditorTheme__ul">
+          <li
+            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+            dir="ltr"
+            value="1">
+            <span data-lexical-text="true">hello1</span>
+          </li>
+          <li
+            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+            dir="ltr"
+            value="2">
+            <span data-lexical-text="true">hello2</span>
+          </li>
+          <li
+            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
+            dir="ltr"
+            value="3">
+            <span data-lexical-text="true">hello3</span>
+          </li>
+        </ul>
+      `,
+    );
+  });
 });
