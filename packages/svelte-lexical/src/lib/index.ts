@@ -30,6 +30,7 @@ export {default as ShortcutsPlugin} from './components/toolbar/ShortcutsPlugin.s
 export {default as YoutubePlugin} from './core/plugins/youtube/YoutubePlugin.svelte';
 export {default as TwitterPlugin} from './core/plugins/twitter/TwitterPlugin.svelte';
 export {default as BlueskyPlugin} from './core/plugins/bluesky/BlueskyPlugin.svelte';
+export {default as OnChangePlugin} from './core/plugins/OnChangePlugin.svelte';
 
 export {default as MarkdownShortcutPlugin} from './core/plugins/MardownShortcut/MarkdownShortcutPlugin.svelte';
 export {
