@@ -7,11 +7,15 @@
   let {
     ignoreHistoryMergeTagChange = true,
     ignoreSelectionChange = false,
-    onChange
-  } : {
-    ignoreHistoryMergeTagChange: boolean,
-    ignoreSelectionChange: boolean,
-    onChange: (editorState: EditorState, editor: LexicalEditor, tags: Set<string>) => void
+    onChange,
+  }: {
+    ignoreHistoryMergeTagChange: boolean;
+    ignoreSelectionChange: boolean;
+    onChange: (
+      editorState: EditorState,
+      editor: LexicalEditor,
+      tags: Set<string>,
+    ) => void;
   } = $props();
 
   const editor = getEditor();
@@ -31,7 +35,8 @@
           }
 
           onChange(editorState, editor, tags);
-        })
+        },
+      );
     }
-  })
+  });
 </script>
