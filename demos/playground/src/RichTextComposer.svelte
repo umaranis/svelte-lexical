@@ -56,6 +56,7 @@
     TwitterPlugin,
     BlueskyPlugin,
     BlueskyNode,
+    TabIndentationPlugin,
   } from 'svelte-lexical';
   import {prepopulatedRichText} from './prepopulatedRichText';
   import type {SettingsStore} from './settings/settingsStore';
@@ -187,6 +188,7 @@
         <YoutubePlugin />
         <TwitterPlugin />
         <BlueskyPlugin />
+        <TabIndentationPlugin />
         {#if !isSmallWidthViewport}
           <FloatingLinkEditorPlugin anchorElem={editorDiv} />
           <CodeActionMenuPlugin anchorElem={editorDiv} />

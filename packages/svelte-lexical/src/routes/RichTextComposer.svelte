@@ -59,6 +59,7 @@
   import TwitterPlugin from '$lib/core/plugins/twitter/TwitterPlugin.svelte';
   import BlueskyPlugin from '$lib/core/plugins/bluesky/BlueskyPlugin.svelte';
   import {BlueskyNode} from '$lib/core/plugins/bluesky/BlueskyNode.js';
+  import TabIndentationPlugin from '$lib/core/plugins/TabIndentationPlugin.svelte';
 
   let isSmallWidthViewport = $state(true);
   let editorDiv: HTMLDivElement | undefined = $state();
@@ -165,6 +166,7 @@
       <YoutubePlugin />
       <TwitterPlugin />
       <BlueskyPlugin />
+      <TabIndentationPlugin />
 
       <ActionBar />
     </div>
