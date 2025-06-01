@@ -61,10 +61,7 @@ users, causing focus to become trapped within the editor.
     return false;
   }
 
-  export function registerTabIndentation(
-    editor: LexicalEditor,
-    maxIndent?: number,
-  ) {
+  function registerTabIndentation(editor: LexicalEditor, maxIndent?: number) {
     return mergeRegister(
       editor.registerCommand<KeyboardEvent>(
         KEY_TAB_COMMAND,

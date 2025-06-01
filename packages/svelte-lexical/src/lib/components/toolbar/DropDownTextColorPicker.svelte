@@ -4,7 +4,7 @@
   import DropdownColorPicker from '../generic/colorpicker/ColorPickerDropDown.svelte';
   import type {Writable} from 'svelte/store';
   import {$patchStyleText as patchStyleText} from '@lexical/selection';
-  import {$getSelection as getSelection} from 'lexical';
+  import {$getSelection as getSelection, HISTORIC_TAG} from 'lexical';
 
   const fontColor = getContext<Writable<string>>('fontColor');
 
@@ -25,7 +25,7 @@
           patchStyleText(selection, styles);
         }
       },
-      skipHistoryStack ? {tag: 'historic'} : {},
+      skipHistoryStack ? {tag: HISTORIC_TAG} : {},
     );
   };
 </script>

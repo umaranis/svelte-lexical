@@ -16,6 +16,8 @@
     $getRoot as getRoot,
     $getSelection as getSelection,
     COMMAND_PRIORITY_EDITOR,
+    HISTORY_MERGE_TAG,
+    SKIP_COLLAB_TAG,
   } from 'lexical';
   import {UndoManager, type Doc, type Transaction, type YEvent} from 'yjs';
 
@@ -145,7 +147,7 @@
         normalizedNodes,
         tags,
       }) => {
-        if (tags.has('skip-collab') === false) {
+        if (tags.has(SKIP_COLLAB_TAG) === false) {
           syncLexicalUpdateToYjs(
             binding,
             provider,
@@ -241,13 +243,13 @@
                 const parsedEditorState =
                   editor.parseEditorState(initialEditorState);
                 editor.setEditorState(parsedEditorState, {
-                  tag: 'history-merge',
+                  tag: HISTORY_MERGE_TAG,
                 });
                 break;
               }
               case 'object': {
                 editor.setEditorState(initialEditorState, {
-                  tag: 'history-merge',
+                  tag: HISTORY_MERGE_TAG,
                 });
                 break;
               }
@@ -259,7 +261,7 @@
                       initialEditorState(editor);
                     }
                   },
-                  {tag: 'history-merge'},
+                  {tag: HISTORY_MERGE_TAG},
                 );
                 break;
               }
@@ -280,7 +282,7 @@
         }
       },
       {
-        tag: 'history-merge',
+        tag: HISTORY_MERGE_TAG,
       },
     );
   }
@@ -294,7 +296,7 @@
         root.select();
       },
       {
-        tag: 'skip-collab',
+        tag: SKIP_COLLAB_TAG,
       },
     );
 

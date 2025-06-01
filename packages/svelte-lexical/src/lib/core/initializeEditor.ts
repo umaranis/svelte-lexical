@@ -1,8 +1,13 @@
 import type {LexicalEditor, EditorState} from 'lexical';
-import {$createParagraphNode, $getRoot, $getSelection} from 'lexical';
+import {
+  $createParagraphNode,
+  $getRoot,
+  $getSelection,
+  HISTORY_MERGE_TAG,
+} from 'lexical';
 import {CAN_USE_DOM} from '@lexical/utils';
 
-const HISTORY_MERGE_OPTIONS = {tag: 'history-merge'};
+const HISTORY_MERGE_OPTIONS = {tag: HISTORY_MERGE_TAG};
 
 export type InitialEditorStateType =
   | null
