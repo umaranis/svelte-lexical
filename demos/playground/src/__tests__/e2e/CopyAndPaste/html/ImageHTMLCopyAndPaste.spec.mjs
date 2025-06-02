@@ -21,8 +21,8 @@ import {
 test.describe('HTML Image CopyAndPaste', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
 
-  test.fixme('Copy + paste an image', async ({page, isPlainText}) => {
-    test.skip(isPlainText);
+  test.fixme('Copy + paste an image', async ({page, isPlainText, isCollab}) => {
+    test.skip(isPlainText || isCollab);
 
     await focusEditor(page);
 
