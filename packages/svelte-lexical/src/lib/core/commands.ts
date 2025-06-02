@@ -29,10 +29,12 @@ import {TOGGLE_LINK_COMMAND} from '@lexical/link';
 import {sanitizeUrl} from './plugins/link/url.js';
 
 export const formatParagraph = (editor: LexicalEditor) => {
-  const selection = $getSelection();
-  if ($isRangeSelection(selection)) {
-    $setBlocksType(selection, () => $createParagraphNode());
-  }
+  editor.update(() => {
+    const selection = $getSelection();
+    if ($isRangeSelection(selection)) {
+      $setBlocksType(selection, () => $createParagraphNode());
+    }
+  });
 };
 
 export const formatHeading = (
