@@ -33,7 +33,7 @@ export {default as BlueskyPlugin} from './core/plugins/bluesky/BlueskyPlugin.sve
 export {default as OnChangePlugin} from './core/plugins/OnChangePlugin.svelte';
 export {default as TabIndentationPlugin} from './core/plugins/TabIndentationPlugin.svelte';
 
-export {default as MarkdownShortcutPlugin} from './core/plugins/MardownShortcut/MarkdownShortcutPlugin.svelte';
+export {default as MarkdownShortcutPlugin} from './core/plugins/MarkdownShortcut/MarkdownShortcutPlugin.svelte';
 export {
   INLINE_CODE,
   BOLD_ITALIC_STAR,
@@ -52,13 +52,13 @@ export {
   CHECK_LIST,
   LINK,
 } from '@lexical/markdown';
-export {HR, IMAGE} from './core/plugins/MardownShortcut/transformers.js';
+export {HR, IMAGE} from './core/plugins/MarkdownShortcut/transformers.js';
 // markdown transformer groups
 export {
   TEXT_FORMAT_TRANSFORMERS,
   ELEMENT_TRANSFORMERS,
   ALL_TRANSFORMERS,
-} from './core/plugins/MardownShortcut/transformers.js';
+} from './core/plugins/MarkdownShortcut/transformers.js';
 
 export {HeadingNode, QuoteNode} from '@lexical/rich-text';
 export {ListNode, ListItemNode} from '@lexical/list';
