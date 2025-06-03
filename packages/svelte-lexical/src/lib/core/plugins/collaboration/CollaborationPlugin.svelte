@@ -8,6 +8,7 @@
     createBinding,
     type ExcludedProperties,
     type Provider,
+    type SyncCursorPositionsFn,
   } from '@lexical/yjs';
   import {onMount} from 'svelte';
   import YjsCollaboration from './YjsCollaboration.svelte';
@@ -26,6 +27,7 @@
     initialEditorState?: InitialEditorStateType | null;
     excludedProperties?: ExcludedProperties | undefined;
     awarenessData?: object | undefined;
+    syncCursorPositionsFn?: SyncCursorPositionsFn;
   }
 
   let {
@@ -38,6 +40,7 @@
     initialEditorState = null,
     excludedProperties = undefined,
     awarenessData = undefined,
+    syncCursorPositionsFn = undefined,
   }: Props = $props();
 
   const collabContext = useCollaborationContext(username, cursorColor);
@@ -79,7 +82,8 @@
   {shouldBootstrap}
   {cursorsContainerRef}
   {initialEditorState}
-  {awarenessData} />
+  {awarenessData}
+  {syncCursorPositionsFn} />
 
 <YjsHistory {editor} {binding} />
 <YjsFocusTracking {editor} {provider} {name} {color} {awarenessData} />
