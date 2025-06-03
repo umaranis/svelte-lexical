@@ -35,7 +35,7 @@ jobs:
           run_install: false
       - run: pnpm install
         working-directory: ./packages/svelte-lexical
-      - run: pnpm publish
+      - run: pnpm publish --no-git-checks
         working-directory: ./packages/svelte-lexical
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
