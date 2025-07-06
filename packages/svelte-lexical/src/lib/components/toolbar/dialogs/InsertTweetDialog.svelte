@@ -56,6 +56,7 @@
         dataTestId="tweet-embed-modal-url" />
       <div class="DialogActions">
         <button
+          type="button"
           data-test-id="tweet-embed-modal-submit-btn"
           disabled={isDisabled}
           class="Button__root"

@@ -67,6 +67,7 @@
         dataTestId="table-modal-columns" />
       <div class="DialogActions" data-test-id="table-model-confirm-insert">
         <button
+          type="button"
           disabled={isDisabled}
           class="Button__root"
           class:Button__disabled={isDisabled}

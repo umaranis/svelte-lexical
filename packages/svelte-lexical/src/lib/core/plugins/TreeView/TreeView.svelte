@@ -647,6 +647,7 @@
         Detected large EditorState, this can impact debugging performance.
       </span>
       <button
+        type="button"
         onclick={() => {
           showLimited = true;
           const editorState = lastEditorStateRef;

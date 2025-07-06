@@ -71,6 +71,7 @@
 
       <div class="DialogActions">
         <button
+          type="button"
           data-test-id="image-modal-file-upload-btn"
           class="Button__root"
           onclick={() => {

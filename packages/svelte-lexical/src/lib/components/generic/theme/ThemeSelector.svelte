@@ -108,6 +108,7 @@
 
 <div class="theme-selector">
   <button
+    type="button"
     onclick={toggleDropdown}
     aria-label="Toggle theme menu"
     title="Change theme"

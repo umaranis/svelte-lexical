@@ -53,6 +53,7 @@
         dataTestId="youtube-video-embed-modal-url" />
       <div class="DialogActions">
         <button
+          type="button"
           data-test-id="youtube-video-embed-modal-submit-btn"
           disabled={isDisabled}
           class="Button__root"

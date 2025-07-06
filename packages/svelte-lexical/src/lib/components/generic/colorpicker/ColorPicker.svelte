@@ -85,6 +85,7 @@
     {#each basicColors as basicColor}
       <!-- svelte-ignore a11y_consider_explicit_label -->
       <button
+        type="button"
         class={basicColor === selfColor.hex ? ' active' : ''}
         style="background-color: {basicColor}"
         onclick={() => {

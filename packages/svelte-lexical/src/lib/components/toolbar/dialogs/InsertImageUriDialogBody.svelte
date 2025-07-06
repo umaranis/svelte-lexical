@@ -29,6 +29,7 @@
       id="lexical-modal-image-alttext" />
     <div class="DialogActions">
       <button
+        type="button"
         data-test-id="image-modal-confirm-btn"
         disabled={isDisabled}
         class="Button__root"

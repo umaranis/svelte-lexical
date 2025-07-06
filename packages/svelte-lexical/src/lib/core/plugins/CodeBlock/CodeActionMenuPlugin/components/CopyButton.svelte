@@ -53,7 +53,7 @@
   }
 </script>
 
-<button class="menu-item" onclick={handleClick} aria-label="copy">
+<button type="button" class="menu-item" onclick={handleClick} aria-label="copy">
   {#if isCopyCompleted}
     <i class="format success"></i>
   {:else}

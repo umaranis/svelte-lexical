@@ -116,6 +116,7 @@
         dataTestId="bluesky-embed-modal-url" />
       <div class="DialogActions">
         <button
+          type="button"
           data-test-id="bluesky-embed-modal-submit-btn"
           disabled={isDisabled}
           class="Button__root"

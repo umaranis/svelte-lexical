@@ -7,6 +7,7 @@
 </script>
 
 <button
+  type="button"
   class="action-button export"
   onclick={() =>
     exportFile(editor, {

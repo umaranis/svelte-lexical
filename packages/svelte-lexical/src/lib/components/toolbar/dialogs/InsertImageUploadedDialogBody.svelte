@@ -41,6 +41,7 @@
       dataTestId="image-modal-alt-text-input" />
     <div class="DialogActions">
       <button
+        type="button"
         data-test-id="image-modal-file-upload-btn"
         disabled={isDisabled}
         class="Button__root"
