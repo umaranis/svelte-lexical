@@ -7,6 +7,7 @@
 </script>
 
 <button
+  type="button"
   class="action-button import"
   onclick={() => importFile(editor)}
   title="Import"

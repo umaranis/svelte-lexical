@@ -255,6 +255,7 @@
 <div bind:this={controlWrapperRef}>
   {#if !showCaption && captionsEnabled}
     <button
+      type="button"
       class="image-caption-button"
       bind:this={$buttonRef}
       onclick={() => {

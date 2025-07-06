@@ -95,6 +95,7 @@
 
 <div class="prettier-wrapper">
   <button
+    type="button"
     class="menu-item"
     onclick={handleClick}
     onmouseenter={handleMouseEnter}

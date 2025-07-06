@@ -274,6 +274,7 @@
   {#if $isShownRow}
     <!-- svelte-ignore a11y_consider_explicit_label -->
     <button
+      type="button"
       class={`${editor._config.theme.tableAddRows}`}
       style={$position}
       onclick={() => insertAction(true)}>
@@ -282,6 +283,7 @@
   {#if $isShownColumn}
     <!-- svelte-ignore a11y_consider_explicit_label -->
     <button
+      type="button"
       class={`${editor._config.theme.tableAddColumns}`}
       style={$position}
       onclick={() => insertAction(false)}>

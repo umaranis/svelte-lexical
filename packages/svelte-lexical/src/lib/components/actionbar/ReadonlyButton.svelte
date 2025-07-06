@@ -7,6 +7,7 @@
 </script>
 
 <button
+  type="button"
   class={`action-button ${!$isEditable ? 'unlock' : 'lock'}`}
   onclick={() => {
     editor.setEditable(!editor.isEditable());
