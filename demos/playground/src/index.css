@@ -279,7 +279,7 @@ body {
   background: var(--dropdown-background);
   box-shadow: 0px 5px 10px var(--dropdown-shadow);
   border-radius: 8px;
-  position: fixed;
+  position: relative;
 }
 
 .typeahead-popover ul {
