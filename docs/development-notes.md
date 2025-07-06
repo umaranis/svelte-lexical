@@ -77,7 +77,7 @@ It uses NPM to build and publish (PNPM is not used due to a bug).
 ## Steps for creating a new release
 
 - bump up the version number
-  - for svelte-lexical package, `pnpm version 0.1.3`
+  - increment the verion number for svelte-lexical package
   - for demos project, update version number for `svelte-lexical` dependency in `package.json` (find and replace)
   - run `pnpm i`
   - build all projects
