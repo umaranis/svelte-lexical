@@ -290,7 +290,9 @@ test.describe('Toolbar', () => {
                 style="height: inherit; max-width: 500px; width: inherit" />
             </div>
             <div>
-              <button class="image-caption-button">Add Caption</button>
+              <button class="image-caption-button" type="button">
+                Add Caption
+              </button>
               <div class="image-resizer image-resizer-n"></div>
               <div class="image-resizer image-resizer-ne"></div>
               <div class="image-resizer image-resizer-e"></div>
@@ -326,7 +328,9 @@ test.describe('Toolbar', () => {
                 style="height: inherit; max-width: 500px; width: inherit" />
             </div>
             <div>
-              <button class="image-caption-button">Add Caption</button>
+              <button class="image-caption-button" type="button">
+                Add Caption
+              </button>
               <div class="image-resizer image-resizer-n"></div>
               <div class="image-resizer image-resizer-ne"></div>
               <div class="image-resizer image-resizer-e"></div>
