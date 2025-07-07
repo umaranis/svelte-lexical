@@ -6345,6 +6345,11 @@ test.describe.parallel('Tables', () => {
       false,
     );
 
+    if (IS_COLLAB) {
+      //umar: adding a timeout here so that the following change is considered a separate undo unit. It seems to matter for COLLAB as it is slower in capturing changes.
+      await page.waitForTimeout(500);
+    }
+
     await withExclusiveClipboardAccess(async () => {
       const clipboard = await copyToClipboard(page);
 
@@ -6603,6 +6608,11 @@ test.describe.parallel('Tables', () => {
       false,
       false,
     );
+
+    if (IS_COLLAB) {
+      //umar: adding a timeout here so that the following change is considered a separate undo unit. It seems to matter for COLLAB as it is slower in capturing changes.
+      await page.waitForTimeout(500);
+    }
 
     await withExclusiveClipboardAccess(async () => {
       const clipboard = await copyToClipboard(page);
