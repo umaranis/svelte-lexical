@@ -1,0 +1,48 @@
+{
+  "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v11/terminal-keeper.json",
+  "theme": "tribe",
+  "active": "default",
+  "activateOnStartup": false,
+  "keepExistingTerminals": true,
+  "sessions": {
+    "default": [
+      {
+        "name": "library",
+        "autoExecuteCommands": true,
+        "icon": "library",
+        "color": "terminal.ansiGreen",
+        "commands": [
+          "cd packages/svelte-lexical",
+          "pn dev"
+        ]
+      },
+      {
+        "name": "playground",
+        "autoExecuteCommands": true,
+        "icon": "play-circle",
+        "color": "terminal.ansiGreen",
+        "commands": [
+          "cd demos/playground"
+        ]
+      }
+    ],
+    "more": [
+      [
+        {
+          "name": "richtext-editor",
+          "autoExecuteCommands": true,
+          "commands": [
+            "cd demos/richtext-editor"
+          ]
+        },
+        {
+          "name": "sveltekit",
+          "autoExecuteCommands": true,
+          "commands": [
+            "cd demos/sveltekit"
+          ]
+        }
+      ]
+    ]
+  }
+}
