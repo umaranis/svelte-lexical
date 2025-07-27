@@ -268,7 +268,11 @@
   height: 100%;
   border-right: 1px solid #bbb;
 }
-.SL_Theme__tableRowStriping tr:nth-child(even) {
+.SL_Theme__tableRowStriping tr:nth-child(even),
+.SL_Theme__tableFrozenColumn
+  .SL_Theme__table.SL_Theme__tableRowStriping
+  tr:nth-child(even)
+  > td:first-child {
   background-color: #f2f5fb;
 }
 .SL_Theme__tableSelection *::selection {
