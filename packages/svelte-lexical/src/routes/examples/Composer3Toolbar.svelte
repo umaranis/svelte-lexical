@@ -41,8 +41,8 @@
         <HeadingDropDownItem headingSize="h1" />
         <HeadingDropDownItem headingSize="h2" />
         <HeadingDropDownItem headingSize="h3" />
-        <BulletDropDrownItem />
         <NumberDropDrownItem />
+        <BulletDropDrownItem />
         <CheckDropDrownItem />
         <QuoteDropDrownItem />
       </BlockFormatDropDown>

@@ -269,8 +269,12 @@
   height: 100%;
   border-right: 1px solid var(--table-border-color);
 }
-.SL_Theme__tableRowStriping tr:nth-child(even) {
-  background-color: var(--hover-background);
+.SL_Theme__tableRowStriping tr:nth-child(even),
+.SL_Theme__tableFrozenColumn
+  .SL_Theme__table.SL_Theme__tableRowStriping
+  tr:nth-child(even)
+  > td:first-child {
+  background-color: #f2f5fb;
 }
 .SL_Theme__tableSelection *::selection {
   background-color: transparent;

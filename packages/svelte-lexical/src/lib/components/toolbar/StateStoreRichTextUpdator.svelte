@@ -2,9 +2,11 @@
   import {
     $getSelection as getSelection,
     $isRangeSelection as isRangeSelection,
+    $isNodeSelection as isNodeSelection,
     $isRootOrShadowRoot as isRootOrShadowRoot,
     COMMAND_PRIORITY_CRITICAL,
     SELECTION_CHANGE_COMMAND,
+    type LexicalNode,
   } from 'lexical';
   import {
     $isParentElementRTL as isParentElementRTL,
@@ -50,6 +52,38 @@
   const isLink: Writable<boolean> = getContext('isLink');
   const isImageCaption: Writable<boolean> = getContext('isImageCaption');
 
+  function findTopLevelElement(node: LexicalNode) {
+    let topLevelElement =
+      node.getKey() === 'root'
+        ? node
+        : findMatchingParent(node, (e) => {
+            const parent = e.getParent();
+            return parent !== null && isRootOrShadowRoot(parent);
+          });
+
+    if (topLevelElement === null) {
+      topLevelElement = node.getTopLevelElementOrThrow();
+    }
+    return topLevelElement;
+  }
+
+  function handleHeadingNode(selectedElement: LexicalNode) {
+    const type = isHeadingNode(selectedElement)
+      ? selectedElement.getTag()
+      : selectedElement.getType();
+    if (type in blockTypeToBlockName) {
+      $blockType = type as keyof typeof blockTypeToBlockName;
+    }
+  }
+
+  function handleCodeNode(element: LexicalNode) {
+    if (isCodeNode(element)) {
+      const language = element.getLanguage() as keyof typeof CODE_LANGUAGE_MAP;
+      $codeLanguage = language ? CODE_LANGUAGE_MAP[language] || language : '';
+      return;
+    }
+  }
+
   const updateToolbar = () => {
     const selection = getSelection();
     if (isRangeSelection(selection)) {
@@ -61,18 +95,9 @@
       } else {
         $isImageCaption = false;
       }
-      const anchorNode = selection.anchor.getNode();
-      let element =
-        anchorNode.getKey() === 'root'
-          ? anchorNode
-          : findMatchingParent(anchorNode, (e) => {
-              const parent = e.getParent();
-              return parent !== null && isRootOrShadowRoot(parent);
-            });
 
-      if (element === null) {
-        element = anchorNode.getTopLevelElementOrThrow();
-      }
+      const anchorNode = selection.anchor.getNode();
+      const element = findTopLevelElement(anchorNode);
 
       const elementKey = element.getKey();
       const elementDOM = $activeEditor.getElementByKey(elementKey);
@@ -100,20 +125,8 @@
             : element.getListType();
           $blockType = type;
         } else {
-          const type = isHeadingNode(element)
-            ? element.getTag()
-            : element.getType();
-          if (type in blockTypeToBlockName) {
-            $blockType = type as keyof typeof blockTypeToBlockName;
-          }
-          if (isCodeNode(element)) {
-            const language =
-              element.getLanguage() as keyof typeof CODE_LANGUAGE_MAP;
-            $codeLanguage = language
-              ? CODE_LANGUAGE_MAP[language] || language
-              : '';
-            return;
-          }
+          handleHeadingNode(element);
+          handleCodeNode(element);
         }
       }
       // Hande buttons
@@ -150,6 +163,24 @@
         'font-size',
         '15px',
       );
+    }
+
+    if (isNodeSelection(selection)) {
+      const nodes = selection.getNodes();
+      for (const selectedNode of nodes) {
+        const parentList = getNearestNodeOfType<ListNode>(
+          selectedNode,
+          ListNode,
+        );
+        if (parentList) {
+          const type = parentList.getListType();
+          $blockType = type;
+        } else {
+          const selectedElement = findTopLevelElement(selectedNode);
+          handleHeadingNode(selectedElement);
+          handleCodeNode(selectedElement);
+        }
+      }
     }
   };
 
