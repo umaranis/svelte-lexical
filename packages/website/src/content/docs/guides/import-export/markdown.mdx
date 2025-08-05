@@ -12,7 +12,7 @@ Here we have an example of how to export the contents to Markdown and print it t
 <script lang="ts">
 	import {
 		Composer, ContentEditable, HorizontalRuleNode, HorizontalRulePlugin, RichTextPlugin,
-+    convertToMarkdownString,
++    convertToMarkdownString, ALL_TRANSFORMERS,
 	} from 'svelte-lexical';
 	import { theme } from 'svelte-lexical/dist/themes/default';
 	import MyToolbar from './MyToolbar.svelte';
@@ -33,7 +33,7 @@ Here we have an example of how to export the contents to Markdown and print it t
 +	onclick={() => {
 +		const editor = composer.getEditor();
 +		editor.read(() => {
-+			const markdown = convertToMarkdownString();
++			const markdown = convertToMarkdownString(ALL_TRANSFORMERS);
 +			console.log(markdown);
 +		});
 +	}}>Export Markdown</button
