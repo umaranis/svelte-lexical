@@ -142,8 +142,11 @@
       <CheckListPlugin />
       <HorizontalRulePlugin />
       <ImagePlugin captionsEnabled={false} />
-      <AutoLinkPlugin />
-      <LinkPlugin {validateUrl} />
+      <AutoLinkPlugin
+        attributes={{target: '_blank', rel: 'noopener noreferrer nofollow'}} />
+      <LinkPlugin
+        {validateUrl}
+        attributes={{target: '_blank', rel: 'noopener noreferrer nofollow'}} />
       <CodeHighlightPlugin />
       {#if !isSmallWidthViewport}
         <FloatingLinkEditorPlugin anchorElem={editorDiv} />

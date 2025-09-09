@@ -1,5 +1,8 @@
 <script lang="ts">
+  import type {LinkAttributes} from '@lexical/link';
   import AutoLinkPluginCore from './AutoLinkPluginCore.svelte';
+
+  const {attributes}: {attributes?: LinkAttributes} = $props();
 
   export function createLinkMatcherWithRegExp(
     regExp: RegExp,
@@ -15,6 +18,7 @@
         length: match[0].length,
         text: match[0],
         url: urlTransformer(match[0]),
+        attributes,
       };
     };
   }
