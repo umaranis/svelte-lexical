@@ -529,6 +529,18 @@
 .SL_Theme__tokenComment {
   color: slategray;
 }
+.SL_Theme__tokenDeleted {
+  border-image: linear-gradient(to right, #ffcecb 50%, #ffebe9 50%) fill 0/0/0
+    100vw;
+}
+.SL_Theme__tokenInserted {
+  border-image: linear-gradient(to right, #aceebb 50%, #dafbe1 50%) fill 0/0/0
+    100vw;
+}
+.SL_Theme__tokenUnchanged {
+  border-image: linear-gradient(to right, #ddd 50%, #f0f2f5 50%) fill 0/0/0
+    100vw;
+}
 .SL_Theme__tokenPunctuation {
   color: #999;
 }
