@@ -113,6 +113,23 @@
     );
   });
 
+  $effect(() => {
+    const editorElement = editorRef;
+    if (editorElement === null) {
+      return;
+    }
+    const handleBlur = (event: FocusEvent) => {
+      if (!editorElement.contains(event.relatedTarget as Element) && isLink) {
+        $isLink = false;
+        $isEditMode = false;
+      }
+    };
+    editorElement.addEventListener('focusout', handleBlur);
+    return () => {
+      editorElement.removeEventListener('focusout', handleBlur);
+    };
+  });
+
   function updateLinkEditor() {
     const selection = getSelection();
     if (isRangeSelection(selection)) {

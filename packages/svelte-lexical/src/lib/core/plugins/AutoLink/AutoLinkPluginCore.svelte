@@ -473,7 +473,6 @@
               // invert the value
               parent.setIsUnlinked(!parent.getIsUnlinked());
               parent.markDirty();
-              return true;
             }
           });
           return false;
