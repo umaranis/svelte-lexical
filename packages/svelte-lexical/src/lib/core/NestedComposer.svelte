@@ -1,10 +1,11 @@
 <script lang="ts">
-  import type {
-    EditorThemeClasses,
-    LexicalEditor,
-    LexicalNode,
-    KlassConstructor,
-    Transform,
+  import {
+    type EditorThemeClasses,
+    type LexicalEditor,
+    type LexicalNode,
+    type KlassConstructor,
+    type Transform,
+    createSharedNodeState,
   } from 'lexical';
   import {onMount, setContext} from 'svelte';
 
@@ -48,6 +49,7 @@
       klass: entry.klass,
       replace: entry.replace,
       replaceWithKlass: entry.replaceWithKlass,
+      sharedNodeState: createSharedNodeState(entry.klass),
       transforms: getTransformSetFromKlass(entry.klass),
     });
   }
