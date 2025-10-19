@@ -34,7 +34,11 @@
     <RichTextComposer />
   </div>
   <footer style="padding-top: 50px; color:gray; font-size:small">
-    <a href="examples">See more examples</a>
+    See more examples (
+    <a href="examples">evolution</a>
+    /
+    <a href="examples/html">html output</a>
+    )
   </footer>
 </main>
 
