@@ -45,7 +45,7 @@
 </script>
 
 <ModalDialog bind:showModal>
-  <CloseCircleButton on:click={close} />
+  <CloseCircleButton onclick={close} />
   <div class="modal">
     <h2 class="Modal__title">Embed Tweet</h2>
     <div class="Modal__content">

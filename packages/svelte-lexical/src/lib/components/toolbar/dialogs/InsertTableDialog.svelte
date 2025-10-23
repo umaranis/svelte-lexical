@@ -51,7 +51,7 @@
 </script>
 
 <ModalDialog bind:showModal>
-  <CloseCircleButton on:click={close} />
+  <CloseCircleButton onclick={close} />
   <div class="modal">
     <h2 class="Modal__title">Insert Table</h2>
     <div class="Modal__content">
