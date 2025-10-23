@@ -25,7 +25,7 @@
 </script>
 
 <ModalDialog bind:showModal>
-  <CloseCircleButton on:click={close} />
+  <CloseCircleButton onclick={close} />
 
   <InsertImageUriDialogBody on:confirm={close} />
 </ModalDialog>

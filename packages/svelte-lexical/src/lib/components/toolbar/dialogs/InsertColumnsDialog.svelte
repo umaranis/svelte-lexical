@@ -46,7 +46,7 @@
 </script>
 
 <ModalDialog bind:showModal stopPropagation={false}>
-  <CloseCircleButton on:click={close} />
+  <CloseCircleButton onclick={close} />
 
   <div class="modal" bind:this={modalDiv}>
     <h2 class="Modal__title">Insert Columns Layout</h2>
