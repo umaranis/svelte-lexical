@@ -309,9 +309,6 @@ importers:
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
-      prettier:
-        specifier: ^3.2.5
-        version: 3.2.5
       y-websocket:
         specifier: 1.5.4
         version: 1.5.4(yjs@13.6.2)
@@ -367,6 +364,9 @@ importers:
       jsdom:
         specifier: ^26.0.0
         version: 26.0.0
+      prettier:
+        specifier: ^3.2.5
+        version: 3.2.5
       prettier-plugin-organize-attributes:
         specifier: ^1.0.0
         version: 1.0.0(prettier@3.2.5)
@@ -4255,6 +4255,7 @@ packages:
   sitemap@8.0.0:
     resolution: {integrity: sha512-+AbdxhM9kJsHtruUF39bwS/B0Fytw6Fr1o4ZAIAEqA6cke2xcoO2GleBw9Zw7nRzILVEgz7zBM5GiTJjie1G9A==}
     engines: {node: '>=14.0.0', npm: '>=6.0.0'}
+    deprecated: 'SECURITY: Multiple vulnerabilities fixed in 8.0.1 (XML injection, path traversal, command injection, protocol injection). Upgrade immediately: npm install sitemap@8.0.1'
     hasBin: true
 
   size-limit@8.2.6:
