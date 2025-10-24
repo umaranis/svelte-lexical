@@ -12,11 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
+          version: 8
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - name: Install dependencies (pnpm)
+        run: pnpm install --frozen-lockfile
+      - run: pnpm test
 
   publish-gpr:
     needs: build
@@ -26,11 +33,18 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
-          node-version: 20
+          version: 8
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
           registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - run: npm publish
+          cache: 'pnpm'
+      - name: Install dependencies (pnpm)
+        run: pnpm install --frozen-lockfile
+      - run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GH_TOKEN}}
