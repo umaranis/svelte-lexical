@@ -8,43 +8,110 @@ on:
     types: [created]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      
+      - uses: pnpm/action-setup@v4.0.0
         with:
-          version: 8
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+          version: 9
+          run_install: false
+      
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
           cache: 'pnpm'
-      - name: Install dependencies (pnpm)
+      
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - run: pnpm test
+        working-directory: ./packages/svelte-lexical
+      
+      - name: Build package
+        run: pnpm build
+        working-directory: ./packages/svelte-lexical
+      
+      - name: Run tests
+        run: pnpm test
+        working-directory: ./packages/svelte-lexical
 
   publish-gpr:
-    needs: build
+    needs: build-and-test
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
     steps:
       - uses: actions/checkout@v4
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      
+      - uses: pnpm/action-setup@v4.0.0
         with:
-          version: 8
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+          version: 9
+          run_install: false
+      
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
           registry-url: https://npm.pkg.github.com/
           cache: 'pnpm'
-      - name: Install dependencies (pnpm)
+      
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - run: pnpm publish
+        working-directory: ./packages/svelte-lexical
+      
+      - name: Build package
+        run: pnpm build
+        working-directory: ./packages/svelte-lexical
+      
+      - name: Publish to GitHub Packages
+        run: pnpm publish --no-git-checks
+        working-directory: ./packages/svelte-lexical
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GH_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  post-publish-test:
+    needs: publish-gpr
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v4.0.0
+        with:
+          version: 9
+          run_install: false
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      
+      - name: Test playground
+        working-directory: ./demos/playground
+        run: |
+          pnpm --ignore-workspace install
+          pnpm build
+          pnpm check
+          pnpm size
+      
+      - name: Test sveltekit
+        working-directory: ./demos/sveltekit
+        run: |
+          pnpm --ignore-workspace install
+          pnpm build
+          pnpm check
+      
+      - name: Test richtext-editor
+        working-directory: ./demos/richtext-editor
+        run: |
+          pnpm --ignore-workspace install
+          pnpm build
+          pnpm check
+          pnpm size
+      
+      - name: Test plaintext-editor
+        working-directory: ./demos/plaintext-editor
+        run: |
+          pnpm --ignore-workspace install
+          pnpm build
+          pnpm check
+          pnpm size
