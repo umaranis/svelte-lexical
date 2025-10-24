@@ -42,7 +42,7 @@
 </script>
 
 <ModalDialog bind:showModal>
-  <CloseCircleButton on:click={close} />
+  <CloseCircleButton onclick={close} />
 
   <div class="modal">
     <h2 class="Modal__title">{title}</h2>
