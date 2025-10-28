@@ -4,6 +4,10 @@ import {defineConfig} from 'vite';
 
 export default defineConfig({
   plugins: [sveltekit()],
+  build: {
+    target: ['chrome88', 'edge88', 'firefox78', 'safari14'],
+    cssTarget: ['chrome88', 'edge88', 'firefox78', 'safari14.1'],
+  },
 
   test: {
     workspace: [
