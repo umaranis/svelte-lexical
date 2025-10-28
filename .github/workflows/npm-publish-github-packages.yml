@@ -1,121 +1,6 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
 # For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 
-# name: Node.js Package
-
-# on:
-#   release:
-#     types: [created]
-
-# jobs:
-#   build-and-test:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v4
-      
-#       - uses: pnpm/action-setup@v4.0.0
-#         with:
-#           version: 9
-#           run_install: false
-      
-#       - uses: actions/setup-node@v4
-#         with:
-#           node-version: 20
-#           cache: 'pnpm'
-      
-#       - name: Install dependencies
-#         run: pnpm install --frozen-lockfile
-#         working-directory: ./packages/svelte-lexical
-      
-#       - name: Build package
-#         run: pnpm build
-#         working-directory: ./packages/svelte-lexical
-      
-#       - name: Run tests
-#         run: pnpm test
-#         working-directory: ./packages/svelte-lexical
-
-#   publish-gpr:
-#     needs: build-and-test
-#     runs-on: ubuntu-latest
-#     permissions:
-#       contents: read
-#       packages: write
-#     steps:
-#       - uses: actions/checkout@v4
-      
-#       - uses: pnpm/action-setup@v4.0.0
-#         with:
-#           version: 9
-#           run_install: false
-      
-#       - uses: actions/setup-node@v4
-#         with:
-#           node-version: 20
-#           registry-url: https://npm.pkg.github.com/
-#           cache: 'pnpm'
-      
-#       - name: Install dependencies
-#         run: pnpm install --frozen-lockfile
-#         working-directory: ./packages/svelte-lexical
-      
-#       - name: Build package
-#         run: pnpm build
-#         working-directory: ./packages/svelte-lexical
-      
-#       - name: Publish to GitHub Packages
-#         run: pnpm publish --no-git-checks
-#         working-directory: ./packages/svelte-lexical
-#         env:
-#           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-#   post-publish-test:
-#     needs: publish-gpr
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v4
-      
-#       - uses: pnpm/action-setup@v4.0.0
-#         with:
-#           version: 9
-#           run_install: false
-      
-#       - uses: actions/setup-node@v4
-#         with:
-#           node-version: 20
-#           cache: 'pnpm'
-      
-#       - name: Test playground
-#         working-directory: ./demos/playground
-#         run: |
-#           pnpm --ignore-workspace install
-#           pnpm build
-#           pnpm check
-#           pnpm size
-      
-#       - name: Test sveltekit
-#         working-directory: ./demos/sveltekit
-#         run: |
-#           pnpm --ignore-workspace install
-#           pnpm build
-#           pnpm check
-      
-#       - name: Test richtext-editor
-#         working-directory: ./demos/richtext-editor
-#         run: |
-#           pnpm --ignore-workspace install
-#           pnpm build
-#           pnpm check
-#           pnpm size
-      
-#       - name: Test plaintext-editor
-#         working-directory: ./demos/plaintext-editor
-#         run: |
-#           pnpm --ignore-workspace install
-#           pnpm build
-#           pnpm check
-#           pnpm size
-
 name: Node.js Package
 
 on:
@@ -132,16 +17,23 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'pnpm'
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
+          run_install: false
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build package
+        working-directory: ./packages/svelte-lexical
+        run: pnpm build
+
       - name: Run tests
+        working-directory: ./packages/svelte-lexical
         run: pnpm test
 
   publish-gpr:
@@ -153,27 +45,35 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+
       - name: Setup Node (for registry auth)
         uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build package
+        working-directory: ./packages/svelte-lexical
+        run: pnpm build
+
       - name: Configure npm auth for GitHub Packages
-        run: echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          # ensure package scope registry if needed
+          # echo "@nutheory:registry=https://npm.pkg.github.com" >> ~/.npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Publish package
-        # If your package to publish is in a subdirectory, add `working-directory: packages/<pkg>`
         working-directory: ./packages/svelte-lexical
         run: pnpm publish --no-git-checks --access restricted
         env:
