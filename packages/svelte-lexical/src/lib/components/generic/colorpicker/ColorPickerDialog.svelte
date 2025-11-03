@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {FocusEditor} from '$lib/core/commands.js';
+  import {FocusEditor} from '$lib/core/commands/commands.js';
   import {getEditor} from '$lib/core/composerContext.js';
   import CloseCircleButton from '../../generic/button/CloseCircleButton.svelte';
   import ModalDialog from '../../generic/dialog/ModalDialog.svelte';

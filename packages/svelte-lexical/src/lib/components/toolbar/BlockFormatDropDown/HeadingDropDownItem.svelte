@@ -5,7 +5,7 @@
   import type {blockTypeToBlockName} from '../ToolbarData.js';
   import {getContext} from 'svelte';
   import {getEditor} from '$lib/core/composerContext.js';
-  import {formatHeading} from '$lib/core/commands.js';
+  import {formatHeading} from '$lib/core/commands/commands.js';
   import {SHORTCUTS} from '../shortcuts.js';
 
   interface Props {

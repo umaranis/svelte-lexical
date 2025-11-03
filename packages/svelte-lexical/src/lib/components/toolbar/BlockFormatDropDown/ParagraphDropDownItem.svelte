@@ -4,7 +4,7 @@
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
   import type {blockTypeToBlockName} from '../ToolbarData.js';
   import {getEditor} from '$lib/core/composerContext.js';
-  import {formatParagraph} from '$lib/core/commands.js';
+  import {formatParagraph} from '$lib/core/commands/commands.js';
   import {SHORTCUTS} from '../shortcuts.js';
 
   const blockType: Writable<keyof typeof blockTypeToBlockName> =
