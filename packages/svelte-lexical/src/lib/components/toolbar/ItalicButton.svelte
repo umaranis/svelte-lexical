@@ -1,9 +1,9 @@
 <script lang="ts">
-  import {FORMAT_TEXT_COMMAND} from 'lexical';
   import {getActiveEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';
   import {SHORTCUTS} from './shortcuts.js';
+  import {toggleItalic} from '$lib/core/commands/commands.js';
 
   const activeEditor = getActiveEditor();
   const isEditable = getIsEditable();
@@ -14,7 +14,7 @@
 <button
   disabled={!$isEditable}
   onclick={() => {
-    $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic');
+    toggleItalic($activeEditor);
   }}
   class={'toolbar-item spaced ' + ($isItalic ? 'active' : '')}
   title={`Italic (${SHORTCUTS.ITALIC})`}

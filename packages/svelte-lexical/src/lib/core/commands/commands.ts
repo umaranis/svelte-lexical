@@ -113,6 +113,10 @@ export function toggleBold(editor: LexicalEditor) {
   editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold');
 }
 
+export function toggleItalic(editor: LexicalEditor) {
+  editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic');
+}
+
 export const clearFormatting = (editor: LexicalEditor) => {
   editor.update(() => {
     const selection = $getSelection();

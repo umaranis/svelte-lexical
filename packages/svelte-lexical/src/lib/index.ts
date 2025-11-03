@@ -143,6 +143,7 @@ export {
   InsertImage,
   FocusEditor,
   toggleBold,
+  toggleItalic,
 } from './core/commands/commands.js';
 export {
   increaseFontSize,
