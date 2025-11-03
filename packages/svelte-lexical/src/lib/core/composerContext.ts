@@ -1,3 +1,4 @@
+import type {ReactiveEditorState} from '$lib/components/toolbar/reactiveEditorState.svelte.js';
 import type {blockTypeToBlockName} from '$lib/components/toolbar/ToolbarData.js';
 import type {HistoryState} from '@lexical/history';
 import type {LexicalEditor} from 'lexical';
@@ -79,4 +80,12 @@ export function setImageHistoryPluginType(
 export function getImageHistoryPluginType() {
   return getSharedEditorContext()
     .ImageHistoryComponentType as SvelteComponentTypeRef;
+}
+
+export function getReactiveState(): ReactiveEditorState {
+  return getSharedEditorContext().reactiveState as ReactiveEditorState;
+}
+
+export function setReactiveState(editorState: ReactiveEditorState) {
+  getSharedEditorContext().reactiveState = editorState;
 }

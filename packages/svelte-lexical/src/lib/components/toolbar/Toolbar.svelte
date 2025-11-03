@@ -2,9 +2,10 @@
   import {writable} from 'svelte/store';
 
   import StateStoreRichTextUpdator from './StateStoreRichTextUpdator.svelte';
-  import {setContext} from 'svelte';
-  import {getEditor} from '$lib/core/composerContext.js';
+  import {onMount, setContext} from 'svelte';
+  import {getEditor, setReactiveState} from '$lib/core/composerContext.js';
   import type {LexicalEditor, NodeKey} from 'lexical';
+  import {ReactiveEditorState} from './reactiveEditorState.svelte.js';
   interface Props {
     children?: import('svelte').Snippet<
       [{editor: LexicalEditor; activeEditor: LexicalEditor; blockType: string}]
@@ -18,7 +19,10 @@
   const activeEditor = writable(editor);
   setContext('activeEditor', activeEditor);
 
-  setContext('isBold', writable(false));
+  const reactiveState = new ReactiveEditorState(editor);
+  setReactiveState(reactiveState);
+
+  // setContext('isBold', writable(false));
   setContext('isItalic', writable(false));
   setContext('isUnderline', writable(false));
   setContext('isStrikethrough', writable(false));
@@ -39,6 +43,10 @@
   setContext('codeLanguage', writable(''));
   setContext('isLink', writable(false));
   setContext('isImageCaption', writable(false));
+
+  onMount(() => {
+    return reactiveState.activate();
+  });
 </script>
 
 <StateStoreRichTextUpdator />
