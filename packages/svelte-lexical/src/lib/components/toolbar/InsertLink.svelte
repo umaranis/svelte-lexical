@@ -3,7 +3,7 @@
   import type {Writable} from 'svelte/store';
   import {getActiveEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {SHORTCUTS} from './shortcuts.js';
-  import {InsertLink} from '$lib/core/commands.js';
+  import {InsertLink} from '$lib/core/commands/commands.js';
 
   const activeEditor = getActiveEditor();
   const isEditable = getIsEditable();

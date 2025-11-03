@@ -142,7 +142,8 @@ export {
   clearFormatting,
   InsertImage,
   FocusEditor,
-} from './core/commands.js';
+  toggleBold,
+} from './core/commands/commands.js';
 export {
   increaseFontSize,
   decreaseFontSize,
@@ -151,7 +152,6 @@ export {
   MAX_ALLOWED_FONT_SIZE,
   DEFAULT_FONT_SIZE,
 } from './core/commands/updateFontSize.js';
-export {toggleBold} from './core/commands/toggleBold.js';
 
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
 export {default as TreeViewPlugin} from './core/plugins/TreeView/TreeViewPlugin.svelte';

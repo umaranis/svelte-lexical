@@ -26,7 +26,7 @@
     formatParagraph,
     formatQuote,
     InsertLink,
-  } from '$lib/core/commands.js';
+  } from '$lib/core/commands/commands.js';
   import {
     isCenterAlign,
     isClearFormatting,

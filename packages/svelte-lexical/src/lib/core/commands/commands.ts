@@ -1,12 +1,12 @@
-import type {ImagePayload} from './plugins/Image/ImageNode.js';
-import {INSERT_IMAGE_COMMAND} from './plugins/Image/ImagePlugin.svelte';
+import type {ImagePayload} from '../plugins/Image/ImageNode.js';
+import {INSERT_IMAGE_COMMAND} from '../plugins/Image/ImagePlugin.svelte';
 import {$createCodeNode} from '@lexical/code';
 import {
   INSERT_CHECK_LIST_COMMAND,
   INSERT_ORDERED_LIST_COMMAND,
   INSERT_UNORDERED_LIST_COMMAND,
 } from '@lexical/list';
-import {$isDecoratorBlockNode} from './plugins/DecoratorBlockNode.js';
+import {$isDecoratorBlockNode} from '../plugins/DecoratorBlockNode.js';
 import {
   $createHeadingNode,
   $createQuoteNode,
@@ -22,11 +22,12 @@ import {
   $getSelection,
   $isRangeSelection,
   $isTextNode,
+  FORMAT_TEXT_COMMAND,
   type LexicalEditor,
 } from 'lexical';
 
 import {TOGGLE_LINK_COMMAND} from '@lexical/link';
-import {sanitizeUrl} from './plugins/link/url.js';
+import {sanitizeUrl} from '../plugins/link/url.js';
 
 export const formatParagraph = (editor: LexicalEditor) => {
   editor.update(() => {
@@ -107,6 +108,10 @@ export const formatCode = (editor: LexicalEditor, blockType: string) => {
     });
   }
 };
+
+export function toggleBold(editor: LexicalEditor) {
+  editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold');
+}
 
 export const clearFormatting = (editor: LexicalEditor) => {
   editor.update(() => {

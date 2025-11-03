@@ -1,6 +1,6 @@
 <script lang="ts">
   import DropDownItem from '$lib/components/generic/dropdown/DropDownItem.svelte';
-  import {clearFormatting} from '$lib/core/commands.js';
+  import {clearFormatting} from '$lib/core/commands/commands.js';
   import {getActiveEditor} from '$lib/core/composerContext.js';
   import {SHORTCUTS} from '../shortcuts.js';
 

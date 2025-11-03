@@ -4,7 +4,7 @@
     getBold,
     getIsEditable,
   } from '$lib/core/composerContext.js';
-  import {toggleBold} from '$lib/core/commands/toggleBold.js';
+  import {toggleBold} from '$lib/core/commands/commands.js';
   import {SHORTCUTS} from './shortcuts.js';
 
   const activeEditor = getActiveEditor();
