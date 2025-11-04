@@ -26,6 +26,9 @@
     formatParagraph,
     formatQuote,
     InsertLink,
+    toggleStrikethrough,
+    toggleSubscript,
+    toggleSuperscript,
   } from '$lib/core/commands/commands.js';
   import {
     isCenterAlign,
@@ -81,7 +84,7 @@
     } else if (isFormatQuote(event)) {
       formatQuote($activeEditor, $blockType);
     } else if (isStrikeThrough(event)) {
-      $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough');
+      toggleStrikethrough($activeEditor);
     } else if (isIndent(event)) {
       $activeEditor.dispatchCommand(INDENT_CONTENT_COMMAND, undefined);
     } else if (isOutdent(event)) {
@@ -95,9 +98,9 @@
     } else if (isJustifyAlign(event)) {
       $activeEditor.dispatchCommand(FORMAT_ELEMENT_COMMAND, 'justify');
     } else if (isSubscript(event)) {
-      $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'subscript');
+      toggleSubscript($activeEditor);
     } else if (isSuperscript(event)) {
-      $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'superscript');
+      toggleSuperscript($activeEditor);
     } else if (isInsertCodeBlock(event)) {
       $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code');
     } else if (isIncreaseFontSize(event)) {

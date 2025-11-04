@@ -1,9 +1,5 @@
 <script lang="ts">
-  import {
-    CAN_REDO_COMMAND,
-    REDO_COMMAND,
-    COMMAND_PRIORITY_CRITICAL,
-  } from 'lexical';
+  import {CAN_REDO_COMMAND, COMMAND_PRIORITY_CRITICAL} from 'lexical';
   import {onMount} from 'svelte';
   import {
     getEditor,
@@ -11,6 +7,7 @@
     getActiveEditor,
   } from '$lib/core/composerContext.js';
   import {IS_APPLE} from '@lexical/utils';
+  import {redo} from '$lib/core/commands/commands.js';
 
   const editor = getEditor();
   const activeEditor = getActiveEditor();
@@ -34,7 +31,7 @@
 <button
   disabled={!canRedo || !$isEditable}
   onclick={() => {
-    $activeEditor.dispatchCommand(REDO_COMMAND, undefined);
+    redo($activeEditor);
   }}
   title={IS_APPLE ? 'Redo (⇧⌘Z)' : 'Redo (Ctrl+Y)'}
   type="button"

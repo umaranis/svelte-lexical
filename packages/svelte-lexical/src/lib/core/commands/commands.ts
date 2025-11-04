@@ -23,6 +23,8 @@ import {
   $isRangeSelection,
   $isTextNode,
   FORMAT_TEXT_COMMAND,
+  REDO_COMMAND,
+  UNDO_COMMAND,
   type LexicalEditor,
 } from 'lexical';
 
@@ -122,6 +124,30 @@ export function toggleBold(editor: LexicalEditor) {
 
 export function toggleItalic(editor: LexicalEditor) {
   editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic');
+}
+
+export function toggleStrikethrough(editor: LexicalEditor) {
+  editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough');
+}
+
+export function toggleUnderline(editor: LexicalEditor) {
+  editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline');
+}
+
+export function toggleSubscript(editor: LexicalEditor) {
+  editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'subscript');
+}
+
+export function toggleSuperscript(editor: LexicalEditor) {
+  editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'superscript');
+}
+
+export function undo(editor: LexicalEditor) {
+  editor.dispatchCommand(UNDO_COMMAND, undefined);
+}
+
+export function redo(editor: LexicalEditor) {
+  editor.dispatchCommand(REDO_COMMAND, undefined);
 }
 
 export const clearFormatting = (editor: LexicalEditor) => {

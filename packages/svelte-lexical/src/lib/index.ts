@@ -149,6 +149,12 @@ export {
   insertTable,
   insertTweet,
   insertYoutube,
+  toggleStrikethrough,
+  toggleUnderline,
+  toggleSubscript,
+  toggleSuperscript,
+  undo,
+  redo,
 } from './core/commands/commands.js';
 export {
   increaseFontSize,

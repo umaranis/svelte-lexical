@@ -1,9 +1,5 @@
 <script lang="ts">
-  import {
-    CAN_UNDO_COMMAND,
-    UNDO_COMMAND,
-    COMMAND_PRIORITY_CRITICAL,
-  } from 'lexical';
+  import {CAN_UNDO_COMMAND, COMMAND_PRIORITY_CRITICAL} from 'lexical';
   import {onMount} from 'svelte';
   import {
     getEditor,
@@ -11,6 +7,7 @@
     getActiveEditor,
   } from '$lib/core/composerContext.js';
   import {IS_APPLE} from '@lexical/utils';
+  import {undo} from '$lib/core/commands/commands.js';
 
   const editor = getEditor();
   const activeEditor = getActiveEditor();
@@ -34,7 +31,7 @@
 <button
   disabled={!canUndo || !$isEditable}
   onclick={() => {
-    $activeEditor.dispatchCommand(UNDO_COMMAND, undefined);
+    undo($activeEditor);
   }}
   title={IS_APPLE ? 'Undo (⌘Z)' : 'Undo (Ctrl+Z)'}
   type="button"

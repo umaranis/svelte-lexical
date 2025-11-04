@@ -1,9 +1,9 @@
 <script lang="ts">
   import {getContext} from 'svelte';
-  import {FORMAT_TEXT_COMMAND} from 'lexical';
   import type {Writable} from 'svelte/store';
   import {getActiveEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {SHORTCUTS} from './shortcuts.js';
+  import {toggleUnderline} from '$lib/core/commands/commands.js';
 
   const activeEditor = getActiveEditor();
   const isEditable = getIsEditable();
@@ -14,7 +14,7 @@
 <button
   disabled={!$isEditable}
   onclick={() => {
-    $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline');
+    toggleUnderline($activeEditor);
   }}
   class={'toolbar-item spaced ' + ($isUnderline ? 'active' : '')}
   title={`Underline (${SHORTCUTS.UNDERLINE})`}
