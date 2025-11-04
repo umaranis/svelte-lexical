@@ -1,8 +1,11 @@
 <script module lang="ts">
-  export const INSERT_BLUESKY_COMMAND: LexicalCommand<{
+  export type BlueskyPayload = {
     profile: string;
     postKey: string;
-  }> = createCommand('INSERT_BLUESKY_COMMAND');
+  };
+
+  export const INSERT_BLUESKY_COMMAND: LexicalCommand<BlueskyPayload> =
+    createCommand('INSERT_BLUESKY_COMMAND');
 </script>
 
 <script lang="ts">
@@ -26,7 +29,7 @@
       throw new Error('BlueskyPlugin: BlueskyNode not registered on editor');
     }
 
-    return editor.registerCommand<{profile: string; postKey: string}>(
+    return editor.registerCommand<BlueskyPayload>(
       INSERT_BLUESKY_COMMAND,
       ({profile, postKey}) => {
         const blueskyNode = createBlueskyNode(profile, postKey);

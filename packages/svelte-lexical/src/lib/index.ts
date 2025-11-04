@@ -144,6 +144,7 @@ export {
   FocusEditor,
   toggleBold,
   toggleItalic,
+  insertBlueskyPost,
 } from './core/commands/commands.js';
 export {
   increaseFontSize,

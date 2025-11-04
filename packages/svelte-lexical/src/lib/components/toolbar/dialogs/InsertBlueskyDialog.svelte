@@ -2,9 +2,8 @@
   import CloseCircleButton from '$lib/components/generic/button/CloseCircleButton.svelte';
   import ModalDialog from '$lib/components/generic/dialog/ModalDialog.svelte';
   import TextInput from '$lib/components/generic/input/TextInput.svelte';
-  import {FocusEditor} from '$lib/core/commands/commands.js';
+  import {FocusEditor, insertBlueskyPost} from '$lib/core/commands/commands.js';
   import {getEditor} from '$lib/core/composerContext.js';
-  import {INSERT_BLUESKY_COMMAND} from '$lib/core/plugins/bluesky/BlueskyPlugin.svelte';
   import {tick} from 'svelte';
 
   let editor = getEditor();
@@ -24,7 +23,7 @@
   }
 
   async function insertBluesky() {
-    editor.dispatchCommand(INSERT_BLUESKY_COMMAND, post!);
+    insertBlueskyPost(editor, post!);
     close();
   }
 

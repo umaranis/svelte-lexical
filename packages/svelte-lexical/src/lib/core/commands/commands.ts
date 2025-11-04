@@ -28,6 +28,10 @@ import {
 
 import {TOGGLE_LINK_COMMAND} from '@lexical/link';
 import {sanitizeUrl} from '../plugins/link/url.js';
+import {
+  INSERT_BLUESKY_COMMAND,
+  type BlueskyPayload,
+} from '../plugins/bluesky/BlueskyPlugin.svelte';
 
 export const formatParagraph = (editor: LexicalEditor) => {
   editor.update(() => {
@@ -214,4 +218,8 @@ export function FocusEditor(
     },
     {defaultSelection},
   );
+}
+
+export function insertBlueskyPost(editor: LexicalEditor, post: BlueskyPayload) {
+  editor.dispatchCommand(INSERT_BLUESKY_COMMAND, post);
 }
