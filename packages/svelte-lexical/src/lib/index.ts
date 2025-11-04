@@ -148,6 +148,7 @@ export {
   insertColumnsLayout,
   insertTable,
   insertTweet,
+  insertYoutube,
 } from './core/commands/commands.js';
 export {
   increaseFontSize,

@@ -2,9 +2,8 @@
   import CloseCircleButton from '$lib/components/generic/button/CloseCircleButton.svelte';
   import ModalDialog from '$lib/components/generic/dialog/ModalDialog.svelte';
   import TextInput from '$lib/components/generic/input/TextInput.svelte';
-  import {FocusEditor} from '$lib/core/commands/commands.js';
+  import {FocusEditor, insertYoutube} from '$lib/core/commands/commands.js';
   import {getEditor} from '$lib/core/composerContext.js';
-  import {INSERT_YOUTUBE_COMMAND} from '$lib/core/plugins/youtube/YoutubePlugin.svelte';
   import {tick} from 'svelte';
 
   let url = $state('');
@@ -28,7 +27,7 @@
   }
 
   async function insertVideo() {
-    editor.dispatchCommand(INSERT_YOUTUBE_COMMAND, id!);
+    insertYoutube(editor, id!);
     close();
   }
 

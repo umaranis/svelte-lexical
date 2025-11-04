@@ -34,6 +34,7 @@ import {
 } from '../plugins/bluesky/BlueskyPlugin.svelte';
 import {INSERT_LAYOUT_COMMAND} from '../plugins/ColumnsLayout/LayoutItemNode.js';
 import {INSERT_TWEET_COMMAND} from '../plugins/twitter/TwitterPlugin.svelte';
+import {INSERT_YOUTUBE_COMMAND} from '../plugins/youtube/YoutubePlugin.svelte';
 
 export const formatParagraph = (editor: LexicalEditor) => {
   editor.update(() => {
@@ -245,4 +246,8 @@ export function insertTable(
 
 export function insertTweet(editor: LexicalEditor, id: string) {
   editor.dispatchCommand(INSERT_TWEET_COMMAND, id);
+}
+
+export function insertYoutube(editor: LexicalEditor, id: string) {
+  editor.dispatchCommand(INSERT_YOUTUBE_COMMAND, id);
 }
