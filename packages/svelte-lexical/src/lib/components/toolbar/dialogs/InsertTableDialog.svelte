@@ -2,9 +2,8 @@
   import {run} from 'svelte/legacy';
 
   import {getActiveEditor} from '$lib/core/composerContext.js';
-  import {INSERT_TABLE_COMMAND} from '@lexical/table';
   import ModalDialog from '../../generic/dialog/ModalDialog.svelte';
-  import {FocusEditor} from '$lib/core/commands/commands.js';
+  import {FocusEditor, insertTable} from '$lib/core/commands/commands.js';
   import NumberInput from '$lib/components/generic/input/NumberInput.svelte';
   import CloseCircleButton from '$lib/components/generic/button/CloseCircleButton.svelte';
   import {tick} from 'svelte';
@@ -41,10 +40,7 @@
   }
 
   const onClick = () => {
-    $activeEditor.dispatchCommand(INSERT_TABLE_COMMAND, {
-      columns,
-      rows,
-    });
+    insertTable($activeEditor, columns, rows);
 
     close();
   };

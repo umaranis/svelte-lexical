@@ -146,6 +146,8 @@ export {
   toggleItalic,
   insertBlueskyPost,
   insertColumnsLayout,
+  insertTable,
+  insertTweet,
 } from './core/commands/commands.js';
 export {
   increaseFontSize,

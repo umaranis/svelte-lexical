@@ -2,9 +2,8 @@
   import CloseCircleButton from '$lib/components/generic/button/CloseCircleButton.svelte';
   import ModalDialog from '$lib/components/generic/dialog/ModalDialog.svelte';
   import TextInput from '$lib/components/generic/input/TextInput.svelte';
-  import {FocusEditor} from '$lib/core/commands/commands.js';
+  import {FocusEditor, insertTweet} from '$lib/core/commands/commands.js';
   import {getEditor} from '$lib/core/composerContext.js';
-  import {INSERT_TWEET_COMMAND} from '$lib/core/plugins/twitter/TwitterPlugin.svelte';
   import {tick} from 'svelte';
 
   let url = $state('');
@@ -27,8 +26,8 @@
     FocusEditor(editor);
   }
 
-  async function insertTweet() {
-    editor.dispatchCommand(INSERT_TWEET_COMMAND, id!);
+  async function onSubmit() {
+    insertTweet(editor, id!);
     close();
   }
 
@@ -61,7 +60,7 @@
           disabled={isDisabled}
           class="Button__root"
           class:Button__disabled={isDisabled}
-          onclick={insertTweet}>
+          onclick={onSubmit}>
           Confirm
         </button>
       </div>

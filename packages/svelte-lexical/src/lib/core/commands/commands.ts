@@ -15,7 +15,7 @@ import {
   type HeadingTagType,
 } from '@lexical/rich-text';
 import {$setBlocksType} from '@lexical/selection';
-import {$isTableSelection} from '@lexical/table';
+import {$isTableSelection, INSERT_TABLE_COMMAND} from '@lexical/table';
 import {$getNearestBlockElementAncestorOrThrow} from '@lexical/utils';
 import {
   $createParagraphNode,
@@ -33,6 +33,7 @@ import {
   type BlueskyPayload,
 } from '../plugins/bluesky/BlueskyPlugin.svelte';
 import {INSERT_LAYOUT_COMMAND} from '../plugins/ColumnsLayout/LayoutItemNode.js';
+import {INSERT_TWEET_COMMAND} from '../plugins/twitter/TwitterPlugin.svelte';
 
 export const formatParagraph = (editor: LexicalEditor) => {
   editor.update(() => {
@@ -227,4 +228,21 @@ export function insertBlueskyPost(editor: LexicalEditor, post: BlueskyPayload) {
 
 export function insertColumnsLayout(editor: LexicalEditor, template: string) {
   editor.dispatchCommand(INSERT_LAYOUT_COMMAND, template);
+}
+
+export function insertTable(
+  editor: LexicalEditor,
+  columns: string,
+  rows: string,
+  includeHeaders: boolean = true,
+) {
+  editor.dispatchCommand(INSERT_TABLE_COMMAND, {
+    columns,
+    rows,
+    includeHeaders,
+  });
+}
+
+export function insertTweet(editor: LexicalEditor, id: string) {
+  editor.dispatchCommand(INSERT_TWEET_COMMAND, id);
 }
