@@ -1,10 +1,12 @@
 <script lang="ts">
   import {getActiveEditor} from '$lib/core/composerContext.js';
-  import {FocusEditor} from '$lib/core/commands/commands.js';
+  import {
+    FocusEditor,
+    insertColumnsLayout,
+  } from '$lib/core/commands/commands.js';
   import {getEditor} from '$lib/core/composerContext.js';
   import CloseCircleButton from '../../generic/button/CloseCircleButton.svelte';
   import ModalDialog from '../../generic/dialog/ModalDialog.svelte';
-  import {INSERT_LAYOUT_COMMAND} from '$lib/core/plugins/ColumnsLayout/LayoutItemNode.js';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
   import DropDown from '../../generic/dropdown/DropDown.svelte';
   import {tick} from 'svelte';
@@ -75,7 +77,7 @@
           data-test-id="image-modal-file-upload-btn"
           class="Button__root"
           onclick={() => {
-            $activeEditor.dispatchCommand(INSERT_LAYOUT_COMMAND, currentValue);
+            insertColumnsLayout($activeEditor, currentValue);
             close();
           }}>
           Insert

@@ -32,6 +32,7 @@ import {
   INSERT_BLUESKY_COMMAND,
   type BlueskyPayload,
 } from '../plugins/bluesky/BlueskyPlugin.svelte';
+import {INSERT_LAYOUT_COMMAND} from '../plugins/ColumnsLayout/LayoutItemNode.js';
 
 export const formatParagraph = (editor: LexicalEditor) => {
   editor.update(() => {
@@ -222,4 +223,8 @@ export function FocusEditor(
 
 export function insertBlueskyPost(editor: LexicalEditor, post: BlueskyPayload) {
   editor.dispatchCommand(INSERT_BLUESKY_COMMAND, post);
+}
+
+export function insertColumnsLayout(editor: LexicalEditor, template: string) {
+  editor.dispatchCommand(INSERT_LAYOUT_COMMAND, template);
 }
