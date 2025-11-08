@@ -13,12 +13,12 @@
   import {
     $splitNodeContainingQuery as splitNodeContainingQuery,
     MenuOption,
-    SCROLL_TYPEAHEAD_OPTION_INTO_VIEW_COMMAND,
     scrollIntoViewIfNeeded,
     type MenuRenderFn,
     type MenuResolution,
   } from './contextMenuHelpers.js';
   import {mergeRegister} from '@lexical/utils';
+  import {SCROLL_TYPEAHEAD_OPTION_INTO_VIEW_COMMAND} from './typeAheadMenuHelpers.js';
 
   interface Props {
     close: () => void;

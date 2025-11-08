@@ -1,16 +1,10 @@
 import {
   $getSelection,
   $isRangeSelection,
-  createCommand,
   TextNode,
-  type LexicalCommand,
+  type LexicalEditor,
 } from 'lexical';
 import type {Snippet} from 'svelte';
-
-export const SCROLL_TYPEAHEAD_OPTION_INTO_VIEW_COMMAND: LexicalCommand<{
-  index: number;
-  option: MenuOption;
-}> = createCommand('SCROLL_TYPEAHEAD_OPTION_INTO_VIEW_COMMAND');
 
 export type MenuTextMatch = {
   leadOffset: number;
@@ -132,3 +126,8 @@ export function $splitNodeContainingQuery(
 
   return newNode;
 }
+
+export type TriggerFn = (
+  text: string,
+  editor: LexicalEditor,
+) => MenuTextMatch | null;
