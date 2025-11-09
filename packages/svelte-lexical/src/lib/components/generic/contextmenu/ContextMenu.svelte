@@ -50,7 +50,7 @@
     preselectFirstItem = true,
   }: Props = $props();
 
-  let selectedIndex = $state<{value: null | number}>({value: null});
+  const selectedIndex = $state<{value: null | number}>({value: null});
 
   $effect(() => {
     // TODO: this is a $effect dependency. Test if it is reactive.
@@ -59,7 +59,7 @@
       resolution.value.match && resolution.value.match.matchingString;
 
     if (preselectFirstItem) {
-      selectedIndex = {value: 0};
+      selectedIndex.value = 0;
     }
   });
 

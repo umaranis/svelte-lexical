@@ -40,16 +40,19 @@
     minLength: 0,
   });
 
-  const options = (() => {
+  let options: ComponentPickerOption[] = $state([]);
+
+  $effect(() => {
     const baseOptions = getBaseOptions(editor /*, showModal*/);
 
     if (!queryString) {
-      return baseOptions;
+      options = baseOptions;
+      return;
     }
 
     const regex = new RegExp(queryString, 'i');
 
-    return [
+    options = [
       ...getDynamicOptions(editor, queryString),
       ...baseOptions.filter(
         (option) =>
@@ -57,7 +60,7 @@
           option.keywords.some((keyword) => regex.test(keyword)),
       ),
     ];
-  })();
+  });
 
   const onSelectOption = (
     selectedOption: ComponentPickerOption,
