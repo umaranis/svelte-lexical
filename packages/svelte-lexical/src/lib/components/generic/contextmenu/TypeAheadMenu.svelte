@@ -36,13 +36,13 @@
   const editor = getEditor();
 
   function useDynamicPositioning(
-    resolution: MenuResolution | null,
+    resolution: {value: MenuResolution | null},
     targetElement: HTMLElement | null,
     onReposition: () => void,
     onVisibilityChange?: (isInView: boolean) => void,
   ) {
     $effect(() => {
-      if (targetElement != null && resolution != null) {
+      if (targetElement != null && resolution.value != null) {
         const rootElement = editor.getRootElement();
         const rootScrollParent =
           rootElement != null
@@ -89,8 +89,7 @@
   }
 
   function useMenuAnchorRef(
-    resolution: MenuResolution | null,
-    setResolution: (r: MenuResolution | null) => void,
+    resolution: {value: MenuResolution | null},
     className?: string,
     parent: HTMLElement | undefined = CAN_USE_DOM ? document.body : undefined,
     shouldIncludePageYOffset__EXPERIMENTAL: boolean = true,
@@ -108,8 +107,8 @@
       const containerDiv = anchorElementRef;
 
       const menuEle = containerDiv.firstChild as HTMLElement;
-      if (rootElement !== null && resolution !== null) {
-        const {left, top, width, height} = resolution.getRect();
+      if (rootElement !== null && resolution.value !== null) {
+        const {left, top, width, height} = resolution.value.getRect();
         const anchorHeight = anchorElementRef.offsetHeight; // use to position under anchor
         containerDiv.style.top = `${
           top +
@@ -158,7 +157,7 @@
 
     $effect(() => {
       const rootElement = editor.getRootElement();
-      if (resolution !== null) {
+      if (resolution.value !== null) {
         positionMenu();
       }
       return () => {
@@ -174,9 +173,9 @@
     });
 
     const onVisibilityChange = (isInView: boolean) => {
-      if (resolution !== null) {
+      if (resolution.value !== null) {
         if (!isInView) {
-          setResolution(null);
+          resolution.value = null;
         }
       }
     };
@@ -202,26 +201,23 @@
     return anchorElementRef;
   }
 
-  let resolution = $state<MenuResolution | null>(null);
+  let resolution = $state<{value: MenuResolution | null}>({value: null});
   const anchorElementRef = useMenuAnchorRef(
     resolution,
-    (value) => {
-      resolution = value;
-    },
     anchorClassName,
     parent,
   );
 
   const closeTypeahead = () => {
-    resolution = null;
-    if (onClose != null && resolution !== null) {
+    resolution.value = null;
+    if (onClose != null && resolution.value !== null) {
       onClose();
     }
   };
 
   const openTypeahead = (res: MenuResolution) => {
-    resolution = res;
-    if (onOpen != null && resolution === null) {
+    resolution.value = res;
+    if (onOpen != null && resolution.value === null) {
       onOpen(res);
     }
   };
@@ -291,12 +287,10 @@
   );
 </script>
 
-{#if resolution === null || editor === null || anchorElementRef === null}
-  null
-{:else}
+{#if !(resolution.value === null || editor === null || anchorElementRef === null)}
   <ContextMenu
     close={closeTypeahead}
-    {resolution}
+    resolution={resolution as {value: MenuResolution}}
     {editor}
     {anchorElementRef}
     {options}
