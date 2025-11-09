@@ -24,7 +24,7 @@
     close: () => void;
     editor: LexicalEditor;
     anchorElementRef: HTMLElement | null;
-    resolution: MenuResolution;
+    resolution: {value: MenuResolution};
     options: Array<TOption>;
     shouldSplitNodeWithQuery?: boolean;
     menuRenderFn: MenuRenderFn<TOption>;
@@ -50,30 +50,31 @@
     preselectFirstItem = true,
   }: Props = $props();
 
-  let selectedIndex = $state<null | number>(null);
+  let selectedIndex = $state<{value: null | number}>({value: null});
 
   $effect(() => {
     // TODO: this is a $effect dependency. Test if it is reactive.
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const matchingString = resolution.match && resolution.match.matchingString;
+    const matchingString =
+      resolution.value.match && resolution.value.match.matchingString;
 
     if (preselectFirstItem) {
-      selectedIndex = 0;
+      selectedIndex = {value: 0};
     }
   });
 
   const selectOptionAndCleanUp = (selectedEntry: TOption) => {
     editor.update(() => {
       const textNodeContainingQuery =
-        resolution.match != null && shouldSplitNodeWithQuery
-          ? splitNodeContainingQuery(resolution.match)
+        resolution.value.match != null && shouldSplitNodeWithQuery
+          ? splitNodeContainingQuery(resolution.value.match)
           : null;
 
       onSelectOption(
         selectedEntry,
         textNodeContainingQuery,
         close,
-        resolution.match ? resolution.match.matchingString : '',
+        resolution.value.match ? resolution.value.match.matchingString : '',
       );
     });
   };
@@ -82,7 +83,7 @@
     const rootElem = editor.getRootElement();
     if (rootElem !== null) {
       rootElem.setAttribute('aria-activedescendant', 'typeahead-item-' + index);
-      selectedIndex = index;
+      selectedIndex.value = index;
     }
   };
 
@@ -97,8 +98,8 @@
 
   $effect.pre(() => {
     if (options === null) {
-      selectedIndex = null;
-    } else if (selectedIndex === null && preselectFirstItem) {
+      selectedIndex.value = null;
+    } else if (selectedIndex.value === null && preselectFirstItem) {
       updateSelectedIndex(0);
     }
   });
@@ -128,10 +129,10 @@
           const event = payload;
           if (options !== null && options.length) {
             const newSelectedIndex =
-              selectedIndex === null
+              selectedIndex.value === null
                 ? 0
-                : selectedIndex !== options.length - 1
-                  ? selectedIndex + 1
+                : selectedIndex.value !== options.length - 1
+                  ? selectedIndex.value + 1
                   : 0;
             updateSelectedIndex(newSelectedIndex);
             const option = options[newSelectedIndex];
@@ -157,10 +158,10 @@
           const event = payload;
           if (options !== null && options.length) {
             const newSelectedIndex =
-              selectedIndex === null
+              selectedIndex.value === null
                 ? options.length - 1
-                : selectedIndex !== 0
-                  ? selectedIndex - 1
+                : selectedIndex.value !== 0
+                  ? selectedIndex.value - 1
                   : options.length - 1;
             updateSelectedIndex(newSelectedIndex);
             const option = options[newSelectedIndex];
@@ -191,14 +192,14 @@
           const event = payload;
           if (
             options === null ||
-            selectedIndex === null ||
-            options[selectedIndex] == null
+            selectedIndex.value === null ||
+            options[selectedIndex.value] == null
           ) {
             return false;
           }
           event.preventDefault();
           event.stopImmediatePropagation();
-          selectOptionAndCleanUp(options[selectedIndex]);
+          selectOptionAndCleanUp(options[selectedIndex.value]);
           return true;
         },
         commandPriority,
@@ -208,8 +209,8 @@
         (event: KeyboardEvent | null) => {
           if (
             options === null ||
-            selectedIndex === null ||
-            options[selectedIndex] == null
+            selectedIndex.value === null ||
+            options[selectedIndex.value] == null
           ) {
             return false;
           }
@@ -217,26 +218,21 @@
             event.preventDefault();
             event.stopImmediatePropagation();
           }
-          selectOptionAndCleanUp(options[selectedIndex]);
+          selectOptionAndCleanUp(options[selectedIndex.value]);
           return true;
         },
         commandPriority,
       ),
     );
   });
-
-  const listItemProps = {
-    options,
-    selectOptionAndCleanUp,
-    selectedIndex,
-    setHighlightedIndex: (value: number | null) => {
-      selectedIndex = value;
-    },
-  };
 </script>
 
 {@render menuRenderFn(
   anchorElementRef,
-  listItemProps,
-  resolution.match ? resolution.match.matchingString : '',
+  {
+    options,
+    selectOptionAndCleanUp,
+    selectedIndex,
+  },
+  resolution.value.match ? resolution.value.match.matchingString : '',
 )}

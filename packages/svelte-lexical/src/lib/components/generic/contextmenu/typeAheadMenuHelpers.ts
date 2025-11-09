@@ -166,3 +166,51 @@ export function isTriggerVisibleInNearestScrollContainer(
   const cRect = containerElement.getBoundingClientRect();
   return tRect.top > cRect.top && tRect.top < cRect.bottom;
 }
+
+export const PUNCTUATION =
+  '\\.,\\+\\*\\?\\$\\@\\|#{}\\(\\)\\^\\-\\[\\]\\\\/!%\'"~=<>_:;';
+
+export function useBasicTypeaheadTriggerMatch(
+  trigger: string,
+  {
+    minLength = 1,
+    maxLength = 75,
+    punctuation = PUNCTUATION,
+    allowWhitespace = false,
+  }: {
+    minLength?: number;
+    maxLength?: number;
+    punctuation?: string;
+    allowWhitespace?: boolean;
+  },
+): TriggerFn {
+  return (text: string) => {
+    const validCharsSuffix = allowWhitespace ? '' : '\\s';
+    const validChars = '[^' + trigger + punctuation + validCharsSuffix + ']';
+    const TypeaheadTriggerRegex = new RegExp(
+      '(^|\\s|\\()(' +
+        '[' +
+        trigger +
+        ']' +
+        '((?:' +
+        validChars +
+        '){0,' +
+        maxLength +
+        '})' +
+        ')$',
+    );
+    const match = TypeaheadTriggerRegex.exec(text);
+    if (match !== null) {
+      const maybeLeadingWhitespace = match[1];
+      const matchingString = match[3];
+      if (matchingString.length >= minLength) {
+        return {
+          leadOffset: match.index + maybeLeadingWhitespace.length,
+          matchingString,
+          replaceableString: match[2],
+        };
+      }
+    }
+    return null;
+  };
+}

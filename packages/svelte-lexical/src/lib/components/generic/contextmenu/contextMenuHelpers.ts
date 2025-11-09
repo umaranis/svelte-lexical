@@ -36,9 +36,8 @@ export type MenuRenderFn<TOption extends MenuOption> = Snippet<
   [
     anchorElementRef: HTMLElement | null,
     itemProps: {
-      selectedIndex: number | null;
+      selectedIndex: {value: number | null};
       selectOptionAndCleanUp: (option: TOption) => void;
-      setHighlightedIndex: (index: number) => void;
       options: Array<TOption>;
     },
     matchingString: string | null,

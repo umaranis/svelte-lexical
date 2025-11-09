@@ -60,6 +60,7 @@
   import BlueskyPlugin from '$lib/core/plugins/bluesky/BlueskyPlugin.svelte';
   import {BlueskyNode} from '$lib/core/plugins/bluesky/BlueskyNode.js';
   import TabIndentationPlugin from '$lib/core/plugins/TabIndentationPlugin.svelte';
+  import ComponentPickerMenuPlugin from '$lib/core/plugins/ComponentPicker/ComponentPickerMenuPlugin.svelte';
 
   let isSmallWidthViewport = $state(true);
   let editorDiv: HTMLDivElement | undefined = $state();
@@ -170,6 +171,7 @@
       <TwitterPlugin />
       <BlueskyPlugin />
       <TabIndentationPlugin />
+      <ComponentPickerMenuPlugin />
 
       <ActionBar />
     </div>
