@@ -1,5 +1,5 @@
 <!--
-  @component ComponentPickerMenu
+  @component ComponentPickerMenuPlugin
 
   A typeahead menu component that provides slash command functionality for inserting
   different types of content blocks (headings, lists, etc.) into the editor.
@@ -11,13 +11,16 @@
   ```svelte
   <Composer {initialConfig}>
     ...
-    <ComponentPickerMenu />
+    <ComponentPickerMenuPlugin />
     ...
   </Composer>
   ```
 
   //TODO: Support dark mode
   //TODO: Support all themes
+  //TODO: clicking elsewhere doesn't close the popup.
+  //TODO: icons are not showing
+  //TODO: add tests for slash command
 -->
 <script lang="ts">
   import TypeAheadMenu from '$lib/components/generic/contextmenu/TypeAheadMenu.svelte';
@@ -85,7 +88,7 @@
 )}
   {#if anchorElementRef && options.length}
     <Portal target={anchorElementRef}>
-      <div class="typeahead-popover component-picker-menu">
+      <div class="typeahead-popover component-picker-menu svelte-lexical">
         <ul>
           {#each options as option, i (option.key)}
             <ComponentPickerMenuItem
