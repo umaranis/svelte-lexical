@@ -16,7 +16,7 @@
     option,
   }: Props = $props();
 
-  let className = 'item' + (isSelected ? ' selected' : '');
+  let className = $derived('item' + (isSelected ? ' selected' : ''));
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->

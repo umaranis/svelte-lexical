@@ -18,9 +18,6 @@
 
   //TODO: Support dark mode
   //TODO: Support all themes
-  //TODO: Filtering not working on type ahead
-  //TODO: arrow keys not working when menu is open
-
 -->
 <script lang="ts">
   import TypeAheadMenu from '$lib/components/generic/contextmenu/TypeAheadMenu.svelte';
