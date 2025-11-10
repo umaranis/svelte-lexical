@@ -9,7 +9,7 @@ It uses NPM to build and publish (PNPM is not used due to a bug).
 ## Steps for creating a new release
 
 - bump up the version number
-  - increment the verion number for svelte-lexical package
+  - increment the version number for svelte-lexical package
   - for demos project, update version number for `svelte-lexical` dependency in `package.json` (find and replace)
   - run `pnpm i`
   - build all projects
@@ -20,7 +20,7 @@ It uses NPM to build and publish (PNPM is not used due to a bug).
 
 # Commit Messages
 
-Please use following tags in your commit message:
+Please use the following tags in your commit message:
 
 - feat (or feature)
 - minor
