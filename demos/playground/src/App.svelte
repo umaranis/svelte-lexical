@@ -20,7 +20,7 @@
     lightSrc="images/logo.svg"
     darkSrc="images/logo_white.svg"
     alt="Svelte Lexical!"
-    style="margin: 2em auto; max-width: 800px; display: block;" />
+    style="margin: 2em; max-width: 800px;" />
   <p>
     This is the <a href="https://github.com/umaranis/svelte-lexical/">
       svelte-lexical
@@ -40,24 +40,10 @@
     <RichTextComposer />
     <Settings />
   </div>
-
-  <footer>
-    <p>
-      Created by <a
-        href="https://umaranis.com"
-        target="_blank"
-        rel="noopener noreferrer">
-        Syed Umar Anis
-      </a>
-    </p>
-  </footer>
 </main>
 
 <style>
   main {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
     text-align: center;
     padding: 1em;
     max-width: none;
@@ -72,22 +58,5 @@
 
   a {
     color: var(--link-color);
-  }
-
-  footer {
-    margin-top: auto;
-    text-align: center;
-    padding: 2em 1em 1em;
-    font-size: 0.9em;
-  }
-
-  footer a {
-    color: var(--link-color);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  footer a:hover {
-    text-decoration: underline;
   }
 </style>
