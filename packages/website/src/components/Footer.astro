@@ -1,0 +1,35 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+<Default>
+  <slot />
+</Default>
+
+<div class="custom-footer">
+  <p>
+    Created by <a href="https://umaranis.com" target="_blank" rel="noopener noreferrer">Syed Umar Anis</a>
+  </p>
+</div>
+
+<style>
+  .custom-footer {
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 1rem;
+    border-top: 1px solid var(--sl-color-gray-5);
+    color: var(--sl-color-gray-3);
+    font-size: var(--sl-text-sm);
+  }
+
+  .custom-footer a {
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .custom-footer a:hover {
+    text-decoration: underline;
+  }
+</style>
+

@@ -11,6 +11,9 @@ export default defineConfig({
         github: 'https://github.com/umaranis/svelte-lexical',
       },
       customCss: ['./src/styles/custom.css'],
+      components: {
+        Footer: './src/components/Footer.astro',
+      },
       sidebar: [
         {
           label: 'Guides',
