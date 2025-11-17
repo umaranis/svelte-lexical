@@ -39,16 +39,18 @@
   }
 </script>
 
-<!-- svelte-ignore a11y_click_events_have_key_events -->
-<dialog
-  bind:this={dialog}
-  onclose={() => (showModal = false)}
-  onclick={handleDialogClick}>
-  <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div onclick={handleContentClick}>
-    {@render children?.()}
-  </div>
-</dialog>
+{#if showModal}
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
+  <dialog
+    bind:this={dialog}
+    onclose={() => (showModal = false)}
+    onclick={handleDialogClick}>
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div onclick={handleContentClick}>
+      {@render children?.()}
+    </div>
+  </dialog>
+{/if}
 
 <style>
   dialog {
