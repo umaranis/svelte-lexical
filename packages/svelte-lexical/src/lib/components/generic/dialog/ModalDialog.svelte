@@ -32,23 +32,25 @@
   });
 </script>
 
-<!-- svelte-ignore a11y_click_events_have_key_events -->
-<dialog
-  bind:this={dialog}
-  onclose={() => (showModal = false)}
-  onclick={self(() => dialog!.close())}>
-  {#if stopPropagation}
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div onclick={stopPropagation_1(bubble('click'))}>
-      {@render children?.()}
-    </div>
-  {:else}
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div onclick={bubble('click')}>
-      {@render children?.()}
-    </div>
-  {/if}
-</dialog>
+{#if showModal}
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
+  <dialog
+    bind:this={dialog}
+    onclose={() => (showModal = false)}
+    onclick={self(() => dialog!.close())}>
+    {#if stopPropagation}
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <div onclick={stopPropagation_1(bubble('click'))}>
+        {@render children?.()}
+      </div>
+    {:else}
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <div onclick={bubble('click')}>
+        {@render children?.()}
+      </div>
+    {/if}
+  </dialog>
+{/if}
 
 <style>
   dialog {
