@@ -68,7 +68,7 @@
     "@tsconfig/svelte": "^5.0.4",
     "@types/lodash-es": "^4.17.12",
     "@vitest/ui": "^3.0.8",
-    "csstype": "^3.1.2",
+    "csstype": "^3.2.3",
     "eslint": "^9.24.0",
     "eslint-plugin-import": "^2.31.0",
     "globals": "^16.0.0",
