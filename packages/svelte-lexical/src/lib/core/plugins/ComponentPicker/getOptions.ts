@@ -46,14 +46,11 @@ export function getBaseOptions(
             }),
         }),
     ),
-    // new ComponentPickerOption('Table', {
-    //   icon: "icon table",
-    //   keywords: ['table', 'grid', 'spreadsheet', 'rows', 'columns'],
-    //   onSelect: () =>
-    //     showModal('Insert Table', (onClose) => (
-    //       <InsertTableDialog activeEditor={editor} onClose={onClose} />
-    //     )),
-    // }),
+    new ComponentPickerOption('Table', {
+      icon: 'icon table',
+      keywords: ['table', 'grid', 'spreadsheet', 'rows', 'columns'],
+      onSelect: () => editor.extensions.openInsertTableDialog!(),
+    }),
     new ComponentPickerOption('Numbered List', {
       icon: 'icon number',
       keywords: ['numbered list', 'ordered list', 'ol'],
