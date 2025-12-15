@@ -36,6 +36,7 @@
     setHistoryStateContext,
   } from './composerContext.js';
   import {writable} from 'svelte/store';
+  import {initializeExtensions} from './editorExtensions.js';
 
   interface Props {
     initialConfig: InitialConfigType;
@@ -63,6 +64,7 @@
     theme,
   });
   initializeEditor(editor, initialEditorState);
+  initializeExtensions(editor);
   setEditor(editor);
 
   const isEditable = writable(editable !== undefined ? editable : true);

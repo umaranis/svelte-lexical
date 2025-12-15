@@ -1,3 +1,12 @@
+<!--
+@component
+Modal Dialog for inserting images via URL into the editor.
+It replaces the default dialog provided by `svelte-lexical`.
+
+Call `editor.extensions.openInsertImageDialog()` to open the dialog.
+
+Only one instance of this component should be instantiated per editor.
+-->
 <script lang="ts">
   import {onMount, tick} from 'svelte';
   import {
@@ -15,11 +24,7 @@
   import landscapeImage from './images/landscape.jpg';
   import yellowFlowerImage from './images/yellow-flower.jpg';
 
-  interface Props {
-    showModal?: boolean;
-  }
-
-  let {showModal = $bindable(false)}: Props = $props();
+  let showModal = $state(false);
   export function open() {
     showModal = true;
   }
@@ -57,6 +62,8 @@
     await tick();
     FocusEditor(editor);
   }
+
+  editor.extensions.openInsertImageDialog = open;
 </script>
 
 <ModalDialog bind:showModal>
