@@ -1,3 +1,11 @@
+<!--
+@component
+Modal Dialog for inserting columns layout into the editor.
+
+Call `editor.extensions.openInsertColumnsDialog()` to open the dialog.
+
+Only one instance of this component should be instantiated per editor.
+-->
 <script lang="ts">
   import {getActiveEditor} from '$lib/core/composerContext.js';
   import {
@@ -14,11 +22,7 @@
   const editor = getEditor();
   const activeEditor = getActiveEditor();
 
-  interface Props {
-    showModal?: boolean;
-  }
-
-  let {showModal = $bindable(false)}: Props = $props();
+  let showModal = $state(false);
   export function open() {
     showModal = true;
   }
@@ -45,6 +49,7 @@
   };
 
   let modalDiv = $state<HTMLDivElement | null>(null);
+  editor.extensions.openInsertColumnsDialog = open;
 </script>
 
 <ModalDialog bind:showModal stopPropagation={false}>

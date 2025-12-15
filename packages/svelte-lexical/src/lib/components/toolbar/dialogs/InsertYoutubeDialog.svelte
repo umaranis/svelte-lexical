@@ -1,3 +1,11 @@
+<!--
+@component
+Modal Dialog for inserting Youtube videos into the editor.
+
+Call `editor.extensions.openInsertYoutubeDialog()` to open the dialog.
+
+Only one instance of this component should be instantiated per editor.
+-->
 <script lang="ts">
   import CloseCircleButton from '$lib/components/generic/button/CloseCircleButton.svelte';
   import ModalDialog from '$lib/components/generic/dialog/ModalDialog.svelte';
@@ -12,11 +20,8 @@
 
   let editor = getEditor();
 
-  interface Props {
-    showModal?: boolean;
-  }
+  let showModal = $state(false);
 
-  let {showModal = $bindable(false)}: Props = $props();
   export function open() {
     showModal = true;
   }
@@ -38,6 +43,8 @@
 
     return match ? (match?.[2].length === 11 ? match[2] : null) : null;
   }
+
+  editor.extensions.openInsertYoutubeDialog = open;
 </script>
 
 <ModalDialog bind:showModal>

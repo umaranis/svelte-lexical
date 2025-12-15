@@ -1,10 +1,11 @@
 <script lang="ts">
+  import {getEditor} from '$lib/core/composerContext.js';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
 
-  let {onclick} = $props();
+  const editor = getEditor();
 </script>
 
-<DropDownItem {onclick} class="item">
+<DropDownItem onclick={editor.extensions.openInsertBlueskyDialog!} class="item">
   <i class="icon bluesky"></i>
   <span class="text">Bluesky Post</span>
 </DropDownItem>

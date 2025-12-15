@@ -1,10 +1,11 @@
 <script lang="ts">
+  import {getEditor} from '$lib/core/composerContext.js';
   import DropDownItem from '../../generic/dropdown/DropDownItem.svelte';
 
-  let {onclick} = $props();
+  const editor = getEditor();
 </script>
 
-<DropDownItem {onclick} class="item">
+<DropDownItem onclick={editor.extensions.openInsertYoutubeDialog!} class="item">
   <i class="icon youtube"></i>
   <span class="text">Youtube Video</span>
 </DropDownItem>
