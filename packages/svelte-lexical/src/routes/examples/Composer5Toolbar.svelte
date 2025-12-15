@@ -31,8 +31,6 @@
   import {InsertImageDialog} from '$lib/index.js';
   import {InsertHRDropDownItem} from '$lib/index.js';
   import {InsertImageDropDownItem} from '$lib/index.js';
-
-  let imageDialog: InsertImageDialog;
 </script>
 
 <Toolbar>
@@ -71,12 +69,12 @@
       <Divider />
       <InsertDropDown>
         <InsertHRDropDownItem />
-        <InsertImageDropDownItem onclick={() => imageDialog.open()} />
+        <InsertImageDropDownItem />
       </InsertDropDown>
       <Divider />
     {/if}
     <DropDownAlign />
     <!-- dialogs -->
-    <InsertImageDialog bind:this={imageDialog} />
+    <InsertImageDialog />
   {/snippet}
 </Toolbar>

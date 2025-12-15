@@ -1,3 +1,12 @@
+<!--
+@component
+Modal Dialog for inserting images via URL into the editor.
+
+Call `editor.extensions.openInsertImageDialog()` to open the dialog.
+
+Only one instance of this component should be instantiated per editor.
+-->
+
 <script lang="ts">
   import {FocusEditor} from '$lib/core/commands/commands.js';
   import {getEditor} from '$lib/core/composerContext.js';
@@ -8,11 +17,7 @@
 
   const editor = getEditor();
 
-  interface Props {
-    showModal?: boolean;
-  }
-
-  let {showModal = $bindable(false)}: Props = $props();
+  let showModal = $state(false);
   export function open() {
     showModal = true;
   }
@@ -22,6 +27,8 @@
     await tick();
     FocusEditor(editor);
   }
+
+  editor.extensions.openInsertImageDialog = open;
 </script>
 
 <ModalDialog bind:showModal>

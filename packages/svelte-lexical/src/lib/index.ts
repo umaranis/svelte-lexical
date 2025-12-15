@@ -208,3 +208,6 @@ export {$generateHtmlFromNodes as generateHtmlFromNodes} from '@lexical/html';
 export {$generateNodesFromDOM as generateNodesFromDOM} from '@lexical/html';
 export {$convertToMarkdownString as convertToMarkdownString} from '@lexical/markdown';
 export {$convertFromMarkdownString as convertFromMarkdownString} from '@lexical/markdown';
+
+// required for editor extensions types
+export {initializeExtensions} from './core/editorExtensions.js';

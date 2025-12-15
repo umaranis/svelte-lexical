@@ -48,7 +48,6 @@
   import InsertBlueskyDialog from '$lib/components/toolbar/dialogs/InsertBlueskyDialog.svelte';
   import InsertBlueskyDropDownItem from '$lib/components/toolbar/InsertDropDown/InsertBlueskyDropDownItem.svelte';
 
-  let imageDialog: InsertImageDialog;
   let columnsDialog: InsertColumnsDialog;
   let tableDialog: InsertTableDialog;
   let youtubeDialog: InsertYoutubeDialog;
@@ -100,7 +99,7 @@
       <Divider />
       <InsertDropDown>
         <InsertHRDropDownItem />
-        <InsertImageDropDownItem onclick={() => imageDialog.open()} />
+        <InsertImageDropDownItem />
         <InsertColumnLayoutDropDownItem onclick={() => columnsDialog.open()} />
         <InsertTableDropDownItem onclick={() => tableDialog.open()} />
         <InsertYoutubeDropDownItem onclick={() => youtubeDialog.open()} />
@@ -111,7 +110,7 @@
     {/if}
     <DropDownAlign />
     <!-- dialogs -->
-    <InsertImageDialog bind:this={imageDialog} />
+    <InsertImageDialog />
     <InsertColumnsDialog bind:this={columnsDialog} />
     <InsertTableDialog bind:this={tableDialog} />
     <InsertYoutubeDialog bind:this={youtubeDialog} />

@@ -22,8 +22,6 @@
   import InsertImageDialog from '../toolbar/dialogs/InsertImageDialog.svelte';
   import InsertHRDropDownItem from '../toolbar/InsertDropDown/InsertHRDropDownItem.svelte';
   import InsertImageDropDownItem from '../toolbar/InsertDropDown/InsertImageDropDownItem.svelte';
-
-  let imageDialog: InsertImageDialog;
 </script>
 
 <Toolbar>
@@ -55,11 +53,11 @@
     <Divider />
     <InsertDropDown>
       <InsertHRDropDownItem />
-      <InsertImageDropDownItem onclick={() => imageDialog.open()} />
+      <InsertImageDropDownItem />
     </InsertDropDown>
     <Divider />
     <DropDownAlign />
     <!-- dialogs -->
-    <InsertImageDialog bind:this={imageDialog} />
+    <InsertImageDialog />
   {/snippet}
 </Toolbar>
