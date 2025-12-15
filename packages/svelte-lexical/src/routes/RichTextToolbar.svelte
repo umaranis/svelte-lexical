@@ -47,12 +47,6 @@
   import InsertTweetDropDownItem from '$lib/components/toolbar/InsertDropDown/InsertTweetDropDownItem.svelte';
   import InsertBlueskyDialog from '$lib/components/toolbar/dialogs/InsertBlueskyDialog.svelte';
   import InsertBlueskyDropDownItem from '$lib/components/toolbar/InsertDropDown/InsertBlueskyDropDownItem.svelte';
-
-  let columnsDialog: InsertColumnsDialog;
-  let tableDialog: InsertTableDialog;
-  let youtubeDialog: InsertYoutubeDialog;
-  let tweetDialog: InsertTweetDialog;
-  let blueskyDialog: InsertBlueskyDialog;
 </script>
 
 <Toolbar>
@@ -100,21 +94,21 @@
       <InsertDropDown>
         <InsertHRDropDownItem />
         <InsertImageDropDownItem />
-        <InsertColumnLayoutDropDownItem onclick={() => columnsDialog.open()} />
-        <InsertTableDropDownItem onclick={() => tableDialog.open()} />
-        <InsertYoutubeDropDownItem onclick={() => youtubeDialog.open()} />
-        <InsertTweetDropDownItem onclick={() => tweetDialog.open()} />
-        <InsertBlueskyDropDownItem onclick={() => blueskyDialog.open()} />
+        <InsertColumnLayoutDropDownItem />
+        <InsertTableDropDownItem />
+        <InsertYoutubeDropDownItem />
+        <InsertTweetDropDownItem />
+        <InsertBlueskyDropDownItem />
       </InsertDropDown>
       <Divider />
     {/if}
     <DropDownAlign />
     <!-- dialogs -->
     <InsertImageDialog />
-    <InsertColumnsDialog bind:this={columnsDialog} />
-    <InsertTableDialog bind:this={tableDialog} />
-    <InsertYoutubeDialog bind:this={youtubeDialog} />
-    <InsertTweetDialog bind:this={tweetDialog} />
-    <InsertBlueskyDialog bind:this={blueskyDialog} />
+    <InsertColumnsDialog />
+    <InsertTableDialog />
+    <InsertYoutubeDialog />
+    <InsertTweetDialog />
+    <InsertBlueskyDialog />
   {/snippet}
 </Toolbar>

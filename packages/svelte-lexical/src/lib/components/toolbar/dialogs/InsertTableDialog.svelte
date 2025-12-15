@@ -1,3 +1,11 @@
+<!--
+@component
+Modal Dialog for inserting tables into the editor.
+
+Call `editor.extensions.openInsertTableDialog()` to open the dialog.
+
+Only one instance of this component should be instantiated per editor.
+-->
 <script lang="ts">
   import {run} from 'svelte/legacy';
 
@@ -24,11 +32,7 @@
 
   const activeEditor = getActiveEditor();
 
-  interface Props {
-    showModal?: boolean;
-  }
-
-  let {showModal = $bindable(false)}: Props = $props();
+  let showModal = $state(false);
   export function open() {
     showModal = true;
   }
@@ -44,6 +48,7 @@
 
     close();
   };
+  $activeEditor.extensions.openInsertTableDialog = open;
 </script>
 
 <ModalDialog bind:showModal>

@@ -1,3 +1,11 @@
+<!--
+@component
+Modal Dialog for inserting tables into the editor.
+
+Call `editor.extensions.openInsertTweetDialog()` to open the dialog.
+
+Only one instance of this component should be instantiated per editor.
+-->
 <script lang="ts">
   import CloseCircleButton from '$lib/components/generic/button/CloseCircleButton.svelte';
   import ModalDialog from '$lib/components/generic/dialog/ModalDialog.svelte';
@@ -12,11 +20,7 @@
 
   let editor = getEditor();
 
-  interface Props {
-    showModal?: boolean;
-  }
-
-  let {showModal = $bindable(false)}: Props = $props();
+  let showModal = $state(false);
   export function open() {
     showModal = true;
   }
@@ -41,6 +45,8 @@
     }
     return null;
   }
+
+  editor.extensions.openInsertTweetDialog = open;
 </script>
 
 <ModalDialog bind:showModal>
