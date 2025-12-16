@@ -189,28 +189,22 @@ export function getBaseOptions(
     //       src: catTypingGif,
     //     }),
     // }),
-    // new ComponentPickerOption('Image', {
-    //   icon: "icon image",
-    //   keywords: ['image', 'photo', 'picture', 'file'],
-    //   onSelect: () =>
-    //     showModal('Insert Image', (onClose) => (
-    //       <InsertImageDialog activeEditor={editor} onClose={onClose} />
-    //     )),
-    // }),
+    new ComponentPickerOption('Image', {
+      icon: 'icon image',
+      keywords: ['image', 'photo', 'picture', 'file'],
+      onSelect: () => editor.extensions.openInsertImageDialog!(),
+    }),
     // new ComponentPickerOption('Collapsible', {
     //   icon: "icon caret-right",
     //   keywords: ['collapse', 'collapsible', 'toggle'],
     //   onSelect: () =>
     //     editor.dispatchCommand(INSERT_COLLAPSIBLE_COMMAND, undefined),
     // }),
-    // new ComponentPickerOption('Columns Layout', {
-    //   icon: "icon columns",
-    //   keywords: ['columns', 'layout', 'grid'],
-    //   onSelect: () =>
-    //     showModal('Insert Columns Layout', (onClose) => (
-    //       <InsertLayoutDialog activeEditor={editor} onClose={onClose} />
-    //     )),
-    // }),
+    new ComponentPickerOption('Columns Layout', {
+      icon: 'icon columns',
+      keywords: ['columns', 'layout', 'grid'],
+      onSelect: () => editor.extensions.openInsertColumnsDialog!(),
+    }),
     ...(['left', 'center', 'right', 'justify'] as const).map(
       (alignment) =>
         new ComponentPickerOption(`Align ${alignment}`, {
