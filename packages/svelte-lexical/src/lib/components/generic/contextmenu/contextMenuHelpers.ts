@@ -24,11 +24,6 @@ export class MenuOption {
   constructor(key: string) {
     this.key = key;
     this.ref = null;
-    this.setRefElement = this.setRefElement.bind(this);
-  }
-
-  setRefElement(element: HTMLElement | null) {
-    this.ref = element;
   }
 }
 

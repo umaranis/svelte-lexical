@@ -19,6 +19,7 @@
   } from './contextMenuHelpers.js';
   import {mergeRegister} from '@lexical/utils';
   import {SCROLL_TYPEAHEAD_OPTION_INTO_VIEW_COMMAND} from './typeAheadMenuHelpers.js';
+  import {onMount} from 'svelte';
 
   interface Props {
     close: () => void;
@@ -104,25 +105,22 @@
     }
   });
 
-  $effect(() => {
+  onMount(() => {
     return mergeRegister(
-      editor.registerCommand(
-        SCROLL_TYPEAHEAD_OPTION_INTO_VIEW_COMMAND,
-        ({option}) => {
-          if (option.ref && option.ref != null) {
-            scrollIntoViewIfNeeded(option.ref);
-            return true;
-          }
+      mergeRegister(
+        editor.registerCommand(
+          SCROLL_TYPEAHEAD_OPTION_INTO_VIEW_COMMAND,
+          ({option}) => {
+            if (option.ref && option.ref != null) {
+              scrollIntoViewIfNeeded(option.ref);
+              return true;
+            }
 
-          return false;
-        },
-        commandPriority,
+            return false;
+          },
+          commandPriority,
+        ),
       ),
-    );
-  });
-
-  $effect(() => {
-    return mergeRegister(
       editor.registerCommand<KeyboardEvent>(
         KEY_ARROW_DOWN_COMMAND,
         (payload) => {

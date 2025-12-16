@@ -18,8 +18,6 @@
 
   //TODO: Support dark mode
   //TODO: Support all themes
-  //TODO: clicking elsewhere doesn't close the popup.
-  //TODO: icons are not showing
   //TODO: add tests for slash command
 -->
 <script lang="ts">
@@ -41,10 +39,9 @@
   });
 
   let options: ComponentPickerOption[] = $state([]);
+  const baseOptions = getBaseOptions(editor /*, showModal*/);
 
   $effect(() => {
-    const baseOptions = getBaseOptions(editor /*, showModal*/);
-
     if (!queryString) {
       options = baseOptions;
       return;
