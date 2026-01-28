@@ -44,7 +44,7 @@
       );
     }
 
-    const $onEscape = (before: boolean) => {
+    const onEscape = (before: boolean) => {
       const selection = getSelection();
       if (
         isRangeSelection(selection) &&
@@ -110,12 +110,12 @@
       // new content even if trailing paragraph is accidentally deleted
       editor.registerCommand(
         KEY_ARROW_DOWN_COMMAND,
-        () => $onEscape(false),
+        () => onEscape(false),
         COMMAND_PRIORITY_LOW,
       ),
       editor.registerCommand(
         KEY_ARROW_RIGHT_COMMAND,
-        () => $onEscape(false),
+        () => onEscape(false),
         COMMAND_PRIORITY_LOW,
       ),
       // When layout is the first child pressing up/left arrow will insert paragraph
@@ -124,12 +124,12 @@
       // new content even if leading paragraph is accidentally deleted
       editor.registerCommand(
         KEY_ARROW_UP_COMMAND,
-        () => $onEscape(true),
+        () => onEscape(true),
         COMMAND_PRIORITY_LOW,
       ),
       editor.registerCommand(
         KEY_ARROW_LEFT_COMMAND,
-        () => $onEscape(true),
+        () => onEscape(true),
         COMMAND_PRIORITY_LOW,
       ),
       editor.registerCommand(
