@@ -57,6 +57,7 @@
     BlueskyPlugin,
     BlueskyNode,
     TabIndentationPlugin,
+    ComponentPickerMenuPlugin,
   } from 'svelte-lexical';
   import {prepopulatedRichText} from './prepopulatedRichText';
   import type {SettingsStore} from './settings/settingsStore';
@@ -197,6 +198,7 @@
         <PlainTextPlugin />
         <SharedHistoryPlugin />
       {/if}
+      <ComponentPickerMenuPlugin />
 
       <ActionBar />
     </div>

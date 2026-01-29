@@ -32,6 +32,7 @@ export {default as TwitterPlugin} from './core/plugins/twitter/TwitterPlugin.sve
 export {default as BlueskyPlugin} from './core/plugins/bluesky/BlueskyPlugin.svelte';
 export {default as OnChangePlugin} from './core/plugins/OnChangePlugin.svelte';
 export {default as TabIndentationPlugin} from './core/plugins/TabIndentationPlugin.svelte';
+export {default as ComponentPickerMenuPlugin} from './core/plugins/ComponentPicker/ComponentPickerMenuPlugin.svelte';
 
 export {default as MarkdownShortcutPlugin} from './core/plugins/MarkdownShortcut/MarkdownShortcutPlugin.svelte';
 export {
