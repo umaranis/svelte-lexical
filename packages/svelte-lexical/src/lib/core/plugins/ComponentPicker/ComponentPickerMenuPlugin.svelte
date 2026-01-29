@@ -19,6 +19,7 @@
   //TODO: Support dark mode
   //TODO: Support all themes
   //TODO: add tests for slash command
+  //TODO: add more slash commands/options
 -->
 <script lang="ts">
   import TypeAheadMenu from '$lib/components/generic/contextmenu/TypeAheadMenu.svelte';
