@@ -49,9 +49,7 @@ test.describe('Clear All Formatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="auto">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello World Test</span>
         </p>
       `,
@@ -79,7 +77,7 @@ test.describe('Clear All Formatting', () => {
         html`
           <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <a
-              class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
+              class="PlaygroundEditorTheme__link"
               dir="auto"
               href="https://facebook.com">
               <span data-lexical-text="true">Facebook!</span>
@@ -101,9 +99,7 @@ test.describe('Clear All Formatting', () => {
       await assertHTML(
         page,
         html`
-          <blockquote
-            class="PlaygroundEditorTheme__quote PlaygroundEditorTheme__ltr"
-            dir="auto">
+          <blockquote class="PlaygroundEditorTheme__quote" dir="auto">
             <span data-lexical-text="true">Testing for quote node</span>
           </blockquote>
         `,
@@ -128,9 +124,7 @@ test.describe('Clear All Formatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="auto">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span
               class="PlaygroundEditorTheme__hashtag"
               data-lexical-text="true">
@@ -149,9 +143,7 @@ test.describe('Clear All Formatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="auto">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">@Luke</span>
           </p>
         `,
@@ -181,9 +173,7 @@ test.describe('Clear All Formatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="auto">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span
               class="mention"
               spellcheck="false"
@@ -213,10 +203,7 @@ test.describe('Clear All Formatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="auto"
-          style="">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto" style="">
           <span data-lexical-text="true">Hello World Test</span>
         </p>
       `,
@@ -237,10 +224,7 @@ test.describe('Clear All Formatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="auto"
-          style="">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto" style="">
           <span data-lexical-text="true">Hello World Test</span>
         </p>
       `,
@@ -261,10 +245,7 @@ test.describe('Clear All Formatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="auto"
-          style="">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto" style="">
           <span data-lexical-text="true">Hello World Test</span>
         </p>
       `,
@@ -291,10 +272,7 @@ test.describe('Clear All Formatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="auto"
-          style="">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto" style="">
           <span data-lexical-text="true">Hello World Test</span>
         </p>
       `,

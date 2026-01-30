@@ -113,18 +113,14 @@ test.describe('HorizontalRule', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="auto">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Some text</span>
         </p>
         <hr
           class="PlaygroundEditorTheme__hr"
           contenteditable="false"
           data-lexical-decorator="true" />
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="auto">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Some more text</span>
         </p>
       `,
@@ -149,7 +145,7 @@ test.describe('HorizontalRule', () => {
     if (!isCollab) {
       await assertHTML(
         page,
-        '<div class="PlaygroundEditorTheme__blockCursor" contenteditable="false" data-lexical-cursor="true"></div><hr class="PlaygroundEditorTheme__hr" data-lexical-decorator="true" contenteditable="false"><p class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr" dir="auto"><span data-lexical-text="true">Some more text</span></p>',
+        '<div class="PlaygroundEditorTheme__blockCursor" contenteditable="false" data-lexical-cursor="true"></div><hr class="PlaygroundEditorTheme__hr" data-lexical-decorator="true" contenteditable="false"><p class="PlaygroundEditorTheme__paragraph" dir="auto"><span data-lexical-text="true">Some more text</span></p>',
       );
     }
 
@@ -181,9 +177,7 @@ test.describe('HorizontalRule', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="auto">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Test</span>
         </p>
       `,
@@ -196,9 +190,7 @@ test.describe('HorizontalRule', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="auto">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Test</span>
         </p>
         <hr
@@ -236,9 +228,7 @@ test.describe('HorizontalRule', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="auto">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Test</span>
         </p>
       `,
@@ -260,18 +250,14 @@ test.describe('HorizontalRule', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="auto">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Te</span>
         </p>
         <hr
           class="PlaygroundEditorTheme__hr"
           contenteditable="false"
           data-lexical-decorator="true" />
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="auto">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">st</span>
         </p>
       `,
@@ -306,10 +292,7 @@ test.describe('HorizontalRule', () => {
       page,
       html`
         <ul class="PlaygroundEditorTheme__ul">
-          <li
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="auto"
-            value="1">
+          <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
             <span data-lexical-text="true">Test</span>
           </li>
         </ul>
@@ -333,10 +316,7 @@ test.describe('HorizontalRule', () => {
       page,
       html`
         <ul class="PlaygroundEditorTheme__ul">
-          <li
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="auto"
-            value="1">
+          <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
             <span data-lexical-text="true">Te</span>
           </li>
         </ul>
@@ -345,10 +325,7 @@ test.describe('HorizontalRule', () => {
           contenteditable="false"
           data-lexical-decorator="true" />
         <ul class="PlaygroundEditorTheme__ul">
-          <li
-            class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="auto"
-            value="1">
+          <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
             <span data-lexical-text="true">st</span>
           </li>
         </ul>

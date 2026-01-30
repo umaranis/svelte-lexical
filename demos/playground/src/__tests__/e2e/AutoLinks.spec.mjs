@@ -723,7 +723,7 @@ test.describe.parallel('Auto Links', () => {
       html`
         <p dir="auto">
           <span data-lexical-text="true">Hello</span>
-          <span class="PlaygroundEditorTheme__ltr" dir="auto">
+          <span class="" dir="auto">
             <span data-lexical-text="true">http://www.example.com</span>
           </span>
           <span data-lexical-text="true">test</span>

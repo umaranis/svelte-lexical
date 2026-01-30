@@ -52,51 +52,37 @@ test.describe('HTML Tables CopyAndPaste', () => {
           </colgroup>
           <tr>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">a</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">b</span>
               </p>
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">b</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">c</span>
               </p>
             </td>
           </tr>
           <tr>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">d</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">e</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">f</span>
               </p>
             </td>
@@ -128,46 +114,34 @@ test.describe('HTML Tables CopyAndPaste', () => {
           </colgroup>
           <tr>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">short</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">wide</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">default</span>
               </p>
             </td>
           </tr>
           <tr>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">a</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">b</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">c</span>
               </p>
             </td>
@@ -200,7 +174,7 @@ test.describe('HTML Tables CopyAndPaste', () => {
           <tr>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 dir="auto"
                 style="text-align: left;">
                 <span data-lexical-text="true">a</span>
@@ -208,7 +182,7 @@ test.describe('HTML Tables CopyAndPaste', () => {
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 dir="auto"
                 style="text-align: left;">
                 <span data-lexical-text="true">b</span>
@@ -218,7 +192,7 @@ test.describe('HTML Tables CopyAndPaste', () => {
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 dir="auto"
                 style="text-align: left;">
                 <span data-lexical-text="true">c</span>
@@ -228,7 +202,7 @@ test.describe('HTML Tables CopyAndPaste', () => {
           <tr>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 dir="auto"
                 style="text-align: left;">
                 <span data-lexical-text="true">d</span>
@@ -236,7 +210,7 @@ test.describe('HTML Tables CopyAndPaste', () => {
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 dir="auto"
                 style="text-align: left;">
                 <span data-lexical-text="true">e</span>
@@ -244,7 +218,7 @@ test.describe('HTML Tables CopyAndPaste', () => {
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 dir="auto"
                 style="text-align: left;">
                 <span data-lexical-text="true">f</span>
@@ -280,18 +254,14 @@ test.describe('HTML Tables CopyAndPaste', () => {
             <td
               class="PlaygroundEditorTheme__tableCell"
               style="vertical-align: bottom">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">a</span>
               </p>
             </td>
             <td
               class="PlaygroundEditorTheme__tableCell"
               style="vertical-align: bottom">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">b</span>
                 <br />
                 <span data-lexical-text="true">b</span>
@@ -300,9 +270,7 @@ test.describe('HTML Tables CopyAndPaste', () => {
             <td
               class="PlaygroundEditorTheme__tableCell"
               style="vertical-align: bottom">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">c</span>
               </p>
             </td>
@@ -311,27 +279,21 @@ test.describe('HTML Tables CopyAndPaste', () => {
             <td
               class="PlaygroundEditorTheme__tableCell"
               style="vertical-align: bottom">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">d</span>
               </p>
             </td>
             <td
               class="PlaygroundEditorTheme__tableCell"
               style="vertical-align: bottom">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">e</span>
               </p>
             </td>
             <td
               class="PlaygroundEditorTheme__tableCell"
               style="vertical-align: bottom">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">f</span>
               </p>
             </td>
@@ -380,17 +342,13 @@ test.describe('HTML Tables CopyAndPaste', () => {
           <tr>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">a</span>
               </p>
             </th>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">b</span>
               </p>
             </th>
@@ -406,16 +364,14 @@ test.describe('HTML Tables CopyAndPaste', () => {
           <tr>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">c</span>
               </p>
             </th>
             <td
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">d</span>
@@ -481,17 +437,13 @@ test.describe('HTML Tables CopyAndPaste', () => {
           <tr>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">a</span>
               </p>
             </th>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">b</span>
               </p>
             </th>
@@ -507,16 +459,12 @@ test.describe('HTML Tables CopyAndPaste', () => {
           <tr>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">c</span>
               </p>
             </th>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">d</span>
               </p>
             </td>
@@ -642,9 +590,7 @@ test.describe('HTML Tables CopyAndPaste', () => {
           </tr>
           <tr>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">ABC</span>
               </p>
               <p class="PlaygroundEditorTheme__paragraph" dir="auto">
@@ -655,9 +601,7 @@ test.describe('HTML Tables CopyAndPaste', () => {
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
-              <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="auto">
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto">
                 <span data-lexical-text="true">DEF</span>
               </p>
             </td>
