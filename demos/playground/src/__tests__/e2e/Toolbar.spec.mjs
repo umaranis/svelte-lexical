@@ -314,7 +314,10 @@ test.describe('Toolbar', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph" dir="auto" style="text-align: center">
+        <p
+          class="PlaygroundEditorTheme__paragraph"
+          dir="auto"
+          style="text-align: center">
           <span
             class="editor-image"
             contenteditable="false"

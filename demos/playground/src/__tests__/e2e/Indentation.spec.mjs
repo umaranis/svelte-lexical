@@ -470,7 +470,9 @@ test.describe('Identation', () => {
             data-language="javascript">
             <span data-lexical-text="true">code</span>
           </code>
-          <p class="PlaygroundEditorTheme__paragraph" dir="auto" style=""><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto" style="">
+            <br />
+          </p>
           <table
             class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
             <colgroup>
@@ -488,7 +490,9 @@ test.describe('Identation', () => {
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph" dir="auto" style=""><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto" style="">
+            <br />
+          </p>
         `,
       );
     },

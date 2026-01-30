@@ -120,7 +120,10 @@ test.describe('BlockWithAlignableContents', () => {
               width="560"></iframe>
           </div>
         </div>
-        <p class="PlaygroundEditorTheme__paragraph" dir="auto" style="text-align: center">
+        <p
+          class="PlaygroundEditorTheme__paragraph"
+          dir="auto"
+          style="text-align: center">
           <br />
         </p>
       `,

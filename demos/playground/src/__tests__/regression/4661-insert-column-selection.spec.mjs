@@ -57,34 +57,50 @@ test.describe('Regression test #4661', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </td>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
@@ -127,34 +143,50 @@ test.describe('Regression test #4661', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
