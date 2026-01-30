@@ -86,7 +86,7 @@ test.describe('Collaboration', () => {
           dir="ltr">
           <span data-lexical-text="true">hello</span>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <br />
         </p>
         <p
@@ -169,7 +169,7 @@ test.describe('Collaboration', () => {
           dir="ltr">
           <span data-lexical-text="true">hello</span>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <br />
         </p>
         <p
@@ -286,7 +286,7 @@ test.describe('Collaboration', () => {
           dir="ltr">
           <span data-lexical-text="true">Line 1</span>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
 
@@ -306,7 +306,7 @@ test.describe('Collaboration', () => {
           dir="ltr">
           <span data-lexical-text="true">Line 1</span>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
   });

@@ -202,7 +202,7 @@ test.describe.parallel('Links', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true"></span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
@@ -231,7 +231,7 @@ test.describe.parallel('Links', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true"></span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
@@ -323,7 +323,7 @@ test.describe.parallel('Links', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true"></span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
@@ -352,7 +352,7 @@ test.describe.parallel('Links', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true"></span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
@@ -472,7 +472,7 @@ test.describe.parallel('Links', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true"></span>
             <a
               class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
@@ -603,7 +603,7 @@ test.describe.parallel('Links', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true"></span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
@@ -1249,7 +1249,7 @@ test.describe.parallel('Links', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true"></span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"

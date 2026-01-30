@@ -218,7 +218,7 @@ test.describe('History', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
       await assertSelection(page, {
@@ -277,7 +277,7 @@ test.describe('History', () => {
               dir="ltr">
               <span data-lexical-text="true">hello world</span>
             </p>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
         await assertSelection(page, {
@@ -545,7 +545,7 @@ test.describe('History', () => {
       </p>
     `;
     const step4HTML = html`
-      <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+      <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
     `;
 
     await assertHTML(page, step1HTML);
@@ -742,7 +742,7 @@ test.describe('History - IME', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     }

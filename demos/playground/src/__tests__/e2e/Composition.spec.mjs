@@ -57,7 +57,7 @@ test.describe('Composition', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
     await assertSelection(page, {
@@ -131,7 +131,7 @@ test.describe('Composition', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
 
@@ -1182,7 +1182,7 @@ test.describe('Composition', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
       await assertSelection(page, {
@@ -1243,7 +1243,7 @@ test.describe('Composition', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true"></span>
           </p>
         `,

@@ -210,7 +210,7 @@ test.describe('CodeBlock', () => {
           dir="ltr">
           <span data-lexical-text="true">yar</span>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
           dir="ltr">
@@ -280,7 +280,7 @@ test.describe('CodeBlock', () => {
           dir="ltr">
           <span data-lexical-text="true">yar</span>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
           dir="ltr">

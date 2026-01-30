@@ -48,7 +48,7 @@ test.describe('CopyAndPaste', () => {
             dir="ltr">
             <span data-lexical-text="true">Copy + pasting?</span>
           </p>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
             dir="ltr">
@@ -95,7 +95,7 @@ test.describe('CopyAndPaste', () => {
             dir="ltr">
             <span data-lexical-text="true">Copy + pasting?</span>
           </p>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
             dir="ltr">
@@ -161,7 +161,7 @@ test.describe('CopyAndPaste', () => {
               dir="ltr">
               <span data-lexical-text="true">Copy + pasting?</span>
             </p>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
             <p
               class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
               dir="ltr">
@@ -197,13 +197,13 @@ test.describe('CopyAndPaste', () => {
               dir="ltr">
               <span data-lexical-text="true">Copy + pasting?</span>
             </p>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
             <p
               class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
               dir="ltr">
               <span data-lexical-text="true">Sounds good!Copy + pasting?</span>
             </p>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
             <p
               class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
               dir="ltr">
@@ -777,7 +777,7 @@ test.describe('CopyAndPaste', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
       await assertSelection(page, {
@@ -893,7 +893,7 @@ test.describe('CopyAndPaste', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           <div contenteditable="false" data-lexical-decorator="true">
             <div class="PlaygroundEditorTheme__embedBlock" style="">
               <iframe

@@ -77,7 +77,7 @@ test.describe('Clear All Formatting', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <a
               class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
               dir="ltr"
@@ -161,7 +161,7 @@ test.describe('Clear All Formatting', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span
               class="mention"
               spellcheck="false"

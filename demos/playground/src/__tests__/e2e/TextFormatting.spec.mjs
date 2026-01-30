@@ -1057,7 +1057,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <strong
             class="PlaygroundEditorTheme__textBold"
             data-lexical-text="true">
@@ -1074,7 +1074,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <strong
             class="PlaygroundEditorTheme__textBold"
             data-lexical-text="true">

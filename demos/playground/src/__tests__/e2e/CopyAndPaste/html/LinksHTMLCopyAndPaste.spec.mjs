@@ -46,7 +46,7 @@ test.describe('HTML Links CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
             dir="ltr"
@@ -72,7 +72,7 @@ test.describe('HTML Links CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Facebook!</span>
         </p>
       `,
@@ -86,7 +86,7 @@ test.describe('HTML Links CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
             dir="ltr"

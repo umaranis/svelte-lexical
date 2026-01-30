@@ -117,7 +117,7 @@ test.describe.parallel('Markdown', () => {
       markdownImport: '',
       markdownText: '> ',
       undoHTML:
-        '<p class="PlaygroundEditorTheme__paragraph"><span data-lexical-text="true">&gt;</span></p>', // Block quote.
+        '<p class="PlaygroundEditorTheme__paragraph" dir="auto"><span data-lexical-text="true">&gt;</span></p>', // Block quote.
     },
     {
       expectation:
@@ -150,7 +150,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       expectation:
-        '<hr class="PlaygroundEditorTheme__hr" data-lexical-decorator="true" contenteditable="false" /><p class="PlaygroundEditorTheme__paragraph"><br></p>',
+        '<hr class="PlaygroundEditorTheme__hr" data-lexical-decorator="true" contenteditable="false" /><p class="PlaygroundEditorTheme__paragraph" dir="auto"><br></p>',
       importExpectation: '',
       isBlockTest: true,
       markdownImport: '',
@@ -159,7 +159,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       expectation:
-        '<hr class="PlaygroundEditorTheme__hr" data-lexical-decorator="true" contenteditable="false" /><p class="PlaygroundEditorTheme__paragraph"><br></p>',
+        '<hr class="PlaygroundEditorTheme__hr" data-lexical-decorator="true" contenteditable="false" /><p class="PlaygroundEditorTheme__paragraph" dir="auto"><br></p>',
       importExpectation: '',
       isBlockTest: true,
       markdownImport: '',
@@ -315,7 +315,7 @@ test.describe.parallel('Markdown', () => {
 
         const forwardHTML = triggersAndExpectations[i].expectation;
 
-        const undoHTML = `<p class="PlaygroundEditorTheme__paragraph"><span data-lexical-text="true">${markdownText}</span></p>`;
+        const undoHTML = `<p class="PlaygroundEditorTheme__paragraph" dir="auto"><span data-lexical-text="true">${markdownText}</span></p>`;
 
         await checkHTMLExpectationsIncludingUndoRedo(
           page,
@@ -958,7 +958,7 @@ test.describe.parallel('Markdown', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span
             class="editor-image"
             contenteditable="false"
@@ -1541,7 +1541,7 @@ const IMPORTED_MARKDOWN_HTML = html`
       </ol>
     </li>
   </ol>
-  <p class="PlaygroundEditorTheme__paragraph">
+  <p class="PlaygroundEditorTheme__paragraph" dir="auto">
     <span data-lexical-text="true">.</span>
   </p>
   <ol class="PlaygroundEditorTheme__ol1" start="31">

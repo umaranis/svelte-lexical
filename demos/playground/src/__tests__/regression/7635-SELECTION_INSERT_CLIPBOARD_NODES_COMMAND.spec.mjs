@@ -49,7 +49,7 @@ test.describe('Regression #7635', () => {
       await assertHTMLIgnoreInlineStyles(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span
               class="editor-image"
               contenteditable="false"
@@ -86,7 +86,7 @@ test.describe('Regression #7635', () => {
       await assertHTMLIgnoreInlineStyles(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span
               class="editor-image"
               contenteditable="false"
@@ -136,7 +136,7 @@ test.describe('Regression #7635', () => {
       await assertHTMLIgnoreInlineStyles(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span
               class="editor-image"
               contenteditable="false"
@@ -183,7 +183,7 @@ test.describe('Regression #7635', () => {
       await assertHTMLIgnoreInlineStyles(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span
               class="editor-image"
               contenteditable="false"

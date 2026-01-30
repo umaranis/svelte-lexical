@@ -190,7 +190,7 @@ test.describe.parallel('Selection', () => {
             </p>
           `
         : html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `;
     const lines = (...args) => html`
       ${args.map(p).join('')}
@@ -231,7 +231,7 @@ test.describe.parallel('Selection', () => {
             </p>
           `
         : html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `;
     const lines = (...args) => html`
       ${args.map(p).join('')}
@@ -287,7 +287,7 @@ test.describe.parallel('Selection', () => {
             </p>
           `
         : html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `;
     const lines = (...args) => html`
       ${args.map(p).join('')}
@@ -350,7 +350,7 @@ test.describe.parallel('Selection', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
   });
@@ -404,7 +404,7 @@ test.describe.parallel('Selection', () => {
             dir="ltr">
             <span data-lexical-text="true">One</span>
           </p>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -419,7 +419,7 @@ test.describe.parallel('Selection', () => {
             dir="ltr">
             <span data-lexical-text="true">One</span>
           </p>
-          <p class="PlaygroundEditorTheme__paragraph">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             ${imageHtml}
             <br />
           </p>
@@ -442,7 +442,7 @@ test.describe.parallel('Selection', () => {
             ${imageHtml}
             <span data-lexical-text="true">Two</span>
           </p>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -469,8 +469,8 @@ test.describe.parallel('Selection', () => {
             dir="ltr">
             <span data-lexical-text="true">One</span>
           </p>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -483,7 +483,7 @@ test.describe.parallel('Selection', () => {
             dir="ltr">
             <span data-lexical-text="true">One</span>
           </p>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -497,7 +497,7 @@ test.describe.parallel('Selection', () => {
             dir="ltr">
             <span data-lexical-text="true">One</span>
           </p>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -506,8 +506,8 @@ test.describe.parallel('Selection', () => {
       await assertImageHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -515,7 +515,7 @@ test.describe.parallel('Selection', () => {
       await assertImageHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -523,7 +523,7 @@ test.describe.parallel('Selection', () => {
       await assertImageHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     },
@@ -546,8 +546,8 @@ test.describe.parallel('Selection', () => {
           dir="ltr">
           <span data-lexical-text="true">text</span>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
   });
@@ -625,7 +625,7 @@ test.describe.parallel('Selection', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
   });
@@ -664,10 +664,10 @@ test.describe.parallel('Selection', () => {
             </p>
           </summary>
           <div class="Collapsible__content">
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           </div>
         </${collapsibleTag}>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     },
@@ -708,7 +708,7 @@ test.describe.parallel('Selection', () => {
             </p>
           </summary>
           <div class="Collapsible__content">
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           </div>
         </${collapsibleTag}>
         <p
@@ -750,15 +750,15 @@ test.describe.parallel('Selection', () => {
           <tr>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
             </th>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
             </th>
           </tr>
         </table>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
   });
@@ -793,11 +793,11 @@ test.describe.parallel('Selection', () => {
           <tr>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
             </th>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+              <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
             </th>
           </tr>
         </table>
@@ -852,7 +852,7 @@ test.describe.parallel('Selection', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <br />
         </p>
         <p
@@ -977,7 +977,7 @@ test.describe.parallel('Selection', () => {
             world
           </strong>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">!</span>
         </p>
       `,
@@ -998,7 +998,7 @@ test.describe.parallel('Selection', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
   });
@@ -1022,7 +1022,7 @@ test.describe.parallel('Selection', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
   });
@@ -1082,7 +1082,7 @@ test.describe.parallel('Selection', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     },
@@ -1215,7 +1215,7 @@ test.describe.parallel('Selection', () => {
             Line1
           </strong>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
           dir="ltr">
@@ -1266,7 +1266,7 @@ test.describe.parallel('Selection', () => {
             Line1
           </strong>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
           dir="ltr">
@@ -1345,7 +1345,7 @@ test.describe.parallel('Selection', () => {
               Line1
             </span>
           </p>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
             dir="ltr">

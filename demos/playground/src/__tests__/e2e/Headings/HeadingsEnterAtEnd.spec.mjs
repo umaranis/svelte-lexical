@@ -50,7 +50,7 @@ test('Headings - changes to a paragraph when you press enter at the end of a hea
         dir="ltr">
         <span data-lexical-text="true">Welcome to the playground</span>
       </h1>
-      <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+      <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
     `,
   );
 });

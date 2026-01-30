@@ -64,7 +64,7 @@ test.describe('HTML CopyAndPaste', () => {
             Bold Italic Underline
           </strong>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <br />
         </p>
       `,

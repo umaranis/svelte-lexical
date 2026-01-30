@@ -273,7 +273,7 @@ test.describe('Emoticons', () => {
               <span class="emoji-inner">🙁</span>
             </span>
           </p>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
       await assertSelection(page, {
@@ -474,7 +474,7 @@ test.describe('Emoticons', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
     await assertSelection(page, {

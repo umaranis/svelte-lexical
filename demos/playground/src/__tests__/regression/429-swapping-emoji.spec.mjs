@@ -52,7 +52,7 @@ test.describe('Regression test #429', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
             <p
               class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
               dir="ltr">
