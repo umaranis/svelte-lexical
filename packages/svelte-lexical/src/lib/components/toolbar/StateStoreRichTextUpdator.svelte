@@ -102,7 +102,7 @@
       const elementKey = element.getKey();
       const elementDOM = $activeEditor.getElementByKey(elementKey);
 
-      $isRTL = isParentElementRTL(selection, $activeEditor);
+      $isRTL = isParentElementRTL(selection);
 
       // Update links
       const node = getSelectedNode(selection);
@@ -188,9 +188,12 @@
   onMount(() => {
     return mergeRegister(
       editor.registerUpdateListener(({editorState}) => {
-        editorState.read(() => {
-          updateToolbar();
-        });
+        editorState.read(
+          () => {
+            updateToolbar();
+          },
+          {editor},
+        );
       }),
       editor.registerCommand(
         SELECTION_CHANGE_COMMAND,
