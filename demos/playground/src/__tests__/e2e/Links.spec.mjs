@@ -1881,17 +1881,17 @@ test.describe.parallel('Links', () => {
       page,
       html`
         <p dir="auto">
-          <a dir="auto" href="https://" rel="noreferrer">
+          <a href="https://" rel="noreferrer">
             <span data-lexical-text="true">Hello world</span>
           </a>
         </p>
         <p dir="auto">
-          <a dir="auto" href="https://" rel="noreferrer">
+          <a href="https://" rel="noreferrer">
             <span data-lexical-text="true">Hello world</span>
           </a>
         </p>
         <p dir="auto">
-          <a dir="auto" href="https://" rel="noreferrer">
+          <a href="https://" rel="noreferrer">
             <span data-lexical-text="true">Hello world</span>
           </a>
         </p>
@@ -1922,12 +1922,12 @@ test.describe.parallel('Links', () => {
         page,
         html`
           <p dir="auto">
-            <a dir="auto" href="https://" rel="noreferrer">
+            <a href="https://" rel="noreferrer">
               <span data-lexical-text="true">Hello</span>
             </a>
           </p>
           <p dir="auto">
-            <a dir="auto" href="https://" rel="noreferrer">
+            <a href="https://" rel="noreferrer">
               <span data-lexical-text="true">awesome</span>
             </a>
             <span data-lexical-text="true">world</span>
@@ -1965,12 +1965,12 @@ test.describe.parallel('Links', () => {
         page,
         html`
           <p dir="auto">
-            <a dir="auto" href="https://" rel="noreferrer">
+            <a href="https://" rel="noreferrer">
               <span data-lexical-text="true">Hello</span>
             </a>
           </p>
           <p dir="auto">
-            <a dir="auto" href="https://" rel="noreferrer">
+            <a href="https://" rel="noreferrer">
               <strong data-lexical-text="true">awe</strong>
               <span data-lexical-text="true">some</span>
             </a>
@@ -2005,7 +2005,7 @@ test.describe.parallel('Links', () => {
         html`
           <p><br /></p>
           <p dir="auto">
-            <a dir="auto" href="https://" rel="noreferrer">
+            <a href="https://" rel="noreferrer">
               <span data-lexical-text="true">Hello awesome</span>
             </a>
             <span data-lexical-text="true">world</span>
@@ -2038,7 +2038,7 @@ test.describe.parallel('Links', () => {
       page,
       html`
         <p dir="auto">
-          <a dir="auto" href="https://" rel="noreferrer">
+          <a href="https://" rel="noreferrer">
             <span data-lexical-text="true">Hello awesome</span>
           </a>
         </p>
