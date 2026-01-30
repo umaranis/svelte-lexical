@@ -69,7 +69,6 @@ test.describe('Regression test #5251', () => {
             <span data-lexical-text="true">Hello</span>
             <a
               class="PlaygroundEditorTheme__link"
-              dir="auto"
               href="https://"
               rel="noreferrer">
               <span data-lexical-text="true">World</span>
@@ -97,7 +96,6 @@ test.describe('Regression test #5251', () => {
             </strong>
             <a
               class="PlaygroundEditorTheme__link"
-              dir="auto"
               href="https://"
               rel="noreferrer">
               <span data-lexical-text="true">ld</span>

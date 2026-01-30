@@ -775,7 +775,6 @@ test.describe('CopyAndPaste', () => {
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <a
             class="PlaygroundEditorTheme__link"
-            dir="auto"
             href="https://"
             rel="noreferrer">
             <span data-lexical-text="true">Hello</span>
@@ -783,7 +782,6 @@ test.describe('CopyAndPaste', () => {
           <span data-lexical-text="true">World</span>
           <a
             class="PlaygroundEditorTheme__link"
-            dir="auto"
             href="https://"
             rel="noreferrer">
             <span data-lexical-text="true">Hello</span>

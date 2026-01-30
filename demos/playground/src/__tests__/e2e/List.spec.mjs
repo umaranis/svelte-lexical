@@ -254,7 +254,6 @@ test.describe.parallel('Nested List', () => {
         <ul class="PlaygroundEditorTheme__ul">
           <li
             class="PlaygroundEditorTheme__listItem"
-            dir="auto"
             style="${expectedMarkerStyle}"
             value="1">
             <strong
@@ -271,7 +270,6 @@ test.describe.parallel('Nested List', () => {
             <ul class="PlaygroundEditorTheme__ul">
               <li
                 class="PlaygroundEditorTheme__listItem"
-                dir="auto"
                 style="${expectedMarkerStyle}"
                 value="1">
                 <strong
@@ -285,7 +283,6 @@ test.describe.parallel('Nested List', () => {
           </li>
           <li
             class="PlaygroundEditorTheme__listItem"
-            dir="auto"
             style="${expectedMarkerStyle}"
             value="2">
             <strong
@@ -547,31 +544,26 @@ test.describe.parallel('Nested List', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            dir="auto"
             style="padding-inline-start: calc(120px)">
             <span data-lexical-text="true">Hello</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            dir="auto"
             style="padding-inline-start: calc(120px)">
             <span data-lexical-text="true">from</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            dir="auto"
             style="padding-inline-start: calc(120px)">
             <span data-lexical-text="true">the</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            dir="auto"
             style="padding-inline-start: calc(120px)">
             <span data-lexical-text="true">other</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            dir="auto"
             style="padding-inline-start: calc(120px)">
             <span data-lexical-text="true">side</span>
           </p>
@@ -628,10 +620,7 @@ test.describe.parallel('Nested List', () => {
                 class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
                 value="2">
                 <ul class="PlaygroundEditorTheme__ul">
-                  <li
-                    class="PlaygroundEditorTheme__listItem"
-                    dir="auto"
-                    value="1">
+                  <li class="PlaygroundEditorTheme__listItem" value="1">
                     <span data-lexical-text="true">the</span>
                   </li>
                 </ul>
@@ -672,10 +661,7 @@ test.describe.parallel('Nested List', () => {
                 class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
                 value="2">
                 <ul class="PlaygroundEditorTheme__ul">
-                  <li
-                    class="PlaygroundEditorTheme__listItem"
-                    dir="auto"
-                    value="1">
+                  <li class="PlaygroundEditorTheme__listItem" value="1">
                     <span data-lexical-text="true">the</span>
                   </li>
                 </ul>
@@ -713,10 +699,7 @@ test.describe.parallel('Nested List', () => {
                 class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
                 value="2">
                 <ol class="PlaygroundEditorTheme__ol3">
-                  <li
-                    class="PlaygroundEditorTheme__listItem"
-                    dir="auto"
-                    value="1">
+                  <li class="PlaygroundEditorTheme__listItem" value="1">
                     <span data-lexical-text="true">the</span>
                   </li>
                 </ol>
@@ -755,10 +738,7 @@ test.describe.parallel('Nested List', () => {
                 class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
                 value="2">
                 <ol class="PlaygroundEditorTheme__ol3">
-                  <li
-                    class="PlaygroundEditorTheme__listItem"
-                    dir="auto"
-                    value="1">
+                  <li class="PlaygroundEditorTheme__listItem" value="1">
                     <span data-lexical-text="true">the</span>
                   </li>
                 </ol>
@@ -784,7 +764,6 @@ test.describe.parallel('Nested List', () => {
         <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-            dir="auto"
             role="checkbox"
             tabindex="-1"
             value="1"
@@ -798,7 +777,6 @@ test.describe.parallel('Nested List', () => {
               class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
               <li
                 class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-                dir="auto"
                 role="checkbox"
                 tabindex="-1"
                 value="1"
@@ -812,7 +790,6 @@ test.describe.parallel('Nested List', () => {
                   class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
                   <li
                     class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-                    dir="auto"
                     role="checkbox"
                     tabindex="-1"
                     value="1"
@@ -823,7 +800,6 @@ test.describe.parallel('Nested List', () => {
               </li>
               <li
                 class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-                dir="auto"
                 role="checkbox"
                 tabindex="-1"
                 value="2"
@@ -834,7 +810,6 @@ test.describe.parallel('Nested List', () => {
           </li>
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-            dir="auto"
             role="checkbox"
             tabindex="-1"
             value="2"
@@ -855,7 +830,6 @@ test.describe.parallel('Nested List', () => {
         <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-            dir="auto"
             role="checkbox"
             tabindex="-1"
             value="1"
@@ -869,7 +843,6 @@ test.describe.parallel('Nested List', () => {
               class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
               <li
                 class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-                dir="auto"
                 role="checkbox"
                 tabindex="-1"
                 value="1"
@@ -883,7 +856,6 @@ test.describe.parallel('Nested List', () => {
                   class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
                   <li
                     class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-                    dir="auto"
                     role="checkbox"
                     tabindex="-1"
                     value="1"
@@ -894,7 +866,6 @@ test.describe.parallel('Nested List', () => {
               </li>
               <li
                 class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-                dir="auto"
                 role="checkbox"
                 tabindex="-1"
                 value="2"
@@ -905,7 +876,6 @@ test.describe.parallel('Nested List', () => {
           </li>
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-            dir="auto"
             role="checkbox"
             tabindex="-1"
             value="2"
@@ -953,7 +923,6 @@ test.describe.parallel('Nested List', () => {
             <span data-lexical-text="true">One</span>
             <a
               class="PlaygroundEditorTheme__link"
-              dir="auto"
               href="https://"
               rel="noreferrer">
               <span data-lexical-text="true">two</span>
@@ -982,7 +951,6 @@ test.describe.parallel('Nested List', () => {
             <span data-lexical-text="true">One</span>
             <a
               class="PlaygroundEditorTheme__link"
-              dir="auto"
               href="https://"
               rel="noreferrer">
               <span data-lexical-text="true">two</span>
@@ -1636,7 +1604,6 @@ test.describe.parallel('Nested List', () => {
         <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemChecked"
-            dir="auto"
             role="checkbox"
             tabindex="-1"
             value="1"
@@ -1645,7 +1612,6 @@ test.describe.parallel('Nested List', () => {
           </li>
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-            dir="auto"
             role="checkbox"
             tabindex="-1"
             value="2"
@@ -1659,7 +1625,6 @@ test.describe.parallel('Nested List', () => {
               class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
               <li
                 class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-                dir="auto"
                 role="checkbox"
                 tabindex="-1"
                 value="1"
@@ -1690,7 +1655,6 @@ test.describe.parallel('Nested List', () => {
               class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
               <li
                 class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-                dir="auto"
                 role="checkbox"
                 tabindex="-1"
                 value="1"
@@ -1709,7 +1673,6 @@ test.describe.parallel('Nested List', () => {
         <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-            dir="auto"
             role="checkbox"
             tabindex="-1"
             value="1"
@@ -1718,7 +1681,6 @@ test.describe.parallel('Nested List', () => {
           </li>
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-            dir="auto"
             role="checkbox"
             tabindex="-1"
             value="2"
@@ -1732,7 +1694,6 @@ test.describe.parallel('Nested List', () => {
               class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
               <li
                 class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-                dir="auto"
                 role="checkbox"
                 tabindex="-1"
                 value="1"
@@ -2016,7 +1977,6 @@ test.describe.parallel('Nested List', () => {
           <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
             <a
               class="PlaygroundEditorTheme__link"
-              dir="auto"
               href="https://www.example.com">
               <span data-lexical-text="true">www.example.com</span>
             </a>
@@ -2029,10 +1989,7 @@ test.describe.parallel('Nested List', () => {
       page,
       html`
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
-          <a
-            class="PlaygroundEditorTheme__link"
-            dir="auto"
-            href="https://www.example.com">
+          <a class="PlaygroundEditorTheme__link" href="https://www.example.com">
             <span data-lexical-text="true">www.example.com</span>
           </a>
         </p>

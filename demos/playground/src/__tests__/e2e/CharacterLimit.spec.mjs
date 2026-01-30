@@ -96,7 +96,6 @@ function testSuite(charset) {
             <span data-lexical-text="true">56</span>
             <a
               class="PlaygroundEditorTheme__link"
-              dir="auto"
               href="https://www.example.com">
               <span data-lexical-text="true">www.example.com</span>
             </a>

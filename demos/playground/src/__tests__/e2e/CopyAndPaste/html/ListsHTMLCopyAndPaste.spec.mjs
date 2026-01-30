@@ -262,7 +262,6 @@ test.describe('HTML Lists CopyAndPaste', () => {
         <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-            dir="auto"
             role="checkbox"
             tabindex="-1"
             value="1"
@@ -271,7 +270,6 @@ test.describe('HTML Lists CopyAndPaste', () => {
           </li>
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-            dir="auto"
             role="checkbox"
             tabindex="-1"
             value="2"
@@ -297,7 +295,6 @@ test.describe('HTML Lists CopyAndPaste', () => {
         <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemChecked"
-            dir="auto"
             role="checkbox"
             tabindex="-1"
             value="1"
@@ -306,7 +303,6 @@ test.describe('HTML Lists CopyAndPaste', () => {
           </li>
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
-            dir="auto"
             role="checkbox"
             tabindex="-1"
             value="2"

@@ -55,7 +55,6 @@ test.describe('DraggableBlock', () => {
         </p>
         <p
           class="PlaygroundEditorTheme__paragraph"
-          dir="auto"
           style="">
           <span data-lexical-text="true">Paragraph 1</span>
         </p>
@@ -97,7 +96,6 @@ test.describe('DraggableBlock', () => {
       `
         <p
           class="PlaygroundEditorTheme__paragraph"
-          dir="auto"
           style="">
           <span data-lexical-text="true">Paragraph 1</span>
         </p>
@@ -144,7 +142,6 @@ test.describe('DraggableBlock', () => {
         </p>
         <p
           class="PlaygroundEditorTheme__paragraph"
-          dir="auto"
           style="">
           <span data-lexical-text="true">Paragraph 2</span>
         </p>
@@ -181,7 +178,6 @@ test.describe('DraggableBlock', () => {
       </p>
       <p
         class="PlaygroundEditorTheme__paragraph"
-        dir="auto"
         style="">
         <span data-lexical-text="true">Paragraph 1</span>
       </p>

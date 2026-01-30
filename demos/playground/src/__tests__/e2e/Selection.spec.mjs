@@ -154,7 +154,6 @@ test.describe.parallel('Selection', () => {
         </p>
         <code
           class="PlaygroundEditorTheme__code"
-          dir="auto"
           spellcheck="false"
           data-gutter="1"
           data-highlight-language="javascript"
@@ -907,10 +906,7 @@ test.describe.parallel('Selection', () => {
       page,
       html`
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
-          <a
-            class="PlaygroundEditorTheme__link"
-            dir="auto"
-            href="https://test.com">
+          <a class="PlaygroundEditorTheme__link" href="https://test.com">
             <strong
               class="PlaygroundEditorTheme__textBold"
               data-lexical-text="true">

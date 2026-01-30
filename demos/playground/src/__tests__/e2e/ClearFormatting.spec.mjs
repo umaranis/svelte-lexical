@@ -76,10 +76,7 @@ test.describe('Clear All Formatting', () => {
         page,
         html`
           <p class="PlaygroundEditorTheme__paragraph" dir="auto">
-            <a
-              class="PlaygroundEditorTheme__link"
-              dir="auto"
-              href="https://facebook.com">
+            <a class="PlaygroundEditorTheme__link" href="https://facebook.com">
               <span data-lexical-text="true">Facebook!</span>
             </a>
           </p>

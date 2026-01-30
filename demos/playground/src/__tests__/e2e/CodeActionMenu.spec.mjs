@@ -197,7 +197,6 @@ test.describe('CodeActionMenu', () => {
       `
         <code
           class="PlaygroundEditorTheme__code"
-          dir="auto"
           spellcheck="false"
           data-gutter="1"
           data-language="javascript"
@@ -228,7 +227,6 @@ test.describe('CodeActionMenu', () => {
       `
         <code
         class="PlaygroundEditorTheme__code"
-        dir="auto"
         spellcheck="false"
         data-gutter="12"
         data-language="javascript"
@@ -271,7 +269,6 @@ test.describe('CodeActionMenu', () => {
         `
         <code
           class="PlaygroundEditorTheme__code"
-          dir="auto"
           spellcheck="false"
           data-gutter="1"
           data-language="javascript"

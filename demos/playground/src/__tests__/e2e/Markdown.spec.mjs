@@ -573,10 +573,7 @@ test.describe.parallel('Markdown', () => {
       html: html`
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">hello</span>
-          <a
-            class="PlaygroundEditorTheme__link"
-            dir="auto"
-            href="https://www.test.com">
+          <a class="PlaygroundEditorTheme__link" href="https://www.test.com">
             <span data-lexical-text="true">world</span>
           </a>
           <span data-lexical-text="true">!</span>
@@ -889,7 +886,6 @@ test.describe.parallel('Markdown', () => {
       html`
         <code
           class="PlaygroundEditorTheme__code"
-          dir="auto"
           spellcheck="false"
           data-gutter="12"
           data-highlight-language="markdown"
@@ -959,16 +955,10 @@ test.describe.parallel('Markdown', () => {
         page,
         html`
           <p class="PlaygroundEditorTheme__paragraph" dir="auto">
-            <a
-              class="PlaygroundEditorTheme__link"
-              dir="auto"
-              href="https://lexical.dev">
+            <a class="PlaygroundEditorTheme__link" href="https://lexical.dev">
               <span data-lexical-text="true">link</span>
             </a>
-            <a
-              class="PlaygroundEditorTheme__link"
-              dir="auto"
-              href="https://lexical.dev">
+            <a class="PlaygroundEditorTheme__link" href="https://lexical.dev">
               <span data-lexical-text="true">link</span>
             </a>
             <span
@@ -1047,10 +1037,7 @@ test.describe.parallel('Markdown', () => {
       html`
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
-          <a
-            class="PlaygroundEditorTheme__link"
-            dir="auto"
-            href="https://lexical.dev">
+          <a class="PlaygroundEditorTheme__link" href="https://lexical.dev">
             <span data-lexical-text="true">link</span>
           </a>
           <span data-lexical-text="true">world</span>
@@ -1136,7 +1123,7 @@ const TYPED_MARKDOWN_HTML = html`
       data-lexical-text="true">
       works
     </strong>
-    <a class="PlaygroundEditorTheme__link" dir="auto" href="https://lexical.io">
+    <a class="PlaygroundEditorTheme__link" href="https://lexical.io">
       <strong
         class="PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textItalic PlaygroundEditorTheme__textStrikethrough"
         data-lexical-text="true">
@@ -1191,7 +1178,6 @@ const TYPED_MARKDOWN_HTML = html`
   </ul>
   <code
     class="PlaygroundEditorTheme__code"
-    dir="auto"
     spellcheck="false"
     data-gutter="1"
     data-highlight-language="sql"
@@ -1305,7 +1291,7 @@ const IMPORTED_MARKDOWN_HTML = html`
       data-lexical-text="true">
       works
     </strong>
-    <a class="PlaygroundEditorTheme__link" dir="auto" href="https://lexical.io">
+    <a class="PlaygroundEditorTheme__link" href="https://lexical.io">
       <strong
         class="PlaygroundEditorTheme__textBold PlaygroundEditorTheme__textItalic PlaygroundEditorTheme__textStrikethrough"
         data-lexical-text="true">
@@ -1318,15 +1304,11 @@ const IMPORTED_MARKDOWN_HTML = html`
     <span data-lexical-text="true">Links</span>
     <a
       class="PlaygroundEditorTheme__link"
-      dir="auto"
       href="https://lexical.io/tag_here_and__here__and___here___too">
       <span data-lexical-text="true">with underscores</span>
     </a>
     <span data-lexical-text="true">and (</span>
-    <a
-      class="PlaygroundEditorTheme__link"
-      dir="auto"
-      href="https://lexical.dev">
+    <a class="PlaygroundEditorTheme__link" href="https://lexical.dev">
       <span data-lexical-text="true">parenthesis</span>
     </a>
     <span data-lexical-text="true">)</span>
@@ -1477,7 +1459,6 @@ const IMPORTED_MARKDOWN_HTML = html`
   </h3>
   <code
     class="PlaygroundEditorTheme__code"
-    dir="auto"
     spellcheck="false"
     data-gutter="123"
     data-highlight-language="javascript"

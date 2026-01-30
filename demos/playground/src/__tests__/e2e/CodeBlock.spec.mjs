@@ -47,7 +47,6 @@ test.describe('CodeBlock', () => {
         html`
           <code
             class="PlaygroundEditorTheme__code"
-            dir="auto"
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="javascript"
@@ -124,7 +123,6 @@ test.describe('CodeBlock', () => {
         html`
           <code
             class="PlaygroundEditorTheme__code"
-            dir="auto"
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="javascript"
@@ -212,7 +210,6 @@ test.describe('CodeBlock', () => {
       html`
         <code
           class="PlaygroundEditorTheme__code"
-          dir="auto"
           spellcheck="false"
           data-gutter="12345"
           data-highlight-language="javascript"
@@ -280,7 +277,6 @@ test.describe('CodeBlock', () => {
         </p>
         <code
           class="PlaygroundEditorTheme__code"
-          dir="auto"
           spellcheck="false"
           data-gutter="1234"
           data-highlight-language="javascript"
@@ -308,7 +304,6 @@ test.describe('CodeBlock', () => {
         html`
           <code
             class="PlaygroundEditorTheme__code"
-            dir="auto"
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="javascript"
@@ -330,7 +325,6 @@ test.describe('CodeBlock', () => {
         html`
           <code
             class="PlaygroundEditorTheme__code"
-            dir="auto"
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="sql"
@@ -387,7 +381,6 @@ test.describe('CodeBlock', () => {
       html`
         <code
           class="PlaygroundEditorTheme__code"
-          dir="auto"
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
@@ -483,7 +476,6 @@ test.describe('CodeBlock', () => {
       html`
         <code
           class="PlaygroundEditorTheme__code"
-          dir="auto"
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
@@ -568,7 +560,6 @@ test.describe('CodeBlock', () => {
       html`
         <code
           class="PlaygroundEditorTheme__code"
-          dir="auto"
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
@@ -642,7 +633,6 @@ test.describe('CodeBlock', () => {
       html`
         <code
           class="PlaygroundEditorTheme__code"
-          dir="auto"
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
@@ -730,7 +720,6 @@ test.describe('CodeBlock', () => {
       html`
         <code
           class="PlaygroundEditorTheme__code"
-          dir="auto"
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
@@ -809,7 +798,6 @@ test.describe('CodeBlock', () => {
       html`
         <code
           class="PlaygroundEditorTheme__code"
-          dir="auto"
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
@@ -877,7 +865,6 @@ test.describe('CodeBlock', () => {
     const abcHTML = html`
       <code
         class="PlaygroundEditorTheme__code"
-        dir="auto"
         spellcheck="false"
         data-gutter="123"
         data-highlight-language="javascript"
@@ -949,7 +936,6 @@ test.describe('CodeBlock', () => {
     const bcaHTML = html`
       <code
         class="PlaygroundEditorTheme__code"
-        dir="auto"
         spellcheck="false"
         data-gutter="123"
         data-highlight-language="javascript"
@@ -1084,7 +1070,6 @@ test.describe('CodeBlock', () => {
         html`
           <code
             class="PlaygroundEditorTheme__code"
-            dir="auto"
             spellcheck="false"
             data-gutter="12"
             data-highlight-language="javascript"
@@ -1146,7 +1131,6 @@ test.describe('CodeBlock', () => {
         html`
           <code
             class="PlaygroundEditorTheme__code"
-            dir="auto"
             spellcheck="false"
             data-gutter="12"
             data-highlight-language="javascript"
@@ -1232,7 +1216,6 @@ test.describe('CodeBlock', () => {
       `
       <code
         class="PlaygroundEditorTheme__code"
-        dir="auto"
         spellcheck="false"
         data-gutter="12"
         data-language="javascript"
@@ -1309,7 +1292,6 @@ test.describe('CodeBlock', () => {
         html`
           <code
             class="PlaygroundEditorTheme__code"
-            dir="auto"
             spellcheck="false"
             data-gutter="1234"
             data-highlight-language="diff"
@@ -1369,7 +1351,6 @@ test.describe('CodeBlock', () => {
         html`
           <code
             class="PlaygroundEditorTheme__code"
-            dir="auto"
             spellcheck="false"
             data-gutter="1234"
             data-highlight-language="diff-javascript"

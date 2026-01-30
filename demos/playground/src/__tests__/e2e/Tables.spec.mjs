@@ -7929,7 +7929,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a1</span>
               </p>
@@ -7937,7 +7936,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
@@ -7945,7 +7943,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a3</span>
               </p>
@@ -7958,7 +7955,6 @@ test.describe.parallel('Tables', () => {
               style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
@@ -7966,7 +7962,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
@@ -7974,7 +7969,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b3</span>
               </p>
@@ -7984,7 +7978,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
@@ -7992,7 +7985,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a3</span>
               </p>
@@ -8005,7 +7997,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
@@ -8013,7 +8004,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b3</span>
               </p>
@@ -8055,7 +8045,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a1</span>
               </p>
@@ -8063,7 +8052,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
@@ -8071,7 +8059,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a3</span>
               </p>
@@ -8087,7 +8074,6 @@ test.describe.parallel('Tables', () => {
               style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
@@ -8095,7 +8081,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
@@ -8103,7 +8088,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
@@ -8111,7 +8095,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a3</span>
               </p>
@@ -8121,7 +8104,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">c2</span>
               </p>
@@ -8129,7 +8111,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
@@ -8137,7 +8118,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b3</span>
               </p>
@@ -8194,7 +8174,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a1</span>
               </p>
@@ -8202,7 +8181,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
@@ -8210,7 +8188,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a3</span>
               </p>
@@ -8226,7 +8203,6 @@ test.describe.parallel('Tables', () => {
               style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
@@ -8234,7 +8210,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
@@ -8242,7 +8217,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b3</span>
               </p>
@@ -8258,7 +8232,6 @@ test.describe.parallel('Tables', () => {
               style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
@@ -8266,7 +8239,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
@@ -8274,7 +8246,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b3</span>
               </p>
@@ -8287,7 +8258,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" colspan="2">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">c2</span>
               </p>
@@ -8331,7 +8301,6 @@ test.describe.parallel('Tables', () => {
               style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
@@ -8339,7 +8308,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
@@ -8347,7 +8315,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b3</span>
               </p>
@@ -8360,7 +8327,6 @@ test.describe.parallel('Tables', () => {
               style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">c2</span>
               </p>
@@ -8376,7 +8342,6 @@ test.describe.parallel('Tables', () => {
               style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">c2</span>
               </p>
@@ -8421,7 +8386,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a1</span>
               </p>
@@ -8429,7 +8393,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
@@ -8437,7 +8400,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a3</span>
               </p>
@@ -8450,7 +8412,6 @@ test.describe.parallel('Tables', () => {
               style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
@@ -8458,7 +8419,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a1</span>
               </p>
@@ -8466,7 +8426,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
@@ -8476,7 +8435,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
@@ -8484,7 +8442,6 @@ test.describe.parallel('Tables', () => {
             <td class="PlaygroundEditorTheme__tableCell">
               <p
                 class="PlaygroundEditorTheme__paragraph"
-                dir="auto"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
