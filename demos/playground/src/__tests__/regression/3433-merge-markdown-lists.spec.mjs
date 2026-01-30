@@ -29,7 +29,7 @@ test.describe('Regression test #3433', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">two</span>
           </li>

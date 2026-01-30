@@ -51,7 +51,7 @@ test.describe('File', () => {
         </strong>
         <span data-lexical-text="true">World</span>
       </p>
-      <ol class="PlaygroundEditorTheme__ol1">
+      <ol class="PlaygroundEditorTheme__ol1" dir="auto">
         <li class="PlaygroundEditorTheme__listItem" value="1">
           <span data-lexical-text="true">one</span>
         </li>

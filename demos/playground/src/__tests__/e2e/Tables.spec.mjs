@@ -98,7 +98,7 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
+        <p dir="auto"><br /></p>
         <table>
           <colgroup>
             <col style="width: 92px" />
@@ -106,22 +106,22 @@ test.describe.parallel('Tables', () => {
           </colgroup>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
           </tr>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <td>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </td>
           </tr>
         </table>
-        <p><br /></p>
+        <p dir="auto"><br /></p>
       `,
       undefined,
       {ignoreClasses: true},
@@ -144,7 +144,7 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
+        <p dir="auto"><br /></p>
         <table>
           <colgroup>
             <col style="width: 92px" />
@@ -155,19 +155,19 @@ test.describe.parallel('Tables', () => {
               <p dir="auto"><span data-lexical-text="true">abc</span></p>
             </th>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
           </tr>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <td>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </td>
           </tr>
         </table>
-        <p><br /></p>
+        <p dir="auto"><br /></p>
       `,
       undefined,
       {ignoreClasses: true},
@@ -308,7 +308,7 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
+        <p dir="auto"><br /></p>
         <table>
           <colgroup>
             <col style="width: 92px" />
@@ -316,18 +316,18 @@ test.describe.parallel('Tables', () => {
           </colgroup>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
           </tr>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <td>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </td>
           </tr>
         </table>
@@ -355,7 +355,7 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
+        <p dir="auto"><br /></p>
         <table>
           <colgroup>
             <col style="width: 92px" />
@@ -363,22 +363,22 @@ test.describe.parallel('Tables', () => {
           </colgroup>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
           </tr>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <td>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </td>
           </tr>
         </table>
-        <p><br /></p>
+        <p dir="auto"><br /></p>
       `,
       undefined,
       {ignoreClasses: true},
@@ -415,7 +415,7 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
+        <p dir="auto"><br /></p>
         <table>
           <colgroup>
             <col style="width: 92px" />
@@ -423,18 +423,18 @@ test.describe.parallel('Tables', () => {
           </colgroup>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
           </tr>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <td>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </td>
           </tr>
         </table>
@@ -464,7 +464,7 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
+        <p dir="auto"><br /></p>
         <table>
           <colgroup>
             <col style="width: 92px" />
@@ -472,18 +472,18 @@ test.describe.parallel('Tables', () => {
           </colgroup>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
           </tr>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <td>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </td>
           </tr>
         </table>
@@ -503,7 +503,7 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
+        <p dir="auto"><br /></p>
         <table>
           <colgroup>
             <col style="width: 92px" />
@@ -511,18 +511,18 @@ test.describe.parallel('Tables', () => {
           </colgroup>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
           </tr>
           <tr>
             <th>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </th>
             <td>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             </td>
           </tr>
         </table>
@@ -582,7 +582,7 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
+          <p dir="auto"><br /></p>
           <table>
             <colgroup>
               <col style="width: 92px" />
@@ -590,22 +590,22 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
             </tr>
             <tr>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <td>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         undefined,
         {ignoreClasses: true},
@@ -763,7 +763,7 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p><br /></p>
+            <p dir="auto"><br /></p>
             <table>
               <colgroup>
                 <col style="width: 92px" />
@@ -793,10 +793,10 @@ test.describe.parallel('Tables', () => {
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           html`
-            <p><br /></p>
+            <p dir="auto"><br /></p>
             <table>
               <colgroup>
                 <col style="width: 92px" />
@@ -826,7 +826,7 @@ test.describe.parallel('Tables', () => {
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           {ignoreClasses: true},
         );
@@ -869,7 +869,7 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
+          <p dir="auto"><br /></p>
           <table>
             <colgroup>
               <col style="width: 92px" />
@@ -900,20 +900,20 @@ test.describe.parallel('Tables', () => {
             </tr>
             <tr>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <td>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </td>
               <td>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         html`
-          <p><br /></p>
+          <p dir="auto"><br /></p>
           <table>
             <colgroup>
               <col style="width: 92px" />
@@ -944,17 +944,17 @@ test.describe.parallel('Tables', () => {
             </tr>
             <tr>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <td>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </td>
               <td>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         {ignoreClasses: true, ignoreInlineStyles: true},
       );
@@ -989,7 +989,7 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p><br /></p>
+            <p dir="auto"><br /></p>
             <table>
               <colgroup>
                 <col style="width: 92px" />
@@ -1019,10 +1019,10 @@ test.describe.parallel('Tables', () => {
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           html`
-            <p><br /></p>
+            <p dir="auto"><br /></p>
             <table>
               <colgroup>
                 <col style="width: 92px" />
@@ -1052,7 +1052,7 @@ test.describe.parallel('Tables', () => {
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           {ignoreClasses: true},
         );
@@ -1115,7 +1115,7 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         html`
           <p dir="auto"><strong data-lexical-text="true">abc</strong></p>
@@ -1148,7 +1148,7 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         {ignoreClasses: true},
       );
@@ -1219,7 +1219,7 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         html`
           <p dir="auto"><span data-lexical-text="true">abc</span></p>
@@ -1252,7 +1252,7 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         {ignoreClasses: true},
       );
@@ -1345,7 +1345,7 @@ test.describe.parallel('Tables', () => {
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           undefined,
           {ignoreClasses: true},
@@ -1380,7 +1380,7 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p><br /></p>
+            <p dir="auto"><br /></p>
             <table>
               <colgroup>
                 <col style="width: 92px" />
@@ -1389,10 +1389,10 @@ test.describe.parallel('Tables', () => {
               </colgroup>
               <tr>
                 <th>
-                  <p><br /></p>
+                  <p dir="auto"><br /></p>
                 </th>
                 <th>
-                  <p><br /></p>
+                  <p dir="auto"><br /></p>
                 </th>
                 <th>
                   <p dir="auto"><span data-lexical-text="true">cc</span></p>
@@ -1400,17 +1400,17 @@ test.describe.parallel('Tables', () => {
               </tr>
               <tr>
                 <th>
-                  <p><br /></p>
+                  <p dir="auto"><br /></p>
                 </th>
                 <td>
-                  <p><br /></p>
+                  <p dir="auto"><br /></p>
                 </td>
                 <td>
                   <p dir="auto"><span data-lexical-text="true">f</span></p>
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           undefined,
           {ignoreClasses: true},
@@ -1437,7 +1437,7 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
+          <p dir="auto"><br /></p>
           <table>
             <colgroup>
               <col style="width: 92px" />
@@ -1445,17 +1445,17 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th class="PlaygroundEditorTheme__tableCellSelected">
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <th class="PlaygroundEditorTheme__tableCellSelected">
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         html`
-          <p><br /></p>
+          <p dir="auto"><br /></p>
           <table>
             <colgroup>
               <col style="width: 92px" />
@@ -1463,14 +1463,14 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         {ignoreClasses: true},
       );
@@ -1503,28 +1503,28 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th class="PlaygroundEditorTheme__tableCellSelected">
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <th class="PlaygroundEditorTheme__tableCellSelected">
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <th class="PlaygroundEditorTheme__tableCellSelected">
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
             </tr>
             <tr>
               <th class="PlaygroundEditorTheme__tableCellSelected">
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <td class="PlaygroundEditorTheme__tableCellSelected">
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </td>
               <td class="PlaygroundEditorTheme__tableCellSelected">
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         html`
           <p dir="auto"><span data-lexical-text="true">Hello World</span></p>
@@ -1536,28 +1536,28 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
             </tr>
             <tr>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <td>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </td>
               <td>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         {ignoreClasses: true},
       );
@@ -1646,7 +1646,7 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
+          <p dir="auto"><br /></p>
           <table>
             <colgroup>
               <col style="width: 92px" />
@@ -1656,14 +1656,14 @@ test.describe.parallel('Tables', () => {
               <th>
                 <p><span data-lexical-text="true">123</span></p>
                 <hr contenteditable="false" data-lexical-decorator="true" />
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         undefined,
         {ignoreClasses: true},
@@ -5476,7 +5476,7 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p><br /></p>
+            <p dir="auto"><br /></p>
             <table>
               <colgroup>
                 <col style="width: 92px" />
@@ -5522,10 +5522,10 @@ test.describe.parallel('Tables', () => {
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           html`
-            <p><br /></p>
+            <p dir="auto"><br /></p>
             <table>
               <colgroup>
                 <col style="width: 92px" />
@@ -5563,7 +5563,7 @@ test.describe.parallel('Tables', () => {
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           {ignoreClasses: true},
         );
@@ -6968,7 +6968,7 @@ test.describe.parallel('Tables', () => {
           await assertHTML(
             page,
             html`
-              <p><br /></p>
+              <p dir="auto"><br /></p>
               <table>
                 <colgroup>
                   <col style="width: 92px" />
@@ -6998,10 +6998,10 @@ test.describe.parallel('Tables', () => {
                   </td>
                 </tr>
               </table>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             `,
             html`
-              <p><br /></p>
+              <p dir="auto"><br /></p>
               <table>
                 <colgroup>
                   <col style="width: 92px" />
@@ -7031,7 +7031,7 @@ test.describe.parallel('Tables', () => {
                   </td>
                 </tr>
               </table>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             `,
             {ignoreClasses: true},
           );
@@ -7049,7 +7049,7 @@ test.describe.parallel('Tables', () => {
           await assertHTML(
             page,
             html`
-              <p><br /></p>
+              <p dir="auto"><br /></p>
               <table>
                 <colgroup>
                   <col style="width: 92px" />
@@ -7058,10 +7058,10 @@ test.describe.parallel('Tables', () => {
                 </colgroup>
                 <tr>
                   <th>
-                    <p><br /></p>
+                    <p dir="auto"><br /></p>
                   </th>
                   <th>
-                    <p><br /></p>
+                    <p dir="auto"><br /></p>
                   </th>
                   <th>
                     <p dir="auto"><span data-lexical-text="true">cc</span></p>
@@ -7069,17 +7069,17 @@ test.describe.parallel('Tables', () => {
                 </tr>
                 <tr>
                   <th>
-                    <p><br /></p>
+                    <p dir="auto"><br /></p>
                   </th>
                   <td>
-                    <p><br /></p>
+                    <p dir="auto"><br /></p>
                   </td>
                   <td>
                     <p dir="auto"><span data-lexical-text="true">f</span></p>
                   </td>
                 </tr>
               </table>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             `,
             undefined,
             {ignoreClasses: true},
@@ -7110,7 +7110,7 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
+          <p dir="auto"><br /></p>
           <table>
             <colgroup>
               <col style="width: 92px" />
@@ -7118,22 +7118,22 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
             </tr>
             <tr>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <td>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         undefined,
         {ignoreClasses: true},
@@ -7168,7 +7168,7 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
+          <p dir="auto"><br /></p>
           <table>
             <colgroup>
               <col style="width: 92px" />
@@ -7176,22 +7176,22 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
             </tr>
             <tr>
               <th>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </th>
               <td>
-                <p><br /></p>
+                <p dir="auto"><br /></p>
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         undefined,
         {ignoreClasses: true},

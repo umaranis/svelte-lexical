@@ -144,7 +144,7 @@ test.describe.parallel('Auto Links', () => {
       page,
       htmlWithLink +
         html`
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
       undefined,
       {ignoreClasses: true},

@@ -105,7 +105,9 @@ test.describe('Collaboration', () => {
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">hello</span>
         </p>
-        <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
+        <ul
+          class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist"
+          dir="auto">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
             role="checkbox"

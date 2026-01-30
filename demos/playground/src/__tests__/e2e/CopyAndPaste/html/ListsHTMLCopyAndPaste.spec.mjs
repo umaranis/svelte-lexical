@@ -92,7 +92,7 @@ test.describe('HTML Lists CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
             value="1">
@@ -121,7 +121,7 @@ test.describe('HTML Lists CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
             value="1">
@@ -145,7 +145,7 @@ test.describe('HTML Lists CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">Hello</span>
           </li>
@@ -180,7 +180,7 @@ test.describe('HTML Lists CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">Hello</span>
           </li>
@@ -209,7 +209,7 @@ test.describe('HTML Lists CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">Hello</span>
           </li>
@@ -227,7 +227,7 @@ test.describe('HTML Lists CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
             value="1">
@@ -259,7 +259,9 @@ test.describe('HTML Lists CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
+        <ul
+          class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist"
+          dir="auto">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemUnchecked"
             role="checkbox"
@@ -292,7 +294,9 @@ test.describe('HTML Lists CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist">
+        <ul
+          class="PlaygroundEditorTheme__ul PlaygroundEditorTheme__checklist"
+          dir="auto">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__listItemChecked"
             role="checkbox"
@@ -342,7 +346,7 @@ test.describe('HTML Lists CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">one</span>
           </li>
@@ -351,7 +355,7 @@ test.describe('HTML Lists CopyAndPaste', () => {
           class="PlaygroundEditorTheme__hr"
           contenteditable="false"
           data-lexical-decorator="true" />
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">two</span>
           </li>
@@ -374,7 +378,7 @@ test.describe('HTML Lists CopyAndPaste', () => {
 
     const clipboard = {
       'text/html': html`
-        <ol>
+        <ol dir="auto">
           <li>
             1
             <div>2</div>
@@ -394,7 +398,7 @@ test.describe('HTML Lists CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <ol class="PlaygroundEditorTheme__ol1">
+        <ol class="PlaygroundEditorTheme__ol1" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">1</span>
             <br />

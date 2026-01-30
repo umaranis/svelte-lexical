@@ -375,7 +375,7 @@ test.describe.parallel('Links', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <a
               class="PlaygroundEditorTheme__link"
@@ -393,7 +393,7 @@ test.describe.parallel('Links', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1"><br /></li>
           <li class="PlaygroundEditorTheme__listItem" value="2">
             <a
@@ -1963,7 +1963,7 @@ test.describe.parallel('Links', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
+          <p dir="auto"><br /></p>
           <p dir="auto">
             <a href="https://" rel="noreferrer">
               <span data-lexical-text="true">Hello awesome</span>

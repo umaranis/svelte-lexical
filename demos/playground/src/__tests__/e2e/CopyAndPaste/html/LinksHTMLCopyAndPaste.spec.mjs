@@ -178,7 +178,7 @@ test.describe('HTML Links CopyAndPaste', () => {
         <p class="PlaygroundEditorTheme__paragraph" style="text-align: left">
           <span data-lexical-text="true">Line 0</span>
         </p>
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li
             class="PlaygroundEditorTheme__listItem"
             style="text-align: left"

@@ -394,7 +394,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       html: html`
-        <ol>
+        <ol dir="auto">
           <li value="1"><br /></li>
         </ol>
       `,
@@ -402,7 +402,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       html: html`
-        <ol start="25">
+        <ol start="25" dir="auto">
           <li value="25"><br /></li>
         </ol>
       `,
@@ -410,7 +410,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       html: html`
-        <ol>
+        <ol dir="auto">
           <li value="1">
             <ol>
               <li value="1"><br /></li>
@@ -422,7 +422,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       html: html`
-        <ul>
+        <ul dir="auto">
           <li value="1"><br /></li>
         </ul>
       `,
@@ -430,7 +430,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       html: html`
-        <ul>
+        <ul dir="auto">
           <li value="1">
             <ul>
               <li value="1"><br /></li>
@@ -442,7 +442,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       html: html`
-        <ul>
+        <ul dir="auto">
           <li value="1"><br /></li>
         </ul>
       `,
@@ -450,7 +450,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       html: html`
-        <ul>
+        <ul dir="auto">
           <li value="1">
             <ul>
               <li value="1"><br /></li>
@@ -462,7 +462,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       html: html`
-        <ul>
+        <ul dir="auto">
           <li value="1">
             <ul>
               <li value="1"><br /></li>
@@ -474,7 +474,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       html: html`
-        <ul>
+        <ul dir="auto">
           <li value="1">
             <ul>
               <li value="1">
@@ -496,7 +496,7 @@ test.describe.parallel('Markdown', () => {
           class="PlaygroundEditorTheme__hr"
           contenteditable="false"
           data-lexical-decorator="true" />
-        <p><br /></p>
+        <p dir="auto"><br /></p>
       `,
       text: '--- ',
     },
@@ -506,7 +506,7 @@ test.describe.parallel('Markdown', () => {
           class="PlaygroundEditorTheme__hr"
           contenteditable="false"
           data-lexical-decorator="true" />
-        <p><br /></p>
+        <p dir="auto"><br /></p>
       `,
       text: '*** ',
     },
@@ -1162,7 +1162,7 @@ const TYPED_MARKDOWN_HTML = html`
     class="PlaygroundEditorTheme__hr"
     contenteditable="false"
     data-lexical-decorator="true" />
-  <ul class="PlaygroundEditorTheme__ul">
+  <ul class="PlaygroundEditorTheme__ul" dir="auto">
     <li class="PlaygroundEditorTheme__listItem" value="1">
       <span data-lexical-text="true">List here</span>
     </li>
@@ -1370,7 +1370,7 @@ const IMPORTED_MARKDOWN_HTML = html`
   <h3 class="PlaygroundEditorTheme__h3" dir="auto">
     <span data-lexical-text="true">Unordered lists</span>
   </h3>
-  <ul class="PlaygroundEditorTheme__ul">
+  <ul class="PlaygroundEditorTheme__ul" dir="auto">
     <li class="PlaygroundEditorTheme__listItem" value="1">
       <span data-lexical-text="true">Create a list with</span>
       <code spellcheck="false" data-lexical-text="true">
@@ -1409,7 +1409,7 @@ const IMPORTED_MARKDOWN_HTML = html`
   <h3 class="PlaygroundEditorTheme__h3" dir="auto">
     <span data-lexical-text="true">Ordered lists</span>
   </h3>
-  <ol class="PlaygroundEditorTheme__ol1">
+  <ol class="PlaygroundEditorTheme__ol1" dir="auto">
     <li class="PlaygroundEditorTheme__listItem" value="1">
       <span data-lexical-text="true">
         Oredered lists started with numbers as
@@ -1433,7 +1433,7 @@ const IMPORTED_MARKDOWN_HTML = html`
   <p class="PlaygroundEditorTheme__paragraph" dir="auto">
     <span data-lexical-text="true">.</span>
   </p>
-  <ol class="PlaygroundEditorTheme__ol1" start="31">
+  <ol class="PlaygroundEditorTheme__ol1" start="31" dir="auto">
     <li class="PlaygroundEditorTheme__listItem" value="31">
       <span data-lexical-text="true">Have any starting number</span>
     </li>

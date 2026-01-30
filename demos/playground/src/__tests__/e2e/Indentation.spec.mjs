@@ -88,7 +88,7 @@ test.describe('Identation', () => {
           <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">yar</span>
           </p>
-          <ul class="PlaygroundEditorTheme__ul">
+          <ul class="PlaygroundEditorTheme__ul" dir="auto">
             <li class="PlaygroundEditorTheme__listItem" value="1">
               <span data-lexical-text="true">itemitem 2</span>
             </li>
@@ -150,7 +150,7 @@ test.describe('Identation', () => {
             style="padding-inline-start: calc(40px)">
             <span data-lexical-text="true">yar</span>
           </p>
-          <ul class="PlaygroundEditorTheme__ul">
+          <ul class="PlaygroundEditorTheme__ul" dir="auto">
             <li
               class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
               value="1">
@@ -228,7 +228,7 @@ test.describe('Identation', () => {
             style="padding-inline-start: calc(80px)">
             <span data-lexical-text="true">yar</span>
           </p>
-          <ul class="PlaygroundEditorTheme__ul">
+          <ul class="PlaygroundEditorTheme__ul" dir="auto">
             <li
               class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
               value="1">
@@ -312,7 +312,7 @@ test.describe('Identation', () => {
             style="padding-inline-start: calc(40px)">
             <span data-lexical-text="true">yar</span>
           </p>
-          <ul class="PlaygroundEditorTheme__ul">
+          <ul class="PlaygroundEditorTheme__ul" dir="auto">
             <li
               class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
               value="1">
@@ -384,7 +384,7 @@ test.describe('Identation', () => {
           <p class="PlaygroundEditorTheme__paragraph" dir="auto" style="">
             <span data-lexical-text="true">yar</span>
           </p>
-          <ul class="PlaygroundEditorTheme__ul">
+          <ul class="PlaygroundEditorTheme__ul" dir="auto">
             <li class="PlaygroundEditorTheme__listItem" value="1">
               <span data-lexical-text="true">itemitem 2</span>
             </li>
@@ -565,7 +565,7 @@ test.describe('Identation', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">hello1</span>
           </li>

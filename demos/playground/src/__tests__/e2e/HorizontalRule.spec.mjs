@@ -291,7 +291,7 @@ test.describe('HorizontalRule', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">Test</span>
           </li>
@@ -315,7 +315,7 @@ test.describe('HorizontalRule', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">Te</span>
           </li>
@@ -324,7 +324,7 @@ test.describe('HorizontalRule', () => {
           class="PlaygroundEditorTheme__hr"
           contenteditable="false"
           data-lexical-decorator="true" />
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">st</span>
           </li>
@@ -358,7 +358,7 @@ test.describe('HorizontalRule', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <br />
           </li>
@@ -373,7 +373,7 @@ test.describe('HorizontalRule', () => {
     await assertHTML(
       page,
       html`
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <br />
           </li>
@@ -382,7 +382,7 @@ test.describe('HorizontalRule', () => {
           class="PlaygroundEditorTheme__hr"
           contenteditable="false"
           data-lexical-decorator="true" />
-        <ul class="PlaygroundEditorTheme__ul">
+        <ul class="PlaygroundEditorTheme__ul" dir="auto">
           <li class="PlaygroundEditorTheme__listItem" value="1">
             <br />
           </li>

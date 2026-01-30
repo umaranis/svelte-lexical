@@ -35,7 +35,7 @@ test.describe('Regression tests for #7246', () => {
     await page.keyboard.press('Enter');
     await page.keyboard.type('paragraph');
     const beforeHtml = html`
-      <ul>
+      <ul dir="auto">
         <li value="1"><span data-lexical-text="true">list</span></li>
       </ul>
       <p dir="auto"><span data-lexical-text="true">paragraph</span></p>
@@ -47,7 +47,7 @@ test.describe('Regression tests for #7246', () => {
     await moveToLineBeginning(page);
     await deleteBackward(page);
     const afterHtml = html`
-      <ul>
+      <ul dir="auto">
         <li value="1">
           <span data-lexical-text="true">listparagraph</span>
         </li>
