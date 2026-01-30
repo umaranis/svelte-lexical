@@ -376,7 +376,7 @@ test.describe.parallel('Links', () => {
       page,
       html`
         <ul class="PlaygroundEditorTheme__ul">
-          <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
+          <li class="PlaygroundEditorTheme__listItem" value="1">
             <a
               class="PlaygroundEditorTheme__link"
               href="https://"

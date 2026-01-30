@@ -292,7 +292,7 @@ test.describe('HorizontalRule', () => {
       page,
       html`
         <ul class="PlaygroundEditorTheme__ul">
-          <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
+          <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">Test</span>
           </li>
         </ul>
@@ -316,7 +316,7 @@ test.describe('HorizontalRule', () => {
       page,
       html`
         <ul class="PlaygroundEditorTheme__ul">
-          <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
+          <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">Te</span>
           </li>
         </ul>
@@ -325,7 +325,7 @@ test.describe('HorizontalRule', () => {
           contenteditable="false"
           data-lexical-decorator="true" />
         <ul class="PlaygroundEditorTheme__ul">
-          <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
+          <li class="PlaygroundEditorTheme__listItem" value="1">
             <span data-lexical-text="true">st</span>
           </li>
         </ul>

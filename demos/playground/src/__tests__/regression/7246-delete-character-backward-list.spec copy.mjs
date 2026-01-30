@@ -36,7 +36,7 @@ test.describe('Regression tests for #7246', () => {
     await page.keyboard.type('paragraph');
     const beforeHtml = html`
       <ul>
-        <li dir="auto" value="1"><span data-lexical-text="true">list</span></li>
+        <li value="1"><span data-lexical-text="true">list</span></li>
       </ul>
       <p dir="auto"><span data-lexical-text="true">paragraph</span></p>
     `;
@@ -48,7 +48,7 @@ test.describe('Regression tests for #7246', () => {
     await deleteBackward(page);
     const afterHtml = html`
       <ul>
-        <li dir="auto" value="1">
+        <li value="1">
           <span data-lexical-text="true">listparagraph</span>
         </li>
       </ul>

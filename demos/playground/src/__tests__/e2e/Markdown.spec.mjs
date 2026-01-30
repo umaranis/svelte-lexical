@@ -132,7 +132,7 @@ test.describe.parallel('Markdown', () => {
       expectation:
         '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><br></li></ul>',
       importExpectation:
-        '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem" dir="auto" value="1"><span data-lexical-text="true">hello</span></li></ul>',
+        '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem" value="1"><span data-lexical-text="true">hello</span></li></ul>',
       isBlockTest: true,
       markdownImport: '- hello',
       markdownText: '- ',
@@ -142,7 +142,7 @@ test.describe.parallel('Markdown', () => {
       expectation:
         '<ol start="321" class="PlaygroundEditorTheme__ol1"><li value="321" class="PlaygroundEditorTheme__listItem"><br></li></ol>',
       importExpectation:
-        '<ol class="PlaygroundEditorTheme__ol1" start="321"><li class="PlaygroundEditorTheme__listItem" dir="auto" value="321"><span data-lexical-text="true">hello</span></li></ol>',
+        '<ol class="PlaygroundEditorTheme__ol1" start="321"><li class="PlaygroundEditorTheme__listItem" value="321"><span data-lexical-text="true">hello</span></li></ol>',
       isBlockTest: true,
       markdownImport: '', // '321. hello', Need to merge w/ Maksims changes first to get correct start number.
       markdownText: '321. ',
@@ -1163,14 +1163,14 @@ const TYPED_MARKDOWN_HTML = html`
     contenteditable="false"
     data-lexical-decorator="true" />
   <ul class="PlaygroundEditorTheme__ul">
-    <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
+    <li class="PlaygroundEditorTheme__listItem" value="1">
       <span data-lexical-text="true">List here</span>
     </li>
     <li
       class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
       value="2">
       <ul class="PlaygroundEditorTheme__ul">
-        <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
+        <li class="PlaygroundEditorTheme__listItem" value="1">
           <span data-lexical-text="true">Nested one</span>
         </li>
       </ul>
@@ -1371,7 +1371,7 @@ const IMPORTED_MARKDOWN_HTML = html`
     <span data-lexical-text="true">Unordered lists</span>
   </h3>
   <ul class="PlaygroundEditorTheme__ul">
-    <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
+    <li class="PlaygroundEditorTheme__listItem" value="1">
       <span data-lexical-text="true">Create a list with</span>
       <code spellcheck="false" data-lexical-text="true">
         <span class="PlaygroundEditorTheme__textCode">+</span>
@@ -1389,7 +1389,7 @@ const IMPORTED_MARKDOWN_HTML = html`
       class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
       value="2">
       <ul class="PlaygroundEditorTheme__ul">
-        <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
+        <li class="PlaygroundEditorTheme__listItem" value="1">
           <span data-lexical-text="true">
             Lists can be indented with 2 spaces
           </span>
@@ -1398,7 +1398,7 @@ const IMPORTED_MARKDOWN_HTML = html`
           class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
           value="2">
           <ul class="PlaygroundEditorTheme__ul">
-            <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
+            <li class="PlaygroundEditorTheme__listItem" value="1">
               <span data-lexical-text="true">Very easy</span>
             </li>
           </ul>
@@ -1410,7 +1410,7 @@ const IMPORTED_MARKDOWN_HTML = html`
     <span data-lexical-text="true">Ordered lists</span>
   </h3>
   <ol class="PlaygroundEditorTheme__ol1">
-    <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
+    <li class="PlaygroundEditorTheme__listItem" value="1">
       <span data-lexical-text="true">
         Oredered lists started with numbers as
       </span>
@@ -1422,7 +1422,7 @@ const IMPORTED_MARKDOWN_HTML = html`
       class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
       value="2">
       <ol class="PlaygroundEditorTheme__ol2">
-        <li class="PlaygroundEditorTheme__listItem" dir="auto" value="1">
+        <li class="PlaygroundEditorTheme__listItem" value="1">
           <span data-lexical-text="true">And can be nested</span>
           <br />
           <span data-lexical-text="true">and multiline as well</span>
@@ -1434,7 +1434,7 @@ const IMPORTED_MARKDOWN_HTML = html`
     <span data-lexical-text="true">.</span>
   </p>
   <ol class="PlaygroundEditorTheme__ol1" start="31">
-    <li class="PlaygroundEditorTheme__listItem" dir="auto" value="31">
+    <li class="PlaygroundEditorTheme__listItem" value="31">
       <span data-lexical-text="true">Have any starting number</span>
     </li>
   </ol>
