@@ -90,7 +90,7 @@ test.describe('Composition', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph" dir="rtl">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">هَ</span>
         </p>
       `,
@@ -106,7 +106,7 @@ test.describe('Composition', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph" dir="rtl">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">ه</span>
         </p>
       `,
@@ -131,7 +131,7 @@ test.describe('Composition', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph" dir="rtl">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">هَ</span>
         </p>
       `,
@@ -155,7 +155,7 @@ test.describe('Composition', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph" dir="rtl">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">ه</span>
         </p>
       `,

@@ -565,7 +565,7 @@ test.describe('TextEntry', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph" dir="rtl">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">هَ</span>
           </p>
           <p class="PlaygroundEditorTheme__paragraph" dir="auto">
@@ -580,7 +580,7 @@ test.describe('TextEntry', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph" dir="rtl">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">هَ</span>
             <br />
             <br />
