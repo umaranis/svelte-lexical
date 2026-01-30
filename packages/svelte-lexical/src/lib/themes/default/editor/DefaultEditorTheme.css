@@ -6,10 +6,12 @@
  *
  *
  */
-.SL_Theme__ltr {
+.SL_Theme__ltr,
+[class*='SL_Theme__'][dir='ltr'] {
   text-align: left;
 }
-.SL_Theme__rtl {
+.SL_Theme__rtl,
+[class*='SL_Theme__'][dir='rtl'] {
   text-align: right;
 }
 .SL_Theme__paragraph {

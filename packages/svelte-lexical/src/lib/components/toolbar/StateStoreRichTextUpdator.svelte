@@ -102,7 +102,7 @@
       const elementKey = element.getKey();
       const elementDOM = $activeEditor.getElementByKey(elementKey);
 
-      $isRTL = isParentElementRTL(selection);
+      $isRTL = isParentElementRTL(selection, $activeEditor);
 
       // Update links
       const node = getSelectedNode(selection);
