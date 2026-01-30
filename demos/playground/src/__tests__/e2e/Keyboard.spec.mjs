@@ -46,7 +46,7 @@ test.describe('Keyboard shortcuts', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+          dir="auto">
           <span data-lexical-text="true">bca</span>
         </p>
       `,

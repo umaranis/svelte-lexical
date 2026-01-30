@@ -94,7 +94,7 @@ test.describe('Toolbar', () => {
                   spellcheck="true"
                   aria-placeholder="Enter a caption..."
                   data-lexical-editor="true">
-                  <p dir="ltr">
+                  <p dir="auto">
                     <span data-lexical-text="true">
                       Yellow flower in tilt shift lens
                     </span>
@@ -114,7 +114,7 @@ test.describe('Toolbar', () => {
           // flaky fix: remove the extra <p><br /></p> that appears occasionally in CI runs
           actualHtml.replace(
             html`
-              <p dir="ltr">
+              <p dir="auto">
                 <span data-lexical-text="true">
                   Yellow flower in tilt shift lens
                 </span>
@@ -122,7 +122,7 @@ test.describe('Toolbar', () => {
               <p><br /></p>
             `,
             html`
-              <p dir="ltr">
+              <p dir="auto">
                 <span data-lexical-text="true">
                   Yellow flower in tilt shift lens
                 </span>

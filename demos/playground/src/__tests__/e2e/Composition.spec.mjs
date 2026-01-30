@@ -40,7 +40,7 @@ test.describe('Composition', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+          dir="auto">
           <span data-lexical-text="true">も</span>
         </p>
       `,
@@ -74,7 +74,7 @@ test.describe('Composition', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+          dir="auto">
           <span data-lexical-text="true">もじ</span>
         </p>
       `,
@@ -254,7 +254,7 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+            dir="auto">
             <span data-lexical-text="true">すし もじあ</span>
           </p>
         `,
@@ -366,7 +366,7 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+            dir="auto">
             <br />
             <span data-lexical-text="true">すし もじあ</span>
             <br />
@@ -440,7 +440,7 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+            dir="auto">
             <span data-lexical-text="true">Hello</span>
             <strong
               class="PlaygroundEditorTheme__textBold"
@@ -545,7 +545,7 @@ test.describe('Composition', () => {
           html`
             <p
               class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-              dir="ltr">
+              dir="auto">
               <span class="emoji happysmile" data-lexical-text="true">
                 <span class="emoji-inner">🙂</span>
               </span>
@@ -569,7 +569,7 @@ test.describe('Composition', () => {
           html`
             <p
               class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-              dir="ltr">
+              dir="auto">
               <span class="emoji happysmile" data-lexical-text="true">
                 <span class="emoji-inner">🙂</span>
               </span>
@@ -636,7 +636,7 @@ test.describe('Composition', () => {
           html`
             <p
               class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-              dir="ltr">
+              dir="auto">
               <span class="emoji happysmile" data-lexical-text="true">
                 <span class="emoji-inner">🙂</span>
               </span>
@@ -746,7 +746,7 @@ test.describe('Composition', () => {
           html`
             <p
               class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-              dir="ltr">
+              dir="auto">
               <span
                 class="mention"
                 spellcheck="false"
@@ -861,7 +861,7 @@ test.describe('Composition', () => {
             html`
               <p
                 class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
+                dir="auto">
                 <span data-lexical-text="true">
                   Luke &nbsp;すし もじあSkywalker
                 </span>
@@ -876,7 +876,7 @@ test.describe('Composition', () => {
             html`
               <p
                 class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr">
+                dir="auto">
                 <span data-lexical-text="true">Luke ​すし もじあSkywalker</span>
               </p>
             `,
@@ -946,7 +946,7 @@ test.describe('Composition', () => {
           html`
             <p
               class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-              dir="ltr">
+              dir="auto">
               <span
                 class="mention"
                 spellcheck="false"
@@ -1051,7 +1051,7 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+            dir="auto">
             <span
               class="PlaygroundEditorTheme__hashtag"
               data-lexical-text="true">
@@ -1110,7 +1110,7 @@ test.describe('Composition', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+            dir="auto">
             <span data-lexical-text="true">すし#すし もじあ</span>
           </p>
         `,

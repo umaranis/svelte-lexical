@@ -49,7 +49,7 @@ test.describe('HTML Links CopyAndPaste', () => {
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://facebook.com">
             <span data-lexical-text="true">Facebook!</span>
           </a>
@@ -89,7 +89,7 @@ test.describe('HTML Links CopyAndPaste', () => {
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://facebook.com"
             rel="noreferrer">
             <span data-lexical-text="true">Facebook!</span>
@@ -121,11 +121,11 @@ test.describe('HTML Links CopyAndPaste', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+          dir="auto">
           <span data-lexical-text="true">beforetext</span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://test.com/1">
             <span data-lexical-text="true">link</span>
           </a>
@@ -157,18 +157,18 @@ test.describe('HTML Links CopyAndPaste', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+          dir="auto">
           <span data-lexical-text="true">text</span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://test.com/">
             <span data-lexical-text="true">link</span>
           </a>
           <span data-lexical-text="true">text</span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://test.com/">
             <span data-lexical-text="true">in</span>
           </a>
@@ -194,20 +194,20 @@ test.describe('HTML Links CopyAndPaste', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
+          dir="auto"
           style="text-align: left">
           <span data-lexical-text="true">Line 0</span>
         </p>
         <ul class="PlaygroundEditorTheme__ul">
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             style="text-align: left"
             value="1">
             <span data-lexical-text="true">â..ï¸.Â&nbsp;Line 1Â&nbsp;</span>
             <a
               class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-              dir="ltr"
+              dir="auto"
               href="https://www.internalfb.com/removed?entry_point=20"
               rel="nofollow noreferrer"
               target="_blank">
@@ -217,7 +217,7 @@ test.describe('HTML Links CopyAndPaste', () => {
           </li>
           <li
             class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             style="text-align: left"
             value="2">
             <span data-lexical-text="true">â..ï¸.Â&nbsp;Line 2.</span>
@@ -249,11 +249,11 @@ test.describe('HTML Links CopyAndPaste', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+          dir="auto">
           <span data-lexical-text="true">A</span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://lexical.dev"
             rel="noreferrer">
             <span data-lexical-text="true">Lexical</span>
@@ -284,10 +284,10 @@ test.describe('HTML Links CopyAndPaste', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+          dir="auto">
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://"
             rel="noreferrer">
             <span data-lexical-text="true">Link</span>
@@ -295,7 +295,7 @@ test.describe('HTML Links CopyAndPaste', () => {
           <span data-lexical-text="true">normal text</span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://"
             rel="noreferrer">
             <span data-lexical-text="true">text</span>
@@ -325,10 +325,10 @@ test.describe('HTML Links CopyAndPaste', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+          dir="auto">
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://"
             rel="noreferrer">
             <span data-lexical-text="true">Link</span>
@@ -341,7 +341,7 @@ test.describe('HTML Links CopyAndPaste', () => {
           <span data-lexical-text="true">text</span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://"
             rel="noreferrer">
             <span data-lexical-text="true">text</span>
@@ -371,10 +371,10 @@ test.describe('HTML Links CopyAndPaste', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+          dir="auto">
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://"
             rel="noreferrer">
             <span data-lexical-text="true">Link</span>
@@ -382,13 +382,13 @@ test.describe('HTML Links CopyAndPaste', () => {
           <span data-lexical-text="true">text with</span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://lexical.dev">
             <span data-lexical-text="true">link</span>
           </a>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://"
             rel="noreferrer">
             <span data-lexical-text="true">text</span>
@@ -418,10 +418,10 @@ test.describe('HTML Links CopyAndPaste', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+          dir="auto">
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://"
             rel="noreferrer">
             <span data-lexical-text="true">Link</span>
@@ -430,11 +430,11 @@ test.describe('HTML Links CopyAndPaste', () => {
         </p>
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+          dir="auto">
           <span data-lexical-text="true">para 2</span>
           <a
             class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-            dir="ltr"
+            dir="auto"
             href="https://"
             rel="noreferrer">
             <span data-lexical-text="true">text</span>

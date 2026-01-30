@@ -51,7 +51,7 @@ test.describe('ContextMenuCopyAndPaste', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+          dir="auto">
           <span data-lexical-text="true">hellohello</span>
         </p>
       `,
@@ -95,14 +95,14 @@ test.describe('ContextMenuCopyAndPaste', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+            dir="auto">
             <span style="font-size: 17px;" data-lexical-text="true">
               MLH Fellowship
             </span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+            dir="auto">
             <span style="font-size: 17px;" data-lexical-text="true">
               Fall 2024Fellowship
             </span>
