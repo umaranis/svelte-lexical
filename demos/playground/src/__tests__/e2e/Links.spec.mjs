@@ -1425,16 +1425,15 @@ test.describe.parallel('Links', () => {
     await assertHTML(
       page,
       `<p
-    class=\"PlaygroundEditorTheme__paragraph\"
-    dir=\"ltr\">
-    <a
-      class=\"PlaygroundEditorTheme__link\"
-      dir=\"ltr\"
-      href=\"https://\"
-      rel=\"noreferrer\">
-      <span data-lexical-text=\"true\">A link</span>
-    </a>
-  </p>`,
+	    class=\"PlaygroundEditorTheme__paragraph\"
+	    dir=\"auto\">
+	    <a
+	      class=\"PlaygroundEditorTheme__link\"
+	      href=\"https://\"
+	      rel=\"noreferrer\">
+	      <span data-lexical-text=\"true\">A link</span>
+	    </a>
+	  </p>`,
     );
 
     await moveToLineBeginning(page);
@@ -1443,15 +1442,14 @@ test.describe.parallel('Links', () => {
     await assertHTML(
       page,
       `<p
-    class=\"PlaygroundEditorTheme__paragraph\"
-    dir=\"ltr\">
-    <a
-      class=\"PlaygroundEditorTheme__link\"
-      dir=\"ltr\"
-      href=\"https://facebook.com\"
-      rel=\"noreferrer\">
-      <span data-lexical-text=\"true\">A link</span>
-    </a>
+	    class=\"PlaygroundEditorTheme__paragraph\"
+	    dir=\"auto\">
+	    <a
+	      class=\"PlaygroundEditorTheme__link\"
+	      href=\"https://facebook.com\"
+	      rel=\"noreferrer\">
+	      <span data-lexical-text=\"true\">A link</span>
+	    </a>
   </p>`,
     );
   });
