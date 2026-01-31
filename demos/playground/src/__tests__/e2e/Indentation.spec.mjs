@@ -113,14 +113,15 @@ test.describe('Identation', () => {
           </code>
           <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           <table
-            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
+            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection"
+            dir="auto">
             <colgroup>
               <col style="width: 92px" />
             </colgroup>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">foo</span>
                 </p>
               </th>
@@ -190,7 +191,8 @@ test.describe('Identation', () => {
             <br />
           </p>
           <table
-            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
+            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection"
+            dir="auto">
             <colgroup>
               <col style="width: 92px" />
             </colgroup>
@@ -280,7 +282,8 @@ test.describe('Identation', () => {
             <br />
           </p>
           <table
-            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
+            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection"
+            dir="auto">
             <colgroup>
               <col style="width: 92px" />
             </colgroup>
@@ -364,7 +367,8 @@ test.describe('Identation', () => {
             <br />
           </p>
           <table
-            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
+            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection"
+            dir="auto">
             <colgroup>
               <col style="width: 92px" />
             </colgroup>
@@ -430,14 +434,15 @@ test.describe('Identation', () => {
             <br />
           </p>
           <table
-            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
+            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection"
+            dir="auto">
             <colgroup>
               <col style="width: 92px" />
             </colgroup>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph" dir="auto" style="">
+                <p class="PlaygroundEditorTheme__paragraph" style="">
                   <span data-lexical-text="true">foo</span>
                 </p>
               </th>

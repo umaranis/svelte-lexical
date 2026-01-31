@@ -629,12 +629,12 @@ test.describe.parallel('Selection', () => {
           <summary class="Collapsible__title">
             <p
               class="PlaygroundEditorTheme__paragraph"
-              dir="auto">
+             >
               <span data-lexical-text="true">title</span>
             </p>
           </summary>
           <div class="Collapsible__content">
-          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
           </div>
         </${collapsibleTag}>
           <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
@@ -673,12 +673,12 @@ test.describe.parallel('Selection', () => {
           <summary class="Collapsible__title">
             <p
               class="PlaygroundEditorTheme__paragraph"
-              dir="auto">
+             >
               <span data-lexical-text="true">title</span>
             </p>
           </summary>
           <div class="Collapsible__content">
-            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
           </div>
         </${collapsibleTag}>
         <p
@@ -710,7 +710,7 @@ test.describe.parallel('Selection', () => {
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">abc</span>
         </p>
-        <table class="PlaygroundEditorTheme__table">
+        <table class="PlaygroundEditorTheme__table" dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -718,11 +718,11 @@ test.describe.parallel('Selection', () => {
           <tr>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
             </th>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
             </th>
           </tr>
         </table>
@@ -751,7 +751,7 @@ test.describe.parallel('Selection', () => {
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">abc</span>
         </p>
-        <table class="PlaygroundEditorTheme__table">
+        <table class="PlaygroundEditorTheme__table" dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -759,11 +759,11 @@ test.describe.parallel('Selection', () => {
           <tr>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
             </th>
             <th
               class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-              <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+              <p class="PlaygroundEditorTheme__paragraph"><br /></p>
             </th>
           </tr>
         </table>

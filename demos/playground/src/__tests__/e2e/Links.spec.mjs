@@ -1541,7 +1541,7 @@ test.describe.parallel('Links', () => {
             href="https://"
             rel="noreferrer"
             class="PlaygroundEditorTheme__link"
-            dir="auto">
+           >
             <span data-lexical-text="true">Awesome Website</span>
           </a>
           <span data-lexical-text="true"> right?</span>

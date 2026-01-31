@@ -94,7 +94,7 @@ test.describe('Toolbar', () => {
                   spellcheck="true"
                   aria-placeholder="Enter a caption..."
                   data-lexical-editor="true">
-                  <p dir="auto">
+                  <p>
                     <span data-lexical-text="true">
                       Yellow flower in tilt shift lens
                     </span>
@@ -161,7 +161,7 @@ test.describe('Toolbar', () => {
           <p dir="auto">
             <br />
           </p>
-          <table>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -171,87 +171,87 @@ test.describe('Toolbar', () => {
             </colgroup>
             <tr>
               <th>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </th>
               <th>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </th>
               <th>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </th>
               <th>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </th>
               <th>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </th>
             </tr>
             <tr>
               <th>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </th>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
             </tr>
             <tr>
               <th>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </th>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
             </tr>
             <tr>
               <th>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </th>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
             </tr>
             <tr>
               <th>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </th>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
               <td>
-                <p dir="auto"><br /></p>
+                <p><br /></p>
               </td>
             </tr>
           </table>
