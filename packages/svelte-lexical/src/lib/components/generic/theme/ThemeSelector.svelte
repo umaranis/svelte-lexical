@@ -203,7 +203,7 @@
   }
 
   .theme-option:hover {
-    background: var(--dropdown-hover, #eee);
+    background: var(--hover-background, #eee);
   }
 
   .theme-option.active {

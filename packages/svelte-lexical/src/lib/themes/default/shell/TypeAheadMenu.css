@@ -1,6 +1,6 @@
 .typeahead-popover {
-  background: var(--dropdown-background);
-  box-shadow: 0px 5px 10px var(--dropdown-shadow);
+  background: #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   position: relative;
 }
@@ -33,13 +33,13 @@
 }
 
 .typeahead-popover ul li.selected {
-  background: var(--hover-background);
+  background: #eee;
 }
 
 .typeahead-popover li {
   margin: 0 8px 0 8px;
   padding: 8px;
-  color: var(--text-color);
+  color: #050505;
   cursor: pointer;
   line-height: 16px;
   font-size: 15px;
@@ -47,7 +47,7 @@
   align-content: center;
   flex-direction: row;
   flex-shrink: 0;
-  background-color: var(--dropdown-background);
+  background-color: #fff;
   border-radius: 8px;
   border: 0;
 }
@@ -68,7 +68,7 @@
 }
 
 .typeahead-popover li:hover {
-  background-color: var(--hover-background);
+  background-color: #eee;
 }
 
 .typeahead-popover li .text {
