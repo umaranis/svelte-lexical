@@ -8505,7 +8505,7 @@ test.describe.parallel('Tables', () => {
 });
 
 const TABLE_WITH_MERGED_CELLS = `
-<table class="PlaygroundEditorTheme__table">
+<table class="PlaygroundEditorTheme__table" dir="auto">
   <colgroup>
     <col style="width: 92px;">
     <col style="width: 92px;">
