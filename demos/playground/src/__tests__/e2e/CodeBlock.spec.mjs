@@ -50,7 +50,8 @@ test.describe('CodeBlock', () => {
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="javascript"
-            data-language="javascript">
+            data-language="javascript"
+            dir="auto">
             <span
               class="PlaygroundEditorTheme__tokenFunction"
               data-lexical-text="true">
@@ -126,7 +127,8 @@ test.describe('CodeBlock', () => {
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="javascript"
-            data-language="javascript">
+            data-language="javascript"
+            dir="auto">
             <span
               class="PlaygroundEditorTheme__tokenFunction"
               data-lexical-text="true">
@@ -213,7 +215,8 @@ test.describe('CodeBlock', () => {
           spellcheck="false"
           data-gutter="12345"
           data-highlight-language="javascript"
-          data-language="javascript">
+          data-language="javascript"
+          dir="auto">
           <span data-lexical-text="true">foo</span>
           <br />
           <span data-lexical-text="true">bar</span>
@@ -280,7 +283,8 @@ test.describe('CodeBlock', () => {
           spellcheck="false"
           data-gutter="1234"
           data-highlight-language="javascript"
-          data-language="javascript">
+          data-language="javascript"
+          dir="auto">
           <span data-lexical-text="true">r</span>
           <br />
           <span data-lexical-text="true">yar</span>
@@ -307,7 +311,8 @@ test.describe('CodeBlock', () => {
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="javascript"
-            data-language="javascript">
+            data-language="javascript"
+            dir="auto">
             <span data-lexical-text="true">select</span>
             <span
               class="PlaygroundEditorTheme__tokenOperator"
@@ -328,7 +333,8 @@ test.describe('CodeBlock', () => {
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="sql"
-            data-language="sql">
+            data-language="sql"
+            dir="auto">
             <span
               class="PlaygroundEditorTheme__tokenAttr"
               data-lexical-text="true">
@@ -384,7 +390,8 @@ test.describe('CodeBlock', () => {
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
-          data-language="javascript">
+          data-language="javascript"
+          dir="auto">
           <span
             class="PlaygroundEditorTheme__tokenFunction"
             data-lexical-text="true">
@@ -479,7 +486,8 @@ test.describe('CodeBlock', () => {
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
-          data-language="javascript">
+          data-language="javascript"
+          dir="auto">
           <span
             class="PlaygroundEditorTheme__tabNode"
             data-lexical-text="true"></span>
@@ -563,7 +571,8 @@ test.describe('CodeBlock', () => {
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
-          data-language="javascript">
+          data-language="javascript"
+          dir="auto">
           <span
             class="PlaygroundEditorTheme__tokenAttr"
             data-lexical-text="true">
@@ -636,7 +645,8 @@ test.describe('CodeBlock', () => {
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
-          data-language="javascript">
+          data-language="javascript"
+          dir="auto">
           <span
             class="PlaygroundEditorTheme__tabNode"
             data-lexical-text="true"></span>
@@ -723,7 +733,8 @@ test.describe('CodeBlock', () => {
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
-          data-language="javascript">
+          data-language="javascript"
+          dir="auto">
           <span
             class="PlaygroundEditorTheme__tabNode"
             data-lexical-text="true"></span>
@@ -801,7 +812,8 @@ test.describe('CodeBlock', () => {
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
-          data-language="javascript">
+          data-language="javascript"
+          dir="auto">
           <span
             class="PlaygroundEditorTheme__tokenAttr"
             data-lexical-text="true">
@@ -868,7 +880,8 @@ test.describe('CodeBlock', () => {
         spellcheck="false"
         data-gutter="123"
         data-highlight-language="javascript"
-        data-language="javascript">
+        data-language="javascript"
+        dir="auto">
         <span
           class="PlaygroundEditorTheme__tokenFunction"
           data-lexical-text="true">
@@ -939,7 +952,8 @@ test.describe('CodeBlock', () => {
         spellcheck="false"
         data-gutter="123"
         data-highlight-language="javascript"
-        data-language="javascript">
+        data-language="javascript"
+        dir="auto">
         <span
           class="PlaygroundEditorTheme__tokenFunction"
           data-lexical-text="true">
@@ -1073,7 +1087,8 @@ test.describe('CodeBlock', () => {
             spellcheck="false"
             data-gutter="12"
             data-highlight-language="javascript"
-            data-language="javascript">
+            data-language="javascript"
+            dir="auto">
             <span
               class="PlaygroundEditorTheme__tokenComment"
               data-lexical-text="true">
@@ -1134,7 +1149,8 @@ test.describe('CodeBlock', () => {
             spellcheck="false"
             data-gutter="12"
             data-highlight-language="javascript"
-            data-language="javascript">
+            data-language="javascript"
+            dir="auto">
             <span
               class="PlaygroundEditorTheme__tokenComment"
               data-lexical-text="true">
@@ -1219,7 +1235,7 @@ test.describe('CodeBlock', () => {
         spellcheck="false"
         data-gutter="12"
         data-language="javascript"
-        data-highlight-language="javascript">
+        data-highlight-language="javascript" dir="auto">
         <span class="PlaygroundEditorTheme__tabNode" data-lexical-text="true"></span>
         <span data-lexical-text="true">a b</span>
         <br />
@@ -1295,7 +1311,8 @@ test.describe('CodeBlock', () => {
             spellcheck="false"
             data-gutter="1234"
             data-highlight-language="diff"
-            data-language="diff">
+            data-language="diff"
+            dir="auto">
             <span
               class="PlaygroundEditorTheme__tokenInserted"
               data-lexical-text="true">
@@ -1354,7 +1371,8 @@ test.describe('CodeBlock', () => {
             spellcheck="false"
             data-gutter="1234"
             data-highlight-language="diff-javascript"
-            data-language="diff-javascript">
+            data-language="diff-javascript"
+            dir="auto">
             <span
               class="PlaygroundEditorTheme__tokenInserted"
               data-lexical-text="true">

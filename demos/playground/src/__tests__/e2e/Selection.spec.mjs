@@ -157,7 +157,8 @@ test.describe.parallel('Selection', () => {
           spellcheck="false"
           data-gutter="1"
           data-highlight-language="javascript"
-          data-language="javascript">
+          data-language="javascript"
+          dir="auto">
           <span data-lexical-text="true">Line2</span>
         </code>
       `,
@@ -796,7 +797,7 @@ test.describe.parallel('Selection', () => {
     await assertHTML(
       page,
       html`
-        <h1 class="PlaygroundEditorTheme__h1">
+        <h1 class="PlaygroundEditorTheme__h1" dir="auto">
           <br />
         </h1>
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">

@@ -340,13 +340,13 @@ function testSuite(charset) {
     await page.keyboard.type('7');
     await assertHTML(
       page,
-      '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">1234</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">5</span><span class="PlaygroundEditorTheme__characterLimit"><span data-lexical-text="true">6</span></span></li><li value="3" class="PlaygroundEditorTheme__listItem"><span class="PlaygroundEditorTheme__characterLimit"><span data-lexical-text="true">7</span></span></li></ul>',
+      '<ul class="PlaygroundEditorTheme__ul" dir="auto"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">1234</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">5</span><span class="PlaygroundEditorTheme__characterLimit"><span data-lexical-text="true">6</span></span></li><li value="3" class="PlaygroundEditorTheme__listItem"><span class="PlaygroundEditorTheme__characterLimit"><span data-lexical-text="true">7</span></span></li></ul>',
     );
 
     await pressBackspace(page, 3);
     await assertHTML(
       page,
-      '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">1234</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">5</span></li></ul>',
+      '<ul class="PlaygroundEditorTheme__ul" dir="auto"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">1234</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">5</span></li></ul>',
     );
   });
 

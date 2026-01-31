@@ -72,7 +72,8 @@ test.describe('HTML CopyAndPaste', () => {
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
-          data-language="javascript">
+          data-language="javascript"
+          dir="auto">
           <span
             class="PlaygroundEditorTheme__tokenAttr"
             data-lexical-text="true">

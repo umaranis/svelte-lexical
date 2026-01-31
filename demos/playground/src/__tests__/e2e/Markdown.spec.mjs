@@ -53,7 +53,7 @@ test.describe.parallel('Markdown', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   const triggersAndExpectations = [
     {
-      expectation: '<h1 class="PlaygroundEditorTheme__h1"><br></h1>',
+      expectation: '<h1 class="PlaygroundEditorTheme__h1" dir="auto"><br></h1>',
       importExpectation: '',
       isBlockTest: true,
       markdownImport: '',
@@ -61,7 +61,7 @@ test.describe.parallel('Markdown', () => {
       undoHTML: '', // H1.
     },
     {
-      expectation: '<h2 class="PlaygroundEditorTheme__h2"><br></h2>',
+      expectation: '<h2 class="PlaygroundEditorTheme__h2" dir="auto"><br></h2>',
       importExpectation: '',
       isBlockTest: true,
       markdownImport: '',
@@ -69,7 +69,7 @@ test.describe.parallel('Markdown', () => {
       undoHTML: '', // H2.
     },
     {
-      expectation: '<h3 class="PlaygroundEditorTheme__h3"><br></h3>',
+      expectation: '<h3 class="PlaygroundEditorTheme__h3" dir="auto"><br></h3>',
       importExpectation: '',
       isBlockTest: true,
       markdownImport: '',
@@ -77,7 +77,7 @@ test.describe.parallel('Markdown', () => {
       undoHTML: '', // H3.
     },
     {
-      expectation: '<h4 class="PlaygroundEditorTheme__h4"><br></h4>',
+      expectation: '<h4 class="PlaygroundEditorTheme__h4" dir="auto"><br></h4>',
       importExpectation: '',
       isBlockTest: true,
       markdownImport: '',
@@ -85,7 +85,7 @@ test.describe.parallel('Markdown', () => {
       undoHTML: '', // H4.
     },
     {
-      expectation: '<h5 class="PlaygroundEditorTheme__h5"><br></h5>',
+      expectation: '<h5 class="PlaygroundEditorTheme__h5" dir="auto"><br></h5>',
       importExpectation: '',
       isBlockTest: true,
       markdownImport: '',
@@ -93,7 +93,7 @@ test.describe.parallel('Markdown', () => {
       undoHTML: '', // H5.
     },
     {
-      expectation: '<h6 class="PlaygroundEditorTheme__h6"><br></h6>',
+      expectation: '<h6 class="PlaygroundEditorTheme__h6" dir="auto"><br></h6>',
       importExpectation: '',
       isBlockTest: true,
       markdownImport: '',
@@ -102,7 +102,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       expectation:
-        '<code class="PlaygroundEditorTheme__code" spellcheck="false" data-gutter="1" data-language="javascript" data-highlight-language="javascript"><br></code>',
+        '<code class="PlaygroundEditorTheme__code" spellcheck="false" data-gutter="1" data-language="javascript" data-highlight-language="javascript" dir="auto"><br></code>',
       importExpectation: '',
       isBlockTest: true,
       markdownImport: '',
@@ -111,7 +111,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       expectation:
-        '<blockquote class="PlaygroundEditorTheme__quote"><br></blockquote>',
+        '<blockquote class="PlaygroundEditorTheme__quote" dir="auto"><br></blockquote>',
       importExpectation: '',
       isBlockTest: true,
       markdownImport: '',
@@ -121,7 +121,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       expectation:
-        '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><br></li></ul>',
+        '<ul class="PlaygroundEditorTheme__ul" dir="auto"><li value="1" class="PlaygroundEditorTheme__listItem"><br></li></ul>',
       importExpectation: '',
       isBlockTest: true,
       markdownImport: '',
@@ -130,9 +130,9 @@ test.describe.parallel('Markdown', () => {
     },
     {
       expectation:
-        '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><br></li></ul>',
+        '<ul class="PlaygroundEditorTheme__ul" dir="auto"><li value="1" class="PlaygroundEditorTheme__listItem"><br></li></ul>',
       importExpectation:
-        '<ul class="PlaygroundEditorTheme__ul"><li class="PlaygroundEditorTheme__listItem" value="1"><span data-lexical-text="true">hello</span></li></ul>',
+        '<ul class="PlaygroundEditorTheme__ul" dir="auto"><li class="PlaygroundEditorTheme__listItem" value="1"><span data-lexical-text="true">hello</span></li></ul>',
       isBlockTest: true,
       markdownImport: '- hello',
       markdownText: '- ',
@@ -140,9 +140,9 @@ test.describe.parallel('Markdown', () => {
     },
     {
       expectation:
-        '<ol start="321" class="PlaygroundEditorTheme__ol1"><li value="321" class="PlaygroundEditorTheme__listItem"><br></li></ol>',
+        '<ol start="321" class="PlaygroundEditorTheme__ol1" dir="auto"><li value="321" class="PlaygroundEditorTheme__listItem"><br></li></ol>',
       importExpectation:
-        '<ol class="PlaygroundEditorTheme__ol1" start="321"><li class="PlaygroundEditorTheme__listItem" value="321"><span data-lexical-text="true">hello</span></li></ol>',
+        '<ol class="PlaygroundEditorTheme__ol1" start="321" dir="auto"><li class="PlaygroundEditorTheme__listItem" value="321"><span data-lexical-text="true">hello</span></li></ol>',
       isBlockTest: true,
       markdownImport: '', // '321. hello', Need to merge w/ Maksims changes first to get correct start number.
       markdownText: '321. ',
@@ -382,13 +382,13 @@ test.describe.parallel('Markdown', () => {
   const BASE_BLOCK_SHORTCUTS = [
     {
       html: html`
-        <h1><br /></h1>
+        <h1 dir="auto"><br /></h1>
       `,
       text: '# ',
     },
     {
       html: html`
-        <h2><br /></h2>
+        <h2 dir="auto"><br /></h2>
       `,
       text: '## ',
     },
@@ -889,7 +889,8 @@ test.describe.parallel('Markdown', () => {
           spellcheck="false"
           data-gutter="12"
           data-highlight-language="markdown"
-          data-language="markdown">
+          data-language="markdown"
+          dir="auto">
           <span data-lexical-text="true">Hello</span>
           <br />
           <span
@@ -1181,7 +1182,8 @@ const TYPED_MARKDOWN_HTML = html`
     spellcheck="false"
     data-gutter="1"
     data-highlight-language="sql"
-    data-language="sql">
+    data-language="sql"
+    dir="auto">
     <span data-lexical-text="true">Code block</span>
   </code>
   <p class="PlaygroundEditorTheme__paragraph" dir="auto">
@@ -1462,7 +1464,8 @@ const IMPORTED_MARKDOWN_HTML = html`
     spellcheck="false"
     data-gutter="123"
     data-highlight-language="javascript"
-    data-language="javascript">
+    data-language="javascript"
+    dir="auto">
     <span class="PlaygroundEditorTheme__tokenComment" data-lexical-text="true">
       // Some comments
     </span>

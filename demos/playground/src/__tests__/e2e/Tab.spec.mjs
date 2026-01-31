@@ -105,7 +105,8 @@ test.describe('Tab', () => {
           spellcheck="false"
           data-gutter="1"
           data-highlight-language="javascript"
-          data-language="javascript">
+          data-language="javascript"
+          dir="auto">
           <span
             class="PlaygroundEditorTheme__tabNode"
             data-lexical-text="true"></span>

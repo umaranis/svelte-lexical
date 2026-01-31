@@ -32,7 +32,7 @@ test.describe('HTML Lists CopyAndPaste', () => {
 
     await assertHTML(
       page,
-      '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">Hello</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">world!</span></li></ul>',
+      '<ul class="PlaygroundEditorTheme__ul" dir="auto"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">Hello</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">world!</span></li></ul>',
     );
 
     await assertSelection(page, {
@@ -46,14 +46,14 @@ test.describe('HTML Lists CopyAndPaste', () => {
 
     await assertHTML(
       page,
-      '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">Hello</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">world!</span></li></ul></li></ul>',
+      '<ul class="PlaygroundEditorTheme__ul" dir="auto"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">Hello</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">world!</span></li></ul></li></ul>',
     );
 
     await selectFromAlignDropdown(page, '.outdent');
 
     await assertHTML(
       page,
-      '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">Hello</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">world!</span></li></ul>',
+      '<ul class="PlaygroundEditorTheme__ul" dir="auto"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">Hello</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">world!</span></li></ul>',
     );
   });
 
@@ -71,7 +71,7 @@ test.describe('HTML Lists CopyAndPaste', () => {
 
     await assertHTML(
       page,
-      '<ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">Hello</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">awesome</span></li></ul></li><li value="2" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">world!</span></li></ul>',
+      '<ul class="PlaygroundEditorTheme__ul" dir="auto"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">Hello</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">awesome</span></li></ul></li><li value="2" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">world!</span></li></ul>',
     );
   });
 
