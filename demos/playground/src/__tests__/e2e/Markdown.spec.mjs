@@ -660,7 +660,7 @@ test.describe.parallel('Markdown', () => {
         await undo(page);
         await assertHTML(
           page,
-          `<p><span data-lexical-text="true">${escapedText}</span></p>`,
+          `<p dir="auto"><span data-lexical-text="true">${escapedText}</span></p>`,
           undefined,
           {ignoreClasses: true},
         );
