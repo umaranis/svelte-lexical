@@ -39,7 +39,8 @@ test.describe('Element format', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-          style="padding-inline-start: calc(80px); text-align: center;">
+          style="padding-inline-start: calc(80px); text-align: center;"
+          dir="auto">
           <span data-lexical-text="true">Hello</span>
           <a class="PlaygroundEditorTheme__link" href="https://lexical.io">
             <span data-lexical-text="true">https://lexical.io</span>
@@ -63,7 +64,10 @@ test.describe('Element format', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph" style="text-align: center">
+        <p
+          class="PlaygroundEditorTheme__paragraph"
+          style="text-align: center"
+          dir="auto">
           <br />
         </p>
       `,

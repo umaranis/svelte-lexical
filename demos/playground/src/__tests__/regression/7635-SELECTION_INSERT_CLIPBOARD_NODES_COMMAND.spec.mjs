@@ -122,7 +122,7 @@ test.describe('Regression #7635', () => {
         page,
         {
           'text/html': html`
-            <p>
+            <p dir="auto">
               Hello
               <b>World</b>
             </p>

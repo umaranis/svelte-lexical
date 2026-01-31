@@ -273,7 +273,7 @@ test.describe.parallel('Auto Links', () => {
     await assertHTML(
       page,
       html`
-        <p>
+        <p dir="auto">
           <a href="https://1.com/">
             <span data-lexical-text="true">https://1.com/</span>
           </a>
@@ -307,7 +307,7 @@ test.describe.parallel('Auto Links', () => {
     await assertHTML(
       page,
       html`
-        <p>
+        <p dir="auto">
           <a href="https://1.com/">
             <span data-lexical-text="true">https://1.com/</span>
           </a>

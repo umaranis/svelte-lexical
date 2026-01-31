@@ -77,7 +77,8 @@ test.describe('Tab', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(40px)">
+            style="padding-inline-start: calc(40px)"
+            dir="auto">
             <span data-lexical-text="true">すし</span>
             <span
               class="PlaygroundEditorTheme__tabNode"

@@ -175,7 +175,10 @@ test.describe('HTML Links CopyAndPaste', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph" style="text-align: left">
+        <p
+          class="PlaygroundEditorTheme__paragraph"
+          style="text-align: left"
+          dir="auto">
           <span data-lexical-text="true">Line 0</span>
         </p>
         <ul class="PlaygroundEditorTheme__ul" dir="auto">
