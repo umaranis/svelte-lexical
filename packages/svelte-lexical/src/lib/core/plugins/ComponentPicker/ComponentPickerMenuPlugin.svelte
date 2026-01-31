@@ -16,8 +16,6 @@
   </Composer>
   ```
 
-  //TODO: Support dark mode
-  //TODO: Support all themes
   //TODO: add tests for slash command
   //TODO: add more slash commands/options
 -->
