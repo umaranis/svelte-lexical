@@ -89,7 +89,7 @@ function testSuite(charset) {
       html`
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">1234</span>
-          <span class="PlaygroundEditorTheme__characterLimit" dir="auto">
+          <span class="PlaygroundEditorTheme__characterLimit">
             <span class="emoji happysmile" data-lexical-text="true">
               <span class="emoji-inner">🙂</span>
             </span>
@@ -110,7 +110,7 @@ function testSuite(charset) {
       html`
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">1234</span>
-          <span class="PlaygroundEditorTheme__characterLimit" dir="auto">
+          <span class="PlaygroundEditorTheme__characterLimit">
             <span class="emoji happysmile" data-lexical-text="true">
               <span class="emoji-inner">🙂</span>
             </span>
@@ -136,7 +136,7 @@ function testSuite(charset) {
       html`
         <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">1234</span>
-          <span class="PlaygroundEditorTheme__characterLimit" dir="auto">
+          <span class="PlaygroundEditorTheme__characterLimit">
             <span class="emoji happysmile" data-lexical-text="true">
               <span class="emoji-inner">🙂</span>
             </span>
