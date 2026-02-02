@@ -28,6 +28,7 @@
   },
   "peacock.color": "#ff3d00",
   "cSpell.words": [
+    "andresz",
     "Collab",
     "colorpicker",
     "contenteditable",
@@ -36,6 +37,7 @@
     "resizer",
     "Resizers",
     "rowspan",
-    "seti"
+    "seti",
+    "sveltekit"
   ]
 }
