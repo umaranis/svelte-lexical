@@ -1533,7 +1533,7 @@ test.describe.parallel('Selection', () => {
     await assertSelection(page, {
       anchorOffset: 0,
       anchorPath: [2],
-      focusOffset: 1,
+      focusOffset: 0,
       focusPath: [1, 1, 0],
     });
   });
