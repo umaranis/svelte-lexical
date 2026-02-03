@@ -7,6 +7,7 @@
  */
 import {
   moveLeft,
+  moveToEditorBeginning,
   moveToLineBeginning,
   moveToLineEnd,
   selectAll,
@@ -20,7 +21,6 @@ import {
   html,
   initialize,
   IS_LINUX,
-  IS_WINDOWS,
   pasteFromClipboard,
   test,
 } from '../../../utils/index.mjs';
@@ -112,7 +112,6 @@ test.describe('Lists CopyAndPaste', () => {
     page,
     isPlainText,
     isCollab,
-    browserName,
   }) => {
     test.skip(isPlainText);
 
@@ -172,12 +171,9 @@ test.describe('Lists CopyAndPaste', () => {
     // Copy the partial list item and paragraph
     const clipboard = await copyToClipboard(page);
 
-    // Select all and remove content
-    await page.keyboard.press('ArrowUp');
-    await page.keyboard.press('ArrowUp');
-    if (!IS_WINDOWS && browserName === 'firefox') {
-      await page.keyboard.press('ArrowUp');
-    }
+    // Move cursor to the end of the first list item and insert a new empty list item.
+    // Using explicit editor navigation here avoids flaky caret positioning across browsers.
+    await moveToEditorBeginning(page);
     await moveToLineEnd(page);
 
     await page.keyboard.down('Enter');
