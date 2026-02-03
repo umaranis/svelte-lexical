@@ -31,9 +31,7 @@ test.describe('BlockWithAlignableContents', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello world</span>
         </p>
       `,
@@ -42,9 +40,7 @@ test.describe('BlockWithAlignableContents', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello world</span>
         </p>
         <div contenteditable="false" data-lexical-decorator="true">
@@ -59,7 +55,7 @@ test.describe('BlockWithAlignableContents', () => {
               width="560"></iframe>
           </div>
         </div>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
   });
@@ -75,9 +71,7 @@ test.describe('BlockWithAlignableContents', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello world</span>
         </p>
         <div contenteditable="false" data-lexical-decorator="true">
@@ -92,7 +86,7 @@ test.describe('BlockWithAlignableContents', () => {
               width="560"></iframe>
           </div>
         </div>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
     await selectAll(page);
@@ -101,9 +95,9 @@ test.describe('BlockWithAlignableContents', () => {
       page,
       html`
         <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr"
-          style="text-align: center">
+          class="PlaygroundEditorTheme__paragraph"
+          style="text-align: center"
+          dir="auto">
           <span data-lexical-text="true">Hello world</span>
         </p>
         <div contenteditable="false" data-lexical-decorator="true">
@@ -120,7 +114,10 @@ test.describe('BlockWithAlignableContents', () => {
               width="560"></iframe>
           </div>
         </div>
-        <p class="PlaygroundEditorTheme__paragraph" style="text-align: center">
+        <p
+          class="PlaygroundEditorTheme__paragraph"
+          style="text-align: center"
+          dir="auto">
           <br />
         </p>
       `,

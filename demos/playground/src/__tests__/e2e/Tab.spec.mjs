@@ -76,9 +76,9 @@ test.describe('Tab', () => {
         page,
         html`
           <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent PlaygroundEditorTheme__ltr"
-            dir="ltr"
-            style="padding-inline-start: calc(40px)">
+            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
+            style="padding-inline-start: calc(40px)"
+            dir="auto">
             <span data-lexical-text="true">すし</span>
             <span
               class="PlaygroundEditorTheme__tabNode"
@@ -101,12 +101,12 @@ test.describe('Tab', () => {
       page,
       html`
         <code
-          class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-          dir="ltr"
+          class="PlaygroundEditorTheme__code"
           spellcheck="false"
           data-gutter="1"
           data-highlight-language="javascript"
-          data-language="javascript">
+          data-language="javascript"
+          dir="auto">
           <span
             class="PlaygroundEditorTheme__tabNode"
             data-lexical-text="true"></span>

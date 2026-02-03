@@ -52,7 +52,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span
             class="editor-image"
             contenteditable="false"
@@ -102,7 +102,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
     await assertSelection(page, {
@@ -120,7 +120,7 @@ test.describe('Images', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span
               class="editor-image"
               contenteditable="false"
@@ -159,7 +159,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
 
@@ -174,7 +174,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span
             class="editor-image"
             contenteditable="false"
@@ -206,7 +206,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
 
@@ -236,7 +236,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span
             class="editor-image"
             contenteditable="false"
@@ -276,7 +276,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span
             class="editor-image"
             contenteditable="false"
@@ -304,7 +304,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
     await assertSelection(page, {
@@ -324,9 +324,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Test</span>
           <span
             class="editor-image"
@@ -366,9 +364,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Test</span>
           <span
             class="editor-image"
@@ -418,7 +414,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span
             class="editor-image"
             contenteditable="false"
@@ -484,9 +480,7 @@ test.describe('Images', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">HelloWorld</span>
             <span
               class="editor-image"
@@ -502,7 +496,7 @@ test.describe('Images', () => {
             </span>
             <br />
           </p>
-          <p class="PlaygroundEditorTheme__paragraph">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <br />
           </p>
         `,
@@ -520,9 +514,7 @@ test.describe('Images', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">Hello</span>
             <span
               class="editor-image"
@@ -538,7 +530,7 @@ test.describe('Images', () => {
             </span>
             <span data-lexical-text="true">World</span>
           </p>
-          <p class="PlaygroundEditorTheme__paragraph">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <br />
           </p>
         `,
@@ -566,12 +558,10 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">HelloWorld</span>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span
             class="editor-image"
             contenteditable="false"
@@ -652,12 +642,10 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">text1</span>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span
             class="editor-image"
             contenteditable="false"
@@ -672,12 +660,10 @@ test.describe('Images', () => {
           </span>
           <br />
         </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">text2</span>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span
             class="editor-image"
             contenteditable="false"
@@ -692,9 +678,7 @@ test.describe('Images', () => {
           </span>
           <br />
         </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">text3</span>
         </p>
       `,
@@ -717,20 +701,14 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">text1</span>
         </p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">text2</span>
         </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span
             class="editor-image"
             contenteditable="false"
@@ -745,9 +723,7 @@ test.describe('Images', () => {
           </span>
           <span data-lexical-text="true">&lt;- it works!</span>
         </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">text3</span>
         </p>
       `,
@@ -779,9 +755,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">HelloWorld</span>
           <span
             class="editor-image"
@@ -824,7 +798,7 @@ test.describe('Images', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span
             class="editor-image"
             contenteditable="false"

@@ -47,9 +47,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
@@ -71,9 +69,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
@@ -105,9 +101,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <em
             class="PlaygroundEditorTheme__textItalic"
@@ -129,9 +123,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <em
             class="PlaygroundEditorTheme__textItalic"
@@ -171,9 +163,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
@@ -195,9 +185,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello world!</span>
         </p>
       `,
@@ -238,18 +226,14 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <strong
             class="PlaygroundEditorTheme__textBold"
             data-lexical-text="true">
             hello world
           </strong>
         </p>
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">hello world</span>
         </p>
       `,
@@ -277,9 +261,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <em
             class="PlaygroundEditorTheme__textItalic"
@@ -301,9 +283,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello world!</span>
         </p>
       `,
@@ -337,9 +317,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <span
             class="PlaygroundEditorTheme__textUnderline"
@@ -361,9 +339,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello world!</span>
         </p>
       `,
@@ -386,9 +362,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <span
             class="PlaygroundEditorTheme__textUnderlineStrikethrough"
@@ -415,9 +389,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <span
             class="PlaygroundEditorTheme__textUnderline"
@@ -458,9 +430,7 @@ test.describe.parallel('TextFormatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">Hello</span>
             <span style="font-size: 17px;" data-lexical-text="true">world</span>
             <span data-lexical-text="true">!</span>
@@ -493,9 +463,7 @@ test.describe.parallel('TextFormatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span style="font-size: 17px;" data-lexical-text="true">Hello</span>
             <span style="font-size: 19px;" data-lexical-text="true">
               world!
@@ -528,9 +496,7 @@ test.describe.parallel('TextFormatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">Hello</span>
             <span style="font-size: 13px;" data-lexical-text="true">world</span>
             <span data-lexical-text="true">!</span>
@@ -563,9 +529,7 @@ test.describe.parallel('TextFormatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span style="font-size: 13px;" data-lexical-text="true">Hello</span>
             <span style="font-size: 12px;" data-lexical-text="true">
               world!
@@ -599,9 +563,7 @@ test.describe.parallel('TextFormatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">Hello</span>
             <span style="font-size: 17px;" data-lexical-text="true">world</span>
             <span data-lexical-text="true">!</span>
@@ -622,9 +584,7 @@ test.describe.parallel('TextFormatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">Hello</span>
             <span
               style="font-size: 17px; font-family: Georgia;"
@@ -648,9 +608,7 @@ test.describe.parallel('TextFormatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">Hello</span>
             <span
               style="font-size: 15px; font-family: Georgia;"
@@ -694,9 +652,7 @@ test.describe.parallel('TextFormatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">Hello</span>
             <span style="font-size: 20px;" data-lexical-text="true">world</span>
             <span data-lexical-text="true">!</span>
@@ -730,9 +686,7 @@ test.describe.parallel('TextFormatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span style="font-size: 20px;" data-lexical-text="true">
               Hello world!
             </span>
@@ -764,9 +718,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
@@ -798,9 +750,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
@@ -832,9 +782,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
@@ -869,9 +817,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello w</span>
           <em
             class="PlaygroundEditorTheme__textItalic"
@@ -893,9 +839,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello</span>
           <em
             class="PlaygroundEditorTheme__textItalic"
@@ -918,9 +862,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">Hello world!</span>
         </p>
       `,
@@ -967,9 +909,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">123</span>
           <strong
             class="PlaygroundEditorTheme__textBold"
@@ -1018,9 +958,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">12z</span>
         </p>
       `,
@@ -1057,7 +995,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <strong
             class="PlaygroundEditorTheme__textBold"
             data-lexical-text="true">
@@ -1074,7 +1012,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <strong
             class="PlaygroundEditorTheme__textBold"
             data-lexical-text="true">
@@ -1146,9 +1084,7 @@ test.describe.parallel('TextFormatting', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">A</span>
             <span
               class="editor-image"
@@ -1172,9 +1108,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">A</span>
           <span
             class="editor-image"
@@ -1201,9 +1135,7 @@ test.describe.parallel('TextFormatting', () => {
     await assertHTML(
       page,
       html`
-        <p
-          class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span data-lexical-text="true">A</span>
           <span
             class="editor-image"

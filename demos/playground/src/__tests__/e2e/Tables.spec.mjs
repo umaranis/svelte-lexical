@@ -98,8 +98,8 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
-        <table>
+        <p dir="auto"><br /></p>
+        <table dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -121,7 +121,7 @@ test.describe.parallel('Tables', () => {
             </td>
           </tr>
         </table>
-        <p><br /></p>
+        <p dir="auto"><br /></p>
       `,
       undefined,
       {ignoreClasses: true},
@@ -144,15 +144,15 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
-        <table>
+        <p dir="auto"><br /></p>
+        <table dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
           </colgroup>
           <tr>
             <th>
-              <p dir="ltr"><span data-lexical-text="true">abc</span></p>
+              <p><span data-lexical-text="true">abc</span></p>
             </th>
             <th>
               <p><br /></p>
@@ -167,7 +167,7 @@ test.describe.parallel('Tables', () => {
             </td>
           </tr>
         </table>
-        <p><br /></p>
+        <p dir="auto"><br /></p>
       `,
       undefined,
       {ignoreClasses: true},
@@ -308,8 +308,8 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
-        <table>
+        <p dir="auto"><br /></p>
+        <table dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -355,8 +355,8 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
-        <table>
+        <p dir="auto"><br /></p>
+        <table dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -378,7 +378,7 @@ test.describe.parallel('Tables', () => {
             </td>
           </tr>
         </table>
-        <p><br /></p>
+        <p dir="auto"><br /></p>
       `,
       undefined,
       {ignoreClasses: true},
@@ -415,8 +415,8 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
-        <table>
+        <p dir="auto"><br /></p>
+        <table dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -438,7 +438,7 @@ test.describe.parallel('Tables', () => {
             </td>
           </tr>
         </table>
-        <p dir="ltr"><span data-lexical-text="true">a</span></p>
+        <p dir="auto"><span data-lexical-text="true">a</span></p>
       `,
       undefined,
       {ignoreClasses: true},
@@ -464,8 +464,8 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
-        <table>
+        <p dir="auto"><br /></p>
+        <table dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -487,7 +487,7 @@ test.describe.parallel('Tables', () => {
             </td>
           </tr>
         </table>
-        <p dir="ltr"><span data-lexical-text="true">asdf</span></p>
+        <p dir="auto"><span data-lexical-text="true">asdf</span></p>
       `,
       undefined,
       {ignoreClasses: true},
@@ -503,8 +503,8 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p><br /></p>
-        <table>
+        <p dir="auto"><br /></p>
+        <table dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -526,7 +526,7 @@ test.describe.parallel('Tables', () => {
             </td>
           </tr>
         </table>
-        <p dir="ltr"><span data-lexical-text="true">df</span></p>
+        <p dir="auto"><span data-lexical-text="true">df</span></p>
       `,
       undefined,
       {ignoreClasses: true},
@@ -582,8 +582,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
-          <table>
+          <p dir="auto"><br /></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -605,7 +605,7 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         undefined,
         {ignoreClasses: true},
@@ -763,8 +763,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p><br /></p>
-            <table>
+            <p dir="auto"><br /></p>
+            <table dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -772,32 +772,32 @@ test.describe.parallel('Tables', () => {
               </colgroup>
               <tr>
                 <th class="PlaygroundEditorTheme__tableCellSelected">
-                  <p dir="ltr"><span data-lexical-text="true">a</span></p>
+                  <p><span data-lexical-text="true">a</span></p>
                 </th>
                 <th class="PlaygroundEditorTheme__tableCellSelected">
-                  <p dir="ltr"><span data-lexical-text="true">bb</span></p>
+                  <p><span data-lexical-text="true">bb</span></p>
                 </th>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                  <p><span data-lexical-text="true">cc</span></p>
                 </th>
               </tr>
               <tr>
                 <th class="PlaygroundEditorTheme__tableCellSelected">
-                  <p dir="ltr"><span data-lexical-text="true">d</span></p>
+                  <p><span data-lexical-text="true">d</span></p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCellSelected">
-                  <p dir="ltr"><span data-lexical-text="true">e</span></p>
+                  <p><span data-lexical-text="true">e</span></p>
                 </td>
                 <td>
-                  <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                  <p><span data-lexical-text="true">f</span></p>
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           html`
-            <p><br /></p>
-            <table>
+            <p dir="auto"><br /></p>
+            <table dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -805,28 +805,28 @@ test.describe.parallel('Tables', () => {
               </colgroup>
               <tr>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">a</span></p>
+                  <p><span data-lexical-text="true">a</span></p>
                 </th>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">bb</span></p>
+                  <p><span data-lexical-text="true">bb</span></p>
                 </th>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                  <p><span data-lexical-text="true">cc</span></p>
                 </th>
               </tr>
               <tr>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">d</span></p>
+                  <p><span data-lexical-text="true">d</span></p>
                 </th>
                 <td>
-                  <p dir="ltr"><span data-lexical-text="true">e</span></p>
+                  <p><span data-lexical-text="true">e</span></p>
                 </td>
                 <td>
-                  <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                  <p><span data-lexical-text="true">f</span></p>
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           {ignoreClasses: true},
         );
@@ -869,8 +869,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
-          <table>
+          <p dir="auto"><br /></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -878,24 +878,24 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th class="PlaygroundEditorTheme__tableCellSelected">
-                <p dir="ltr"><span data-lexical-text="true">a</span></p>
+                <p><span data-lexical-text="true">a</span></p>
               </th>
               <th class="PlaygroundEditorTheme__tableCellSelected">
-                <p dir="ltr"><span data-lexical-text="true">bb</span></p>
+                <p><span data-lexical-text="true">bb</span></p>
               </th>
               <th>
-                <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                <p><span data-lexical-text="true">cc</span></p>
               </th>
             </tr>
             <tr>
               <th class="PlaygroundEditorTheme__tableCellSelected">
-                <p dir="ltr"><span data-lexical-text="true">d</span></p>
+                <p><span data-lexical-text="true">d</span></p>
               </th>
               <td class="PlaygroundEditorTheme__tableCellSelected">
-                <p dir="ltr"><span data-lexical-text="true">e</span></p>
+                <p><span data-lexical-text="true">e</span></p>
               </td>
               <td>
-                <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                <p><span data-lexical-text="true">f</span></p>
               </td>
             </tr>
             <tr>
@@ -910,11 +910,11 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         html`
-          <p><br /></p>
-          <table>
+          <p dir="auto"><br /></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -922,24 +922,24 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th>
-                <p dir="ltr"><span data-lexical-text="true">a</span></p>
+                <p><span data-lexical-text="true">a</span></p>
               </th>
               <th>
-                <p dir="ltr"><span data-lexical-text="true">bb</span></p>
+                <p><span data-lexical-text="true">bb</span></p>
               </th>
               <th>
-                <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                <p><span data-lexical-text="true">cc</span></p>
               </th>
             </tr>
             <tr>
               <th>
-                <p dir="ltr"><span data-lexical-text="true">d</span></p>
+                <p><span data-lexical-text="true">d</span></p>
               </th>
               <td>
-                <p dir="ltr"><span data-lexical-text="true">e</span></p>
+                <p><span data-lexical-text="true">e</span></p>
               </td>
               <td>
-                <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                <p><span data-lexical-text="true">f</span></p>
               </td>
             </tr>
             <tr>
@@ -954,7 +954,7 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         {ignoreClasses: true, ignoreInlineStyles: true},
       );
@@ -989,8 +989,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p><br /></p>
-            <table>
+            <p dir="auto"><br /></p>
+            <table dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -998,32 +998,32 @@ test.describe.parallel('Tables', () => {
               </colgroup>
               <tr>
                 <th class="PlaygroundEditorTheme__tableCellSelected">
-                  <p dir="ltr"><strong data-lexical-text="true">a</strong></p>
+                  <p><strong data-lexical-text="true">a</strong></p>
                 </th>
                 <th class="PlaygroundEditorTheme__tableCellSelected">
-                  <p dir="ltr"><strong data-lexical-text="true">bb</strong></p>
+                  <p><strong data-lexical-text="true">bb</strong></p>
                 </th>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                  <p><span data-lexical-text="true">cc</span></p>
                 </th>
               </tr>
               <tr>
                 <th class="PlaygroundEditorTheme__tableCellSelected">
-                  <p dir="ltr"><strong data-lexical-text="true">d</strong></p>
+                  <p><strong data-lexical-text="true">d</strong></p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCellSelected">
-                  <p dir="ltr"><strong data-lexical-text="true">e</strong></p>
+                  <p><strong data-lexical-text="true">e</strong></p>
                 </td>
                 <td>
-                  <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                  <p><span data-lexical-text="true">f</span></p>
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           html`
-            <p><br /></p>
-            <table>
+            <p dir="auto"><br /></p>
+            <table dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -1031,28 +1031,28 @@ test.describe.parallel('Tables', () => {
               </colgroup>
               <tr>
                 <th>
-                  <p dir="ltr"><strong data-lexical-text="true">a</strong></p>
+                  <p><strong data-lexical-text="true">a</strong></p>
                 </th>
                 <th>
-                  <p dir="ltr"><strong data-lexical-text="true">bb</strong></p>
+                  <p><strong data-lexical-text="true">bb</strong></p>
                 </th>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                  <p><span data-lexical-text="true">cc</span></p>
                 </th>
               </tr>
               <tr>
                 <th>
-                  <p dir="ltr"><strong data-lexical-text="true">d</strong></p>
+                  <p><strong data-lexical-text="true">d</strong></p>
                 </th>
                 <td>
-                  <p dir="ltr"><strong data-lexical-text="true">e</strong></p>
+                  <p><strong data-lexical-text="true">e</strong></p>
                 </td>
                 <td>
-                  <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                  <p><span data-lexical-text="true">f</span></p>
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           {ignoreClasses: true},
         );
@@ -1085,8 +1085,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p dir="ltr"><strong data-lexical-text="true">abc</strong></p>
-          <table>
+          <p dir="auto"><strong data-lexical-text="true">abc</strong></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -1094,32 +1094,32 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th>
-                <p dir="ltr"><strong data-lexical-text="true">a</strong></p>
+                <p><strong data-lexical-text="true">a</strong></p>
               </th>
               <th>
-                <p dir="ltr"><strong data-lexical-text="true">bb</strong></p>
+                <p><strong data-lexical-text="true">bb</strong></p>
               </th>
               <th>
-                <p dir="ltr"><strong data-lexical-text="true">cc</strong></p>
+                <p><strong data-lexical-text="true">cc</strong></p>
               </th>
             </tr>
             <tr>
               <th>
-                <p dir="ltr"><strong data-lexical-text="true">d</strong></p>
+                <p><strong data-lexical-text="true">d</strong></p>
               </th>
               <td>
-                <p dir="ltr"><strong data-lexical-text="true">e</strong></p>
+                <p><strong data-lexical-text="true">e</strong></p>
               </td>
               <td>
-                <p dir="ltr"><strong data-lexical-text="true">f</strong></p>
+                <p><strong data-lexical-text="true">f</strong></p>
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         html`
-          <p dir="ltr"><strong data-lexical-text="true">abc</strong></p>
-          <table>
+          <p dir="auto"><strong data-lexical-text="true">abc</strong></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -1127,28 +1127,28 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th>
-                <p dir="ltr"><strong data-lexical-text="true">a</strong></p>
+                <p><strong data-lexical-text="true">a</strong></p>
               </th>
               <th>
-                <p dir="ltr"><strong data-lexical-text="true">bb</strong></p>
+                <p><strong data-lexical-text="true">bb</strong></p>
               </th>
               <th>
-                <p dir="ltr"><strong data-lexical-text="true">cc</strong></p>
+                <p><strong data-lexical-text="true">cc</strong></p>
               </th>
             </tr>
             <tr>
               <th>
-                <p dir="ltr"><strong data-lexical-text="true">d</strong></p>
+                <p><strong data-lexical-text="true">d</strong></p>
               </th>
               <td>
-                <p dir="ltr"><strong data-lexical-text="true">e</strong></p>
+                <p><strong data-lexical-text="true">e</strong></p>
               </td>
               <td>
-                <p dir="ltr"><strong data-lexical-text="true">f</strong></p>
+                <p><strong data-lexical-text="true">f</strong></p>
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         {ignoreClasses: true},
       );
@@ -1189,8 +1189,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p dir="ltr"><span data-lexical-text="true">abc</span></p>
-          <table>
+          <p dir="auto"><span data-lexical-text="true">abc</span></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -1198,7 +1198,7 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th>
-                <p dir="ltr"><span data-lexical-text="true">aa</span></p>
+                <p><span data-lexical-text="true">aa</span></p>
               </th>
               <th>
                 <p><span data-lexical-text="true">bb</span></p>
@@ -1219,11 +1219,11 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         html`
-          <p dir="ltr"><span data-lexical-text="true">abc</span></p>
-          <table>
+          <p dir="auto"><span data-lexical-text="true">abc</span></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -1231,28 +1231,28 @@ test.describe.parallel('Tables', () => {
             </colgroup>
             <tr>
               <th>
-                <p dir="ltr"><span data-lexical-text="true">aa</span></p>
+                <p><span data-lexical-text="true">aa</span></p>
               </th>
               <th>
-                <p dir="ltr"><span data-lexical-text="true">bb</span></p>
+                <p><span data-lexical-text="true">bb</span></p>
               </th>
               <th>
-                <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                <p><span data-lexical-text="true">cc</span></p>
               </th>
             </tr>
             <tr>
               <th>
-                <p dir="ltr"><span data-lexical-text="true">d</span></p>
+                <p><span data-lexical-text="true">d</span></p>
               </th>
               <td>
-                <p dir="ltr"><span data-lexical-text="true">e</span></p>
+                <p><span data-lexical-text="true">e</span></p>
               </td>
               <td>
-                <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                <p><span data-lexical-text="true">f</span></p>
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         {ignoreClasses: true},
       );
@@ -1294,29 +1294,29 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <table>
+            <table dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
               </colgroup>
               <tr>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">a</span></p>
+                  <p><span data-lexical-text="true">a</span></p>
                 </th>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">bb</span></p>
+                  <p><span data-lexical-text="true">bb</span></p>
                 </th>
               </tr>
               <tr>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">d</span></p>
+                  <p><span data-lexical-text="true">d</span></p>
                 </th>
                 <td>
-                  <p dir="ltr"><span data-lexical-text="true">e</span></p>
+                  <p><span data-lexical-text="true">e</span></p>
                 </td>
               </tr>
             </table>
-            <table>
+            <table dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -1324,28 +1324,28 @@ test.describe.parallel('Tables', () => {
               </colgroup>
               <tr>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">a</span></p>
+                  <p><span data-lexical-text="true">a</span></p>
                 </th>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">bb</span></p>
+                  <p><span data-lexical-text="true">bb</span></p>
                 </th>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                  <p><span data-lexical-text="true">cc</span></p>
                 </th>
               </tr>
               <tr>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">d</span></p>
+                  <p><span data-lexical-text="true">d</span></p>
                 </th>
                 <td>
-                  <p dir="ltr"><span data-lexical-text="true">e</span></p>
+                  <p><span data-lexical-text="true">e</span></p>
                 </td>
                 <td>
-                  <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                  <p><span data-lexical-text="true">f</span></p>
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           undefined,
           {ignoreClasses: true},
@@ -1380,8 +1380,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p><br /></p>
-            <table>
+            <p dir="auto"><br /></p>
+            <table dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -1395,7 +1395,7 @@ test.describe.parallel('Tables', () => {
                   <p><br /></p>
                 </th>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                  <p><span data-lexical-text="true">cc</span></p>
                 </th>
               </tr>
               <tr>
@@ -1406,11 +1406,11 @@ test.describe.parallel('Tables', () => {
                   <p><br /></p>
                 </td>
                 <td>
-                  <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                  <p><span data-lexical-text="true">f</span></p>
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           undefined,
           {ignoreClasses: true},
@@ -1437,8 +1437,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
-          <table>
+          <p dir="auto"><br /></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -1452,11 +1452,11 @@ test.describe.parallel('Tables', () => {
               </th>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         html`
-          <p><br /></p>
-          <table>
+          <p dir="auto"><br /></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -1470,7 +1470,7 @@ test.describe.parallel('Tables', () => {
               </th>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         {ignoreClasses: true},
       );
@@ -1494,8 +1494,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p dir="ltr"><span data-lexical-text="true">Hello World</span></p>
-          <table>
+          <p dir="auto"><span data-lexical-text="true">Hello World</span></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -1524,11 +1524,11 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         html`
-          <p dir="ltr"><span data-lexical-text="true">Hello World</span></p>
-          <table>
+          <p dir="auto"><span data-lexical-text="true">Hello World</span></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -1557,7 +1557,7 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         {ignoreClasses: true},
       );
@@ -1582,7 +1582,7 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -1602,16 +1602,18 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <table class="PlaygroundEditorTheme__table">
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup><col style="width: 92px" /></colgroup>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
       // Select all but from the table
@@ -1623,7 +1625,7 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -1644,8 +1646,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
-          <table>
+          <p dir="auto"><br /></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -1661,7 +1663,7 @@ test.describe.parallel('Tables', () => {
               </th>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         undefined,
         {ignoreClasses: true},
@@ -1697,8 +1699,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            <table class="PlaygroundEditorTheme__table">
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -1706,26 +1708,26 @@ test.describe.parallel('Tables', () => {
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">Hello</span>
                   </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span
                       class="editor-image"
                       contenteditable="false"
@@ -1743,7 +1745,7 @@ test.describe.parallel('Tables', () => {
                 </td>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
       },
@@ -1771,8 +1773,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -1780,28 +1782,22 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">cell one</span>
                 </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">first line</span>
                 </p>
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">second line</span>
                 </p>
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -1809,8 +1805,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -1818,19 +1814,19 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">cell one</span>
                 </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -1863,8 +1859,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            <table class="PlaygroundEditorTheme__table">
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -1872,7 +1868,9 @@ test.describe.parallel('Tables', () => {
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                   ${collapsibleOpeningTag}
                   <summary class="Collapsible__title">
                     <p class="PlaygroundEditorTheme__paragraph">
@@ -1883,20 +1881,30 @@ test.describe.parallel('Tables', () => {
                     <p class="PlaygroundEditorTheme__paragraph">
                       <span data-lexical-text="true">123</span>
                     </p>
-                    <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                    <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                    <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                    <p class="PlaygroundEditorTheme__paragraph">
+                      <br />
+                    </p>
+                    <p class="PlaygroundEditorTheme__paragraph">
+                      <br />
+                    </p>
+                    <p class="PlaygroundEditorTheme__paragraph">
+                      <br />
+                    </p>
                   </div>
                   ${collapsibleClosingTag}
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
 
@@ -1904,8 +1912,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            <table class="PlaygroundEditorTheme__table">
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -1913,7 +1921,9 @@ test.describe.parallel('Tables', () => {
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                   ${collapsibleOpeningTag}
                   <summary class="Collapsible__title">
                     <p class="PlaygroundEditorTheme__paragraph">
@@ -1921,18 +1931,24 @@ test.describe.parallel('Tables', () => {
                     </p>
                   </summary>
                   <div class="Collapsible__content">
-                    <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                    <p class="PlaygroundEditorTheme__paragraph">
+                      <br />
+                    </p>
                   </div>
                   ${collapsibleClosingTag}
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
       },
@@ -1983,8 +1999,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -1995,32 +2011,44 @@ test.describe.parallel('Tables', () => {
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 colspan="2"
                 rowspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -2066,8 +2094,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            <table class="PlaygroundEditorTheme__table">
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 142px" />
                 <col style="width: 92px" />
@@ -2078,32 +2106,44 @@ test.describe.parallel('Tables', () => {
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                   colspan="2"
                   rowspan="2">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
               <tr>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
       },
@@ -2151,8 +2191,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -2163,32 +2203,44 @@ test.describe.parallel('Tables', () => {
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 colspan="2"
                 rowspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr style="height: 87px">
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
         undefined,
         {
@@ -2239,8 +2291,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -2249,33 +2301,31 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 colspan="2">
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">first</span>
                 </p>
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">second</span>
                 </p>
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
       await unmergeTableCell(page);
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -2284,28 +2334,28 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">first</span>
                 </p>
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">second</span>
                 </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -2345,8 +2395,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -2355,21 +2405,19 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">first</span>
                 </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">second</span>
                 </p>
               </th>
@@ -2377,23 +2425,29 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td
                 class="PlaygroundEditorTheme__tableCell"
                 colspan="2"
                 rowspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -2401,8 +2455,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -2411,21 +2465,19 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">first</span>
                 </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">second</span>
                 </p>
               </th>
@@ -2433,29 +2485,41 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -2541,8 +2605,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            <table class="PlaygroundEditorTheme__table">
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px;" />
                 <col style="width: 92px;" />
@@ -2553,107 +2617,127 @@ test.describe.parallel('Tables', () => {
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td
                   class="PlaygroundEditorTheme__tableCell"
                   colspan="3"
                   rowspan="3">
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">a</span>
                   </p>
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">b</span>
                   </p>
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">c</span>
                   </p>
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">d</span>
                   </p>
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">e</span>
                   </p>
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">f</span>
                   </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
 
@@ -2661,8 +2745,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            <table class="PlaygroundEditorTheme__table">
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px;" />
                 <col style="width: 92px;" />
@@ -2673,128 +2757,164 @@ test.describe.parallel('Tables', () => {
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">a</span>
                   </p>
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">b</span>
                   </p>
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">c</span>
                   </p>
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">d</span>
                   </p>
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">e</span>
                   </p>
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">f</span>
                   </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </td>
-              </tr>
-              <tr>
-                <th
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </th>
-                <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </td>
-                <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </td>
-                <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </td>
-                <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <th
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </th>
+                <td class="PlaygroundEditorTheme__tableCell">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </td>
+                <td class="PlaygroundEditorTheme__tableCell">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </td>
+                <td class="PlaygroundEditorTheme__tableCell">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </td>
+                <td class="PlaygroundEditorTheme__tableCell">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
       },
@@ -2835,8 +2955,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -2846,36 +2966,50 @@ test.describe.parallel('Tables', () => {
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 rowspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 colspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
       await click(page, '.PlaygroundEditorTheme__tableCell');
@@ -2887,8 +3021,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -2941,9 +3075,7 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">Done!</span>
           </p>
         `,
@@ -2985,8 +3117,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -2996,36 +3128,50 @@ test.describe.parallel('Tables', () => {
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 rowspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 colspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
       await click(page, ':nth-match(.PlaygroundEditorTheme__tableCell, 7)');
@@ -3039,12 +3185,10 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">Done!</span>
           </p>
-          <table class="PlaygroundEditorTheme__table">
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -3097,7 +3241,7 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -3141,8 +3285,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -3151,44 +3295,44 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td
                 class="PlaygroundEditorTheme__tableCell"
                 colspan="2"
                 rowspan="2">
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">A</span>
                 </p>
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">B</span>
                 </p>
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">C</span>
                 </p>
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">D</span>
                 </p>
               </td>
@@ -3196,11 +3340,13 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -3251,9 +3397,10 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
             <table
-              class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
+              class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection"
+              dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -3263,42 +3410,56 @@ test.describe.parallel('Tables', () => {
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected"
                   rowspan="2">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected"
                   colspan="2">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
               <tr>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            <table class="PlaygroundEditorTheme__table">
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -3308,36 +3469,50 @@ test.describe.parallel('Tables', () => {
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                   rowspan="2">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                   colspan="2">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
               <tr>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
       },
@@ -3390,8 +3565,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            <table class="PlaygroundEditorTheme__table">
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -3402,24 +3577,32 @@ test.describe.parallel('Tables', () => {
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                   colspan="3"
                   rowspan="2">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
               <tr><br /></tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
 
@@ -3435,8 +3618,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            <table class="PlaygroundEditorTheme__table">
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -3445,45 +3628,63 @@ test.describe.parallel('Tables', () => {
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </th>
-              </tr>
-              <tr>
-                <th
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </th>
-                <th
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </th>
-                <th
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </th>
+                <th
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </th>
+                <th
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <th
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
       },
@@ -3524,8 +3725,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -3533,28 +3734,36 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 rowspan="3">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -3595,8 +3804,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -3606,23 +3815,31 @@ test.describe.parallel('Tables', () => {
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 colspan="3">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -3660,8 +3877,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -3669,22 +3886,28 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 rowspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -3721,8 +3944,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -3732,38 +3955,54 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -3814,8 +4053,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            <table class="PlaygroundEditorTheme__table">
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -3823,20 +4062,26 @@ test.describe.parallel('Tables', () => {
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell" rowspan="2">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
       },
@@ -3881,8 +4126,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -3893,142 +4138,216 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 rowspan="4">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-            </tr>
-            <tr>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -4072,8 +4391,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -4084,146 +4403,222 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 rowspan="3">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-            </tr>
-            <tr>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -4267,8 +4662,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -4279,146 +4674,222 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 rowspan="3">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-            </tr>
-            <tr>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -4468,8 +4939,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -4477,20 +4948,26 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell" colspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -4532,25 +5009,29 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            <table class="PlaygroundEditorTheme__table">
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px" />
               </colgroup>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
       },
@@ -4594,25 +5075,29 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
             </colgroup>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -4667,8 +5152,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-            <table class="PlaygroundEditorTheme__table">
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px" />
               </colgroup>
@@ -4676,11 +5161,13 @@ test.describe.parallel('Tables', () => {
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                   style="background-color: rgb(208, 2, 27)">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
       },
@@ -4694,31 +5181,31 @@ test.describe.parallel('Tables', () => {
 
         await focusEditor(page);
         await pasteFromClipboard(page, {
-          'text/html': `<div dir="ltr">
+          'text/html': `<div dir="auto">
       <table>
          <tbody>
             <tr>
                <td colspan="2" rowspan="2">
-                  <p dir="ltr">Hello world</p>
+                  <p dir="auto">Hello world</p>
                </td>
                <td>
-                  <p dir="ltr">a</p>
-               </td>
-            </tr>
-            <tr>
-               <td>
-                  <p dir="ltr">b</p>
+                  <p dir="auto">a</p>
                </td>
             </tr>
             <tr>
                <td>
-                  <p dir="ltr">c</p>
+                  <p dir="auto">b</p>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <p dir="auto">c</p>
                </td>
                <td>
-                  <p dir="ltr">d</p>
+                  <p dir="auto">d</p>
                </td>
                <td>
-                  <p dir="ltr">e</p>
+                  <p dir="auto">e</p>
                </td>
             </tr>
          </tbody>
@@ -4729,7 +5216,7 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <table class="PlaygroundEditorTheme__table">
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -4737,57 +5224,51 @@ test.describe.parallel('Tables', () => {
               </colgroup>
               <tr>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">Hello world</span>
                   </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">a</span>
                   </p>
                 </td>
               </tr>
               <tr>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">b</span>
                   </p>
                 </td>
               </tr>
               <tr>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">c</span>
                   </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">d</span>
                   </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">e</span>
                   </p>
                 </td>
@@ -4806,12 +5287,12 @@ test.describe.parallel('Tables', () => {
 
         await focusEditor(page);
         await pasteFromClipboard(page, {
-          'text/html': `<div dir="ltr">
+          'text/html': `<div dir="auto">
         <table>
            <tbody>
               <tr>
                  <td style="background-color: red">
-                    <p dir="ltr">Hello world</p>
+                    <p dir="auto">Hello world</p>
                  </td>
               </tr>
            </tbody>
@@ -4822,15 +5303,13 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <table class="PlaygroundEditorTheme__table">
+            <table class="PlaygroundEditorTheme__table" dir="auto">
               <colgroup>
                 <col style="width: 92px" />
               </colgroup>
               <tr>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p
-                    class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                    dir="ltr">
+                  <p class="PlaygroundEditorTheme__paragraph">
                     <span data-lexical-text="true">Hello world</span>
                   </p>
                 </td>
@@ -4884,8 +5363,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -4895,57 +5374,79 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </th>
-            </tr>
-            <tr>
-              <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </th>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </th>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </th>
+            </tr>
+            <tr>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 colspan="3"
                 rowspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -4976,8 +5477,8 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p><br /></p>
-            <table>
+            <p dir="auto"><br /></p>
+            <table dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -4987,46 +5488,46 @@ test.describe.parallel('Tables', () => {
                 <th
                   class="PlaygroundEditorTheme__tableCellSelected"
                   style="text-align: center">
-                  <p dir="ltr" style="text-align: center">
+                  <p style="text-align: center">
                     <span data-lexical-text="true">a</span>
                   </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCellSelected"
                   style="text-align: center">
-                  <p dir="ltr" style="text-align: center">
+                  <p style="text-align: center">
                     <span data-lexical-text="true">bb</span>
                   </p>
                 </th>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                  <p><span data-lexical-text="true">cc</span></p>
                 </th>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCellSelected"
                   style="text-align: center">
-                  <p dir="ltr" style="text-align: center">
+                  <p style="text-align: center">
                     <span data-lexical-text="true">d</span>
                   </p>
                 </th>
                 <td
                   class="PlaygroundEditorTheme__tableCellSelected"
                   style="text-align: center">
-                  <p dir="ltr" style="text-align: center">
+                  <p style="text-align: center">
                     <span data-lexical-text="true">e</span>
                   </p>
                 </td>
                 <td>
-                  <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                  <p><span data-lexical-text="true">f</span></p>
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           html`
-            <p><br /></p>
-            <table>
+            <p dir="auto"><br /></p>
+            <table dir="auto">
               <colgroup>
                 <col style="width: 92px" />
                 <col style="width: 92px" />
@@ -5034,36 +5535,36 @@ test.describe.parallel('Tables', () => {
               </colgroup>
               <tr>
                 <th style="text-align: center">
-                  <p dir="ltr" style="text-align: center">
+                  <p style="text-align: center">
                     <span data-lexical-text="true">a</span>
                   </p>
                 </th>
                 <th style="text-align: center">
-                  <p dir="ltr" style="text-align: center">
+                  <p style="text-align: center">
                     <span data-lexical-text="true">bb</span>
                   </p>
                 </th>
                 <th>
-                  <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                  <p><span data-lexical-text="true">cc</span></p>
                 </th>
               </tr>
               <tr>
                 <th style="text-align: center">
-                  <p dir="ltr" style="text-align: center">
+                  <p style="text-align: center">
                     <span data-lexical-text="true">d</span>
                   </p>
                 </th>
                 <td style="text-align: center">
-                  <p dir="ltr" style="text-align: center">
+                  <p style="text-align: center">
                     <span data-lexical-text="true">e</span>
                   </p>
                 </td>
                 <td>
-                  <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                  <p><span data-lexical-text="true">f</span></p>
                 </td>
               </tr>
             </table>
-            <p><br /></p>
+            <p dir="auto"><br /></p>
           `,
           {ignoreClasses: true},
         );
@@ -5100,8 +5601,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -5110,37 +5611,49 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td
                 class="PlaygroundEditorTheme__tableCell"
                 colspan="2"
                 rowspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -5184,8 +5697,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -5194,56 +5707,70 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">HelloHelloHello</span>
                 </p>
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                <p
-                  class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                  dir="ltr">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+                <p class="PlaygroundEditorTheme__paragraph">
                   <span data-lexical-text="true">Hello</span>
                 </p>
               </td>
             </tr>
           </table>
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">Hello</span>
           </p>
         `,
@@ -5283,8 +5810,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -5295,87 +5822,129 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell" rowspan="3">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell" rowspan="3">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-            </tr>
-            <tr>
-              <th
-                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </th>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <th
+                class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </th>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -5392,8 +5961,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -5404,75 +5973,111 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell" rowspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell" rowspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -5510,8 +6115,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -5523,82 +6128,122 @@ test.describe.parallel('Tables', () => {
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 rowspan="4">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 rowspan="3">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-            </tr>
-            <tr>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-              </td>
-              <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
+              </td>
+              <td class="PlaygroundEditorTheme__tableCell">
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -5615,8 +6260,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -5628,71 +6273,105 @@ test.describe.parallel('Tables', () => {
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 rowspan="3">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader"
                 rowspan="2">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -5721,9 +6400,10 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
             <table
-              class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
+              class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection"
+              dir="auto">
               <colgroup>
                 <col style="width: 92px;" />
                 <col style="width: 92px;" />
@@ -5734,165 +6414,245 @@ test.describe.parallel('Tables', () => {
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </td>
-              </tr>
-              <tr>
-                <th
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </th>
-                <td
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </td>
-                <td
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </td>
-                <td
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </td>
-                <td
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </td>
-              </tr>
-              <tr>
-                <th
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </th>
-                <td
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </td>
-                <td
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </td>
-                <td
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-                </td>
-                <td
-                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <th
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </th>
+                <td
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </td>
+                <td
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </td>
+                <td
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </td>
+                <td
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <th
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </th>
+                <td
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </td>
+                <td
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </td>
+                <td
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
+                </td>
+                <td
+                  class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
       },
@@ -5922,9 +6682,10 @@ test.describe.parallel('Tables', () => {
         await assertHTML(
           page,
           html`
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
             <table
-              class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
+              class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection"
+              dir="auto">
               <colgroup>
                 <col style="width: 92px;" />
                 <col style="width: 92px;" />
@@ -5935,165 +6696,245 @@ test.describe.parallel('Tables', () => {
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
               <tr>
                 <th
                   class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </th>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
                 <td class="PlaygroundEditorTheme__tableCell">
-                  <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                  <p class="PlaygroundEditorTheme__paragraph">
+                    <br />
+                  </p>
                 </td>
               </tr>
             </table>
-            <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+            <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           `,
         );
       },
@@ -6130,8 +6971,8 @@ test.describe.parallel('Tables', () => {
           await assertHTML(
             page,
             html`
-              <p><br /></p>
-              <table>
+              <p dir="auto"><br /></p>
+              <table dir="auto">
                 <colgroup>
                   <col style="width: 92px" />
                   <col style="width: 92px" />
@@ -6139,32 +6980,32 @@ test.describe.parallel('Tables', () => {
                 </colgroup>
                 <tr>
                   <th class="PlaygroundEditorTheme__tableCellSelected">
-                    <p dir="ltr"><span data-lexical-text="true">a</span></p>
+                    <p><span data-lexical-text="true">a</span></p>
                   </th>
                   <th class="PlaygroundEditorTheme__tableCellSelected">
-                    <p dir="ltr"><span data-lexical-text="true">bb</span></p>
+                    <p><span data-lexical-text="true">bb</span></p>
                   </th>
                   <th>
-                    <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                    <p><span data-lexical-text="true">cc</span></p>
                   </th>
                 </tr>
                 <tr>
                   <th class="PlaygroundEditorTheme__tableCellSelected">
-                    <p dir="ltr"><span data-lexical-text="true">d</span></p>
+                    <p><span data-lexical-text="true">d</span></p>
                   </th>
                   <td class="PlaygroundEditorTheme__tableCellSelected">
-                    <p dir="ltr"><span data-lexical-text="true">e</span></p>
+                    <p><span data-lexical-text="true">e</span></p>
                   </td>
                   <td>
-                    <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                    <p><span data-lexical-text="true">f</span></p>
                   </td>
                 </tr>
               </table>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             `,
             html`
-              <p><br /></p>
-              <table>
+              <p dir="auto"><br /></p>
+              <table dir="auto">
                 <colgroup>
                   <col style="width: 92px" />
                   <col style="width: 92px" />
@@ -6172,28 +7013,28 @@ test.describe.parallel('Tables', () => {
                 </colgroup>
                 <tr>
                   <th>
-                    <p dir="ltr"><span data-lexical-text="true">a</span></p>
+                    <p><span data-lexical-text="true">a</span></p>
                   </th>
                   <th>
-                    <p dir="ltr"><span data-lexical-text="true">bb</span></p>
+                    <p><span data-lexical-text="true">bb</span></p>
                   </th>
                   <th>
-                    <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                    <p><span data-lexical-text="true">cc</span></p>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    <p dir="ltr"><span data-lexical-text="true">d</span></p>
+                    <p><span data-lexical-text="true">d</span></p>
                   </th>
                   <td>
-                    <p dir="ltr"><span data-lexical-text="true">e</span></p>
+                    <p><span data-lexical-text="true">e</span></p>
                   </td>
                   <td>
-                    <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                    <p><span data-lexical-text="true">f</span></p>
                   </td>
                 </tr>
               </table>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             `,
             {ignoreClasses: true},
           );
@@ -6211,8 +7052,8 @@ test.describe.parallel('Tables', () => {
           await assertHTML(
             page,
             html`
-              <p><br /></p>
-              <table>
+              <p dir="auto"><br /></p>
+              <table dir="auto">
                 <colgroup>
                   <col style="width: 92px" />
                   <col style="width: 92px" />
@@ -6226,7 +7067,7 @@ test.describe.parallel('Tables', () => {
                     <p><br /></p>
                   </th>
                   <th>
-                    <p dir="ltr"><span data-lexical-text="true">cc</span></p>
+                    <p><span data-lexical-text="true">cc</span></p>
                   </th>
                 </tr>
                 <tr>
@@ -6237,11 +7078,11 @@ test.describe.parallel('Tables', () => {
                     <p><br /></p>
                   </td>
                   <td>
-                    <p dir="ltr"><span data-lexical-text="true">f</span></p>
+                    <p><span data-lexical-text="true">f</span></p>
                   </td>
                 </tr>
               </table>
-              <p><br /></p>
+              <p dir="auto"><br /></p>
             `,
             undefined,
             {ignoreClasses: true},
@@ -6272,8 +7113,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
-          <table>
+          <p dir="auto"><br /></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -6295,7 +7136,7 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         undefined,
         {ignoreClasses: true},
@@ -6330,8 +7171,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p><br /></p>
-          <table>
+          <p dir="auto"><br /></p>
+          <table dir="auto">
             <colgroup>
               <col style="width: 92px" />
               <col style="width: 92px" />
@@ -6353,7 +7194,7 @@ test.describe.parallel('Tables', () => {
               </td>
             </tr>
           </table>
-          <p><br /></p>
+          <p dir="auto"><br /></p>
         `,
         undefined,
         {ignoreClasses: true},
@@ -6376,8 +7217,8 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-          <table class="PlaygroundEditorTheme__table">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+          <table class="PlaygroundEditorTheme__table" dir="auto">
             <colgroup>
               <col style="width: 92px;" />
               <col style="width: 92px;" />
@@ -6388,99 +7229,149 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
 
@@ -6501,9 +7392,10 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           <table
-            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
+            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection"
+            dir="auto">
             <colgroup>
               <col style="width: 92px;" />
               <col style="width: 92px;" />
@@ -6514,108 +7406,158 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
       // Drag to change the selection to a 4x2 box (releasing the mouse)
@@ -6634,9 +7576,10 @@ test.describe.parallel('Tables', () => {
       await assertHTML(
         page,
         html`
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
           <table
-            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection">
+            class="PlaygroundEditorTheme__table PlaygroundEditorTheme__tableSelection"
+            dir="auto">
             <colgroup>
               <col style="width: 92px;" />
               <col style="width: 92px;" />
@@ -6647,107 +7590,157 @@ test.describe.parallel('Tables', () => {
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellSelected">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
             <tr>
               <th
                 class="PlaygroundEditorTheme__tableCell PlaygroundEditorTheme__tableCellHeader">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </th>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
               <td class="PlaygroundEditorTheme__tableCell">
-                <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+                <p class="PlaygroundEditorTheme__paragraph">
+                  <br />
+                </p>
               </td>
             </tr>
           </table>
-          <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
         `,
       );
     });
@@ -6805,8 +7798,8 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <table class="PlaygroundEditorTheme__table">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+        <table class="PlaygroundEditorTheme__table" dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -6834,7 +7827,7 @@ test.describe.parallel('Tables', () => {
             </td>
           </tr>
         </table>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
       undefined,
       {
@@ -6931,7 +7924,7 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <table class="PlaygroundEditorTheme__table">
+        <table class="PlaygroundEditorTheme__table" dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -6940,24 +7933,21 @@ test.describe.parallel('Tables', () => {
           <tr>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a1</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a3</span>
               </p>
@@ -6969,24 +7959,21 @@ test.describe.parallel('Tables', () => {
               rowspan="2"
               style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b3</span>
               </p>
@@ -6995,16 +7982,14 @@ test.describe.parallel('Tables', () => {
           <tr>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a3</span>
               </p>
@@ -7016,16 +8001,14 @@ test.describe.parallel('Tables', () => {
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b3</span>
               </p>
@@ -7056,7 +8039,7 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <table class="PlaygroundEditorTheme__table">
+        <table class="PlaygroundEditorTheme__table" dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -7066,24 +8049,21 @@ test.describe.parallel('Tables', () => {
           <tr>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a1</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a3</span>
               </p>
@@ -7098,32 +8078,28 @@ test.describe.parallel('Tables', () => {
               rowspan="2"
               style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a3</span>
               </p>
@@ -7132,24 +8108,21 @@ test.describe.parallel('Tables', () => {
           <tr>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">c2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b3</span>
               </p>
@@ -7195,7 +8168,7 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <table class="PlaygroundEditorTheme__table">
+        <table class="PlaygroundEditorTheme__table" dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -7205,24 +8178,21 @@ test.describe.parallel('Tables', () => {
           <tr>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a1</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a3</span>
               </p>
@@ -7237,24 +8207,21 @@ test.describe.parallel('Tables', () => {
               rowspan="2"
               style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b3</span>
               </p>
@@ -7269,24 +8236,21 @@ test.describe.parallel('Tables', () => {
               rowspan="2"
               style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b3</span>
               </p>
@@ -7298,8 +8262,7 @@ test.describe.parallel('Tables', () => {
             </td>
             <td class="PlaygroundEditorTheme__tableCell" colspan="2">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">c2</span>
               </p>
@@ -7330,7 +8293,7 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <table class="PlaygroundEditorTheme__table">
+        <table class="PlaygroundEditorTheme__table" dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -7342,24 +8305,21 @@ test.describe.parallel('Tables', () => {
               rowspan="2"
               style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b3</span>
               </p>
@@ -7371,8 +8331,7 @@ test.describe.parallel('Tables', () => {
               colspan="2"
               style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">c2</span>
               </p>
@@ -7387,8 +8346,7 @@ test.describe.parallel('Tables', () => {
               colspan="2"
               style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">c2</span>
               </p>
@@ -7423,7 +8381,7 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <table class="PlaygroundEditorTheme__table">
+        <table class="PlaygroundEditorTheme__table" dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -7432,24 +8390,21 @@ test.describe.parallel('Tables', () => {
           <tr>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a1</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a3</span>
               </p>
@@ -7461,24 +8416,21 @@ test.describe.parallel('Tables', () => {
               rowspan="2"
               style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a1</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">a2</span>
               </p>
@@ -7487,16 +8439,14 @@ test.describe.parallel('Tables', () => {
           <tr>
             <td class="PlaygroundEditorTheme__tableCell" style="width: 75px">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b1</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p
-                class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-                dir="ltr"
+                class="PlaygroundEditorTheme__paragraph"
                 style="text-align: start">
                 <span data-lexical-text="true">b2</span>
               </p>
@@ -7547,58 +8497,58 @@ test.describe.parallel('Tables', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
-        <p class="PlaygroundEditorTheme__paragraph"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
       `,
     );
   });
 });
 
 const TABLE_WITH_MERGED_CELLS = `
-<table class="PlaygroundEditorTheme__table">
+<table class="PlaygroundEditorTheme__table" dir="auto">
   <colgroup>
     <col style="width: 92px;">
     <col style="width: 92px;">
     <col style="width: 92px;">
   </colgroup>
   <tbody>
-    <tr dir="ltr">
-      <td class="PlaygroundEditorTheme__tableCell" dir="ltr" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
-        <p class="PlaygroundEditorTheme__paragraph" dir="ltr">
+    <tr dir="auto">
+      <td class="PlaygroundEditorTheme__tableCell" dir="auto" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span style="white-space: pre-wrap;">a1</span>
         </p>
       </td>
-      <td class="PlaygroundEditorTheme__tableCell" dir="ltr" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
-        <p class="PlaygroundEditorTheme__paragraph" dir="ltr">
+      <td class="PlaygroundEditorTheme__tableCell" dir="auto" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span style="white-space: pre-wrap;">a2</span>
         </p>
       </td>
-      <td class="PlaygroundEditorTheme__tableCell" dir="ltr" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
-        <p class="PlaygroundEditorTheme__paragraph" dir="ltr">
+      <td class="PlaygroundEditorTheme__tableCell" dir="auto" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span style="white-space: pre-wrap;">a3</span>
         </p>
       </td>
     </tr>
     <tr style="height: 38px;">
-      <td rowspan="2" class="PlaygroundEditorTheme__tableCell" dir="ltr" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
-        <p class="PlaygroundEditorTheme__paragraph" dir="ltr">
+      <td rowspan="2" class="PlaygroundEditorTheme__tableCell" dir="auto" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span style="white-space: pre-wrap;">b1</span>
         </p>
       </td>
-      <td class="PlaygroundEditorTheme__tableCell" dir="ltr" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
-        <p class="PlaygroundEditorTheme__paragraph" dir="ltr">
+      <td class="PlaygroundEditorTheme__tableCell" dir="auto" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span style="white-space: pre-wrap;">b2</span>
         </p>
       </td>
-      <td class="PlaygroundEditorTheme__tableCell" dir="ltr" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
-        <p class="PlaygroundEditorTheme__paragraph" dir="ltr">
+      <td class="PlaygroundEditorTheme__tableCell" dir="auto" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span style="white-space: pre-wrap;">b3</span>
         </p>
       </td>
     </tr>
-    <tr dir="ltr">
-      <td colspan="2" class="PlaygroundEditorTheme__tableCell" dir="ltr" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
-        <p class="PlaygroundEditorTheme__paragraph" dir="ltr">
+    <tr dir="auto">
+      <td colspan="2" class="PlaygroundEditorTheme__tableCell" dir="auto" style="border: 1px solid black; width: 75px; vertical-align: top; text-align: start;">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <span style="white-space: pre-wrap;">c2</span>
         </p>
       </td>

@@ -49,7 +49,7 @@ test.describe('CodeActionMenu', () => {
       page,
       `
         <code
-          class=\"PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr\"
+          class=\"PlaygroundEditorTheme__code\"
           dir=\"ltr\"
           spellcheck=\"false\"
           data-gutter=\"123\"
@@ -117,7 +117,7 @@ test.describe('CodeActionMenu', () => {
       page,
       `
           <code
-          class=\"PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr\"
+          class=\"PlaygroundEditorTheme__code\"
           dir=\"ltr\"
           spellcheck=\"false\"
           data-gutter=\"12345\"
@@ -196,12 +196,11 @@ test.describe('CodeActionMenu', () => {
       page,
       `
         <code
-          class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-          dir="ltr"
+          class="PlaygroundEditorTheme__code"
           spellcheck="false"
           data-gutter="1"
           data-language="javascript"
-          data-highlight-language="javascript">
+          data-highlight-language="javascript" dir="auto">
           <span data-lexical-text="true"></span>
           <span class="PlaygroundEditorTheme__tokenAttr" data-lexical-text="true">
             const
@@ -227,12 +226,11 @@ test.describe('CodeActionMenu', () => {
       page,
       `
         <code
-        class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-        dir="ltr"
+        class="PlaygroundEditorTheme__code"
         spellcheck="false"
         data-gutter="12"
         data-language="javascript"
-        data-highlight-language="javascript">
+        data-highlight-language="javascript" dir="auto">
           <span class="PlaygroundEditorTheme__tokenAttr" data-lexical-text="true">
             const
           </span>
@@ -270,12 +268,11 @@ test.describe('CodeActionMenu', () => {
         page,
         `
         <code
-          class="PlaygroundEditorTheme__code PlaygroundEditorTheme__ltr"
-          dir="ltr"
+          class="PlaygroundEditorTheme__code"
           spellcheck="false"
           data-gutter="1"
           data-language="javascript"
-          data-highlight-language="javascript">
+          data-highlight-language="javascript" dir="auto">
           <span data-lexical-text="true">cons luci</span>
           <span class="PlaygroundEditorTheme__tokenOperator" data-lexical-text="true">
             =

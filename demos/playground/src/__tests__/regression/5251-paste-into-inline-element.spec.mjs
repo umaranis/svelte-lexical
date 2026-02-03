@@ -65,13 +65,10 @@ test.describe('Regression test #5251', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">Hello</span>
             <a
-              class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-              dir="ltr"
+              class="PlaygroundEditorTheme__link"
               href="https://"
               rel="noreferrer">
               <span data-lexical-text="true">World</span>
@@ -90,9 +87,7 @@ test.describe('Regression test #5251', () => {
       await assertHTML(
         page,
         html`
-          <p
-            class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__ltr"
-            dir="ltr">
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
             <span data-lexical-text="true">Hello Hello</span>
             <strong
               class="PlaygroundEditorTheme__textBold"
@@ -100,8 +95,7 @@ test.describe('Regression test #5251', () => {
               bold
             </strong>
             <a
-              class="PlaygroundEditorTheme__link PlaygroundEditorTheme__ltr"
-              dir="ltr"
+              class="PlaygroundEditorTheme__link"
               href="https://"
               rel="noreferrer">
               <span data-lexical-text="true">ld</span>
