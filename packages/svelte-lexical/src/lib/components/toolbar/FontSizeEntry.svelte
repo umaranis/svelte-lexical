@@ -15,13 +15,13 @@
   let selectionFontSize: Readable<string> = getContext('fontSize');
   let isEditable = getIsEditable();
 
-	  let activeEditor = getActiveEditor();
+  let activeEditor = getActiveEditor();
 
-	  let inputValue = $state('');
-	  run(() => {
-	    inputValue = $selectionFontSize.slice(0, -2);
-	  });
-	  let inputChangeFlag = false;
+  let inputValue = $state('');
+  run(() => {
+    inputValue = $selectionFontSize.slice(0, -2);
+  });
+  let inputChangeFlag = false;
 
   function handleKeyPress(e: KeyboardEvent) {
     const inputValueNumber = Number(inputValue);
