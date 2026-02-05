@@ -8,6 +8,7 @@
 
 import {
   moveLeft,
+  moveToLineBeginning,
   selectCharacters,
   toggleBold,
   undo,
@@ -661,6 +662,7 @@ test.describe('Collaboration', () => {
       .frameLocator('iframe[name="right"]')
       .locator('[data-lexical-editor="true"]')
       .focus();
+    await moveToLineBeginning(page);
     await page.keyboard.press('Delete');
 
     await assertHTML(
