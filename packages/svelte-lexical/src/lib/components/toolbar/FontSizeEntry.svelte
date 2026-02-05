@@ -17,7 +17,7 @@
 
   let activeEditor = getActiveEditor();
 
-  let inputValue: string;
+  let inputValue = $state('');
   run(() => {
     inputValue = $selectionFontSize.slice(0, -2);
   });
