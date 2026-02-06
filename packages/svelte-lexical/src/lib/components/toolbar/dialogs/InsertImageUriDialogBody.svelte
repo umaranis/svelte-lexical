@@ -1,11 +1,14 @@
 <script lang="ts">
-  import {createEventDispatcher} from 'svelte';
   import {getActiveEditor} from '$lib/core/composerContext.js';
   import {INSERT_IMAGE_COMMAND} from '$lib/core/plugins/Image/ImagePlugin.svelte';
   import TextInput from '../../generic/input/TextInput.svelte';
 
   const activeEditor = getActiveEditor();
-  const dispatch = createEventDispatcher();
+  interface Props {
+    onconfirm?: () => void;
+  }
+
+  let {onconfirm}: Props = $props();
 
   let src = $state('');
   let altText = $state('');
@@ -35,7 +38,7 @@
         class="Button__root"
         onclick={() => {
           $activeEditor.dispatchCommand(INSERT_IMAGE_COMMAND, {altText, src});
-          dispatch('confirm');
+          onconfirm?.();
         }}>
         Confirm
       </button>
