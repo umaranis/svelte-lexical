@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import {getEditor} from '$lib/core/composerContext.js';
   import {
     $unmergeCell as unmergeCell,
@@ -152,7 +150,7 @@
     );
   });
 
-  run(() => {
+  $effect(() => {
     const menuButtonElement = contextRef;
     const dropDownElement = dropDownRef;
     const rootElement = editor.getRootElement();
