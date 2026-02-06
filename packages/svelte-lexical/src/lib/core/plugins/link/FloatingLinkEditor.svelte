@@ -195,7 +195,10 @@
         setFloatingElemPositionForLinkEditor(domRect, editorElem, anchorElem);
       }
       lastSelection = selection;
-    } else if (!activeElement || activeElement.className !== 'link-input') {
+    } else if (
+      !$isEditMode &&
+      (!activeElement || !editorElem.contains(activeElement))
+    ) {
       if (rootElement !== null) {
         setFloatingElemPositionForLinkEditor(null, editorElem, anchorElem);
       }
