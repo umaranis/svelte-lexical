@@ -28,7 +28,7 @@
   import {setFloatingElemPositionForLinkEditor} from './setFloatingElemPositionForLinkEditor.js';
   import {sanitizeUrl} from './url.js';
 
-  let editorRef: HTMLDivElement;
+  let editorRef: HTMLDivElement | null = $state(null);
   let inputRef: HTMLInputElement | undefined = $state();
   let linkUrl = $state('');
   let editedLinkUrl = $state('');
@@ -46,15 +46,19 @@
     event.preventDefault();
   }
 
-  $effect(() => {
+  $effect.pre(() => {
     if ($isEditMode && inputRef) {
       inputRef.focus();
     }
   });
 
-  $effect(() => {
-    if (anchorElem && editorRef) {
-      anchorElem.appendChild(editorRef as Node);
+  $effect.pre(() => {
+    if (!anchorElem || !editorRef) {
+      return;
+    }
+
+    if (editorRef.parentNode !== anchorElem) {
+      anchorElem.appendChild(editorRef);
     }
   });
 
@@ -112,12 +116,23 @@
   });
 
   $effect(() => {
-    const editorElement = editorRef;
-    if (editorElement === null) {
+    if (!editorRef) {
       return;
     }
+
+    const editorElement = editorRef;
     const handleBlur = (event: FocusEvent) => {
-      if (!editorElement.contains(event.relatedTarget as Element) && isLink) {
+      const relatedTarget = event.relatedTarget as Element | null;
+      if (relatedTarget && editorElement.contains(relatedTarget)) {
+        return;
+      }
+
+      const activeElement = document.activeElement;
+      if (activeElement && editorElement.contains(activeElement)) {
+        return;
+      }
+
+      if ($isLink) {
         $isLink = false;
         $isEditMode = false;
       }
