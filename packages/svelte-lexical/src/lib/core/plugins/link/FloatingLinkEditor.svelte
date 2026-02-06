@@ -50,7 +50,7 @@
 
   run(() => {
     if ($isEditMode && inputRef) {
-      inputRef.focus();
+      queueMicrotask(() => inputRef?.focus());
     }
   });
 
@@ -197,10 +197,7 @@
         setFloatingElemPositionForLinkEditor(domRect, editorElem, anchorElem);
       }
       lastSelection = selection;
-    } else if (
-      !$isEditMode &&
-      (!activeElement || activeElement.className !== 'link-input')
-    ) {
+    } else if (!activeElement || activeElement.className !== 'link-input') {
       if (rootElement !== null) {
         setFloatingElemPositionForLinkEditor(null, editorElem, anchorElem);
       }
