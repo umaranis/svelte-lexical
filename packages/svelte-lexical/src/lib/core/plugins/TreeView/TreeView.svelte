@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import type {
     BaseSelection,
     EditorState,
@@ -641,22 +639,21 @@
         numNonSingleWidthCharInSelection,
     ];
   }
-  run(() => {
+  $effect(() => {
     const editorState = editor.getEditorState();
     if (!showLimited && editorState._nodeMap.size > 1) {
       content = generateContent(editor, commandsLog, showExportDOM);
     }
   });
   let totalEditorStates = $derived(timeStampedEditorStates.length);
-  run(() => {
-    if (isPlaying) {
-      play();
-    }
-  });
-  run(() => {
+  $effect(() => {
     if (!isPlaying) {
-      clearInterval(timeoutId);
+      clearTimeout(timeoutId);
+      return;
     }
+
+    play();
+    return () => clearTimeout(timeoutId);
   });
 </script>
 
