@@ -103,9 +103,9 @@
       </div>
     </div>
   {:else if mode === 'url'}
-    <InsertImageUriDialogBody on:confirm={closeDialog} />
+    <InsertImageUriDialogBody onconfirm={closeDialog} />
   {:else if mode === 'file'}
-    <InsertImageUploadedDialogBody on:confirm={closeDialog} />
+    <InsertImageUploadedDialogBody onconfirm={closeDialog} />
   {/if}
 </ModalDialog>
 
