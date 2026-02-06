@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import {onMount} from 'svelte';
   import {setRegisterItemFunc} from './utils.js';
 
@@ -17,7 +15,6 @@
 
   function registerItem(itemRef: HTMLButtonElement) {
     items.push(itemRef);
-    items = items;
   }
   setRegisterItemFunc(registerItem);
 
@@ -55,10 +52,8 @@
     }
   });
 
-  run(() => {
-    if (highlightedItem) {
-      highlightedItem.focus();
-    }
+  $effect(() => {
+    highlightedItem?.focus();
   });
 </script>
 
