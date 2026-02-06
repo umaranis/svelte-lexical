@@ -197,7 +197,10 @@
         setFloatingElemPositionForLinkEditor(domRect, editorElem, anchorElem);
       }
       lastSelection = selection;
-    } else if (!activeElement || activeElement.className !== 'link-input') {
+    } else if (
+      !$isEditMode &&
+      (!activeElement || activeElement.className !== 'link-input')
+    ) {
       if (rootElement !== null) {
         setFloatingElemPositionForLinkEditor(null, editorElem, anchorElem);
       }
