@@ -1,53 +1,53 @@
 <script lang="ts">
-  import {
-    run,
-    self,
-    createBubbler,
-    stopPropagation as stopPropagation_1,
-  } from 'svelte/legacy';
-
-  const bubble = createBubbler();
   interface Props {
     showModal: boolean;
     stopPropagation?: boolean;
+    onclick?: (event: MouseEvent) => void;
     children?: import('svelte').Snippet;
   }
 
   let {
     showModal = $bindable(),
     stopPropagation = true,
+    onclick,
     children,
   }: Props = $props();
 
   let dialog: HTMLDialogElement | undefined = $state();
 
-  run(() => {
-    if (dialog) {
-      if (showModal) {
-        dialog.showModal();
-      } else {
-        dialog.close();
-      }
+  $effect(() => {
+    if (!dialog) return;
+
+    if (showModal) {
+      dialog.showModal();
+    } else {
+      dialog.close();
     }
   });
+
+  function handleDialogClick(event: MouseEvent) {
+    if (event.target === event.currentTarget) {
+      dialog?.close();
+    }
+  }
+
+  function handleContentClick(event: MouseEvent) {
+    if (stopPropagation) {
+      event.stopPropagation();
+    }
+    onclick?.(event);
+  }
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <dialog
   bind:this={dialog}
   onclose={() => (showModal = false)}
-  onclick={self(() => dialog!.close())}>
-  {#if stopPropagation}
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div onclick={stopPropagation_1(bubble('click'))}>
-      {@render children?.()}
-    </div>
-  {:else}
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div onclick={bubble('click')}>
-      {@render children?.()}
-    </div>
-  {/if}
+  onclick={handleDialogClick}>
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <div onclick={handleContentClick}>
+    {@render children?.()}
+  </div>
 </dialog>
 
 <style>

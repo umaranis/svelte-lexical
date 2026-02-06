@@ -62,7 +62,7 @@
 </script>
 
 <ModalDialog bind:showModal>
-  <CloseCircleButton on:click={() => (showModal = false)} />
+  <CloseCircleButton onclick={() => (showModal = false)} />
 
   {#if !mode}
     <div class="modal">

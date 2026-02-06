@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import {CAN_USE_DOM} from '@lexical/utils';
   import DropDownItems from './DropDownItems.svelte';
   import Portal from '../portal/Portal.svelte';
@@ -31,7 +29,7 @@
   }: Props = $props();
 
   let dropDownRef = $state<HTMLDivElement | undefined>();
-  let buttonRef: HTMLButtonElement;
+  let buttonRef = $state<HTMLButtonElement | undefined>();
   let showDropDown = $state(false);
 
   function handleClose() {
@@ -41,15 +39,17 @@
     }
   }
 
-  run(() => {
-    if (showDropDown && buttonRef && dropDownRef) {
-      const {top, left} = buttonRef.getBoundingClientRect();
-      dropDownRef.style.top = `${top + 42}px`;
-      dropDownRef.style.left = `${Math.min(
-        left,
-        window.innerWidth - dropDownRef.offsetWidth - 20,
-      )}px`;
-    }
+  $effect(() => {
+    if (!CAN_USE_DOM) return;
+    if (!showDropDown) return;
+    if (!buttonRef || !dropDownRef) return;
+
+    const {top, left} = buttonRef.getBoundingClientRect();
+    dropDownRef.style.top = `${top + 42}px`;
+    dropDownRef.style.left = `${Math.min(
+      left,
+      window.innerWidth - dropDownRef.offsetWidth - 20,
+    )}px`;
   });
 
   const handle = (event: MouseEvent) => {
@@ -65,12 +65,12 @@
     }
   };
 
-  run(() => {
-    if (showDropDown) {
-      document.addEventListener('click', handle);
-    } else if (CAN_USE_DOM) {
-      document.removeEventListener('click', handle);
-    }
+  $effect(() => {
+    if (!CAN_USE_DOM) return;
+    if (!showDropDown) return;
+
+    document.addEventListener('click', handle);
+    return () => document.removeEventListener('click', handle);
   });
 </script>
 
