@@ -197,7 +197,10 @@
         setFloatingElemPositionForLinkEditor(domRect, editorElem, anchorElem);
       }
       lastSelection = selection;
-    } else if (!activeElement || activeElement.className !== 'link-input') {
+    } else if (
+      !$isEditMode &&
+      (!activeElement || activeElement.className !== 'link-input')
+    ) {
       if (rootElement !== null) {
         setFloatingElemPositionForLinkEditor(null, editorElem, anchorElem);
       }
@@ -245,6 +248,12 @@
       }
       $isEditMode = false;
     }
+  }
+
+  function enterEditMode(event: MouseEvent) {
+    event.preventDefault();
+    editedLinkUrl = linkUrl;
+    $isEditMode = true;
   }
 </script>
 
@@ -294,12 +303,8 @@
           class="link-edit"
           role="button"
           tabIndex={0}
-          onmousedown={preventDefault}
-          onclick={(event) => {
-            event.preventDefault();
-            editedLinkUrl = linkUrl;
-            $isEditMode = true;
-          }}>
+          onmousedown={enterEditMode}
+          onclick={enterEditMode}>
         </div>
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div
