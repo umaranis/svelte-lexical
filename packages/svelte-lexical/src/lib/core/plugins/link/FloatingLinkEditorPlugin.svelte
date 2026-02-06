@@ -32,11 +32,6 @@
   let isEditMode = writable(false);
 
   function updateToolbar() {
-    if ($isEditMode) {
-      $isLink = true;
-      return;
-    }
-
     const selection = getSelection();
     if (isRangeSelection(selection)) {
       const focusNode = getSelectedNode(selection);

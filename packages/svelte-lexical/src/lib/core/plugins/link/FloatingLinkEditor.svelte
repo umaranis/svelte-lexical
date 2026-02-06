@@ -1,4 +1,6 @@
 <script lang="ts">
+  import {run} from 'svelte/legacy';
+
   import './FloatingLinkEditor.css';
   import {
     $isLinkNode as isLinkNode,
@@ -28,7 +30,7 @@
   import {setFloatingElemPositionForLinkEditor} from './setFloatingElemPositionForLinkEditor.js';
   import {sanitizeUrl} from './url.js';
 
-  let editorRef: HTMLDivElement | null = $state(null);
+  let editorRef: HTMLDivElement;
   let inputRef: HTMLInputElement | undefined = $state();
   let linkUrl = $state('');
   let editedLinkUrl = $state('');
@@ -46,19 +48,15 @@
     event.preventDefault();
   }
 
-  $effect.pre(() => {
+  run(() => {
     if ($isEditMode && inputRef) {
       inputRef.focus();
     }
   });
 
-  $effect.pre(() => {
-    if (!anchorElem || !editorRef) {
-      return;
-    }
-
-    if (editorRef.parentNode !== anchorElem) {
-      anchorElem.appendChild(editorRef);
+  run(() => {
+    if (anchorElem && editorRef) {
+      anchorElem.appendChild(editorRef as Node);
     }
   });
 
@@ -116,23 +114,12 @@
   });
 
   $effect(() => {
-    if (!editorRef) {
+    const editorElement = editorRef;
+    if (editorElement === null) {
       return;
     }
-
-    const editorElement = editorRef;
     const handleBlur = (event: FocusEvent) => {
-      const relatedTarget = event.relatedTarget as Element | null;
-      if (relatedTarget && editorElement.contains(relatedTarget)) {
-        return;
-      }
-
-      const activeElement = document.activeElement;
-      if (activeElement && editorElement.contains(activeElement)) {
-        return;
-      }
-
-      if ($isLink) {
+      if (!editorElement.contains(event.relatedTarget as Element) && isLink) {
         $isLink = false;
         $isEditMode = false;
       }
@@ -210,10 +197,7 @@
         setFloatingElemPositionForLinkEditor(domRect, editorElem, anchorElem);
       }
       lastSelection = selection;
-    } else if (
-      !$isEditMode &&
-      (!activeElement || !editorElem.contains(activeElement))
-    ) {
+    } else if (!activeElement || activeElement.className !== 'link-input') {
       if (rootElement !== null) {
         setFloatingElemPositionForLinkEditor(null, editorElem, anchorElem);
       }
