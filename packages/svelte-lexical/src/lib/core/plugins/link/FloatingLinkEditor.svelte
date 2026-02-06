@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import './FloatingLinkEditor.css';
   import {
     $isLinkNode as isLinkNode,
@@ -48,13 +46,13 @@
     event.preventDefault();
   }
 
-  run(() => {
+  $effect(() => {
     if ($isEditMode && inputRef) {
       inputRef.focus();
     }
   });
 
-  run(() => {
+  $effect(() => {
     if (anchorElem && editorRef) {
       anchorElem.appendChild(editorRef as Node);
     }

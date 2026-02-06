@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import {
     addClassNamesToElement,
     mergeRegister,
@@ -27,7 +25,7 @@
   let isSelected = createNodeSelectionStore(editor, nodeKey);
   const isSelectedClassName = editor._config.theme.hrSelected ?? 'selected';
 
-  run(() => {
+  $effect(() => {
     if ($isSelected) {
       addClassNamesToElement(self, isSelectedClassName);
     } else {
