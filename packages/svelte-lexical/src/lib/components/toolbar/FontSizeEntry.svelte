@@ -1,5 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
   import {getActiveEditor, getIsEditable} from '$lib/core/composerContext.js';
   import {getContext} from 'svelte';
   import type {Readable} from 'svelte/store';
@@ -18,7 +17,7 @@
   let activeEditor = getActiveEditor();
 
   let inputValue = $state('');
-  run(() => {
+  $effect(() => {
     inputValue = $selectionFontSize.slice(0, -2);
   });
   let inputChangeFlag = false;

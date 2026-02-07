@@ -23,18 +23,19 @@
           command,
           (payload) => {
             i += 1;
-            const newState = [...loggedCommands];
-            newState.push({
+            const entry = {
               index: i,
               payload,
               type: command.type ? command.type : 'UNKNOWN',
+            };
+
+            queueMicrotask(() => {
+              const newState = [...loggedCommands, entry];
+              if (newState.length > 10) {
+                newState.shift();
+              }
+              loggedCommands = newState;
             });
-
-            if (newState.length > 10) {
-              newState.shift();
-            }
-
-            loggedCommands = newState;
 
             return false;
           },

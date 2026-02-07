@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import {
     $getTableAndElementByKey as getTableAndElementByKey,
     $getTableColumnIndexFromTableCellNode as getTableColumnIndexFromTableCellNode,
@@ -185,15 +183,20 @@
     250,
   );
 
-  run(() => {
-    if (CAN_USE_DOM && shouldListenMouseMove) {
-      document.addEventListener('mousemove', debouncedOnMouseMove);
-    } else if (CAN_USE_DOM) {
+  $effect(() => {
+    if (!CAN_USE_DOM) return;
+
+    if (!shouldListenMouseMove) {
       $isShownRow = false;
       $isShownColumn = false;
       debouncedOnMouseMove.cancel();
       document.removeEventListener('mousemove', debouncedOnMouseMove);
+      return;
     }
+
+    document.addEventListener('mousemove', debouncedOnMouseMove);
+    return () =>
+      document.removeEventListener('mousemove', debouncedOnMouseMove);
   });
 
   onDestroy(() => {
