@@ -50,7 +50,7 @@
 
   run(() => {
     if ($isEditMode && inputRef) {
-      queueMicrotask(() => inputRef?.focus());
+      inputRef.focus();
     }
   });
 
@@ -197,10 +197,7 @@
         setFloatingElemPositionForLinkEditor(domRect, editorElem, anchorElem);
       }
       lastSelection = selection;
-    } else if (
-      !$isEditMode &&
-      (!activeElement || activeElement.className !== 'link-input')
-    ) {
+    } else if (!activeElement || activeElement.className !== 'link-input') {
       if (rootElement !== null) {
         setFloatingElemPositionForLinkEditor(null, editorElem, anchorElem);
       }
@@ -248,12 +245,6 @@
       }
       $isEditMode = false;
     }
-  }
-
-  function enterEditMode(event: MouseEvent) {
-    event.preventDefault();
-    editedLinkUrl = linkUrl;
-    $isEditMode = true;
   }
 </script>
 
@@ -303,8 +294,12 @@
           class="link-edit"
           role="button"
           tabIndex={0}
-          onmousedown={enterEditMode}
-          onclick={enterEditMode}>
+          onmousedown={preventDefault}
+          onclick={(event) => {
+            event.preventDefault();
+            editedLinkUrl = linkUrl;
+            $isEditMode = true;
+          }}>
         </div>
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div
