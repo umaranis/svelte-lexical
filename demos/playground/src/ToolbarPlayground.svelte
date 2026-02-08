@@ -47,12 +47,6 @@
     InsertBlueskyDropDownItem,
   } from 'svelte-lexical';
   import InsertImageDialog from './InsertImageDialog.svelte';
-
-  let columnsDialog: InsertColumnsDialog;
-  let tableDialog: InsertTableDialog;
-  let youtubeDialog: InsertYoutubeDialog;
-  let tweetDialog: InsertTweetDialog;
-  let blueskyDialog: InsertBlueskyDialog;
 </script>
 
 <Toolbar>
@@ -100,12 +94,11 @@
         <InsertDropDown>
           <InsertHRDropDownItem />
           <InsertImageDropDownItem />
-          <InsertColumnLayoutDropDownItem
-            onclick={() => columnsDialog.open()} />
-          <InsertTableDropDownItem onclick={() => tableDialog.open()} />
-          <InsertYoutubeDropDownItem onclick={() => youtubeDialog.open()} />
-          <InsertTweetDropDownItem onclick={() => tweetDialog.open()} />
-          <InsertBlueskyDropDownItem onclick={() => blueskyDialog.open()} />
+          <InsertColumnLayoutDropDownItem />
+          <InsertTableDropDownItem />
+          <InsertYoutubeDropDownItem />
+          <InsertTweetDropDownItem />
+          <InsertBlueskyDropDownItem />
         </InsertDropDown>
         <Divider />
       {/if}
@@ -113,10 +106,10 @@
     <DropDownAlign />
     <!-- dialogs -->
     <InsertImageDialog />
-    <InsertColumnsDialog bind:this={columnsDialog} />
-    <InsertTableDialog bind:this={tableDialog} />
-    <InsertYoutubeDialog bind:this={youtubeDialog} />
-    <InsertTweetDialog bind:this={tweetDialog} />
-    <InsertBlueskyDialog bind:this={blueskyDialog} />
+    <InsertColumnsDialog />
+    <InsertTableDialog />
+    <InsertYoutubeDialog />
+    <InsertTweetDialog />
+    <InsertBlueskyDialog />
   {/snippet}
 </Toolbar>
