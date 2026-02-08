@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import {
     $isCodeNode as isCodeNode,
     CodeNode,
@@ -118,14 +116,17 @@
     );
   });
 
-  run(() => {
-    if (shouldListenMouseMove) {
-      document.addEventListener('mousemove', debouncedOnMouseMove);
-    } else {
+  $effect(() => {
+    if (!shouldListenMouseMove) {
       isShown = false;
       debouncedOnMouseMove.cancel();
       document.removeEventListener('mousemove', debouncedOnMouseMove);
+      return;
     }
+
+    document.addEventListener('mousemove', debouncedOnMouseMove);
+    return () =>
+      document.removeEventListener('mousemove', debouncedOnMouseMove);
   });
 
   let normalizedLang = $derived(normalizeCodeLang(lang));

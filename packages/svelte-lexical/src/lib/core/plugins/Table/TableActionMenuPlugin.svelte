@@ -1,8 +1,6 @@
 <!-- eslint-disable-next-line svelte/no-unused-svelte-ignore -->
 <!--svelte-ignore state_referenced_locally -->
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import {
     $getTableNodeFromLexicalNodeOrThrow as getTableNodeFromLexicalNodeOrThrow,
     $getTableCellNodeFromLexicalNode as getTableCellNodeFromLexicalNode,
@@ -220,11 +218,9 @@
 
   let prevTableCellDOM = $state(tableCellNode);
 
-  run(() => {
-    if (prevTableCellDOM !== tableCellNode) {
-      $isMenuOpen = false;
-    }
-
+  $effect(() => {
+    if (prevTableCellDOM === tableCellNode) return;
+    $isMenuOpen = false;
     prevTableCellDOM = tableCellNode;
   });
 

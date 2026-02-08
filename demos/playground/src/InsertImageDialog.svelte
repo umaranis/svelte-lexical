@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import {onMount, tick} from 'svelte';
   import {
     CloseCircleButton,
@@ -27,7 +25,7 @@
   }
 
   let mode: null | 'url' | 'file' = $state(null);
-  run(() => {
+  $effect(() => {
     if (!showModal) {
       mode = null;
     }

@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {run} from 'svelte/legacy';
-
   import {getActiveEditor} from '$lib/core/composerContext.js';
   import ModalDialog from '../../generic/dialog/ModalDialog.svelte';
   import {FocusEditor, insertTable} from '$lib/core/commands/commands.js';
@@ -12,7 +10,7 @@
   let columns = $state('5');
   let isDisabled = $state(true);
 
-  run(() => {
+  $effect(() => {
     const row = Number(rows);
     const column = Number(columns);
     if (row && row > 0 && row <= 500 && column && column > 0 && column <= 50) {
