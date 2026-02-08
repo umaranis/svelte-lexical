@@ -26,10 +26,10 @@ test.describe('ComponentPicker', () => {
     await initialize({isCollab, page});
     await focusEditor(page);
 
-    // Type slash to trigger component picker
+    // Type slash to trigger the component picker
     await page.keyboard.type('/');
 
-    // Wait for typeahead popover to appear
+    // Wait for the typeahead popover to appear
     await waitForSelector(page, '.typeahead-popover');
 
     // Type to filter for heading
@@ -44,9 +44,7 @@ test.describe('ComponentPicker', () => {
     await assertHTML(
       page,
       html`
-        <h1
-          class="PlaygroundEditorTheme__h1 PlaygroundEditorTheme__ltr"
-          dir="ltr">
+        <h1 class="PlaygroundEditorTheme__h1" dir="auto">
           <span data-lexical-text="true">My Heading</span>
         </h1>
       `,
@@ -62,10 +60,10 @@ test.describe('ComponentPicker', () => {
     await initialize({isCollab, page});
     await focusEditor(page);
 
-    // Type slash to trigger component picker
+    // Type slash to trigger the component picker
     await page.keyboard.type('/');
 
-    // Wait for typeahead popover to appear
+    // Wait for the typeahead popover to appear
     await waitForSelector(page, '.typeahead-popover');
 
     // Type to filter for table
@@ -78,10 +76,11 @@ test.describe('ComponentPicker', () => {
     await assertHTML(
       page,
       html`
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <br />
         </p>
-        <table class="PlaygroundEditorTheme__table">
+
+        <table class="PlaygroundEditorTheme__table" dir="auto">
           <colgroup>
             <col style="width: 92px" />
             <col style="width: 92px" />
@@ -114,7 +113,7 @@ test.describe('ComponentPicker', () => {
             </td>
           </tr>
         </table>
-        <p class="PlaygroundEditorTheme__paragraph">
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
           <br />
         </p>
       `,
