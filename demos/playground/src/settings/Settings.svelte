@@ -45,7 +45,7 @@
         text="Split Screen" />
     {/if}
     <!-- <Switch
-      on:click={() =>
+      onclick={() =>
         settings.setOption('measureTypingPerf', !measureTypingPerf)}
       checked={measureTypingPerf}
       text="Measure Perf" /> -->
@@ -55,7 +55,7 @@
       checked={$settings.showTreeView}
       text="Debug View" />
     <!-- <Switch
-      on:click={() =>
+      onclick={() =>
         settings.setOption(
           'showNestedEditorTreeView',
           !showNestedEditorTreeView,
@@ -70,30 +70,30 @@
       checked={$settings.isRichText}
       text="Rich Text" />
     <!--<Switch
-      on:click={() => settings.setOption('isCharLimit', !isCharLimit)}
+      onclick={() => settings.setOption('isCharLimit', !isCharLimit)}
       checked={isCharLimit}
       text="Char Limit" />
     <Switch
-      on:click={() => settings.setOption('isCharLimitUtf8', !isCharLimitUtf8)}
+      onclick={() => settings.setOption('isCharLimitUtf8', !isCharLimitUtf8)}
       checked={isCharLimitUtf8}
       text="Char Limit (UTF-8)" />
     <Switch
-      on:click={() => settings.setOption('isMaxLength', !isMaxLength)}
+      onclick={() => settings.setOption('isMaxLength', !isMaxLength)}
       checked={isMaxLength}
       text="Max Length" />
     <Switch
-      on:click={() => settings.setOption('isAutocomplete', !isAutocomplete)}
+      onclick={() => settings.setOption('isAutocomplete', !isAutocomplete)}
       checked={isAutocomplete}
       text="Autocomplete" />
     <Switch
-      on:click={() => {
+      onclick={() => {
         settings.setOption('disableBeforeInput', !disableBeforeInput);
         setTimeout(() => window.location.reload(), 500);
       }}
       checked={disableBeforeInput}
       text="Legacy Events" />
     <Switch
-      on:click={() => {
+      onclick={() => {
         settings.setOption('showTableOfContents', !showTableOfContents);
       }}
       checked={showTableOfContents}
