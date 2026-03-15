@@ -78,8 +78,8 @@
     "publint": "^0.3.17",
     "svelte": "^5.45.2",
     "svelte-check": "^4.4.5",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.29.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.0",
     "vite": "^6.3.5",
     "vite-plugin-devtools-json": "^1.0.0",
     "vitest": "^3.0.8"
