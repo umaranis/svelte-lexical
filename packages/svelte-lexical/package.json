@@ -75,7 +75,7 @@
     "jsdom": "^26.0.0",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-svelte": "^3.3.3",
-    "publint": "^0.3.17",
+    "publint": "^0.3.18",
     "svelte": "^5.45.2",
     "svelte-check": "^4.4.5",
     "typescript": "^5.9.3",
