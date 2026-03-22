@@ -93,11 +93,11 @@
   "dependencies": {
     "svelte-lexical": "0.6.4",
     "y-websocket": "1.5.4",
-    "yjs": "13.6.2"
+    "yjs": "13.6.30"
   },
   "size-limit": [
     {
-      "limit": "230 kb",
+      "limit": "232 kb",
       "path": "dist/assets/main-*.js"
     }
   ]

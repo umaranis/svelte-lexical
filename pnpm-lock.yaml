@@ -80,10 +80,10 @@ importers:
         version: link:../../packages/svelte-lexical
       y-websocket:
         specifier: 1.5.4
-        version: 1.5.4(yjs@13.6.2)
+        version: 1.5.4(yjs@13.6.30)
       yjs:
-        specifier: 13.6.2
-        version: 13.6.2
+        specifier: 13.6.30
+        version: 13.6.30
     devDependencies:
       '@playwright/test':
         specifier: 1.49.1
@@ -299,7 +299,7 @@ importers:
         version: 0.40.0
       '@lexical/yjs':
         specifier: 0.40.0
-        version: 0.40.0(yjs@13.6.2)
+        version: 0.40.0(yjs@13.6.30)
       bluesky-post-embed:
         specifier: ^1.0.5
         version: 1.0.5
@@ -314,10 +314,10 @@ importers:
         version: 3.2.5
       y-websocket:
         specifier: 1.5.4
-        version: 1.5.4(yjs@13.6.2)
+        version: 1.5.4(yjs@13.6.30)
       yjs:
-        specifier: 13.6.2
-        version: 13.6.2
+        specifier: 13.6.30
+        version: 13.6.30
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.3.5
@@ -3226,6 +3226,11 @@ packages:
   lexical@0.40.0:
     resolution: {integrity: sha512-wNvd/AY13h/QJYvx565M/FSdRjy0l99W5/MFA2x+mbK3KnKa5BifZbHZ1J4/YssCkdyZhSlLwFkyDaYi7l2Dsw==}
 
+  lib0@0.2.117:
+    resolution: {integrity: sha512-DeXj9X5xDCjgKLU/7RR+/HQEVzuuEUiwldwOGsHK/sfAfELGWEyTcf0x+uOvCvK3O2zPmZePXWL85vtia6GyZw==}
+    engines: {node: '>=16'}
+    hasBin: true
+
   lib0@0.2.93:
     resolution: {integrity: sha512-M5IKsiFJYulS+8Eal8f+zAqf5ckm1vffW0fFDxfgxJ+uiVopvDdd3PxJmz0GsVi3YNO7QCFSq0nAsiDmNhLj9Q==}
     engines: {node: '>=16'}
@@ -5085,8 +5090,8 @@ packages:
   yauzl@2.10.0:
     resolution: {integrity: sha512-p4a9I6X6nu6IhoGmBqAcbJy1mlC4j27vEPZX9F4L4/vZT3Lyq1VkFHw/V/PUcB9Buo+DG3iHkT0x3Qya58zc3g==}
 
-  yjs@13.6.2:
-    resolution: {integrity: sha512-shFc4JI8Hr3NqKYlS09xX6lyQwU3LvQlOXEkHK2aBa1T/luNLf0qHtoujgb9pRPxhIK0uevobHhDw0+AET1Vkw==}
+  yjs@13.6.30:
+    resolution: {integrity: sha512-vv/9h42eCMC81ZHDFswuu/MKzkl/vyq1BhaNGfHyOonwlG4CJbQF4oiBBJPvfdeCt/PlVDWh7Nov9D34YY09uQ==}
     engines: {node: '>=16.0.0', npm: '>=8.0.0'}
 
   yocto-queue@0.1.0:
@@ -5795,12 +5800,12 @@ snapshots:
       '@lexical/selection': 0.40.0
       lexical: 0.40.0
 
-  '@lexical/yjs@0.40.0(yjs@13.6.2)':
+  '@lexical/yjs@0.40.0(yjs@13.6.30)':
     dependencies:
       '@lexical/offset': 0.40.0
       '@lexical/selection': 0.40.0
       lexical: 0.40.0
-      yjs: 13.6.2
+      yjs: 13.6.30
 
   '@mdx-js/mdx@3.1.0(acorn@8.14.0)':
     dependencies:
@@ -8371,6 +8376,10 @@ snapshots:
 
   lexical@0.40.0: {}
 
+  lib0@0.2.117:
+    dependencies:
+      isomorphic.js: 0.2.5
+
   lib0@0.2.93:
     dependencies:
       isomorphic.js: 0.2.5
@@ -10626,27 +10635,27 @@ snapshots:
 
   xxhash-wasm@1.1.0: {}
 
-  y-leveldb@0.1.2(yjs@13.6.2):
+  y-leveldb@0.1.2(yjs@13.6.30):
     dependencies:
       level: 6.0.1
       lib0: 0.2.98
-      yjs: 13.6.2
+      yjs: 13.6.30
     optional: true
 
-  y-protocols@1.0.6(yjs@13.6.2):
+  y-protocols@1.0.6(yjs@13.6.30):
     dependencies:
       lib0: 0.2.93
-      yjs: 13.6.2
+      yjs: 13.6.30
 
-  y-websocket@1.5.4(yjs@13.6.2):
+  y-websocket@1.5.4(yjs@13.6.30):
     dependencies:
       lib0: 0.2.98
       lodash.debounce: 4.0.8
-      y-protocols: 1.0.6(yjs@13.6.2)
-      yjs: 13.6.2
+      y-protocols: 1.0.6(yjs@13.6.30)
+      yjs: 13.6.30
     optionalDependencies:
       ws: 6.2.3
-      y-leveldb: 0.1.2(yjs@13.6.2)
+      y-leveldb: 0.1.2(yjs@13.6.30)
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -10674,9 +10683,9 @@ snapshots:
       buffer-crc32: 0.2.13
       fd-slicer: 1.1.0
 
-  yjs@13.6.2:
+  yjs@13.6.30:
     dependencies:
-      lib0: 0.2.98
+      lib0: 0.2.117
 
   yocto-queue@0.1.0: {}
 
