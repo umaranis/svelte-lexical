@@ -57,7 +57,7 @@
     "svelte": "^5.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/eslintrc": "^3.3.5",
     "@sveltejs/adapter-auto": "^7.0.1",
     "@sveltejs/kit": "^2.20.3",
     "@sveltejs/package": "^2.3.10",
