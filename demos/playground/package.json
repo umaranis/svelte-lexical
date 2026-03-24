@@ -92,8 +92,7 @@
   },
   "dependencies": {
     "svelte-lexical": "0.6.4",
-    "y-websocket": "3.0.0",
-    "@y/websocket-server": "0.1.1",
+    "y-websocket": "2.1.0",
     "yjs": "13.6.30"
   },
   "size-limit": [
