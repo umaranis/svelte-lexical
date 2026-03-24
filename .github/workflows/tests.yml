@@ -24,7 +24,7 @@ jobs:
         browser: ['chromium', 'firefox']
         editor-mode: ['rich-text', 'plain-text']
         events-mode: ['legacy-events', 'modern-events']
-        node-version: [22.22.1]
+        node-version: [24.10.0]
         exclude:
           - events-mode: 'legacy-events'
             browser: 'firefox'
@@ -80,7 +80,7 @@ jobs:
         browser: ['chromium', 'firefox']
         editor-mode: ['rich-text', 'plain-text']
         events-mode: ['modern-events']
-        node-version: [22.22.1]
+        node-version: [24.10.0]
     env:
       CI: true
       E2E_EDITOR_MODE: ${{ matrix.editor-mode }}
@@ -140,7 +140,7 @@ jobs:
         browser: ['chromium', 'firefox', 'webkit']
         editor-mode: ['rich-text', 'plain-text']
         events-mode: ['modern-events']
-        node-version: [22.22.1]
+        node-version: [24.10.0]
     env:
       CI: true
       E2E_EDITOR_MODE: ${{ matrix.editor-mode }}
@@ -194,7 +194,7 @@ jobs:
       fail-fast: false
       matrix:
         browser: ['chromium', 'firefox']
-        node-version: [22.22.1]
+        node-version: [24.10.0]
     env:
       CI: true
     steps:
@@ -243,7 +243,7 @@ jobs:
       fail-fast: false
       matrix:
         browser: ['chromium', 'firefox']
-        node-version: [22.22.1]
+        node-version: [24.10.0]
     env:
       CI: true
     steps:
@@ -299,7 +299,7 @@ jobs:
       fail-fast: false
       matrix:
         browser: ['chromium', 'firefox', 'webkit']
-        node-version: [22.22.1]
+        node-version: [24.10.0]
     env:
       CI: true
     steps:
