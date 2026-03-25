@@ -1,3 +1,5 @@
+<!-- eslint-disable-next-line svelte/no-unused-svelte-ignore -->
+<!-- svelte-ignore state_referenced_locally -->
 <script lang="ts">
   import {mergeRegister} from '@lexical/utils';
   import {createUndoManager, type Binding} from '@lexical/yjs';
