@@ -55,11 +55,11 @@ importers:
         specifier: 5.45.3
         version: 5.45.3
       svelte-check:
-        specifier: ^4.1.5
-        version: 4.1.5(picomatch@4.0.2)(svelte@5.45.3)(typescript@5.8.3)
+        specifier: ^4.4.5
+        version: 4.4.5(picomatch@4.0.2)(svelte@5.45.3)(typescript@5.9.3)
       svelte-preprocess:
         specifier: ^6.0.0
-        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.45.3)(typescript@5.8.3)
+        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.45.3)(typescript@5.9.3)
       tslib:
         specifier: ^2.5.0
         version: 2.6.2
@@ -143,11 +143,11 @@ importers:
         specifier: 5.45.3
         version: 5.45.3
       svelte-check:
-        specifier: ^4.1.5
-        version: 4.1.5(picomatch@4.0.2)(svelte@5.45.3)(typescript@5.8.3)
+        specifier: ^4.4.5
+        version: 4.4.5(picomatch@4.0.3)(svelte@5.45.3)(typescript@5.9.3)
       svelte-preprocess:
         specifier: ^6.0.0
-        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.45.3)(typescript@5.8.3)
+        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.45.3)(typescript@5.9.3)
       tslib:
         specifier: ^2.7.0
         version: 2.7.0
@@ -189,11 +189,11 @@ importers:
         specifier: 5.45.3
         version: 5.45.3
       svelte-check:
-        specifier: ^4.1.5
-        version: 4.1.5(picomatch@4.0.2)(svelte@5.45.3)(typescript@5.8.3)
+        specifier: ^4.4.5
+        version: 4.4.5(picomatch@4.0.3)(svelte@5.45.3)(typescript@5.9.3)
       svelte-preprocess:
         specifier: ^6.0.0
-        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.45.3)(typescript@5.8.3)
+        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.45.3)(typescript@5.9.3)
       tslib:
         specifier: ^2.5.0
         version: 2.6.2
@@ -214,7 +214,7 @@ importers:
         version: link:../../packages/svelte-lexical
       svelte-preprocess:
         specifier: ^6.0.0
-        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.45.3)(typescript@5.8.3)
+        version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.45.3)(typescript@5.9.3)
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^4.0.0
@@ -232,8 +232,8 @@ importers:
         specifier: 5.45.3
         version: 5.45.3
       svelte-check:
-        specifier: ^4.1.5
-        version: 4.1.5(picomatch@4.0.2)(svelte@5.45.3)(typescript@5.8.3)
+        specifier: ^4.4.5
+        version: 4.4.5(picomatch@4.0.3)(svelte@5.45.3)(typescript@5.9.3)
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -330,7 +330,7 @@ importers:
         version: 2.20.3(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.45.3)(vite@6.3.5(@types/node@22.7.4)))(svelte@5.45.3)(vite@6.3.5(@types/node@22.7.4))
       '@sveltejs/package':
         specifier: ^2.3.10
-        version: 2.3.10(svelte@5.45.3)(typescript@5.8.3)
+        version: 2.3.10(svelte@5.45.3)(typescript@5.9.3)
       '@sveltejs/vite-plugin-svelte':
         specifier: ^5.0.3
         version: 5.0.3(svelte@5.45.3)(vite@6.3.5(@types/node@22.7.4))
@@ -380,8 +380,8 @@ importers:
         specifier: 5.45.3
         version: 5.45.3
       svelte-check:
-        specifier: ^4.1.5
-        version: 4.1.5(picomatch@4.0.2)(svelte@5.45.3)(typescript@5.8.3)
+        specifier: ^4.4.5
+        version: 4.4.5(picomatch@4.0.2)(svelte@5.45.3)(typescript@5.9.3)
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -6046,14 +6046,14 @@ snapshots:
       svelte: 5.45.3
       vite: 6.3.5(@types/node@22.7.4)
 
-  '@sveltejs/package@2.3.10(svelte@5.45.3)(typescript@5.8.3)':
+  '@sveltejs/package@2.3.10(svelte@5.45.3)(typescript@5.9.3)':
     dependencies:
       chokidar: 4.0.3
       kleur: 4.1.5
       sade: 1.8.1
       semver: 7.7.1
       svelte: 5.45.3
-      svelte2tsx: 0.7.35(svelte@5.45.3)(typescript@5.8.3)
+      svelte2tsx: 0.7.35(svelte@5.45.3)(typescript@5.9.3)
     transitivePeerDependencies:
       - typescript
 
@@ -7600,9 +7600,9 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.2
 
-  fdir@6.4.6(picomatch@4.0.3):
+  fdir@6.5.0(picomatch@4.0.2):
     optionalDependencies:
-      picomatch: 4.0.3
+      picomatch: 4.0.2
 
   fdir@6.5.0(picomatch@4.0.3):
     optionalDependencies:
@@ -10013,15 +10013,27 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@4.1.5(picomatch@4.0.2)(svelte@5.45.3)(typescript@5.8.3):
+  svelte-check@4.4.5(picomatch@4.0.2)(svelte@5.45.3)(typescript@5.9.3):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 4.0.3
-      fdir: 6.4.6(picomatch@4.0.3)
+      fdir: 6.5.0(picomatch@4.0.2)
       picocolors: 1.1.1
       sade: 1.8.1
       svelte: 5.45.3
-      typescript: 5.8.3
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - picomatch
+
+  svelte-check@4.4.5(picomatch@4.0.3)(svelte@5.45.3)(typescript@5.9.3):
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.25
+      chokidar: 4.0.3
+      fdir: 6.5.0(picomatch@4.0.3)
+      picocolors: 1.1.1
+      sade: 1.8.1
+      svelte: 5.45.3
+      typescript: 5.9.3
     transitivePeerDependencies:
       - picomatch
 
@@ -10036,7 +10048,7 @@ snapshots:
     optionalDependencies:
       svelte: 5.50.2
 
-  svelte-preprocess@6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.45.3)(typescript@5.8.3):
+  svelte-preprocess@6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.45.3)(typescript@5.9.3):
     dependencies:
       svelte: 5.45.3
     optionalDependencies:
@@ -10044,12 +10056,12 @@ snapshots:
       postcss-load-config: 3.1.4(postcss@8.5.3)
       typescript: 5.9.3
 
-  svelte2tsx@0.7.35(svelte@5.45.3)(typescript@5.8.3):
+  svelte2tsx@0.7.35(svelte@5.45.3)(typescript@5.9.3):
     dependencies:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
       svelte: 5.45.3
-      typescript: 5.8.3
+      typescript: 5.9.3
 
   svelte@5.45.3:
     dependencies:
