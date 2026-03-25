@@ -57,7 +57,7 @@
     "svelte": "^5.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/eslintrc": "^3.3.5",
     "@sveltejs/adapter-auto": "^4.0.0",
     "@sveltejs/kit": "^2.20.3",
     "@sveltejs/package": "^2.3.10",
@@ -75,11 +75,11 @@
     "jsdom": "^26.0.0",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-svelte": "^3.3.3",
-    "publint": "^0.3.17",
+    "publint": "^0.3.18",
     "svelte": "5.45.3",
-    "svelte-check": "^4.1.5",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.29.1",
+    "svelte-check": "^4.4.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.0",
     "vite": "^6.3.5",
     "vite-plugin-devtools-json": "^1.0.0",
     "vitest": "^3.0.8"
@@ -114,7 +114,7 @@
     "lexical": "0.40.0",
     "lodash-es": "^4.17.21",
     "prettier": "^3.2.5",
-    "y-websocket": "1.5.4",
-    "yjs": "13.6.2"
+    "y-websocket": "3.0.0",
+    "yjs": "13.6.30"
   }
 }

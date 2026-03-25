@@ -12,7 +12,7 @@
     "check": "svelte-check --tsconfig ./tsconfig.json --fail-on-warnings",
     "lint": "prettier --check . --ignore-path ../../.gitignore && eslint .",
     "size": "pnpm build && size-limit",
-    "collab": "cross-env HOST=localhost PORT=1234 pnpm y-websocket-server",
+    "collab": "cross-env HOST=localhost PORT=1234 pnpm y-websocket",
     "prepare-ci": "pnpm run build-dev",
     "start-test-server": "pnpm preview --port 4000",
     "test-e2e-chromium": "cross-env E2E_BROWSER=chromium playwright test --project=\"chromium\"",
@@ -83,21 +83,21 @@
     "size-limit": "^8.2.6",
     "start-server-and-test": "^2.0.8",
     "svelte": "5.45.3",
-    "svelte-check": "^4.1.5",
+    "svelte-check": "^4.4.5",
     "svelte-preprocess": "^6.0.0",
     "tslib": "^2.7.0",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.29.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.0",
     "vite": "^6.3.5"
   },
   "dependencies": {
     "svelte-lexical": "0.6.4",
-    "y-websocket": "1.5.4",
-    "yjs": "13.6.2"
+    "y-websocket": "2.1.0",
+    "yjs": "13.6.30"
   },
   "size-limit": [
     {
-      "limit": "230 kb",
+      "limit": "232 kb",
       "path": "dist/assets/main-*.js"
     }
   ]
