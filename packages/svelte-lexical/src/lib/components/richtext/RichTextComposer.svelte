@@ -1,3 +1,5 @@
+<!-- eslint-disable-next-line svelte/no-unused-svelte-ignore -->
+<!-- svelte-ignore state_referenced_locally -->
 <script lang="ts">
   import {ListItemNode, ListNode} from '@lexical/list';
   import {HeadingNode, QuoteNode} from '@lexical/rich-text';

@@ -1,3 +1,5 @@
+<!-- eslint-disable-next-line svelte/no-unused-svelte-ignore -->
+<!-- svelte-ignore state_referenced_locally -->
 <script lang="ts">
   import type {Binding, Provider, SyncCursorPositionsFn} from '@lexical/yjs';
   import type {LexicalEditor} from 'lexical';
@@ -136,7 +138,7 @@
     provider.on('status', onStatus);
     provider.on('sync', onSync);
     awareness.on('update', onAwarenessUpdate);
-    // This updates the local editor state when we recieve updates from other clients
+    // This updates the local editor state when we receive updates from other clients
     root.getSharedType().observeDeep(onYjsTreeChanges);
     const removeListener = editor.registerUpdateListener(
       ({

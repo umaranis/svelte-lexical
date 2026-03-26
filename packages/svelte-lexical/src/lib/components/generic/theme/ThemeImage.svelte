@@ -1,4 +1,5 @@
 <script lang="ts">
+  import {onMount} from 'svelte';
   import {themeTracker} from './themeTracker.svelte.js';
 
   interface Props {
@@ -17,11 +18,17 @@
     style = '',
   }: Props = $props();
 
-  // Default to light theme for SSR
-  let src = $state(lightSrc);
+  let src = $derived.by(() => {
+    if (themeTracker.color === 'dark') {
+      return darkSrc;
+    } else {
+      return lightSrc;
+    }
+  });
 
-  // Update source when theme changes or on client-side initialization
-  $effect(() => {
+  // Update source on client-side initialization
+  onMount(() => {
+    src = ''; // this is required to avoid: hydration_attribute_changed (The client value will be ignored in favour of the server value)
     if (themeTracker.color === 'dark') {
       src = darkSrc;
     } else {

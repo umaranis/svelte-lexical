@@ -15,8 +15,9 @@
   }
 
   const {className, format, nodeKey, profile, postKey}: Props = $props();
-  const uri = `at://${profile}/app.bsky.feed.post/${postKey}`;
-  const data = $derived.by(() => fetchPost({uri}));
+  const data = $derived.by(() =>
+    fetchPost({uri: `at://${profile}/app.bsky.feed.post/${postKey}`}),
+  );
 </script>
 
 <BlockWithAlignableContents {className} {format} {nodeKey}>
