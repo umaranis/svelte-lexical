@@ -415,6 +415,8 @@
         style={resizerStyles.right
           ? cssStylesToString(resizerStyles.right)
           : undefined}
+        role="button"
+        tabindex="-1"
         onpointerdown={toggleResize('right')}>
       </div>
       <div
@@ -422,6 +424,8 @@
         style={resizerStyles.bottom
           ? cssStylesToString(resizerStyles.bottom)
           : undefined}
+        role="button"
+        tabindex="-1"
         onpointerdown={toggleResize('bottom')}>
       </div>
     {/if}

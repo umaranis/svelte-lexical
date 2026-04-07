@@ -268,48 +268,64 @@
   {/if}
   <div
     class="image-resizer image-resizer-n"
+    role="button"
+    tabindex="-1"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.north);
     }}>
   </div>
   <div
     class="image-resizer image-resizer-ne"
+    role="button"
+    tabindex="-1"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.north | Direction.east);
     }}>
   </div>
   <div
     class="image-resizer image-resizer-e"
+    role="button"
+    tabindex="-1"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.east);
     }}>
   </div>
   <div
     class="image-resizer image-resizer-se"
+    role="button"
+    tabindex="-1"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.south | Direction.east);
     }}>
   </div>
   <div
     class="image-resizer image-resizer-s"
+    role="button"
+    tabindex="-1"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.south);
     }}>
   </div>
   <div
     class="image-resizer image-resizer-sw"
+    role="button"
+    tabindex="-1"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.south | Direction.west);
     }}>
   </div>
   <div
     class="image-resizer image-resizer-w"
+    role="button"
+    tabindex="-1"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.west);
     }}>
   </div>
   <div
     class="image-resizer image-resizer-nw"
+    role="button"
+    tabindex="-1"
     onpointerdown={(event) => {
       handlePointerDown(event, Direction.north | Direction.west);
     }}>
