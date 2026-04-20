@@ -33,7 +33,7 @@
     FloatingLinkEditorPlugin,
     CodeNode,
     CodeHighlightNode,
-    CodeHighlightPlugin,
+    CodeHighlightPrismPlugin,
     CodeActionMenuPlugin,
     CaptionEditorCollaborationPlugin,
     CaptionEditorHistoryPlugin,
@@ -180,7 +180,7 @@
           {/if}
         </ImagePlugin>
         <LinkPlugin {validateUrl} />
-        <CodeHighlightPlugin />
+        <CodeHighlightPrismPlugin />
         <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
         <TablePlugin hasHorizontalScroll={$settings.tableHorizontalScroll} />
         <TableHoverActionPlugin anchorElem={editorDiv} />

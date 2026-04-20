@@ -25,7 +25,7 @@
     AutoLinkPlugin,
     CodeNode,
     CodeHighlightNode,
-    CodeHighlightPlugin,
+    CodeHighlightPrismPlugin,
     CodeActionMenuPlugin,
     ColumnLayoutPlugin,
     TreeViewPlugin,
@@ -148,7 +148,7 @@
       <LinkPlugin
         {validateUrl}
         attributes={{target: '_blank', rel: 'noopener noreferrer nofollow'}} />
-      <CodeHighlightPlugin />
+      <CodeHighlightPrismPlugin />
       {#if !isSmallWidthViewport}
         <FloatingLinkEditorPlugin anchorElem={editorDiv} />
         <CodeActionMenuPlugin anchorElem={editorDiv} />

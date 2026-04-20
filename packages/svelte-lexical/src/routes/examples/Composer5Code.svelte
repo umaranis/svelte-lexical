@@ -25,7 +25,7 @@
     AutoLinkPlugin,
     CodeNode,
     CodeHighlightNode,
-    CodeHighlightPlugin,
+    CodeHighlightPrismPlugin,
     CodeActionMenuPlugin,
   } from '$lib/index.js';
   import {
@@ -120,7 +120,7 @@
       <ImagePlugin captionsEnabled={false} />
       <AutoLinkPlugin />
       <LinkPlugin {validateUrl} />
-      <CodeHighlightPlugin />
+      <CodeHighlightPrismPlugin />
       {#if !isSmallWidthViewport}
         <FloatingLinkEditorPlugin anchorElem={editorDiv} />
         <CodeActionMenuPlugin anchorElem={editorDiv} />
