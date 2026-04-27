@@ -1,0 +1,76 @@
+---
+title: Code Highlight Plugin
+description: Syntax highlighting for code blocks using Prism or Shiki.
+---
+
+Code blocks can be syntax highlighted using one of two plugins: `CodeHighlightPrismPlugin` (backed by [Prism](https://prismjs.com/)) or `CodeHighlightShikiPlugin` (backed by [Shiki](https://shiki.style/)). Include exactly one of them in your editor.
+
+
+:::note
+To get out of the code block, press `Enter` twice on the last line. Ensure there is no indentation in the last line before pressing `Enter` for the new line to be created outside of the code block.
+:::
+
+## CodeHighlightPrismPlugin
+
+Uses Prism for syntax highlighting.
+
+### Usage
+
+```svelte
+<Composer {initialConfig}>
+  <div class="editor-shell">
+    <ToolbarRichText />
+    <div class="editor-container">
+      <div class="editor-scroller">
+        <div class="editor">
+          <ContentEditable />
+        </div>
+      </div>
+      <RichTextPlugin />
+      <CodeHighlightPrismPlugin />
+    </div>
+  </div>
+</Composer>
+```
+
+## CodeHighlightShikiPlugin
+
+Uses Shiki under the hood. Shiki produces more accurate highlighting and supports a much wider range of themes and languages (including TextMate grammars).
+
+### Usage
+
+```svelte
+<Composer {initialConfig}>
+  <div class="editor-shell">
+    <ToolbarRichText />
+    <div class="editor-container">
+      <div class="editor-scroller">
+        <div class="editor">
+          <ContentEditable />
+        </div>
+      </div>
+      <RichTextPlugin />
+      <CodeHighlightShikiPlugin />
+    </div>
+  </div>
+</Composer>
+```
+
+## Code Block Actions
+
+Both plugins are compatible with `CodeActionMenuPlugin`, which adds **Copy** and **Prettier** action buttons to code blocks. Include it alongside whichever highlight plugin you choose.
+
+```svelte
+<CodeHighlightShikiPlugin />
+<CodeActionMenuPlugin />
+```
+
+## Choosing between Prism and Shiki
+
+| | Prism | Shiki |
+| --- | --- | --- |
+| Plugin | `CodeHighlightPrismPlugin` | `CodeHighlightShikiPlugin` |
+| Highlighting engine | Prism | Shiki / TextMate grammars |
+| Theme support | Limited (no support to change themes in the editor) | Extensive |
+
+Use `CodeHighlightPrismPlugin` for a lightweight setup. Use `CodeHighlightShikiPlugin` when you need richer theme or language support.
