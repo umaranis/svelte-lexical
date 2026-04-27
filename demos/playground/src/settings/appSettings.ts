@@ -28,6 +28,8 @@ export const DEFAULT_SETTINGS = {
   tableCellMerge: true,
   tableCellBackgroundColor: true,
   tableHorizontalScroll: true,
+  isCodeHighlighted: true,
+  isCodeShiki: false,
 };
 
 export type SettingName = keyof typeof DEFAULT_SETTINGS;

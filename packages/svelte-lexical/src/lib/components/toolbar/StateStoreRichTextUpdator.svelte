@@ -45,6 +45,7 @@
     getContext('selectedElementKey');
   const isRTL: Writable<boolean> = getContext('isRTL');
   const codeLanguage: Writable<string> = getContext('codeLanguage');
+  const codeTheme: Writable<string> = getContext('codeTheme');
   const fontSize: Writable<string> = getContext('fontSize');
   const fontFamily: Writable<string> = getContext('fontFamily');
   const fontColor: Writable<string> = getContext('fontColor');
@@ -80,6 +81,8 @@
     if (isCodeNode(element)) {
       const language = element.getLanguage() as keyof typeof CODE_LANGUAGE_MAP;
       $codeLanguage = language ? CODE_LANGUAGE_MAP[language] || language : '';
+      const theme = element.getTheme();
+      $codeTheme = theme || '';
       return;
     }
   }

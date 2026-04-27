@@ -98,6 +98,19 @@
       }}
       checked={showTableOfContents}
       text="Table Of Contents" /> -->
+    <Switch
+      onclick={() => {
+        settings.setOption('isCodeHighlighted', !$settings.isCodeHighlighted);
+      }}
+      checked={$settings.isCodeHighlighted}
+      text="Enable Code Highlighting" />
+
+    <Switch
+      onclick={() => {
+        settings.setOption('isCodeShiki', !$settings.isCodeShiki);
+      }}
+      checked={$settings.isCodeShiki}
+      text="Use Shiki for Code Highlighting" />
   </div>
 {/if}
 

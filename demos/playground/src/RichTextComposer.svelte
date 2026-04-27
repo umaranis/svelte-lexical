@@ -34,6 +34,7 @@
     CodeNode,
     CodeHighlightNode,
     CodeHighlightPrismPlugin,
+    CodeHighlightShikiPlugin,
     CodeActionMenuPlugin,
     CaptionEditorCollaborationPlugin,
     CaptionEditorHistoryPlugin,
@@ -180,7 +181,13 @@
           {/if}
         </ImagePlugin>
         <LinkPlugin {validateUrl} />
-        <CodeHighlightPrismPlugin />
+        {#if $settings.isCodeHighlighted}
+          {#if $settings.isCodeShiki}
+            <CodeHighlightShikiPlugin />
+          {:else}
+            <CodeHighlightPrismPlugin />
+          {/if}
+        {/if}
         <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
         <TablePlugin hasHorizontalScroll={$settings.tableHorizontalScroll} />
         <TableHoverActionPlugin anchorElem={editorDiv} />

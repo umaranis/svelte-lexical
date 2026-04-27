@@ -37,6 +37,7 @@
   setContext('bgColor', writable('#fff'));
   setContext('isRTL', writable(false));
   setContext('codeLanguage', writable(''));
+  setContext('codeTheme', writable('one-light'));
   setContext('isLink', writable(false));
   setContext('isImageCaption', writable(false));
 </script>

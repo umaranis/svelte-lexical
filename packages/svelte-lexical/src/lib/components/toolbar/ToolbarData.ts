@@ -27,6 +27,7 @@ export const INITIAL_TOOLBAR_STATE = {
   canRedo: false,
   canUndo: false,
   codeLanguage: '',
+  codeTheme: '',
   elementFormat: 'left' as ElementFormatType,
   fontColor: '#000',
   fontFamily: 'Arial',

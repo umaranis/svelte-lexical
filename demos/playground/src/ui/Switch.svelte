@@ -35,9 +35,9 @@
 
   .switch label {
     margin-right: 5px;
-    line-height: 24px;
+    line-height: 14px;
     width: 100px;
-    font-size: 14px;
+    font-size: 12px;
     display: inline-block;
     vertical-align: middle;
   }
