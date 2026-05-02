@@ -20,7 +20,6 @@ export {default as LinkPlugin} from './core/plugins/link/LinkPlugin.svelte';
 export {sanitizeUrl, validateUrl} from './core/plugins/link/url.js';
 export {default as FloatingLinkEditorPlugin} from './core/plugins/link/FloatingLinkEditorPlugin.svelte';
 export {default as CodeHighlightPrismPlugin} from './core/plugins/CodeBlock/CodeHighlightPrismPlugin.svelte';
-export {default as CodeHighlightShikiPlugin} from './core/plugins/CodeBlock/CodeHighlightShikiPlugin.svelte';
 export {default as CodeActionMenuPlugin} from './core/plugins/CodeBlock/CodeActionMenuPlugin/CodeActionMenuPlugin.svelte';
 export {default as ColumnLayoutPlugin} from './core/plugins/ColumnsLayout/ColumnLayoutPlugin.svelte';
 export {default as TablePlugin} from './core/plugins/Table/TablePlugin.svelte';
@@ -109,7 +108,6 @@ export {default as FontSizeDropDown} from './components/toolbar/FontSizeDropDown
 export {default as FontSizeEntry} from './components/toolbar/FontSizeEntry.svelte';
 export {default as InsertLink} from './components/toolbar/InsertLink.svelte';
 export {default as CodeLanguageDropDown} from './components/toolbar/CodeLanguageDropDown.svelte';
-export {default as CodeThemeShikiDropDown} from './components/toolbar/CodeThemeShikiDropDown.svelte';
 export {default as MoreStylesDropDown} from './components/toolbar/MoreStylesDropDown/MoreStylesDropDown.svelte';
 export {default as StrikethroughDropDownItem} from './components/toolbar/MoreStylesDropDown/StrikethroughDropDownItem.svelte';
 export {default as SubscriptDropDownItem} from './components/toolbar/MoreStylesDropDown/SubscriptDropDownItem.svelte';

@@ -34,7 +34,6 @@
     CodeNode,
     CodeHighlightNode,
     CodeHighlightPrismPlugin,
-    CodeHighlightShikiPlugin,
     CodeActionMenuPlugin,
     CaptionEditorCollaborationPlugin,
     CaptionEditorHistoryPlugin,
@@ -60,6 +59,7 @@
     TabIndentationPlugin,
     ComponentPickerMenuPlugin,
   } from 'svelte-lexical';
+  import {CodeHighlightShikiPlugin} from 'svelte-lexical/shiki';
   import {prepopulatedRichText} from './prepopulatedRichText';
   import type {SettingsStore} from './settings/settingsStore';
   import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';

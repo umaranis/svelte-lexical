@@ -14,6 +14,10 @@
       "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js"
     },
+    "./shiki": {
+      "types": "./dist/shiki/index.d.ts",
+      "svelte": "./dist/shiki/index.js"
+    },
     "./dist/themes/default": {
       "types": "./dist/themes/default/index.d.ts",
       "svelte": "./dist/themes/default/index.js"
@@ -33,6 +37,13 @@
   },
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "shiki": [
+        "./dist/shiki/index.d.ts"
+      ]
+    }
+  },
   "files": [
     "dist",
     "!dist/**/*.test.*",

@@ -15,7 +15,6 @@
     QuoteDropDrownItem,
     CodeDropDrownItem,
     CodeLanguageDropDown,
-    CodeThemeShikiDropDown,
     FontFamilyDropDown,
     // FontSizeDropDown,
     FontSizeEntry,
@@ -47,6 +46,7 @@
     InsertBlueskyDialog,
     InsertBlueskyDropDownItem,
   } from 'svelte-lexical';
+  import {CodeThemeShikiDropDown} from 'svelte-lexical/shiki';
   import InsertImageDialog from './InsertImageDialog.svelte';
   import {getContext} from 'svelte';
   import type {SettingsStore} from './settings/settingsStore';
