@@ -73,6 +73,10 @@ export default defineConfig({
                   slug: 'guides/plugins/markdown-shortcuts',
                 },
                 {
+                  label: 'Code Highlighting',
+                  slug: 'guides/plugins/code-highlight',
+                },
+                {
                   label: 'Column Layout',
                   slug: 'guides/plugins/column-layout',
                 },

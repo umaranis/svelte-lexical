@@ -22,10 +22,18 @@
     alt="Svelte Lexical!"
     style="margin: 2em; max-width: 800px;" />
   <p>
-    This is the <a href="https://github.com/umaranis/svelte-lexical/">
+    This is the light version of the <a
+      href="https://github.com/umaranis/svelte-lexical/">
       svelte-lexical
     </a>
     <strong>playground.</strong>
+  </p>
+  <p>
+    It includes all plugins except
+    <strong>Shiki Code Highlighter.</strong>
+
+    <strong>Prism</strong>
+    is used instead for code blocks.
   </p>
   <p>
     It demonstrates most of the features of the library. It is also used for

@@ -37,6 +37,10 @@ Uses Prism for syntax highlighting.
 
 Uses Shiki under the hood. Shiki produces more accurate highlighting and supports a much wider range of themes and languages (including TextMate grammars).
 
+:::caution
+Shiki is a larger package and will increase the bundle size of your application significantly. It adds approximately 1.4 MB to the bundle size. Considering the total `svelte-lexical` package size is around 200 KB (including Prism based code highlighting), this is a huge increase. Use it only if you need the richer theme and better language support it provides.
+:::
+
 ### Usage
 
 ```svelte
@@ -72,5 +76,6 @@ Both plugins are compatible with `CodeActionMenuPlugin`, which adds **Copy** and
 | Plugin | `CodeHighlightPrismPlugin` | `CodeHighlightShikiPlugin` |
 | Highlighting engine | Prism | Shiki / TextMate grammars |
 | Theme support | Limited (no support to change themes in the editor) | Extensive |
+| Package size | Few KBs | ~1.4 MB |
 
 Use `CodeHighlightPrismPlugin` for a lightweight setup. Use `CodeHighlightShikiPlugin` when you need richer theme or language support.
