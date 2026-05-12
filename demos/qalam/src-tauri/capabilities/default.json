@@ -1,0 +1,15 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "fs:allow-app-read-recursive",
+    "fs:allow-app-write",
+    "fs:allow-app-meta-recursive",
+    "fs:allow-mkdir",
+    "fs:allow-remove",
+    "fs:allow-exists"
+  ]
+}
