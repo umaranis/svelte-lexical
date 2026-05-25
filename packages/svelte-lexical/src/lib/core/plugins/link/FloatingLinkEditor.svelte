@@ -23,7 +23,6 @@
     $isNodeSelection as isNodeSelection,
   } from 'lexical';
   import {onMount} from 'svelte';
-  import type {Writable} from 'svelte/store';
   import getSelectedNode from '../../../components/toolbar/getSelectionInfo.js';
   import {setFloatingElemPositionForLinkEditor} from './setFloatingElemPositionForLinkEditor.js';
   import {sanitizeUrl} from './url.js';
@@ -34,12 +33,17 @@
   let editedLinkUrl = $state('');
   interface Props {
     editor: LexicalEditor;
-    isLink: Writable<boolean>;
+    isLink: boolean;
     anchorElem: HTMLElement;
-    isEditMode: Writable<boolean>;
+    isEditMode: boolean;
   }
 
-  let {editor, isLink, anchorElem, isEditMode}: Props = $props();
+  let {
+    editor,
+    isLink,
+    anchorElem,
+    isEditMode = $bindable(false),
+  }: Props = $props();
   let lastSelection: BaseSelection | null = null;
 
   function preventDefault(event: KeyboardEvent | MouseEvent): void {
@@ -47,7 +51,7 @@
   }
 
   $effect.pre(() => {
-    if ($isEditMode && inputRef) {
+    if (isEditMode && inputRef) {
       inputRef.focus();
     }
   });
@@ -100,8 +104,8 @@
       editor.registerCommand(
         KEY_ESCAPE_COMMAND,
         () => {
-          if ($isLink) {
-            $isLink = false;
+          if (isLink) {
+            isLink = false;
             return true;
           }
           return false;
@@ -117,9 +121,13 @@
       return;
     }
     const handleBlur = (event: FocusEvent) => {
-      if (!editorElement.contains(event.relatedTarget as Element) && isLink) {
-        $isLink = false;
-        $isEditMode = false;
+      if (
+        !editorElement.contains(event.relatedTarget as Element) &&
+        isLink &&
+        isEditMode
+      ) {
+        // isLink = false; // goes into a race with code that launches link editor
+        isEditMode = false;
       }
     };
     editorElement.addEventListener('focusout', handleBlur);
@@ -141,7 +149,7 @@
       } else {
         linkUrl = '';
       }
-      if ($isEditMode) {
+      if (isEditMode) {
         editedLinkUrl = linkUrl;
       }
     } else if (isNodeSelection(selection)) {
@@ -157,7 +165,7 @@
           linkUrl = '';
         }
       }
-      if ($isEditMode) {
+      if (isEditMode) {
         editedLinkUrl = linkUrl;
       }
     }
@@ -200,7 +208,7 @@
         setFloatingElemPositionForLinkEditor(null, editorElem, anchorElem);
       }
       lastSelection = null;
-      $isEditMode = false;
+      isEditMode = false;
       linkUrl = '';
     }
 
@@ -214,7 +222,7 @@
       handleLinkSubmission(event);
     } else if (event.key === 'Escape') {
       event.preventDefault();
-      $isEditMode = false;
+      isEditMode = false;
     }
   }
 
@@ -241,7 +249,7 @@
           }
         });
       }
-      $isEditMode = false;
+      isEditMode = false;
     }
   }
 </script>
@@ -249,8 +257,8 @@
 <!-- svelte-ignore a11y_interactive_supports_focus -->
 
 <div bind:this={editorRef} class="link-editor">
-  {#if $isLink}
-    {#if $isEditMode}
+  {#if isLink}
+    {#if isEditMode}
       <input
         bind:this={inputRef}
         class="link-input"
@@ -266,7 +274,7 @@
           tabIndex={0}
           onmousedown={preventDefault}
           onclick={() => {
-            $isEditMode = false;
+            isEditMode = false;
           }}>
         </div>
         <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -296,7 +304,7 @@
           onclick={(event) => {
             event.preventDefault();
             editedLinkUrl = linkUrl;
-            $isEditMode = true;
+            isEditMode = true;
           }}>
         </div>
         <!-- svelte-ignore a11y_click_events_have_key_events -->

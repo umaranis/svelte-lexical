@@ -18,7 +18,6 @@
     $isLineBreakNode as isLineBreakNode,
     $isNodeSelection as isNodeSelection,
   } from 'lexical';
-  import {writable} from 'svelte/store';
   import {onMount} from 'svelte';
   import getSelectedNode from '../../../components/toolbar/getSelectionInfo.js';
   import {getEditor} from '../../composerContext.js';
@@ -28,8 +27,8 @@
   let {anchorElem = document.body} = $props();
 
   let activeEditor = $state(editor);
-  const isLink = writable(false);
-  let isEditMode = writable(false);
+  let isLink = $state(false);
+  let isEditMode = $state(false);
 
   function updateToolbar() {
     const selection = getSelection();
@@ -38,7 +37,7 @@
       const focusLinkNode = findMatchingParent(focusNode, isLinkNode);
       const focusAutoLinkNode = findMatchingParent(focusNode, isAutoLinkNode);
       if (!(focusLinkNode || focusAutoLinkNode)) {
-        $isLink = false;
+        isLink = false;
         return;
       }
       const badNode = selection
@@ -57,22 +56,22 @@
           );
         });
       if (!badNode) {
-        $isLink = true;
+        isLink = true;
       } else {
-        $isLink = false;
+        isLink = false;
       }
     } else if (isNodeSelection(selection)) {
       const nodes = selection.getNodes();
       if (nodes.length === 0) {
-        $isLink = false;
+        isLink = false;
         return;
       }
       const node = nodes[0];
       const parent = node.getParent();
       if (isLinkNode(parent) || isLinkNode(node)) {
-        $isLink = true;
+        isLink = true;
       } else {
-        $isLink = false;
+        isLink = false;
       }
     }
   }
@@ -113,7 +112,7 @@
         TOGGLE_LINK_COMMAND,
         (payload) => {
           if (payload === 'https://') {
-            $isEditMode = true;
+            isEditMode = true;
           }
           return false;
         },
@@ -123,4 +122,8 @@
   });
 </script>
 
-<FloatingLinkEditor editor={activeEditor} {isLink} {anchorElem} {isEditMode} />
+<FloatingLinkEditor
+  editor={activeEditor}
+  {isLink}
+  {anchorElem}
+  bind:isEditMode />

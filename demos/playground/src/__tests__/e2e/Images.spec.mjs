@@ -799,6 +799,44 @@ test.describe('Images', () => {
     );
   });
 
+  test('Shows floating link editor when linked image is selected but not when text is selected', async ({
+    page,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
+
+    await focusEditor(page);
+    await page.keyboard.type('Hello World');
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Enter');
+
+    await insertSampleImage(page);
+    await waitForSelector(page, '.editor-image img');
+
+    // Select the image and add a hyperlink
+    await click(page, '.editor-image img');
+    await click(page, '.link');
+    await click(page, '.link-confirm');
+
+    // Put the cursor on the image
+    await click(page, '.editor-image img');
+
+    // Floating link editor should be visible
+    await waitForSelector(page, '.link-editor .link-view');
+
+    // Move cursor to the text
+    await click(page, 'span[data-lexical-text="true"]');
+
+    // Floating link editor should not be visible
+    await expect(page.locator('.link-input .link-view')).not.toBeVisible();
+
+    // Move cursor back to image
+    await click(page, '.editor-image img');
+
+    // Floating link editor should be visible again
+    await waitForSelector(page, '.link-editor .link-view');
+  });
+
   test(`Verifies image dimensions are properly calculated for both SVG and JPG formats`, async ({
     page,
     isPlainText,
