@@ -118,7 +118,7 @@
           <OnChangePlugin
             onChange={handleChange}
             ignoreSelectionChange={true}
-            ignoreHistoryMergeTagChange={false} />
+            ignoreHistoryMergeTagChange={true} />
         </div>
       </div>
     </div>
