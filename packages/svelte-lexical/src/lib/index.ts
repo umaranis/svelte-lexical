@@ -31,6 +31,7 @@ export {default as YoutubePlugin} from './core/plugins/youtube/YoutubePlugin.sve
 export {default as TwitterPlugin} from './core/plugins/twitter/TwitterPlugin.svelte';
 export {default as BlueskyPlugin} from './core/plugins/bluesky/BlueskyPlugin.svelte';
 export {default as OnChangePlugin} from './core/plugins/OnChangePlugin.svelte';
+export {type EditorState} from 'lexical';
 export {default as TabIndentationPlugin} from './core/plugins/TabIndentationPlugin.svelte';
 export {default as ComponentPickerMenuPlugin} from './core/plugins/ComponentPicker/ComponentPickerMenuPlugin.svelte';
 

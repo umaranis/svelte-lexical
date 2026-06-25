@@ -24,7 +24,7 @@
     CodeHighlightPrismPlugin,
   } from 'svelte-lexical';
   import {theme as editorTheme} from 'svelte-lexical/dist/themes/default';
-  import type {EditorState} from 'lexical';
+  import type {EditorState} from 'svelte-lexical';
   import {notesStore} from './notesStore.svelte';
 
   interface Props {
