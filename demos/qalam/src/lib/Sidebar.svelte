@@ -1,9 +1,11 @@
 <script lang="ts">
   import {notesStore, type Note} from './notesStore.svelte';
+  import Settings from './Settings.svelte';
 
   let editingId = $state<string | null>(null);
   let editingTitle = $state('');
   let inputEl = $state<HTMLInputElement | null>(null);
+  let showSettings = $state(false);
 
   function startRename(note: Note) {
     editingId = note.id;
@@ -44,12 +46,20 @@
 <aside class="sidebar">
   <div class="sidebar-header">
     <span class="app-name">Qalam</span>
-    <button
-      class="new-note-btn"
-      onclick={() => notesStore.createNote()}
-      title="New note">
-      +
-    </button>
+    <div class="header-actions">
+      <button
+        class="icon-btn"
+        onclick={() => (showSettings = true)}
+        title="Settings">
+        ⚙
+      </button>
+      <button
+        class="new-note-btn"
+        onclick={() => notesStore.createNote()}
+        title="New note">
+        +
+      </button>
+    </div>
   </div>
 
   <div class="notes-list">
@@ -103,6 +113,10 @@
   </div>
 </aside>
 
+{#if showSettings}
+  <Settings onClose={() => (showSettings = false)} />
+{/if}
+
 <style>
   .sidebar {
     width: 240px;
@@ -132,7 +146,13 @@
     letter-spacing: 0.5px;
   }
 
-  .new-note-btn {
+  .header-actions {
+    display: flex;
+    gap: 6px;
+  }
+
+  .new-note-btn,
+  .icon-btn {
     width: 28px;
     height: 28px;
     border-radius: 6px;
@@ -148,7 +168,12 @@
     transition: background 0.15s;
   }
 
-  .new-note-btn:hover {
+  .icon-btn {
+    font-size: 14px;
+  }
+
+  .new-note-btn:hover,
+  .icon-btn:hover {
     background: #45475a;
   }
 

@@ -168,6 +168,9 @@ function createNotesStore() {
     get notes() {
       return notes;
     },
+    get notesDir() {
+      return notesDir;
+    },
     get activeNoteId() {
       return activeNoteId;
     },
