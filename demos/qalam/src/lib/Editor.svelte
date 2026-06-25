@@ -171,6 +171,10 @@
     padding: 0 24px 24px;
   }
 
+  .editor-wrapper :global(.editor-shell) {
+    margin: 0;
+  }
+
   .editor-inner {
     position: relative;
     min-height: 100%;
