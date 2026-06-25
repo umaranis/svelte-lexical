@@ -7,3 +7,4 @@ packages/*/dist/
 /demos/playground/playwright-report/
 /demos/playground/test-results/
 **/.svelte-kit
+demos/qalam/src-tauri/target/
