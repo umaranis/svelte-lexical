@@ -35,6 +35,7 @@
 
   let {noteId, initialContent, title}: Props = $props();
 
+  // svelte-ignore state_referenced_locally
   let editableTitle = $state(title);
   let saveTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -42,6 +43,7 @@
     editableTitle = title;
   });
 
+  // svelte-ignore state_referenced_locally
   const initialConfig = {
     namespace: 'QalamEditor',
     nodes: [
@@ -55,6 +57,7 @@
       CodeHighlightNode,
       HorizontalRuleNode,
     ],
+    // eslint-disable-next-line no-console
     onError: (error: Error) => console.error(error),
     theme: editorTheme,
     editorState: initialContent || null,

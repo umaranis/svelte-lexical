@@ -90,7 +90,12 @@ function createNotesStore() {
     const filePath = await join(notesDir, `${id}.json`);
     await writeTextFile(filePath, JSON.stringify(noteData, null, 2));
 
-    const newNote: Note = {id, title: 'Untitled', createdAt: now, updatedAt: now};
+    const newNote: Note = {
+      id,
+      title: 'Untitled',
+      createdAt: now,
+      updatedAt: now,
+    };
     notes = [newNote, ...notes];
 
     await openNote(id);
