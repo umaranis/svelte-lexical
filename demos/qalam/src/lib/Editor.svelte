@@ -63,7 +63,10 @@
   function handleChange(editorState: EditorState) {
     if (saveTimer) clearTimeout(saveTimer);
     saveTimer = setTimeout(async () => {
-      await notesStore.saveNoteContent(noteId, JSON.stringify(editorState.toJSON()));
+      await notesStore.saveNoteContent(
+        noteId,
+        JSON.stringify(editorState.toJSON()),
+      );
     }, 800);
   }
 
@@ -98,23 +101,25 @@
   </div>
 
   <Composer {initialConfig}>
-    <ToolbarRichText />
-    <div class="editor-scroller">
-      <div class="editor-inner">
-        <RichTextPlugin />
-        <ContentEditable />
-        <PlaceHolder>Start writing…</PlaceHolder>
-        <HistoryPlugin />
-        <ListPlugin />
-        <CheckListPlugin />
-        <LinkPlugin />
-        <AutoFocusPlugin />
-        <HorizontalRulePlugin />
-        <CodeHighlightPrismPlugin />
-        <OnChangePlugin
-          onChange={handleChange}
-          ignoreSelectionChange={true}
-          ignoreHistoryMergeTagChange={false} />
+    <div class="editor-shell svelte-lexical">
+      <ToolbarRichText />
+      <div class="editor-scroller">
+        <div class="editor-inner">
+          <RichTextPlugin />
+          <ContentEditable />
+          <PlaceHolder>Start writing…</PlaceHolder>
+          <HistoryPlugin />
+          <ListPlugin />
+          <CheckListPlugin />
+          <LinkPlugin />
+          <AutoFocusPlugin />
+          <HorizontalRulePlugin />
+          <CodeHighlightPrismPlugin />
+          <OnChangePlugin
+            onChange={handleChange}
+            ignoreSelectionChange={true}
+            ignoreHistoryMergeTagChange={false} />
+        </div>
       </div>
     </div>
   </Composer>
