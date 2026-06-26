@@ -6,7 +6,6 @@
     ListPlugin,
     CheckListPlugin,
     LinkPlugin,
-    AutoFocusPlugin,
     OnChangePlugin,
     PlaceHolder,
     HeadingNode,
@@ -46,6 +45,7 @@
     CodeActionMenuPlugin,
     FloatingLinkEditorPlugin,
     ComponentPickerMenuPlugin,
+    FocusEditor,
   } from 'svelte-lexical';
   import {CodeHighlightShikiPlugin} from 'svelte-lexical/shiki';
   import {theme as editorTheme} from 'svelte-lexical/dist/themes/default';
@@ -62,12 +62,26 @@
   let {noteId, initialContent, title}: Props = $props();
 
   let editorDiv: HTMLDivElement | undefined = $state();
+  let titleInputEl: HTMLInputElement | undefined = $state();
+  let composerRef: Composer | undefined = $state();
   // svelte-ignore state_referenced_locally
   let editableTitle = $state(title);
+  // svelte-ignore state_referenced_locally
+  const isBlankNote =
+    (title.trim() === '' || title === 'Untitled') && !initialContent;
   let saveTimer: ReturnType<typeof setTimeout> | null = null;
 
   $effect(() => {
     editableTitle = title;
+  });
+
+  $effect(() => {
+    if (isBlankNote) {
+      titleInputEl?.focus();
+      titleInputEl?.select();
+    } else {
+      FocusEditor(composerRef.getEditor());
+    }
   });
 
   // svelte-ignore state_referenced_locally
@@ -121,6 +135,7 @@
     if (e.key === 'Enter') {
       e.preventDefault();
       (e.target as HTMLElement).blur();
+      FocusEditor(composerRef.getEditor());
     }
   }
 </script>
@@ -129,6 +144,7 @@
   <div class="title-bar">
     <input
       class="note-title-input"
+      bind:this={titleInputEl}
       bind:value={editableTitle}
       onblur={handleTitleBlur}
       onkeydown={handleTitleKeydown}
@@ -139,7 +155,7 @@
     {/if}
   </div>
 
-  <Composer {initialConfig}>
+  <Composer {initialConfig} bind:this={composerRef}>
     <div class="editor-shell svelte-lexical">
       <Toolbar />
       <div class="editor-scroller">
@@ -153,7 +169,6 @@
           <LinkPlugin />
           <AutoLinkPlugin />
           <FloatingLinkEditorPlugin anchorElem={editorDiv} />
-          <AutoFocusPlugin />
           <HorizontalRulePlugin />
           <ColumnLayoutPlugin />
           <CodeHighlightShikiPlugin />
