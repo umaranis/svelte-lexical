@@ -39,7 +39,7 @@
       </button>
     </div>
     <div class="dialog-body">
-      <label class="field-label" for="notes-path">Notes directory</label>
+      <label class="field-label" for="notes-path">Notes location</label>
       <div class="path-row">
         <input
           id="notes-path"

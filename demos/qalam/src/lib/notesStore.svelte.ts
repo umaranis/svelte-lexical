@@ -1,12 +1,4 @@
-import {
-  readDir,
-  readTextFile,
-  writeTextFile,
-  exists,
-  mkdir,
-  remove,
-} from '@tauri-apps/plugin-fs';
-import {appDataDir, join} from '@tauri-apps/api/path';
+import {getNotesBackend, type NoteFile} from './notesBackend';
 
 export interface Note {
   id: string;
@@ -15,32 +7,20 @@ export interface Note {
   updatedAt: string;
 }
 
-interface NoteFile {
-  title: string;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
 function createNotesStore() {
+  const backend = getNotesBackend();
+
   let notes = $state<Note[]>([]);
   let activeNoteId = $state<string | null>(null);
   let activeNoteContent = $state<string | null>(null);
-  let notesDir = $state('');
+  let notesLocation = $state('');
   let isLoading = $state(false);
   let isSaving = $state(false);
   let isInitialized = $state(false);
 
   async function init() {
     if (isInitialized) return;
-    const appData = await appDataDir();
-    notesDir = await join(appData, 'qalam');
-
-    const dirExists = await exists(notesDir);
-    if (!dirExists) {
-      await mkdir(notesDir, {recursive: true});
-    }
-
+    notesLocation = await backend.init();
     await loadNotes();
     isInitialized = true;
   }
@@ -48,30 +28,18 @@ function createNotesStore() {
   async function loadNotes() {
     isLoading = true;
     try {
-      const entries = await readDir(notesDir);
-      const noteEntries = entries.filter((e) => e.name?.endsWith('.json'));
-
-      const loaded: Note[] = [];
-      for (const entry of noteEntries) {
-        try {
-          const filePath = await join(notesDir, entry.name!);
-          const raw = await readTextFile(filePath);
-          const data: NoteFile = JSON.parse(raw);
-          loaded.push({
-            id: entry.name!.replace('.json', ''),
-            title: data.title || 'Untitled',
-            createdAt: data.createdAt,
-            updatedAt: data.updatedAt,
-          });
-        } catch {
-          // skip malformed files
-        }
-      }
-
-      notes = loaded.sort(
-        (a, b) =>
-          new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
-      );
+      const entries = await backend.list();
+      notes = entries
+        .map(({id, data}) => ({
+          id,
+          title: data.title || 'Untitled',
+          createdAt: data.createdAt,
+          updatedAt: data.updatedAt,
+        }))
+        .sort(
+          (a, b) =>
+            new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
+        );
     } finally {
       isLoading = false;
     }
@@ -86,9 +54,7 @@ function createNotesStore() {
       createdAt: now,
       updatedAt: now,
     };
-
-    const filePath = await join(notesDir, `${id}.json`);
-    await writeTextFile(filePath, JSON.stringify(noteData, null, 2));
+    await backend.write(id, noteData);
 
     const newNote: Note = {
       id,
@@ -103,9 +69,7 @@ function createNotesStore() {
 
   async function openNote(id: string) {
     try {
-      const filePath = await join(notesDir, `${id}.json`);
-      const raw = await readTextFile(filePath);
-      const data: NoteFile = JSON.parse(raw);
+      const data = await backend.read(id);
       activeNoteId = id;
       activeNoteContent = data.content || null;
     } catch (e) {
@@ -116,15 +80,13 @@ function createNotesStore() {
   async function saveNoteContent(id: string, content: string) {
     isSaving = true;
     try {
-      const filePath = await join(notesDir, `${id}.json`);
-      const raw = await readTextFile(filePath);
-      const data: NoteFile = JSON.parse(raw);
+      const data = await backend.read(id);
       const updated: NoteFile = {
         ...data,
         content,
         updatedAt: new Date().toISOString(),
       };
-      await writeTextFile(filePath, JSON.stringify(updated, null, 2));
+      await backend.write(id, updated);
 
       notes = notes
         .map((n) => (n.id === id ? {...n, updatedAt: updated.updatedAt} : n))
@@ -138,15 +100,13 @@ function createNotesStore() {
   }
 
   async function renameNote(id: string, newTitle: string) {
-    const filePath = await join(notesDir, `${id}.json`);
-    const raw = await readTextFile(filePath);
-    const data: NoteFile = JSON.parse(raw);
+    const data = await backend.read(id);
     const updated: NoteFile = {
       ...data,
       title: newTitle,
       updatedAt: new Date().toISOString(),
     };
-    await writeTextFile(filePath, JSON.stringify(updated, null, 2));
+    await backend.write(id, updated);
 
     notes = notes.map((n) =>
       n.id === id ? {...n, title: newTitle, updatedAt: updated.updatedAt} : n,
@@ -154,8 +114,7 @@ function createNotesStore() {
   }
 
   async function deleteNote(id: string) {
-    const filePath = await join(notesDir, `${id}.json`);
-    await remove(filePath);
+    await backend.remove(id);
     notes = notes.filter((n) => n.id !== id);
 
     if (activeNoteId === id) {
@@ -169,7 +128,7 @@ function createNotesStore() {
       return notes;
     },
     get notesDir() {
-      return notesDir;
+      return notesLocation;
     },
     get activeNoteId() {
       return activeNoteId;
