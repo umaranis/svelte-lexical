@@ -73,6 +73,7 @@ function createNotesStore() {
       activeNoteId = id;
       activeNoteContent = data.content || null;
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(`Failed to open note ${id}:`, e);
     }
   }

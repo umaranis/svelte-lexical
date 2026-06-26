@@ -3,13 +3,11 @@
     Composer,
     ContentEditable,
     RichTextPlugin,
-    HistoryPlugin,
     ListPlugin,
     CheckListPlugin,
     LinkPlugin,
     AutoFocusPlugin,
     OnChangePlugin,
-    ToolbarRichText,
     PlaceHolder,
     HeadingNode,
     QuoteNode,
@@ -20,12 +18,40 @@
     CodeNode,
     CodeHighlightNode,
     HorizontalRuleNode,
+    ImageNode,
+    LayoutContainerNode,
+    LayoutItemNode,
+    TableNode,
+    TableCellNode,
+    TableRowNode,
+    YouTubeNode,
+    TweetNode,
+    BlueskyNode,
+    AutoLinkPlugin,
+    ColumnLayoutPlugin,
+    SharedHistoryPlugin,
+    ImagePlugin,
+    CaptionEditorHistoryPlugin,
     HorizontalRulePlugin,
-    CodeHighlightPrismPlugin,
+    MarkdownShortcutPlugin,
+    ALL_TRANSFORMERS,
+    TablePlugin,
+    TableHoverActionPlugin,
+    TableCellResizerPlugin,
+    TableActionMenuPlugin,
+    YoutubePlugin,
+    TwitterPlugin,
+    BlueskyPlugin,
+    TabIndentationPlugin,
+    CodeActionMenuPlugin,
+    FloatingLinkEditorPlugin,
+    ComponentPickerMenuPlugin,
   } from 'svelte-lexical';
+  import {CodeHighlightShikiPlugin} from 'svelte-lexical/shiki';
   import {theme as editorTheme} from 'svelte-lexical/dist/themes/default';
   import type {EditorState} from 'svelte-lexical';
   import {notesStore} from './notesStore.svelte';
+  import Toolbar from './Toolbar.svelte';
 
   interface Props {
     noteId: string;
@@ -35,6 +61,7 @@
 
   let {noteId, initialContent, title}: Props = $props();
 
+  let editorDiv: HTMLDivElement | undefined = $state();
   // svelte-ignore state_referenced_locally
   let editableTitle = $state(title);
   let saveTimer: ReturnType<typeof setTimeout> | null = null;
@@ -48,14 +75,23 @@
     namespace: 'QalamEditor',
     nodes: [
       HeadingNode,
-      QuoteNode,
       ListNode,
       ListItemNode,
+      QuoteNode,
+      HorizontalRuleNode,
+      ImageNode,
       AutoLinkNode,
       LinkNode,
       CodeNode,
       CodeHighlightNode,
-      HorizontalRuleNode,
+      LayoutContainerNode,
+      LayoutItemNode,
+      TableNode,
+      TableCellNode,
+      TableRowNode,
+      YouTubeNode,
+      TweetNode,
+      BlueskyNode,
     ],
     // eslint-disable-next-line no-console
     onError: (error: Error) => console.error(error),
@@ -105,19 +141,36 @@
 
   <Composer {initialConfig}>
     <div class="editor-shell svelte-lexical">
-      <ToolbarRichText />
+      <Toolbar />
       <div class="editor-scroller">
-        <div class="editor-inner">
+        <div class="editor" bind:this={editorDiv}>
           <RichTextPlugin />
           <ContentEditable />
           <PlaceHolder>Start writing…</PlaceHolder>
-          <HistoryPlugin />
+          <SharedHistoryPlugin />
           <ListPlugin />
           <CheckListPlugin />
           <LinkPlugin />
+          <AutoLinkPlugin />
+          <FloatingLinkEditorPlugin anchorElem={editorDiv} />
           <AutoFocusPlugin />
           <HorizontalRulePlugin />
-          <CodeHighlightPrismPlugin />
+          <ColumnLayoutPlugin />
+          <CodeHighlightShikiPlugin />
+          <CodeActionMenuPlugin anchorElem={editorDiv} />
+          <ImagePlugin>
+            <CaptionEditorHistoryPlugin />
+          </ImagePlugin>
+          <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
+          <TablePlugin hasHorizontalScroll={true} />
+          <TableHoverActionPlugin anchorElem={editorDiv} />
+          <TableCellResizerPlugin />
+          <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
+          <YoutubePlugin />
+          <TwitterPlugin />
+          <BlueskyPlugin />
+          <TabIndentationPlugin />
+          <ComponentPickerMenuPlugin />
           <OnChangePlugin
             onChange={handleChange}
             ignoreSelectionChange={true}
@@ -178,12 +231,12 @@
     margin: 0;
   }
 
-  .editor-inner {
+  .editor {
     position: relative;
     min-height: 100%;
   }
 
-  .editor-inner :global(.editor-input) {
+  .editor :global(.editor-input) {
     min-height: 400px;
     outline: none;
     font-size: 15px;
