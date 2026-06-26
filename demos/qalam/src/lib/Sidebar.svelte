@@ -1,4 +1,6 @@
 <script lang="ts">
+  import {isTauri} from '@tauri-apps/api/core';
+  import {confirm as confirmTauri} from '@tauri-apps/plugin-dialog';
   import {notesStore, type Note} from './notesStore.svelte';
   import Settings from './Settings.svelte';
 
@@ -37,7 +39,10 @@
 
   async function handleDelete(e: MouseEvent, id: string) {
     e.stopPropagation();
-    if (confirm('Delete this note?')) {
+    const confirmed = isTauri()
+      ? await confirmTauri('Delete this note?', {title: 'Qalam'})
+      : confirm('Delete this note?');
+    if (confirmed) {
       await notesStore.deleteNote(id);
     }
   }
