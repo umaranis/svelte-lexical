@@ -252,6 +252,14 @@
     overflow: hidden;
   }
 
+  .editor-wrapper :global(.toolbar) {
+    scrollbar-width: none;
+  }
+
+  .editor-wrapper :global(.toolbar)::-webkit-scrollbar {
+    display: none;
+  }
+
   .editor {
     position: relative;
     min-height: 100%;
