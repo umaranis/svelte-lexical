@@ -223,12 +223,18 @@
 
   .editor-scroller {
     flex: 1;
+    min-height: 0;
     overflow-y: auto;
     padding: 0 24px 24px;
   }
 
   .editor-wrapper :global(.editor-shell) {
     margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .editor {
