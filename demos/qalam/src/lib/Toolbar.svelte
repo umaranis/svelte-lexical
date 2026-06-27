@@ -47,7 +47,7 @@
     InsertBlueskyDropDownItem,
   } from 'svelte-lexical';
   import {CodeThemeShikiDropDown} from 'svelte-lexical/shiki';
-  import {InsertImageDialog} from 'svelte-lexical';
+  import InsertImageDialog from './InsertImageDialog.svelte';
 </script>
 
 <Toolbar>
