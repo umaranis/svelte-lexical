@@ -110,7 +110,7 @@
     // eslint-disable-next-line no-console
     onError: (error: Error) => console.error(error),
     theme: editorTheme,
-    editorState: initialContent || null,
+    editorState: initialContent || undefined,
   };
 
   function handleChange(editorState: EditorState) {
