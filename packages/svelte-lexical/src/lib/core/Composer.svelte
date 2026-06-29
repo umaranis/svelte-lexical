@@ -79,13 +79,18 @@
     });
   });
 
-  setHistoryStateContext(createEmptyHistoryState());
+  const historyState = createEmptyHistoryState();
+  setHistoryStateContext(historyState);
 
   // allows sharing context between plugins and decorator nodes
   createSharedEditorContext();
 
   export function getEditor() {
     return editor;
+  }
+
+  export function getHistoryState() {
+    return historyState;
   }
 </script>
 

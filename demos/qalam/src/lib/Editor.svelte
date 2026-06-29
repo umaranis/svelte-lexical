@@ -46,12 +46,26 @@
     FloatingLinkEditorPlugin,
     ComponentPickerMenuPlugin,
     FocusEditor,
+    CAN_UNDO_COMMAND,
+    CAN_REDO_COMMAND,
+    HISTORY_MERGE_TAG,
+    $getRoot as getRoot,
+    $createParagraphNode as createParagraphNode,
   } from 'svelte-lexical';
   import {CodeHighlightShikiPlugin} from 'svelte-lexical/shiki';
   import {theme as editorTheme} from 'svelte-lexical/dist/themes/default';
-  import type {EditorState} from 'svelte-lexical';
+  import type {EditorState, HistoryState} from 'svelte-lexical';
   import {notesStore} from './notesStore.svelte';
   import Toolbar from './Toolbar.svelte';
+
+  // Keyed by note id, holds each note's undo/redo stacks so switching notes
+  // doesn't lose history. Lives at module scope (not component state) so it
+  // survives even if the Editor component itself remounts (e.g. closing the
+  // last note and opening a new one).
+  const historyCache = new Map<
+    string,
+    Pick<HistoryState, 'undoStack' | 'redoStack'>
+  >();
 
   interface Props {
     noteId: string;
@@ -66,10 +80,12 @@
   let composerRef: Composer | undefined = $state();
   // svelte-ignore state_referenced_locally
   let editableTitle = $state(title);
-  // svelte-ignore state_referenced_locally
-  const isBlankNote =
-    (title.trim() === '' || title === 'Untitled') && !initialContent;
+  let isBlankNote = $derived(
+    (title.trim() === '' || title === 'Untitled') && !initialContent,
+  );
   let saveTimer: ReturnType<typeof setTimeout> | null = null;
+  // svelte-ignore state_referenced_locally
+  let previousNoteId = noteId;
 
   $effect(() => {
     editableTitle = title;
@@ -83,6 +99,65 @@
       FocusEditor(composerRef.getEditor());
     }
   });
+
+  // The editor instance is shared across notes (App.svelte no longer
+  // destroys/remounts Editor on note switch), so switching notes means
+  // swapping the visible content and the active undo/redo stacks in place,
+  // rather than relying on a fresh editor+history per note.
+  $effect(() => {
+    const newNoteId = noteId;
+    const newContent = initialContent;
+    if (newNoteId === previousNoteId) return;
+    const oldNoteId = previousNoteId;
+    previousNoteId = newNoteId;
+    switchNote(oldNoteId, newNoteId, newContent);
+  });
+
+  function switchNote(
+    oldNoteId: string,
+    newNoteId: string,
+    newContent: string | null,
+  ) {
+    const editor = composerRef?.getEditor();
+    const historyState = composerRef?.getHistoryState();
+    if (!editor || !historyState) return;
+
+    // Flush any pending debounced save for the note we're leaving, and clear
+    // the timer so it can't later fire and clobber the next note's save.
+    if (saveTimer) {
+      clearTimeout(saveTimer);
+      saveTimer = null;
+      notesStore.saveNoteContent(
+        oldNoteId,
+        JSON.stringify(editor.getEditorState().toJSON()),
+      );
+    }
+
+    historyCache.set(oldNoteId, {
+      undoStack: historyState.undoStack,
+      redoStack: historyState.redoStack,
+    });
+    const cached = historyCache.get(newNoteId);
+    historyState.undoStack = cached ? cached.undoStack : [];
+    historyState.redoStack = cached ? cached.redoStack : [];
+    editor.dispatchCommand(CAN_UNDO_COMMAND, historyState.undoStack.length > 0);
+    editor.dispatchCommand(CAN_REDO_COMMAND, historyState.redoStack.length > 0);
+
+    if (newContent) {
+      editor.setEditorState(editor.parseEditorState(newContent), {
+        tag: HISTORY_MERGE_TAG,
+      });
+    } else {
+      editor.update(
+        () => {
+          const root = getRoot();
+          root.clear();
+          root.append(createParagraphNode());
+        },
+        {tag: HISTORY_MERGE_TAG},
+      );
+    }
+  }
 
   // svelte-ignore state_referenced_locally
   const initialConfig = {
@@ -114,10 +189,15 @@
   };
 
   function handleChange(editorState: EditorState) {
+    // Capture noteId now: this editor instance is shared across notes, so a
+    // timer scheduled for note A must not save into whatever note is active
+    // by the time it fires (e.g. if the user switches notes within 800ms).
+    const targetNoteId = noteId;
     if (saveTimer) clearTimeout(saveTimer);
     saveTimer = setTimeout(async () => {
+      saveTimer = null;
       await notesStore.saveNoteContent(
-        noteId,
+        targetNoteId,
         JSON.stringify(editorState.toJSON()),
       );
     }, 800);

@@ -13,12 +13,10 @@
   <Sidebar />
   <main class="main-area">
     {#if notesStore.activeNote}
-      {#key notesStore.activeNoteId}
-        <Editor
-          noteId={notesStore.activeNote.id}
-          initialContent={notesStore.activeNoteContent}
-          title={notesStore.activeNote.title} />
-      {/key}
+      <Editor
+        noteId={notesStore.activeNote.id}
+        initialContent={notesStore.activeNoteContent}
+        title={notesStore.activeNote.title} />
     {:else}
       <div class="welcome">
         <div class="welcome-content">

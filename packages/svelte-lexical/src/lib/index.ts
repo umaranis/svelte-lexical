@@ -177,6 +177,8 @@ export {default as RichTextComposer} from './components/richtext/RichTextCompose
 
 export type {EditorThemeClasses, LexicalEditor} from 'lexical';
 export {$createParagraphNode, $createTextNode, $getRoot} from 'lexical';
+export {CAN_UNDO_COMMAND, CAN_REDO_COMMAND, HISTORY_MERGE_TAG} from 'lexical';
+export {createEmptyHistoryState, type HistoryState} from '@lexical/history';
 export {$createHeadingNode, $createQuoteNode} from '@lexical/rich-text';
 export {$createLinkNode} from '@lexical/link';
 export {$createListItemNode, $createListNode} from '@lexical/list';
