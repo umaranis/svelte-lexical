@@ -353,4 +353,9 @@
     color: #2d2d2d;
     caret-color: #6c63ff;
   }
+
+  /* required to avoid transparent link editor */
+  .svelte-lexical :global(.link-editor) {
+    will-change: auto;
+  }
 </style>
