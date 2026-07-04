@@ -104,6 +104,15 @@
     const oldNoteId = previousNoteId;
     previousNoteId = newNoteId;
     switchNote(oldNoteId, newNoteId, newContent);
+    // focus often requires a tick to ensure the editor is fully initialized
+    tick().then(() => {
+      if (isBlankNote) {
+        titleInputEl?.focus();
+        titleInputEl?.select();
+      } else {
+        FocusEditor(composerRef.getEditor());
+      }
+    });
   });
 
   function switchNote(
