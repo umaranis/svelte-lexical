@@ -57,6 +57,7 @@
   import type {EditorState, HistoryState} from 'svelte-lexical';
   import {notesStore} from './notesStore.svelte';
   import Toolbar from './Toolbar.svelte';
+  import {tick} from 'svelte';
 
   // Keyed by note id, holds each note's undo/redo stacks so switching notes
   // doesn't lose history. Lives at module scope (not component state) so it
@@ -91,14 +92,6 @@
     editableTitle = title;
   });
 
-  $effect(() => {
-    if (isBlankNote) {
-      titleInputEl?.focus();
-      titleInputEl?.select();
-    } else {
-      FocusEditor(composerRef.getEditor());
-    }
-  });
 
   // The editor instance is shared across notes (App.svelte no longer
   // destroys/remounts Editor on note switch), so switching notes means
