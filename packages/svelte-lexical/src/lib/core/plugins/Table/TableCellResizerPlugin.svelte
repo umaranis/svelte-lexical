@@ -44,7 +44,7 @@
   let pointerStartPosRef: PointerPosition | null = null;
   let pointerCurrentPos = $state<PointerPosition | null>(null);
 
-  let activeCell = $state<TableDOMCell | null>(null);
+  let activeCell = $state.raw<TableDOMCell | null>(null);
   let draggingDirection = $state<PointerDraggingDirection | null>(null);
 
   const resetState = () => {
