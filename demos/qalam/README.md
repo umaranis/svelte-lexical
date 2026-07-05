@@ -4,6 +4,8 @@ A distraction-free, notes app built with `svelte-lexical`, runnable as a
 desktop app (via [Tauri](https://tauri.app/)) or as a plain web app in the
 browser.
 
+![alt text](docs/Qalam-Screenshot.png)
+
 ## Features
 
 - Rich-text notes editor with headings, lists, checklists, links, tables,
