@@ -18,7 +18,9 @@ export {default as AutoLinkPluginCore} from './core/plugins/AutoLink/AutoLinkPlu
 export {default as AutoLinkPlugin} from './core/plugins/AutoLink/AutoLinkPlugin.svelte';
 export {default as LinkPlugin} from './core/plugins/link/LinkPlugin.svelte';
 export {sanitizeUrl, validateUrl} from './core/plugins/link/url.js';
-export {default as FloatingLinkEditorPlugin} from './core/plugins/link/FloatingLinkEditorPlugin.svelte';
+export { default as FloatingLinkEditorPlugin } from './core/plugins/link/FloatingLinkEditorPlugin.svelte';
+/** @deprecated use CodeHighlightPrismPlugin instead */
+export {default as CodeHighlightPlugin} from './core/plugins/CodeBlock/CodeHighlightPrismPlugin.svelte';
 export {default as CodeHighlightPrismPlugin} from './core/plugins/CodeBlock/CodeHighlightPrismPlugin.svelte';
 export {default as CodeActionMenuPlugin} from './core/plugins/CodeBlock/CodeActionMenuPlugin/CodeActionMenuPlugin.svelte';
 export {default as ColumnLayoutPlugin} from './core/plugins/ColumnsLayout/ColumnLayoutPlugin.svelte';
