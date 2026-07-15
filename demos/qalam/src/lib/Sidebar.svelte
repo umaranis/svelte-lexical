@@ -31,7 +31,8 @@
     const now = new Date();
     const diff = now.getTime() - d.getTime();
     const days = Math.floor(diff / 86400000);
-    if (days === 0) return d.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+    if (days === 0)
+      return d.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
     if (days === 1) return 'Yesterday';
     if (days < 7) return d.toLocaleDateString([], {weekday: 'short'});
     return d.toLocaleDateString([], {month: 'short', day: 'numeric'});
@@ -71,7 +72,11 @@
     {#if notesStore.isLoading}
       <div class="empty-message">Loading notes…</div>
     {:else if notesStore.notes.length === 0}
-      <div class="empty-message">No notes yet.<br />Click + to create one.</div>
+      <div class="empty-message">
+        No notes yet.
+        <br />
+        Click + to create one.
+      </div>
     {:else}
       {#each notesStore.notes as note (note.id)}
         <div
@@ -94,6 +99,7 @@
                 }}
                 onclick={(e) => e.stopPropagation()} />
             {:else}
+              <!-- svelte-ignore a11y_no_static_element_interactions -->
               <span
                 class="note-title"
                 ondblclick={(e) => {
