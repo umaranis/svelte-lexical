@@ -47,10 +47,10 @@
     InsertBlueskyDropDownItem,
   } from 'svelte-lexical';
   import InsertImageDialog from './InsertImageDialog.svelte';
-  import {getContext} from 'svelte';
-  import type {SettingsStore} from './settings/settingsStore';
+  //import {getContext} from 'svelte';
+  //import type {SettingsStore} from './settings/settingsStore';
 
-  const settings: SettingsStore = getContext('settings');
+  //const settings: SettingsStore = getContext('settings');
 </script>
 
 <Toolbar>

@@ -125,7 +125,7 @@
     "bluesky-post-embed": "^1.0.5",
     "lexical": "0.40.0",
     "lodash-es": "^4.17.21",
-    "prettier": "^3.2.5",
+    "prettier": "^3.4.2",
     "y-websocket": "3.0.0",
     "yjs": "13.6.30"
   }
