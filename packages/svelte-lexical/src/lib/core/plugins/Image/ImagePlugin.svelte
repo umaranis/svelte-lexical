@@ -32,6 +32,13 @@
     getDOMSelectionFromTarget,
   } from 'lexical';
   import {
+    $isAutoLinkNode as isAutoLinkNode,
+    $isLinkNode as isLinkNode,
+    LinkNode,
+    TOGGLE_LINK_COMMAND,
+  } from '@lexical/link';
+  import {
+    $findMatchingParent as findMatchingParent,
     $wrapNodeInElement as wrapNodeInElement,
     isHTMLElement,
     mergeRegister,
@@ -157,6 +164,11 @@
     if (!data) {
       return false;
     }
+    const existingLink = findMatchingParent(
+      node,
+      (parent): parent is LinkNode =>
+        !isAutoLinkNode(parent) && isLinkNode(parent),
+    );
     event.preventDefault();
     if (canDropImage(event)) {
       const range = getDragSelection(event);
@@ -167,6 +179,9 @@
       }
       setSelection(rangeSelection);
       editor.dispatchCommand(INSERT_IMAGE_COMMAND, data);
+      if (existingLink) {
+        editor.dispatchCommand(TOGGLE_LINK_COMMAND, existingLink.getURL());
+      }
     }
     return true;
   }
