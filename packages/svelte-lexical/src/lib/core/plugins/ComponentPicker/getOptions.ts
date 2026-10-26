@@ -16,6 +16,7 @@ import {
 import {$createCodeNode} from '@lexical/code';
 import {INSERT_HORIZONTAL_RULE_COMMAND} from '../HorizontalRuleNode.js';
 import {INSERT_TABLE_COMMAND} from '@lexical/table';
+import {INSERT_DATETIME_COMMAND} from '../DateTime/DateTimeNode.js';
 
 export function getBaseOptions(
   editor: LexicalEditor /*, showModal: ShowModal */,
@@ -134,44 +135,44 @@ export function getBaseOptions(
     //         editor.dispatchCommand(INSERT_EMBED_COMMAND, embedConfig.type),
     //     }),
     // ),
-    // // new ComponentPickerOption('Date', {
-    // //   icon: "icon calendar",
-    // //   keywords: ['date', 'calendar', 'time'],
-    // //   onSelect: () => {
-    // //     const dateTime = new Date();
-    // //     dateTime.setHours(0, 0, 0, 0); // Set time to midnight
-    // //     editor.dispatchCommand(INSERT_DATETIME_COMMAND, {dateTime});
-    // //   },
-    // // }),
-    // new ComponentPickerOption('Today', {
-    //   icon: "icon calendar",
-    //   keywords: ['date', 'calendar', 'time', 'today'],
-    //   onSelect: () => {
-    //     const dateTime = new Date();
-    //     dateTime.setHours(0, 0, 0, 0); // Set time to midnight
-    //     editor.dispatchCommand(INSERT_DATETIME_COMMAND, {dateTime});
-    //   },
-    // }),
-    // new ComponentPickerOption('Tomorrow', {
-    //   icon: "icon calendar",
-    //   keywords: ['date', 'calendar', 'time', 'tomorrow'],
-    //   onSelect: () => {
-    //     const dateTime = new Date();
-    //     dateTime.setDate(dateTime.getDate() + 1);
-    //     dateTime.setHours(0, 0, 0, 0); // Set time to midnight
-    //     editor.dispatchCommand(INSERT_DATETIME_COMMAND, {dateTime});
-    //   },
-    // }),
-    // new ComponentPickerOption('Yesterday', {
-    //   icon: "icon calendar",
-    //   keywords: ['date', 'calendar', 'time', 'yesterday'],
-    //   onSelect: () => {
-    //     const dateTime = new Date();
-    //     dateTime.setDate(dateTime.getDate() - 1);
-    //     dateTime.setHours(0, 0, 0, 0); // Set time to midnight
-    //     editor.dispatchCommand(INSERT_DATETIME_COMMAND, {dateTime});
-    //   },
-    // }),
+    new ComponentPickerOption('Date', {
+      icon: 'icon calendar',
+      keywords: ['date', 'calendar', 'time'],
+      onSelect: () => {
+        const dateTime = new Date();
+        dateTime.setHours(0, 0, 0, 0); // Set time to midnight
+        editor.dispatchCommand(INSERT_DATETIME_COMMAND, {dateTime});
+      },
+    }),
+    new ComponentPickerOption('Today', {
+      icon: 'icon calendar',
+      keywords: ['date', 'calendar', 'time', 'today'],
+      onSelect: () => {
+        const dateTime = new Date();
+        dateTime.setHours(0, 0, 0, 0); // Set time to midnight
+        editor.dispatchCommand(INSERT_DATETIME_COMMAND, {dateTime});
+      },
+    }),
+    new ComponentPickerOption('Tomorrow', {
+      icon: 'icon calendar',
+      keywords: ['date', 'calendar', 'time', 'tomorrow'],
+      onSelect: () => {
+        const dateTime = new Date();
+        dateTime.setDate(dateTime.getDate() + 1);
+        dateTime.setHours(0, 0, 0, 0); // Set time to midnight
+        editor.dispatchCommand(INSERT_DATETIME_COMMAND, {dateTime});
+      },
+    }),
+    new ComponentPickerOption('Yesterday', {
+      icon: 'icon calendar',
+      keywords: ['date', 'calendar', 'time', 'yesterday'],
+      onSelect: () => {
+        const dateTime = new Date();
+        dateTime.setDate(dateTime.getDate() - 1);
+        dateTime.setHours(0, 0, 0, 0); // Set time to midnight
+        editor.dispatchCommand(INSERT_DATETIME_COMMAND, {dateTime});
+      },
+    }),
     // new ComponentPickerOption('Equation', {
     //   icon: "icon equation",
     //   keywords: ['equation', 'latex', 'math'],

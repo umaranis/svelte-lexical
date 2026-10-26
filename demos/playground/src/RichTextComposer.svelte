@@ -56,6 +56,8 @@
     TwitterPlugin,
     BlueskyPlugin,
     BlueskyNode,
+    DateTimePlugin,
+    DateTimeNode,
     TabIndentationPlugin,
     ComponentPickerMenuPlugin,
   } from 'svelte-lexical';
@@ -116,6 +118,7 @@
       YouTubeNode,
       TweetNode,
       BlueskyNode,
+      DateTimeNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -158,6 +161,7 @@
       <KeywordPlugin {keywordsRegex} />
       <HashtagPlugin />
       <AutoLinkPlugin />
+      <DateTimePlugin />
       <ColumnLayoutPlugin />
 
       {#if $settings.isRichText}

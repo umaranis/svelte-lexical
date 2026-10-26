@@ -59,6 +59,8 @@
   import TwitterPlugin from '$lib/core/plugins/twitter/TwitterPlugin.svelte';
   import BlueskyPlugin from '$lib/core/plugins/bluesky/BlueskyPlugin.svelte';
   import {BlueskyNode} from '$lib/core/plugins/bluesky/BlueskyNode.js';
+  import DateTimePlugin from '$lib/core/plugins/DateTime/DateTimePlugin.svelte';
+  import {DateTimeNode} from '$lib/core/plugins/DateTime/DateTimeNode.js';
   import TabIndentationPlugin from '$lib/core/plugins/TabIndentationPlugin.svelte';
   import ComponentPickerMenuPlugin from '$lib/core/plugins/ComponentPicker/ComponentPickerMenuPlugin.svelte';
 
@@ -87,6 +89,7 @@
       YouTubeNode,
       TweetNode,
       BlueskyNode,
+      DateTimeNode,
     ],
     onError: (error: Error) => {
       throw error;
@@ -170,6 +173,7 @@
       <YoutubePlugin />
       <TwitterPlugin />
       <BlueskyPlugin />
+      <DateTimePlugin />
       <TabIndentationPlugin />
       <ComponentPickerMenuPlugin />
 

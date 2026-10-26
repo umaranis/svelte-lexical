@@ -45,6 +45,7 @@
     InsertTweetDialog,
     InsertBlueskyDialog,
     InsertBlueskyDropDownItem,
+    InsertDateTimeDropDownItem,
   } from 'svelte-lexical';
   import {CodeThemeShikiDropDown} from 'svelte-lexical/shiki';
   import InsertImageDialog from './InsertImageDialog.svelte';
@@ -104,6 +105,7 @@
           <InsertImageDropDownItem />
           <InsertColumnLayoutDropDownItem />
           <InsertTableDropDownItem />
+          <InsertDateTimeDropDownItem />
           <InsertYoutubeDropDownItem />
           <InsertTweetDropDownItem />
           <InsertBlueskyDropDownItem />

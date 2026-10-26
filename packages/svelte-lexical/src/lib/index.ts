@@ -32,6 +32,7 @@ export {default as ShortcutsPlugin} from './components/toolbar/ShortcutsPlugin.s
 export {default as YoutubePlugin} from './core/plugins/youtube/YoutubePlugin.svelte';
 export {default as TwitterPlugin} from './core/plugins/twitter/TwitterPlugin.svelte';
 export {default as BlueskyPlugin} from './core/plugins/bluesky/BlueskyPlugin.svelte';
+export {default as DateTimePlugin} from './core/plugins/DateTime/DateTimePlugin.svelte';
 export {default as OnChangePlugin} from './core/plugins/OnChangePlugin.svelte';
 export {type EditorState} from 'lexical';
 export {default as TabIndentationPlugin} from './core/plugins/TabIndentationPlugin.svelte';
@@ -79,6 +80,11 @@ export {TableNode, TableRowNode, TableCellNode} from '@lexical/table';
 export {YouTubeNode} from './core/plugins/youtube/YouTubeNode.js';
 export {TweetNode} from './core/plugins/twitter/TweetNode.js';
 export {BlueskyNode} from './core/plugins/bluesky/BlueskyNode.js';
+export {
+  DateTimeNode,
+  INSERT_DATETIME_COMMAND,
+  type DateTimePayload,
+} from './core/plugins/DateTime/DateTimeNode.js';
 
 // toolbar
 export {default as ToolbarRichText} from './components/richtext/ToolbarRichText.svelte';
@@ -122,6 +128,7 @@ export {default as InsertTableDropDownItem} from './components/toolbar/InsertDro
 export {default as InsertYoutubeDropDownItem} from './components/toolbar/InsertDropDown/InsertYoutubeDropDownItem.svelte';
 export {default as InsertTweetDropDownItem} from './components/toolbar/InsertDropDown/InsertTweetDropDownItem.svelte';
 export {default as InsertBlueskyDropDownItem} from './components/toolbar/InsertDropDown/InsertBlueskyDropDownItem.svelte';
+export {default as InsertDateTimeDropDownItem} from './components/toolbar/InsertDropDown/InsertDateTimeDropDownItem.svelte';
 
 // dialogs
 export {default as InsertImageDialog} from './components/toolbar/dialogs/InsertImageDialog.svelte';
@@ -209,6 +216,10 @@ export {$createImageNode} from './core/plugins/Image/ImageNode.js';
 export {$createYouTubeNode} from './core/plugins/youtube/YouTubeNode.js';
 export {$createTweetNode} from './core/plugins/twitter/TweetNode.js';
 export {$createBlueskyNode} from './core/plugins/bluesky/BlueskyNode.js';
+export {
+  $createDateTimeNode,
+  $isDateTimeNode,
+} from './core/plugins/DateTime/DateTimeNode.js';
 
 // ui components
 export {default as DropDown} from './components/generic/dropdown/DropDown.svelte';

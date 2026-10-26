@@ -47,6 +47,7 @@
   import InsertTweetDropDownItem from '$lib/components/toolbar/InsertDropDown/InsertTweetDropDownItem.svelte';
   import InsertBlueskyDialog from '$lib/components/toolbar/dialogs/InsertBlueskyDialog.svelte';
   import InsertBlueskyDropDownItem from '$lib/components/toolbar/InsertDropDown/InsertBlueskyDropDownItem.svelte';
+  import InsertDateTimeDropDownItem from '$lib/components/toolbar/InsertDropDown/InsertDateTimeDropDownItem.svelte';
 </script>
 
 <Toolbar>
@@ -99,6 +100,7 @@
         <InsertYoutubeDropDownItem />
         <InsertTweetDropDownItem />
         <InsertBlueskyDropDownItem />
+        <InsertDateTimeDropDownItem />
       </InsertDropDown>
       <Divider />
     {/if}

@@ -109,6 +109,10 @@
     background-image: url(/images/icons/bluesky.svg);
   }
 
+  i.calendar {
+    background-image: url(/images/icons/calendar.svg);
+  }
+
   i.youtube {
     background-image: url(/images/icons/youtube.svg);
   }
