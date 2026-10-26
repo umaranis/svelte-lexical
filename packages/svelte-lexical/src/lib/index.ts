@@ -103,6 +103,7 @@ export {default as StateStoreRichTextUpdator} from './components/toolbar/StateSt
 export {default as DropDownAlign} from './components/toolbar/DropDownAlign.svelte';
 export {default as DropDownTextColorPicker} from './components/toolbar/DropDownTextColorPicker.svelte';
 export {default as DropDownBackColorPicker} from './components/toolbar/DropDownBackColorPicker.svelte';
+export {parseAllowedColor} from './components/generic/colorpicker/helpers.js';
 export {default as InsertDropDown} from './components/toolbar/InsertDropDown/InsertDropDown.svelte';
 export {default as InsertHRDropDownItem} from './components/toolbar/InsertDropDown/InsertHRDropDownItem.svelte';
 export {default as InsertImageDropDownItem} from './components/toolbar/InsertDropDown/InsertImageDropDownItem.svelte';
@@ -167,6 +168,8 @@ export {
   MIN_ALLOWED_FONT_SIZE,
   MAX_ALLOWED_FONT_SIZE,
   DEFAULT_FONT_SIZE,
+  parseAllowedFontSize,
+  parseFontSizeForToolbar,
 } from './core/commands/updateFontSize.js';
 
 export {default as ActionBar} from './components/actionbar/ActionBar.svelte';
@@ -177,8 +180,18 @@ export {default as Composer} from './core/Composer.svelte';
 
 export {default as RichTextComposer} from './components/richtext/RichTextComposer.svelte';
 
-export type {EditorThemeClasses, LexicalEditor} from 'lexical';
-export {$createParagraphNode, $createTextNode, $getRoot} from 'lexical';
+export type {
+  DOMConversionMap,
+  EditorThemeClasses,
+  LexicalEditor,
+} from 'lexical';
+export {
+  $createParagraphNode,
+  $createTextNode,
+  $getRoot,
+  $isTextNode,
+  TextNode,
+} from 'lexical';
 export {CAN_UNDO_COMMAND, CAN_REDO_COMMAND, HISTORY_MERGE_TAG} from 'lexical';
 export {
   createEmptyHistoryState,

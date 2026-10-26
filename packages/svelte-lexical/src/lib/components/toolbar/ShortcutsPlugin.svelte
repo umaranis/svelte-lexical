@@ -56,6 +56,7 @@
   import {
     decreaseFontSize,
     increaseFontSize,
+    parseFontSizeForToolbar,
   } from '$lib/core/commands/updateFontSize.js';
 
   const activeEditor = getActiveEditor();
@@ -104,9 +105,15 @@
     } else if (isInsertCodeBlock(event)) {
       $activeEditor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code');
     } else if (isIncreaseFontSize(event)) {
-      increaseFontSize($activeEditor, Number($fontSize.slice(0, -2)));
+      increaseFontSize(
+        $activeEditor,
+        Number(parseFontSizeForToolbar($fontSize).slice(0, -2)),
+      );
     } else if (isDecreaseFontSize(event)) {
-      decreaseFontSize($activeEditor, Number($fontSize.slice(0, -2)));
+      decreaseFontSize(
+        $activeEditor,
+        Number(parseFontSizeForToolbar($fontSize).slice(0, -2)),
+      );
     } else if (isClearFormatting(event)) {
       clearFormatting($activeEditor);
     } else if (isInsertLink(event)) {

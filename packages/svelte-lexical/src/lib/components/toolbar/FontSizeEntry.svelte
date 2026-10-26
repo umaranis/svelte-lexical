@@ -7,6 +7,7 @@
     increaseFontSize,
     MAX_ALLOWED_FONT_SIZE,
     MIN_ALLOWED_FONT_SIZE,
+    parseFontSizeForToolbar,
     updateFontSize,
   } from '$lib/core/commands/updateFontSize.js';
   import {SHORTCUTS} from './shortcuts.js';
@@ -18,7 +19,7 @@
 
   let inputValue = $state('');
   $effect(() => {
-    inputValue = $selectionFontSize.slice(0, -2);
+    inputValue = parseFontSizeForToolbar($selectionFontSize).slice(0, -2);
   });
   let inputChangeFlag = false;
 

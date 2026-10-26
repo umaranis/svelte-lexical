@@ -53,37 +53,37 @@ test.describe('HTML Tables CopyAndPaste', () => {
           <tr>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">a</span>
+                <span style="font-size: 11pt" data-lexical-text="true">a</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">b</span>
+                <span style="font-size: 11pt" data-lexical-text="true">b</span>
               </p>
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">b</span>
+                <span style="font-size: 11pt" data-lexical-text="true">b</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">c</span>
+                <span style="font-size: 11pt" data-lexical-text="true">c</span>
               </p>
             </td>
           </tr>
           <tr>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">d</span>
+                <span style="font-size: 11pt" data-lexical-text="true">d</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">e</span>
+                <span style="font-size: 11pt" data-lexical-text="true">e</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">f</span>
+                <span style="font-size: 11pt" data-lexical-text="true">f</span>
               </p>
             </td>
           </tr>
@@ -115,34 +115,40 @@ test.describe('HTML Tables CopyAndPaste', () => {
           <tr>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">short</span>
+                <span style="font-size: 11pt" data-lexical-text="true">
+                  short
+                </span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">wide</span>
+                <span style="font-size: 11pt" data-lexical-text="true">
+                  wide
+                </span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">default</span>
+                <span style="font-size: 11pt" data-lexical-text="true">
+                  default
+                </span>
               </p>
             </td>
           </tr>
           <tr>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">a</span>
+                <span style="font-size: 11pt" data-lexical-text="true">a</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">b</span>
+                <span style="font-size: 11pt" data-lexical-text="true">b</span>
               </p>
             </td>
             <td class="PlaygroundEditorTheme__tableCell">
               <p class="PlaygroundEditorTheme__paragraph">
-                <span data-lexical-text="true">c</span>
+                <span style="font-size: 11pt" data-lexical-text="true">c</span>
               </p>
             </td>
           </tr>

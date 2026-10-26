@@ -1,5 +1,9 @@
 import {writable} from 'svelte/store';
 
+export function parseAllowedColor(input: string) {
+  return /^rgb\(\d+, \d+, \d+\)$/.test(input) ? input : '';
+}
+
 export const basicColors = [
   '#d0021b',
   '#f5a623',
