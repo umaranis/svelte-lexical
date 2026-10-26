@@ -168,7 +168,7 @@
         isRangeSelection(latestSelection) &&
         latestSelection.getNodes().length === 1
       ) {
-        editor.dispatchCommand(RIGHT_CLICK_IMAGE_COMMAND, event as MouseEvent);
+        editor.dispatchCommand(RIGHT_CLICK_IMAGE_COMMAND, event);
       }
     });
   };

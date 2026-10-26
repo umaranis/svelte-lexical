@@ -129,7 +129,7 @@
                 throw new Error('TableCellResizer: Table element not found.');
               }
 
-              targetRef = target as HTMLElement;
+              targetRef = target;
               tableRectRef = tableElement.getBoundingClientRect();
               activeCell = cell;
             },
