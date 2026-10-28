@@ -100,6 +100,12 @@
   $effect.pre(() => {
     if (options === null) {
       selectedIndex.value = null;
+    } else if (
+      selectedIndex.value !== null &&
+      selectedIndex.value > options.length - 1
+    ) {
+      // Clamp highlighted index if options list shrinks
+      selectedIndex.value = options.length - 1;
     } else if (selectedIndex.value === null && preselectFirstItem) {
       updateSelectedIndex(0);
     }
@@ -132,9 +138,18 @@
                 : selectedIndex.value !== options.length - 1
                   ? selectedIndex.value + 1
                   : 0;
+
             updateSelectedIndex(newSelectedIndex);
+
             const option = options[newSelectedIndex];
-            if (option.ref != null && option.ref) {
+            if (!option) {
+              updateSelectedIndex(-1);
+              event.preventDefault();
+              event.stopImmediatePropagation();
+              return true;
+            }
+
+            if (option.ref) {
               editor.dispatchCommand(
                 SCROLL_TYPEAHEAD_OPTION_INTO_VIEW_COMMAND,
                 {
@@ -161,9 +176,18 @@
                 : selectedIndex.value !== 0
                   ? selectedIndex.value - 1
                   : options.length - 1;
+
             updateSelectedIndex(newSelectedIndex);
+
             const option = options[newSelectedIndex];
-            if (option.ref != null && option.ref) {
+            if (!option) {
+              updateSelectedIndex(-1);
+              event.preventDefault();
+              event.stopImmediatePropagation();
+              return true;
+            }
+
+            if (option.ref) {
               scrollIntoViewIfNeeded(option.ref);
             }
             event.preventDefault();

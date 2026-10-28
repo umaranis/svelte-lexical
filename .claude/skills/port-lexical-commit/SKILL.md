@@ -83,3 +83,4 @@ Provide a commit message: use the repo's conventional-commit style with the upst
 - upstream `[lexical][lexical-extension][*] Feature: Lexical Extension (#7706)` → `feat: Lexical Extension`
 
 Prefixes: `fix:`, `feat:`, `refactor:`, `perf:`, `test:` (only tests ported), `breaking:` (public API change).
+Don't include `Co-Authored-By`.
