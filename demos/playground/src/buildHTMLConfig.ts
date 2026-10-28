@@ -1,6 +1,11 @@
 import {
   $isTextNode,
   type DOMConversionMap,
+  type DOMExportOutputMap,
+  type HTMLConfig,
+  isBlockDomNode,
+  isHTMLElement,
+  ParagraphNode,
   parseAllowedColor,
   parseAllowedFontSize,
   TextNode,
@@ -25,7 +30,7 @@ function getExtraStyles(element: HTMLElement): string {
   return extraStyles;
 }
 
-export function buildImportMap(): DOMConversionMap {
+function buildImportMap(): DOMConversionMap {
   const importMap: DOMConversionMap = {};
 
   // Wrap all TextNode importers with a function that also imports
@@ -69,4 +74,49 @@ export function buildImportMap(): DOMConversionMap {
   }
 
   return importMap;
+}
+
+function buildExportMap(): DOMExportOutputMap {
+  return new Map([
+    [
+      ParagraphNode,
+      (editor, target) => {
+        const output = target.exportDOM(editor);
+        if (isHTMLElement(output.element) && output.element.tagName === 'P') {
+          const after = output.after;
+          return {
+            ...output,
+            after: (generatedElement) => {
+              if (after) {
+                generatedElement = after(generatedElement);
+              }
+              if (
+                isHTMLElement(generatedElement) &&
+                generatedElement.tagName === 'P'
+              ) {
+                for (const childNode of generatedElement.childNodes) {
+                  if (isBlockDomNode(childNode)) {
+                    const div = document.createElement('div');
+                    div.setAttribute('role', 'paragraph');
+                    for (const attr of generatedElement.attributes) {
+                      div.setAttribute(attr.name, attr.value);
+                    }
+                    while (generatedElement.firstChild) {
+                      div.appendChild(generatedElement.firstChild);
+                    }
+                    return div;
+                  }
+                }
+              }
+            },
+          };
+        }
+        return output;
+      },
+    ],
+  ]);
+}
+
+export function buildHTMLConfig(): HTMLConfig {
+  return {export: buildExportMap(), import: buildImportMap()};
 }

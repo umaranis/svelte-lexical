@@ -190,7 +190,9 @@ export {default as RichTextComposer} from './components/richtext/RichTextCompose
 
 export type {
   DOMConversionMap,
+  DOMExportOutputMap,
   EditorThemeClasses,
+  HTMLConfig,
   LexicalEditor,
 } from 'lexical';
 export {
@@ -198,6 +200,9 @@ export {
   $createTextNode,
   $getRoot,
   $isTextNode,
+  isBlockDomNode,
+  isHTMLElement,
+  ParagraphNode,
   TextNode,
 } from 'lexical';
 export {CAN_UNDO_COMMAND, CAN_REDO_COMMAND, HISTORY_MERGE_TAG} from 'lexical';
