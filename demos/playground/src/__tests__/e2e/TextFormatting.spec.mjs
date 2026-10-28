@@ -629,45 +629,46 @@ test.describe.parallel('TextFormatting', () => {
     },
   );
 
-  test.fixme(
-    `Can select text and update font size by entering the value`,
-    async ({page, isPlainText}) => {
-      test.skip(isPlainText);
+  test(`Can select text and update font size by entering the value`, async ({
+    page,
+    isPlainText,
+  }) => {
+    test.skip(isPlainText);
 
-      await focusEditor(page);
-      await page.keyboard.type('Hello world!');
-      await moveLeft(page);
-      await selectCharacters(page, 'left', 5);
+    await focusEditor(page);
+    await page.keyboard.type('Hello world!');
+    await moveLeft(page);
+    await selectCharacters(page, 'left', 5);
 
-      await assertSelection(page, {
-        anchorOffset: 11,
-        anchorPath: [0, 0, 0],
-        focusOffset: 6,
-        focusPath: [0, 0, 0],
-      });
+    await assertSelection(page, {
+      anchorOffset: 11,
+      anchorPath: [0, 0, 0],
+      focusOffset: 6,
+      focusPath: [0, 0, 0],
+    });
 
-      await fill(page, '.font-size-input', '20');
-      await page.keyboard.press('Enter');
+    await click(page, '.sl_font-size-input');
+    await fill(page, '.sl_font-size-input', '20');
+    await page.keyboard.press('Enter');
 
-      await assertHTML(
-        page,
-        html`
-          <p class="PlaygroundEditorTheme__paragraph" dir="auto">
-            <span data-lexical-text="true">Hello</span>
-            <span style="font-size: 20px;" data-lexical-text="true">world</span>
-            <span data-lexical-text="true">!</span>
-          </p>
-        `,
-      );
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+          <span data-lexical-text="true">Hello</span>
+          <span style="font-size: 20px;" data-lexical-text="true">world</span>
+          <span data-lexical-text="true">!</span>
+        </p>
+      `,
+    );
 
-      await assertSelection(page, {
-        anchorOffset: 0,
-        anchorPath: [0, 1, 0],
-        focusOffset: 5,
-        focusPath: [0, 1, 0],
-      });
-    },
-  );
+    await assertSelection(page, {
+      anchorOffset: 0,
+      anchorPath: [0, 1, 0],
+      focusOffset: 5,
+      focusPath: [0, 1, 0],
+    });
+  });
 
   test.fixme(
     `Can select text with different size and update font size by entering the value`,
