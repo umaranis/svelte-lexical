@@ -55,8 +55,8 @@ importers:
         specifier: 5.57.2
         version: 5.57.2(@typescript-eslint/types@8.57.0)
       svelte-check:
-        specifier: ^4.4.6
-        version: 4.4.6(picomatch@4.0.2)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
+        specifier: ^4.7.7
+        version: 4.7.7(picomatch@4.0.2)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
       svelte-preprocess:
         specifier: ^6.0.0
         version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
@@ -143,8 +143,8 @@ importers:
         specifier: 5.57.2
         version: 5.57.2(@typescript-eslint/types@8.57.0)
       svelte-check:
-        specifier: ^4.4.6
-        version: 4.4.6(picomatch@4.0.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
+        specifier: ^4.7.7
+        version: 4.7.7(picomatch@4.0.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
       svelte-preprocess:
         specifier: ^6.0.0
         version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
@@ -231,8 +231,8 @@ importers:
         specifier: 5.57.2
         version: 5.57.2(@typescript-eslint/types@8.57.0)
       svelte-check:
-        specifier: ^4.4.6
-        version: 4.4.6(picomatch@4.0.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
+        specifier: ^4.7.7
+        version: 4.7.7(picomatch@4.0.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
       svelte-preprocess:
         specifier: ^6.0.0
         version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
@@ -280,8 +280,8 @@ importers:
         specifier: 5.57.2
         version: 5.57.2(@typescript-eslint/types@8.57.0)
       svelte-check:
-        specifier: ^4.4.6
-        version: 4.4.6(picomatch@4.0.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
+        specifier: ^4.7.7
+        version: 4.7.7(picomatch@4.0.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
       svelte-preprocess:
         specifier: ^6.0.0
         version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
@@ -323,8 +323,8 @@ importers:
         specifier: 5.57.2
         version: 5.57.2(@typescript-eslint/types@8.57.0)
       svelte-check:
-        specifier: ^4.4.6
-        version: 4.4.6(picomatch@4.0.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
+        specifier: ^4.7.7
+        version: 4.7.7(picomatch@4.0.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
       svelte-preprocess:
         specifier: ^6.0.0
         version: 6.0.3(postcss-load-config@3.1.4(postcss@8.5.3))(postcss@8.5.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
@@ -366,8 +366,8 @@ importers:
         specifier: 5.57.2
         version: 5.57.2(@typescript-eslint/types@8.57.0)
       svelte-check:
-        specifier: ^4.4.6
-        version: 4.4.6(picomatch@4.0.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
+        specifier: ^4.7.7
+        version: 4.7.7(picomatch@4.0.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -517,8 +517,8 @@ importers:
         specifier: 5.57.2
         version: 5.57.2(@typescript-eslint/types@8.57.0)
       svelte-check:
-        specifier: ^4.4.6
-        version: 4.4.6(picomatch@4.0.2)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
+        specifier: ^4.7.7
+        version: 4.7.7(picomatch@4.0.2)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -1534,6 +1534,10 @@ packages:
       '@sveltejs/vite-plugin-svelte': ^3.0.0 || ^4.0.0-next.1 || ^5.0.0
       svelte: ^4.0.0 || ^5.0.0-next.0
       vite: ^5.0.3 || ^6.0.0
+
+  '@sveltejs/load-config@0.2.3':
+    resolution: {integrity: sha512-VT3qmUb8pRV2QrZjd8iAmtg8lf4W0TIjZbvXtz5MKei/q96teWZgGJyyidJzOjzZzvdq616eSRVeMYIQChUTAQ==}
+    engines: {node: '>= 18.0.0'}
 
   '@sveltejs/package@2.3.10':
     resolution: {integrity: sha512-A4fQacgjJ7C/7oSmxR61/TdB14u6ecyMZ8V9JCR5Lol0bLj/PdJPU4uFodFBsKzO3iFiJMpNTgZZ+zYsYZNpUg==}
@@ -4633,13 +4637,13 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  svelte-check@4.4.6:
-    resolution: {integrity: sha512-kP1zG81EWaFe9ZyTv4ZXv44Csi6Pkdpb7S3oj6m+K2ec/IcDg/a8LsFsnVLqm2nxtkSwsd5xPj/qFkTBgXHXjg==}
+  svelte-check@4.7.7:
+    resolution: {integrity: sha512-Ge2IMdeTpbJuzNFGRiiMg0RWgbScysKQu7xwcyFJ22+DU9F5nPX51+Q3gHmGqRxYQMx2knreVWt5oCtfe0vf2g==}
     engines: {node: '>= 18.0.0'}
     hasBin: true
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0-next.0
-      typescript: '>=5.0.0'
+      typescript: ^5.0.0 || ^6.0.0
 
   svelte-eslint-parser@1.0.1:
     resolution: {integrity: sha512-JjdEMXOJqy+dxeaElxbN+meTOtVpHfLnq9VGpiTAOLgM0uHO+ogmUsA3IFgx0x3Wl15pqTZWycCikcD7cAQN/g==}
@@ -6259,6 +6263,8 @@ snapshots:
       sirv: 3.0.1
       svelte: 5.57.2(@typescript-eslint/types@8.57.0)
       vite: 6.3.5(@types/node@22.7.4)
+
+  '@sveltejs/load-config@0.2.3': {}
 
   '@sveltejs/package@2.3.10(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3)':
     dependencies:
@@ -10211,9 +10217,10 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@4.4.6(picomatch@4.0.2)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3):
+  svelte-check@4.7.7(picomatch@4.0.2)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
+      '@sveltejs/load-config': 0.2.3
       chokidar: 4.0.3
       fdir: 6.5.0(picomatch@4.0.2)
       picocolors: 1.1.1
@@ -10223,9 +10230,10 @@ snapshots:
     transitivePeerDependencies:
       - picomatch
 
-  svelte-check@4.4.6(picomatch@4.0.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3):
+  svelte-check@4.7.7(picomatch@4.0.3)(svelte@5.57.2(@typescript-eslint/types@8.57.0))(typescript@5.9.3):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
+      '@sveltejs/load-config': 0.2.3
       chokidar: 4.0.3
       fdir: 6.5.0(picomatch@4.0.3)
       picocolors: 1.1.1
