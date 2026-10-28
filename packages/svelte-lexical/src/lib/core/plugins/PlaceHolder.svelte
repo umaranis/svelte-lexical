@@ -16,6 +16,7 @@
   let canShowPlaceHolder = $state(true);
 
   onMount(() => {
+    canShowPlaceHolder = canShowPlaceholderFromCurrentEditorState(editor);
     return mergeRegister(
       editor.registerUpdateListener(() => {
         canShowPlaceHolder = canShowPlaceholderFromCurrentEditorState(editor);

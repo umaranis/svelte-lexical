@@ -15,6 +15,7 @@
     type LexicalEditor,
     type LexicalCommand,
     $getNodeByKey as getNodeByKey,
+    $getRoot as getRoot,
     $isRangeSelection as isRangeSelection,
     createCommand,
     SELECTION_CHANGE_COMMAND,
@@ -37,7 +38,7 @@
   import ContentEditable from '../../ContentEditable.svelte';
   import RichTextPlugin from '../RichTextPlugin.svelte';
   import PlaceHolder from '../PlaceHolder.svelte';
-  import AutoFocusPlugin from '../AutoFocusPlugin.svelte';
+  import DisableCaptionOnBlur from './DisableCaptionOnBlur.svelte';
   import {
     getImageHistoryPluginType,
     getIsEditable,
@@ -231,11 +232,18 @@
     };
   });
 
-  const setShowCaption = () => {
+  const setShowCaption = (show: boolean) => {
     editor.update(() => {
       const node = getNodeByKey(nodeKey);
       if (isImageNode(node)) {
-        node.setShowCaption(true);
+        node.setShowCaption(show);
+        if (show) {
+          node.__caption.update(() => {
+            if (!getSelection()) {
+              getRoot().selectEnd();
+            }
+          });
+        }
       }
     });
   };
@@ -363,7 +371,7 @@
 {#if showCaption}
   <div class="image-caption-container">
     <NestedComposer initialEditor={caption} parentEditor={editor}>
-      <AutoFocusPlugin />
+      <DisableCaptionOnBlur {setShowCaption} />
 
       <!-- {#if isCollabActive}
         <CollaborationPlugin
