@@ -161,12 +161,14 @@
           anchorElem.getBoundingClientRect();
 
         if (hoveredRowNode) {
+          const isMac = /^mac/i.test(navigator.platform);
+
           $isShownColumn = false;
           $isShownRow = true;
           $position =
             `height: ${BUTTON_WIDTH_PX}px; ` +
             `left: ${tableHasScroll && parentElement ? parentElement.offsetLeft : tableElemLeft - editorElemLeft}px; ` +
-            `top: ${tableElemBottom - editorElemY + 5}px; ` +
+            `top: ${tableElemBottom - editorElemY + (tableHasScroll && !isMac ? 16 : 5)}px; ` +
             `width: ${tableHasScroll && parentElement ? parentElement.offsetWidth : tableElemWidth}px;`;
         } else if (hoveredColumnNode) {
           $isShownColumn = true;
