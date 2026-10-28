@@ -106,6 +106,7 @@
     "@lexical/clipboard": "0.40.0",
     "@lexical/code": "0.40.0",
     "@lexical/code-shiki": "0.40.0",
+    "@lexical/extension": "0.40.0",
     "@lexical/file": "0.40.0",
     "@lexical/hashtag": "0.40.0",
     "@lexical/history": "0.40.0",

@@ -1,24 +1,26 @@
 import type {
   DOMConversionMap,
-  DOMExportOutput,
-  LexicalCommand,
-  SerializedLexicalNode,
-  LexicalNode,
   DOMConversionOutput,
   EditorConfig,
   LexicalEditor,
 } from 'lexical';
-import {createCommand, DecoratorNode, $applyNodeReplacement} from 'lexical';
+import {
+  $isHorizontalRuleNode,
+  HorizontalRuleNode as BaseHorizontalRuleNode,
+  INSERT_HORIZONTAL_RULE_COMMAND,
+  type SerializedHorizontalRuleNode,
+} from '@lexical/extension';
+import {$applyNodeReplacement} from 'lexical';
 import HorizontalRuleComponent from './HorizontalRuleComponent.svelte';
-import {addClassNamesToElement} from '@lexical/utils';
 import {mount} from 'svelte';
 
-export type SerializedHorizontalRuleNode = SerializedLexicalNode;
+export {
+  $isHorizontalRuleNode,
+  INSERT_HORIZONTAL_RULE_COMMAND,
+  type SerializedHorizontalRuleNode,
+};
 
-export const INSERT_HORIZONTAL_RULE_COMMAND: LexicalCommand<void> =
-  createCommand('INSERT_HORIZONTAL_RULE_COMMAND');
-
-export class HorizontalRuleNode extends DecoratorNode<unknown> {
+export class HorizontalRuleNode extends BaseHorizontalRuleNode {
   static getType(): string {
     return 'horizontalrule';
   }
@@ -48,36 +50,19 @@ export class HorizontalRuleNode extends DecoratorNode<unknown> {
    */
   static skipDecorateRender = true;
 
-  exportDOM(): DOMExportOutput {
-    return {element: document.createElement('hr')};
-  }
-
-  createDOM(config: EditorConfig, editor: LexicalEditor): HTMLElement {
-    const hr = document.createElement('hr');
-    addClassNamesToElement(hr, config.theme.hr);
+  createDOM(config: EditorConfig, editor?: LexicalEditor): HTMLElement {
+    const hr = super.createDOM(config);
 
     mount(HorizontalRuleComponent, {
       target: hr,
       props: {
         nodeKey: this.__key,
-        editor,
+        editor: editor!,
         self: hr,
       },
     });
 
     return hr;
-  }
-
-  getTextContent(): string {
-    return '\n';
-  }
-
-  isInline(): false {
-    return false;
-  }
-
-  updateDOM(): boolean {
-    return false;
   }
 
   /**
@@ -94,10 +79,4 @@ function convertHorizontalRuleElement(): DOMConversionOutput {
 
 export function $createHorizontalRuleNode(): HorizontalRuleNode {
   return $applyNodeReplacement(new HorizontalRuleNode());
-}
-
-export function $isHorizontalRuleNode(
-  node: LexicalNode | null | undefined,
-): node is HorizontalRuleNode {
-  return node instanceof HorizontalRuleNode;
 }
