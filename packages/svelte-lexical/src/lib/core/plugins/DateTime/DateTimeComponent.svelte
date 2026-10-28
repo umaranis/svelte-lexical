@@ -28,8 +28,31 @@
   let pickerStyle = $state('');
   // svelte-ignore state_referenced_locally
   let selected = $state(dateTime);
-  let includeTime = $state(false);
-  let timeValue = $state('00:00');
+  let includeTime = $state(getInitialIncludeTime());
+  let timeValue = $state(getInitialTimeValue());
+
+  function getInitialIncludeTime() {
+    if (dateTime === undefined) {
+      return false;
+    }
+    const hours = dateTime?.getHours();
+    const minutes = dateTime?.getMinutes();
+    return hours !== 0 || minutes !== 0;
+  }
+
+  function getInitialTimeValue() {
+    if (dateTime === undefined) {
+      return '00:00';
+    }
+    const hours = dateTime?.getHours();
+    const minutes = dateTime?.getMinutes();
+    if (hours !== 0 || minutes !== 0) {
+      return `${hours?.toString().padStart(2, '0')}:${minutes
+        ?.toString()
+        .padStart(2, '0')}`;
+    }
+    return '00:00';
+  }
 
   // svelte-ignore state_referenced_locally
   const isNodeSelected = createNodeSelectionStore(editor, nodeKey);
