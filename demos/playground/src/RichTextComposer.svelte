@@ -197,7 +197,9 @@
             {/if}
           {/if}
           <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
-          <TablePlugin hasHorizontalScroll={$settings.tableHorizontalScroll} />
+          <TablePlugin
+            hasHorizontalScroll={$settings.tableHorizontalScroll}
+            hasNestedTables={$settings.hasNestedTables} />
           <TableHoverActionPlugin anchorElem={editorDiv} />
           <TableCellResizerPlugin />
           <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />

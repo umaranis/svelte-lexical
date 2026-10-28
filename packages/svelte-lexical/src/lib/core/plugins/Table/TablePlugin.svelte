@@ -1,5 +1,6 @@
 <script lang="ts">
   import {getEditor} from '$lib/core/composerContext.js';
+  import {signal} from '@lexical/extension';
   import {
     registerTableCellUnmergeTransform,
     registerTablePlugin,
@@ -26,6 +27,12 @@
      * When `true` (default `false`), tables will be wrapped in a `<div>` to enable horizontal scrolling
      */
     hasHorizontalScroll?: boolean;
+    /**
+     * When `true` (default `false`), nested tables will be allowed.
+     *
+     * @experimental Nested tables are not officially supported.
+     */
+    hasNestedTables?: boolean;
   }
 
   /**
@@ -39,6 +46,7 @@
     hasCellBackgroundColor = true,
     hasTabHandler = true,
     hasHorizontalScroll = false,
+    hasNestedTables = false,
   }: TablePluginProps = $props();
 
   const editor = getEditor();
@@ -47,7 +55,14 @@
     setScrollableTablesActive(editor, hasHorizontalScroll);
   });
 
-  $effect(() => registerTablePlugin(editor));
+  const hasNestedTablesSignal = signal(false);
+  $effect.pre(() => {
+    hasNestedTablesSignal.value = hasNestedTables;
+  });
+
+  $effect(() =>
+    registerTablePlugin(editor, {hasNestedTables: hasNestedTablesSignal}),
+  );
 
   $effect(() => registerTableSelectionObserver(editor, hasTabHandler));
 

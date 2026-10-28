@@ -69,6 +69,12 @@
       }}
       checked={$settings.isRichText}
       text="Rich Text" />
+    <Switch
+      onclick={() => {
+        settings.setOption('hasNestedTables', !$settings.hasNestedTables);
+      }}
+      checked={$settings.hasNestedTables}
+      text="Nested Tables" />
     <!--<Switch
       onclick={() => settings.setOption('isCharLimit', !isCharLimit)}
       checked={isCharLimit}
