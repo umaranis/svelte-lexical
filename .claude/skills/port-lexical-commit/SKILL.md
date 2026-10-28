@@ -51,6 +51,12 @@ Follow the conventions already in the target file — read it before editing.
 
 ## 4. Verify
 
+Build `svelte-lexical` packages only if it has changes:
+
+```bash
+cd packages/svelte-lexical && pnpm package
+```
+
 Only verify packages that have changes:
 
 ```bash
@@ -62,8 +68,7 @@ pnpm size
 If behaviour changed, run the relevant e2e specs. The playground consumes the built package, so build first:
 
 ```bash
-cd packages/svelte-lexical && pnpm package
-cd ../../demos/playground && pnpm run build-dev
+cd demos/playground && pnpm run build-dev
 CI=true E2E_PORT=4000 E2E_BROWSER=chromium fnm exec --using=22 npx playwright test --project=chromium --reporter=line src/__tests__/e2e/<Spec>.spec.mjs
 ```
 
