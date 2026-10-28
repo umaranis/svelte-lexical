@@ -1,19 +1,19 @@
 ---
 name: port-lexical-commit
 disable-model-invocation: true
-description: Port an upstream Lexical commit (from the facebook/lexical checkout at /Users/umar/Projects/lexical) into svelte-lexical — translating React plugins/components to Svelte, adopting logic that moved into @lexical/* packages, and porting e2e tests. Use whenever the user says "/port-lexical-commit <sha>".
+description: Port an upstream Lexical commit (from the facebook/lexical checkout at ../lexical, a sibling of this repo) into svelte-lexical — translating React plugins/components to Svelte, adopting logic that moved into @lexical/* packages, and porting e2e tests. Use whenever the user says "/port-lexical-commit <sha>".
 ---
 
 # Port an upstream Lexical commit
 
 svelte-lexical mirrors Lexical's React bindings and playground in Svelte 5. The core `lexical` / `@lexical/*` packages are consumed from npm (pinned versions in `packages/svelte-lexical/package.json`), so a port is rarely a file copy: it is deciding which parts of the upstream commit already arrive through the dependency, which parts need a Svelte translation, and which parts don't apply at all.
 
-Upstream checkout: `/Users/umar/Projects/lexical`. If the sha isn't found there, stop and flag it to the user.
+Paths below are relative to the svelte-lexical repo root. Upstream checkout: `../lexical` (a sibling of this repo). If the sha isn't found there, stop and flag it to the user.
 
 ## 1. Understand the upstream commit
 
 ```bash
-cd /Users/umar/Projects/lexical
+cd ../lexical
 git show --stat=200 --format='%h %s%n%b' <sha>
 ```
 
@@ -29,12 +29,12 @@ Bucket every changed file:
 | `packages/lexical-playground/__tests__/` | Port to `demos/playground/src/__tests__/` (same file names, `.spec.mjs`). |
 | `flow/`, `.flowconfig`, website docs, `examples/`, devtools, CI, build scripts, lockfiles | Skip. |
 
-**Version check:** compare the commit date/release with the pinned `lexical` version (`grep '"lexical"' packages/svelte-lexical/package.json`; `git -C /Users/umar/Projects/lexical tag --contains <sha> | head -1`). If the pinned version already contains the commit, core changes are already present — confirm by grepping the installed package in `node_modules/.pnpm/@lexical+<pkg>@<ver>/node_modules/@lexical/<pkg>/*.d.ts`. If the pinned version is older, tell the user the port needs a dependency bump first and ask before bumping.
+**Version check:** compare the commit date/release with the pinned `lexical` version (`grep '"lexical"' packages/svelte-lexical/package.json`; `git -C ../lexical tag --contains <sha> | head -1`). If the pinned version already contains the commit, core changes are already present — confirm by grepping the installed package in `node_modules/.pnpm/@lexical+<pkg>@<ver>/node_modules/@lexical/<pkg>/*.d.ts`. If the pinned version is older, tell the user the port needs a dependency bump first and ask before bumping.
 
 ## 2. Find the Svelte counterparts
 
 ```bash
-cd /Users/umar/Projects/svelte-lexical/packages/svelte-lexical
+cd packages/svelte-lexical
 grep -rln '<SymbolOrPluginName>' src/lib
 ```
 
