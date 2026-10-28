@@ -64,8 +64,10 @@ If behaviour changed, run the relevant e2e specs. The playground consumes the bu
 ```bash
 cd packages/svelte-lexical && pnpm package
 cd ../../demos/playground && pnpm run build-dev
-CI=true E2E_PORT=4000 E2E_BROWSER=chromium npx playwright test --project=chromium --reporter=line src/__tests__/e2e/<Spec>.spec.mjs
+CI=true E2E_PORT=4000 E2E_BROWSER=chromium fnm exec --using=22 npx playwright test --project=chromium --reporter=line src/__tests__/e2e/<Spec>.spec.mjs
 ```
+
+Run Playwright under Node 22 (`.nvmrc`) via `fnm exec --using=22`: the agent shell gets fnm's default Node 24, where Playwright 1.52 deadlocks while loading the config and hangs silently forever.
 
 This takes several minutes — run it in the background, and only the specs touching the ported area. Report failures with their output.
 
