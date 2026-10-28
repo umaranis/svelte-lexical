@@ -104,11 +104,11 @@ test.describe('Identation', () => {
           </ul>
           <code
             class="PlaygroundEditorTheme__code"
+            dir="auto"
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="javascript"
-            data-language="javascript"
-            dir="auto">
+            data-language="javascript">
             <span data-lexical-text="true">code</span>
           </code>
           <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
@@ -139,20 +139,20 @@ test.describe('Identation', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(40px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(40px)">
             <span data-lexical-text="true">foo</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(40px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(40px)">
             <span data-lexical-text="true">bar</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(40px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(40px)">
             <span data-lexical-text="true">yar</span>
           </p>
           <ul class="PlaygroundEditorTheme__ul" dir="auto">
@@ -177,17 +177,17 @@ test.describe('Identation', () => {
           </ul>
           <code
             class="PlaygroundEditorTheme__code"
+            dir="auto"
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="javascript"
-            data-language="javascript"
-            dir="auto">
+            data-language="javascript">
             <span data-lexical-text="true">code</span>
           </code>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(40px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(40px)">
             <br />
           </p>
           <table
@@ -209,8 +209,8 @@ test.describe('Identation', () => {
           </table>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(40px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(40px)">
             <br />
           </p>
         `,
@@ -224,20 +224,20 @@ test.describe('Identation', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(80px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(80px)">
             <span data-lexical-text="true">foo</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(80px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(80px)">
             <span data-lexical-text="true">bar</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(80px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(80px)">
             <span data-lexical-text="true">yar</span>
           </p>
           <ul class="PlaygroundEditorTheme__ul" dir="auto">
@@ -268,17 +268,17 @@ test.describe('Identation', () => {
           </ul>
           <code
             class="PlaygroundEditorTheme__code"
+            dir="auto"
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="javascript"
-            data-language="javascript"
-            dir="auto">
+            data-language="javascript">
             <span data-lexical-text="true">code</span>
           </code>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(80px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(80px)">
             <br />
           </p>
           <table
@@ -300,8 +300,8 @@ test.describe('Identation', () => {
           </table>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(80px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(80px)">
             <br />
           </p>
         `,
@@ -315,20 +315,20 @@ test.describe('Identation', () => {
         html`
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(40px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(40px)">
             <span data-lexical-text="true">foo</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(40px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(40px)">
             <span data-lexical-text="true">bar</span>
           </p>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(40px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(40px)">
             <span data-lexical-text="true">yar</span>
           </p>
           <ul class="PlaygroundEditorTheme__ul" dir="auto">
@@ -353,17 +353,17 @@ test.describe('Identation', () => {
           </ul>
           <code
             class="PlaygroundEditorTheme__code"
+            dir="auto"
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="javascript"
-            data-language="javascript"
-            dir="auto">
+            data-language="javascript">
             <span data-lexical-text="true">code</span>
           </code>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(40px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(40px)">
             <br />
           </p>
           <table
@@ -385,8 +385,8 @@ test.describe('Identation', () => {
           </table>
           <p
             class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-            style="padding-inline-start: calc(40px)"
-            dir="auto">
+            dir="auto"
+            style="padding-inline-start: calc(40px)">
             <br />
           </p>
         `,
@@ -423,11 +423,11 @@ test.describe('Identation', () => {
           </ul>
           <code
             class="PlaygroundEditorTheme__code"
+            dir="auto"
             spellcheck="false"
             data-gutter="1"
             data-highlight-language="javascript"
-            data-language="javascript"
-            dir="auto">
+            data-language="javascript">
             <span data-lexical-text="true">code</span>
           </code>
           <p class="PlaygroundEditorTheme__paragraph" dir="auto" style="">
@@ -575,9 +575,9 @@ test.describe('Identation', () => {
 
     await pasteFromClipboard(page, {
       'text/html': html`
-        <p style="padding-inline-start: 1px" dir="auto">hello1</p>
-        <p style="padding-inline-start: 2px" dir="auto">hello2</p>
-        <p style="padding-inline-start: 3px" dir="auto">hello3</p>
+        <p dir="auto" style="padding-inline-start: 1px">hello1</p>
+        <p dir="auto" style="padding-inline-start: 2px">hello2</p>
+        <p dir="auto" style="padding-inline-start: 3px">hello3</p>
       `,
     });
 

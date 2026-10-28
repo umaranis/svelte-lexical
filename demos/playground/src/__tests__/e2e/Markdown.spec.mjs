@@ -402,7 +402,7 @@ test.describe.parallel('Markdown', () => {
     },
     {
       html: html`
-        <ol start="25" dir="auto">
+        <ol dir="auto" start="25">
           <li value="25"><br /></li>
         </ol>
       `,
@@ -886,11 +886,11 @@ test.describe.parallel('Markdown', () => {
       html`
         <code
           class="PlaygroundEditorTheme__code"
+          dir="auto"
           spellcheck="false"
           data-gutter="12"
           data-highlight-language="markdown"
-          data-language="markdown"
-          dir="auto">
+          data-language="markdown">
           <span data-lexical-text="true">Hello</span>
           <br />
           <span
@@ -1179,11 +1179,11 @@ const TYPED_MARKDOWN_HTML = html`
   </ul>
   <code
     class="PlaygroundEditorTheme__code"
+    dir="auto"
     spellcheck="false"
     data-gutter="1"
     data-highlight-language="sql"
-    data-language="sql"
-    dir="auto">
+    data-language="sql">
     <span data-lexical-text="true">Code block</span>
   </code>
   <p class="PlaygroundEditorTheme__paragraph" dir="auto">
@@ -1435,7 +1435,7 @@ const IMPORTED_MARKDOWN_HTML = html`
   <p class="PlaygroundEditorTheme__paragraph" dir="auto">
     <span data-lexical-text="true">.</span>
   </p>
-  <ol class="PlaygroundEditorTheme__ol1" start="31" dir="auto">
+  <ol class="PlaygroundEditorTheme__ol1" dir="auto" start="31">
     <li class="PlaygroundEditorTheme__listItem" value="31">
       <span data-lexical-text="true">Have any starting number</span>
     </li>
@@ -1461,11 +1461,11 @@ const IMPORTED_MARKDOWN_HTML = html`
   </h3>
   <code
     class="PlaygroundEditorTheme__code"
+    dir="auto"
     spellcheck="false"
     data-gutter="123"
     data-highlight-language="javascript"
-    data-language="javascript"
-    dir="auto">
+    data-language="javascript">
     <span class="PlaygroundEditorTheme__tokenComment" data-lexical-text="true">
       // Some comments
     </span>

@@ -340,8 +340,8 @@ test.describe('Toolbar', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph"
-          style="text-align: center"
-          dir="auto">
+          dir="auto"
+          style="text-align: center">
           <span
             class="editor-image"
             contenteditable="false"

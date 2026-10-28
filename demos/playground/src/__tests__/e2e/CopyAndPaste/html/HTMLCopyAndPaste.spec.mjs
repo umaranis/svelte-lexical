@@ -69,11 +69,11 @@ test.describe('HTML CopyAndPaste', () => {
         </p>
         <code
           class="PlaygroundEditorTheme__code"
+          dir="auto"
           spellcheck="false"
           data-gutter="123"
           data-highlight-language="javascript"
-          data-language="javascript"
-          dir="auto">
+          data-language="javascript">
           <span
             class="PlaygroundEditorTheme__tokenAttr"
             data-lexical-text="true">

@@ -155,11 +155,11 @@ test.describe.parallel('Selection', () => {
         </p>
         <code
           class="PlaygroundEditorTheme__code"
+          dir="auto"
           spellcheck="false"
           data-gutter="1"
           data-highlight-language="javascript"
-          data-language="javascript"
-          dir="auto">
+          data-language="javascript">
           <span data-lexical-text="true">Line2</span>
         </code>
       `,

@@ -39,8 +39,8 @@ test.describe('Element format', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph PlaygroundEditorTheme__indent"
-          style="padding-inline-start: calc(80px); text-align: center;"
-          dir="auto">
+          dir="auto"
+          style="padding-inline-start: calc(80px); text-align: center;">
           <span data-lexical-text="true">Hello</span>
           <a class="PlaygroundEditorTheme__link" href="https://lexical.io">
             <span data-lexical-text="true">https://lexical.io</span>
@@ -66,8 +66,8 @@ test.describe('Element format', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph"
-          style="text-align: center"
-          dir="auto">
+          dir="auto"
+          style="text-align: center">
           <br />
         </p>
       `,

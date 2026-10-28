@@ -96,8 +96,8 @@ test.describe('BlockWithAlignableContents', () => {
       html`
         <p
           class="PlaygroundEditorTheme__paragraph"
-          style="text-align: center"
-          dir="auto">
+          dir="auto"
+          style="text-align: center">
           <span data-lexical-text="true">Hello world</span>
         </p>
         <div contenteditable="false" data-lexical-decorator="true">
@@ -116,8 +116,8 @@ test.describe('BlockWithAlignableContents', () => {
         </div>
         <p
           class="PlaygroundEditorTheme__paragraph"
-          style="text-align: center"
-          dir="auto">
+          dir="auto"
+          style="text-align: center">
           <br />
         </p>
       `,
