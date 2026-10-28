@@ -23,6 +23,8 @@ import {
   initialize,
   insertYouTubeEmbed,
   IS_LINUX,
+  keyDownCtrlOrMeta,
+  keyUpCtrlOrMeta,
   pasteFromClipboard,
   test,
   withExclusiveClipboardAccess,
@@ -960,5 +962,58 @@ test.describe('CopyAndPaste', () => {
         `,
       );
     });
+  });
+
+  test('Cut then copy empty selection preserves clipboard', async ({
+    isRichText,
+    page,
+    context,
+  }) => {
+    await focusEditor(page);
+
+    await page.keyboard.type('Hello world');
+
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+          <span data-lexical-text="true">Hello world</span>
+        </p>
+      `,
+    );
+
+    // Select all and cut
+    await selectAll(page);
+    await withExclusiveClipboardAccess(async () => {
+      await keyDownCtrlOrMeta(page);
+      await page.keyboard.press('x');
+      await keyUpCtrlOrMeta(page);
+
+      await assertHTML(
+        page,
+        html`
+          <p class="PlaygroundEditorTheme__paragraph" dir="auto"><br /></p>
+        `,
+      );
+
+      // Copy with a collapsed selection, we expect it to not change the clipboard
+      await keyDownCtrlOrMeta(page);
+      await page.keyboard.press('c');
+      await keyUpCtrlOrMeta(page);
+
+      // Paste what was on the clipboard back into the document
+      await keyDownCtrlOrMeta(page);
+      await page.keyboard.press('v');
+      await keyUpCtrlOrMeta(page);
+    });
+
+    await assertHTML(
+      page,
+      html`
+        <p class="PlaygroundEditorTheme__paragraph" dir="auto">
+          <span data-lexical-text="true">Hello world</span>
+        </p>
+      `,
+    );
   });
 });
