@@ -21,7 +21,7 @@
   let {color, onChange}: Props = $props();
 
   let selfColor = $state(transformColor('hex', color));
-  let inputColor = $state(color);
+  let inputColor = $state(transformColor('hex', color).hex);
   let innerDivRef: HTMLDivElement | null = $state(null);
 
   let saturationPosition = $derived({
@@ -33,11 +33,19 @@
     x: (selfColor.hsv.h / 360) * WIDTH,
   });
 
+  const emitOnChange = (newColor: string) => {
+    // Check if the dropdown is actually active
+    if (innerDivRef !== null && onChange) {
+      onChange(newColor, $skipAddingToHistoryStack);
+    }
+  };
+
   const onSetHex = (hex: string) => {
     inputColor = hex;
     if (/^#[0-9A-Fa-f]{6}$/i.test(hex)) {
       const newColor = transformColor('hex', hex);
       selfColor = newColor;
+      emitOnChange(newColor.hex);
     }
   };
 
@@ -50,6 +58,7 @@
     const newColor = transformColor('hsv', newHsv);
     selfColor = newColor;
     inputColor = newColor.hex;
+    emitOnChange(newColor.hex);
   };
 
   const onMoveHue = ({x}: Position) => {
@@ -58,15 +67,16 @@
 
     selfColor = newColor;
     inputColor = newColor.hex;
+    emitOnChange(newColor.hex);
   };
 
-  // Check if the dropdown is actually active
-  $effect(() => {
-    if (innerDivRef !== null && onChange) {
-      onChange(selfColor.hex, $skipAddingToHistoryStack);
-      inputColor = selfColor.hex;
-    }
-  });
+  const onBasicColorClick = (basicColor: string) => {
+    const newColor = transformColor('hex', basicColor);
+
+    selfColor = newColor;
+    inputColor = newColor.hex;
+    emitOnChange(newColor.hex);
+  };
 
   $effect(() => {
     if (color) {
@@ -90,10 +100,7 @@
         type="button"
         class={basicColor === selfColor.hex ? ' active' : ''}
         style="background-color: {basicColor}"
-        onclick={() => {
-          inputColor = basicColor;
-          selfColor = transformColor('hex', basicColor);
-        }}>
+        onclick={() => onBasicColorClick(basicColor)}>
       </button>
     {/each}
   </div>
