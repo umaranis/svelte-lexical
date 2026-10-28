@@ -9,7 +9,6 @@
 import type {Doc} from 'yjs';
 
 type CollaborationContextType = {
-  clientID: number;
   color: string;
   isCollabActive: boolean;
   name: string;
@@ -37,7 +36,6 @@ const entries = [
 
 const randomEntry = entries[Math.floor(Math.random() * entries.length)];
 const CollaborationContext: CollaborationContextType = {
-  clientID: 0,
   color: randomEntry[1],
   isCollabActive: false,
   name: randomEntry[0],

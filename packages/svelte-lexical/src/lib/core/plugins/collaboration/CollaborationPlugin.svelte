@@ -59,7 +59,6 @@
     yjsDocMap,
     excludedProperties,
   );
-  collabContext.clientID = binding.clientID;
   collabContext.isCollabActive = true;
 
   onMount(() => {
