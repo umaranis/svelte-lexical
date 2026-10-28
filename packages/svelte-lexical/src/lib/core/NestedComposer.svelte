@@ -4,10 +4,8 @@
   import {
     type EditorThemeClasses,
     type LexicalEditor,
-    type LexicalNode,
-    type KlassConstructor,
-    type Transform,
     createSharedNodeState,
+    getTransformSetFromKlass,
   } from 'lexical';
   import {onMount, setContext} from 'svelte';
 
@@ -25,15 +23,6 @@
     initialTheme = null,
     children,
   }: Props = $props();
-
-  function getTransformSetFromKlass(
-    klass: KlassConstructor<typeof LexicalNode>,
-  ): Set<Transform<LexicalNode>> {
-    const transform = klass.transform();
-    return transform !== null
-      ? new Set<Transform<LexicalNode>>([transform])
-      : new Set<Transform<LexicalNode>>();
-  }
 
   setContext('editor', initialEditor);
 
