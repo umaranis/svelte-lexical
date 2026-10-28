@@ -939,6 +939,7 @@ i.page-break,
   display: inline-block;
   position: relative;
   user-select: none;
+  overflow: hidden;
   white-space: nowrap; /* without this, image editor is having extra height (// TODO: see if still required after fully porting lexical) */
 }
 
@@ -978,6 +979,9 @@ i.page-break,
   min-width: 100px;
   color: var(--text-color);
   overflow: hidden;
+  box-sizing: border-box;
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 .editor-shell .editor-image .image-caption-button {

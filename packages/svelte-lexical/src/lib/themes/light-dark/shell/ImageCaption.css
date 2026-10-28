@@ -17,6 +17,9 @@
     min-width: 100px;
     color: var(--text-color);
     overflow: hidden;
+    box-sizing: border-box;
+    max-width: 100%;
+    word-wrap: break-word;
   }
 
   .editor-image .image-caption-button {
