@@ -7,8 +7,9 @@
  */
 
 import type {Doc} from 'yjs';
+import {getContext, setContext} from 'svelte';
 
-type CollaborationContextType = {
+export type CollaborationContextType = {
   color: string;
   isCollabActive: boolean;
   name: string;
@@ -35,19 +36,48 @@ const entries = [
 ];
 
 const randomEntry = entries[Math.floor(Math.random() * entries.length)];
-const CollaborationContext: CollaborationContextType = {
-  color: randomEntry[1],
-  isCollabActive: false,
-  name: randomEntry[0],
-  yjsDocMap: new Map(),
-};
+
+const COLLABORATION_CONTEXT_KEY = Symbol('collaborationContext');
+
+function newContext(): CollaborationContextType {
+  return {
+    color: randomEntry[1],
+    isCollabActive: false,
+    name: randomEntry[0],
+    yjsDocMap: new Map(),
+  };
+}
+
+// This is here to help the transition, however should be removed in a future release as
+// a shared context across editors is likely to lead to bugs.
+const UNSAFE_GLOBAL_CONTEXT = newContext();
+
+/**
+ * Create a new collaboration context and save it in the svelte component context.
+ * Used by `LexicalCollaboration` component.
+ */
+export function setCollaborationContext(): CollaborationContextType {
+  return setContext(COLLABORATION_CONTEXT_KEY, newContext());
+}
+
+export function getCollaborationContext():
+  | CollaborationContextType
+  | undefined {
+  return getContext(COLLABORATION_CONTEXT_KEY);
+}
 
 export function useCollaborationContext(
   username?: string,
   color?: string,
 ): CollaborationContextType {
-  // TODO: should be stored in the svelte component context to avoid conflict with mutliple instances of the editor
-  const collabContext = CollaborationContext;
+  let collabContext = getCollaborationContext();
+  if (collabContext == null) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'useCollaborationContext: no context provider found, wrap the editor in LexicalCollaboration component',
+    );
+    collabContext = UNSAFE_GLOBAL_CONTEXT;
+  }
 
   if (username != null) {
     collabContext.name = username;

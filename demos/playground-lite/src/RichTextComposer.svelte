@@ -24,6 +24,7 @@
     HashtagPlugin,
     HashtagNode,
     CollaborationPlugin,
+    LexicalCollaboration,
     PlainTextPlugin,
     AutoLinkPlugin,
     AutoLinkNode,
@@ -138,74 +139,76 @@
   });
 </script>
 
-<Composer {initialConfig}>
-  <div class="editor-shell">
-    {#if $settings.isRichText}
-      <ToolbarPlayground />
-    {/if}
-    <div class="editor-container tree-view">
-      <div class="editor-scroller">
-        <div class="editor" bind:this={editorDiv}>
-          <ContentEditable />
-          <PlaceHolder>{placeholderText}</PlaceHolder>
-        </div>
-      </div>
-
-      <AutoFocusPlugin />
-      <KeywordPlugin {keywordsRegex} />
-      <HashtagPlugin />
-      <AutoLinkPlugin />
-      <ColumnLayoutPlugin />
-
+<LexicalCollaboration>
+  <Composer {initialConfig}>
+    <div class="editor-shell">
       {#if $settings.isRichText}
-        <RichTextPlugin />
+        <ToolbarPlayground />
+      {/if}
+      <div class="editor-container tree-view">
+        <div class="editor-scroller">
+          <div class="editor" bind:this={editorDiv}>
+            <ContentEditable />
+            <PlaceHolder>{placeholderText}</PlaceHolder>
+          </div>
+        </div>
 
-        {#if $settings.isCollab}
-          <CollaborationPlugin
-            id="main"
-            providerFactory={createWebsocketProvider}
-            shouldBootstrap={!skipCollaborationInit} />
+        <AutoFocusPlugin />
+        <KeywordPlugin {keywordsRegex} />
+        <HashtagPlugin />
+        <AutoLinkPlugin />
+        <ColumnLayoutPlugin />
+
+        {#if $settings.isRichText}
+          <RichTextPlugin />
+
+          {#if $settings.isCollab}
+            <CollaborationPlugin
+              id="main"
+              providerFactory={createWebsocketProvider}
+              shouldBootstrap={!skipCollaborationInit} />
+          {:else}
+            <SharedHistoryPlugin />
+          {/if}
+          <ListPlugin />
+          <CheckListPlugin />
+          <HorizontalRulePlugin />
+          <ImagePlugin>
+            {#if $settings.isCollab}
+              <CaptionEditorCollaborationPlugin
+                providerFactory={createWebsocketProvider} />
+            {:else}
+              <CaptionEditorHistoryPlugin />
+            {/if}
+          </ImagePlugin>
+          <LinkPlugin {validateUrl} />
+          {#if $settings.isCodeHighlighted}
+            <CodeHighlightPrismPlugin />
+          {/if}
+          <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
+          <TablePlugin hasHorizontalScroll={$settings.tableHorizontalScroll} />
+          <TableHoverActionPlugin anchorElem={editorDiv} />
+          <TableCellResizerPlugin />
+          <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
+          <YoutubePlugin />
+          <TwitterPlugin />
+          <BlueskyPlugin />
+          <TabIndentationPlugin />
+          {#if !isSmallWidthViewport}
+            <FloatingLinkEditorPlugin anchorElem={editorDiv} />
+            <CodeActionMenuPlugin anchorElem={editorDiv} />
+          {/if}
         {:else}
+          <PlainTextPlugin />
           <SharedHistoryPlugin />
         {/if}
-        <ListPlugin />
-        <CheckListPlugin />
-        <HorizontalRulePlugin />
-        <ImagePlugin>
-          {#if $settings.isCollab}
-            <CaptionEditorCollaborationPlugin
-              providerFactory={createWebsocketProvider} />
-          {:else}
-            <CaptionEditorHistoryPlugin />
-          {/if}
-        </ImagePlugin>
-        <LinkPlugin {validateUrl} />
-        {#if $settings.isCodeHighlighted}
-          <CodeHighlightPrismPlugin />
-        {/if}
-        <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
-        <TablePlugin hasHorizontalScroll={$settings.tableHorizontalScroll} />
-        <TableHoverActionPlugin anchorElem={editorDiv} />
-        <TableCellResizerPlugin />
-        <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
-        <YoutubePlugin />
-        <TwitterPlugin />
-        <BlueskyPlugin />
-        <TabIndentationPlugin />
-        {#if !isSmallWidthViewport}
-          <FloatingLinkEditorPlugin anchorElem={editorDiv} />
-          <CodeActionMenuPlugin anchorElem={editorDiv} />
-        {/if}
-      {:else}
-        <PlainTextPlugin />
-        <SharedHistoryPlugin />
-      {/if}
-      <ComponentPickerMenuPlugin />
+        <ComponentPickerMenuPlugin />
 
-      <ActionBar />
+        <ActionBar />
+      </div>
+      {#if $settings.showTreeView}
+        <TreeViewPlugin />
+      {/if}
     </div>
-    {#if $settings.showTreeView}
-      <TreeViewPlugin />
-    {/if}
-  </div>
-</Composer>
+  </Composer>
+</LexicalCollaboration>

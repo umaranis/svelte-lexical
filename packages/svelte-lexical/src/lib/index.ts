@@ -13,6 +13,7 @@ export {default as AutoFocusPlugin} from './core/plugins/AutoFocusPlugin.svelte'
 export {default as KeywordPlugin} from './core/plugins/KeywordPlugin.svelte';
 export {default as HashtagPlugin} from './core/plugins/HashtagPlugin.svelte';
 export {default as CollaborationPlugin} from './core/plugins/collaboration/CollaborationPlugin.svelte';
+export {default as LexicalCollaboration} from './core/plugins/collaboration/LexicalCollaboration.svelte';
 //export {createWebsocketProvider} from './core/plugins/collaboration/collaboration';
 export {default as AutoLinkPluginCore} from './core/plugins/AutoLink/AutoLinkPluginCore.svelte';
 export {default as AutoLinkPlugin} from './core/plugins/AutoLink/AutoLinkPlugin.svelte';

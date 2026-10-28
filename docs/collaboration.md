@@ -27,6 +27,7 @@ Or turn on, Split `Split Screen` and `Collaboration` from settings UI.
 
 ## Properly boostrapping CollaborationPlugin
 
+- wrap the editor (`Composer`) in `LexicalCollaboration` component, which provides the collaboration context
 - set editor's `initialEditorState` to null
 - don't use the HistoryPlugin with collaboration
 - resolve path for Yjs in vite config
