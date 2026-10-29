@@ -111,6 +111,9 @@ export const theme: EditorThemeClasses = {
   tableFrozenRow: 'SL_Theme__tableFrozenRow',
   tableRowStriping: 'SL_Theme__tableRowStriping',
   tableScrollableWrapper: 'SL_Theme__tableScrollableWrapper',
+  tableScrollLeft: 'SL_Theme__tableScrollLeft',
+  tableScrollMiddle: 'SL_Theme__tableScrollMiddle',
+  tableScrollRight: 'SL_Theme__tableScrollRight',
   tableSelected: 'SL_Theme__tableSelected',
   tableSelection: 'SL_Theme__tableSelection',
   text: {

@@ -51,6 +51,7 @@
     TableHoverActionPlugin,
     TableActionMenuPlugin,
     TableCellResizerPlugin,
+    TableScrollShadowPlugin,
     YoutubePlugin,
     YouTubeNode,
     TweetNode,
@@ -202,6 +203,7 @@
             hasNestedTables={$settings.hasNestedTables} />
           <TableHoverActionPlugin anchorElem={editorDiv} />
           <TableCellResizerPlugin />
+          <TableScrollShadowPlugin />
           <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
           <YoutubePlugin />
           <TwitterPlugin />

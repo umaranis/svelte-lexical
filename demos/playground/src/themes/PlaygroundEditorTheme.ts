@@ -111,6 +111,9 @@ const theme: EditorThemeClasses = {
   tableFrozenRow: 'PlaygroundEditorTheme__tableFrozenRow',
   tableRowStriping: 'PlaygroundEditorTheme__tableRowStriping',
   tableScrollableWrapper: 'PlaygroundEditorTheme__tableScrollableWrapper',
+  tableScrollLeft: 'PlaygroundEditorTheme__tableScrollLeft',
+  tableScrollMiddle: 'PlaygroundEditorTheme__tableScrollMiddle',
+  tableScrollRight: 'PlaygroundEditorTheme__tableScrollRight',
   tableSelected: 'PlaygroundEditorTheme__tableSelected',
   tableSelection: 'PlaygroundEditorTheme__tableSelection',
   text: {

@@ -29,6 +29,7 @@ export {default as TablePlugin} from './core/plugins/Table/TablePlugin.svelte';
 export {default as TableActionMenuPlugin} from './core/plugins/Table/TableActionMenuPlugin.svelte';
 export {default as TableHoverActionPlugin} from './core/plugins/Table/TableHoverActionPlugin.svelte';
 export {default as TableCellResizerPlugin} from './core/plugins/Table/TableCellResizerPlugin.svelte';
+export {default as TableScrollShadowPlugin} from './core/plugins/Table/TableScrollShadowPlugin.svelte';
 export {default as ShortcutsPlugin} from './components/toolbar/ShortcutsPlugin.svelte';
 export {default as YoutubePlugin} from './core/plugins/youtube/YoutubePlugin.svelte';
 export {default as TwitterPlugin} from './core/plugins/twitter/TwitterPlugin.svelte';
