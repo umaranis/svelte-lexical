@@ -76,7 +76,11 @@ Run Playwright under Node 22 (`.nvmrc`) via `fnm exec --using=22`: the agent she
 
 This takes several minutes — run it in the background, and only the specs touching the ported area. Report failures with their output.
 
-## 5. Report and commit
+## 5. Update Documentation
+
+If a new plugin or a new feature is implemented, then update the documentation website `packages/website`.
+
+## 6. Report and commit
 
 Report briefly: what was ported (file → what changed), what was skipped and why (already in npm dependency, React-only, no Svelte counterpart, would be breaking), and verification results.
 
