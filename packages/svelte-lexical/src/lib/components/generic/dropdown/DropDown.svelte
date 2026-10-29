@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {CAN_USE_DOM} from '@lexical/utils';
+  import {CAN_USE_DOM, calculateZoomLevel} from '@lexical/utils';
   import DropDownItems from './DropDownItems.svelte';
   import Portal from '../portal/Portal.svelte';
   import {isDOMNode} from 'lexical';
@@ -44,12 +44,12 @@
     if (!showDropDown) return;
     if (!buttonRef || !dropDownRef) return;
 
+    const zoom = calculateZoomLevel(dropDownRef, true);
     const {top, left} = buttonRef.getBoundingClientRect();
-    dropDownRef.style.top = `${top + 42}px`;
-    dropDownRef.style.left = `${Math.min(
-      left,
-      window.innerWidth - dropDownRef.offsetWidth - 20,
-    )}px`;
+    dropDownRef.style.top = `${top / zoom + 42}px`;
+    dropDownRef.style.left = `${
+      Math.min(left, window.innerWidth - dropDownRef.offsetWidth - 20) / zoom
+    }px`;
   });
 
   const handle = (event: MouseEvent) => {
