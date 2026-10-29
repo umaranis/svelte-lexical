@@ -35,7 +35,7 @@
     MarkdownShortcutPlugin,
     ALL_TRANSFORMERS,
     TablePlugin,
-    TableHoverActionPlugin,
+    TableHoverActionsV2Plugin,
     TableCellResizerPlugin,
     TableActionMenuPlugin,
     YoutubePlugin,
@@ -260,7 +260,7 @@
           </ImagePlugin>
           <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
           <TablePlugin hasHorizontalScroll={true} />
-          <TableHoverActionPlugin anchorElem={editorDiv} />
+          <TableHoverActionsV2Plugin anchorElem={editorDiv} />
           <TableCellResizerPlugin />
           <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
           <YoutubePlugin />

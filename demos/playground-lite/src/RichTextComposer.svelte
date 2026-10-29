@@ -48,7 +48,7 @@
     TableCellNode,
     TableRowNode,
     TablePlugin,
-    TableHoverActionPlugin,
+    TableHoverActionsV2Plugin,
     TableActionMenuPlugin,
     TableCellResizerPlugin,
     YoutubePlugin,
@@ -187,7 +187,7 @@
           {/if}
           <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
           <TablePlugin hasHorizontalScroll={$settings.tableHorizontalScroll} />
-          <TableHoverActionPlugin anchorElem={editorDiv} />
+          <TableHoverActionsV2Plugin anchorElem={editorDiv} />
           <TableCellResizerPlugin />
           <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
           <YoutubePlugin />

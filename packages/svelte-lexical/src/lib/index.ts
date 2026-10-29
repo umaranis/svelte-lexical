@@ -27,7 +27,6 @@ export {default as CodeActionMenuPlugin} from './core/plugins/CodeBlock/CodeActi
 export {default as ColumnLayoutPlugin} from './core/plugins/ColumnsLayout/ColumnLayoutPlugin.svelte';
 export {default as TablePlugin} from './core/plugins/Table/TablePlugin.svelte';
 export {default as TableActionMenuPlugin} from './core/plugins/Table/TableActionMenuPlugin.svelte';
-export {default as TableHoverActionPlugin} from './core/plugins/Table/TableHoverActionPlugin.svelte';
 export {default as TableHoverActionsV2Plugin} from './core/plugins/Table/TableHoverActionsV2Plugin.svelte';
 export {default as TableCellResizerPlugin} from './core/plugins/Table/TableCellResizerPlugin.svelte';
 export {default as TableScrollShadowPlugin} from './core/plugins/Table/TableScrollShadowPlugin.svelte';
