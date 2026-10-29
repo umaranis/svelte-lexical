@@ -46,4 +46,34 @@
     background-image: url(/images/icons/vertical-bottom.svg);
     filter: var(--icon-filter);
   }
+
+  .floating-add-indicator {
+    background-color: var(--editor-background);
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    height: 18px;
+    padding: 0;
+    pointer-events: auto;
+    transition: opacity 80ms ease;
+    width: 18px;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .floating-add-indicator:after {
+    background-image: url(/images/icons/plus.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 12px 12px;
+    content: ' ';
+    filter: var(--icon-filter);
+    inset: 0;
+    position: absolute;
+  }
+
+  .floating-add-indicator:hover {
+    background-color: var(--hover-background);
+  }
 }

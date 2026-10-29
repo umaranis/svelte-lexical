@@ -52,7 +52,7 @@
   import {onMount} from 'svelte';
   import TablePlugin from '$lib/core/plugins/Table/TablePlugin.svelte';
   import {TableCellNode, TableNode, TableRowNode} from '@lexical/table';
-  import TableHoverActionPlugin from '$lib/core/plugins/Table/TableHoverActionPlugin.svelte';
+  import TableHoverActionsV2Plugin from '$lib/core/plugins/Table/TableHoverActionsV2Plugin.svelte';
   import TableActionMenuPlugin from '$lib/core/plugins/Table/TableActionMenuPlugin.svelte';
   import TableCellResizerPlugin from '$lib/core/plugins/Table/TableCellResizerPlugin.svelte';
   import YoutubePlugin from '$lib/core/plugins/youtube/YoutubePlugin.svelte';
@@ -167,7 +167,7 @@
         ]} />
       <ColumnLayoutPlugin />
       <TablePlugin hasHorizontalScroll={true} />
-      <TableHoverActionPlugin anchorElem={editorDiv} />
+      <TableHoverActionsV2Plugin anchorElem={editorDiv} />
       <TableCellResizerPlugin />
       <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
       <YoutubePlugin />

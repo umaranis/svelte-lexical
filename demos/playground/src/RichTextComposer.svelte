@@ -48,7 +48,7 @@
     TableCellNode,
     TableRowNode,
     TablePlugin,
-    TableHoverActionPlugin,
+    TableHoverActionsV2Plugin,
     TableActionMenuPlugin,
     TableCellResizerPlugin,
     TableScrollShadowPlugin,
@@ -201,7 +201,7 @@
           <TablePlugin
             hasHorizontalScroll={$settings.tableHorizontalScroll}
             hasNestedTables={$settings.hasNestedTables} />
-          <TableHoverActionPlugin anchorElem={editorDiv} />
+          <TableHoverActionsV2Plugin anchorElem={editorDiv} />
           <TableCellResizerPlugin />
           <TableScrollShadowPlugin />
           <TableActionMenuPlugin anchorElem={editorDiv} cellMerge={true} />
