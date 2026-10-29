@@ -200,6 +200,7 @@
           <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
           <TablePlugin
             hasHorizontalScroll={$settings.tableHorizontalScroll}
+            hasFitNestedTables={$settings.hasFitNestedTables}
             hasNestedTables={$settings.hasNestedTables} />
           <TableHoverActionsV2Plugin anchorElem={editorDiv} />
           <TableCellResizerPlugin />

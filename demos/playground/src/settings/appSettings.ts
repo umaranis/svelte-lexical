@@ -15,6 +15,7 @@ export const isDevPlayground: boolean =
 export const DEFAULT_SETTINGS = {
   disableBeforeInput: false,
   emptyEditor: isDevPlayground,
+  hasFitNestedTables: false,
   hasNestedTables: false,
   isAutocomplete: false,
   isCharLimit: false,

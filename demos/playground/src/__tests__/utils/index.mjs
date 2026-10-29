@@ -70,6 +70,7 @@ export async function initialize({
   isCharLimitUtf8,
   isMaxLength,
   hasNestedTables,
+  hasFitNestedTables,
   showNestedEditorTreeView,
   tableCellMerge,
   tableCellBackgroundColor,
@@ -102,6 +103,7 @@ export async function initialize({
   appSettings.isCharLimitUtf8 = !!isCharLimitUtf8;
   appSettings.isMaxLength = !!isMaxLength;
   appSettings.hasNestedTables = !!hasNestedTables;
+  appSettings.hasFitNestedTables = !!hasFitNestedTables;
   if (tableCellMerge !== undefined) {
     appSettings.tableCellMerge = tableCellMerge;
   }
@@ -210,11 +212,13 @@ async function assertHTMLOnPageOrFrame(
   expectedHtml,
   ignoreClasses,
   ignoreInlineStyles,
+  ignoreDir,
   frameName,
   actualHtmlModificationsCallback = (actualHtml) => actualHtml,
 ) {
   const expected = await prettifyHTML(expectedHtml.replace(/\n/gm, ''), {
     ignoreClasses,
+    ignoreDir,
     ignoreInlineStyles,
   });
   return await expect(async () => {
@@ -226,6 +230,7 @@ async function assertHTMLOnPageOrFrame(
     );
     let actual = await prettifyHTML(actualHtml.replace(/\n/gm, ''), {
       ignoreClasses,
+      ignoreDir,
       ignoreInlineStyles,
     });
 
@@ -263,7 +268,7 @@ export async function assertHTML(
   page,
   expectedHtml,
   expectedHtmlFrameRight = expectedHtml,
-  {ignoreClasses = false, ignoreInlineStyles = false} = {},
+  {ignoreClasses = false, ignoreInlineStyles = false, ignoreDir = false} = {},
   actualHtmlModificationsCallback,
 ) {
   if (IS_COLLAB) {
@@ -273,6 +278,7 @@ export async function assertHTML(
         expectedHtml,
         ignoreClasses,
         ignoreInlineStyles,
+        ignoreDir,
         'left frame',
         actualHtmlModificationsCallback,
       ),
@@ -281,6 +287,7 @@ export async function assertHTML(
         expectedHtmlFrameRight,
         ignoreClasses,
         ignoreInlineStyles,
+        ignoreDir,
         'right frame',
         actualHtmlModificationsCallback,
       ),
@@ -291,6 +298,7 @@ export async function assertHTML(
       expectedHtml,
       ignoreClasses,
       ignoreInlineStyles,
+      ignoreDir,
       'page',
       actualHtmlModificationsCallback,
     );
@@ -812,7 +820,7 @@ export async function dragImage(
 
 export async function prettifyHTML(
   string,
-  {ignoreClasses, ignoreInlineStyles} = {},
+  {ignoreClasses, ignoreInlineStyles, ignoreDir} = {},
 ) {
   let output = string;
 
@@ -822,6 +830,10 @@ export async function prettifyHTML(
 
   if (ignoreInlineStyles) {
     output = output.replace(/\sstyle="([^"]*)"/g, '');
+  }
+
+  if (ignoreDir) {
+    output = output.replace(/\sdir="([^"]*)"/g, '');
   }
 
   // remove blank comments from Svelte
@@ -996,6 +1008,20 @@ export async function insertTableColumnBefore(page) {
 export async function insertTableColumnAfter(page) {
   await clickTableCellActiveButton(page);
   await click(page, '.item[data-test-id="table-insert-column-after"]');
+}
+
+export async function resizeTableCell(page, selector, width = 0, height = 0) {
+  await click(page, selector);
+  const resizerBoundingBox = await selectorBoundingBox(
+    page,
+    '.SL_Theme__tableCellResizer:first-child',
+  );
+  const x = resizerBoundingBox.x + resizerBoundingBox.width / 2;
+  const y = resizerBoundingBox.y + resizerBoundingBox.height / 2;
+  await page.mouse.move(x, y);
+  await page.mouse.down();
+  await page.mouse.move(x + width, y + height);
+  await page.mouse.up();
 }
 
 export async function mergeTableCells(page) {

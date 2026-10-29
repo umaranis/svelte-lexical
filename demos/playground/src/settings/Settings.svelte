@@ -75,6 +75,12 @@
       }}
       checked={$settings.hasNestedTables}
       text="Nested Tables" />
+    <Switch
+      onclick={() => {
+        settings.setOption('hasFitNestedTables', !$settings.hasFitNestedTables);
+      }}
+      checked={$settings.hasFitNestedTables}
+      text="Fit nested tables" />
     <!--<Switch
       onclick={() => settings.setOption('isCharLimit', !isCharLimit)}
       checked={isCharLimit}
