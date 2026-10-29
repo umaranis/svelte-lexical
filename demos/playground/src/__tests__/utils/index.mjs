@@ -204,6 +204,10 @@ function removeSafariLinebreakImgHack(actualHtml) {
     : actualHtml;
 }
 
+function removeDropTargetAttributes(actualHtml) {
+  return actualHtml.replaceAll(/ data-drop-target-for-element="true"/g, '');
+}
+
 /**
  * @param {import('@playwright/test').Page | import('@playwright/test').Frame} pageOrFrame
  */
@@ -222,11 +226,13 @@ async function assertHTMLOnPageOrFrame(
     ignoreInlineStyles,
   });
   return await expect(async () => {
-    const actualHtml = removeSafariLinebreakImgHack(
-      await pageOrFrame
-        .locator('div[contenteditable="true"]')
-        .first()
-        .innerHTML(),
+    const actualHtml = removeDropTargetAttributes(
+      removeSafariLinebreakImgHack(
+        await pageOrFrame
+          .locator('div[contenteditable="true"]')
+          .first()
+          .innerHTML(),
+      ),
     );
     let actual = await prettifyHTML(actualHtml.replace(/\n/gm, ''), {
       ignoreClasses,

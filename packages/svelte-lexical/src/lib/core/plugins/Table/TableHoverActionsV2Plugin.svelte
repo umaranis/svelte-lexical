@@ -3,10 +3,11 @@
     $computeTableMapSkipCellCheck as computeTableMapSkipCellCheck,
     $insertTableColumnAtSelection as insertTableColumnAtSelection,
     $insertTableRowAtSelection as insertTableRowAtSelection,
+    $isSimpleTable as isSimpleTable,
     $isTableCellNode as isTableCellNode,
     $isTableNode as isTableNode,
     $isTableRowNode as isTableRowNode,
-    type TableNode,
+    $moveTableColumn as moveTableColumn,
   } from '@lexical/table';
   import {calculateZoomLevel, CAN_USE_DOM} from '@lexical/utils';
   import {
@@ -26,6 +27,19 @@
   const TOP_BUTTON_OVERHANG = INDICATOR_SIZE_PX / 2;
   const LEFT_BUTTON_OVERHANG = SIDE_INDICATOR_SIZE_PX / 2;
   const SHIFT_PADDING = 8;
+  const COLUMN_DRAG_MIME_TYPE = 'application/x-lexical-table-column';
+
+  type ColumnDragData = {
+    columnIndex: number;
+    tableKey: string | null;
+  };
+
+  type DropIndicatorState = {
+    edge: 'left' | 'right';
+    height: number;
+    left: number;
+    top: number;
+  };
 
   interface Props {
     anchorElem?: HTMLElement;
@@ -44,39 +58,11 @@
   let leftFloatingElem: HTMLButtonElement | null = $state(null);
   let hoveredTopCell: HTMLTableCellElement | null = null;
   let hoveredLeftCell: HTMLTableCellElement | null = null;
-
-  /**
-   * Checks if the table does not have any merged cells.
-   *
-   * @param table Table to check for if it has any merged cells.
-   * @returns True if the table does not have any merged cells, false otherwise.
-   */
-  function isSimpleTable(table: TableNode): boolean {
-    const rows = table.getChildren();
-    let columns: null | number = null;
-    for (const row of rows) {
-      if (!isTableRowNode(row)) {
-        return false;
-      }
-      if (columns === null) {
-        columns = row.getChildrenSize();
-      }
-      if (row.getChildrenSize() !== columns) {
-        return false;
-      }
-      const cells = row.getChildren();
-      for (const cell of cells) {
-        if (
-          !isTableCellNode(cell) ||
-          cell.getRowSpan() !== 1 ||
-          cell.getColSpan() !== 1
-        ) {
-          return false;
-        }
-      }
-    }
-    return (columns || 0) > 0;
-  }
+  let hoveredTable: HTMLTableElement | null = $state(null);
+  let hoveredColumnIndex: number | null = $state(null);
+  let canReorder = $state(false);
+  let dropIndicatorState: DropIndicatorState | null = $state(null);
+  let columnDragData: ColumnDragData | null = null;
 
   function getCellSelector(): string {
     const themeSelector = getThemeSelector(editor._config.theme.tableCell);
@@ -127,6 +113,69 @@
     }
 
     return closest;
+  }
+
+  function isTableFromEditor(tableElement: HTMLTableElement | null): boolean {
+    const root = editor.getRootElement();
+    return !!root && !!tableElement && root.contains(tableElement);
+  }
+
+  function getTableKey(tableElement: HTMLTableElement | null): string | null {
+    return tableElement?.getAttribute('data-lexical-key') ?? null;
+  }
+
+  function getBoundaryIndex(
+    cell: HTMLTableCellElement,
+    clientX: number,
+  ): number {
+    const rect = cell.getBoundingClientRect();
+    const isRightHalf = clientX > rect.left + rect.width / 2;
+    const cellIndex = cell.cellIndex ?? 0;
+    return cellIndex + (isRightHalf ? 1 : 0);
+  }
+
+  function getDropIndicatorState(
+    headerRow: HTMLTableRowElement,
+    tableRect: DOMRect,
+    boundaryIndex: number,
+  ): DropIndicatorState | null {
+    const cellCount = headerRow.cells.length;
+    if (cellCount === 0) {
+      return null;
+    }
+    const clampedIndex = Math.max(0, Math.min(boundaryIndex, cellCount));
+    if (clampedIndex === cellCount) {
+      const lastRect = headerRow.cells[cellCount - 1].getBoundingClientRect();
+      return {
+        edge: 'right',
+        height: tableRect.height,
+        left: lastRect.right,
+        top: tableRect.top,
+      };
+    }
+    const targetRect = headerRow.cells[clampedIndex].getBoundingClientRect();
+    return {
+      edge: 'left',
+      height: tableRect.height,
+      left: targetRect.left,
+      top: tableRect.top,
+    };
+  }
+
+  function getHeaderCellFromDragEvent(
+    tableElement: HTMLTableElement,
+    event: DragEvent,
+  ): HTMLTableCellElement | null {
+    const headerRow = tableElement.rows[0];
+    if (!headerRow || !isHTMLElement(event.target)) {
+      return null;
+    }
+    const cell = event.target.closest<HTMLTableCellElement>('td, th');
+    return cell && cell.parentElement === headerRow ? cell : null;
+  }
+
+  function isColumnDrag(tableKey: string | null): boolean {
+    return columnDragData != null && columnDragData.tableKey === tableKey;
   }
 
   function clamp(value: number, size: number, viewportSize: number): number {
@@ -184,6 +233,9 @@
       ) {
         isVisible = false;
         isLeftVisible = false;
+        hoveredTable = null;
+        hoveredColumnIndex = null;
+        dropIndicatorState = null;
         return;
       }
 
@@ -213,8 +265,12 @@
       if (!closestTopCell || rowIndex !== 0) {
         isVisible = false;
         hoveredTopCell = null;
+        hoveredTable = null;
+        hoveredColumnIndex = null;
       } else {
         hoveredTopCell = closestTopCell.cell;
+        hoveredTable = tableElement;
+        hoveredColumnIndex = closestTopCell.cell.cellIndex ?? null;
         topStyle = getTopStyle(closestTopCell.centerX, closestTopCell.top);
         isVisible = true;
       }
@@ -270,6 +326,129 @@
       }
     });
   });
+
+  $effect(() => {
+    const tableElement = hoveredTable;
+    if (!tableElement || !isTableFromEditor(tableElement)) {
+      canReorder = false;
+      return;
+    }
+    canReorder = editor.getEditorState().read(
+      () => {
+        const tableNode = getNearestNodeFromDOMNode(tableElement);
+        return isTableNode(tableNode) && isSimpleTable(tableNode);
+      },
+      {editor},
+    );
+  });
+
+  $effect(() => {
+    const tableElement = hoveredTable;
+    if (!tableElement || !canReorder || !isTableFromEditor(tableElement)) {
+      return;
+    }
+    const tableKey = getTableKey(tableElement);
+
+    const handleDragOver = (event: DragEvent) => {
+      if (!isColumnDrag(tableKey)) {
+        return;
+      }
+      const cell = getHeaderCellFromDragEvent(tableElement, event);
+      if (!cell) {
+        dropIndicatorState = null;
+        return;
+      }
+      event.preventDefault();
+      event.stopPropagation();
+      if (event.dataTransfer) {
+        event.dataTransfer.dropEffect = 'move';
+      }
+      dropIndicatorState = getDropIndicatorState(
+        tableElement.rows[0],
+        tableElement.getBoundingClientRect(),
+        getBoundaryIndex(cell, event.clientX),
+      );
+    };
+
+    const handleDragLeave = (event: DragEvent) => {
+      const nextTarget = event.relatedTarget;
+      if (!(nextTarget instanceof Node) || !tableElement.contains(nextTarget)) {
+        dropIndicatorState = null;
+      }
+    };
+
+    const handleDrop = (event: DragEvent) => {
+      const data = columnDragData;
+      if (!data || !isColumnDrag(tableKey)) {
+        return;
+      }
+      const cell = getHeaderCellFromDragEvent(tableElement, event);
+      if (!cell) {
+        return;
+      }
+      event.preventDefault();
+      event.stopPropagation();
+      dropIndicatorState = null;
+      const boundaryIndex = getBoundaryIndex(cell, event.clientX);
+      editor.update(() => {
+        const tableNode = getNearestNodeFromDOMNode(tableElement);
+        if (!isTableNode(tableNode)) {
+          return;
+        }
+        const columnCount = tableNode.getColumnCount();
+        const clampedBoundary = Math.max(
+          0,
+          Math.min(boundaryIndex, columnCount),
+        );
+        const startIndex = data.columnIndex;
+        if (
+          clampedBoundary === startIndex ||
+          clampedBoundary === startIndex + 1 ||
+          startIndex < 0 ||
+          startIndex >= columnCount
+        ) {
+          return;
+        }
+        const finishIndex =
+          clampedBoundary > startIndex ? clampedBoundary - 1 : clampedBoundary;
+        moveTableColumn(tableNode, startIndex, finishIndex);
+      });
+    };
+
+    tableElement.addEventListener('dragover', handleDragOver);
+    tableElement.addEventListener('dragleave', handleDragLeave);
+    tableElement.addEventListener('drop', handleDrop);
+
+    return () => {
+      tableElement.removeEventListener('dragover', handleDragOver);
+      tableElement.removeEventListener('dragleave', handleDragLeave);
+      tableElement.removeEventListener('drop', handleDrop);
+      dropIndicatorState = null;
+    };
+  });
+
+  const handleColumnDragStart = (event: DragEvent) => {
+    if (!canReorder || hoveredTable == null || hoveredColumnIndex == null) {
+      event.preventDefault();
+      return;
+    }
+    columnDragData = {
+      columnIndex: hoveredColumnIndex,
+      tableKey: getTableKey(hoveredTable),
+    };
+    if (event.dataTransfer) {
+      event.dataTransfer.effectAllowed = 'move';
+      event.dataTransfer.setData(
+        COLUMN_DRAG_MIME_TYPE,
+        JSON.stringify(columnDragData),
+      );
+    }
+  };
+
+  const handleColumnDragEnd = () => {
+    columnDragData = null;
+    dropIndicatorState = null;
+  };
 
   const handleAddColumn = () => {
     const targetCell = hoveredTopCell;
@@ -370,6 +549,14 @@
       bind:this={floatingElem}
       style={`position: fixed; ${topStyle} opacity: ${isVisible ? 1 : 0}; pointer-events: ${isVisible ? 'auto' : 'none'};`}
       class="floating-top-actions">
+      <button
+        class="floating-drag-indicator"
+        aria-label="Drag to reorder column"
+        type="button"
+        draggable={canReorder}
+        ondragstart={handleColumnDragStart}
+        ondragend={handleColumnDragEnd}>
+      </button>
       <DropDown
         buttonAriaLabel="Sort column"
         buttonClassName="floating-filter-indicator"
@@ -396,5 +583,11 @@
       type="button"
       onclick={handleAddRow}>
     </button>
+    {#if dropIndicatorState}
+      <div
+        class="table-column-drop-indicator"
+        style={`position: fixed; pointer-events: none; z-index: 20; width: 2px; background-color: #0c66e4; height: ${dropIndicatorState.height}px; top: ${dropIndicatorState.top}px; left: ${dropIndicatorState.left - 1}px;`}>
+      </div>
+    {/if}
   </Portal>
 {/if}

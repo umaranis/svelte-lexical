@@ -344,7 +344,7 @@
       const zoneWidth = 16; // Pixel width of the zone where you can drag the edge
       const styles: Record<string, CSSProperties> = {
         bottom: {
-          'background-color': 'none',
+          'background-color': 'transparent',
           cursor: 'row-resize',
           height: `${zoneWidth}px`,
           left: `${window.scrollX + left}px`,
@@ -352,7 +352,7 @@
           width: `${width}px`,
         },
         right: {
-          'background-color': 'none',
+          'background-color': 'transparent',
           cursor: 'col-resize',
           height: `${height}px`,
           left: `${window.scrollX + left + width - zoneWidth / 2}px`,
@@ -388,9 +388,10 @@
         const halfZoneWidth = zoneWidth / 2;
         const highlightWidth = 2;
         const highlightStart = halfZoneWidth - highlightWidth / 2;
-        styles.right.background = `linear-gradient(90deg, transparent ${highlightStart}px, ${ACTIVE_RESIZER_COLOR} ${highlightStart}px, ${ACTIVE_RESIZER_COLOR} ${
-          highlightStart + highlightWidth
-        }px, transparent ${highlightStart + highlightWidth}px)`;
+        styles.right['background-image'] =
+          `linear-gradient(90deg, transparent ${highlightStart}px, ${ACTIVE_RESIZER_COLOR} ${highlightStart}px, ${ACTIVE_RESIZER_COLOR} ${
+            highlightStart + highlightWidth
+          }px, transparent ${highlightStart + highlightWidth}px)`;
         styles.right['mix-blend-mode'] = 'unset';
         if (tableRect) {
           styles.right.top = `${window.scrollY + tableRect.top}px`;
