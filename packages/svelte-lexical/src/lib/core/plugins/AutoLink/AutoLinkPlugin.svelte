@@ -1,5 +1,6 @@
 <script lang="ts">
   import type {LinkAttributes} from '@lexical/link';
+  import {$isCodeNode as isCodeNode} from '@lexical/code';
   import AutoLinkPluginCore from './AutoLinkPluginCore.svelte';
 
   const {attributes}: {attributes?: LinkAttributes} = $props();
@@ -37,6 +38,8 @@
       return `mailto:${text}`;
     }),
   ];
+
+  const EXCLUDE_PARENTS = [isCodeNode];
 </script>
 
-<AutoLinkPluginCore matchers={MATCHERS} />
+<AutoLinkPluginCore matchers={MATCHERS} excludeParents={EXCLUDE_PARENTS} />
