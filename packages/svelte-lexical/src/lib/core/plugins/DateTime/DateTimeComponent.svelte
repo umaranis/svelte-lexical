@@ -1,6 +1,14 @@
 <script lang="ts">
   import './DateTimeNode.css';
-  import {$getNodeByKey as getNodeByKey, type NodeKey} from 'lexical';
+  import {
+    $getNodeByKey as getNodeByKey,
+    IS_BOLD,
+    IS_HIGHLIGHT,
+    IS_ITALIC,
+    IS_STRIKETHROUGH,
+    IS_UNDERLINE,
+    type NodeKey,
+  } from 'lexical';
   import {getEditor} from '../../composerContext.js';
   import {createNodeSelectionStore} from '../../nodeSelectionStore.js';
   import Portal from '../../../components/generic/portal/Portal.svelte';
@@ -12,10 +20,19 @@
 
   interface Props {
     dateTime: Date | undefined;
+    format: number;
     nodeKey: NodeKey;
   }
 
-  let {dateTime, nodeKey}: Props = $props();
+  let {dateTime, format, nodeKey}: Props = $props();
+
+  const FORMAT_CLASSES = [
+    [IS_BOLD, 'bold'],
+    [IS_HIGHLIGHT, 'highlight'],
+    [IS_ITALIC, 'italic'],
+    [IS_STRIKETHROUGH, 'strikethrough'],
+    [IS_UNDERLINE, 'underline'],
+  ] as const;
 
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const OFFSET = 5;
@@ -56,6 +73,19 @@
 
   // svelte-ignore state_referenced_locally
   const isNodeSelected = createNodeSelectionStore(editor, nodeKey);
+
+  const classNames = $derived.by(() => {
+    const names = ['dateTimePill'];
+    for (const [flag, className] of FORMAT_CLASSES) {
+      if (format & flag) {
+        names.push(className);
+      }
+    }
+    if ($isNodeSelected) {
+      names.push('selected');
+    }
+    return names.join(' ');
+  });
 
   // placement bottom-start, flip to top-start, shift with padding (same as the floating-ui setup in lexical playground)
   function updatePosition() {
@@ -179,9 +209,8 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-  class="dateTimePill {$isNodeSelected ? 'selected' : ''}"
+  class={classNames}
   bind:this={pillRef}
-  style="cursor: pointer; width: fit-content;"
   onclick={(e) => {
     e.preventDefault();
     isOpen = true;

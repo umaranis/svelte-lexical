@@ -1,15 +1,20 @@
 import {
+  applyFormatFromStyle,
+  applyFormatToDom,
+  DecoratorTextNode,
+  type SerializedDecoratorTextNode,
+} from '@lexical/extension';
+import {
   $getState,
+  $isTextNode,
   $setState,
   buildImportMap,
   createCommand,
   createState,
-  DecoratorNode,
   type DOMConversionOutput,
   type DOMExportOutput,
   type LexicalCommand,
   type LexicalNode,
-  type SerializedLexicalNode,
   type Spread,
   type StateConfigValue,
   type StateValueOrUpdater,
@@ -23,6 +28,14 @@ export type DateTimePayload = {
 
 export const INSERT_DATETIME_COMMAND: LexicalCommand<DateTimePayload> =
   createCommand('INSERT_DATETIME_COMMAND');
+
+const tagToFormat = {
+  b: 'bold',
+  i: 'italic',
+  mark: 'highlight',
+  s: 'strikethrough',
+  u: 'underline',
+} as const;
 
 const getDateTimeText = (dateTime: Date) => {
   if (dateTime === undefined) {
@@ -44,7 +57,7 @@ export type SerializedDateTimeNode = Spread<
   {
     dateTime?: string;
   },
-  SerializedLexicalNode
+  SerializedDecoratorTextNode
 >;
 
 function $convertDateTimeElement(
@@ -53,19 +66,31 @@ function $convertDateTimeElement(
   const dateTimeValue = domNode.getAttribute('data-lexical-datetime');
   if (dateTimeValue) {
     const node = $createDateTimeNode(new Date(Date.parse(dateTimeValue)));
-    return {node};
+    return {
+      after: (childLexicalNodes) => {
+        // exportDOM returns only one child text, so only the first node of the array is taken
+        const firstChild = childLexicalNodes[0];
+        if ($isTextNode(firstChild)) {
+          node.setFormat(firstChild.getFormat());
+        }
+        return childLexicalNodes;
+      },
+      node,
+    };
   }
   const gDocsDateTimePayload = domNode.getAttribute('data-rich-links');
   if (!gDocsDateTimePayload) {
     return null;
   }
   const parsed = JSON.parse(gDocsDateTimePayload);
-  const parsedDate = Date.parse(parsed?.dat_df?.dfie_dt || '');
+  const parsedDate =
+    parsed?.dat_df?.dfie_ts?.tv?.tv_s * 1000 ||
+    Date.parse(parsed?.dat_df?.dfie_dt || '');
   if (isNaN(parsedDate)) {
     return null;
   }
-  const node = $createDateTimeNode(new Date(parsedDate));
-  return {node};
+  const dateTimeNode = $createDateTimeNode(new Date(parsedDate));
+  return {node: applyFormatFromStyle(dateTimeNode, domNode.style)};
 }
 
 const dateTimeState = createState('dateTime', {
@@ -78,10 +103,10 @@ type DecoratorDateTimeType = {
   updateProps: (props: ComponentProps<typeof DateTimeComponent>) => void;
 };
 
-export class DateTimeNode extends DecoratorNode<DecoratorDateTimeType> {
+export class DateTimeNode extends DecoratorTextNode {
   $config() {
     return this.config('datetime', {
-      extends: DecoratorNode,
+      extends: DecoratorTextNode,
       importDOM: buildImportMap({
         span: (domNode) =>
           domNode.getAttribute('data-lexical-datetime') !== null ||
@@ -114,11 +139,15 @@ export class DateTimeNode extends DecoratorNode<DecoratorDateTimeType> {
 
   exportDOM(): DOMExportOutput {
     const element = document.createElement('span');
-    element.textContent = getDateTimeText(this.getDateTime());
+    const textDom: HTMLElement | Text = document.createTextNode(
+      getDateTimeText(this.getDateTime()),
+    );
     element.setAttribute(
       'data-lexical-datetime',
       this.getDateTime()?.toString() || '',
     );
+    element.appendChild(applyFormatToDom(this, textDom, tagToFormat));
+
     return {element};
   }
 
@@ -136,16 +165,14 @@ export class DateTimeNode extends DecoratorNode<DecoratorDateTimeType> {
     return false;
   }
 
-  isInline(): boolean {
-    return true;
-  }
-
   decorate(): DecoratorDateTimeType {
     const dateTime = this.getDateTime();
+    const format = this.getFormat();
     return {
       componentClass: DateTimeComponent,
       updateProps: (props) => {
         props.dateTime = dateTime;
+        props.format = format;
         props.nodeKey = this.__key;
       },
     };

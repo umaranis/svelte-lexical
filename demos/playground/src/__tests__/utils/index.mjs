@@ -753,6 +753,35 @@ export async function insertDateTime(page) {
   await sleep(500);
 }
 
+export function getExpectedDateTimeHtml({selected = false, formats = []} = {}) {
+  const now = new Date();
+  const date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  // DateTimeNode displays a limited set of formats
+  const formatToClassname = {
+    bold: 'bold',
+    highlight: 'highlight',
+    italic: 'italic',
+    strikethrough: 'strikethrough',
+    underline: 'underline',
+  };
+
+  return html`
+    <span
+      contenteditable="false"
+      style="display: inline-block;"
+      data-lexical-datetime="${date.toString()}"
+      data-lexical-decorator="true">
+      <div
+        class="dateTimePill ${selected ? 'selected' : ''} ${formats
+          .map((f) => formatToClassname[f] || '')
+          .join(' ')}">
+        ${date.toDateString()}
+      </div>
+    </span>
+  `;
+}
+
 export async function insertImageCaption(page, caption) {
   await click(page, '.editor-image img');
   await click(page, '.image-caption-button');
