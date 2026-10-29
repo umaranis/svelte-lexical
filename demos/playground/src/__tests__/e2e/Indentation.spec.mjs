@@ -547,16 +547,216 @@ test.describe('Identation', () => {
 
       await assertHTML(
         page,
-        '<ul class="PlaygroundEditorTheme__ul" dir="auto"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">Hello</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">from</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">the</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">other</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">side</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><br></li></ul></li></ul></li></ul></li></ul></li></ul>',
+        html`
+          <ul class="PlaygroundEditorTheme__ul" dir="auto">
+            <li class="PlaygroundEditorTheme__listItem" value="1">
+              <span data-lexical-text="true">Hello</span>
+            </li>
+            <li
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+              value="2">
+              <ul class="PlaygroundEditorTheme__ul">
+                <li class="PlaygroundEditorTheme__listItem" value="1">
+                  <span data-lexical-text="true">from</span>
+                </li>
+                <li
+                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                  value="2">
+                  <ul class="PlaygroundEditorTheme__ul">
+                    <li class="PlaygroundEditorTheme__listItem" value="1">
+                      <span data-lexical-text="true">the</span>
+                    </li>
+                    <li
+                      class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                      value="2">
+                      <ul class="PlaygroundEditorTheme__ul">
+                        <li class="PlaygroundEditorTheme__listItem" value="1">
+                          <span data-lexical-text="true">other</span>
+                        </li>
+                        <li
+                          class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                          value="2">
+                          <ul class="PlaygroundEditorTheme__ul">
+                            <li
+                              class="PlaygroundEditorTheme__listItem"
+                              value="1">
+                              <span data-lexical-text="true">side</span>
+                            </li>
+                            <li
+                              class="PlaygroundEditorTheme__listItem"
+                              value="2">
+                              <br />
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        `,
       );
 
       await selectAll(page);
 
       await clickIndentButton(page, 3);
 
+      // the "side" item and the one following it remain at maximum nesting, while the others are indented
       await assertHTML(
         page,
-        '<ul class="PlaygroundEditorTheme__ul" dir="auto"><li value="1" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">Hello</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">from</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">the</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">other</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">side</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><br></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul>',
+        html`
+          <ul class="PlaygroundEditorTheme__ul" dir="auto">
+            <li
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+              value="1">
+              <ul class="PlaygroundEditorTheme__ul">
+                <li
+                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                  value="1">
+                  <ul class="PlaygroundEditorTheme__ul">
+                    <li
+                      class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                      value="1">
+                      <ul class="PlaygroundEditorTheme__ul">
+                        <li class="PlaygroundEditorTheme__listItem" value="1">
+                          <span data-lexical-text="true">Hello</span>
+                        </li>
+                        <li
+                          class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                          value="2">
+                          <ul class="PlaygroundEditorTheme__ul">
+                            <li
+                              class="PlaygroundEditorTheme__listItem"
+                              value="1">
+                              <span data-lexical-text="true">from</span>
+                            </li>
+                            <li
+                              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                              value="2">
+                              <ul class="PlaygroundEditorTheme__ul">
+                                <li
+                                  class="PlaygroundEditorTheme__listItem"
+                                  value="1">
+                                  <span data-lexical-text="true">the</span>
+                                </li>
+                                <li
+                                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                                  value="2">
+                                  <ul class="PlaygroundEditorTheme__ul">
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="1">
+                                      <span data-lexical-text="true">
+                                        other
+                                      </span>
+                                    </li>
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="2">
+                                      <span data-lexical-text="true">side</span>
+                                    </li>
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="3">
+                                      <br />
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        `,
+      );
+
+      await clickIndentButton(page, 3);
+
+      // all items have reached maximum nesting depth
+      await assertHTML(
+        page,
+        html`
+          <ul class="PlaygroundEditorTheme__ul" dir="auto">
+            <li
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+              value="1">
+              <ul class="PlaygroundEditorTheme__ul">
+                <li
+                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                  value="1">
+                  <ul class="PlaygroundEditorTheme__ul">
+                    <li
+                      class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                      value="1">
+                      <ul class="PlaygroundEditorTheme__ul">
+                        <li
+                          class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                          value="1">
+                          <ul class="PlaygroundEditorTheme__ul">
+                            <li
+                              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                              value="1">
+                              <ul class="PlaygroundEditorTheme__ul">
+                                <li
+                                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                                  value="1">
+                                  <ul class="PlaygroundEditorTheme__ul">
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="1">
+                                      <span data-lexical-text="true">
+                                        Hello
+                                      </span>
+                                    </li>
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="2">
+                                      <span data-lexical-text="true">from</span>
+                                    </li>
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="3">
+                                      <span data-lexical-text="true">the</span>
+                                    </li>
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="4">
+                                      <span data-lexical-text="true">
+                                        other
+                                      </span>
+                                    </li>
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="5">
+                                      <span data-lexical-text="true">side</span>
+                                    </li>
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="6">
+                                      <br />
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        `,
       );
 
       await clickIndentButton(page);
@@ -564,7 +764,80 @@ test.describe('Identation', () => {
       // should stay the same
       await assertHTML(
         page,
-        '<ul class="PlaygroundEditorTheme__ul" dir="auto"><li value="1" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">Hello</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">from</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">the</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">other</span></li><li value="2" class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"><ul class="PlaygroundEditorTheme__ul"><li value="1" class="PlaygroundEditorTheme__listItem"><span data-lexical-text="true">side</span></li><li value="2" class="PlaygroundEditorTheme__listItem"><br></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul>',
+        html`
+          <ul class="PlaygroundEditorTheme__ul" dir="auto">
+            <li
+              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+              value="1">
+              <ul class="PlaygroundEditorTheme__ul">
+                <li
+                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                  value="1">
+                  <ul class="PlaygroundEditorTheme__ul">
+                    <li
+                      class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                      value="1">
+                      <ul class="PlaygroundEditorTheme__ul">
+                        <li
+                          class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                          value="1">
+                          <ul class="PlaygroundEditorTheme__ul">
+                            <li
+                              class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                              value="1">
+                              <ul class="PlaygroundEditorTheme__ul">
+                                <li
+                                  class="PlaygroundEditorTheme__listItem PlaygroundEditorTheme__nestedListItem"
+                                  value="1">
+                                  <ul class="PlaygroundEditorTheme__ul">
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="1">
+                                      <span data-lexical-text="true">
+                                        Hello
+                                      </span>
+                                    </li>
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="2">
+                                      <span data-lexical-text="true">from</span>
+                                    </li>
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="3">
+                                      <span data-lexical-text="true">the</span>
+                                    </li>
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="4">
+                                      <span data-lexical-text="true">
+                                        other
+                                      </span>
+                                    </li>
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="5">
+                                      <span data-lexical-text="true">side</span>
+                                    </li>
+                                    <li
+                                      class="PlaygroundEditorTheme__listItem"
+                                      value="6">
+                                      <br />
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        `,
       );
     },
   );
