@@ -1,16 +1,24 @@
 <script lang="ts">
   import {
+    $computeTableMapSkipCellCheck as computeTableMapSkipCellCheck,
     $insertTableColumnAtSelection as insertTableColumnAtSelection,
     $insertTableRowAtSelection as insertTableRowAtSelection,
     $isTableCellNode as isTableCellNode,
+    $isTableNode as isTableNode,
+    $isTableRowNode as isTableRowNode,
+    type TableNode,
   } from '@lexical/table';
   import {calculateZoomLevel, CAN_USE_DOM} from '@lexical/utils';
   import {
+    $getChildCaret as getChildCaret,
     $getNearestNodeFromDOMNode as getNearestNodeFromDOMNode,
+    $getSiblingCaret as getSiblingCaret,
     isHTMLElement,
   } from 'lexical';
   import {getEditor, getIsEditable} from '$lib/core/composerContext.js';
   import Portal from '$lib/components/generic/portal/Portal.svelte';
+  import DropDown from '$lib/components/generic/dropdown/DropDown.svelte';
+  import DropDownItem from '$lib/components/generic/dropdown/DropDownItem.svelte';
   import {getThemeSelector} from '../util/getThemeSelector.js';
 
   const INDICATOR_SIZE_PX = 18;
@@ -32,10 +40,43 @@
   let isLeftVisible = $state(false);
   let topStyle = $state('');
   let leftStyle = $state('');
-  let floatingElem: HTMLButtonElement | null = $state(null);
+  let floatingElem: HTMLDivElement | null = $state(null);
   let leftFloatingElem: HTMLButtonElement | null = $state(null);
   let hoveredTopCell: HTMLTableCellElement | null = null;
   let hoveredLeftCell: HTMLTableCellElement | null = null;
+
+  /**
+   * Checks if the table does not have any merged cells.
+   *
+   * @param table Table to check for if it has any merged cells.
+   * @returns True if the table does not have any merged cells, false otherwise.
+   */
+  function isSimpleTable(table: TableNode): boolean {
+    const rows = table.getChildren();
+    let columns: null | number = null;
+    for (const row of rows) {
+      if (!isTableRowNode(row)) {
+        return false;
+      }
+      if (columns === null) {
+        columns = row.getChildrenSize();
+      }
+      if (row.getChildrenSize() !== columns) {
+        return false;
+      }
+      const cells = row.getChildren();
+      for (const cell of cells) {
+        if (
+          !isTableCellNode(cell) ||
+          cell.getRowSpan() !== 1 ||
+          cell.getColSpan() !== 1
+        ) {
+          return false;
+        }
+      }
+    }
+    return (columns || 0) > 0;
+  }
 
   function getCellSelector(): string {
     const themeSelector = getThemeSelector(editor._config.theme.tableCell);
@@ -98,11 +139,9 @@
   // placement top, negative offset so the button overhangs the table's top border, shift with padding
   function getTopStyle(centerX: number, top: number): string {
     const zoom = calculateZoomLevel(anchorElem, true);
-    const left = clamp(
-      centerX - INDICATOR_SIZE_PX / 2,
-      INDICATOR_SIZE_PX,
-      window.innerWidth,
-    );
+    const width =
+      floatingElem?.getBoundingClientRect().width || INDICATOR_SIZE_PX;
+    const left = clamp(centerX - width / 2, width, window.innerWidth);
     const y = top - INDICATOR_SIZE_PX + TOP_BUTTON_OVERHANG;
     return `top: ${y / zoom}px; left: ${left / zoom}px;`;
   }
@@ -125,7 +164,14 @@
     }
 
     const handleMouseMove = (event: MouseEvent) => {
-      if (event.target === floatingElem || event.target === leftFloatingElem) {
+      if (
+        (floatingElem &&
+          event.target instanceof Node &&
+          floatingElem.contains(event.target)) ||
+        (leftFloatingElem &&
+          event.target instanceof Node &&
+          leftFloatingElem.contains(event.target))
+      ) {
         return;
       }
 
@@ -252,18 +298,96 @@
       }
     });
   };
+
+  const handleSortColumn = (direction: 'asc' | 'desc') => {
+    const targetCell = hoveredTopCell;
+    if (!targetCell) {
+      return;
+    }
+
+    editor.update(() => {
+      const cellNode = getNearestNodeFromDOMNode(targetCell);
+      if (!isTableCellNode(cellNode)) {
+        return;
+      }
+
+      const rowNode = cellNode.getParent();
+      if (!rowNode || !isTableRowNode(rowNode)) {
+        return;
+      }
+
+      const tableNode = rowNode.getParent();
+      if (!isTableNode(tableNode) || !isSimpleTable(tableNode)) {
+        return;
+      }
+
+      const colIndex = cellNode.getIndexWithinParent();
+      const rows = tableNode.getChildren().filter(isTableRowNode);
+
+      const [tableMap] = computeTableMapSkipCellCheck(
+        tableNode,
+        cellNode,
+        cellNode,
+      );
+
+      const headerCell = tableMap[0]?.[colIndex]?.cell;
+      const shouldSkipTopRow = headerCell?.hasHeader() ?? false;
+
+      const sortableRows = shouldSkipTopRow ? rows.slice(1) : rows;
+
+      if (sortableRows.length <= 1) {
+        return;
+      }
+
+      sortableRows.sort((a, b) => {
+        const aRowIndex = rows.indexOf(a);
+        const bRowIndex = rows.indexOf(b);
+
+        const aMapRow = tableMap[aRowIndex] ?? [];
+        const bMapRow = tableMap[bRowIndex] ?? [];
+
+        const aCellValue = aMapRow[colIndex];
+        const bCellValue = bMapRow[colIndex];
+
+        const aText = aCellValue?.cell.getTextContent() ?? '';
+        const bText = bCellValue?.cell.getTextContent() ?? '';
+        const result = aText.localeCompare(bText, undefined, {numeric: true});
+        return direction === 'asc' ? -result : result;
+      });
+
+      const insertionCaret = shouldSkipTopRow
+        ? getSiblingCaret(rows[0], 'next')
+        : getChildCaret(tableNode, 'next');
+
+      insertionCaret?.splice(0, sortableRows);
+    });
+  };
 </script>
 
 {#if $isEditable}
   <Portal target={anchorElem}>
-    <button
+    <div
       bind:this={floatingElem}
       style={`position: fixed; ${topStyle} opacity: ${isVisible ? 1 : 0}; pointer-events: ${isVisible ? 'auto' : 'none'};`}
-      class="floating-add-indicator"
-      aria-label="Add column"
-      type="button"
-      onclick={handleAddColumn}>
-    </button>
+      class="floating-top-actions">
+      <DropDown
+        buttonAriaLabel="Sort column"
+        buttonClassName="floating-filter-indicator"
+        hideChevron={true}>
+        <DropDownItem class="item" onclick={() => handleSortColumn('desc')}>
+          Sort Ascending
+        </DropDownItem>
+        <DropDownItem class="item" onclick={() => handleSortColumn('asc')}>
+          Sort Descending
+        </DropDownItem>
+      </DropDown>
+      <button
+        class="floating-add-indicator"
+        aria-label="Add column"
+        type="button"
+        onclick={handleAddColumn}>
+      </button>
+    </div>
     <button
       bind:this={leftFloatingElem}
       style={`position: fixed; ${leftStyle} opacity: ${isLeftVisible ? 1 : 0}; pointer-events: ${isLeftVisible ? 'auto' : 'none'};`}

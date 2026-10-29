@@ -11,6 +11,7 @@
     buttonIconClassName?: string | undefined;
     buttonLabel?: string | undefined;
     stopCloseOnClickSelf?: boolean;
+    hideChevron?: boolean;
     title?: string | undefined;
     target?: HTMLElement;
     children?: import('svelte').Snippet;
@@ -23,6 +24,7 @@
     buttonIconClassName = undefined,
     buttonLabel = undefined,
     stopCloseOnClickSelf = false,
+    hideChevron = false,
     title = undefined,
     children,
     target = undefined,
@@ -90,7 +92,9 @@
     <span class="text dropdown-button-text">{buttonLabel}</span>
   {/if}
 
-  <i class="chevron-down"></i>
+  {#if !hideChevron}
+    <i class="chevron-down"></i>
+  {/if}
 </button>
 
 {#if showDropDown}
