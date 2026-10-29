@@ -204,10 +204,38 @@
     };
   }
 
+  // Clear awareness state immediately when tab is refreshed or closed
+  // This prevents ghost cursors from appearing for several seconds after disconnect
+  // See: https://github.com/facebook/lexical/issues/8061
+  function clearAwarenessOnUnload() {
+    const clearAwarenessState = () => {
+      // Immediately clear local awareness state to signal disconnection
+      // This broadcasts to other clients that this client has disconnected,
+      // causing them to remove the cursor immediately instead of waiting for timeout
+      try {
+        provider.awareness.setLocalState(null);
+      } catch {
+        // Ignore errors during cleanup (e.g., if provider is already disconnected)
+      }
+    };
+
+    // Use both beforeunload and pagehide for maximum browser compatibility
+    // beforeunload: fires before page unloads (may be cancelable)
+    // pagehide: fires when page is being unloaded (more reliable, especially on mobile)
+    window.addEventListener('beforeunload', clearAwarenessState);
+    window.addEventListener('pagehide', clearAwarenessState);
+
+    return () => {
+      window.removeEventListener('beforeunload', clearAwarenessState);
+      window.removeEventListener('pagehide', clearAwarenessState);
+    };
+  }
+
   onMount(() => {
     return mergeRegister(
       createCursorsContainer(),
       initializeProviderAndConnect(),
+      clearAwarenessOnUnload(),
       editor.registerCommand(
         TOGGLE_CONNECT_COMMAND,
         (payload) => {
