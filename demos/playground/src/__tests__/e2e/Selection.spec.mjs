@@ -1512,7 +1512,7 @@ test.describe.parallel('Selection', () => {
     },
   );
 
-  test.fixme(
+  test(
     'shift+arrowup into a table, when the table is the first node, selects the whole table',
     {tag: '@flaky'},
     async ({page, isPlainText, isCollab, browserName, legacyEvents}) => {
@@ -1529,7 +1529,7 @@ test.describe.parallel('Selection', () => {
       await assertSelection(page, {
         anchorOffset: 0,
         anchorPath: [1],
-        focusOffset: 1,
+        focusOffset: 0,
         focusPath: [0, 1, 0],
       });
     },
