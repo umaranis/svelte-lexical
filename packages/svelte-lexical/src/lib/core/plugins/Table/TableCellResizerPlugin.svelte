@@ -33,6 +33,7 @@
 
   const MIN_ROW_HEIGHT = 33;
   const MIN_COLUMN_WIDTH = 92;
+  const ACTIVE_RESIZER_COLOR = '#76b6ff';
 
   let editor = getEditor();
 
@@ -46,11 +47,13 @@
 
   let activeCell = $state.raw<TableDOMCell | null>(null);
   let draggingDirection = $state<PointerDraggingDirection | null>(null);
+  let hoveredDirection = $state<PointerDraggingDirection | null>(null);
 
   const resetState = () => {
     activeCell = null;
     targetRef = null;
     draggingDirection = null;
+    hoveredDirection = null;
     pointerStartPosRef = null;
     tableRectRef = null;
   };
@@ -381,6 +384,18 @@
 
         styles[draggingDirection]['background-color'] = '#adf';
         styles[draggingDirection]['mix-blend-mode'] = 'unset';
+      } else if (!draggingDirection && hoveredDirection === 'right') {
+        const halfZoneWidth = zoneWidth / 2;
+        const highlightWidth = 2;
+        const highlightStart = halfZoneWidth - highlightWidth / 2;
+        styles.right.background = `linear-gradient(90deg, transparent ${highlightStart}px, ${ACTIVE_RESIZER_COLOR} ${highlightStart}px, ${ACTIVE_RESIZER_COLOR} ${
+          highlightStart + highlightWidth
+        }px, transparent ${highlightStart + highlightWidth}px)`;
+        styles.right['mix-blend-mode'] = 'unset';
+        if (tableRect) {
+          styles.right.top = `${window.scrollY + tableRect.top}px`;
+          styles.right.height = `${tableRect.height}px`;
+        }
       }
       return styles;
     }
@@ -391,6 +406,18 @@
       right: null,
       top: null,
     };
+  };
+
+  const handlePointerEnter = (direction: PointerDraggingDirection) => () => {
+    if (!draggingDirection) {
+      hoveredDirection = direction;
+    }
+  };
+
+  const handlePointerLeave = () => {
+    if (!draggingDirection) {
+      hoveredDirection = null;
+    }
   };
 
   let resizerStyles = $derived.by(() => {
@@ -417,6 +444,8 @@
           : undefined}
         role="button"
         tabindex="-1"
+        onpointerenter={handlePointerEnter('right')}
+        onpointerleave={handlePointerLeave}
         onpointerdown={toggleResize('right')}>
       </div>
       <div
