@@ -6,7 +6,9 @@
  *
  *
  */
-
+:root {
+  --lexical-indent-base-value: 40px;
+}
 .SL_Theme__paragraph {
   margin: 0;
   position: relative;
@@ -39,9 +41,6 @@
   font-size: 12px;
   margin: 0;
   text-transform: uppercase;
-}
-.SL_Theme__indent {
-  --lexical-indent-base-value: 40px;
 }
 .SL_Theme__textBold {
   font-weight: bold;
