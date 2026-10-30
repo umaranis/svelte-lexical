@@ -20,6 +20,9 @@ export type MenuResolution = {
 export class MenuOption {
   key: string;
   ref?: HTMLElement | null;
+  // CSS class name(s) of the icon shown by the default menu renderer
+  icon?: string;
+  title?: string;
 
   constructor(key: string) {
     this.key = key;
@@ -35,7 +38,7 @@ export type MenuRenderFn<TOption extends MenuOption> = Snippet<
       selectOptionAndCleanUp: (option: TOption) => void;
       options: Array<TOption>;
     },
-    matchingString: string | null,
+    matchingString: string,
   ]
 >;
 

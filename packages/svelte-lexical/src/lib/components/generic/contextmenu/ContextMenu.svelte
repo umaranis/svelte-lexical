@@ -20,6 +20,8 @@
   import {mergeRegister} from '@lexical/utils';
   import {SCROLL_TYPEAHEAD_OPTION_INTO_VIEW_COMMAND} from './typeAheadMenuHelpers.js';
   import {onMount} from 'svelte';
+  import Portal from '$lib/components/generic/portal/Portal.svelte';
+  import MenuItem from './MenuItem.svelte';
 
   interface Props {
     close: () => void;
@@ -28,7 +30,7 @@
     resolution: {value: MenuResolution};
     options: Array<TOption>;
     shouldSplitNodeWithQuery?: boolean;
-    menuRenderFn: MenuRenderFn<TOption>;
+    menuRenderFn?: MenuRenderFn<TOption>;
     onSelectOption: (
       option: TOption,
       textNodeContainingQuery: TextNode | null,
@@ -249,12 +251,40 @@
   });
 </script>
 
-{@render menuRenderFn(
-  anchorElementRef,
-  {
-    options,
-    selectOptionAndCleanUp,
-    selectedIndex,
-  },
-  resolution.value.match ? resolution.value.match.matchingString : '',
-)}
+{#snippet defaultMenuRenderFn(anchorElementRef: HTMLElement | null)}
+  {#if anchorElementRef && options.length}
+    <Portal target={anchorElementRef}>
+      <div class="typeahead-popover mentions-menu svelte-lexical">
+        <ul>
+          {#each options as option, i (option.key)}
+            <MenuItem
+              index={i}
+              isSelected={selectedIndex.value === i}
+              onclick={() => {
+                selectedIndex.value = i;
+                selectOptionAndCleanUp(option);
+              }}
+              onmouseenter={() => {
+                selectedIndex.value = i;
+              }}
+              {option} />
+          {/each}
+        </ul>
+      </div>
+    </Portal>
+  {/if}
+{/snippet}
+
+{#if menuRenderFn != null}
+  {@render menuRenderFn(
+    anchorElementRef,
+    {
+      options,
+      selectOptionAndCleanUp,
+      selectedIndex,
+    },
+    resolution.value.match ? resolution.value.match.matchingString : '',
+  )}
+{:else}
+  {@render defaultMenuRenderFn(anchorElementRef)}
+{/if}

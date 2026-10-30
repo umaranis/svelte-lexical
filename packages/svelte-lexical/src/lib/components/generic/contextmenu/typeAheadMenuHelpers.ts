@@ -31,8 +31,8 @@ export type TypeaheadMenuPluginProps<TOption extends MenuOption> = {
     matchingString: string,
   ) => void;
   options: Array<TOption>;
-  menuRenderFn: MenuRenderFn<TOption>;
   triggerFn: TriggerFn;
+  menuRenderFn?: MenuRenderFn<TOption>;
   onOpen?: (resolution: MenuResolution) => void;
   onClose?: () => void;
   anchorClassName?: string;

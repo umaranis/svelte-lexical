@@ -1,20 +1,14 @@
 <script lang="ts">
-  import type {ComponentPickerOption} from './ComponentPickerOption.js';
+  import type {MenuOption} from './contextMenuHelpers.js';
 
   interface Props {
     index: number;
     isSelected: boolean;
     onclick: () => void;
     onmouseenter: () => void;
-    option: ComponentPickerOption;
+    option: MenuOption;
   }
-  let {
-    index,
-    isSelected,
-    onclick,
-    onmouseenter: onmouseenter,
-    option,
-  }: Props = $props();
+  let {index, isSelected, onclick, onmouseenter, option}: Props = $props();
 
   let className = $derived('item' + (isSelected ? ' selected' : ''));
 </script>
@@ -29,6 +23,8 @@
   id={'typeahead-item-' + index}
   {onmouseenter}
   {onclick}>
-  <i class={option.icon}></i>
+  {#if option.icon}
+    <i class={option.icon}></i>
+  {/if}
   <span class="text">{option.title}</span>
 </li>

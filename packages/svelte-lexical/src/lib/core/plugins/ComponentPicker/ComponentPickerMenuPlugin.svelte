@@ -21,9 +21,7 @@
 -->
 <script lang="ts">
   import TypeAheadMenu from '$lib/components/generic/contextmenu/TypeAheadMenu.svelte';
-  import Portal from '$lib/components/generic/portal/Portal.svelte';
   import type {TextNode} from 'lexical';
-  import ComponentPickerMenuItem from './ComponentPickerMenuItem.svelte';
   import type {ComponentPickerOption} from './ComponentPickerOption.js';
   import {getBaseOptions, getDynamicOptions} from './getOptions.js';
   import {useBasicTypeaheadTriggerMatch} from '$lib/components/generic/contextmenu/typeAheadMenuHelpers.js';
@@ -72,45 +70,10 @@
   };
 </script>
 
-{#snippet menuRenderFn(
-  anchorElementRef: HTMLElement | null,
-  {
-    selectedIndex,
-    selectOptionAndCleanUp,
-  }: {
-    selectedIndex: {value: number | null};
-    selectOptionAndCleanUp: (option: ComponentPickerOption) => void;
-  },
-)}
-  {#if anchorElementRef && options.length}
-    <Portal target={anchorElementRef}>
-      <div class="typeahead-popover component-picker-menu svelte-lexical">
-        <ul>
-          {#each options as option, i (option.key)}
-            <ComponentPickerMenuItem
-              index={i}
-              isSelected={selectedIndex.value === i}
-              onclick={() => {
-                selectedIndex.value = i;
-                selectOptionAndCleanUp(option);
-              }}
-              onmouseenter={() => {
-                selectedIndex.value = i;
-              }}
-              {option} />
-          {/each}
-        </ul>
-      </div>
-      ,
-    </Portal>
-  {/if}
-{/snippet}
-
 <TypeAheadMenu
   onQueryChange={(value) => {
     queryString = value;
   }}
   {onSelectOption}
   triggerFn={checkForTriggerMatch}
-  {options}
-  {menuRenderFn} />
+  {options} />
