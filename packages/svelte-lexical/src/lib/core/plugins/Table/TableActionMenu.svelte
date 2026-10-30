@@ -126,8 +126,11 @@
       if (isTableSelection(selection)) {
         const currentSelectionCounts = computeSelectionCount(selection);
         selectionCounts = computeSelectionCount(selection);
+        const isCollapsedTableSelection = selection.anchor.is(selection.focus);
         canMergeCells =
-          currentSelectionCounts.columns > 1 || currentSelectionCounts.rows > 1;
+          !isCollapsedTableSelection &&
+          (currentSelectionCounts.columns > 1 ||
+            currentSelectionCounts.rows > 1);
       }
       // Unmerge cell
       canUnmergeCell = canUnmerge();
@@ -252,6 +255,7 @@
     editor.update(() => {
       unmergeCell();
     });
+    clearTableSelection();
   };
 
   const insertTableRowAtSelection = (shouldInsertAfter: boolean) => {
