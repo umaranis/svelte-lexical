@@ -1,9 +1,9 @@
 <script lang="ts">
+  import {$isCodeNode as isCodeNode} from '@lexical/code';
   import {
-    $isCodeNode as isCodeNode,
     CODE_LANGUAGE_FRIENDLY_NAME_MAP,
     getLanguageFriendlyName,
-  } from '@lexical/code';
+  } from '@lexical/code-prism';
   import {$getNodeByKey as getNodeByKey, type NodeKey} from 'lexical';
   import {getContext} from 'svelte';
   import type {Writable} from 'svelte/store';

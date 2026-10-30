@@ -105,6 +105,7 @@
   "dependencies": {
     "@lexical/clipboard": "0.42.0",
     "@lexical/code": "0.42.0",
+    "@lexical/code-prism": "0.42.0",
     "@lexical/code-shiki": "0.42.0",
     "@lexical/extension": "0.42.0",
     "@lexical/file": "0.42.0",

@@ -21,7 +21,8 @@
     $isEditorIsNestedEditor as isEditorIsNestedEditor,
   } from '@lexical/utils';
   import {getContext, onMount} from 'svelte';
-  import {$isCodeNode as isCodeNode, CODE_LANGUAGE_MAP} from '@lexical/code';
+  import {$isCodeNode as isCodeNode} from '@lexical/code';
+  import {CODE_LANGUAGE_MAP} from '@lexical/code-prism';
 
   import {getActiveEditor, getEditor} from '$lib/core/composerContext.js';
   import type {Writable} from 'svelte/store';

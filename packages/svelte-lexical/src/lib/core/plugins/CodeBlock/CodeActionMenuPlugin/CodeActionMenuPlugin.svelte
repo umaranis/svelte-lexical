@@ -1,10 +1,9 @@
 <script lang="ts">
+  import {$isCodeNode as isCodeNode, CodeNode} from '@lexical/code';
   import {
-    $isCodeNode as isCodeNode,
-    CodeNode,
     getLanguageFriendlyName,
-    normalizeCodeLang,
-  } from '@lexical/code';
+    normalizeCodeLanguage,
+  } from '@lexical/code-prism';
   import {
     $getNearestNodeFromDOMNode as getNearestNodeFromDOMNode,
     isHTMLElement,
@@ -129,7 +128,7 @@
       document.removeEventListener('mousemove', debouncedOnMouseMove);
   });
 
-  let normalizedLang = $derived(normalizeCodeLang(lang));
+  let normalizedLang = $derived(normalizeCodeLanguage(lang));
   let codeFriendlyName = $derived(getLanguageFriendlyName(lang));
 
   function getMouseInfo(event: MouseEvent): {
