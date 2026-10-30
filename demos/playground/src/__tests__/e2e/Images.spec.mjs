@@ -24,7 +24,6 @@ import {
   insertUploadImage,
   insertUrlImage,
   IS_WINDOWS,
-  LEGACY_EVENTS,
   SAMPLE_IMAGE_URL,
   SAMPLE_LANDSCAPE_IMAGE_URL,
   selectorBoundingBox,
@@ -647,8 +646,6 @@ test.describe('Images', () => {
     isPlainText,
     browserName,
   }) => {
-    // It doesn't work in legacy events mode in WebKit #5673
-    test.fixme(LEGACY_EVENTS && browserName === 'webkit');
     test.skip(isPlainText);
 
     await focusEditor(page);

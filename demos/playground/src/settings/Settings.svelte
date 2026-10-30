@@ -99,13 +99,6 @@
       text="Autocomplete" />
     <Switch
       onclick={() => {
-        settings.setOption('disableBeforeInput', !disableBeforeInput);
-        setTimeout(() => window.location.reload(), 500);
-      }}
-      checked={disableBeforeInput}
-      text="Legacy Events" />
-    <Switch
-      onclick={() => {
         settings.setOption('showTableOfContents', !showTableOfContents);
       }}
       checked={showTableOfContents}

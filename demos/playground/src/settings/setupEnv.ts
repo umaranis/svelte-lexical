@@ -24,8 +24,3 @@ for (const param of Object.keys(DEFAULT_SETTINGS)) {
     }
   }
 }
-
-if (DEFAULT_SETTINGS.disableBeforeInput) {
-  // @ts-expect-error enable legacy events
-  delete window.InputEvent.prototype.getTargetRanges;
-}

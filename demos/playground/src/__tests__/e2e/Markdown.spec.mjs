@@ -25,7 +25,6 @@ import {
   getHTML,
   html,
   initialize,
-  LEGACY_EVENTS,
   pasteFromClipboard,
   pressToggleBold,
   pressToggleUnderline,
@@ -678,9 +677,7 @@ test.describe.parallel('Markdown', () => {
       `can convert "${testCase.text}" shortcut`,
       async ({page, isCollab}) => {
         await focusEditor(page);
-        await page.keyboard.type(testCase.text, {
-          delay: LEGACY_EVENTS ? 50 : 0,
-        });
+        await page.keyboard.type(testCase.text);
         await assertHTML(page, testCase.html, undefined, {
           ignoreClasses: false,
         });
@@ -692,9 +689,7 @@ test.describe.parallel('Markdown', () => {
   NESTED_TEXT_FORMAT_SHORTCUTS.forEach((testCase) => {
     test.fixme(`can convert "${testCase.text}" shortcut`, async ({page}) => {
       await focusEditor(page);
-      await page.keyboard.type(testCase.text, {
-        delay: LEGACY_EVENTS ? 50 : 0,
-      });
+      await page.keyboard.type(testCase.text);
       await assertHTML(page, testCase.html, undefined, {ignoreClasses: false});
       await assertMarkdownImportExport(page, testCase.text, testCase.html);
     });

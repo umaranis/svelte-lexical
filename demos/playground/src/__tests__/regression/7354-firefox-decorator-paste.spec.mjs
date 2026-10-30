@@ -15,7 +15,6 @@ import {
   initialize,
   keyDownCtrlOrMeta,
   keyUpCtrlOrMeta,
-  LEGACY_EVENTS,
   selectFromInsertDropdown,
   test,
   withExclusiveClipboardAccess,
@@ -27,7 +26,7 @@ test.describe('HTML CopyAndPaste', () => {
   test.fixme(
     'Copy + paste multi line html with extra newlines',
     async ({page, isPlainText, isCollab}) => {
-      test.skip(isPlainText || isCollab || LEGACY_EVENTS);
+      test.skip(isPlainText || isCollab);
 
       await focusEditor(page);
       await selectFromInsertDropdown(page, '.poll');
