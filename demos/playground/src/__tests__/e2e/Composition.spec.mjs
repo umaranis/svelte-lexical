@@ -1355,6 +1355,8 @@ test.describe('Composition', () => {
         selectionStart: 1,
         text: '가',
       });
+      await client.send('Input.insertText', {text: '가'});
+
       await client.send('Input.imeSetComposition', {
         selectionEnd: 2,
         selectionStart: 2,
@@ -1365,6 +1367,8 @@ test.describe('Composition', () => {
         selectionStart: 2,
         text: '가나',
       });
+      await client.send('Input.insertText', {text: '나'});
+
       await client.send('Input.imeSetComposition', {
         selectionEnd: 3,
         selectionStart: 3,
@@ -1375,9 +1379,7 @@ test.describe('Composition', () => {
         selectionStart: 3,
         text: '가나다',
       });
-      await client.send('Input.insertText', {
-        text: '가나다',
-      });
+      await client.send('Input.insertText', {text: '다'});
 
       await assertHTML(
         page,
