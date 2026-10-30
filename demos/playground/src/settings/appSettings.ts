@@ -26,6 +26,7 @@ export const DEFAULT_SETTINGS = {
   measureTypingPerf: false,
   showNestedEditorTreeView: false,
   showTableOfContents: false,
+  shouldDisableFocusOnClickChecklist: false,
   showTreeView: true,
   tableCellMerge: true,
   tableCellBackgroundColor: true,

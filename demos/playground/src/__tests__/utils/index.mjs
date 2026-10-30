@@ -71,6 +71,7 @@ export async function initialize({
   isMaxLength,
   hasNestedTables,
   hasFitNestedTables,
+  shouldDisableFocusOnClickChecklist,
   showNestedEditorTreeView,
   tableCellMerge,
   tableCellBackgroundColor,
@@ -104,6 +105,8 @@ export async function initialize({
   appSettings.isMaxLength = !!isMaxLength;
   appSettings.hasNestedTables = !!hasNestedTables;
   appSettings.hasFitNestedTables = !!hasFitNestedTables;
+  appSettings.shouldDisableFocusOnClickChecklist =
+    !!shouldDisableFocusOnClickChecklist;
   if (tableCellMerge !== undefined) {
     appSettings.tableCellMerge = tableCellMerge;
   }

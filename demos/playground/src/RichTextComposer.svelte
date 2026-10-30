@@ -179,7 +179,8 @@
             <SharedHistoryPlugin />
           {/if}
           <ListPlugin />
-          <CheckListPlugin />
+          <CheckListPlugin
+            disableTakeFocusOnClick={$settings.shouldDisableFocusOnClickChecklist} />
           <HorizontalRulePlugin />
           <ImagePlugin>
             {#if $settings.isCollab}
