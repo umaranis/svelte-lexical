@@ -33,12 +33,6 @@
      * @experimental Nested tables are not officially supported.
      */
     hasNestedTables?: boolean;
-    /**
-     * When `true` (default `false`), nested tables will be resized to fit the width of the parent table cell.
-     *
-     * @experimental Nested tables are not officially supported.
-     */
-    hasFitNestedTables?: boolean;
   }
 
   /**
@@ -53,7 +47,6 @@
     hasTabHandler = true,
     hasHorizontalScroll = false,
     hasNestedTables = false,
-    hasFitNestedTables = false,
   }: TablePluginProps = $props();
 
   const editor = getEditor();
@@ -67,16 +60,8 @@
     hasNestedTablesSignal.value = hasNestedTables;
   });
 
-  const hasFitNestedTablesSignal = signal(false);
-  $effect.pre(() => {
-    hasFitNestedTablesSignal.value = hasFitNestedTables;
-  });
-
   $effect(() =>
-    registerTablePlugin(editor, {
-      hasFitNestedTables: hasFitNestedTablesSignal,
-      hasNestedTables: hasNestedTablesSignal,
-    }),
+    registerTablePlugin(editor, {hasNestedTables: hasNestedTablesSignal}),
   );
 
   $effect(() => registerTableSelectionObserver(editor, hasTabHandler));

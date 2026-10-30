@@ -52,6 +52,7 @@
     TableActionMenuPlugin,
     TableCellResizerPlugin,
     TableScrollShadowPlugin,
+    TableFitNestedTablePlugin,
     YoutubePlugin,
     YouTubeNode,
     TweetNode,
@@ -200,9 +201,12 @@
           {/if}
           <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
           <TablePlugin
-            hasHorizontalScroll={$settings.tableHorizontalScroll}
-            hasFitNestedTables={$settings.hasFitNestedTables}
+            hasHorizontalScroll={$settings.tableHorizontalScroll &&
+              !$settings.hasFitNestedTables}
             hasNestedTables={$settings.hasNestedTables} />
+          {#if $settings.hasFitNestedTables}
+            <TableFitNestedTablePlugin />
+          {/if}
           <TableHoverActionsV2Plugin anchorElem={editorDiv} />
           <TableCellResizerPlugin />
           <TableScrollShadowPlugin />
