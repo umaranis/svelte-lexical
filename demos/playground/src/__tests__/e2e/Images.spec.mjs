@@ -890,4 +890,30 @@ test.describe('Images', () => {
       `,
     );
   });
+
+  test('Dimensionless SVG renders with a visible bounding box instead of collapsing', async ({
+    page,
+    isPlainText,
+    isCollab,
+  }) => {
+    test.skip(isPlainText || isCollab);
+    await focusEditor(page);
+
+    // SVG without width/height attributes
+    const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="red"/></svg>`;
+    const base64Svg = `data:image/svg+xml;base64,${Buffer.from(svgContent).toString('base64')}`;
+
+    await insertUrlImage(page, base64Svg, 'dimensionless-svg');
+
+    const imageLocator = page.locator(
+      '.editor-image img[alt="dimensionless-svg"]',
+    );
+    await imageLocator.waitFor({state: 'attached', timeout: 5000});
+
+    // The bounding box should NOT be 0x0
+    const boundingBox = await imageLocator.boundingBox();
+    expect(boundingBox).not.toBeNull();
+    expect(boundingBox.width).toBeGreaterThan(0);
+    expect(boundingBox.height).toBeGreaterThan(0);
+  });
 });

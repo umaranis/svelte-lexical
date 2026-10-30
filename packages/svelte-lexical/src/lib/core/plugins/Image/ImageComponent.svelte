@@ -277,7 +277,11 @@
   } | null>(null);
 
   function isSVG(src: string): boolean {
-    return src.toLowerCase().endsWith('.svg');
+    const lowerCaseSrc = src.toLowerCase();
+    return (
+      lowerCaseSrc.endsWith('.svg') ||
+      lowerCaseSrc.startsWith('data:image/svg+xml')
+    );
   }
   const isSVGImage = isSVG(src);
 
@@ -294,6 +298,15 @@
 
   // Calculate final dimensions with proper scaling
   function calculateDimensions() {
+    if (width !== 'inherit' && height !== 'inherit') {
+      return {
+        height,
+        maxWidth,
+        width,
+      };
+    }
+
+    // For standard images, Lexical expects 'inherit'
     if (!isSVGImage) {
       return {
         height,
@@ -302,12 +315,12 @@
       };
     }
 
-    // Use natural dimensions if available, otherwise fallback to defaults
-    const naturalWidth = dimensions?.width || 200;
-    const naturalHeight = dimensions?.height || 200;
+    const naturalWidth = dimensions?.width ?? 0;
+    const naturalHeight = dimensions?.height ?? 0;
 
-    let finalWidth = naturalWidth;
-    let finalHeight = naturalHeight;
+    // If SVG has no intrinsic dimensions (0), fallback to a sensible default (maxWidth)
+    let finalWidth = naturalWidth || maxWidth;
+    let finalHeight = naturalHeight || finalWidth;
 
     // Scale down if width exceeds maxWidth while maintaining aspect ratio
     if (finalWidth > maxWidth) {
