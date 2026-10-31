@@ -1,13 +1,13 @@
 <script lang="ts">
   import {$isDecoratorTextNode as isDecoratorTextNode} from '@lexical/extension';
   import {
+    $insertNodeIntoLeaf as insertNodeIntoLeaf,
     $wrapNodeInElement as wrapNodeInElement,
     mergeRegister,
   } from '@lexical/utils';
   import {
     $createParagraphNode as createParagraphNode,
     $getSelection as getSelection,
-    $insertNodes as insertNodes,
     $isNodeSelection as isNodeSelection,
     $isRangeSelection as isRangeSelection,
     $isRootOrShadowRoot as isRootOrShadowRoot,
@@ -37,7 +37,11 @@
           const {dateTime} = payload;
           const dateTimeNode = createDateTimeNode(dateTime);
 
-          insertNodes([dateTimeNode]);
+          const selection = getSelection();
+          if (isRangeSelection(selection)) {
+            dateTimeNode.setFormat(selection.format);
+          }
+          insertNodeIntoLeaf(dateTimeNode);
           if (isRootOrShadowRoot(dateTimeNode.getParentOrThrow())) {
             wrapNodeInElement(dateTimeNode, createParagraphNode).selectEnd();
           }
