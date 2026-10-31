@@ -317,12 +317,11 @@
       isLeftVisible = false;
     };
 
-    return editor.registerRootListener((rootElement, prevRootElement) => {
-      if (prevRootElement) {
-        prevRootElement.removeEventListener('mouseleave', handleMouseLeave);
-      }
+    return editor.registerRootListener((rootElement) => {
       if (rootElement) {
         rootElement.addEventListener('mouseleave', handleMouseLeave);
+        return () =>
+          rootElement.removeEventListener('mouseleave', handleMouseLeave);
       }
     });
   });

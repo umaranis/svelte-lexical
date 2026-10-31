@@ -203,13 +203,12 @@
         delayedCallback,
         COMMAND_PRIORITY_CRITICAL,
       ),
-      editor.registerRootListener((rootElement, prevRootElement) => {
-        if (prevRootElement) {
-          prevRootElement.removeEventListener('pointerup', delayedCallback);
-        }
+      editor.registerRootListener((rootElement) => {
         if (rootElement) {
           rootElement.addEventListener('pointerup', delayedCallback);
           delayedCallback();
+          return () =>
+            rootElement.removeEventListener('pointerup', delayedCallback);
         }
       }),
       () => clearTimeout(timeoutId),
