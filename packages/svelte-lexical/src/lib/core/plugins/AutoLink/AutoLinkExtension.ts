@@ -51,7 +51,10 @@ export function createUrlAndEmailMatchers(
 }
 
 /** AutoLinkExtension configured like AutoLinkPlugin: URLs and emails, skipped inside code blocks. */
-export const UrlAndEmailAutoLinkExtension = configExtension(AutoLinkExtension, {
-  excludeParents: [$isCodeNode],
-  matchers: createUrlAndEmailMatchers(),
-});
+export const UrlAndEmailAutoLinkExtension = /*#__PURE__*/ configExtension(
+  AutoLinkExtension,
+  {
+    excludeParents: [$isCodeNode],
+    matchers: /*#__PURE__*/ createUrlAndEmailMatchers(),
+  },
+);

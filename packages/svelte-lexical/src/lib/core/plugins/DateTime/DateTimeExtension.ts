@@ -39,7 +39,7 @@ export function registerDateTime(editor: LexicalEditor): () => void {
   );
 }
 
-export const DateTimeExtension = defineExtension({
+export const DateTimeExtension = /*#__PURE__*/ defineExtension({
   dependencies: [DecoratorTextExtension],
   name: '@svelte-lexical/DateTime',
   nodes: () => [DateTimeNode],

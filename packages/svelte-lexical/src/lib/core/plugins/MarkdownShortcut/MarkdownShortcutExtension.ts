@@ -6,7 +6,7 @@ export interface MarkdownShortcutConfig {
   transformers: Array<Transformer>;
 }
 
-export const MarkdownShortcutExtension = defineExtension({
+export const MarkdownShortcutExtension = /*#__PURE__*/ defineExtension({
   config: safeCast<MarkdownShortcutConfig>({transformers: ALL_TRANSFORMERS}),
   name: '@svelte-lexical/MarkdownShortcut',
   register: (editor, {transformers}) =>

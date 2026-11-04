@@ -51,9 +51,9 @@ import {Suspense} from 'react';*/
 
 // History (shared or collaborative) is still provided by the caption's history
 // plugin component, see CaptionEditorHistoryPlugin and CaptionEditorCollaborationPlugin.
-const CaptionEditorExtension = defineExtension({
+const CaptionEditorExtension = /*#__PURE__*/ defineExtension({
   dependencies: [
-    configExtension(NestedEditorExtension, {
+    /*#__PURE__*/ configExtension(NestedEditorExtension, {
       // the parent editor is created by Composer, not LexicalBuilder
       $getParentEditor: $getEditor,
       inheritEditableFromParent: true,

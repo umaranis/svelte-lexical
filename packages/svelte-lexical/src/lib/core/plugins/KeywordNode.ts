@@ -110,7 +110,7 @@ export interface KeywordsConfig {
   keywordsRegex: RegExp | null;
 }
 
-export const KeywordsExtension = defineExtension({
+export const KeywordsExtension = /*#__PURE__*/ defineExtension({
   config: safeCast<KeywordsConfig>({keywordsRegex: null}),
   name: '@svelte-lexical/Keywords',
   nodes: () => [KeywordNode],

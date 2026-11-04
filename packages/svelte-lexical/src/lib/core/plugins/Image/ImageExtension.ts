@@ -98,7 +98,7 @@ export function registerImages(
   );
 }
 
-export const ImagesExtension = defineExtension({
+export const ImagesExtension = /*#__PURE__*/ defineExtension({
   config: safeCast<ImagesConfig>({captionsEnabled: true}),
   name: '@svelte-lexical/Images',
   nodes: () => [ImageNode],
