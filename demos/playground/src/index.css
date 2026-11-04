@@ -1657,6 +1657,10 @@ button.toolbar-item.active i {
   user-select: none;
 }
 
+span.editor-equation {
+  display: inline-block;
+}
+
 .editor-equation.focused {
   outline: 2px solid var(--active-control);
 }
