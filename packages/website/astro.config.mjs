@@ -80,6 +80,10 @@ export default defineConfig({
                   label: 'Column Layout',
                   slug: 'guides/plugins/column-layout',
                 },
+                {
+                  label: 'Lexical Extensions',
+                  slug: 'guides/plugins/extensions',
+                },
               ],
             },
           ],

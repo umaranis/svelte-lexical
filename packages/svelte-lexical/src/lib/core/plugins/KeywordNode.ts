@@ -6,9 +6,21 @@
  *
  */
 
-import type {EditorConfig, LexicalNode, SerializedTextNode} from 'lexical';
+import type {
+  EditorConfig,
+  LexicalEditor,
+  LexicalNode,
+  SerializedTextNode,
+} from 'lexical';
 
-import {$applyNodeReplacement, TextNode} from 'lexical';
+import {registerLexicalTextEntity} from '@lexical/text';
+import {
+  $applyNodeReplacement,
+  defineExtension,
+  mergeRegister,
+  safeCast,
+  TextNode,
+} from 'lexical';
 
 export type SerializedKeywordNode = SerializedTextNode;
 
@@ -54,3 +66,54 @@ export function $isKeywordNode(
 ): boolean {
   return node instanceof KeywordNode;
 }
+
+function $convertToKeywordNode(textNode: TextNode): KeywordNode {
+  return $createKeywordNode(textNode.getTextContent());
+}
+
+/**
+ * Converts text matching `keywordsRegex` into KeywordNodes.
+ * The regex must capture the keyword in its second group, with the preceding boundary in the first.
+ */
+export function registerKeywords(
+  editor: LexicalEditor,
+  keywordsRegex: RegExp,
+): () => void {
+  function getKeywordMatch(text: string) {
+    const matchArr = keywordsRegex.exec(text);
+
+    if (matchArr === null) {
+      return null;
+    }
+
+    const keywordLength = matchArr[2].length;
+    const startOffset = matchArr.index + matchArr[1].length;
+    const endOffset = startOffset + keywordLength;
+    return {
+      end: endOffset,
+      start: startOffset,
+    };
+  }
+
+  return mergeRegister(
+    ...registerLexicalTextEntity(
+      editor,
+      getKeywordMatch,
+      KeywordNode,
+      $convertToKeywordNode,
+    ),
+  );
+}
+
+export interface KeywordsConfig {
+  /** When null, only KeywordNode is registered and no text is converted. */
+  keywordsRegex: RegExp | null;
+}
+
+export const KeywordsExtension = defineExtension({
+  config: safeCast<KeywordsConfig>({keywordsRegex: null}),
+  name: '@svelte-lexical/Keywords',
+  nodes: () => [KeywordNode],
+  register: (editor, {keywordsRegex}) =>
+    keywordsRegex ? registerKeywords(editor, keywordsRegex) : () => {},
+});

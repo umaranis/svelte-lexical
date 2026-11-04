@@ -1,0 +1,53 @@
+---
+title: Lexical Extensions
+description: Framework-agnostic Lexical extensions exported by svelte-lexical, alongside the Svelte plugins.
+---
+
+Lexical can build an editor from [extensions](https://lexical.dev/docs/extensions/intro) with `buildEditorFromExtensions` from `@lexical/extension`. An extension bundles the nodes, configuration and behaviour of a feature, so it works without any Svelte component.
+
+`svelte-lexical` exports extensions for some of its plugins. The plugins keep working as before: use a plugin inside `Composer`, and use an extension when you build the editor with `buildEditorFromExtensions` (for instance, a nested editor or a headless editor).
+
+| Extension                      | Equivalent plugin        | Config                                                     |
+| :----------------------------- | :----------------------- | :--------------------------------------------------------- |
+| `KeywordsExtension`            | `KeywordPlugin`          | `keywordsRegex` (when `null`, only `KeywordNode` is added) |
+| `DateTimeExtension`            | `DateTimePlugin`         |                                                            |
+| `UrlAndEmailAutoLinkExtension` | `AutoLinkPlugin`         | Based on `AutoLinkExtension` from `@lexical/link`          |
+| `MarkdownShortcutExtension`    | `MarkdownShortcutPlugin` | `transformers` (default `ALL_TRANSFORMERS`)                |
+| `ImagesExtension`              | `ImagePlugin`            | `captionsEnabled` (default `true`)                         |
+
+The register functions behind them (`registerKeywords`, `registerDateTime`, `registerImages`) are also exported, so you can apply the same behaviour to an editor created by `Composer`.
+
+## Usage
+
+```ts
+import {buildEditorFromExtensions} from '@lexical/extension';
+import {RichTextExtension} from '@lexical/rich-text';
+import {configExtension} from 'lexical';
+import {
+  DateTimeExtension,
+  ImagesExtension,
+  KeywordsExtension,
+} from 'svelte-lexical';
+
+const editor = buildEditorFromExtensions(
+  RichTextExtension,
+  DateTimeExtension,
+  configExtension(ImagesExtension, {captionsEnabled: false}),
+  configExtension(KeywordsExtension, {
+    keywordsRegex: /(^|\s)(congrats)(\s|$)/i,
+  }),
+);
+```
+
+## Rendering an editor built from extensions
+
+Use `ExtensionEditorComposer` to render an editor that was already built from extensions. It provides the editor to child components and renders its decorator nodes. Behaviour such as rich text comes from the editor's extensions, so don't add `RichTextPlugin`.
+
+```svelte
+<ExtensionEditorComposer initialEditor={editor}>
+  <ContentEditable />
+  <SharedHistoryPlugin />
+</ExtensionEditorComposer>
+```
+
+The image caption editor is built this way: each `ImageNode` builds its caption editor from `NestedEditorExtension`, `RichTextExtension`, `HashtagExtension`, `LinkExtension` and `KeywordsExtension`. Undo / redo for captions still comes from `CaptionEditorHistoryPlugin` or `CaptionEditorCollaborationPlugin`.

@@ -1,26 +1,15 @@
 <script lang="ts">
   import {$isDecoratorTextNode as isDecoratorTextNode} from '@lexical/extension';
+  import {mergeRegister} from '@lexical/utils';
   import {
-    $insertNodeIntoLeaf as insertNodeIntoLeaf,
-    $wrapNodeInElement as wrapNodeInElement,
-    mergeRegister,
-  } from '@lexical/utils';
-  import {
-    $createParagraphNode as createParagraphNode,
     $getSelection as getSelection,
     $isNodeSelection as isNodeSelection,
     $isRangeSelection as isRangeSelection,
-    $isRootOrShadowRoot as isRootOrShadowRoot,
-    COMMAND_PRIORITY_EDITOR,
     COMMAND_PRIORITY_LOW,
     FORMAT_TEXT_COMMAND,
   } from 'lexical';
-  import {
-    $createDateTimeNode as createDateTimeNode,
-    DateTimeNode,
-    INSERT_DATETIME_COMMAND,
-    type DateTimePayload,
-  } from './DateTimeNode.js';
+  import {DateTimeNode} from './DateTimeNode.js';
+  import {registerDateTime} from './DateTimeExtension.js';
   import {getEditor} from '$lib/core/composerContext.js';
 
   const editor = getEditor();
@@ -31,25 +20,7 @@
     }
 
     return mergeRegister(
-      editor.registerCommand<DateTimePayload>(
-        INSERT_DATETIME_COMMAND,
-        (payload) => {
-          const {dateTime} = payload;
-          const dateTimeNode = createDateTimeNode(dateTime);
-
-          const selection = getSelection();
-          if (isRangeSelection(selection)) {
-            dateTimeNode.setFormat(selection.format);
-          }
-          insertNodeIntoLeaf(dateTimeNode);
-          if (isRootOrShadowRoot(dateTimeNode.getParentOrThrow())) {
-            wrapNodeInElement(dateTimeNode, createParagraphNode).selectEnd();
-          }
-
-          return true;
-        },
-        COMMAND_PRIORITY_EDITOR,
-      ),
+      registerDateTime(editor),
       // same as DecoratorTextExtension from @lexical/extension
       editor.registerCommand(
         FORMAT_TEXT_COMMAND,

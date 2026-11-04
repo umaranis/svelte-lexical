@@ -34,9 +34,8 @@
     clearSelection,
     createNodeSelectionStore,
   } from '../../nodeSelectionStore.js';
-  import NestedComposer from '../../NestedComposer.svelte';
+  import ExtensionEditorComposer from '../../ExtensionEditorComposer.svelte';
   import ContentEditable from '../../ContentEditable.svelte';
-  import RichTextPlugin from '../RichTextPlugin.svelte';
   import PlaceHolder from '../PlaceHolder.svelte';
   import DisableCaptionOnBlur from './DisableCaptionOnBlur.svelte';
   import {
@@ -383,7 +382,7 @@
 </div>
 {#if showCaption}
   <div class="image-caption-container">
-    <NestedComposer initialEditor={caption} parentEditor={editor}>
+    <ExtensionEditorComposer initialEditor={caption}>
       <DisableCaptionOnBlur {setShowCaption} />
 
       <!-- {#if isCollabActive}
@@ -396,13 +395,12 @@
       {/if} -->
       <historyPlugin.componentType {...historyPlugin.props} />
 
-      <RichTextPlugin />
       <ContentEditable className="ImageNode__contentEditable" />
       <PlaceHolder className="ImageNode__placeholder">
         Enter image caption...
       </PlaceHolder>
       <!-- TODO: {showNestedEditorTreeView === true ? <TreeViewPlugin /> : null} -->
-    </NestedComposer>
+    </ExtensionEditorComposer>
   </div>
 {/if}
 {#if resizable && isNodeSelection(selection) && isFocused}

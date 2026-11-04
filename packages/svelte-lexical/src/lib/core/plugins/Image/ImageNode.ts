@@ -4,6 +4,7 @@ import type {
   DOMExportOutput,
   EditorConfig,
   LexicalEditor,
+  LexicalEditorWithDispose,
   LexicalNode,
   LexicalUpdateJSON,
   NodeKey,
@@ -24,21 +25,22 @@ import {
   $isParagraphNode,
   $selectAll,
   $setSelection,
-  createEditor,
+  configExtension,
   DecoratorNode,
-  LineBreakNode,
-  ParagraphNode,
-  RootNode,
+  defineExtension,
   SKIP_DOM_SELECTION_TAG,
-  TextNode,
 } from 'lexical';
-import {$insertGeneratedNodes} from '@lexical/clipboard';
+import {
+  buildEditorFromExtensions,
+  NestedEditorExtension,
+} from '@lexical/extension';
 import {$generateHtmlFromNodes, $generateNodesFromDOM} from '@lexical/html';
 import type {ComponentProps} from 'svelte';
 import ImageComponent from './ImageComponent.svelte';
-import {LinkNode} from '@lexical/link';
-import {HashtagNode} from '@lexical/hashtag';
-import {KeywordNode} from '../KeywordNode.js';
+import {LinkExtension} from '@lexical/link';
+import {HashtagExtension} from '@lexical/hashtag';
+import {RichTextExtension} from '@lexical/rich-text';
+import {KeywordsExtension} from '../KeywordNode.js';
 /*import * as React from 'react';
 import {Suspense} from 'react';*/
 
@@ -47,9 +49,27 @@ import {Suspense} from 'react';*/
   () => import('./ImageComponent'),
 );*/
 
+// History (shared or collaborative) is still provided by the caption's history
+// plugin component, see CaptionEditorHistoryPlugin and CaptionEditorCollaborationPlugin.
+const CaptionEditorExtension = defineExtension({
+  dependencies: [
+    configExtension(NestedEditorExtension, {
+      // the parent editor is created by Composer, not LexicalBuilder
+      $getParentEditor: $getEditor,
+      inheritEditableFromParent: true,
+    }),
+    RichTextExtension,
+    HashtagExtension,
+    LinkExtension,
+    KeywordsExtension,
+  ],
+  name: '@svelte-lexical/ImageNodeCaption',
+  namespace: 'svelte-lexical/ImageNodeCaption',
+});
+
 export interface ImagePayload {
   altText: string;
-  caption?: LexicalEditor;
+  caption?: LexicalEditorWithDispose;
   height?: number;
   key?: NodeKey;
   maxWidth?: number;
@@ -117,7 +137,7 @@ export class ImageNode extends DecoratorNode<DecoratorImageType> {
   __height: 'inherit' | number;
   __maxWidth: number;
   __showCaption: boolean;
-  __caption: LexicalEditor;
+  __caption: LexicalEditorWithDispose;
   // Captions cannot yet be used within editor cells
   __captionsEnabled: boolean;
 
@@ -224,11 +244,8 @@ export class ImageNode extends DecoratorNode<DecoratorImageType> {
                   imgNode.setShowCaption(true);
                   imgNode.__caption.update(
                     () => {
-                      const editor = $getEditor();
-                      $insertGeneratedNodes(
-                        editor,
-                        $generateNodesFromDOM(editor, figcaption),
-                        $selectAll(),
+                      $selectAll().insertNodes(
+                        $generateNodesFromDOM(imgNode.__caption, figcaption),
                       );
                       $setSelection(null);
                     },
@@ -257,7 +274,7 @@ export class ImageNode extends DecoratorNode<DecoratorImageType> {
     width?: 'inherit' | number,
     height?: 'inherit' | number,
     showCaption?: boolean,
-    caption?: LexicalEditor,
+    caption?: LexicalEditorWithDispose,
     captionsEnabled?: boolean,
     key?: NodeKey,
   ) {
@@ -269,20 +286,8 @@ export class ImageNode extends DecoratorNode<DecoratorImageType> {
     this.__height = height || 'inherit';
     this.__showCaption = showCaption || false;
     this.__caption =
-      caption ||
-      createEditor({
-        namespace: 'Playground/ImageNodeCaption',
-        nodes: [
-          RootNode,
-          TextNode,
-          LineBreakNode,
-          ParagraphNode,
-          LinkNode,
-          HashtagNode,
-          KeywordNode,
-        ],
-      });
-    this.__captionsEnabled = captionsEnabled || captionsEnabled === undefined;
+      caption || buildEditorFromExtensions(CaptionEditorExtension);
+    this.__captionsEnabled = captionsEnabled !== false;
   }
 
   exportJSON(): SerializedImageNode {

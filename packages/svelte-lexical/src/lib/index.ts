@@ -187,6 +187,7 @@ export {default as TreeViewPlugin} from './core/plugins/TreeView/TreeViewPlugin.
 
 export {default as ContentEditable} from './core/ContentEditable.svelte';
 export {default as Composer} from './core/Composer.svelte';
+export {default as ExtensionEditorComposer} from './core/ExtensionEditorComposer.svelte';
 
 export {default as RichTextComposer} from './components/richtext/RichTextComposer.svelte';
 
@@ -253,3 +254,29 @@ export {$convertFromMarkdownString as convertFromMarkdownString} from '@lexical/
 
 // required for editor extensions types
 export {initializeExtensions} from './core/editorExtensions.js';
+
+// extensions (framework-agnostic equivalents of the plugins above, for editors built with LexicalBuilder)
+export {
+  KeywordsExtension,
+  registerKeywords,
+  type KeywordsConfig,
+} from './core/plugins/KeywordNode.js';
+export {
+  DateTimeExtension,
+  registerDateTime,
+} from './core/plugins/DateTime/DateTimeExtension.js';
+export {
+  UrlAndEmailAutoLinkExtension,
+  createUrlAndEmailMatchers,
+} from './core/plugins/AutoLink/AutoLinkExtension.js';
+export {
+  MarkdownShortcutExtension,
+  type MarkdownShortcutConfig,
+} from './core/plugins/MarkdownShortcut/MarkdownShortcutExtension.js';
+export {
+  ImagesExtension,
+  registerImages,
+  INSERT_IMAGE_COMMAND,
+  type ImagesConfig,
+  type InsertImagePayload,
+} from './core/plugins/Image/ImageExtension.js';
