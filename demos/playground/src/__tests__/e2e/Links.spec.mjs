@@ -478,13 +478,7 @@ test.describe.parallel('Links', () => {
               class="PlaygroundEditorTheme__link"
               href="https://"
               rel="noreferrer">
-              <span data-lexical-text="true">ab</span>
-            </a>
-            <a
-              class="PlaygroundEditorTheme__link"
-              href="https://"
-              rel="noreferrer">
-              <span data-lexical-text="true">c</span>
+              <span data-lexical-text="true">abc</span>
             </a>
             <span data-lexical-text="true">def</span>
           </p>
