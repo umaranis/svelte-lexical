@@ -306,15 +306,17 @@ export class ImageNode extends DecoratorNode<DecoratorImageType> {
   setWidthAndHeight(
     width: 'inherit' | number,
     height: 'inherit' | number,
-  ): void {
+  ): this {
     const writable = this.getWritable();
     writable.__width = width;
     writable.__height = height;
+    return writable;
   }
 
-  setShowCaption(showCaption: boolean): void {
+  setShowCaption(showCaption: boolean): this {
     const writable = this.getWritable();
     writable.__showCaption = showCaption;
+    return writable;
   }
 
   // View
@@ -334,11 +336,11 @@ export class ImageNode extends DecoratorNode<DecoratorImageType> {
   }
 
   getSrc(): string {
-    return this.__src;
+    return this.getLatest().__src;
   }
 
   getAltText(): string {
-    return this.__altText;
+    return this.getLatest().__altText;
   }
 
   decorate(editor: LexicalEditor, config: EditorConfig): DecoratorImageType {
