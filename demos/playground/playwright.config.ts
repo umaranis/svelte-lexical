@@ -1,8 +1,34 @@
 import type {PlaywrightTestConfig} from '@playwright/test';
 import {devices} from '@playwright/test';
+import {mkdirSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 
 const {CI} = process.env;
 const IS_CI = CI === 'true';
+
+// macOS 27 privacy protection blocks Firefox from reading
+// ~/Library/Application Support/Firefox, so it exits with
+// "Could not find profile folder" before using Playwright's -profile.
+// Give it a stand-in home. The real profile comes from -profile, so processes
+// can share one fixed path. This config loads in the runner and every worker, so a
+// unique directory per load would pile up, and deleting them on exit is
+// unreliable (rmSync fails with ENOTEMPTY and hung worker shutdown).
+function getFirefoxHome(): string {
+  const home = join(tmpdir(), 'pw-firefox-home');
+  mkdirSync(home, {recursive: true});
+  return home;
+}
+
+const firefoxLaunchOptions =
+  process.platform === 'darwin'
+    ? {
+        env: {
+          ...process.env,
+          CFFIXED_USER_HOME: getFirefoxHome(),
+        },
+      }
+    : {};
 
 /**
  * Read environment variables from file.
@@ -58,6 +84,7 @@ const config: PlaywrightTestConfig = {
       name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
+        launchOptions: firefoxLaunchOptions,
       },
     },
 
