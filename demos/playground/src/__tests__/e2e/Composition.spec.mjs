@@ -29,7 +29,13 @@ import {
   waitForSelector,
 } from '../utils/index.mjs';
 
-test.use({launchOptions: {slowMo: 50}});
+// Extend the project's launchOptions (e.g. Firefox's env) rather than replace them.
+test.use({
+  launchOptions: [
+    async ({launchOptions}, use) => use({...launchOptions, slowMo: 50}),
+    {scope: 'worker'},
+  ],
+});
 test.describe('Composition', () => {
   test.beforeEach(({isCollab, page}) => initialize({isCollab, page}));
   test('Handles Hiragana characters', async ({page}) => {

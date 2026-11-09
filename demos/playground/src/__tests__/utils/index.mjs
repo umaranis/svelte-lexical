@@ -157,7 +157,39 @@ export const test = base.extend({
   isPlainText: IS_PLAIN_TEXT,
   isRichText: IS_RICH_TEXT,
   shouldUseLexicalContextMenu: false,
+  page: async ({page}, use) => {
+    settleSelectionAfterKeyboardInput(page);
+    await use(page);
+  },
 });
+
+/**
+ * After every keyboard action, yield one browser task so a pending
+ * `selectionchange` event is dispatched before the next action.
+ *
+ * Lexical ignores the first `selectionchange` that follows its own DOM
+ * selection update (`isSelectionChangeFromDOMUpdate`). With fast automated
+ * input (Playwright > 1.52), Chromium can coalesce that echo with the
+ * user-driven change (e.g. Shift+ArrowLeft) into a single event, which Lexical
+ * then drops, leaving its selection stale.
+ *
+ * @param {import('@playwright/test').Page} page
+ */
+function settleSelectionAfterKeyboardInput(page) {
+  const keyboard = page.keyboard;
+  const settle = () =>
+    page
+      .evaluate(() => new Promise((resolve) => setTimeout(resolve, 0)))
+      .catch(() => {});
+  for (const method of ['type', 'press', 'down', 'up', 'insertText']) {
+    const original = keyboard[method].bind(keyboard);
+    keyboard[method] = async (...args) => {
+      const result = await original(...args);
+      await settle();
+      return result;
+    };
+  }
+}
 
 export {expect} from '@playwright/test';
 
