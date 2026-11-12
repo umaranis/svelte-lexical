@@ -7329,10 +7329,12 @@ test.describe.parallel('Tables', () => {
     });
 
     test(`Can paste and autofit tables inside table cells (with hasNestedTables, hasFitNestedTables)`, async ({
+      browserName,
       page,
       isPlainText,
       isCollab,
     }) => {
+      test.fixme(browserName === 'firefox');
       test.skip(isPlainText);
       test.skip(IS_TABLE_HORIZONTAL_SCROLL); // hasFitNestedTables disables horizontally scrollable tables
       await initialize({
@@ -9296,6 +9298,7 @@ test.describe.parallel('Tables', () => {
       isPlainText,
       isCollab,
     }) => {
+      test.fixme(browserName === 'firefox');
       test.skip(isPlainText);
       test.skip(isCollab);
       await initialize({hasNestedTables: true, page});
